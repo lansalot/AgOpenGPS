@@ -486,7 +486,7 @@ namespace AgIO
                                         break;
                                     }
                             }
-                            for (int i = 0; i < data[4]; i++) {
+                            for (int i = 0; i < data[5] - 6; i++) { // offset the length
                                 logUDPSentence.Append($"{data[i + 6]}, ");
                             }
                             logUDPSentence.Append("\r\n");

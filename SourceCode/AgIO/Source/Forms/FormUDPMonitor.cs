@@ -69,7 +69,6 @@ namespace AgIO
             {
                 writer.Write(textBoxRcv.Text);
             }
-
             mf.TimedMessageBox(2000, "File Saved", "To zAgIO_UDP_Log.Txt");
         }
 
@@ -112,9 +111,18 @@ namespace AgIO
         {
             mf.isCANBUSLogOn = !mf.isCANBUSLogOn;
 
-            if (mf.isCANBUSLogOn) btnCANBUS.BackColor = Color.LightGreen;
-            else btnCANBUS.BackColor = Color.Salmon;
-
+            if (mf.isCANBUSLogOn)
+            {
+                btnCANBUS.BackColor = Color.LightGreen;
+                byte[] CANDebugPacket = new byte[] { 0x80, 0x81, 0x7f, 0xab, 1, 1, 0xCC };
+                mf.SendUDPMessage(CANDebugPacket, mf.epModule);
+            }
+            else
+            {
+                byte[] CANDebugPacket = new byte[] { 0x80, 0x81, 0x7f, 0xab, 1, 0, 0xCC };
+                mf.SendUDPMessage(CANDebugPacket, mf.epModule);
+                btnCANBUS.BackColor = Color.Salmon;
+            }
         }
 
         private void btnPGN_Click(object sender, EventArgs e)
