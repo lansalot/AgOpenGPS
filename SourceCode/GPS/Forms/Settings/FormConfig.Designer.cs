@@ -117,6 +117,7 @@
             this.rbtnBrandHJDeere = new System.Windows.Forms.RadioButton();
             this.rbtnBrandHNewHolland = new System.Windows.Forms.RadioButton();
             this.panelTractorBrands = new System.Windows.Forms.Panel();
+            this.btnShowCAN = new System.Windows.Forms.Button();
             this.lbFendtType = new System.Windows.Forms.ComboBox();
             this.btnCANBUSSupport = new System.Windows.Forms.Button();
             this.rbtnBrandTCase = new System.Windows.Forms.RadioButton();
@@ -496,6 +497,7 @@
             this.cboxFeatureBoundary = new System.Windows.Forms.CheckBox();
             this.cboxFeatureHeadland = new System.Windows.Forms.CheckBox();
             this.cboxFeatureTram = new System.Windows.Forms.CheckBox();
+            this.tabCANBUS = new System.Windows.Forms.TabPage();
             this.lblCurrentVehicle = new System.Windows.Forms.Label();
             this.lblInchesCm = new System.Windows.Forms.Label();
             this.lblSecTotalWidthMeters = new System.Windows.Forms.Label();
@@ -507,6 +509,8 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblSecretCANBUS = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelLeftSideMenu.SuspendLayout();
             this.panelArduinoSubMenu.SuspendLayout();
             this.panelDataSourcesSubMenu.SuspendLayout();
@@ -623,6 +627,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudTramWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.tabBtns.SuspendLayout();
+            this.tabCANBUS.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1177,6 +1182,7 @@
             this.tab1.Controls.Add(this.tabAMachine);
             this.tab1.Controls.Add(this.tabTram);
             this.tab1.Controls.Add(this.tabBtns);
+            this.tab1.Controls.Add(this.tabCANBUS);
             this.tab1.ItemSize = new System.Drawing.Size(60, 40);
             this.tab1.Location = new System.Drawing.Point(6, 1);
             this.tab1.Margin = new System.Windows.Forms.Padding(4);
@@ -2231,6 +2237,7 @@
             // 
             this.panelTractorBrands.AccessibleName = "";
             this.panelTractorBrands.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelTractorBrands.Controls.Add(this.btnShowCAN);
             this.panelTractorBrands.Controls.Add(this.lbFendtType);
             this.panelTractorBrands.Controls.Add(this.btnCANBUSSupport);
             this.panelTractorBrands.Controls.Add(this.rbtnBrandTCase);
@@ -2250,6 +2257,16 @@
             this.panelTractorBrands.Name = "panelTractorBrands";
             this.panelTractorBrands.Size = new System.Drawing.Size(361, 581);
             this.panelTractorBrands.TabIndex = 142;
+            // 
+            // btnShowCAN
+            // 
+            this.btnShowCAN.Image = global::AgOpenGPS.Properties.Resources.CANBUS;
+            this.btnShowCAN.Location = new System.Drawing.Point(278, 490);
+            this.btnShowCAN.Name = "btnShowCAN";
+            this.btnShowCAN.Size = new System.Drawing.Size(80, 80);
+            this.btnShowCAN.TabIndex = 130;
+            this.btnShowCAN.UseVisualStyleBackColor = true;
+            this.btnShowCAN.Click += new System.EventHandler(this.btnShowCAN_Click);
             // 
             // lbFendtType
             // 
@@ -9400,6 +9417,17 @@
             this.cboxFeatureTram.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cboxFeatureTram.UseVisualStyleBackColor = false;
             // 
+            // tabCANBUS
+            // 
+            this.tabCANBUS.Controls.Add(this.textBox1);
+            this.tabCANBUS.Controls.Add(this.lblSecretCANBUS);
+            this.tabCANBUS.Location = new System.Drawing.Point(4, 44);
+            this.tabCANBUS.Name = "tabCANBUS";
+            this.tabCANBUS.Size = new System.Drawing.Size(1067, 743);
+            this.tabCANBUS.TabIndex = 25;
+            this.tabCANBUS.Text = "tabCANBUS";
+            this.tabCANBUS.UseVisualStyleBackColor = true;
+            // 
             // lblCurrentVehicle
             // 
             this.lblCurrentVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -9551,6 +9579,27 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblSecretCANBUS
+            // 
+            this.lblSecretCANBUS.AutoSize = true;
+            this.lblSecretCANBUS.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.lblSecretCANBUS.Location = new System.Drawing.Point(21, 16);
+            this.lblSecretCANBUS.Name = "lblSecretCANBUS";
+            this.lblSecretCANBUS.Size = new System.Drawing.Size(242, 29);
+            this.lblSecretCANBUS.TabIndex = 0;
+            this.lblSecretCANBUS.Text = "Secret CANBUS menu";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(26, 48);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(902, 134);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "Things to add\r\n- select CAN model (MF, JCB etc)\r\n- query the current setting when" +
+    " the screen loads\r\n- PGN config (take defaults from Tony\'s code)\r\n- allow you to" +
+    " ovverride it\r\n- button-finder?";
             // 
             // FormConfig
             // 
@@ -9705,6 +9754,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.tabBtns.ResumeLayout(false);
             this.tabBtns.PerformLayout();
+            this.tabCANBUS.ResumeLayout(false);
+            this.tabCANBUS.PerformLayout();
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
             this.ResumeLayout(false);
@@ -10187,5 +10238,9 @@
         private System.Windows.Forms.Label label106;
         private System.Windows.Forms.Button btnCANBUSSupport;
         private System.Windows.Forms.ComboBox lbFendtType;
+        private System.Windows.Forms.TabPage tabCANBUS;
+        private System.Windows.Forms.Button btnShowCAN;
+        private System.Windows.Forms.Label lblSecretCANBUS;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

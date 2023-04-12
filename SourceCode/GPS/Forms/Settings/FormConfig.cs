@@ -317,5 +317,11 @@ namespace AgOpenGPS
             FormTimedMessage form = new FormTimedMessage(2000, "Updating Teensy CANBUS manunfacturer", "Please wait, signal will return soon");
             form.Show();
         }
+
+        private void btnShowCAN_Click(object sender, EventArgs e)
+        {
+            tab1.SelectedTab = tabCANBUS;
+
+        }
     }
 }
