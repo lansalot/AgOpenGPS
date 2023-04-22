@@ -498,6 +498,16 @@
             this.cboxFeatureHeadland = new System.Windows.Forms.CheckBox();
             this.cboxFeatureTram = new System.Windows.Forms.CheckBox();
             this.tabCANBUS = new System.Windows.Forms.TabPage();
+            this.btnQueryBrand = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radioCAN3 = new System.Windows.Forms.RadioButton();
+            this.radioCAN2 = new System.Windows.Forms.RadioButton();
+            this.radioCAN1 = new System.Windows.Forms.RadioButton();
+            this.lblCANSniffer = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.cbCANManufacturer = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblSecretCANBUS = new System.Windows.Forms.Label();
             this.lblCurrentVehicle = new System.Windows.Forms.Label();
             this.lblInchesCm = new System.Windows.Forms.Label();
             this.lblSecTotalWidthMeters = new System.Windows.Forms.Label();
@@ -509,8 +519,7 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblSecretCANBUS = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblBrand = new System.Windows.Forms.Label();
             this.panelLeftSideMenu.SuspendLayout();
             this.panelArduinoSubMenu.SuspendLayout();
             this.panelDataSourcesSubMenu.SuspendLayout();
@@ -628,6 +637,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.tabBtns.SuspendLayout();
             this.tabCANBUS.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -9419,6 +9429,10 @@
             // 
             // tabCANBUS
             // 
+            this.tabCANBUS.Controls.Add(this.lblBrand);
+            this.tabCANBUS.Controls.Add(this.btnQueryBrand);
+            this.tabCANBUS.Controls.Add(this.panel1);
+            this.tabCANBUS.Controls.Add(this.cbCANManufacturer);
             this.tabCANBUS.Controls.Add(this.textBox1);
             this.tabCANBUS.Controls.Add(this.lblSecretCANBUS);
             this.tabCANBUS.Location = new System.Drawing.Point(4, 44);
@@ -9427,6 +9441,122 @@
             this.tabCANBUS.TabIndex = 25;
             this.tabCANBUS.Text = "tabCANBUS";
             this.tabCANBUS.UseVisualStyleBackColor = true;
+            // 
+            // btnQueryBrand
+            // 
+            this.btnQueryBrand.Location = new System.Drawing.Point(484, 216);
+            this.btnQueryBrand.Name = "btnQueryBrand";
+            this.btnQueryBrand.Size = new System.Drawing.Size(193, 66);
+            this.btnQueryBrand.TabIndex = 6;
+            this.btnQueryBrand.Text = "Query Brand";
+            this.btnQueryBrand.UseVisualStyleBackColor = true;
+            this.btnQueryBrand.Click += new System.EventHandler(this.btnQueryBrand_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.radioCAN3);
+            this.panel1.Controls.Add(this.radioCAN2);
+            this.panel1.Controls.Add(this.radioCAN1);
+            this.panel1.Controls.Add(this.lblCANSniffer);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Location = new System.Drawing.Point(15, 440);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(593, 289);
+            this.panel1.TabIndex = 5;
+            // 
+            // radioCAN3
+            // 
+            this.radioCAN3.AutoSize = true;
+            this.radioCAN3.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioCAN3.Location = new System.Drawing.Point(256, 51);
+            this.radioCAN3.Name = "radioCAN3";
+            this.radioCAN3.Size = new System.Drawing.Size(91, 33);
+            this.radioCAN3.TabIndex = 4;
+            this.radioCAN3.Text = "CAN3";
+            this.radioCAN3.UseVisualStyleBackColor = true;
+            // 
+            // radioCAN2
+            // 
+            this.radioCAN2.AutoSize = true;
+            this.radioCAN2.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioCAN2.Location = new System.Drawing.Point(134, 51);
+            this.radioCAN2.Name = "radioCAN2";
+            this.radioCAN2.Size = new System.Drawing.Size(91, 33);
+            this.radioCAN2.TabIndex = 3;
+            this.radioCAN2.Text = "CAN2";
+            this.radioCAN2.UseVisualStyleBackColor = true;
+            // 
+            // radioCAN1
+            // 
+            this.radioCAN1.AutoSize = true;
+            this.radioCAN1.Checked = true;
+            this.radioCAN1.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioCAN1.Location = new System.Drawing.Point(9, 51);
+            this.radioCAN1.Name = "radioCAN1";
+            this.radioCAN1.Size = new System.Drawing.Size(91, 33);
+            this.radioCAN1.TabIndex = 2;
+            this.radioCAN1.TabStop = true;
+            this.radioCAN1.Text = "CAN1";
+            this.radioCAN1.UseVisualStyleBackColor = true;
+            // 
+            // lblCANSniffer
+            // 
+            this.lblCANSniffer.AutoSize = true;
+            this.lblCANSniffer.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCANSniffer.Location = new System.Drawing.Point(9, 4);
+            this.lblCANSniffer.Name = "lblCANSniffer";
+            this.lblCANSniffer.Size = new System.Drawing.Size(302, 29);
+            this.lblCANSniffer.TabIndex = 1;
+            this.lblCANSniffer.Text = "CAN Sniffer / Button Finder";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(9, 90);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(114, 44);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Record";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // cbCANManufacturer
+            // 
+            this.cbCANManufacturer.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCANManufacturer.FormattingEnabled = true;
+            this.cbCANManufacturer.Items.AddRange(new object[] {
+            "No CANBUS!",
+            "Claas",
+            "Valtra / Massey",
+            "CaseIH / New Holland",
+            "Fendt SCR, S4, Gen6",
+            "JCB",
+            "FendtOne",
+            "Lindner",
+            "AgOpenGPS"});
+            this.cbCANManufacturer.Location = new System.Drawing.Point(26, 216);
+            this.cbCANManufacturer.Name = "cbCANManufacturer";
+            this.cbCANManufacturer.Size = new System.Drawing.Size(394, 44);
+            this.cbCANManufacturer.TabIndex = 3;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(26, 48);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(902, 134);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "Things to add\r\n- query the current setting when the screen loads\r\n- PGN config (t" +
+    "ake defaults from Tony\'s code)\r\n- allow you to ovverride it\r\n- button-finder?";
+            // 
+            // lblSecretCANBUS
+            // 
+            this.lblSecretCANBUS.AutoSize = true;
+            this.lblSecretCANBUS.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.lblSecretCANBUS.Location = new System.Drawing.Point(21, 16);
+            this.lblSecretCANBUS.Name = "lblSecretCANBUS";
+            this.lblSecretCANBUS.Size = new System.Drawing.Size(242, 29);
+            this.lblSecretCANBUS.TabIndex = 0;
+            this.lblSecretCANBUS.Text = "Secret CANBUS menu";
             // 
             // lblCurrentVehicle
             // 
@@ -9580,26 +9710,14 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lblSecretCANBUS
+            // lblBrand
             // 
-            this.lblSecretCANBUS.AutoSize = true;
-            this.lblSecretCANBUS.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.lblSecretCANBUS.Location = new System.Drawing.Point(21, 16);
-            this.lblSecretCANBUS.Name = "lblSecretCANBUS";
-            this.lblSecretCANBUS.Size = new System.Drawing.Size(242, 29);
-            this.lblSecretCANBUS.TabIndex = 0;
-            this.lblSecretCANBUS.Text = "Secret CANBUS menu";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(26, 48);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(902, 134);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Things to add\r\n- select CAN model (MF, JCB etc)\r\n- query the current setting when" +
-    " the screen loads\r\n- PGN config (take defaults from Tony\'s code)\r\n- allow you to" +
-    " ovverride it\r\n- button-finder?";
+            this.lblBrand.AutoSize = true;
+            this.lblBrand.Location = new System.Drawing.Point(81, 333);
+            this.lblBrand.Name = "lblBrand";
+            this.lblBrand.Size = new System.Drawing.Size(72, 21);
+            this.lblBrand.TabIndex = 7;
+            this.lblBrand.Text = "label153";
             // 
             // FormConfig
             // 
@@ -9756,6 +9874,8 @@
             this.tabBtns.PerformLayout();
             this.tabCANBUS.ResumeLayout(false);
             this.tabCANBUS.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
             this.ResumeLayout(false);
@@ -10242,5 +10362,14 @@
         private System.Windows.Forms.Button btnShowCAN;
         private System.Windows.Forms.Label lblSecretCANBUS;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cbCANManufacturer;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton radioCAN3;
+        private System.Windows.Forms.RadioButton radioCAN2;
+        private System.Windows.Forms.RadioButton radioCAN1;
+        private System.Windows.Forms.Label lblCANSniffer;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnQueryBrand;
+        private System.Windows.Forms.Label lblBrand;
     }
 }

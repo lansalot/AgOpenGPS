@@ -97,6 +97,7 @@ namespace AgOpenGPS
         private int speedCounter = 0;
 
         public double timeSliceOfLastFix = 0;
+
         public void UpdateFixPosition()
         {
             //swFrame.Stop();

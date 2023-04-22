@@ -207,6 +207,11 @@ namespace AgOpenGPS
         /// </summary>
         public ResourceManager _rm;
 
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
         /// <summary>
         /// Heading, Roll, Pitch, GPS, Properties
         /// </summary>

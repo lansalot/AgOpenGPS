@@ -200,7 +200,7 @@ namespace AgIO
             {
                 switch (data[3])
                 {
-                    case 0xAB: // 171 receive CANBUS diagnostic
+                    case 0xAC: // 171 receive CANBUS diagnostic
                         {
                             Console.WriteLine("!");
                             break;
