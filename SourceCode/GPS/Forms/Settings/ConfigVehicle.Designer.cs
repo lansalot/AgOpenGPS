@@ -1144,7 +1144,6 @@ namespace AgOpenGPS
                     {
                         btnCANBUSSupport.Visible = false;
                     }
-                    lbFendtType.Visible = false;
 
                     String machineType = rb.Name.Substring(9, 1);
                     String machineBrand = rb.Name.Substring(10);
@@ -1153,10 +1152,6 @@ namespace AgOpenGPS
                         case "T":
                             brand = (TBrand)Enum.Parse(typeof(TBrand), machineBrand);
                             pboxAlpha.BackgroundImage = mf.GetTractorBrand(brand);
-                            if (brand == TBrand.Fendt)
-                            {
-                                lbFendtType.Visible = true;
-                            }
                             break;
                         case "H":
                             brandH = (HBrand)Enum.Parse(typeof(HBrand), machineBrand);
