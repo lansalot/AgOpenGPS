@@ -1,0 +1,711 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AgOpenGPS.CABCurve" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>xkAABBgAoAIgAkGAQFiFKQRCAgBVBBQAAACopSEBAgE=</HashCode>
+      <FileName>Classes\CABCurve.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CCurveLines" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\CABCurve.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CABLine" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BKARBBgYCAZQAmEAIgAVMEAGRoBhIR8AYACKBQAIAgA=</HashCode>
+      <FileName>Classes\CABLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CABLines" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\CABLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CAHRS" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAgAAAgkCAAAAAAQAAAAIAAAEECAAAAAEQAkAAA=</HashCode>
+      <FileName>Classes\CAHRS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CAutoSteer" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\CAutoSteer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CBoundary" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQCIwAIwKAAAAgACQCABAEgCAgAAAKAAAABAsAAAoAA=</HashCode>
+      <FileName>Classes\CBoundary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CBoundaryList" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAgMAAAAAACAAAIAAAIAAAAIEAAAAAEAAAAABAAE=</HashCode>
+      <FileName>Classes\CBoundaryList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CCamera" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAgAAgAIAAAAQAAQAAAECAAAAAaAAgAAgABAA=</HashCode>
+      <FileName>Classes\CCamera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CContour" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAFAFBACAI5AmoAYAAlIIAShaFCBFEAAAAApAEIAgg=</HashCode>
+      <FileName>Classes\CContour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CDubins" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAIABIICAACAQAAAAAAAAAAAIARAQAAMAIQAAQAIAII=</HashCode>
+      <FileName>Classes\CDubins.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.DubinsMath" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAgBAAAAAAAAAAEAAAAAIAICAAAAA=</HashCode>
+      <FileName>Classes\CDubins.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.OneDubinsPath" Collapsed="true">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAQAAAAAsAMAAAAAAkAAEEAAAAAAQAA=</HashCode>
+      <FileName>Classes\CDubins.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CExtensionMethods" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Classes\CExtensionMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CFieldData" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QZACAAIAAAVACgABAgAAAAAUIAAIAAAAEIAAAAUDAAE=</HashCode>
+      <FileName>Classes\CFieldData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CFlag" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAQAAAAAAAgAAAAAAAAAAACAAAAACAAAAAAAAQIAA=</HashCode>
+      <FileName>Classes\CFlag.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CFont" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAQAAAAAIAAggAAAAAEAEAAAAAAAAAAgAAQAAAIAKQ=</HashCode>
+      <FileName>Classes\CFont.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.glm" Collapsed="true">
+    <Position X="16.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAABBCiEAAAAAAAAAAIABAhAAAAJMlEEAAAAAAEA=</HashCode>
+      <FileName>Classes\CGLM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CGuidance" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAEAAJAAwAAAggEAIBABAAAAAaAAABEoEACAhAAAAAI=</HashCode>
+      <FileName>Classes\CGuidance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CModuleComm" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAJAAgEAAyACgYIQRAAQAMAIAACAIAYAUAAAEAABAA=</HashCode>
+      <FileName>Classes\CModuleComm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CNMEA" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgQAAigYBGQgAAAAIAAAAECIAYEQABAiAgEAADAAA=</HashCode>
+      <FileName>Classes\CNMEA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CPatches" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAACBAAgAAwhAAAAAEAAAABAAIAAAAAAMgAAA=</HashCode>
+      <FileName>Classes\CPatches.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CRecPathPt" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQIAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAQAAA=</HashCode>
+      <FileName>Classes\CRecordedPath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CRecordedPath" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAADkJQIAAICAuEAJAKBMAIDQYBiABoJAAAA5AEAwgA=</HashCode>
+      <FileName>Classes\CRecordedPath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CSection" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgIAAAABIIQA4AABiAAAEAEECAQAAAFgQAAAEAALAIA=</HashCode>
+      <FileName>Classes\CSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CFeatureSettings" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAQAAYLQAAAAQAAAAAAIIABAAEAAIAiAgAIAASAAA=</HashCode>
+      <FileName>Classes\CSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.SettingsIO" Collapsed="true">
+    <Position X="9.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAEAACAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Classes\CSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CSim" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQCAAAAAAAgAAAAQAACAACIAAAAAAADgAAAAAAAA=</HashCode>
+      <FileName>Classes\CSim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CSound" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEQAQAAAQAAAACAAAAAAIIAAAAAAGAAAAAACAAACAA=</HashCode>
+      <FileName>Classes\CSound.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CSunTimes" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAUAAEAAAABABAAAEAYAAQAAAwASAAAQAAAAAACAAA=</HashCode>
+      <FileName>Classes\CSunTimes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CTool" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACIUAAAgAAFgkAEZAIAIAIAJAAEGIUwABWEAYEIgAE=</HashCode>
+      <FileName>Classes\CTool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CTram" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAEAAAAAAAEgAAEAAAIBBAAAAgCAAAAAAAEgQAIEA=</HashCode>
+      <FileName>Classes\CTram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CVehicle" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAUQwIAgASAgYAQABAAgApWUDAaAQAAIEBBACAAAE=</HashCode>
+      <FileName>Classes\CVehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CWorldGrid" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAggEAAAgAAAYAIgAIACAAgAAABAIAAAA=</HashCode>
+      <FileName>Classes\CWorldGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.CYouTurn" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAgg4OAyDAAgQhEEAWAQgAgQiyBCgAAgkAmYJQEkAQE=</HashCode>
+      <FileName>Classes\CYouTurn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.Form_About" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8wAgAgAAACAAABAAAACAAAgCEEAIAAAAgAAIEAAAAAA=</HashCode>
+      <FileName>Forms\Form_About.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.Form_First" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>0AAgAAAAACAAABAAAACAAAgCEAAYAAAAgGAAAABAAAA=</HashCode>
+      <FileName>Forms\Form_First.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.Form_Help" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAgQgAAACAAAhAAAACQAAgCEAAIAAAAgAAAEABAAAA=</HashCode>
+      <FileName>Forms\Form_Help.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.Form_Keys" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/wAQhgACwSgABhAAIQCAxAACGIIIEAAEAAAAAAAAAjA=</HashCode>
+      <FileName>Forms\Form_Keys.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormBoundary" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQFJgISBEDAgghECAEGEIQBCACYAgAIAAIEoIRAYRSY=</HashCode>
+      <FileName>Forms\FormBoundary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormBoundaryPlayer" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CURBQAQSAHAEAhAABFCAIAISAAAEIAAAAABEQAgAAgg=</HashCode>
+      <FileName>Forms\FormBoundaryPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormFieldDir" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAGAAAhAgAgCgAAACIAAAAFBACAAAAAJAQgA=</HashCode>
+      <FileName>Forms\FormFieldDir.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormFieldKML" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAAGAAAhAgAgChAAASIAAAAFBCSCAAAAJQQgA=</HashCode>
+      <FileName>Forms\FormFieldKML.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormFlags" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gBQAIAAAMGgFQhABAAiABAgGACCAMAQABQAAASAAAQA=</HashCode>
+      <FileName>Forms\FormFlags.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormGPS">
+    <Position X="18.75" Y="0.5" Width="5" />
+    <NestedTypes>
+      <Enum Name="AgOpenGPS.FormGPS.textures" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Class Name="AgOpenGPS.FormGPS.CPGN_FB" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="AgOpenGPS.FormGPS.CPGN_FC" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="AgOpenGPS.FormGPS.CPGN_EB" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="AgOpenGPS.FormGPS.CPGN_FD" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="AgOpenGPS.FormGPS.CPGN_FE" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="AgOpenGPS.FormGPS.CPGN_EC" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="AgOpenGPS.FormGPS.CPGN_EF" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="AgOpenGPS.FormGPS.CPGN_EE" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="AgOpenGPS.FormGPS.CPGN_D0" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="AgOpenGPS.FormGPS.CPGN_E5" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>//9/f7//9//+/9///////9/////d+////////n//f/8=</HashCode>
+      <FileName>Forms\FormGPS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormGPSData" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>viQACAEACCIQAlSAEACAAAACAAAAIAAAgBAVRgAACBA=</HashCode>
+      <FileName>Forms\FormGPSData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormHeadland" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAgACEbBSIxkoABCEMB1KCCAgICAAVgEAtkUAATQ=</HashCode>
+      <FileName>Forms\FormHeadland.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormJob" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAAACABBASABAlAQAACAIAACBAAAAAACEAABAQiBQAA=</HashCode>
+      <FileName>Forms\FormJob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormMap" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAQCEAEAVLoAQhGGAACEIIEiECEAMGEBjgAIARgAATA=</HashCode>
+      <FileName>Forms\FormMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormSaveAs" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AyAAAAAAAGAAAhAgAgCgAAACIAAABBBEGAAEAAJAQgA=</HashCode>
+      <FileName>Forms\FormSaveAs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormSaveOrNot" Collapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAECAAABAAAACABBACAAAAFAAAAAAAAQQAAAA=</HashCode>
+      <FileName>Forms\FormSaveOrNot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormShiftPos" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAMUCAICEDAhAAAACkAAACAAACBAQAIAAAIQAAAIA=</HashCode>
+      <FileName>Forms\FormShiftPos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormTimedMessage" Collapsed="true">
+    <Position X="7.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAACAAAACAIIAIAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Forms\FormTimedMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormWebCam" Collapsed="true">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACgAAAAQgASEAAACAgIAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\FormWebCam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormABCurve" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JCIBAMDqKzsAClAwh2CICQCaIQAyiibgEggIEBAJAQI=</HashCode>
+      <FileName>Forms\Guidance\FormABCurve.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormABDraw" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QJQkCIJacGBuItF5BATQKIsO4TIBIAQARAcQpgkAAj8=</HashCode>
+      <FileName>Forms\Guidance\FormABDraw.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormABLine" Collapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ISMRQMD6KTsAilEwAiiYCeCSMAAyiCLgkgAAEgIIAQI=</HashCode>
+      <FileName>Forms\Guidance\FormABLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormEditAB" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEkAAAQAjIIAhEQFACAQUgCAFJICEBAUAQBAABBEAA=</HashCode>
+      <FileName>Forms\Guidance\FormEditAB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormEditCurve" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEkAAAQAjIIAhEQFACAAUgSAFIICEAAUAQBAABBEAA=</HashCode>
+      <FileName>Forms\Guidance\FormEditCurve.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormEnterAB" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAICEAiAQAjkACICAEFASBAAAAAAAEABAAAAAABI=</HashCode>
+      <FileName>Forms\Guidance\FormEnterAB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormMakeBndCon" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACCAAhEAAACAAAAGgAAABAIAAAAAAEAABAA=</HashCode>
+      <FileName>Forms\Guidance\FormMakeBndCon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormSmoothAB" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAICEAAgEAAACgAEACAAAAADQAAAAAAQIAAAA=</HashCode>
+      <FileName>Forms\Guidance\FormSmoothAB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormTram" Collapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEUYlAAAEaMEIhE4EACAAEACAiIAGApQBAQAAMBAAQA=</HashCode>
+      <FileName>Forms\Guidance\FormTram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormKeyboard" Collapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAIACAAAAAAAACAACECAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Forms\Inputs\FormKeyboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormNumeric" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABAEAAACGAQIAAAAACADAACCwAAAAAAAAAACAAQAAA=</HashCode>
+      <FileName>Forms\Inputs\FormNumeric.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormColorPicker" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAJKAAAiAAAoEAAACADAoKAFAEBrsYACAAgBcMAAA=</HashCode>
+      <FileName>Forms\Pickers\FormColorPicker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormDrivePicker" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAACIAAgAAAACAAAACAAAQAACAAQAEAACIAAA=</HashCode>
+      <FileName>Forms\Pickers\FormDrivePicker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormFilePicker" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAhACIAAhAABACAACACAAAQAAIAhQAEABCIAAA=</HashCode>
+      <FileName>Forms\Pickers\FormFilePicker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormTouchPick" Collapsed="true">
+    <Position X="9.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAECBCYhAIAACAKAIKACAAIAAABAQAAAAAAAA=</HashCode>
+      <FileName>Forms\Pickers\FormTouchPick.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormColor" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAQAAQQCEAA1AAAACgCABCQAkQAAAAAAIAACAgggA=</HashCode>
+      <FileName>Forms\Settings\FormColor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormConfig" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>////////////f//133///////9+////7d/+///3/3/8=</HashCode>
+      <FileName>Forms\Settings\FormConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormCorrection" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgUAgEQABCAAChAAAACkAAAmAAAIIEAAIEEAAACAAYA=</HashCode>
+      <FileName>Forms\Settings\FormCorrection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormHeadingGraph" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAgAQBACwgihAAAAKhAACiAgAAIAAAAEAAAAAAAIA=</HashCode>
+      <FileName>Forms\Settings\FormHeadingGraph.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormSectionColor" Collapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAIAA+DdGApAUAADgiAACABgAAIEAACCAAAQAACA=</HashCode>
+      <FileName>Forms\Settings\FormSectionColor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormSimCoords" Collapsed="true">
+    <Position X="16.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQACEACEAAhEAAACgAEACCAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Forms\Settings\FormSimCoords.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormSteer" Collapsed="true">
+    <Position X="2.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/zdDysSonaAeox5wjcm6/CQijsOcjOfEBjoDYcHVtXQ=</HashCode>
+      <FileName>Forms\Settings\FormSteer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormSteerGraph" Collapsed="true">
+    <Position X="4" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAiACAAGCgihAAAAKAAAACAyAAIAAAAEQAAAACAAA=</HashCode>
+      <FileName>Forms\Settings\FormSteerGraph.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormSteerWiz" Collapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>//5P6cmrn+j7pjrz7fnu98f23//7/PftfvnB8f70NnY=</HashCode>
+      <FileName>Forms\Settings\FormSteerWiz.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.FormXTEGraph" Collapsed="true">
+    <Position X="14.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAiACAAGCgihAAAAKAAAACAyAAIAAAAEQAAAACAAA=</HashCode>
+      <FileName>Forms\Settings\FormXTEGraph.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.gStr" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>7tK/1f91b0i/3q/+++fvtO99s/NW5jvo1/0/3rjr3O0=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.Program" Collapsed="true">
+    <Position X="4" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CWindowsSettingsBrightnessController" Collapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAQAABAgAAAAAAAAAAAAiAAAAAAAA=</HashCode>
+      <FileName>Classes\CBrightness.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.Forms.FormRecordName" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAGAABhAAAgDgAAACAAAhEAAAKQAAAAAAAAA=</HashCode>
+      <FileName>Forms\FormRecordName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.Forms.Pickers.FormRecordPicker" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAgAgACAAAlAAAACCAAADAAAQAAAAhAAEAACIAAA=</HashCode>
+      <FileName>Forms\Pickers\FormRecordPicker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.Properties.Resources" Collapsed="true">
+    <Position X="5.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/3+O/7df9987n+X+T9G/e/77c8dv3vbr8vt8931PV70=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgOpenGPS.Properties.Settings" Collapsed="true">
+    <Position X="7.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>HRlOGQpSXv8qZdOHjybVYCfi7+ZvjvfrwPNt0FuniJE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="AgOpenGPS.vecRGB" Collapsed="true">
+    <Position X="9.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAIAAAAAAAAAAQAAAQAAA=</HashCode>
+      <FileName>Classes\vec3.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AgOpenGPS.vec3" Collapsed="true">
+    <Position X="4" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAAAAAAAAgFAEAAgAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Classes\vec3.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AgOpenGPS.vecFix2Fix" Collapsed="true">
+    <Position X="7.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAEAAIAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Classes\vec3.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AgOpenGPS.vec4" Collapsed="true">
+    <Position X="5.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAA=</HashCode>
+      <FileName>Classes\vec3.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AgOpenGPS.vec2" Collapsed="true">
+    <Position X="2.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAgdAEAAgAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Classes\vec3.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AgOpenGPS.cvec" Collapsed="true">
+    <Position X="0.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAEAAQABAAQAAAAA=</HashCode>
+      <FileName>Classes\vec3.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="AgOpenGPS.PathType" Collapsed="true">
+    <Position X="4" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Classes\CDubins.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AgOpenGPS.TBrand" Collapsed="true">
+    <Position X="5.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAIACAAQAAAAAAQCiAAQIAAAAAAAAAAAgAAAAgAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AgOpenGPS.HBrand" Collapsed="true">
+    <Position X="2.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAQAAAAAAACCAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AgOpenGPS.WDBrand" Collapsed="true">
+    <Position X="7.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAEAQAAAAAAAACAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AgOpenGPS.btnStates" Collapsed="true">
+    <Position X="0.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

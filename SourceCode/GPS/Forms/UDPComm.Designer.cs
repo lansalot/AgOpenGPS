@@ -23,16 +23,10 @@ namespace AgOpenGPS
         // Status delegate
         private int udpWatchCounts = 0;
         public int udpWatchLimit = 70;
-
         private readonly Stopwatch udpWatch = new Stopwatch();
 
         private void ReceiveFromAgIO(byte[] data)
         {
-            if (data[3] == 173)
-            {
-                Console.WriteLine("!");
-            }
-
             if (data.Length > 4 && data[0] == 0x80 && data[1] == 0x81)
             {
                 int Length = Math.Max((data[4]) + 5, 5);
@@ -58,9 +52,9 @@ namespace AgOpenGPS
                 {
                     case 0xAD:
                         {
-                            FormTimedMessage form = new FormTimedMessage(2000, data[5].ToString(), "Brand received");
+                            FormTimedMessage form = new FormTimedMessage(2000, data[5].ToString(), " Brand received");
                             form.Show();
-                            
+                            InterFormMessage = ("BRAND: " + data[5].ToString());
                             break;
                         }
                     case 0xD6:

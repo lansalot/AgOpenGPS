@@ -31,6 +31,8 @@ namespace AgOpenGPS
 
         #region // Class Props and instances
 
+        public String InterFormMessage = null;
+
         //maximum sections available
         public const int MAXSECTIONS = 64;
 

@@ -29,6 +29,24 @@ namespace AgOpenGPS
 
             HideSubMenu();
 
+            cbCANManufacturer.Items.Clear();
+            // This list should match exactly with the one in the INO. Watch the code if it goes into double-digits
+            cbCANManufacturer.DataSource = new[] {
+                new {Value = "X", Name = "No CANBUS!"},
+                new {Value = "0", Name = "Claas" },
+                new {Value = "1", Name = "Valtra / Massey" },
+                new {Value = "2", Name = "CaseIH / New Holland" },
+                new {Value = "3", Name = "Fendt SCR, S4, Gen6" },
+                new {Value = "4", Name = "JCB" },
+                new {Value = "5", Name = "FendtOne" },
+                new {Value = "6", Name = "Lindner" },
+                new {Value = "7", Name = "AgOpenGPS" },
+                new {Value = "8", Name = "John Deere ATU200" }
+
+            };
+            cbCANManufacturer.DisplayMember = "Name";
+            cbCANManufacturer.ValueMember = "Value";
+
             nudTrailingHitchLength.Controls[0].Enabled = false;
             nudDrawbarLength.Controls[0].Enabled = false;
             nudTankHitch.Controls[0].Enabled = false;
@@ -308,6 +326,20 @@ namespace AgOpenGPS
                 btnVehicleLoad.Enabled = false;
                 btnVehicleDelete.Enabled = false;
             }
+
+            if (mf.InterFormMessage != null)
+            {
+                if (mf.InterFormMessage.StartsWith("BRAND: "))
+                {
+                    int index = -1;
+                    int.TryParse(mf.InterFormMessage.Substring(7, mf.InterFormMessage.Length - 7), out index);
+                    index++;
+                    cbCANManufacturer.SelectedIndex = index;
+                    Console.WriteLine(mf.InterFormMessage);
+
+                }
+                mf.InterFormMessage = null;
+            }
         }
 
         private void btnCANBUSSupport_Click(object sender, EventArgs e)
@@ -327,6 +359,7 @@ namespace AgOpenGPS
         {
             byte[] MachineConfigPacket = new byte[] { 0x80, 0x81, 0x7f, 0xAB, 1, 1, 0xCC };
             mf.SendPgnToLoop(MachineConfigPacket);
+            
         }
     }
 }
