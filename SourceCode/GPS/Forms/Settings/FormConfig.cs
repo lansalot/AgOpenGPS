@@ -327,6 +327,7 @@ namespace AgOpenGPS
                 btnVehicleDelete.Enabled = false;
             }
 
+            // this isn't often enough, timer runs every second. move it to its own, and ensure timer only runs when tab is visible
             if (mf.InterFormMessage != null)
             {
                 if (mf.InterFormMessage.StartsWith("BRAND: "))
@@ -346,8 +347,7 @@ namespace AgOpenGPS
         {
             byte[] MachineConfigPacket = new byte[] { 0x80, 0x81, 0x7f, 0xAA, 1, (byte)mf.vehicle.CANBUSBrand, 0, 0xCC }; 
             mf.SendPgnToLoop(MachineConfigPacket);
-            FormTimedMessage form = new FormTimedMessage(2000, "Updating Teensy CANBUS manunfacturer", "Please wait, signal will return soon");
-            form.Show();
+            mf.TimedMessageBox(2000, "Updating Teensy CANBUS manunfacturer", "Please wait, signal will return soon");
         }
 
         private void btnShowCAN_Click(object sender, EventArgs e)
@@ -359,7 +359,26 @@ namespace AgOpenGPS
         {
             byte[] MachineConfigPacket = new byte[] { 0x80, 0x81, 0x7f, 0xAB, 1, 1, 0xCC };
             mf.SendPgnToLoop(MachineConfigPacket);
-            
+        }
+
+        private void btnCANRecord_Click(object sender, EventArgs e)
+        {
+            if (btnCANRecord.Text == "Record")
+            {
+                btnCANRecord.Text = "Stop";
+                byte[] MachineConfigPacket = new byte[] { 0x80, 0x81, 0x7f, 0xAC, 1, 2, 0xCC }; // 2 = enable diags and disable filters
+                mf.SendPgnToLoop(MachineConfigPacket);
+                mf.TimedMessageBox(2000, "Recording", "Press button of interest and Stop as soon as possible");
+            }
+            else
+            {
+                btnCANRecord.Text = "Record";
+                byte[] MachineConfigPacket = new byte[] { 0x80, 0x81, 0x7f, 0xAC, 1, 3, 0xCC }; // 3 = disable diags and re-enable filters
+                mf.SendPgnToLoop(MachineConfigPacket);
+                mf.TimedMessageBox(2000, "Stopped recording", "Filters are now back in place");
+
+            }
+
         }
     }
 }

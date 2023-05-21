@@ -499,11 +499,8 @@
             this.tabCANBUS = new System.Windows.Forms.TabPage();
             this.btnQueryBrand = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radioCAN3 = new System.Windows.Forms.RadioButton();
-            this.radioCAN2 = new System.Windows.Forms.RadioButton();
-            this.radioCAN1 = new System.Windows.Forms.RadioButton();
             this.lblCANSniffer = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCANRecord = new System.Windows.Forms.Button();
             this.cbCANManufacturer = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblSecretCANBUS = new System.Windows.Forms.Label();
@@ -1197,7 +1194,7 @@
             this.tab1.Name = "tab1";
             this.tab1.Padding = new System.Drawing.Point(0, 0);
             this.tab1.SelectedIndex = 0;
-            this.tab1.Size = new System.Drawing.Size(1680, 1236);
+            this.tab1.Size = new System.Drawing.Size(1075, 791);
             this.tab1.TabIndex = 0;
             // 
             // tabSummary
@@ -1246,7 +1243,7 @@
             this.tabSummary.Margin = new System.Windows.Forms.Padding(4);
             this.tabSummary.Name = "tabSummary";
             this.tabSummary.Padding = new System.Windows.Forms.Padding(4);
-            this.tabSummary.Size = new System.Drawing.Size(1672, 1188);
+            this.tabSummary.Size = new System.Drawing.Size(1067, 743);
             this.tabSummary.TabIndex = 0;
             this.tabSummary.Text = "tSum";
             this.tabSummary.Enter += new System.EventHandler(this.tabSummary_Enter);
@@ -1953,7 +1950,7 @@
             this.tabVConfig.Location = new System.Drawing.Point(4, 44);
             this.tabVConfig.Margin = new System.Windows.Forms.Padding(4);
             this.tabVConfig.Name = "tabVConfig";
-            this.tabVConfig.Size = new System.Drawing.Size(1672, 1188);
+            this.tabVConfig.Size = new System.Drawing.Size(1067, 743);
             this.tabVConfig.TabIndex = 4;
             this.tabVConfig.Text = "vConfig";
             this.tabVConfig.Enter += new System.EventHandler(this.tabVConfig_Enter);
@@ -2619,7 +2616,7 @@
             this.tabVAntenna.Location = new System.Drawing.Point(4, 44);
             this.tabVAntenna.Margin = new System.Windows.Forms.Padding(4);
             this.tabVAntenna.Name = "tabVAntenna";
-            this.tabVAntenna.Size = new System.Drawing.Size(1672, 1188);
+            this.tabVAntenna.Size = new System.Drawing.Size(1067, 743);
             this.tabVAntenna.TabIndex = 12;
             this.tabVAntenna.Text = "vAnt";
             this.tabVAntenna.Enter += new System.EventHandler(this.tabVAntenna_Enter);
@@ -2728,7 +2725,7 @@
             this.tabVDimensions.Location = new System.Drawing.Point(4, 44);
             this.tabVDimensions.Margin = new System.Windows.Forms.Padding(4);
             this.tabVDimensions.Name = "tabVDimensions";
-            this.tabVDimensions.Size = new System.Drawing.Size(1672, 1188);
+            this.tabVDimensions.Size = new System.Drawing.Size(1067, 743);
             this.tabVDimensions.TabIndex = 13;
             this.tabVDimensions.Text = "vDim";
             this.tabVDimensions.Enter += new System.EventHandler(this.tabVDimensions_Enter);
@@ -2900,7 +2897,7 @@
             this.tabVGuidance.Location = new System.Drawing.Point(4, 44);
             this.tabVGuidance.Margin = new System.Windows.Forms.Padding(4);
             this.tabVGuidance.Name = "tabVGuidance";
-            this.tabVGuidance.Size = new System.Drawing.Size(1672, 1188);
+            this.tabVGuidance.Size = new System.Drawing.Size(1067, 743);
             this.tabVGuidance.TabIndex = 14;
             this.tabVGuidance.Text = "vGuid";
             this.tabVGuidance.Enter += new System.EventHandler(this.tabVGuidance_Enter);
@@ -3329,7 +3326,7 @@
             this.tabTConfig.Location = new System.Drawing.Point(4, 44);
             this.tabTConfig.Margin = new System.Windows.Forms.Padding(4);
             this.tabTConfig.Name = "tabTConfig";
-            this.tabTConfig.Size = new System.Drawing.Size(1672, 1188);
+            this.tabTConfig.Size = new System.Drawing.Size(1067, 743);
             this.tabTConfig.TabIndex = 11;
             this.tabTConfig.Text = "tConfig";
             this.tabTConfig.Enter += new System.EventHandler(this.tabTConfig_Enter);
@@ -3429,7 +3426,7 @@
             this.tabTHitch.Location = new System.Drawing.Point(4, 44);
             this.tabTHitch.Margin = new System.Windows.Forms.Padding(4);
             this.tabTHitch.Name = "tabTHitch";
-            this.tabTHitch.Size = new System.Drawing.Size(1672, 1188);
+            this.tabTHitch.Size = new System.Drawing.Size(1067, 743);
             this.tabTHitch.TabIndex = 5;
             this.tabTHitch.Text = "tHitch";
             this.tabTHitch.Enter += new System.EventHandler(this.tabTHitch_Enter);
@@ -3592,7 +3589,7 @@
             this.tabTSections.Location = new System.Drawing.Point(4, 44);
             this.tabTSections.Margin = new System.Windows.Forms.Padding(4);
             this.tabTSections.Name = "tabTSections";
-            this.tabTSections.Size = new System.Drawing.Size(1672, 1188);
+            this.tabTSections.Size = new System.Drawing.Size(1067, 743);
             this.tabTSections.TabIndex = 7;
             this.tabTSections.Text = "tSect";
             this.tabTSections.Enter += new System.EventHandler(this.tabTSections_Enter);
@@ -5191,7 +5188,7 @@
             this.tabTSwitches.Location = new System.Drawing.Point(4, 44);
             this.tabTSwitches.Margin = new System.Windows.Forms.Padding(4);
             this.tabTSwitches.Name = "tabTSwitches";
-            this.tabTSwitches.Size = new System.Drawing.Size(1672, 1188);
+            this.tabTSwitches.Size = new System.Drawing.Size(1067, 743);
             this.tabTSwitches.TabIndex = 9;
             this.tabTSwitches.Text = "tSwit";
             this.tabTSwitches.Enter += new System.EventHandler(this.tabTSwitches_Enter);
@@ -5390,7 +5387,7 @@
             this.tabTSettings.Location = new System.Drawing.Point(4, 44);
             this.tabTSettings.Margin = new System.Windows.Forms.Padding(4);
             this.tabTSettings.Name = "tabTSettings";
-            this.tabTSettings.Size = new System.Drawing.Size(1672, 1188);
+            this.tabTSettings.Size = new System.Drawing.Size(1067, 743);
             this.tabTSettings.TabIndex = 10;
             this.tabTSettings.Text = "TSettings";
             this.tabTSettings.Enter += new System.EventHandler(this.tabTSettings_Enter);
@@ -5639,7 +5636,7 @@
             this.tabDHeading.Location = new System.Drawing.Point(4, 44);
             this.tabDHeading.Margin = new System.Windows.Forms.Padding(4);
             this.tabDHeading.Name = "tabDHeading";
-            this.tabDHeading.Size = new System.Drawing.Size(1672, 1188);
+            this.tabDHeading.Size = new System.Drawing.Size(1067, 743);
             this.tabDHeading.TabIndex = 15;
             this.tabDHeading.Text = "dHead";
             this.tabDHeading.Enter += new System.EventHandler(this.tabDHeading_Enter);
@@ -6109,7 +6106,7 @@
             this.tabDRoll.Location = new System.Drawing.Point(4, 44);
             this.tabDRoll.Margin = new System.Windows.Forms.Padding(4);
             this.tabDRoll.Name = "tabDRoll";
-            this.tabDRoll.Size = new System.Drawing.Size(1672, 1188);
+            this.tabDRoll.Size = new System.Drawing.Size(1067, 743);
             this.tabDRoll.TabIndex = 16;
             this.tabDRoll.Text = "dRoll";
             this.tabDRoll.Enter += new System.EventHandler(this.tabDRoll_Enter);
@@ -6336,7 +6333,7 @@
             this.tabUTurn.Location = new System.Drawing.Point(4, 44);
             this.tabUTurn.Margin = new System.Windows.Forms.Padding(4);
             this.tabUTurn.Name = "tabUTurn";
-            this.tabUTurn.Size = new System.Drawing.Size(1672, 1188);
+            this.tabUTurn.Size = new System.Drawing.Size(1067, 743);
             this.tabUTurn.TabIndex = 18;
             this.tabUTurn.Text = "uTurn";
             this.tabUTurn.Enter += new System.EventHandler(this.tabUTurn_Enter);
@@ -6667,7 +6664,7 @@
             this.tabRelay.Margin = new System.Windows.Forms.Padding(4);
             this.tabRelay.Name = "tabRelay";
             this.tabRelay.Padding = new System.Windows.Forms.Padding(4);
-            this.tabRelay.Size = new System.Drawing.Size(1672, 1188);
+            this.tabRelay.Size = new System.Drawing.Size(1067, 743);
             this.tabRelay.TabIndex = 24;
             this.tabRelay.Text = "aRelay";
             this.tabRelay.UseVisualStyleBackColor = true;
@@ -7842,7 +7839,7 @@
             this.tabAMachine.Location = new System.Drawing.Point(4, 44);
             this.tabAMachine.Margin = new System.Windows.Forms.Padding(4);
             this.tabAMachine.Name = "tabAMachine";
-            this.tabAMachine.Size = new System.Drawing.Size(1672, 1188);
+            this.tabAMachine.Size = new System.Drawing.Size(1067, 743);
             this.tabAMachine.TabIndex = 20;
             this.tabAMachine.Text = "aMach";
             this.tabAMachine.Enter += new System.EventHandler(this.tabAMachine_Enter);
@@ -8319,7 +8316,7 @@
             this.tabTram.Location = new System.Drawing.Point(4, 44);
             this.tabTram.Margin = new System.Windows.Forms.Padding(4);
             this.tabTram.Name = "tabTram";
-            this.tabTram.Size = new System.Drawing.Size(1672, 1188);
+            this.tabTram.Size = new System.Drawing.Size(1067, 743);
             this.tabTram.TabIndex = 21;
             this.tabTram.Text = "tTram";
             this.tabTram.Enter += new System.EventHandler(this.tabTram_Enter);
@@ -8487,7 +8484,7 @@
             this.tabBtns.Location = new System.Drawing.Point(4, 44);
             this.tabBtns.Margin = new System.Windows.Forms.Padding(4);
             this.tabBtns.Name = "tabBtns";
-            this.tabBtns.Size = new System.Drawing.Size(1672, 1188);
+            this.tabBtns.Size = new System.Drawing.Size(1067, 743);
             this.tabBtns.TabIndex = 22;
             this.tabBtns.Text = "fBtns";
             this.tabBtns.UseVisualStyleBackColor = true;
@@ -9420,7 +9417,7 @@
             this.tabCANBUS.Controls.Add(this.lblSecretCANBUS);
             this.tabCANBUS.Location = new System.Drawing.Point(4, 44);
             this.tabCANBUS.Name = "tabCANBUS";
-            this.tabCANBUS.Size = new System.Drawing.Size(1672, 1188);
+            this.tabCANBUS.Size = new System.Drawing.Size(1067, 743);
             this.tabCANBUS.TabIndex = 25;
             this.tabCANBUS.Text = "tabCANBUS";
             this.tabCANBUS.UseVisualStyleBackColor = true;
@@ -9438,50 +9435,12 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.radioCAN3);
-            this.panel1.Controls.Add(this.radioCAN2);
-            this.panel1.Controls.Add(this.radioCAN1);
             this.panel1.Controls.Add(this.lblCANSniffer);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnCANRecord);
             this.panel1.Location = new System.Drawing.Point(15, 440);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(593, 289);
+            this.panel1.Size = new System.Drawing.Size(330, 289);
             this.panel1.TabIndex = 5;
-            // 
-            // radioCAN3
-            // 
-            this.radioCAN3.AutoSize = true;
-            this.radioCAN3.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioCAN3.Location = new System.Drawing.Point(256, 51);
-            this.radioCAN3.Name = "radioCAN3";
-            this.radioCAN3.Size = new System.Drawing.Size(91, 33);
-            this.radioCAN3.TabIndex = 4;
-            this.radioCAN3.Text = "CAN3";
-            this.radioCAN3.UseVisualStyleBackColor = true;
-            // 
-            // radioCAN2
-            // 
-            this.radioCAN2.AutoSize = true;
-            this.radioCAN2.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioCAN2.Location = new System.Drawing.Point(134, 51);
-            this.radioCAN2.Name = "radioCAN2";
-            this.radioCAN2.Size = new System.Drawing.Size(91, 33);
-            this.radioCAN2.TabIndex = 3;
-            this.radioCAN2.Text = "CAN2";
-            this.radioCAN2.UseVisualStyleBackColor = true;
-            // 
-            // radioCAN1
-            // 
-            this.radioCAN1.AutoSize = true;
-            this.radioCAN1.Checked = true;
-            this.radioCAN1.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioCAN1.Location = new System.Drawing.Point(9, 51);
-            this.radioCAN1.Name = "radioCAN1";
-            this.radioCAN1.Size = new System.Drawing.Size(91, 33);
-            this.radioCAN1.TabIndex = 2;
-            this.radioCAN1.TabStop = true;
-            this.radioCAN1.Text = "CAN1";
-            this.radioCAN1.UseVisualStyleBackColor = true;
             // 
             // lblCANSniffer
             // 
@@ -9493,14 +9452,15 @@
             this.lblCANSniffer.TabIndex = 1;
             this.lblCANSniffer.Text = "CAN Sniffer / Button Finder";
             // 
-            // button2
+            // btnCANRecord
             // 
-            this.button2.Location = new System.Drawing.Point(9, 90);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 44);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Record";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCANRecord.Location = new System.Drawing.Point(9, 46);
+            this.btnCANRecord.Name = "btnCANRecord";
+            this.btnCANRecord.Size = new System.Drawing.Size(114, 44);
+            this.btnCANRecord.TabIndex = 0;
+            this.btnCANRecord.Text = "Record";
+            this.btnCANRecord.UseVisualStyleBackColor = true;
+            this.btnCANRecord.Click += new System.EventHandler(this.btnCANRecord_Click);
             // 
             // cbCANManufacturer
             // 
@@ -10327,11 +10287,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox cbCANManufacturer;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton radioCAN3;
-        private System.Windows.Forms.RadioButton radioCAN2;
-        private System.Windows.Forms.RadioButton radioCAN1;
         private System.Windows.Forms.Label lblCANSniffer;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCANRecord;
         private System.Windows.Forms.Button btnQueryBrand;
     }
 }
