@@ -5,7 +5,14 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Management;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace AgOpenGPS
 {
@@ -308,12 +315,14 @@ namespace AgOpenGPS
                 btnVehicleSaveAs.Enabled = true;
                 btnVehicleLoad.Enabled = true;
                 btnVehicleDelete.Enabled = true;
+                btnVehiclePublish.Enabled = true;
             }
             else
             {
                 btnVehicleSaveAs.Enabled = false;
                 btnVehicleLoad.Enabled = false;
                 btnVehicleDelete.Enabled = false;
+                btnVehiclePublish.Enabled = false;
             }
         }
 
@@ -322,5 +331,94 @@ namespace AgOpenGPS
 
         }
 
+        private class JSONObj
+        {
+            public string id { get; set; }
+            public string OwnerHash { get; set; }
+            public string XML { get; set; }
+        }
+
+        public static async Task PublishData(string fn, string hashedUUID)
+        {
+            HttpClient httpClient = new HttpClient();
+            string url = "https://aogep.azurewebsites.net/api/postsettings";
+            string XMLcontent = File.ReadAllText(fn);
+
+            // Define the JSON body
+            JSONObj jsonobj = new JSONObj
+            {
+                id = Guid.NewGuid().ToString(),
+                OwnerHash = hashedUUID,
+                XML = XMLcontent
+            };
+
+            string jsonBody = JsonConvert.SerializeObject(jsonobj, new JsonSerializerSettings
+            {
+                StringEscapeHandling = StringEscapeHandling.Default
+            });
+            // Create the HTTP content with the JSON body
+            HttpContent content = new StringContent(jsonBody, Encoding.ASCII, "application/json");
+
+            HttpResponseMessage response = await httpClient.PostAsync(url, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseData = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Response: " + responseData);
+            }
+            else
+            {
+                Console.WriteLine("The request was not successful. Status code: " + response.StatusCode);
+            }
+
+            httpClient.Dispose();
+        }
+        public static string ComputeSHA256Hash(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = sha256.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+
+                return sb.ToString();
+            }
+        }
+
+        public static string GetMachineUUID()
+        {
+            // note - this might sound dubious, but all we're trying to do here is generatea a unique ID for your machine
+            // which in turn is one-way hashed. The hash is transmitted, it cannot be reversed to find your UUID
+            ManagementClass mc = new ManagementClass("Win32_ComputerSystemProduct");
+            ManagementObjectCollection moc = mc.GetInstances();
+
+            foreach (ManagementObject mo in moc)
+            {
+                return mo.Properties["UUID"].Value.ToString();
+            }
+
+            return string.Empty;
+        }
+        private void btnVehiclePublish_Click(object sender, EventArgs e)
+        {
+            string UUID = GetMachineUUID();
+            string hashedUUID = ComputeSHA256Hash(UUID);
+            //mf.vehiclesDirectory
+            string fn = mf.vehiclesDirectory + lvVehicles.SelectedItems[0].SubItems[0].Text + ".xml";
+            PublishData(fn, hashedUUID);
+        }
+
+        private void btnManageProfilesWeb_Click(object sender, EventArgs e)
+        {
+            string UUID = GetMachineUUID();
+            string hashedUUID = ComputeSHA256Hash(UUID);
+            // start URL for this
+
+        }
     }
 }

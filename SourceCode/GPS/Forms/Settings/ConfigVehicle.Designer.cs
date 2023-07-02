@@ -44,6 +44,7 @@ namespace AgOpenGPS
             btnVehicleSaveAs.Enabled = false;
             btnVehicleLoad.Enabled = false;
             btnVehicleDelete.Enabled = false;
+            btnVehiclePublish.Enabled = false;
 
             lvVehicles.SelectedItems.Clear();
 
