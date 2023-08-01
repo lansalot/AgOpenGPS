@@ -531,8 +531,6 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnManageProfilesWeb = new System.Windows.Forms.Button();
-            this.lblManage = new System.Windows.Forms.Label();
             this.panelLeftSideMenu.SuspendLayout();
             this.panelArduinoSubMenu.SuspendLayout();
             this.panelDataSourcesSubMenu.SuspendLayout();
@@ -1225,8 +1223,6 @@
             // tabSummary
             // 
             this.tabSummary.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabSummary.Controls.Add(this.lblManage);
-            this.tabSummary.Controls.Add(this.btnManageProfilesWeb);
             this.tabSummary.Controls.Add(this.lblPublish);
             this.tabSummary.Controls.Add(this.btnVehiclePublish);
             this.tabSummary.Controls.Add(this.label42);
@@ -10045,38 +10041,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnManageProfilesWeb
-            // 
-            this.btnManageProfilesWeb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnManageProfilesWeb.BackColor = System.Drawing.Color.Transparent;
-            this.btnManageProfilesWeb.FlatAppearance.BorderSize = 0;
-            this.btnManageProfilesWeb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Turquoise;
-            this.btnManageProfilesWeb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManageProfilesWeb.Font = new System.Drawing.Font("Tahoma", 15.75F);
-            this.btnManageProfilesWeb.Image = global::AgOpenGPS.Properties.Resources.GoogleEarth;
-            this.btnManageProfilesWeb.Location = new System.Drawing.Point(344, 544);
-            this.btnManageProfilesWeb.Margin = new System.Windows.Forms.Padding(4);
-            this.btnManageProfilesWeb.Name = "btnManageProfilesWeb";
-            this.btnManageProfilesWeb.Size = new System.Drawing.Size(101, 61);
-            this.btnManageProfilesWeb.TabIndex = 503;
-            this.btnManageProfilesWeb.UseVisualStyleBackColor = false;
-            this.btnManageProfilesWeb.Click += new System.EventHandler(this.btnManageProfilesWeb_Click);
-            // 
-            // lblManage
-            // 
-            this.lblManage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblManage.AutoSize = true;
-            this.lblManage.BackColor = System.Drawing.Color.Transparent;
-            this.lblManage.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblManage.ForeColor = System.Drawing.Color.Black;
-            this.lblManage.Location = new System.Drawing.Point(358, 517);
-            this.lblManage.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblManage.Name = "lblManage";
-            this.lblManage.Size = new System.Drawing.Size(84, 23);
-            this.lblManage.TabIndex = 504;
-            this.lblManage.Text = "Manage";
-            this.lblManage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // FormConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -10746,7 +10710,5 @@
         private ProXoft.WinForms.RepeatButton btnRollOffsetDown;
         private System.Windows.Forms.Label lblPublish;
         private System.Windows.Forms.Button btnVehiclePublish;
-        private System.Windows.Forms.Label lblManage;
-        private System.Windows.Forms.Button btnManageProfilesWeb;
     }
 }

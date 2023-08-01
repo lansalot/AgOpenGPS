@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
+using System.Diagnostics;
 
 namespace AgOpenGPS
 {
@@ -105,7 +106,7 @@ namespace AgOpenGPS
             nudDualHeadingOffset.Controls[0].Enabled = false;
 
             nudMaxAngularVelocity.Controls[0].Enabled = false;
-            
+
             nudGuidanceSpeedLimit.Controls[0].Enabled = false;
             nudMaxSteerSpeed.Controls[0].Enabled = false;
             nudMinSteerSpeed.Controls[0].Enabled = false;
@@ -334,21 +335,21 @@ namespace AgOpenGPS
         private class JSONObj
         {
             public string id { get; set; }
-            public string OwnerHash { get; set; }
             public string XML { get; set; }
         }
 
-        public static async Task PublishData(string fn, string hashedUUID)
+        public static async Task PublishData(string fn)
         {
             HttpClient httpClient = new HttpClient();
-            string url = "https://aogep.azurewebsites.net/api/postsettings";
+            //httpClient.Timeout = TimeSpan.FromSeconds(5);
+            string urlstub = "https://aogdb.azurewebsites.net/api/postSettings";
+            urlstub = "http://localhost:7071/api/";
             string XMLcontent = File.ReadAllText(fn);
 
             // Define the JSON body
             JSONObj jsonobj = new JSONObj
             {
                 id = Guid.NewGuid().ToString(),
-                OwnerHash = hashedUUID,
                 XML = XMLcontent
             };
 
@@ -357,68 +358,44 @@ namespace AgOpenGPS
                 StringEscapeHandling = StringEscapeHandling.Default
             });
             // Create the HTTP content with the JSON body
-            HttpContent content = new StringContent(jsonBody, Encoding.ASCII, "application/json");
-
-            HttpResponseMessage response = await httpClient.PostAsync(url, content);
-
-            if (response.IsSuccessStatusCode)
+            FormTimedMessage timedMessage = new FormTimedMessage(5000, "Settings queued for upload", "In a moment, a webpage will appear. Please edit your new entry");
+            timedMessage.Show();
+            try
             {
-                string responseData = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("Response: " + responseData);
+                HttpContent content = new StringContent(jsonBody, Encoding.ASCII, "application/json");
+                // System.Net.Sockets.SocketException
+                HttpResponseMessage response = await httpClient.PostAsync(urlstub + "postSettings", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine("Response: " + responseData);
+                    urlstub = "https://aogstaticwebstorage.z33.web.core.windows.net/";
+                    Process.Start(urlstub + "index.html?mode=1&id=" + responseData);
+                }
+                else
+                {
+                    Console.WriteLine("The request was not successful. Status code: " + response.StatusCode);
+                }
+
             }
-            else
+            catch
             {
-                Console.WriteLine("The request was not successful. Status code: " + response.StatusCode);
+                timedMessage = new FormTimedMessage(5000,"Bang!", "Something went wrong uploading, sorry!");
+                timedMessage.Show();
             }
 
             httpClient.Dispose();
         }
-        public static string ComputeSHA256Hash(string input)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-                byte[] hashBytes = sha256.ComputeHash(inputBytes);
-
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
-                {
-                    sb.Append(hashBytes[i].ToString("x2"));
-                }
-
-                return sb.ToString();
-            }
-        }
-
-        public static string GetMachineUUID()
-        {
-            // note - this might sound dubious, but all we're trying to do here is generatea a unique ID for your machine
-            // which in turn is one-way hashed. The hash is transmitted, it cannot be reversed to find your UUID
-            ManagementClass mc = new ManagementClass("Win32_ComputerSystemProduct");
-            ManagementObjectCollection moc = mc.GetInstances();
-
-            foreach (ManagementObject mo in moc)
-            {
-                return mo.Properties["UUID"].Value.ToString();
-            }
-
-            return string.Empty;
-        }
         private void btnVehiclePublish_Click(object sender, EventArgs e)
         {
-            string UUID = GetMachineUUID();
-            string hashedUUID = ComputeSHA256Hash(UUID);
             //mf.vehiclesDirectory
             string fn = mf.vehiclesDirectory + lvVehicles.SelectedItems[0].SubItems[0].Text + ".xml";
-            PublishData(fn, hashedUUID);
+            PublishData(fn);
         }
 
         private void btnManageProfilesWeb_Click(object sender, EventArgs e)
         {
-            string UUID = GetMachineUUID();
-            string hashedUUID = ComputeSHA256Hash(UUID);
-            // start URL for this
-
         }
     }
 }
