@@ -1,0 +1,19 @@
+{
+    "Tractors": {
+        "Brands": {
+            "Massey Ferguson": {
+                "6000-series": [
+                    {
+                        "Label": "Headland Management",
+                        "CANBUSID": "1",
+                        "CANFilterID": "0x45a",
+                        "Byte": 1,
+                        "OnStateAND": 4
+                    }
+                ]
+            }
+        }
+    },
+    "Harvesters": {},
+    "Articulated": {}
+}
