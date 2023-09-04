@@ -1,19 +1,24 @@
 {
-    "Tractors": {
-        "Brands": {
-            "Massey Ferguson": {
-                "6000-series": [
-                    {
-                        "Label": "Headland Management",
-                        "CANBUSID": "1",
-                        "CANFilterID": "0x45a",
-                        "Byte": 1,
-                        "OnStateAND": 4
-                    }
-                ]
-            }
+    "Brands": {
+        "Massey Ferguson": {
+            "6000-series": [
+                {
+                    "ButtonLabel": "Headland Management",
+                    "CANBUSID": "KBUS",
+                    "CANFilterID": "0x45a",
+                    "Byte": 1,
+                    "OnStateAND": 4,
+                    "Operation": "Steer"
+                },
+                {
+                    "ButtonLabel": "Engage PTO just an example not real",
+                    "CANBUSID": "KBUS",
+                    "CANFilterID": "0x45a",
+                    "Byte": 2,
+                    "OnStateAND": 4,
+                    "Operation": "Work"
+                }
+            ]
         }
-    },
-    "Harvesters": {},
-    "Articulated": {}
+    }
 }

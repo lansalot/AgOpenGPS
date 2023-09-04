@@ -497,13 +497,10 @@
             this.cboxFeatureHeadland = new System.Windows.Forms.CheckBox();
             this.cboxFeatureTram = new System.Windows.Forms.CheckBox();
             this.tabCANBUS = new System.Windows.Forms.TabPage();
+            this.btnSetBrand = new System.Windows.Forms.Button();
+            this.pbCANBUS = new System.Windows.Forms.PictureBox();
             this.btnQueryBrand = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblCANSniffer = new System.Windows.Forms.Label();
-            this.btnCANRecord = new System.Windows.Forms.Button();
             this.cbCANManufacturer = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblSecretCANBUS = new System.Windows.Forms.Label();
             this.lblCurrentVehicle = new System.Windows.Forms.Label();
             this.lblInchesCm = new System.Windows.Forms.Label();
             this.lblSecTotalWidthMeters = new System.Windows.Forms.Label();
@@ -515,6 +512,8 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblCANBUSBrand = new System.Windows.Forms.Label();
+            this.btnReadCANConfigs = new System.Windows.Forms.Button();
             this.panelLeftSideMenu.SuspendLayout();
             this.panelArduinoSubMenu.SuspendLayout();
             this.panelDataSourcesSubMenu.SuspendLayout();
@@ -632,7 +631,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.tabBtns.SuspendLayout();
             this.tabCANBUS.SuspendLayout();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCANBUS)).BeginInit();
             this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1288,7 +1287,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(690, 492);
+            this.label11.Location = new System.Drawing.Point(352, 292);
             this.label11.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(84, 23);
@@ -1303,7 +1302,7 @@
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.Black;
-            this.label29.Location = new System.Drawing.Point(976, 79);
+            this.label29.Location = new System.Drawing.Point(545, 83);
             this.label29.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(169, 29);
@@ -1316,7 +1315,7 @@
             this.tboxCreateNewVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tboxCreateNewVehicle.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.tboxCreateNewVehicle.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxCreateNewVehicle.Location = new System.Drawing.Point(880, 32);
+            this.tboxCreateNewVehicle.Location = new System.Drawing.Point(449, 36);
             this.tboxCreateNewVehicle.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.tboxCreateNewVehicle.Name = "tboxCreateNewVehicle";
             this.tboxCreateNewVehicle.Size = new System.Drawing.Size(405, 36);
@@ -1364,7 +1363,7 @@
             this.label57.BackColor = System.Drawing.Color.Transparent;
             this.label57.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label57.ForeColor = System.Drawing.Color.Black;
-            this.label57.Location = new System.Drawing.Point(697, 605);
+            this.label57.Location = new System.Drawing.Point(359, 405);
             this.label57.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(71, 23);
@@ -1379,7 +1378,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(702, 377);
+            this.label13.Location = new System.Drawing.Point(364, 177);
             this.label13.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 23);
@@ -1756,7 +1755,7 @@
             this.btnVehicleSaveAs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVehicleSaveAs.Font = new System.Drawing.Font("Tahoma", 15.75F);
             this.btnVehicleSaveAs.Image = global::AgOpenGPS.Properties.Resources.VehFileSaveAs;
-            this.btnVehicleSaveAs.Location = new System.Drawing.Point(680, 516);
+            this.btnVehicleSaveAs.Location = new System.Drawing.Point(342, 316);
             this.btnVehicleSaveAs.Margin = new System.Windows.Forms.Padding(4);
             this.btnVehicleSaveAs.Name = "btnVehicleSaveAs";
             this.btnVehicleSaveAs.Size = new System.Drawing.Size(101, 61);
@@ -1775,7 +1774,7 @@
             this.btnVehicleLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVehicleLoad.Font = new System.Drawing.Font("Tahoma", 15.75F);
             this.btnVehicleLoad.Image = global::AgOpenGPS.Properties.Resources.VehFileLoad;
-            this.btnVehicleLoad.Location = new System.Drawing.Point(680, 402);
+            this.btnVehicleLoad.Location = new System.Drawing.Point(342, 202);
             this.btnVehicleLoad.Margin = new System.Windows.Forms.Padding(4);
             this.btnVehicleLoad.Name = "btnVehicleLoad";
             this.btnVehicleLoad.Size = new System.Drawing.Size(101, 61);
@@ -1793,7 +1792,7 @@
             this.btnVehicleDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVehicleDelete.Font = new System.Drawing.Font("Tahoma", 15.75F);
             this.btnVehicleDelete.Image = global::AgOpenGPS.Properties.Resources.VehFileDelete;
-            this.btnVehicleDelete.Location = new System.Drawing.Point(680, 629);
+            this.btnVehicleDelete.Location = new System.Drawing.Point(342, 429);
             this.btnVehicleDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnVehicleDelete.Name = "btnVehicleDelete";
             this.btnVehicleDelete.Size = new System.Drawing.Size(101, 61);
@@ -1814,11 +1813,11 @@
             this.lvVehicles.HideSelection = false;
             this.lvVehicles.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.lvVehicles.LabelWrap = false;
-            this.lvVehicles.Location = new System.Drawing.Point(785, 371);
+            this.lvVehicles.Location = new System.Drawing.Point(447, 171);
             this.lvVehicles.Margin = new System.Windows.Forms.Padding(0);
             this.lvVehicles.MultiSelect = false;
             this.lvVehicles.Name = "lvVehicles";
-            this.lvVehicles.Size = new System.Drawing.Size(616, 602);
+            this.lvVehicles.Size = new System.Drawing.Size(616, 568);
             this.lvVehicles.TabIndex = 454;
             this.lvVehicles.TileSize = new System.Drawing.Size(490, 35);
             this.lvVehicles.UseCompatibleStateImageBehavior = false;
@@ -1837,7 +1836,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(976, -4);
+            this.label3.Location = new System.Drawing.Point(545, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(161, 29);
@@ -1850,7 +1849,7 @@
             this.tboxVehicleNameSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tboxVehicleNameSave.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.tboxVehicleNameSave.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxVehicleNameSave.Location = new System.Drawing.Point(880, 115);
+            this.tboxVehicleNameSave.Location = new System.Drawing.Point(449, 119);
             this.tboxVehicleNameSave.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.tboxVehicleNameSave.Name = "tboxVehicleNameSave";
             this.tboxVehicleNameSave.Size = new System.Drawing.Size(405, 36);
@@ -1870,7 +1869,7 @@
             this.btnVehicleSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVehicleSave.Font = new System.Drawing.Font("Tahoma", 15.75F);
             this.btnVehicleSave.Image = global::AgOpenGPS.Properties.Resources.VehFileSaveAs;
-            this.btnVehicleSave.Location = new System.Drawing.Point(1292, 91);
+            this.btnVehicleSave.Location = new System.Drawing.Point(902, 102);
             this.btnVehicleSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnVehicleSave.Name = "btnVehicleSave";
             this.btnVehicleSave.Size = new System.Drawing.Size(101, 65);
@@ -1889,7 +1888,7 @@
             this.btnVehicleNewSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVehicleNewSave.Font = new System.Drawing.Font("Tahoma", 15.75F);
             this.btnVehicleNewSave.Image = global::AgOpenGPS.Properties.Resources.VehFileSave;
-            this.btnVehicleNewSave.Location = new System.Drawing.Point(1292, 8);
+            this.btnVehicleNewSave.Location = new System.Drawing.Point(901, 20);
             this.btnVehicleNewSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnVehicleNewSave.Name = "btnVehicleNewSave";
             this.btnVehicleNewSave.Size = new System.Drawing.Size(101, 65);
@@ -9410,11 +9409,12 @@
             // 
             // tabCANBUS
             // 
+            this.tabCANBUS.Controls.Add(this.btnReadCANConfigs);
+            this.tabCANBUS.Controls.Add(this.lblCANBUSBrand);
+            this.tabCANBUS.Controls.Add(this.btnSetBrand);
+            this.tabCANBUS.Controls.Add(this.pbCANBUS);
             this.tabCANBUS.Controls.Add(this.btnQueryBrand);
-            this.tabCANBUS.Controls.Add(this.panel1);
             this.tabCANBUS.Controls.Add(this.cbCANManufacturer);
-            this.tabCANBUS.Controls.Add(this.textBox1);
-            this.tabCANBUS.Controls.Add(this.lblSecretCANBUS);
             this.tabCANBUS.Location = new System.Drawing.Point(4, 44);
             this.tabCANBUS.Name = "tabCANBUS";
             this.tabCANBUS.Size = new System.Drawing.Size(1067, 743);
@@ -9422,74 +9422,45 @@
             this.tabCANBUS.Text = "tabCANBUS";
             this.tabCANBUS.UseVisualStyleBackColor = true;
             // 
+            // btnSetBrand
+            // 
+            this.btnSetBrand.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetBrand.Location = new System.Drawing.Point(896, 134);
+            this.btnSetBrand.Name = "btnSetBrand";
+            this.btnSetBrand.Size = new System.Drawing.Size(113, 98);
+            this.btnSetBrand.TabIndex = 130;
+            this.btnSetBrand.Text = "Set Brand";
+            this.btnSetBrand.UseVisualStyleBackColor = true;
+            this.btnSetBrand.Click += new System.EventHandler(this.btnSetBrand_Click);
+            // 
+            // pbCANBUS
+            // 
+            this.pbCANBUS.Image = global::AgOpenGPS.Properties.Resources.CANBUS;
+            this.pbCANBUS.Location = new System.Drawing.Point(26, 13);
+            this.pbCANBUS.Name = "pbCANBUS";
+            this.pbCANBUS.Size = new System.Drawing.Size(80, 80);
+            this.pbCANBUS.TabIndex = 129;
+            this.pbCANBUS.TabStop = false;
+            // 
             // btnQueryBrand
             // 
-            this.btnQueryBrand.Location = new System.Drawing.Point(484, 216);
+            this.btnQueryBrand.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQueryBrand.Location = new System.Drawing.Point(753, 134);
             this.btnQueryBrand.Name = "btnQueryBrand";
-            this.btnQueryBrand.Size = new System.Drawing.Size(193, 66);
+            this.btnQueryBrand.Size = new System.Drawing.Size(127, 98);
             this.btnQueryBrand.TabIndex = 6;
             this.btnQueryBrand.Text = "Query Brand";
             this.btnQueryBrand.UseVisualStyleBackColor = true;
             this.btnQueryBrand.Click += new System.EventHandler(this.btnQueryBrand_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.lblCANSniffer);
-            this.panel1.Controls.Add(this.btnCANRecord);
-            this.panel1.Location = new System.Drawing.Point(15, 440);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(330, 289);
-            this.panel1.TabIndex = 5;
-            // 
-            // lblCANSniffer
-            // 
-            this.lblCANSniffer.AutoSize = true;
-            this.lblCANSniffer.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCANSniffer.Location = new System.Drawing.Point(9, 4);
-            this.lblCANSniffer.Name = "lblCANSniffer";
-            this.lblCANSniffer.Size = new System.Drawing.Size(302, 29);
-            this.lblCANSniffer.TabIndex = 1;
-            this.lblCANSniffer.Text = "CAN Sniffer / Button Finder";
-            // 
-            // btnCANRecord
-            // 
-            this.btnCANRecord.Location = new System.Drawing.Point(9, 46);
-            this.btnCANRecord.Name = "btnCANRecord";
-            this.btnCANRecord.Size = new System.Drawing.Size(114, 44);
-            this.btnCANRecord.TabIndex = 0;
-            this.btnCANRecord.Text = "Record";
-            this.btnCANRecord.UseVisualStyleBackColor = true;
-            this.btnCANRecord.Click += new System.EventHandler(this.btnCANRecord_Click);
-            // 
             // cbCANManufacturer
             // 
             this.cbCANManufacturer.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCANManufacturer.FormattingEnabled = true;
-            this.cbCANManufacturer.Location = new System.Drawing.Point(26, 216);
+            this.cbCANManufacturer.Location = new System.Drawing.Point(248, 134);
             this.cbCANManufacturer.Name = "cbCANManufacturer";
-            this.cbCANManufacturer.Size = new System.Drawing.Size(394, 44);
+            this.cbCANManufacturer.Size = new System.Drawing.Size(473, 44);
             this.cbCANManufacturer.TabIndex = 3;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(26, 48);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(902, 134);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Things to add\r\n- query the current setting when the screen loads\r\n- PGN config (t" +
-    "ake defaults from Tony\'s code)\r\n- allow you to ovverride it\r\n- button-finder?";
-            // 
-            // lblSecretCANBUS
-            // 
-            this.lblSecretCANBUS.AutoSize = true;
-            this.lblSecretCANBUS.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.lblSecretCANBUS.Location = new System.Drawing.Point(21, 16);
-            this.lblSecretCANBUS.Name = "lblSecretCANBUS";
-            this.lblSecretCANBUS.Size = new System.Drawing.Size(242, 29);
-            this.lblSecretCANBUS.TabIndex = 0;
-            this.lblSecretCANBUS.Text = "Secret CANBUS menu";
             // 
             // lblCurrentVehicle
             // 
@@ -9642,6 +9613,27 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblCANBUSBrand
+            // 
+            this.lblCANBUSBrand.AutoSize = true;
+            this.lblCANBUSBrand.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCANBUSBrand.Location = new System.Drawing.Point(20, 133);
+            this.lblCANBUSBrand.Name = "lblCANBUSBrand";
+            this.lblCANBUSBrand.Size = new System.Drawing.Size(224, 36);
+            this.lblCANBUSBrand.TabIndex = 131;
+            this.lblCANBUSBrand.Text = "CANBUS brand:";
+            // 
+            // btnReadCANConfigs
+            // 
+            this.btnReadCANConfigs.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReadCANConfigs.Location = new System.Drawing.Point(26, 219);
+            this.btnReadCANConfigs.Name = "btnReadCANConfigs";
+            this.btnReadCANConfigs.Size = new System.Drawing.Size(298, 60);
+            this.btnReadCANConfigs.TabIndex = 132;
+            this.btnReadCANConfigs.Text = "Refresh CAN Configs";
+            this.btnReadCANConfigs.UseVisualStyleBackColor = true;
+            this.btnReadCANConfigs.Click += new System.EventHandler(this.btnReadCANConfigs_Click);
             // 
             // FormConfig
             // 
@@ -9798,8 +9790,7 @@
             this.tabBtns.PerformLayout();
             this.tabCANBUS.ResumeLayout(false);
             this.tabCANBUS.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCANBUS)).EndInit();
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
             this.ResumeLayout(false);
@@ -10283,12 +10274,11 @@
         private System.Windows.Forms.Button btnCANBUSSupport;
         private System.Windows.Forms.TabPage tabCANBUS;
         private System.Windows.Forms.Button btnShowCAN;
-        private System.Windows.Forms.Label lblSecretCANBUS;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox cbCANManufacturer;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblCANSniffer;
-        private System.Windows.Forms.Button btnCANRecord;
         private System.Windows.Forms.Button btnQueryBrand;
+        private System.Windows.Forms.Button btnSetBrand;
+        private System.Windows.Forms.PictureBox pbCANBUS;
+        private System.Windows.Forms.Button btnReadCANConfigs;
+        private System.Windows.Forms.Label lblCANBUSBrand;
     }
 }
