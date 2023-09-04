@@ -497,8 +497,10 @@
             this.cboxFeatureHeadland = new System.Windows.Forms.CheckBox();
             this.cboxFeatureTram = new System.Windows.Forms.CheckBox();
             this.tabCANBUS = new System.Windows.Forms.TabPage();
+            this.dgCANBUSIDs = new System.Windows.Forms.DataGridView();
+            this.btnReadCANConfigs = new System.Windows.Forms.Button();
+            this.lblCANBUSBrand = new System.Windows.Forms.Label();
             this.btnSetBrand = new System.Windows.Forms.Button();
-            this.pbCANBUS = new System.Windows.Forms.PictureBox();
             this.btnQueryBrand = new System.Windows.Forms.Button();
             this.cbCANManufacturer = new System.Windows.Forms.ComboBox();
             this.lblCurrentVehicle = new System.Windows.Forms.Label();
@@ -512,8 +514,14 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblCANBUSBrand = new System.Windows.Forms.Label();
-            this.btnReadCANConfigs = new System.Windows.Forms.Button();
+            this.cBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLabel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCANBUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFilterID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colByte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOnStateAnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelLeftSideMenu.SuspendLayout();
             this.panelArduinoSubMenu.SuspendLayout();
             this.panelDataSourcesSubMenu.SuspendLayout();
@@ -631,7 +639,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.tabBtns.SuspendLayout();
             this.tabCANBUS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCANBUS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCANBUSIDs)).BeginInit();
             this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -9409,10 +9417,10 @@
             // 
             // tabCANBUS
             // 
+            this.tabCANBUS.Controls.Add(this.dgCANBUSIDs);
             this.tabCANBUS.Controls.Add(this.btnReadCANConfigs);
             this.tabCANBUS.Controls.Add(this.lblCANBUSBrand);
             this.tabCANBUS.Controls.Add(this.btnSetBrand);
-            this.tabCANBUS.Controls.Add(this.pbCANBUS);
             this.tabCANBUS.Controls.Add(this.btnQueryBrand);
             this.tabCANBUS.Controls.Add(this.cbCANManufacturer);
             this.tabCANBUS.Location = new System.Drawing.Point(4, 44);
@@ -9422,10 +9430,55 @@
             this.tabCANBUS.Text = "tabCANBUS";
             this.tabCANBUS.UseVisualStyleBackColor = true;
             // 
+            // dgCANBUSIDs
+            // 
+            this.dgCANBUSIDs.AllowUserToAddRows = false;
+            this.dgCANBUSIDs.AllowUserToDeleteRows = false;
+            this.dgCANBUSIDs.AllowUserToResizeRows = false;
+            this.dgCANBUSIDs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCANBUSIDs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cBrand,
+            this.cModel,
+            this.colLabel,
+            this.colCANBUS,
+            this.colFilterID,
+            this.colByte,
+            this.colOnStateAnd,
+            this.colOperation});
+            this.dgCANBUSIDs.Location = new System.Drawing.Point(26, 208);
+            this.dgCANBUSIDs.MultiSelect = false;
+            this.dgCANBUSIDs.Name = "dgCANBUSIDs";
+            this.dgCANBUSIDs.RowHeadersWidth = 51;
+            this.dgCANBUSIDs.RowTemplate.Height = 24;
+            this.dgCANBUSIDs.Size = new System.Drawing.Size(1016, 517);
+            this.dgCANBUSIDs.TabIndex = 133;
+            this.dgCANBUSIDs.Visible = false;
+            // 
+            // btnReadCANConfigs
+            // 
+            this.btnReadCANConfigs.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReadCANConfigs.Location = new System.Drawing.Point(718, 12);
+            this.btnReadCANConfigs.Name = "btnReadCANConfigs";
+            this.btnReadCANConfigs.Size = new System.Drawing.Size(324, 60);
+            this.btnReadCANConfigs.TabIndex = 132;
+            this.btnReadCANConfigs.Text = "Refresh CAN Configs";
+            this.btnReadCANConfigs.UseVisualStyleBackColor = true;
+            this.btnReadCANConfigs.Click += new System.EventHandler(this.btnReadCANConfigs_Click);
+            // 
+            // lblCANBUSBrand
+            // 
+            this.lblCANBUSBrand.AutoSize = true;
+            this.lblCANBUSBrand.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCANBUSBrand.Location = new System.Drawing.Point(19, 103);
+            this.lblCANBUSBrand.Name = "lblCANBUSBrand";
+            this.lblCANBUSBrand.Size = new System.Drawing.Size(224, 36);
+            this.lblCANBUSBrand.TabIndex = 131;
+            this.lblCANBUSBrand.Text = "CANBUS brand:";
+            // 
             // btnSetBrand
             // 
             this.btnSetBrand.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetBrand.Location = new System.Drawing.Point(896, 134);
+            this.btnSetBrand.Location = new System.Drawing.Point(929, 78);
             this.btnSetBrand.Name = "btnSetBrand";
             this.btnSetBrand.Size = new System.Drawing.Size(113, 98);
             this.btnSetBrand.TabIndex = 130;
@@ -9433,19 +9486,10 @@
             this.btnSetBrand.UseVisualStyleBackColor = true;
             this.btnSetBrand.Click += new System.EventHandler(this.btnSetBrand_Click);
             // 
-            // pbCANBUS
-            // 
-            this.pbCANBUS.Image = global::AgOpenGPS.Properties.Resources.CANBUS;
-            this.pbCANBUS.Location = new System.Drawing.Point(26, 13);
-            this.pbCANBUS.Name = "pbCANBUS";
-            this.pbCANBUS.Size = new System.Drawing.Size(80, 80);
-            this.pbCANBUS.TabIndex = 129;
-            this.pbCANBUS.TabStop = false;
-            // 
             // btnQueryBrand
             // 
             this.btnQueryBrand.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQueryBrand.Location = new System.Drawing.Point(753, 134);
+            this.btnQueryBrand.Location = new System.Drawing.Point(796, 78);
             this.btnQueryBrand.Name = "btnQueryBrand";
             this.btnQueryBrand.Size = new System.Drawing.Size(127, 98);
             this.btnQueryBrand.TabIndex = 6;
@@ -9457,10 +9501,11 @@
             // 
             this.cbCANManufacturer.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCANManufacturer.FormattingEnabled = true;
-            this.cbCANManufacturer.Location = new System.Drawing.Point(248, 134);
+            this.cbCANManufacturer.Location = new System.Drawing.Point(247, 104);
             this.cbCANManufacturer.Name = "cbCANManufacturer";
-            this.cbCANManufacturer.Size = new System.Drawing.Size(473, 44);
+            this.cbCANManufacturer.Size = new System.Drawing.Size(543, 44);
             this.cbCANManufacturer.TabIndex = 3;
+            this.cbCANManufacturer.SelectedIndexChanged += new System.EventHandler(this.cbCANManufacturer_SelectedIndexChanged);
             // 
             // lblCurrentVehicle
             // 
@@ -9614,26 +9659,74 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lblCANBUSBrand
+            // cBrand
             // 
-            this.lblCANBUSBrand.AutoSize = true;
-            this.lblCANBUSBrand.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCANBUSBrand.Location = new System.Drawing.Point(20, 133);
-            this.lblCANBUSBrand.Name = "lblCANBUSBrand";
-            this.lblCANBUSBrand.Size = new System.Drawing.Size(224, 36);
-            this.lblCANBUSBrand.TabIndex = 131;
-            this.lblCANBUSBrand.Text = "CANBUS brand:";
+            this.cBrand.DataPropertyName = "Brand";
+            this.cBrand.HeaderText = "Brand";
+            this.cBrand.MinimumWidth = 6;
+            this.cBrand.Name = "cBrand";
+            this.cBrand.ReadOnly = true;
+            this.cBrand.Visible = false;
+            this.cBrand.Width = 125;
             // 
-            // btnReadCANConfigs
+            // cModel
             // 
-            this.btnReadCANConfigs.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReadCANConfigs.Location = new System.Drawing.Point(26, 219);
-            this.btnReadCANConfigs.Name = "btnReadCANConfigs";
-            this.btnReadCANConfigs.Size = new System.Drawing.Size(298, 60);
-            this.btnReadCANConfigs.TabIndex = 132;
-            this.btnReadCANConfigs.Text = "Refresh CAN Configs";
-            this.btnReadCANConfigs.UseVisualStyleBackColor = true;
-            this.btnReadCANConfigs.Click += new System.EventHandler(this.btnReadCANConfigs_Click);
+            this.cModel.DataPropertyName = "Model";
+            this.cModel.HeaderText = "Model";
+            this.cModel.MinimumWidth = 6;
+            this.cModel.Name = "cModel";
+            this.cModel.ReadOnly = true;
+            this.cModel.Width = 125;
+            // 
+            // colLabel
+            // 
+            this.colLabel.DataPropertyName = "Label";
+            this.colLabel.HeaderText = "Label";
+            this.colLabel.MinimumWidth = 6;
+            this.colLabel.Name = "colLabel";
+            this.colLabel.ReadOnly = true;
+            this.colLabel.Visible = false;
+            this.colLabel.Width = 125;
+            // 
+            // colCANBUS
+            // 
+            this.colCANBUS.DataPropertyName = "CANBUS";
+            this.colCANBUS.HeaderText = "CANBUS";
+            this.colCANBUS.MinimumWidth = 6;
+            this.colCANBUS.Name = "colCANBUS";
+            this.colCANBUS.Width = 125;
+            // 
+            // colFilterID
+            // 
+            this.colFilterID.DataPropertyName = "FilterID";
+            this.colFilterID.HeaderText = "FilterID";
+            this.colFilterID.MinimumWidth = 6;
+            this.colFilterID.Name = "colFilterID";
+            this.colFilterID.Width = 125;
+            // 
+            // colByte
+            // 
+            this.colByte.DataPropertyName = "Byte";
+            this.colByte.HeaderText = "Byte";
+            this.colByte.MinimumWidth = 6;
+            this.colByte.Name = "colByte";
+            this.colByte.Width = 125;
+            // 
+            // colOnStateAnd
+            // 
+            this.colOnStateAnd.DataPropertyName = "OnStateAnd";
+            this.colOnStateAnd.HeaderText = "OnStateBit";
+            this.colOnStateAnd.MinimumWidth = 6;
+            this.colOnStateAnd.Name = "colOnStateAnd";
+            this.colOnStateAnd.Width = 125;
+            // 
+            // colOperation
+            // 
+            this.colOperation.DataPropertyName = "Operation";
+            this.colOperation.HeaderText = "Operation";
+            this.colOperation.MinimumWidth = 6;
+            this.colOperation.Name = "colOperation";
+            this.colOperation.Width = 125;
             // 
             // FormConfig
             // 
@@ -9790,7 +9883,7 @@
             this.tabBtns.PerformLayout();
             this.tabCANBUS.ResumeLayout(false);
             this.tabCANBUS.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCANBUS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCANBUSIDs)).EndInit();
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
             this.ResumeLayout(false);
@@ -10277,8 +10370,16 @@
         private System.Windows.Forms.ComboBox cbCANManufacturer;
         private System.Windows.Forms.Button btnQueryBrand;
         private System.Windows.Forms.Button btnSetBrand;
-        private System.Windows.Forms.PictureBox pbCANBUS;
         private System.Windows.Forms.Button btnReadCANConfigs;
         private System.Windows.Forms.Label lblCANBUSBrand;
+        private System.Windows.Forms.DataGridView dgCANBUSIDs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cBrand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cModel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCANBUS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFilterID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colByte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOnStateAnd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
     }
 }

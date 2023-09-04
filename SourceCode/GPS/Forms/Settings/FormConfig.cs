@@ -15,6 +15,7 @@ namespace AgOpenGPS
     public partial class FormConfig : Form
     {
         //class variables
+        CANBUSIDs _CANBUSIDs = new CANBUSIDs(Application.StartupPath + "\\CANBUSIDS.csv");
         private readonly FormGPS mf = null;
 
         bool isClosing = false;
@@ -47,6 +48,7 @@ namespace AgOpenGPS
                 new {Value = "8", Name = "Challenger MT" }
 
             };
+
             cbCANManufacturer.DisplayMember = "Name";
             cbCANManufacturer.ValueMember = "Value";
 
@@ -348,7 +350,7 @@ namespace AgOpenGPS
 
         private void btnCANBUSSupport_Click(object sender, EventArgs e)
         {
-            byte[] MachineConfigPacket = new byte[] { 0x80, 0x81, 0x7f, 0xAA, 1, (byte)mf.vehicle.CANBUSBrand, 0, 0xCC }; 
+            byte[] MachineConfigPacket = new byte[] { 0x80, 0x81, 0x7f, 0xAA, 1, (byte)mf.vehicle.CANBUSBrand, 0, 0xCC };
             mf.SendPgnToLoop(MachineConfigPacket);
             mf.TimedMessageBox(2000, "Updating Teensy CANBUS manunfacturer", "Please wait, signal will return soon");
         }
@@ -366,19 +368,56 @@ namespace AgOpenGPS
 
         private void btnSetBrand_Click(object sender, EventArgs e)
         {
-                byte[] MachineConfigPacket = new byte[] { 0x80, 0x81, 0x7f, 0xAA, 1, 1, 0xCC };
-                mf.SendPgnToLoop(MachineConfigPacket);
+            byte[] MachineConfigPacket = new byte[] { 0x80, 0x81, 0x7f, 0xAA, 1, 1, 0xCC };
+            mf.SendPgnToLoop(MachineConfigPacket);
         }
 
         private void btnReadCANConfigs_Click(object sender, EventArgs e)
         {
-            // pull CSV from github, re-populate choices
-            WebClient client = new WebClient();
-            Stream stream = client.OpenRead("https://raw.githubusercontent.com/lansalot/AgOpenGPS/CANBUS/CANBUSIDs.csv");
-            StreamReader reader = new StreamReader(stream);
-            String content = reader.ReadToEnd();
-            Console.Write(content);
-        
+            try
+            {
+                WebClient client = new WebClient();
+                Stream stream = client.OpenRead("https://raw.githubusercontent.com/lansalot/AgOpenGPS/CANBUS/CANBUSIDS.csv");
+                StreamReader reader = new StreamReader(stream);
+                String content = reader.ReadToEnd();
+                Console.Write(content);
+                File.WriteAllText(Application.StartupPath + "\\CANBUSIDS.csv", content);
+                mf.TimedMessageBox(2000, "Updated!", "Latest file downloaded, local copy refreshed");
+                // refresh the form with new data
+
+                UpdateCANBUSGrid();
+            }
+            catch (Exception downloadError)
+            {
+                mf.TimedMessageBox(2000, "Oops!!", "Sorry, failed to download latest copy\n" + downloadError.Message);
+            }
+        }
+
+        private void UpdateCANBUSGrid()
+        {
+            dgCANBUSIDs.AutoGenerateColumns = false;
+            try
+            {
+                if (cbCANManufacturer.SelectedValue.ToString() != "X")
+                {
+                    dgCANBUSIDs.Visible = true;
+                    _CANBUSIDs.FilterByBrand(cbCANManufacturer.SelectedValue.ToString());
+                    dgCANBUSIDs.DataSource = _CANBUSIDs.FilteredVehicleData;
+                }
+                else
+                {
+                    dgCANBUSIDs.Visible = false;
+                }
+            }
+            catch (Exception gridFail)
+            {
+                mf.TimedMessageBox(2000, "Oops!!", "Sorry, failed to update grid\n" + gridFail.Message);
+            }
+
+        }
+        private void cbCANManufacturer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateCANBUSGrid();
         }
 
         //private void btnCANRecord_Click(object sender, EventArgs e)
