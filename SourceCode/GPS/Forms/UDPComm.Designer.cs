@@ -278,6 +278,14 @@ namespace AgOpenGPS
                      #endregion
                 }
             }
+            if (data.Length > 4 && data[0] == 0x80 && data[1] == 0x99)
+            {
+                // AOG receives from AGIO
+                byte[] Message = new byte[data.Length - 2];
+                Array.Copy(data, 2, Message, 0, data.Length - 2);
+                FormTimedMessage form = new FormTimedMessage(2000, "Heads up!",System.Text.Encoding.UTF8.GetString(Message));
+                form.Show();
+            }
         }
 
         //start the UDP server

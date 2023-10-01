@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace AgIO
 {
     public class CTraffic
-    {     
+    {
         public int cntrGPSIn = 0;
         public int cntrGPSInBytes = 0;
         public int cntrGPSOut = 0;
@@ -18,10 +18,10 @@ namespace AgIO
 
     public class CScanReply
     {
-        public string steerIP =   "";
+        public string steerIP = "";
         public string machineIP = "";
-        public string GPS_IP =    "";
-        public string IMU_IP =    "";
+        public string GPS_IP = "";
+        public string IMU_IP = "";
         public string subnetStr = "";
 
         public byte[] subnet = { 0, 0, 0 };
@@ -40,7 +40,7 @@ namespace AgIO
         // UDP Socket
         public Socket UDPSocket;
         private EndPoint endPointUDP = new IPEndPoint(IPAddress.Any, 0);
-        
+
         public bool isUDPNetworkConnected;
 
         //2 endpoints for local and 2 udp
@@ -56,7 +56,7 @@ namespace AgIO
             Properties.Settings.Default.eth_loopTwo.ToString() + "." +
             Properties.Settings.Default.eth_loopThree.ToString() + "." +
             Properties.Settings.Default.eth_loopFour.ToString()), 16666);
-        
+
         public IPEndPoint epModule = new IPEndPoint(IPAddress.Parse(
                 Properties.Settings.Default.etIP_SubnetOne.ToString() + "." +
                 Properties.Settings.Default.etIP_SubnetTwo.ToString() + "." +
@@ -72,7 +72,7 @@ namespace AgIO
 
         //scan results placed here
         public string scanReturn = "Scanning...";
-        
+
         // Data stream
         private byte[] buffer = new byte[1024];
 
@@ -92,7 +92,7 @@ namespace AgIO
                 {
                     if (IPA.AddressFamily == AddressFamily.InterNetwork)
                     {
-                        string  data = IPA.ToString();
+                        string data = IPA.ToString();
                         lblIP.Text += IPA.ToString().Trim() + "\r\n";
                     }
                 }
@@ -127,13 +127,13 @@ namespace AgIO
         }
 
         private void LoadLoopback()
-        { 
+        {
             try //loopback
             {
                 loopBackSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
                 loopBackSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, true);
                 loopBackSocket.Bind(new IPEndPoint(IPAddress.Loopback, 17777));
-                loopBackSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointLoopBack, 
+                loopBackSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointLoopBack,
                     new AsyncCallback(ReceiveDataLoopAsync), null);
             }
             catch (Exception ex)
@@ -263,7 +263,7 @@ namespace AgIO
                 Array.Copy(buffer, localMsg, msgLen);
 
                 // Listen for more connections again...
-                loopBackSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointLoopBack, 
+                loopBackSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointLoopBack,
                     new AsyncCallback(ReceiveDataLoopAsync), null);
 
                 BeginInvoke((MethodInvoker)(() => ReceiveFromLoopBack(localMsg)));
@@ -344,7 +344,7 @@ namespace AgIO
                 Array.Copy(buffer, localMsg, msgLen);
 
                 // Listen for more connections again...
-                UDPSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointUDP, 
+                UDPSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointUDP,
                     new AsyncCallback(ReceiveDataUDPAsync), null);
 
                 BeginInvoke((MethodInvoker)(() => ReceiveFromUDP(localMsg)));
@@ -362,6 +362,12 @@ namespace AgIO
         {
             try
             {
+                if (data[0] == 0x80 && data[1] == 0x99)
+                {
+                    // here, we see incoming messages from Teensy
+                    // so as this is a freeform, send it straight on to AOG
+                    SendToLoopBackMessageAOG(data);
+                }
                 if (data[0] == 0x80 && data[1] == 0x81)
                 {
                     //module return via udp sent to AOG
@@ -466,7 +472,8 @@ namespace AgIO
                             logUDPSentence.Append(DateTime.Now.ToString("ss.fff\t"));
                             switch (data[4])
                             {
-                                case 0: {
+                                case 0:
+                                    {
                                         logUDPSentence.Append("K-BUS: ");
                                         break;
                                     }
@@ -486,7 +493,8 @@ namespace AgIO
                                         break;
                                     }
                             }
-                            for (int i = 0; i < data[5] - 6; i++) { // offset the length
+                            for (int i = 0; i < data[5] - 6; i++)
+                            { // offset the length
                                 logUDPSentence.Append($"{data[i + 6]}, ");
                             }
                             logUDPSentence.Append("\r\n");
