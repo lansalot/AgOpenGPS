@@ -1,3 +1,4 @@
 Brand,Model,Label,CANBUS,FilterID,Byte,OnStateAnd,Operation
 1,6000-series,Headland Management,KBUS,0x45a,1,4,Steer
+1,6000-series,PTO engaged,KBUS,0x45a,1,4,Steer
 2,T7,AutoSteer Engage,KBUS,0x12345,1,1,Work

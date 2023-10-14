@@ -118,6 +118,9 @@ namespace AgOpenGPS
             nudGuidanceLookAhead.Controls[0].Enabled = false;
 
             nudDualHeadingOffset.Controls[0].Enabled = false;
+            dgCANBUSIDs.MouseDown += dgCANBUSIDs_MouseDown;
+            lblCANBUSSteerCode.DragEnter += lblCANBUSSteerCode_DragEnter;
+            lblCANBUSSteerCode.DragDrop += lblCANBUSSteerCode_DragDrop;
         }
 
         private void FormConfig_Load(object sender, EventArgs e)
@@ -396,17 +399,20 @@ namespace AgOpenGPS
         private void UpdateCANBUSGrid()
         {
             dgCANBUSIDs.AutoGenerateColumns = false;
+            dgCANBUSIDs.Visible = true;
             try
             {
                 if (cbCANManufacturer.SelectedValue.ToString() != "X")
                 {
-                    dgCANBUSIDs.Visible = true;
+                    //dgCANBUSIDs.Visible = true;
                     _CANBUSIDs.FilterByBrand(cbCANManufacturer.SelectedValue.ToString());
                     dgCANBUSIDs.DataSource = _CANBUSIDs.FilteredVehicleData;
                 }
                 else
                 {
-                    dgCANBUSIDs.Visible = false;
+                    dgCANBUSIDs.Visible = true;
+                    dgCANBUSIDs.DataSource = _CANBUSIDs.VehicleData;
+
                 }
             }
             catch (Exception gridFail)
@@ -420,6 +426,34 @@ namespace AgOpenGPS
             UpdateCANBUSGrid();
         }
 
+        private void dgCANBUSIDs_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                DataGridView.HitTestInfo hitTestInfo = dgCANBUSIDs.HitTest(e.X, e.Y);
+                if (hitTestInfo.Type == DataGridViewHitTestType.RowHeader)
+                {
+                    // Start the drag operation
+                    dgCANBUSIDs.DoDragDrop(dgCANBUSIDs.Rows[hitTestInfo.RowIndex], DragDropEffects.Copy);
+                }
+            }
+        }
+
+        private void lblCANBUSSteerCode_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(DataGridViewRow)))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+        private void lblCANBUSSteerCode_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(DataGridViewRow)))
+            {
+                DataGridViewRow row = (DataGridViewRow)e.Data.GetData(typeof(DataGridViewRow));
+                lblCANBUSSteerCode.Text = row.Cells[2].Value.ToString();
+            }
+        }
         //private void btnCANRecord_Click(object sender, EventArgs e)
         //{
         //    if (btnCANRecord.Text == "Record")
