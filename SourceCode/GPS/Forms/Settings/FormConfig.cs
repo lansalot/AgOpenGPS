@@ -121,6 +121,9 @@ namespace AgOpenGPS
             dgCANBUSIDs.MouseDown += dgCANBUSIDs_MouseDown;
             lblCANBUSSteerCode.DragEnter += lblCANBUSSteerCode_DragEnter;
             lblCANBUSSteerCode.DragDrop += lblCANBUSSteerCode_DragDrop;
+
+            lblCANBUSWorkCode.DragEnter += lblCANBUSWorkCode_DragEnter;
+            lblCANBUSWorkCode.DragDrop += lblCANBUSWorkCode_DragDrop;
         }
 
         private void FormConfig_Load(object sender, EventArgs e)
@@ -452,6 +455,22 @@ namespace AgOpenGPS
             {
                 DataGridViewRow row = (DataGridViewRow)e.Data.GetData(typeof(DataGridViewRow));
                 lblCANBUSSteerCode.Text = row.Cells[2].Value.ToString();
+            }
+        }
+
+        private void lblCANBUSWorkCode_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(DataGridViewRow)))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+        private void lblCANBUSWorkCode_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(DataGridViewRow)))
+            {
+                DataGridViewRow row = (DataGridViewRow)e.Data.GetData(typeof(DataGridViewRow));
+                lblCANBUSWorkCode.Text = row.Cells[2].Value.ToString();
             }
         }
         //private void btnCANRecord_Click(object sender, EventArgs e)

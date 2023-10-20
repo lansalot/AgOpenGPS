@@ -52,6 +52,7 @@ namespace AgOpenGPS
                 {
                     case 0xAD:
                         {
+                            // use the global bessage broadcast for this instead
                             FormTimedMessage form = new FormTimedMessage(2000, data[5].ToString(), " Brand received");
                             form.Show();
                             InterFormMessage = ("BRAND: " + data[5].ToString());

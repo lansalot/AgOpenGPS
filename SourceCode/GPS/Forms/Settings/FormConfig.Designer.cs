@@ -502,10 +502,19 @@
             this.ckSteering = new System.Windows.Forms.CheckBox();
             this.ckCANWheelAngleSensor = new System.Windows.Forms.CheckBox();
             this.gbCANBUSIntegrations = new System.Windows.Forms.GroupBox();
+            this.lblCANBUSWorkCode = new System.Windows.Forms.Label();
             this.lblCANBUSSteerCode = new System.Windows.Forms.Label();
             this.ckWork = new System.Windows.Forms.CheckBox();
             this.ckCANSteer = new System.Windows.Forms.CheckBox();
             this.dgCANBUSIDs = new System.Windows.Forms.DataGridView();
+            this.cBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLabel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCANBUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFilterID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colByte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOnStateAnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnReadCANConfigs = new System.Windows.Forms.Button();
             this.lblCANBUSBrand = new System.Windows.Forms.Label();
             this.btnSetBrand = new System.Windows.Forms.Button();
@@ -522,15 +531,6 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.cBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLabel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCANBUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFilterID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colByte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOnStateAnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblCANBUSWorkCode = new System.Windows.Forms.Label();
             this.panelLeftSideMenu.SuspendLayout();
             this.panelArduinoSubMenu.SuspendLayout();
             this.panelDataSourcesSubMenu.SuspendLayout();
@@ -9081,19 +9081,28 @@
             this.gbCANBUSIntegrations.TabStop = false;
             this.gbCANBUSIntegrations.Text = "CANBUS Integrations";
             // 
+            // lblCANBUSWorkCode
+            // 
+            this.lblCANBUSWorkCode.AllowDrop = true;
+            this.lblCANBUSWorkCode.Location = new System.Drawing.Point(537, 45);
+            this.lblCANBUSWorkCode.Name = "lblCANBUSWorkCode";
+            this.lblCANBUSWorkCode.Size = new System.Drawing.Size(290, 29);
+            this.lblCANBUSWorkCode.TabIndex = 3;
+            this.lblCANBUSWorkCode.Text = "[blank]";
+            // 
             // lblCANBUSSteerCode
             // 
             this.lblCANBUSSteerCode.AllowDrop = true;
             this.lblCANBUSSteerCode.Location = new System.Drawing.Point(137, 45);
             this.lblCANBUSSteerCode.Name = "lblCANBUSSteerCode";
-            this.lblCANBUSSteerCode.Size = new System.Drawing.Size(229, 29);
+            this.lblCANBUSSteerCode.Size = new System.Drawing.Size(261, 29);
             this.lblCANBUSSteerCode.TabIndex = 2;
             this.lblCANBUSSteerCode.Text = "[blank]";
             // 
             // ckWork
             // 
             this.ckWork.AutoSize = true;
-            this.ckWork.Location = new System.Drawing.Point(403, 45);
+            this.ckWork.Location = new System.Drawing.Point(444, 45);
             this.ckWork.Margin = new System.Windows.Forms.Padding(2);
             this.ckWork.Name = "ckWork";
             this.ckWork.Size = new System.Drawing.Size(88, 33);
@@ -9137,6 +9146,81 @@
             this.dgCANBUSIDs.Size = new System.Drawing.Size(813, 193);
             this.dgCANBUSIDs.TabIndex = 133;
             this.dgCANBUSIDs.Visible = false;
+            // 
+            // cBrand
+            // 
+            this.cBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.cBrand.DataPropertyName = "Brand";
+            this.cBrand.HeaderText = "Brand";
+            this.cBrand.MinimumWidth = 6;
+            this.cBrand.Name = "cBrand";
+            this.cBrand.ReadOnly = true;
+            this.cBrand.Width = 65;
+            // 
+            // cModel
+            // 
+            this.cModel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.cModel.DataPropertyName = "Model";
+            this.cModel.HeaderText = "Model";
+            this.cModel.MinimumWidth = 6;
+            this.cModel.Name = "cModel";
+            this.cModel.ReadOnly = true;
+            this.cModel.Width = 66;
+            // 
+            // colLabel
+            // 
+            this.colLabel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colLabel.DataPropertyName = "Label";
+            this.colLabel.HeaderText = "Label";
+            this.colLabel.MinimumWidth = 6;
+            this.colLabel.Name = "colLabel";
+            this.colLabel.ReadOnly = true;
+            this.colLabel.Width = 62;
+            // 
+            // colCANBUS
+            // 
+            this.colCANBUS.DataPropertyName = "CANBUS";
+            this.colCANBUS.HeaderText = "CANBUS";
+            this.colCANBUS.MinimumWidth = 6;
+            this.colCANBUS.Name = "colCANBUS";
+            this.colCANBUS.Visible = false;
+            this.colCANBUS.Width = 125;
+            // 
+            // colFilterID
+            // 
+            this.colFilterID.DataPropertyName = "FilterID";
+            this.colFilterID.HeaderText = "FilterID";
+            this.colFilterID.MinimumWidth = 6;
+            this.colFilterID.Name = "colFilterID";
+            this.colFilterID.Visible = false;
+            this.colFilterID.Width = 125;
+            // 
+            // colByte
+            // 
+            this.colByte.DataPropertyName = "Byte";
+            this.colByte.HeaderText = "Byte";
+            this.colByte.MinimumWidth = 6;
+            this.colByte.Name = "colByte";
+            this.colByte.Visible = false;
+            this.colByte.Width = 125;
+            // 
+            // colOnStateAnd
+            // 
+            this.colOnStateAnd.DataPropertyName = "OnStateAnd";
+            this.colOnStateAnd.HeaderText = "OnStateBit";
+            this.colOnStateAnd.MinimumWidth = 6;
+            this.colOnStateAnd.Name = "colOnStateAnd";
+            this.colOnStateAnd.Visible = false;
+            this.colOnStateAnd.Width = 125;
+            // 
+            // colOperation
+            // 
+            this.colOperation.DataPropertyName = "Operation";
+            this.colOperation.HeaderText = "Operation";
+            this.colOperation.MinimumWidth = 6;
+            this.colOperation.Name = "colOperation";
+            this.colOperation.Visible = false;
+            this.colOperation.Width = 125;
             // 
             // btnReadCANConfigs
             // 
@@ -9338,86 +9422,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // cBrand
-            // 
-            this.cBrand.DataPropertyName = "Brand";
-            this.cBrand.HeaderText = "Brand";
-            this.cBrand.MinimumWidth = 6;
-            this.cBrand.Name = "cBrand";
-            this.cBrand.ReadOnly = true;
-            this.cBrand.Width = 125;
-            // 
-            // cModel
-            // 
-            this.cModel.DataPropertyName = "Model";
-            this.cModel.HeaderText = "Model";
-            this.cModel.MinimumWidth = 6;
-            this.cModel.Name = "cModel";
-            this.cModel.ReadOnly = true;
-            this.cModel.Width = 125;
-            // 
-            // colLabel
-            // 
-            this.colLabel.DataPropertyName = "Label";
-            this.colLabel.HeaderText = "Label";
-            this.colLabel.MinimumWidth = 6;
-            this.colLabel.Name = "colLabel";
-            this.colLabel.ReadOnly = true;
-            this.colLabel.Width = 125;
-            // 
-            // colCANBUS
-            // 
-            this.colCANBUS.DataPropertyName = "CANBUS";
-            this.colCANBUS.HeaderText = "CANBUS";
-            this.colCANBUS.MinimumWidth = 6;
-            this.colCANBUS.Name = "colCANBUS";
-            this.colCANBUS.Width = 125;
-            // 
-            // colFilterID
-            // 
-            this.colFilterID.DataPropertyName = "FilterID";
-            this.colFilterID.HeaderText = "FilterID";
-            this.colFilterID.MinimumWidth = 6;
-            this.colFilterID.Name = "colFilterID";
-            this.colFilterID.Visible = false;
-            this.colFilterID.Width = 125;
-            // 
-            // colByte
-            // 
-            this.colByte.DataPropertyName = "Byte";
-            this.colByte.HeaderText = "Byte";
-            this.colByte.MinimumWidth = 6;
-            this.colByte.Name = "colByte";
-            this.colByte.Visible = false;
-            this.colByte.Width = 125;
-            // 
-            // colOnStateAnd
-            // 
-            this.colOnStateAnd.DataPropertyName = "OnStateAnd";
-            this.colOnStateAnd.HeaderText = "OnStateBit";
-            this.colOnStateAnd.MinimumWidth = 6;
-            this.colOnStateAnd.Name = "colOnStateAnd";
-            this.colOnStateAnd.Visible = false;
-            this.colOnStateAnd.Width = 125;
-            // 
-            // colOperation
-            // 
-            this.colOperation.DataPropertyName = "Operation";
-            this.colOperation.HeaderText = "Operation";
-            this.colOperation.MinimumWidth = 6;
-            this.colOperation.Name = "colOperation";
-            this.colOperation.Visible = false;
-            this.colOperation.Width = 125;
-            // 
-            // lblCANBUSWorkCode
-            // 
-            this.lblCANBUSWorkCode.AllowDrop = true;
-            this.lblCANBUSWorkCode.Location = new System.Drawing.Point(509, 45);
-            this.lblCANBUSWorkCode.Name = "lblCANBUSWorkCode";
-            this.lblCANBUSWorkCode.Size = new System.Drawing.Size(229, 29);
-            this.lblCANBUSWorkCode.TabIndex = 3;
-            this.lblCANBUSWorkCode.Text = "[blank]";
             // 
             // FormConfig
             // 
@@ -10076,6 +10080,7 @@
         private System.Windows.Forms.CheckBox ckCANWheelAngleSensor;
         private System.Windows.Forms.Label lblCANInfo;
         private System.Windows.Forms.Label lblCANBUSSteerCode;
+        private System.Windows.Forms.Label lblCANBUSWorkCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn cBrand;
         private System.Windows.Forms.DataGridViewTextBoxColumn cModel;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLabel;
@@ -10084,6 +10089,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colByte;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOnStateAnd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
-        private System.Windows.Forms.Label lblCANBUSWorkCode;
     }
 }
