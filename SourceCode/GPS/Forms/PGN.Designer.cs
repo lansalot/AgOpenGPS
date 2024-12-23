@@ -17,7 +17,7 @@ namespace AgOpenGPS
 
             public void LoadLatitudeLongitude(double lat, double lon)
             {
-                
+
                 int encodedAngle = (int)(lat * (0x7FFFFFFF / 90.0));
                 //double angle = (encodedAngle / (0x7FFFFFFF / 90.0));
 
@@ -44,7 +44,7 @@ namespace AgOpenGPS
             public int status = 7;
             public int steerAngleLo = 8;
             public int steerAngleHi = 9;
-            public int lineDistance  = 10;
+            public int lineDistance = 10;
             public int sc1to8 = 11;
             public int sc9to16 = 12;
 
@@ -98,7 +98,7 @@ namespace AgOpenGPS
                 pgn[lowPWM] = Properties.Settings.Default.setAS_lowSteerPWM;
                 pgn[minPWM] = Properties.Settings.Default.setAS_minSteerPWM;
                 pgn[countsPerDegree] = Properties.Settings.Default.setAS_countsPerDegree;
-                pgn[wasOffsetHi] = unchecked((byte)(Properties.Settings.Default.setAS_wasOffset >> 8));;
+                pgn[wasOffsetHi] = unchecked((byte)(Properties.Settings.Default.setAS_wasOffset >> 8)); ;
                 pgn[wasOffsetLo] = unchecked((byte)(Properties.Settings.Default.setAS_Kp));
                 pgn[ackerman] = Properties.Settings.Default.setAS_ackerman;
             }
@@ -121,7 +121,7 @@ namespace AgOpenGPS
             public int maxPulse = 6;
             public int minSpeed = 7;
             public int set1 = 8;
-            public int angVel  = 9;
+            public int angVel = 9;
             //public int  = 10;
             //public int  = 11;
             //public int  = 12;
@@ -175,7 +175,7 @@ namespace AgOpenGPS
             public int sc9to16 = 6;
             public int sc17to24 = 7;
             public int sc25to32 = 8;
-            public int sc33to40 = 9; 
+            public int sc33to40 = 9;
             public int sc41to48 = 10;
             public int sc49to56 = 11;
             public int sc57to64 = 12;
@@ -206,7 +206,7 @@ namespace AgOpenGPS
             public int user1 = 9;
             public int user2 = 10;
             public int user3 = 11;
-            public int user4  = 12;
+            public int user4 = 12;
 
             // PGN  - 127.239 0x7FEF
             int crc = 0;
@@ -346,16 +346,16 @@ namespace AgOpenGPS
                                         0, 0xCC };
 
             //where in the pgn is which pin
-            public int sec0Lo  = 5;
-            public int sec1Lo  = 7;
-            public int sec2Lo  = 9;
-            public int sec3Lo  = 11;
-            public int sec4Lo  = 13;
-            public int sec5Lo  = 15;
-            public int sec6Lo  = 17;
-            public int sec7Lo  = 19;
-            public int sec8Lo  = 21;
-            public int sec9Lo  = 23;
+            public int sec0Lo = 5;
+            public int sec1Lo = 7;
+            public int sec2Lo = 9;
+            public int sec3Lo = 11;
+            public int sec4Lo = 13;
+            public int sec5Lo = 15;
+            public int sec6Lo = 17;
+            public int sec7Lo = 19;
+            public int sec8Lo = 21;
+            public int sec9Lo = 23;
             public int sec10Lo = 25;
             public int sec11Lo = 27;
             public int sec12Lo = 29;
@@ -363,16 +363,16 @@ namespace AgOpenGPS
             public int sec14Lo = 33;
             public int sec15Lo = 35;
 
-            public int sec0Hi  = 6;
-            public int sec1Hi  = 8;
-            public int sec2Hi  = 10;
-            public int sec3Hi  = 12;
-            public int sec4Hi  = 14;
-            public int sec5Hi  = 16;
-            public int sec6Hi  = 18;
-            public int sec7Hi  = 20;
-            public int sec8Hi  = 22;
-            public int sec9Hi  = 24;
+            public int sec0Hi = 6;
+            public int sec1Hi = 8;
+            public int sec2Hi = 10;
+            public int sec3Hi = 12;
+            public int sec4Hi = 14;
+            public int sec5Hi = 16;
+            public int sec6Hi = 18;
+            public int sec7Hi = 20;
+            public int sec8Hi = 22;
+            public int sec9Hi = 24;
             public int sec10Hi = 26;
             public int sec11Hi = 28;
             public int sec12Hi = 30;
@@ -406,7 +406,7 @@ namespace AgOpenGPS
                 pgn[sec2Hi] = 0;
                 pgn[sec3Hi] = 0;
                 pgn[sec4Hi] = 0;
-                pgn[sec5Hi] = 0; 
+                pgn[sec5Hi] = 0;
                 pgn[sec6Hi] = 0;
                 pgn[sec7Hi] = 0;
                 pgn[sec8Hi] = 0;
@@ -418,7 +418,7 @@ namespace AgOpenGPS
                 pgn[sec14Hi] = 0;
                 pgn[sec15Hi] = 0;
 
-                pgn[numSections] = 0;   
+                pgn[numSections] = 0;
             }
 
             public void Reset()
@@ -426,6 +426,77 @@ namespace AgOpenGPS
             }
         }
 
+        public class CPGN_ISOBUS // ISOBUS (E6 / 230)
+        {
+            /// <summary>
+            /// PGN - 230 - E6
+            /// </summary>
+            public byte[] pgn; //= new byte[] {0x80, 0x81, 0x7F, 0xE6, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0xCC}
+            public int numberOfSections = 6; // default number of sections
+            public int actualSectionStates = 6;
+            public int SetPointSectionStates = 7;
+
+            public int sectionOffset = 8;
+
+            public CPGN_ISOBUS(int sections)
+            {
+                numberOfSections = sections;
+                pgn = new byte[8 + 2 * sections + 1]; // 8 bytes header, 2 bytes per section(why?), 1 byte CRC
+                pgn[0] = 0x80; // standard AIO header
+                pgn[1] = 0x81; // PGN header
+                pgn[2] = 0x7F; // PGN header
+                pgn[3] = 0xE6; // PGN header
+                // what's that 36 all about above?
+                ResetSections();
+            }
+
+            /// <summary>
+            /// Reset all section widths to 0 within the predefined PGN structure
+            /// </summary>
+            public void ResetSections()
+            {
+                Buffer.BlockCopy(new byte[pgn.Length -9], 0, pgn, 8, pgn.Length - 9);
+            }
+
+            /// <summary>
+            /// Set section widths based on incoming data
+            /// </summary>
+            /// <param name="incomingData">Incoming data (2 bytes per section width)</param>
+            public void SetSectionsFromIncoming(byte[] incomingData)
+            {
+                // incoming from TC? Check this out in wireshark LUA tmrw
+                if (incomingData.Length % 2 != 0)
+                    throw new ArgumentException("Invalid incoming data length");
+
+                int offsetBase = sectionOffset; // Starting position for Section1 in PGN
+                int sectionsToSet = incomingData.Length / 2;
+
+                for (int i = 0; i < sectionsToSet; i++)
+                {
+                    int offset = offsetBase + i * 2;
+                    if (offset + 1 >= pgn.Length - 1) break; // Prevent overflow, leave CRC intact
+
+                    int sectionWidth = incomingData[i * 2] + (incomingData[i * 2 + 1] << 8);
+
+                    // Set the section width in the PGN
+                    pgn[offset] = (byte)(sectionWidth & 0xFF);        // LSB
+                    pgn[offset + 1] = (byte)((sectionWidth >> 8) & 0xFF); // MSB
+                }
+            }
+
+            /// <summary>
+            /// Compute CRC and update the last byte in the PGN
+            /// </summary>
+            public void MakeCRC() // when is this used? Not so far...
+            {
+                int crc = 0;
+                for (int i = 2; i < pgn.Length - 1; i++) // CRC calculation excludes the last byte
+                {
+                    crc += pgn[i];
+                }
+                pgn[pgn.Length - 1] = (byte)(crc & 0xFF);
+            }
+        }
         public class CPGN_E4
         {
             /// <summary>
@@ -539,6 +610,11 @@ namespace AgOpenGPS
         /// <summary>
         /// Section dimensions PGN - 228 - E4
         /// </summary>
+        public CPGN_ISOBUS pgnISOBUS = new CPGN_ISOBUS(6);
+
+        /// <summary>
+        /// Section dimensions PGN - 228 - E4
+        /// </summary>
         public CPGN_E4 p_228 = new CPGN_E4();
 
         /// <summary>
@@ -570,4 +646,4 @@ namespace AgOpenGPS
 
     }
 }
-    
+

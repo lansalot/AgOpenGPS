@@ -741,6 +741,23 @@ namespace AgOpenGPS
                 p_229.pgn[p_229.sc9to16] = p_254.pgn[p_254.sc9to16];
                 p_229.pgn[p_229.toolLSpeed] = unchecked((byte)(tool.farLeftSpeed * 10));
                 p_229.pgn[p_229.toolRSpeed] = unchecked((byte)(tool.farRightSpeed * 10));
+                // ^^^ Andrew, this isn't right for p229 at all, sections are the first 8 bytes
+
+                // Andrew, here you're treating this like E5 (64-sections) rather than ISOBUS
+                for (int curSect = 0; curSect < tool.numOfSections; curSect++) {
+                    // why the 2-byte thing here?
+                    // oops pgnISOBUS.pgn[8 * curSect] = section[curSect].isSectionOn ? (byte)1 : (byte)0; if single byte per section
+                    int byteIndex = curSect / 8;       // Determine which byte in pgn[] to use
+                    int bitIndex = curSect % 8;
+                    if (section[curSect].isSectionOn)
+                    {
+                        pgnISOBUS.pgn[byteIndex] |= (byte)(1 << bitIndex);
+                    }
+                    else
+                    {
+                        pgnISOBUS.pgn[byteIndex] &= (byte)~(1 << bitIndex);
+                    }
+                } 
             }
             else
             {
