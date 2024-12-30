@@ -16,7 +16,7 @@ namespace AgOpenGPS
         //Off, Manual, and Auto, 3 states possible
         public btnStates manualBtnState = btnStates.Off;
         public btnStates autoBtnState = btnStates.Off;
-        
+
         //Section Manual and Auto buttons on right side
         private void btnSectionMasterManual_Click(object sender, EventArgs e)
         {
@@ -49,6 +49,8 @@ namespace AgOpenGPS
         private void btnSectionMasterAuto_Click(object sender, EventArgs e)
         {
             //turn off manual if on
+            CPGN_ISOBUS pgnISOBUS = new CPGN_ISOBUS(tool.numOfSections);
+
             manualBtnState = btnStates.Off;
             btnSectionMasterManual.Image = Properties.Resources.ManualOff;
 
@@ -59,7 +61,7 @@ namespace AgOpenGPS
 
                     autoBtnState = btnStates.Auto;
                     btnSectionMasterAuto.Image = Properties.Resources.SectionMasterOn;
-                    if (sounds.isSectionsSoundOn)sounds.sndSectionOn.Play();
+                    if (sounds.isSectionsSoundOn) sounds.sndSectionOn.Play();
                     break;
 
                 case btnStates.Auto:
@@ -90,32 +92,32 @@ namespace AgOpenGPS
         //zone buttons
         private void btnZone1_Click(object sender, EventArgs e)
         {
-            btnStates state = GetNextState(section[tool.zoneRanges[1]-1].sectionBtnState);
+            btnStates state = GetNextState(section[tool.zoneRanges[1] - 1].sectionBtnState);
             IndividualZoneAndButtonToState(state, 0, tool.zoneRanges[1], btnZone1);
         }
         private void btnZone2_Click(object sender, EventArgs e)
         {
-            btnStates state = GetNextState(section[tool.zoneRanges[2]-1].sectionBtnState);
+            btnStates state = GetNextState(section[tool.zoneRanges[2] - 1].sectionBtnState);
             IndividualZoneAndButtonToState(state, tool.zoneRanges[1], tool.zoneRanges[2], btnZone2);
         }
         private void btnZone3_Click(object sender, EventArgs e)
         {
-            btnStates state = GetNextState(section[tool.zoneRanges[3]-1].sectionBtnState);
+            btnStates state = GetNextState(section[tool.zoneRanges[3] - 1].sectionBtnState);
             IndividualZoneAndButtonToState(state, tool.zoneRanges[2], tool.zoneRanges[3], btnZone3);
         }
         private void btnZone4_Click(object sender, EventArgs e)
         {
-            btnStates state = GetNextState(section[tool.zoneRanges[4]-1].sectionBtnState);
+            btnStates state = GetNextState(section[tool.zoneRanges[4] - 1].sectionBtnState);
             IndividualZoneAndButtonToState(state, tool.zoneRanges[3], tool.zoneRanges[4], btnZone4);
         }
         private void btnZone5_Click(object sender, EventArgs e)
         {
-            btnStates state = GetNextState(section[tool.zoneRanges[5]-1].sectionBtnState);
+            btnStates state = GetNextState(section[tool.zoneRanges[5] - 1].sectionBtnState);
             IndividualZoneAndButtonToState(state, tool.zoneRanges[4], tool.zoneRanges[5], btnZone5);
         }
         private void btnZone6_Click(object sender, EventArgs e)
         {
-            btnStates state = GetNextState(section[tool.zoneRanges[6]-1].sectionBtnState);
+            btnStates state = GetNextState(section[tool.zoneRanges[6] - 1].sectionBtnState);
             IndividualZoneAndButtonToState(state, tool.zoneRanges[5], tool.zoneRanges[6], btnZone6);
         }
         private void btnZone7_Click(object sender, EventArgs e)
@@ -263,7 +265,7 @@ namespace AgOpenGPS
                         btn.BackColor = Color.ForestGreen;
                         btn.ForeColor = Color.White;
                     }
-                    break;            
+                    break;
 
                 case btnStates.On:
                     if (isDay)
@@ -581,7 +583,7 @@ namespace AgOpenGPS
             int buttonWidth = oglButtonWidth / tool.zones;
             if (buttonWidth > buttonMaxWidth) buttonWidth = buttonMaxWidth;
 
-            btnZone1.Size = btnZone2.Size = btnZone3.Size = btnZone4.Size 
+            btnZone1.Size = btnZone2.Size = btnZone3.Size = btnZone4.Size
                 = btnZone5.Size = btnZone6.Size = btnZone7.Size = btnZone8.Size
                 = new System.Drawing.Size(buttonWidth, buttonHeight);
 
@@ -680,7 +682,7 @@ namespace AgOpenGPS
             double leftside = tool.width / -2.0;
             double defaultSectionWidth = Properties.Settings.Default.setTool_sectionWidthMulti;
             double offset = Settings.Default.setVehicle_toolOffset;
-            section[0].positionLeft = leftside+offset;
+            section[0].positionLeft = leftside + offset;
 
             for (int i = 0; i < tool.numOfSections - 1; i++)
             {
@@ -730,7 +732,7 @@ namespace AgOpenGPS
                 for (int j = 8; j < 16; j++)
                 {
                     if (section[j].isSectionOn)
-                        number |= 1 << (j-8);
+                        number |= 1 << (j - 8);
                 }
                 p_254.pgn[p_254.sc9to16] = unchecked((byte)number);
 
@@ -744,20 +746,21 @@ namespace AgOpenGPS
                 // ^^^ Andrew, this isn't right for p229 at all, sections are the first 8 bytes
 
                 // Andrew, here you're treating this like E5 (64-sections) rather than ISOBUS
-                for (int curSect = 0; curSect < tool.numOfSections; curSect++) {
-                    // why the 2-byte thing here?
-                    // oops pgnISOBUS.pgn[8 * curSect] = section[curSect].isSectionOn ? (byte)1 : (byte)0; if single byte per section
-                    int byteIndex = curSect / 8;       // Determine which byte in pgn[] to use
-                    int bitIndex = curSect % 8;
+                int byteIndex = 5;
+                for (int curSect = 0; curSect < tool.numOfSections; curSect++)
+                {
+                    // let's get straight into our 2-byte section info
                     if (section[curSect].isSectionOn)
                     {
-                        pgnISOBUS.pgn[byteIndex] |= (byte)(1 << bitIndex);
+                        pgnISOBUS.pgn[byteIndex] = 1;
                     }
                     else
                     {
-                        pgnISOBUS.pgn[byteIndex] &= (byte)~(1 << bitIndex);
+                        pgnISOBUS.pgn[byteIndex] = 0;
                     }
-                } 
+                    byteIndex += 2;
+                }
+                pgnISOBUS.pgn[4] = (byte)(tool.numOfSections * 2);
             }
             else
             {

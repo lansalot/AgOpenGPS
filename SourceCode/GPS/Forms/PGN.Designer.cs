@@ -441,11 +441,11 @@ namespace AgOpenGPS
             public CPGN_ISOBUS(int sections)
             {
                 numberOfSections = sections;
-                pgn = new byte[8 + 2 * sections + 1]; // 8 bytes header, 2 bytes per section(why?), 1 byte CRC
+                pgn = new byte[5 + (2 * sections) + 1]; // 8 bytes header, 2 bytes per section(why?), 1 byte CRC
                 pgn[0] = 0x80; // standard AIO header
                 pgn[1] = 0x81; // PGN header
-                pgn[2] = 0x7F; // PGN header
-                pgn[3] = 0xE6; // PGN header
+                pgn[2] = 0x70; // PGN header
+                pgn[3] = 0x00; // PGN header
                 // what's that 36 all about above?
                 ResetSections();
             }
