@@ -758,9 +758,9 @@ namespace AgOpenGPS
                     {
                         pgnISOBUS.pgn[byteIndex] = 0;
                     }
-                    byteIndex += 2;
+                    byteIndex++;
                 }
-                pgnISOBUS.pgn[4] = (byte)(tool.numOfSections * 2);
+                pgnISOBUS.pgn[4] = (byte)(tool.numOfSections);
             }
             else
             {

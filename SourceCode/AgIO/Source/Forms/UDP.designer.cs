@@ -187,7 +187,7 @@ namespace AgIO
             {
                 switch (data[3])
                 {
-                    case 0x70: // ISOBUS TC
+                    case 0x80: // ISOBUS TC
                         {
                             break;
                         }

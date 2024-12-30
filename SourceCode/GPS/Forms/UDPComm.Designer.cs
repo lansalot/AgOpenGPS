@@ -387,7 +387,7 @@ namespace AgOpenGPS
                         crc += byteData[i];
                     }
                     byteData[byteData.Length - 1] = (byte)crc;
-                    if (byteData[2] == 0x70) {
+                    if (byteData[2] == 0x70 && byteData[3] == 0x80) {
                         Debug.WriteLine("Send PGN 0x70");
                     }
                     loopBackSocket.BeginSendTo(byteData, 0, byteData.Length, SocketFlags.None,
