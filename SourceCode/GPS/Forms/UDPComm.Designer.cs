@@ -53,6 +53,13 @@ namespace AgOpenGPS
 
                 switch (data[3])
                 {
+                    case 0x80:
+                        {
+                            pgnISOBUS.numberOfSections = data[4];
+                            Buffer.BlockCopy(data,5,pgnISOBUS.pgn,5,data[4]);
+                            btnSectionMasterManual_Click(this, EventArgs.Empty);
+                            break;
+                        }
                     case 0xD6:
                         {
                             if (udpWatch.ElapsedMilliseconds < udpWatchLimit)

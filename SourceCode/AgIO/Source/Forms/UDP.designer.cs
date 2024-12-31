@@ -347,10 +347,6 @@ namespace AgIO
             {
                 if (data[0] == 0x80 && data[1] == 0x81)
                 {
-                    if (data[2] == 0x70)
-                    {
-                        throw new Exception("UDP Error: 0x70");
-                    }
                     //module return via udp sent to AOG
                     SendToLoopBackMessageAOG(data);
 

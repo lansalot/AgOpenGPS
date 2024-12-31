@@ -6,6 +6,7 @@ using AgOpenGPS.Properties;
 using System.Globalization;
 using System.IO;
 using System.Media;
+using System.Linq;
 
 namespace AgOpenGPS
 {
@@ -42,14 +43,31 @@ namespace AgOpenGPS
 
             //go set the butons and section states
             if (tool.isSectionsNotZones)
+            {
                 AllSectionsAndButtonsToState(manualBtnState);
+                // this should only trigger if an ISOBUS request was sent - it currently happens when yellow button pressed
+                for (int i = 1; i <= pgnISOBUS.numberOfSections; i++) // buttons start numbering at 1 in UI :(
+                {
+                    if (pgnISOBUS.pgn[4+i] == 1)
+                    {
+                        IndividualSectionAndButonToState(btnStates.On, i - 1, this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button);
+                        section[i - 1].isSectionOn = true;
+                        section[i - 1].isSectionRequiredOn = true;
+                    } else
+                    {
+                        IndividualSectionAndButonToState(btnStates.Off, i - 1, this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button);
+                        section[i - 1].isSectionOn = false;
+                        section[i - 1].isSectionRequiredOn = false;
+                    }
+                }
+            }
             else
                 AllZonesAndButtonsToState(manualBtnState);
         }
         private void btnSectionMasterAuto_Click(object sender, EventArgs e)
         {
+            CPGN_ISOBUS pgnISOBUS = new CPGN_ISOBUS(tool.numOfSections); // just a placeholder, will set this on Section-update in settings in time
             //turn off manual if on
-            CPGN_ISOBUS pgnISOBUS = new CPGN_ISOBUS(tool.numOfSections);
 
             manualBtnState = btnStates.Off;
             btnSectionMasterManual.Image = Properties.Resources.ManualOff;
