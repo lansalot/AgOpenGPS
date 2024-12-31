@@ -763,6 +763,8 @@ namespace AgOpenGPS
                 p_229.pgn[p_229.toolRSpeed] = unchecked((byte)(tool.farRightSpeed * 10));
                 // ^^^ Andrew, this isn't right for p229 at all, sections are the first 8 bytes
 
+                if(pgnISOBUS.numberOfSections != tool.numOfSections)
+                    pgnISOBUS = new CPGN_ISOBUS(tool.numOfSections); 
                 // Andrew, here you're treating this like E5 (64-sections) rather than ISOBUS
                 int byteIndex = 5;
                 for (int curSect = 0; curSect < tool.numOfSections; curSect++)
@@ -778,7 +780,6 @@ namespace AgOpenGPS
                     }
                     byteIndex++;
                 }
-                pgnISOBUS.pgn[4] = (byte)(tool.numOfSections);
             }
             else
             {

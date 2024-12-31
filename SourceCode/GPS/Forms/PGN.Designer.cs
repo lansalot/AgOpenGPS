@@ -445,6 +445,9 @@ namespace AgOpenGPS
                 pgn[1] = 0x81; // PGN header
                 pgn[2] = 0x70; // PGN header
                 pgn[3] = 0x00; // PGN header
+                pgn[4] = (byte)(sections);
+                //pgn[5..] section state 0 off 1 on
+                
                 // what's that 36 all about above?
                 ResetSections();
             }
