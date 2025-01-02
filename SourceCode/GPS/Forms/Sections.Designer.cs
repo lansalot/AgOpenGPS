@@ -117,7 +117,7 @@ namespace AgOpenGPS
         {
             for (int i = 1; i <= 16; i++)
             {
-                IndividualSectionAndButonToState(state, i - 1, this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button);
+                IndividualSectionAndButonToState(state, i - 1, this.Controls.Find("btnSection" + i.ToString() + "Man", true).First() as Button);
             }
         }
 
@@ -171,19 +171,20 @@ namespace AgOpenGPS
         public void HideSections()
         {
             for (int i = 1; i <= 16; i++)
-                (this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button).Visible = false;
+                (this.Controls.Find("btnSection" + i.ToString() + "Man", true).First() as Button).Visible = false;
         }
         public void HideZones()
         {
             for (int i = 1; i <= 8; i++)
-                (this.Controls.Find("btnZone" + i.ToString(), true).FirstOrDefault() as Button).Visible = false;
+                (this.Controls.Find("btnZone" + i.ToString(), true).First() as Button).Visible = false;
         }
 
         public void LineUpIndividualSectionBtns()
         {
             if (!isJobStarted)
             {
-                HideSections(); HideZones();
+                HideSections();
+                HideZones();
                 return;
             }
             HideZones();
@@ -227,7 +228,7 @@ namespace AgOpenGPS
                 Size size = new System.Drawing.Size(buttonWidth, buttonHeight);
                 for (int i = 1; i <= 16; i++)
                 {
-                    Button btn = this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button;
+                    Button btn = this.Controls.Find("btnSection" + i.ToString() + "Man", true).First() as Button;
                     btn.Size = size;
                     btn.Top = top;
                     if (i == 1)
@@ -236,7 +237,7 @@ namespace AgOpenGPS
                     }
                     else
                     {
-                        Button btnPrev = this.Controls.Find("btnSection" + (i - 1).ToString() + "Man", true).FirstOrDefault() as Button;
+                        Button btnPrev = this.Controls.Find("btnSection" + (i - 1).ToString() + "Man", true).First() as Button;
                         btn.Left = btnPrev.Left + btnPrev.Size.Width;
                     }
                     btn.Visible = tool.numOfSections > (i - 1);
@@ -258,7 +259,7 @@ namespace AgOpenGPS
                     IndividualZoneAndButtonToState(state,
                         tool.zoneRanges[i - 1],
                         tool.zoneRanges[i],
-                        this.Controls.Find("btnZone" + i.ToString(), true).FirstOrDefault() as Button
+                        this.Controls.Find("btnZone" + i.ToString(), true).First() as Button
                     );
                 }
             }
@@ -320,7 +321,8 @@ namespace AgOpenGPS
         {
             if (!isJobStarted)
             {
-                HideSections(); HideZones();
+                HideSections();
+                HideZones();
                 return;
             }
 
@@ -360,7 +362,7 @@ namespace AgOpenGPS
 
             for (int i = 1; i <= 8; i++)
             {
-                Button btn = this.Controls.Find("btnZone" + i.ToString(), true).FirstOrDefault() as Button;
+                Button btn = this.Controls.Find("btnZone" + i.ToString(), true).First() as Button;
                 btn.Visible = tool.zones > (i - 1);
                 btn.Top = top;
                 btn.Size = size;
@@ -377,7 +379,7 @@ namespace AgOpenGPS
                 }
                 else
                 {
-                    btn.Left = this.Controls.Find("btnZone" + (i - 1).ToString(), true).FirstOrDefault().Left + btnZone1.Size.Width;
+                    btn.Left = this.Controls.Find("btnZone" + (i - 1).ToString(), true).First().Left + btnZone1.Size.Width;
                 }
             }
         }
@@ -604,7 +606,7 @@ namespace AgOpenGPS
                             if (tool.numOfSections > i && (mc.ss[mc.swOnGr0] & (1 << i)) == (1 << i))
                             {
                                 if (section[i].sectionBtnState != btnStates.Auto) section[i].sectionBtnState = btnStates.Auto;
-                                (this.Controls.Find("btnSection" + (i + 1).ToString() + "Man", true).FirstOrDefault() as Button).PerformClick();
+                                (this.Controls.Find("btnSection" + (i + 1).ToString() + "Man", true).First() as Button).PerformClick();
                             }
                         }
                         mc.ssP[mc.swOnGr0] = mc.ss[mc.swOnGr0];
@@ -620,7 +622,7 @@ namespace AgOpenGPS
                             if (tool.numOfSections > (i + 8) && (mc.ss[mc.swOnGr1] & (1 << i)) == (1 << i))
                             {
                                 if (section[i + 8].sectionBtnState != btnStates.Auto) section[i + 8].sectionBtnState = btnStates.Auto;
-                                (this.Controls.Find("btnSection" + (i + 9).ToString() + "Man", true).FirstOrDefault() as Button).PerformClick();
+                                (this.Controls.Find("btnSection" + (i + 9).ToString() + "Man", true).First() as Button).PerformClick();
                             }
                         }
                         mc.ssP[mc.swOnGr1] = mc.ss[mc.swOnGr1];
@@ -638,7 +640,7 @@ namespace AgOpenGPS
                             {
                                 if ((section[i].sectionBtnState == btnStates.Off) && (mc.ssP[mc.swOffGr0] & (1 << i)) == (1 << i) & ((mc.ss[mc.swOffGr0] & (1 << i)) != (1 << i)))
                                 {
-                                    (this.Controls.Find("btnSection" + (i + 1).ToString() + "Man", true).FirstOrDefault() as Button).PerformClick();
+                                    (this.Controls.Find("btnSection" + (i + 1).ToString() + "Man", true).First() as Button).PerformClick();
                                 }
                             }
                         }
@@ -654,7 +656,7 @@ namespace AgOpenGPS
                             {
                                 if ((section[i + 8].sectionBtnState == btnStates.Off) && ((mc.ssP[mc.swOffGr1] & (1 << i)) == (1 << i)) & ((mc.ss[mc.swOffGr1] & (1 << i)) == (1 << i)))
                                 {
-                                    (this.Controls.Find("btnSection" + (i + 9).ToString() + "Man", true).FirstOrDefault() as Button).PerformClick();
+                                    (this.Controls.Find("btnSection" + (i + 9).ToString() + "Man", true).First() as Button).PerformClick();
                                 }
                             }
                         }
@@ -670,7 +672,7 @@ namespace AgOpenGPS
                             if ((section[i].sectionBtnState != btnStates.Off) && (mc.ss[mc.swOffGr0] & (1 << i)) == (1 << i))
                             {
                                 section[i].sectionBtnState = btnStates.On;
-                                (this.Controls.Find("btnSection" + (i + 1).ToString() + "Man", true).FirstOrDefault() as Button).PerformClick();
+                                (this.Controls.Find("btnSection" + (i + 1).ToString() + "Man", true).First() as Button).PerformClick();
                             }
                         }
                     } // if swOFFLo !=0
@@ -683,7 +685,7 @@ namespace AgOpenGPS
                             if ((section[i + 8].sectionBtnState != btnStates.Off) && (mc.ss[mc.swOffGr1] & (1 << i)) == (1 << i))
                             {
                                 section[i + 8].sectionBtnState = btnStates.On;
-                                (this.Controls.Find("btnSection" + (i + 9).ToString() + "Man", true).FirstOrDefault() as Button).PerformClick();
+                                (this.Controls.Find("btnSection" + (i + 9).ToString() + "Man", true).First() as Button).PerformClick();
                             }
                         }
                     } // if swOFFHi !=0
@@ -750,7 +752,7 @@ namespace AgOpenGPS
 
         private void PerformZoneClick(int Btn)
         {
-            (this.Controls.Find("btnZone" + (Btn + 1).ToString(), true).FirstOrDefault() as Button).PerformClick();
+            (this.Controls.Find("btnZone" + (Btn + 1).ToString(), true).First() as Button).PerformClick();
         }
     }
 }
