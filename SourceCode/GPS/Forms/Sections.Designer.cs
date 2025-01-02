@@ -106,7 +106,7 @@ namespace AgOpenGPS
         //individual buttons for sections
         private void btnSectionXMan_Click(object sender, EventArgs e)
         {
-            int sectionX = Convert.ToInt32(((Button)sender).Text);
+            int sectionX = int.Parse(((Button)sender).Text);
             btnStates state = GetNextState(section[sectionX - 1].sectionBtnState);
             IndividualSectionAndButonToState(state, sectionX - 1, (Button)sender);
         }
@@ -168,29 +168,25 @@ namespace AgOpenGPS
             }
         }
 
-        public enum SectionAndZoneVisibility { Zones, Sections, Both }
-        public void HideSectionsAndZones(SectionAndZoneVisibility szv)
+        public void HideSections()
         {
             for (int i = 1; i <= 16; i++)
-            {
-                if (szv == SectionAndZoneVisibility.Sections || szv == SectionAndZoneVisibility.Both)
-                {
-                    (this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button).Visible = false;
-                }
-                if (i <= 8 && (szv == SectionAndZoneVisibility.Zones || szv == SectionAndZoneVisibility.Both))
-                {
-                    (this.Controls.Find("btnZone" + i.ToString(), true).FirstOrDefault() as Button).Visible = false;
-                }
-            }
+                (this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button).Visible = false;
         }
+        public void HideZones()
+        {
+            for (int i = 1; i <= 8; i++)
+                (this.Controls.Find("btnZone" + i.ToString(), true).FirstOrDefault() as Button).Visible = false;
+        }
+
         public void LineUpIndividualSectionBtns()
         {
             if (!isJobStarted)
             {
-                HideSectionsAndZones(SectionAndZoneVisibility.Both);
+                HideSections(); HideZones();
                 return;
             }
-            HideSectionsAndZones(SectionAndZoneVisibility.Zones);
+            HideZones();
 
             int oglCenter = isPanelBottomHidden ? oglCenter = oglMain.Width / 2 + 30 : statusStripLeft.Width + oglMain.Width / 2;
 
@@ -227,9 +223,7 @@ namespace AgOpenGPS
                 int oglButtonWidth = oglMain.Width * 3 / 4;
 
                 int buttonWidth = Math.Min(oglButtonWidth / tool.numOfSections, buttonMaxWidth);
-                //if (buttonWidth > buttonMaxWidth) buttonWidth = buttonMaxWidth;
 
-                Button btnPrev = this.Controls.Find("btnSection1Man", true).FirstOrDefault() as Button;
                 Size size = new System.Drawing.Size(buttonWidth, buttonHeight);
                 for (int i = 1; i <= 16; i++)
                 {
@@ -242,7 +236,7 @@ namespace AgOpenGPS
                     }
                     else
                     {
-                        btnPrev = this.Controls.Find("btnSection" + (i - 1).ToString() + "Man", true).FirstOrDefault() as Button;
+                        Button btnPrev = this.Controls.Find("btnSection" + (i - 1).ToString() + "Man", true).FirstOrDefault() as Button;
                         btn.Left = btnPrev.Left + btnPrev.Size.Width;
                     }
                     btn.Visible = tool.numOfSections > (i - 1);
@@ -326,7 +320,7 @@ namespace AgOpenGPS
         {
             if (!isJobStarted)
             {
-                HideSectionsAndZones(SectionAndZoneVisibility.Both);
+                HideSections(); HideZones();
                 return;
             }
 
@@ -362,7 +356,6 @@ namespace AgOpenGPS
             //if (tool.zones == 0) return;
             int oglButtonWidth = oglMain.Width * 3 / 4;
             int buttonWidth = Math.Min(oglButtonWidth / tool.zones,buttonMaxWidth);
-            Button btnPrev = null;
             Size size = new System.Drawing.Size(buttonWidth, buttonHeight);
 
             for (int i = 1; i <= 8; i++)
@@ -386,8 +379,6 @@ namespace AgOpenGPS
                 {
                     btn.Left = this.Controls.Find("btnZone" + (i - 1).ToString(), true).FirstOrDefault().Left + btnZone1.Size.Width;
                 }
-                btnPrev = this.Controls.Find("btnZone" + i.ToString(), true).FirstOrDefault() as Button;
-
             }
         }
 
@@ -396,18 +387,6 @@ namespace AgOpenGPS
         {
             if (tool.isSectionsNotZones)
             {
-                // optimisation fail - for now
-                //for (int i = 0; i < 15; i++)
-                //{
-                //    PropertyInfo prop = typeof(Settings).GetProperty($"setSection_position{i + 1}");
-                //    //section[i].positionLeft = prop.GetValue(Settings.Default) + Settings.Default.setVehicle_toolOffset;
-                //    section[i].positionLeft = Convert.ToDouble(typeof(Settings).
-                //        GetProperty($"setSection_position{i + 1}").GetValue(Settings.Default)) + 
-                //            Settings.Default.setVehicle_toolOffset;
-                //    section[i].positionRight = Convert.ToDouble(typeof(Settings).
-                //        GetProperty($"setSection_position{i + 2}").GetValue(Settings.Default)) + 
-                //            Settings.Default.setVehicle_toolOffset;
-                //}
                 section[0].positionLeft = (double)Settings.Default.setSection_position1 + Settings.Default.setVehicle_toolOffset;
                 section[0].positionRight = (double)Settings.Default.setSection_position2 + Settings.Default.setVehicle_toolOffset;
 
@@ -622,7 +601,7 @@ namespace AgOpenGPS
                         // ON Signal from Arduino 
                         for (int i = 7; i >= 0; i--)
                         {
-                            if (tool.numOfSections > i && (mc.ss[mc.swOnGr0] & (1 << i)) == (1 << i)) // changed order, and introduced short-circuit evaluation
+                            if (tool.numOfSections > i && (mc.ss[mc.swOnGr0] & (1 << i)) == (1 << i))
                             {
                                 if (section[i].sectionBtnState != btnStates.Auto) section[i].sectionBtnState = btnStates.Auto;
                                 (this.Controls.Find("btnSection" + (i + 1).ToString() + "Man", true).FirstOrDefault() as Button).PerformClick();
