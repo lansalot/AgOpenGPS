@@ -440,7 +440,7 @@ namespace AgOpenGPS
             public CPGN_ISOBUS(int sections)
             {
                 numberOfSections = sections;
-                pgn = new byte[6 + sections]; // 8 bytes header, 2 bytes per section(why?), 1 byte CRC // 5 + (2 * sections) + 1]; // 8 bytes header, 2 bytes per section(why?), 1 byte CRC
+                pgn = new byte[6 + sections]; // 5 bytes header, 2 bytes per section(why?), 1 byte CRC // 5 + (2 * sections) + 1]; // 8 bytes header, 2 bytes per section(why?), 1 byte CRC
                 pgn[0] = 0x80; // standard AIO header
                 pgn[1] = 0x81; // PGN header
                 pgn[2] = 0x70; // PGN header
@@ -457,7 +457,7 @@ namespace AgOpenGPS
             /// </summary>
             public void ResetSections()
             {
-                Buffer.BlockCopy(new byte[pgn.Length -9], 0, pgn, 8, pgn.Length - 9);
+                Buffer.BlockCopy(new byte[pgn.Length -6], 0, pgn, 6, pgn.Length - 6);
             }
 
             /// <summary>
