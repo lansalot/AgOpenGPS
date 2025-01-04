@@ -55,8 +55,8 @@ namespace AgOpenGPS
                 {
                     case 0x80:
                         {
-                            pgnISOBUS.numberOfSections = data[4];
-                            Buffer.BlockCopy(data,5,pgnISOBUS.pgn,5,data[4]);
+                            isobus.numberOfSections = data[4];
+                            Buffer.BlockCopy(data,5,isobus.pgn,5,data[4]);
                             btnSectionMasterManual_Click(this, EventArgs.Empty);
                             break;
                         }

@@ -586,7 +586,7 @@ namespace AgOpenGPS
                         SendPgnToLoop(p_239.pgn);
 
                         SendPgnToLoop(p_229.pgn);
-                        SendPgnToLoop(pgnISOBUS.pgn);
+                        SendPgnToLoop(isobus.pgn);
                     }
 
                     //draw the zoom window

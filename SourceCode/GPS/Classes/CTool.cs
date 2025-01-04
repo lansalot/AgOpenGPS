@@ -87,9 +87,14 @@ namespace AgOpenGPS
             isSectionsNotZones = Properties.Settings.Default.setTool_isSectionsNotZones;
 
             if (isSectionsNotZones)
+            {
                 numOfSections = Properties.Settings.Default.setVehicle_numSections;
+                mf.isobus.ResetSections(numOfSections);
+            }
             else
+            {
                 numOfSections = Properties.Settings.Default.setTool_numSectionsMulti;
+            }
 
             minCoverage = Properties.Settings.Default.setVehicle_minCoverage;
             isMultiColoredSections = Properties.Settings.Default.setColor_isMultiColorSections;

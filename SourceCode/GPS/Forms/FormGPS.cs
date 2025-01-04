@@ -246,6 +246,11 @@ namespace AgOpenGPS
         /// </summary>
         public CNozzle nozz;
 
+        /// <summary>
+        /// ISOBUS class  -- sections are unknown yet, so bail on full initialization
+        /// </summary>
+        public ISOBUS isobus;
+
 
         #endregion // Class Props and instances
 
@@ -335,6 +340,9 @@ namespace AgOpenGPS
             //create the world grid
             worldGrid = new CWorldGrid(this);
 
+            // isobus instance - this is early, as it's referred to in tool creation
+            isobus = new ISOBUS(this);
+
             //our vehicle made with gl object and pointer of mainform
             vehicle = new CVehicle(this);
 
@@ -413,6 +421,7 @@ namespace AgOpenGPS
 
             //Application rate controller
             nozz = new CNozzle(this);
+
         }
 
         private void FormGPS_Load(object sender, EventArgs e)

@@ -46,14 +46,15 @@ namespace AgOpenGPS
             {
                 AllSectionsAndButtonsToState(manualBtnState);
                 // this should only trigger if an ISOBUS request was sent - it currently happens when yellow button pressed
-                for (int i = 1; i <= pgnISOBUS.numberOfSections; i++) // buttons start numbering at 1 in UI :(
+                for (int i = 1; i <= isobus.numberOfSections; i++) // buttons start numbering at 1 in UI :(
                 {
-                    if (pgnISOBUS.pgn[4+i] == 1)
+                    if (isobus.pgn[4 + i] == 1)
                     {
                         IndividualSectionAndButonToState(btnStates.On, i - 1, this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button);
                         section[i - 1].isSectionOn = true;
                         section[i - 1].isSectionRequiredOn = true;
-                    } else
+                    }
+                    else
                     {
                         IndividualSectionAndButonToState(btnStates.Off, i - 1, this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button);
                         section[i - 1].isSectionOn = false;
@@ -66,9 +67,7 @@ namespace AgOpenGPS
         }
         private void btnSectionMasterAuto_Click(object sender, EventArgs e)
         {
-            CPGN_ISOBUS pgnISOBUS = new CPGN_ISOBUS(tool.numOfSections); // just a placeholder, will set this on Section-update in settings in time
             //turn off manual if on
-
             manualBtnState = btnStates.Off;
             btnSectionMasterManual.Image = Properties.Resources.ManualOff;
 
@@ -764,21 +763,23 @@ namespace AgOpenGPS
                 // ^^^ Andrew, this isn't right for p229 at all, sections are the first 8 bytes
 
                 // Andrew, here you're treating this like E5 (64-sections) rather than ISOBUS
+                if (isobus.numberOfSections != tool.numOfSections)
+                    isobus.ResetSections(tool.numOfSections);
+
                 int byteIndex = 5;
                 for (int curSect = 0; curSect < tool.numOfSections; curSect++)
                 {
                     // let's get straight into our 2-byte section info
                     if (section[curSect].isSectionOn)
                     {
-                        pgnISOBUS.pgn[byteIndex] = 1;
+                        isobus.pgn[byteIndex] = 1;
                     }
                     else
                     {
-                        pgnISOBUS.pgn[byteIndex] = 0;
+                        isobus.pgn[byteIndex] = 0;
                     }
                     byteIndex++;
                 }
-                pgnISOBUS.pgn[4] = (byte)(tool.numOfSections);
             }
             else
             {

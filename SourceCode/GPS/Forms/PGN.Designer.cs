@@ -426,76 +426,6 @@ namespace AgOpenGPS
             }
         }
 
-        public class CPGN_ISOBUS // ISOBUS (0x70 / 112)
-        {
-            /// <summary>
-            /// PGN - 112 - 0x70
-            /// </summary>
-            public byte[] pgn;
-            public int numberOfSections = 6; // default number of sections
-            public int actualSectionStates = 6;
-            public int SetPointSectionStates = 7;
-            public int sectionOffset = 5;
-
-            public CPGN_ISOBUS(int sections)
-            {
-                numberOfSections = sections;
-                pgn = new byte[6 + sections]; // 8 bytes header, 2 bytes per section(why?), 1 byte CRC // 5 + (2 * sections) + 1]; // 8 bytes header, 2 bytes per section(why?), 1 byte CRC
-                pgn[0] = 0x80; // standard AIO header
-                pgn[1] = 0x81; // PGN header
-                pgn[2] = 0x70; // PGN header
-                pgn[3] = 0x00; // PGN header
-                // what's that 36 all about above?
-                ResetSections();
-            }
-
-            /// <summary>
-            /// Reset all section widths to 0 within the predefined PGN structure
-            /// </summary>
-            public void ResetSections()
-            {
-                Buffer.BlockCopy(new byte[pgn.Length -9], 0, pgn, 8, pgn.Length - 9);
-            }
-
-            /// <summary>
-            /// Set section widths based on incoming data
-            /// </summary>
-            /// <param name="incomingData">Incoming data (2 bytes per section width)</param>
-            //public void SetSectionsFromIncoming(byte[] incomingData)
-            //{
-            //    // incoming from TC? Check this out in wireshark LUA tmrw
-            //    if (incomingData.Length % 2 != 0)
-            //        throw new ArgumentException("Invalid incoming data length");
-
-            //    int offsetBase = sectionOffset; // Starting position for Section1 in PGN
-            //    int sectionsToSet = incomingData.Length / 2;
-
-            //    for (int i = 0; i < sectionsToSet; i++)
-            //    {
-            //        int offset = offsetBase + i * 2;
-            //        if (offset + 1 >= pgn.Length - 1) break; // Prevent overflow, leave CRC intact
-
-            //        int sectionWidth = incomingData[i * 2] + (incomingData[i * 2 + 1] << 8);
-
-            //        // Set the section width in the PGN
-            //        pgn[offset] = (byte)(sectionWidth & 0xFF);        // LSB
-            //        pgn[offset + 1] = (byte)((sectionWidth >> 8) & 0xFF); // MSB
-            //    }
-            //}
-
-            /// <summary>
-            /// Compute CRC and update the last byte in the PGN
-            /// </summary>
-            public void MakeCRC() // when is this used? Not so far...
-            {
-                int crc = 0;
-                for (int i = 2; i < pgn.Length - 1; i++) // CRC calculation excludes the last byte
-                {
-                    crc += pgn[i];
-                }
-                pgn[pgn.Length - 1] = (byte)(crc & 0xFF);
-            }
-        }
         public class CPGN_E4
         {
             /// <summary>
@@ -605,11 +535,6 @@ namespace AgOpenGPS
         /// Section dimensions PGN - 235 - EB
         /// </summary>
         public CPGN_EB p_235 = new CPGN_EB();
-
-        /// <summary>
-        /// Section dimensions PGN - 228 - E4
-        /// </summary>
-        public CPGN_ISOBUS pgnISOBUS = new CPGN_ISOBUS(6);
 
         /// <summary>
         /// Section dimensions PGN - 228 - E4

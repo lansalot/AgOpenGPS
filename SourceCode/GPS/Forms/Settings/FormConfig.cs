@@ -134,6 +134,8 @@ namespace AgOpenGPS
 
             //reload all the settings from default and user.config
             mf.LoadSettings();
+            if (mf.tool.numOfSections != mf.isobus.numberOfSections)
+                mf.isobus.ResetSections(mf.tool.numOfSections); // best place for this?
 
             //save current vehicle
             SettingsIO.ExportAll(mf.vehiclesDirectory + mf.vehicleFileName + ".XML");
