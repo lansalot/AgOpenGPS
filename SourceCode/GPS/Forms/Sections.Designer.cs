@@ -767,17 +767,15 @@ namespace AgOpenGPS
                     isobus.ResetSections(tool.numOfSections);
 
                 int byteIndex = 5;
+                // make sure we're good here
+                isobus.ResetSections(tool.numOfSections);
                 for (int curSect = 0; curSect < tool.numOfSections; curSect++)
                 {
                     // let's get straight into our 2-byte section info
                     if (section[curSect].isSectionOn)
-                    {
                         isobus.pgn[byteIndex] = 1;
-                    }
                     else
-                    {
                         isobus.pgn[byteIndex] = 0;
-                    }
                     byteIndex++;
                 }
             }
