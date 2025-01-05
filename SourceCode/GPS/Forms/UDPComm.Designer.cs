@@ -55,9 +55,13 @@ namespace AgOpenGPS
                 {
                     case 0x80:
                         {
-                            isobus.ResetSections(data[4]);
-                            Buffer.BlockCopy(data,5,isobus.pgn,5,data[4]);
-                            btnSectionMasterManual_Click(this, EventArgs.Empty);
+                            isobus.initialisePGN(data[4]);
+                            // we'll take the PGN minor byte and also pgn length as well here
+                            // note you're overwriting the usual outbound PGN byte with this inbound
+                            // this better not bite you in the ass tmrw
+                            Buffer.BlockCopy(data, 3, isobus.pgn, 3, data[4] + 3);
+                            if (isobus.MakeCRC(data[data.Length - 1]) == data[data.Length - 1])
+                                btnSectionMasterManual_Click(this, EventArgs.Empty);
                             break;
                         }
                     case 0xD6:
@@ -113,7 +117,7 @@ namespace AgOpenGPS
                                     ahrs.imuRoll = temp - ahrs.rollZero;
                                 }
                                 if (temp == float.MinValue)
-                                    ahrs.imuRoll = 0;                               
+                                    ahrs.imuRoll = 0;
 
                                 //altitude in meters
                                 temp = BitConverter.ToSingle(data, 37);
@@ -169,8 +173,8 @@ namespace AgOpenGPS
 
                                 if (isLogNMEA)
                                     pn.logNMEASentence.Append(
-                                        DateTime.UtcNow.ToString("mm:ss.ff",CultureInfo.InvariantCulture)+ " " +
-                                        Lat.ToString("N7") + " " + Lon.ToString("N7") );
+                                        DateTime.UtcNow.ToString("mm:ss.ff", CultureInfo.InvariantCulture) + " " +
+                                        Lat.ToString("N7") + " " + Lon.ToString("N7"));
 
                                 UpdateFixPosition();
                             }
@@ -185,13 +189,13 @@ namespace AgOpenGPS
                             //Heading
                             ahrs.imuHeading = (Int16)((data[6] << 8) + data[5]);
                             ahrs.imuHeading *= 0.1;
-                            
+
                             //Roll
                             double rollK = (Int16)((data[8] << 8) + data[7]);
 
                             if (ahrs.isRollInvert) rollK *= -0.1;
                             else rollK *= 0.1;
-                            rollK -= ahrs.rollZero;                           
+                            rollK -= ahrs.rollZero;
                             ahrs.imuRoll = ahrs.imuRoll * ahrs.rollFilter + rollK * (1 - ahrs.rollFilter);
 
                             //Angular velocity
@@ -266,7 +270,7 @@ namespace AgOpenGPS
                         }
 
                     case 221: // DD
-                        {                    
+                        {
                             //{ 0x80, 0x81, 0x7f, 221, number bytes, seconds to display, mystery byte, 98,99,100,101, CRC };
                             if (data.Length < 9) break;
 
@@ -323,7 +327,7 @@ namespace AgOpenGPS
 
                             break;
                         }
-                     #endregion
+                        #endregion
                 }
             }
         }
@@ -394,7 +398,8 @@ namespace AgOpenGPS
                         crc += byteData[i];
                     }
                     byteData[byteData.Length - 1] = (byte)crc;
-                    if (byteData[2] == 0x70 && byteData[3] == 0x80) {
+                    if (byteData[2] == 0x70 && byteData[3] == 0x80)
+                    {
                         Debug.WriteLine("Send PGN 0x70");
                     }
                     loopBackSocket.BeginSendTo(byteData, 0, byteData.Length, SocketFlags.None,
@@ -675,7 +680,7 @@ namespace AgOpenGPS
             if (keyData == Keys.Up)
             {
                 if (sim.stepDistance < 0.4 && sim.stepDistance > -0.36) sim.stepDistance += 0.01;
-                else 
+                else
                     sim.stepDistance += 0.04;
                 if (sim.stepDistance > 4) sim.stepDistance = 4;
                 return true;

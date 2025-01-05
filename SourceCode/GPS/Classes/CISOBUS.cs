@@ -25,28 +25,44 @@ namespace AgOpenGPS
         }
 
         /// <summary>
-        /// Reset all section widths to 0 within the predefined PGN structure
+        /// Set up the PGN structure with the number of sections
         /// </summary>
-        public void ResetSections(int _numberofSections)
+        public void initialisePGN(int _NOS)
         {
-            numberOfSections = _numberofSections;
-            pgn = new byte[6 + numberOfSections];
+            numberOfSections = _NOS;
+            pgn = new byte[6 + _NOS];
             pgn[0] = 0x80; // standard AIO header
             pgn[1] = 0x81; // PGN header
             pgn[2] = 0x70; // PGN major header
             pgn[3] = 0x00; // PGN minor header
-            pgn[4] = (byte)numberOfSections;
+            pgn[4] = (byte)_NOS;
+        }
+        /// <summary>
+        /// Reset all section widths to 0 within the predefined PGN structure.
+        /// This is an AOG -> TC structure
+        /// </summary>
+        public void ResetSections(int _numberofSections)
+        {
+            initialisePGN(_numberofSections);
             Buffer.BlockCopy(new byte[pgn.Length - 6], 0, pgn, 6, pgn.Length - 6);
         }
-
-        public void MakeCRC() // when is this used? Not so far...
+        /// <summary>
+        /// Set up the reception structure
+        /// This is a TC -> AOG
+        /// </summary>
+        public void ReceiveSections(int _numberofSections)
         {
-            int crc = 0;
+            initialisePGN(_numberofSections);
+            // the rest is block-copied from the incoming packet
+        }
+
+        public byte MakeCRC(byte checkValue)
+        {
+            byte crc = 0;
             for (int i = 2; i < pgn.Length - 1; i++) // CRC calculation excludes the last byte
-            {
                 crc += pgn[i];
-            }
             pgn[pgn.Length - 1] = (byte)(crc & 0xFF);
+            return pgn[pgn.Length - 1];
         }
     }
 
