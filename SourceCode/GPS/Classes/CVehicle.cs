@@ -15,7 +15,7 @@ namespace AgOpenGPS
         public double antennaHeight;
         public double antennaPivot;
         public double wheelbase;
-        public double antennaOffset, panicStopSpeed;
+        public double antennaOffset;
         public int deadZoneHeading, deadZoneDelay;
         public int vehicleType, deadZoneDelayCounter;
         public bool isInDeadZone;
@@ -84,8 +84,7 @@ namespace AgOpenGPS
             vehicleType = Properties.Settings.Default.setVehicle_vehicleType;
 
             hydLiftLookAheadTime = Properties.Settings.Default.setVehicle_hydraulicLiftLookAhead;
-            panicStopSpeed = Properties.Settings.Default.setVehicle_panicStopSpeed;
-            //deadZoneDistance = Properties.Settings.Default.setAS_deadZoneDistance;
+
             deadZoneHeading = Properties.Settings.Default.setAS_deadZoneHeading;
             deadZoneDelay = Properties.Settings.Default.setAS_deadZoneDelay;
 
@@ -484,7 +483,7 @@ namespace AgOpenGPS
             //    GL.End();
             //}
 
-            if (mf.bnd.isBndBeingMade)
+            if (mf.bnd.isBndBeingMade && mf.bnd.isDrawAtPivot)
             {
                 if (mf.bnd.isDrawRightSide)
                 {
@@ -523,7 +522,7 @@ namespace AgOpenGPS
                 double svennDist = mf.camera.camSetDistance * -0.07;
                 double svennWidth = svennDist * 0.22;
                 GL.LineWidth(mf.ABLine.lineWidth);
-                GL.Color3(1.2, 1.25, 0.10);
+                GL.Color3(0.95, 0.95, 0.10);
                 GL.Begin(PrimitiveType.LineStrip);
                 {
                     GL.Vertex3(svennWidth, wheelbase + svennDist, 0.0);

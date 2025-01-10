@@ -337,30 +337,6 @@ namespace AgIO.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("en")]
-        public string setF_culture {
-            get {
-                return ((string)(this["setF_culture"]));
-            }
-            set {
-                this["setF_culture"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Default")]
-        public string setF_workingDirectory {
-            get {
-                return ((string)(this["setF_workingDirectory"]));
-            }
-            set {
-                this["setF_workingDirectory"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double setGPS_SimLatitude {
             get {
@@ -751,18 +727,6 @@ namespace AgIO.Properties {
             }
             set {
                 this["setDisplay_isAutoRunGPS_Out"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Default Profile")]
-        public string setConfig_profileName {
-            get {
-                return ((string)(this["setConfig_profileName"]));
-            }
-            set {
-                this["setConfig_profileName"] = value;
             }
         }
     }

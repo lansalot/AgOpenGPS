@@ -24,10 +24,10 @@ namespace AgOpenGPS
 
         private void Form_About_Load(object sender, EventArgs e)
         {
-            lblVersion.Text = "Version " + Application.ProductVersion.ToString(CultureInfo.InvariantCulture);
+            lblVersion.Text = "Version " + GitVersionInformation.SemVer;
 
             // Add a link to the LinkLabel.
-            LinkLabel.Link link = new LinkLabel.Link { LinkData = "https://github.com/farmerbriantee/AgOpenGPS" };
+            LinkLabel.Link link = new LinkLabel.Link { LinkData = "https://github.com/AgOpenGPS-Official/AgOpenGPS" };
             linkLabelGit.Links.Add(link);
 
             // Add a link to the LinkLabel.

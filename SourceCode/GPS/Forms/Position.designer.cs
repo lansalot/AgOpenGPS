@@ -1,5 +1,6 @@
 ﻿//Please, if you use this, share the improvements
 
+using AgLibrary.Logging;
 using AgOpenGPS.Culture;
 using System;
 using System.Collections.Generic;
@@ -274,7 +275,7 @@ namespace AgOpenGPS
 
                                 isFirstHeadingSet = true;
                                 TimedMessageBox(2000, "Direction Reset", "Forward is Set");
-                                LogEventWriter("Forward Is Set");
+                                Log.EventWriter("Forward Is Set");
 
                                 lastGPS = pn.fix;
 
@@ -778,13 +779,13 @@ namespace AgOpenGPS
 
             //if (isFirstHeadingSet && jumpDistanceAlarm > 0 && jumpDistance > jumpDistanceAlarm)
             //{
-            //    LogEventWriter(": " + jumpDistance.ToString("N0") + " cm");
+            //    Log.EventWriter(": " + jumpDistance.ToString("N0") + " cm");
 
             //    if (isBtnAutoSteerOn)
             //    {
             //        btnAutoSteer.PerformClick();
             //        TimedMessageBox(3000, gStr.gsAutoSteer, "Big Jump in GPS position:" + jumpDistance.ToString("N0") + " cm");
-            //        LogEventWriter("Autosteer Off, Jump in GPS position: " + jumpDistance.ToString("N0") + " cm");
+            //        Log.EventWriter("Autosteer Off, Jump in GPS position: " + jumpDistance.ToString("N0") + " cm");
             //    }
 
             //}
@@ -917,7 +918,7 @@ namespace AgOpenGPS
                             else
                                 TimedMessageBox(3000, "AutoSteer Disabled", "Below Minimum Safe Steering Speed: " + (vehicle.minSteerSpeed * 0.621371).ToString("N1") + " MPH");
                             
-                            LogEventWriter("Steer Off, Below Min Steering Speed");
+                            Log.EventWriter("Steer Off, Below Min Steering Speed");
                         }
                     }
                     else
@@ -1058,7 +1059,7 @@ namespace AgOpenGPS
                                 if (sounds.isTurnSoundOn)
                                 {
                                     sounds.sndUTurnTooClose.Play();
-                                    LogEventWriter("U Turn Creation Failure");
+                                    Log.EventWriter("U Turn Creation Failure");
                                 }
                             }
                         }
@@ -1196,17 +1197,17 @@ namespace AgOpenGPS
             //distance = glm.Distance(pn.fix, prevFix);
             //if (avgSpeed > 1)
 
-            if ((avgSpeed - previousSpeed  ) < -vehicle.panicStopSpeed && vehicle.panicStopSpeed != 0)
-            {
-                if (isBtnAutoSteerOn)
-                {
-                   btnAutoSteer.PerformClick();
-                    TimedMessageBox(2000, gStr.gsGuidanceStopped, "Panic Stop");
-                    LogEventWriter("Steer Off, Panic Stop Exceeded");
-                }
-            }
+            //if ((avgSpeed - previousSpeed  ) < -vehicle.panicStopSpeed && vehicle.panicStopSpeed != 0)
+            //{
+            //    if (isBtnAutoSteerOn)
+            //    {
+            //       btnAutoSteer.PerformClick();
+            //        TimedMessageBox(2000, gStr.gsGuidanceStopped, "Panic Stop");
+            //        Log.EventWriter("Steer Off, Panic Stop Exceeded");
+            //    }
+            //}
 
-            previousSpeed = avgSpeed;   
+            //previousSpeed = avgSpeed;   
         }
 
         //all the hitch, pivot, section, trailing hitch, headings and fixes
@@ -1458,7 +1459,8 @@ namespace AgOpenGPS
 
             //build the boundary line
 
-            if (bnd.isOkToAddPoints)
+            if (bnd.isOkToAddPoints && (!bnd.isRecBoundaryWhenSectionOn || 
+                (bnd.isRecBoundaryWhenSectionOn && (manualBtnState == btnStates.On || autoBtnState == btnStates.Auto))))
             {
                 if (bnd.isDrawAtPivot)
                 {

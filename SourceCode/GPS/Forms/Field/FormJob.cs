@@ -1,4 +1,6 @@
-﻿using AgOpenGPS.Culture;
+﻿using AgLibrary.Logging;
+using AgOpenGPS.Culture;
+using AgOpenGPS.Helpers;
 using System;
 using System.Drawing;
 using System.Globalization;
@@ -34,9 +36,9 @@ namespace AgOpenGPS
         {
             //check if directory and file exists, maybe was deleted etc
             if (String.IsNullOrEmpty(mf.currentFieldDirectory)) btnJobResume.Enabled = false;
-            string directoryName = mf.fieldsDirectory + mf.currentFieldDirectory + "\\";
+            string directoryName = Path.Combine(RegistrySettings.fieldsDirectory, mf.currentFieldDirectory);
 
-            string fileAndDirectory = directoryName + "Field.txt";
+            string fileAndDirectory = Path.Combine(directoryName, "Field.txt");
 
             if (!File.Exists(fileAndDirectory))
             {
@@ -69,7 +71,7 @@ namespace AgOpenGPS
 
             mf.CloseTopMosts();
 
-            if (!mf.IsOnScreen(Location, Size, 1))
+            if (!ScreenHelper.IsOnScreen(Bounds))
             {
                 Top = 0;
                 Left = 0;
@@ -90,7 +92,7 @@ namespace AgOpenGPS
             //open the Resume.txt and continue from last exit
             mf.FileOpenField("Resume");
 
-            mf.LogEventWriter("Job Form, Field Resume");
+            Log.EventWriter("Job Form, Field Resume");
 
             //back to FormGPS
             DialogResult = DialogResult.OK;
@@ -123,7 +125,7 @@ namespace AgOpenGPS
             string infieldList = "";
             int numFields = 0;
 
-            string[] dirs = Directory.GetDirectories(mf.fieldsDirectory);
+            string[] dirs = Directory.GetDirectories(RegistrySettings.fieldsDirectory);
 
             foreach (string dir in dirs)
             {
@@ -131,7 +133,7 @@ namespace AgOpenGPS
                 double lon = 0;
 
                 string fieldDirectory = Path.GetFileName(dir);
-                string filename = dir + "\\Field.txt";
+                string filename = Path.Combine(dir, "Field.txt");
                 string line;
 
                 //make sure directory has a field.txt in it
@@ -170,7 +172,7 @@ namespace AgOpenGPS
                         }
                         catch (Exception)
                         {
-                            FormTimedMessage form = new FormTimedMessage(2000, gStr.gsFieldFileIsCorrupt, gStr.gsChooseADifferentField);
+                            mf.TimedMessageBox(2000, gStr.gsFieldFileIsCorrupt, gStr.gsChooseADifferentField);
                         }
                     }
                 }
@@ -199,15 +201,14 @@ namespace AgOpenGPS
                 }
                 else // 1 field found
                 {
-                    mf.filePickerFileAndDirectory = mf.fieldsDirectory + infieldList + "\\Field.txt";
+                    mf.filePickerFileAndDirectory = Path.Combine(RegistrySettings.fieldsDirectory, infieldList, "Field.txt");
                     mf.FileOpenField(mf.filePickerFileAndDirectory);
                     Close();
                 }
             }
             else //no fields found
             {
-                FormTimedMessage form2 = new FormTimedMessage(2000, gStr.gsNoFieldsFound, gStr.gsFieldNotOpen);
-                form2.Show(this);
+                mf.TimedMessageBox(2000, gStr.gsNoFieldsFound, gStr.gsFieldNotOpen);
             }
         }
 

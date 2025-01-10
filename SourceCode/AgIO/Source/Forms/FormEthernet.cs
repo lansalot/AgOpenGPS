@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
+using AgLibrary.Logging;
 
 namespace AgIO
 {
@@ -60,7 +62,9 @@ namespace AgIO
             Properties.Settings.Default.Save();
 
             mf.YesMessageBox("AgIO will Restart to Enable UDP Networking Features");
+            Log.EventWriter("Program Reset: Start Ethernet Selected");
 
+            RegistrySettings.Save();
             Application.Restart();
             Environment.Exit(0);
             Close();
@@ -69,38 +73,7 @@ namespace AgIO
         private void cboxIsUDPOn_Click(object sender, EventArgs e)
         {
             cboxIsUDPOn.Text = cboxIsUDPOn.Checked ? "UDP Is On" : "UDP Is Off";
+            Log.EventWriter("UDP Turned on, Etherent Form");
         }
-
-        ////get the ipv4 address only
-        //public void GetIP4AddressList()
-        //{
-        //    tboxNets.Text = "";
-        //    foreach (IPAddress IPA in Dns.GetHostAddresses(Dns.GetHostName()))
-        //    {
-        //        if (IPA.AddressFamily == AddressFamily.InterNetwork)
-        //        {
-        //            tboxNets.Text += IPA.ToString() + "\r\n";
-        //        }
-        //    }
-        //}
-
-        //public void IsValidNetworkFound()
-        //{
-        //    foreach (IPAddress IPA in Dns.GetHostAddresses(Dns.GetHostName()))
-        //    {
-        //        if (IPA.AddressFamily == AddressFamily.InterNetwork)
-        //        {
-        //            byte[] data = IPA.GetAddressBytes();
-        //            //  Split string by ".", check that array length is 3
-        //            if (data[0] == 192 && data[1] == 168 && data[2] == 1)
-        //            {
-        //                if (data[3] < 255 && data[3] > 1)
-        //                {
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
     }
 }

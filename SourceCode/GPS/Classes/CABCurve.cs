@@ -1,4 +1,5 @@
-﻿using AgOpenGPS.Culture;
+﻿using AgLibrary.Logging;
+using AgOpenGPS.Culture;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
@@ -391,15 +392,19 @@ namespace AgOpenGPS
                         //middle points
                         for (int i = 1; i < cnt; i++)
                         {
-                            vec3 pt3 = new vec3(arr[i]);
-                            pt3.heading = Math.Atan2(arr[i + 1].easting - arr[i - 1].easting, arr[i + 1].northing - arr[i - 1].northing);
+                            vec3 pt3 = new vec3(arr[i])
+                            {
+                                heading = Math.Atan2(arr[i + 1].easting - arr[i - 1].easting, arr[i + 1].northing - arr[i - 1].northing)
+                            };
                             if (pt3.heading < 0) pt3.heading += glm.twoPI;
                             newCurList.Add(pt3);
                         }
 
                         int k = arr.Length - 1;
-                        vec3 pt33 = new vec3(arr[k]);
-                        pt33.heading = Math.Atan2(arr[k].easting - arr[k - 1].easting, arr[k].northing - arr[k - 1].northing);
+                        vec3 pt33 = new vec3(arr[k])
+                        {
+                            heading = Math.Atan2(arr[k].easting - arr[k - 1].easting, arr[k].northing - arr[k - 1].northing)
+                        };
                         if (pt33.heading < 0) pt33.heading += glm.twoPI;
                         newCurList.Add(pt33);
 
@@ -466,9 +471,9 @@ namespace AgOpenGPS
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //throw;
+                Log.EventWriter("Exception Build new offset curve" + e.ToString());
             }
 
             return newCurList;
@@ -511,17 +516,15 @@ namespace AgOpenGPS
                 }
                 else// Pure Pursuit ------------------------------------------
                 {
-
-                    double minDistA = double.MaxValue;
-                    double minDistB = double.MaxValue;
-                    //close call hit
+                    double minDistA;
+                    double minDistB;
 
                     //If is a curve
                     if (mf.trk.gArr[mf.trk.idx].mode <= TrackMode.Curve)
                     {
-                        minDistA = minDistB = double.MaxValue;
+                        minDistB = double.MaxValue;
                         //close call hit
-                        int cc = 0, dd;
+                        int cc, dd;
 
                         if (findGlobalNearestCurvePoint)
                         {
@@ -611,7 +614,7 @@ namespace AgOpenGPS
                         }
                         else
                         {
-                            A = A - 1;
+                            A --;
                             B = A + 1;
                         }
 
@@ -724,7 +727,7 @@ namespace AgOpenGPS
                                 {
                                     mf.btnAutoSteer.PerformClick();
                                     mf.TimedMessageBox(2000, gStr.gsGuidanceStopped, gStr.gsPastEndOfCurve);
-                                    mf.LogEventWriter("Autosteer Stop, Past End of Curve");
+                                    Log.EventWriter("Autosteer Stop, Past End of Curve");
 
                                 }
                             }
@@ -734,7 +737,7 @@ namespace AgOpenGPS
                                 {
                                     mf.btnAutoSteer.PerformClick();
                                     mf.TimedMessageBox(2000, gStr.gsGuidanceStopped, gStr.gsPastEndOfCurve);
-                                    mf.LogEventWriter("Autosteer Stop, Past End of Curve");
+                                    Log.EventWriter("Autosteer Stop, Past End of Curve");
                                 }
                             }
                         }
@@ -966,7 +969,7 @@ namespace AgOpenGPS
                     cntr = 1;
             }
 
-            double widd = 0;
+            double widd;
 
             for (int i = cntr; i <= mf.tram.passes; i++)
             {
@@ -1235,7 +1238,7 @@ namespace AgOpenGPS
         public void AddFirstLastPoints(ref List<vec3> xList)
         {
             int ptCnt = xList.Count - 1;
-            vec3 start = new vec3(xList[0]);
+            vec3 start;
 
             if (mf.bnd.bndList.Count > 0)
             {

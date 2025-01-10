@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using AgLibrary.Logging;
 
 namespace AgIO
 {
@@ -985,9 +986,9 @@ namespace AgIO
                     else return false;  
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //mf.WriteErrorLog("Validate Checksum" + e);
+                Log.EventWriter("Catch - > Validate NMEA Checksum" + ex.ToString());
                 return false;
             }
         }

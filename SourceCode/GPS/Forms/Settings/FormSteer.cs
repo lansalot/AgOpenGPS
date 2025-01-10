@@ -1,8 +1,11 @@
-﻿using AgOpenGPS.Culture;
+﻿using AgLibrary.Logging;
+using AgOpenGPS.Culture;
+using AgOpenGPS.Helpers;
 using AgOpenGPS.Properties;
 using System;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace AgOpenGPS
@@ -23,12 +26,10 @@ namespace AgOpenGPS
             mf = callingForm as FormGPS;
             InitializeComponent();
             nudMaxCounts.Controls[0].Enabled = false;
-            nudPanicStopSpeed.Controls[0].Enabled = false;
 
             nudSnapDistance.Controls[0].Enabled = false;
             nudLineWidth.Controls[0].Enabled = false;
             nudGuidanceLookAhead.Controls[0].Enabled = false;
-            nudMaxAngularVelocity.Controls[0].Enabled = false;
             nudGuidanceSpeedLimit.Controls[0].Enabled = false;
             nudMaxSteerSpeed.Controls[0].Enabled = false;
             nudMinSteerSpeed.Controls[0].Enabled = false;
@@ -49,10 +50,16 @@ namespace AgOpenGPS
         private void FormSteer_Load(object sender, EventArgs e)
         {
             mf.vehicle.goalPointLookAheadHold = Properties.Settings.Default.setVehicle_goalPointLookAheadHold;
+            cboxSteerInReverse.Checked = Properties.Settings.Default.setAS_isSteerInReverse;
 
-            chkDisplayLightbar.Checked = mf.isLightbarOn;
-            if (chkDisplayLightbar.Checked) { chkDisplayLightbar.Image = Resources.SwitchOn; }
-            else { chkDisplayLightbar.Image = Resources.SwitchOff; }
+            if (mf.isStanleyUsed)
+            {
+                btnStanleyPure.Image = Resources.ModeStanley;
+            }
+            else
+            {
+                btnStanleyPure.Image = Resources.ModePurePursuit;
+            }
 
             if (mf.isStanleyUsed)
             {
@@ -146,7 +153,7 @@ namespace AgOpenGPS
 
             lblAcquirePP.Text = (mf.vehicle.goalPointLookAheadHold * mf.vehicle.goalPointAcquireFactor).ToString("N1");
 
-            hsbarUTurnCompensation.Value = (Int16)(mf.vehicle.uturnCompensation * 10);
+            hsbarUTurnCompensation.Value = (Int16)(Properties.Settings.Default.setAS_uTurnCompensation * 10);
             lblUTurnCompensation.Text = (hsbarUTurnCompensation.Value - 10).ToString();
 
             //make sure free drive is off
@@ -156,22 +163,9 @@ namespace AgOpenGPS
             btnSteerAngleUp.Enabled = false;
             mf.vehicle.driveFreeSteerAngle = 0;
 
-            nudPanicStopSpeed.Value = (decimal)mf.vehicle.panicStopSpeed;
-
             //nudDeadZoneDistance.Value = (decimal)((double)(Properties.Settings.Default.setAS_deadZoneDistance)/10);
             nudDeadZoneHeading.Value = (decimal)((double)(Properties.Settings.Default.setAS_deadZoneHeading)/100);
             nudDeadZoneDelay.Value = (decimal)(mf.vehicle.deadZoneDelay);
-
-            //Stanley guidance
-
-            if (mf.isStanleyUsed)
-            {
-                btnStanleyPure.Image = Resources.ModeStanley;
-            }
-            else
-            {
-                btnStanleyPure.Image = Resources.ModePurePursuit;
-            }
 
             toSend = false;
 
@@ -268,7 +262,7 @@ namespace AgOpenGPS
                 lblhsbarSensor.Visible = false;
             }
 
-            if (!mf.IsOnScreen(Location, Size, 1))
+            if (!ScreenHelper.IsOnScreen(Bounds))
             {
                 Top = 0;
                 Left = 0;
@@ -276,6 +270,46 @@ namespace AgOpenGPS
 
             if (mf.isLightBarNotSteerBar) rbtnLightBar.Checked = true;
             else rbtnSteerBar.Checked = true;
+        }
+
+        private void FormSteer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mf.vehicle.isInFreeDriveMode = false;
+
+            Properties.Settings.Default.setVehicle_goalPointLookAheadHold = mf.vehicle.goalPointLookAheadHold;
+            Properties.Settings.Default.setVehicle_goalPointLookAheadMult = mf.vehicle.goalPointLookAheadMult;
+            Properties.Settings.Default.setVehicle_goalPointAcquireFactor = mf.vehicle.goalPointAcquireFactor;
+
+            Properties.Settings.Default.stanleyHeadingErrorGain = mf.vehicle.stanleyHeadingErrorGain;
+            Properties.Settings.Default.stanleyDistanceErrorGain = mf.vehicle.stanleyDistanceErrorGain;
+            Properties.Settings.Default.stanleyIntegralGainAB = mf.vehicle.stanleyIntegralGainAB;
+            Properties.Settings.Default.purePursuitIntegralGainAB = mf.vehicle.purePursuitIntegralGain;
+            Properties.Settings.Default.setVehicle_maxSteerAngle = mf.vehicle.maxSteerAngle;
+
+            Properties.Settings.Default.setAS_countsPerDegree = mf.p_252.pgn[mf.p_252.countsPerDegree] = unchecked((byte)hsbarCountsPerDegree.Value);
+            Properties.Settings.Default.setAS_ackerman = mf.p_252.pgn[mf.p_252.ackerman] = unchecked((byte)hsbarAckerman.Value);
+
+            Properties.Settings.Default.setAS_wasOffset = hsbarWasOffset.Value;
+            mf.p_252.pgn[mf.p_252.wasOffsetHi] = unchecked((byte)(hsbarWasOffset.Value >> 8));
+            mf.p_252.pgn[mf.p_252.wasOffsetLo] = unchecked((byte)(hsbarWasOffset.Value));
+
+            Properties.Settings.Default.setAS_highSteerPWM = mf.p_252.pgn[mf.p_252.highPWM] = unchecked((byte)hsbarHighSteerPWM.Value);
+            Properties.Settings.Default.setAS_lowSteerPWM = mf.p_252.pgn[mf.p_252.lowPWM] = unchecked((byte)(hsbarHighSteerPWM.Value / 3));
+            Properties.Settings.Default.setAS_Kp = mf.p_252.pgn[mf.p_252.gainProportional] = unchecked((byte)hsbarProportionalGain.Value);
+            Properties.Settings.Default.setAS_minSteerPWM = mf.p_252.pgn[mf.p_252.minPWM] = unchecked((byte)hsbarMinPWM.Value);
+
+            Properties.Settings.Default.setAS_deadZoneHeading = mf.vehicle.deadZoneHeading;
+            Properties.Settings.Default.setAS_deadZoneDelay = mf.vehicle.deadZoneDelay;
+
+            Properties.Settings.Default.setAS_ModeXTE = mf.vehicle.modeXTE;
+            Properties.Settings.Default.setAS_ModeTime = mf.vehicle.modeTime;
+
+            Properties.Settings.Default.setWindow_steerSettingsLocation = Location;
+
+            Properties.Settings.Default.setAS_uTurnCompensation = mf.vehicle.uturnCompensation;
+
+            //save current vehicle
+            RegistrySettings.Save();
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -387,478 +421,7 @@ namespace AgOpenGPS
             }
         }
 
-        private void FormSteer_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            mf.vehicle.isInFreeDriveMode = false;
-
-            Properties.Settings.Default.setVehicle_goalPointLookAheadHold = mf.vehicle.goalPointLookAheadHold;
-            Properties.Settings.Default.setVehicle_goalPointLookAheadMult = mf.vehicle.goalPointLookAheadMult;
-            Properties.Settings.Default.setVehicle_goalPointAcquireFactor = mf.vehicle.goalPointAcquireFactor;
-
-            Properties.Settings.Default.stanleyHeadingErrorGain = mf.vehicle.stanleyHeadingErrorGain;
-            Properties.Settings.Default.stanleyDistanceErrorGain = mf.vehicle.stanleyDistanceErrorGain;
-            Properties.Settings.Default.stanleyIntegralGainAB = mf.vehicle.stanleyIntegralGainAB;
-            Properties.Settings.Default.purePursuitIntegralGainAB = mf.vehicle.purePursuitIntegralGain;
-            Properties.Settings.Default.setVehicle_maxSteerAngle = mf.vehicle.maxSteerAngle;
-
-            Properties.Settings.Default.setAS_countsPerDegree = mf.p_252.pgn[mf.p_252.countsPerDegree] = unchecked((byte)hsbarCountsPerDegree.Value);
-            Properties.Settings.Default.setAS_ackerman = mf.p_252.pgn[mf.p_252.ackerman] = unchecked((byte)hsbarAckerman.Value);
-
-            Properties.Settings.Default.setAS_wasOffset = hsbarWasOffset.Value;
-            mf.p_252.pgn[mf.p_252.wasOffsetHi] = unchecked((byte)(hsbarWasOffset.Value >> 8));
-            mf.p_252.pgn[mf.p_252.wasOffsetLo] = unchecked((byte)(hsbarWasOffset.Value));
-
-            Properties.Settings.Default.setAS_highSteerPWM = mf.p_252.pgn[mf.p_252.highPWM] = unchecked((byte)hsbarHighSteerPWM.Value);
-            Properties.Settings.Default.setAS_lowSteerPWM = mf.p_252.pgn[mf.p_252.lowPWM] = unchecked((byte)(hsbarHighSteerPWM.Value / 3));
-            Properties.Settings.Default.setAS_Kp = mf.p_252.pgn[mf.p_252.gainProportional] = unchecked((byte)hsbarProportionalGain.Value);
-            Properties.Settings.Default.setAS_minSteerPWM = mf.p_252.pgn[mf.p_252.minPWM] = unchecked((byte)hsbarMinPWM.Value);
-
-            Properties.Settings.Default.setVehicle_panicStopSpeed = mf.vehicle.panicStopSpeed;
-            //Properties.Settings.Default.setAS_deadZoneDistance = mf.vehicle.deadZoneDistance;
-            Properties.Settings.Default.setAS_deadZoneHeading = mf.vehicle.deadZoneHeading;
-            Properties.Settings.Default.setAS_deadZoneDelay = mf.vehicle.deadZoneDelay;
-
-            Properties.Settings.Default.setAS_ModeXTE = mf.vehicle.modeXTE;
-            Properties.Settings.Default.setAS_ModeTime = mf.vehicle.modeTime;
-
-            Properties.Settings.Default.setWindow_steerSettingsLocation = Location;
-
-            Properties.Settings.Default.setAS_uTurnCompensation = mf.vehicle.uturnCompensation;
-
-            Properties.Settings.Default.Save();
-
-            //save current vehicle
-            SettingsIO.ExportAll(mf.vehiclesDirectory + mf.vehicleFileName + ".XML");
-        }
-
-        private void tabSettings_Enter(object sender, EventArgs e)
-        {
-            cboxSteerInReverse.Checked = Properties.Settings.Default.setAS_isSteerInReverse;
-
-        }
-
-        private void tabSettings_Leave(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.setAS_isSteerInReverse = cboxSteerInReverse.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void cboxSteerInReverse_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.setAS_isSteerInReverse = cboxSteerInReverse.Checked;
-            mf.isSteerInReverse = cboxSteerInReverse.Checked;
-
-        }
-
-
-        #region Alarms Tab
-
-        private void tabAlarm_Enter(object sender, EventArgs e)
-        {
-            if (mf.isMetric)
-            {
-                nudSnapDistance.DecimalPlaces = 0;
-                nudSnapDistance.Value = (int)((double)Properties.Settings.Default.setAS_snapDistance * mf.cm2CmOrIn);
-                nudMaxSteerSpeed.Value = (decimal)(Properties.Settings.Default.setAS_maxSteerSpeed);
-                nudMinSteerSpeed.Value = (decimal)(Properties.Settings.Default.setAS_minSteerSpeed);
-                nudGuidanceSpeedLimit.Value = (decimal)Properties.Settings.Default.setAS_functionSpeedLimit;
-                label160.Text = label163.Text = label166.Text = "kmh";
-            }
-            else
-            {
-                nudSnapDistance.DecimalPlaces = 1;
-                nudSnapDistance.Value = (decimal)Math.Round(((double)Properties.Settings.Default.setAS_snapDistance * mf.cm2CmOrIn), 1, MidpointRounding.AwayFromZero);
-                nudMaxSteerSpeed.Value = (decimal)(Properties.Settings.Default.setAS_maxSteerSpeed * 0.62137);
-                nudMinSteerSpeed.Value = (decimal)(Properties.Settings.Default.setAS_minSteerSpeed * 0.62137);
-                nudGuidanceSpeedLimit.Value = (decimal)(Properties.Settings.Default.setAS_functionSpeedLimit * 0.62137);
-                label160.Text = label163.Text = label166.Text = "mph";
-            }
-
-            nudGuidanceLookAhead.Value = (decimal)Properties.Settings.Default.setAS_guidanceLookAheadTime;
-
-            nudMaxAngularVelocity.Value = (decimal)glm.toDegrees(Properties.Settings.Default.setVehicle_maxAngularVelocity);
-
-            nudLineWidth.Value = Properties.Settings.Default.setDisplay_lineWidth;
-
-            nudcmPerPixel.Value = Properties.Settings.Default.setDisplay_lightbarCmPerPixel;
-
-            label20.Text = mf.unitsInCm;
-        }
-
-        private void tabAlarm_Leave(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Save();
-        }
-        private void nudcmPerPixel_Click(object sender, EventArgs e)
-        {
-            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
-            {
-                Properties.Settings.Default.setDisplay_lightbarCmPerPixel = ((int)nudcmPerPixel.Value);
-                mf.lightbarCmPerPixel = Properties.Settings.Default.setDisplay_lightbarCmPerPixel;
-            }
-        }
-
-        private void nudLineWidth_Click(object sender, EventArgs e)
-        {
-            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
-            {
-                Properties.Settings.Default.setDisplay_lineWidth = (int)nudLineWidth.Value;
-                mf.ABLine.lineWidth = Properties.Settings.Default.setDisplay_lineWidth;
-            }
-        }
-
-        private void nudSnapDistance_Click(object sender, EventArgs e)
-        {
-            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
-            {
-                Properties.Settings.Default.setAS_snapDistance = ((double)nudSnapDistance.Value * mf.inOrCm2Cm);
-                mf.ABLine.snapDistance = Properties.Settings.Default.setAS_snapDistance;
-            }
-        }
-        private void nudGuidanceSpeedLimit_Click(object sender, EventArgs e)
-        {
-            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
-            {
-                Properties.Settings.Default.setAS_functionSpeedLimit = ((double)nudGuidanceSpeedLimit.Value);
-                if (!mf.isMetric) Properties.Settings.Default.setAS_functionSpeedLimit *= 1.609344;
-                mf.vehicle.functionSpeedLimit = Properties.Settings.Default.setAS_functionSpeedLimit;
-            }
-        }
-
-        private void nudMinSteerSpeed_Click(object sender, EventArgs e)
-        {
-            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
-            {
-                Properties.Settings.Default.setAS_minSteerSpeed = ((double)nudMinSteerSpeed.Value);
-                if (!mf.isMetric) Properties.Settings.Default.setAS_minSteerSpeed *= 1.609344;
-                mf.vehicle.minSteerSpeed = Properties.Settings.Default.setAS_minSteerSpeed;
-            }
-        }
-        private void nudMaxSteerSpeed_Click(object sender, EventArgs e)
-        {
-            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
-            {
-                Properties.Settings.Default.setAS_maxSteerSpeed = ((double)nudMaxSteerSpeed.Value);
-                if (!mf.isMetric) Properties.Settings.Default.setAS_maxSteerSpeed *= 1.609344;
-                mf.vehicle.maxSteerSpeed = Properties.Settings.Default.setAS_maxSteerSpeed;
-            }
-        }
-
-        private void nudMaxAngularVelocity_Click(object sender, EventArgs e)
-        {
-            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
-            {
-                Properties.Settings.Default.setVehicle_maxAngularVelocity = glm.toRadians(((double)nudMaxAngularVelocity.Value));
-                mf.vehicle.maxAngularVelocity = Properties.Settings.Default.setVehicle_maxAngularVelocity;
-            }
-        }
-
-        private void nudGuidanceLookAhead_Click(object sender, EventArgs e)
-        {
-            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
-            {
-                Properties.Settings.Default.setAS_guidanceLookAheadTime = ((double)nudGuidanceLookAhead.Value);
-                mf.guidanceLookAheadTime = Properties.Settings.Default.setAS_guidanceLookAheadTime;
-            }
-        }
-
-        #endregion
-
-
-        private void btnVehicleReset_Click(object sender, EventArgs e)
-        {
-            DialogResult result3 = MessageBox.Show("Reset This Page to Defaults",
-                "Are you Sure",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2);
-            if (result3 == DialogResult.Yes)
-            {
-                mf.LogEventWriter("Steer Form - Steer Settings Set to Default");
-
-                mf.TimedMessageBox(2000, "Reset To Default", "Values Set to Inital Default");
-                Properties.Settings.Default.setVehicle_maxSteerAngle = mf.vehicle.maxSteerAngle
-                    = 45;
-
-                Properties.Settings.Default.setAS_countsPerDegree = 100;
-
-                Properties.Settings.Default.setAS_ackerman = 100;
-
-                Properties.Settings.Default.setAS_wasOffset = 0;
-
-                Properties.Settings.Default.setAS_highSteerPWM = 150;
-                Properties.Settings.Default.setAS_Kp = 120;
-                Properties.Settings.Default.setAS_minSteerPWM = 25;
-
-                Properties.Settings.Default.setVehicle_panicStopSpeed = mf.vehicle.panicStopSpeed
-                    = 0;
-
-                Properties.Settings.Default.setArdSteer_setting0 = 56;
-                Properties.Settings.Default.setArdSteer_setting1 = 0;
-                Properties.Settings.Default.setArdMac_isDanfoss = false;
-
-                Properties.Settings.Default.setArdSteer_maxPulseCounts = 0;
-
-                Properties.Settings.Default.setVehicle_goalPointAcquireFactor = 0.75;
-                Properties.Settings.Default.setVehicle_goalPointLookAheadHold = 3;
-                Properties.Settings.Default.setVehicle_goalPointLookAheadMult = 1.5;
-
-                Properties.Settings.Default.stanleyHeadingErrorGain = 1;
-                Properties.Settings.Default.stanleyDistanceErrorGain = 1;
-                Properties.Settings.Default.stanleyIntegralGainAB = 0;
-
-                Properties.Settings.Default.purePursuitIntegralGainAB = 0;
-
-                Properties.Settings.Default.setAS_sideHillComp = 0;
-
-                Properties.Settings.Default.setAS_uTurnCompensation = 1;
-
-                //Properties.Settings.Default.setVehicle_wheelbase = 2.8;
-
-                //Properties.Settings.Default.setVehicle_trackWidth = 1.9;
-
-                //Properties.Settings.Default.setVehicle_antennaPivot = 0.1;
-
-                //Properties.Settings.Default.setVehicle_antennaHeight = 3;
-
-                //Properties.Settings.Default.setVehicle_antennaOffset = 0;
-
-                Properties.Settings.Default.setIMU_invertRoll = false;
-
-                Properties.Settings.Default.setIMU_rollZero = mf.ahrs.rollZero;
-
-                Properties.Settings.Default.Save();
-
-                //save current vehicle
-                SettingsIO.ExportAll(mf.vehiclesDirectory + mf.vehicleFileName + ".XML");
-
-                FormSteer_Load(this, e);
-
-                toSend = true; counter = 6;
-
-                pboxSendSteer.Visible = true;
-                //btnSendSteerConfigPGN.PerformClick();
-            }
-        }
-
-        #region Gain
-
-        private void hsbarMinPWM_ValueChanged(object sender, EventArgs e)
-        {
-            lblMinPWM.Text = unchecked((byte)hsbarMinPWM.Value).ToString();
-            toSend = true;
-            counter = 0;
-        }
-
-        private void hsbarProportionalGain_ValueChanged(object sender, EventArgs e)
-        {
-            lblProportionalGain.Text = unchecked((byte)hsbarProportionalGain.Value).ToString();
-            toSend = true;
-            counter = 0;
-        }
-
-        //private void hsbarLowSteerPWM_ValueChanged(object sender, EventArgs e)
-        //{
-        //    if (hsbarLowSteerPWM.Value > hsbarHighSteerPWM.Value) hsbarHighSteerPWM.Value = hsbarLowSteerPWM.Value;
-        //    lblLowSteerPWM.Text = unchecked((byte)hsbarLowSteerPWM.Value).ToString();
-        //    toSend = true;
-        //    counter = 0;
-        //}
-
-        private void hsbarHighSteerPWM_ValueChanged(object sender, EventArgs e)
-        {
-            //if (hsbarLowSteerPWM.Value > hsbarHighSteerPWM.Value) hsbarLowSteerPWM.Value = hsbarHighSteerPWM.Value;
-            lblHighSteerPWM.Text = unchecked((byte)hsbarHighSteerPWM.Value).ToString();
-            toSend = true;
-            counter = 0;
-        }
-
-        #endregion Gain
-
-        #region Steer
-
-        private void hsbarAckerman_ValueChanged(object sender, EventArgs e)
-        {
-            lblAckerman.Text = unchecked((byte)hsbarAckerman.Value).ToString();
-            toSend = true;
-            counter = 0;
-        }
-
-        private void hsbarMaxSteerAngle_ValueChanged(object sender, EventArgs e)
-        {
-            mf.vehicle.maxSteerAngle = hsbarMaxSteerAngle.Value;
-            lblMaxSteerAngle.Text = hsbarMaxSteerAngle.Value.ToString();
-        }
-
-        private void hsbarCountsPerDegree_ValueChanged(object sender, EventArgs e)
-        {
-            lblCountsPerDegree.Text = unchecked((byte)hsbarCountsPerDegree.Value).ToString();
-            lblSteerAngleSensorZero.Text = (hsbarWasOffset.Value / (double)(hsbarCountsPerDegree.Value)).ToString("N2");
-            toSend = true;
-            counter = 0;
-        }
-
-        private void hsbarSteerAngleSensorZero_ValueChanged(object sender, EventArgs e)
-        {
-            lblSteerAngleSensorZero.Text = (hsbarWasOffset.Value / (double)(hsbarCountsPerDegree.Value)).ToString("N2");
-            toSend = true;
-            counter = 0;
-        }
-
-        private void btnZeroWAS_Click(object sender, EventArgs e)
-        {
-            int offset = (int)(hsbarCountsPerDegree.Value * -mf.mc.actualSteerAngleDegrees + hsbarWasOffset.Value);
-            if (Math.Abs(offset) > 3900)
-            {
-                mf.TimedMessageBox(2000, "Exceeded Range", "Excessive Steer Angle - Cannot Zero");
-                mf.LogEventWriter("Excessive Steer Angle, No Zero " + offset);
-            }
-            else
-            {
-                hsbarWasOffset.Value += (int)(hsbarCountsPerDegree.Value * -mf.mc.actualSteerAngleDegrees);
-            }
-        }
-
-        private void btnWASZeroReset_Click(object sender, EventArgs e)
-        {
-            hsbarWasOffset.Value = 0;
-        }
-
-        private void btnStartSA_Click(object sender, EventArgs e)
-        {
-            if (!isSA)
-            {
-                isSA = true;
-                startFix = mf.pivotAxlePos;
-                dist = 0;
-                diameter = 0;
-                cntr = 0;
-                btnStartSA.Image = Properties.Resources.boundaryStop;
-                lblDiameter.Text = "0";
-                lblCalcSteerAngleInner.Text = "Drive Steady";
-                //lblCalcSteerAngleOuter.Text = "Consistent Steering Angle!!";
-            }
-            else
-            {
-                isSA = false;
-                lblCalcSteerAngleInner.Text = "0.0" + "\u00B0";
-                //lblCalcSteerAngleOuter.Text = "0.0" + "\u00B0";
-                btnStartSA.Image = Properties.Resources.BoundaryRecord;
-            }
-        }
-
-        #endregion Steer
-
-        # region Stanley
-
-        private void hsbarStanleyGain_ValueChanged(object sender, EventArgs e)
-        {
-            mf.vehicle.stanleyDistanceErrorGain = hsbarStanleyGain.Value * 0.1;
-            lblStanleyGain.Text = mf.vehicle.stanleyDistanceErrorGain.ToString();
-        }
-
-        private void hsbarHeadingErrorGain_ValueChanged(object sender, EventArgs e)
-        {
-            mf.vehicle.stanleyHeadingErrorGain = hsbarHeadingErrorGain.Value * 0.1;
-            lblHeadingErrorGain.Text = mf.vehicle.stanleyHeadingErrorGain.ToString();
-        }
-
-        private void hsbarIntegral_ValueChanged(object sender, EventArgs e)
-        {
-            mf.vehicle.stanleyIntegralGainAB = hsbarIntegral.Value * 0.01;
-            lblIntegralPercent.Text = hsbarIntegral.Value.ToString();
-        }
-
-        #endregion
-
-        private void hsbarUTurnCompensation_ValueChanged(object sender, EventArgs e)
-        {
-            mf.vehicle.uturnCompensation = hsbarUTurnCompensation.Value * 0.1;
-            lblUTurnCompensation.Text = (hsbarUTurnCompensation.Value - 10).ToString();
-        }
-
-        #region Pure
-
-        private void hsbarIntegralPurePursuit_ValueChanged(object sender, EventArgs e)
-        {
-            mf.vehicle.purePursuitIntegralGain = hsbarIntegralPurePursuit.Value * 0.01;
-            lblPureIntegral.Text = hsbarIntegralPurePursuit.Value.ToString();
-        }
-
-        private void hsbarSideHillComp_ValueChanged(object sender, EventArgs e)
-        {
-            double deg = hsbarSideHillComp.Value;
-            deg *= 0.01;
-            lblSideHillComp.Text = (deg.ToString("N2") + "\u00B0");
-            Properties.Settings.Default.setAS_sideHillComp = deg;
-            mf.gyd.sideHillCompFactor = deg;
-        }
-
-        private void hsbarHoldLookAhead_ValueChanged(object sender, EventArgs e)
-        {
-            mf.vehicle.goalPointLookAheadHold = hsbarHoldLookAhead.Value * 0.1;
-            lblHoldLookAhead.Text = mf.vehicle.goalPointLookAheadHold.ToString();
-            lblAcquirePP.Text = (mf.vehicle.goalPointLookAheadHold * mf.vehicle.goalPointAcquireFactor).ToString("N1");
-        }
-
-        private void hsbarLookAheadMult_ValueChanged(object sender, EventArgs e)
-        {
-            mf.vehicle.goalPointLookAheadMult = hsbarLookAheadMult.Value * 0.1;
-            lblLookAheadMult.Text = mf.vehicle.goalPointLookAheadMult.ToString();
-        }
-
-        private void hsbarAcquireFactor_ValueChanged(object sender, EventArgs e)
-        {
-            mf.vehicle.goalPointAcquireFactor = hsbarAcquireFactor.Value * 0.01;
-            lblAcquireFactor.Text = mf.vehicle.goalPointAcquireFactor.ToString();
-        }
-
-        private void expandWindow_Click(object sender, EventArgs e)
-        {
-            if (windowSizeState++ > 0) windowSizeState = 0;
-            if (windowSizeState == 1)
-            {
-                this.Size = new System.Drawing.Size(918, 673);
-                btnExpand.Image = Properties.Resources.ArrowLeft;
-            }
-            else if (windowSizeState == 0)
-            {
-                this.Size = new System.Drawing.Size(392, 492);
-                btnExpand.Image = Properties.Resources.ArrowRight;
-            }
-        }
-
-        private void nudMaxCounts_Click(object sender, EventArgs e)
-        {
-            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
-            {
-                pboxSendSteer.Visible = true;
-            }
-        }
-
-        private void nudPanicStopSpeed_Click(object sender, EventArgs e)
-        {
-            mf.KeypadToNUD((NudlessNumericUpDown)sender, this);
-            mf.vehicle.panicStopSpeed = (double)nudPanicStopSpeed.Value;
-        }
-
-        //private void nudDeadZoneDistance_Click(object sender, EventArgs e)
-        //{
-        //    mf.KeypadToNUD((NudlessNumericUpDown)sender, this);
-        //    mf.vehicle.deadZoneDistance = (int)(nudDeadZoneDistance.Value*10);
-        //}
-
-        private void nudDeadZoneHeading_Click(object sender, EventArgs e)
-        {
-            mf.KeypadToNUD((NudlessNumericUpDown)sender, this);
-            mf.vehicle.deadZoneHeading = (int)(nudDeadZoneHeading.Value * 100);
-        }
-
-        private void nudDeadZoneDelay_Click(object sender, EventArgs e)
-        {
-            mf.KeypadToNUD((NudlessNumericUpDown)sender, this);
-            mf.vehicle.deadZoneDelay = (int)(nudDeadZoneDelay.Value);
-        }
+        #region Tab Sensors
 
         private void EnableAlert_Click(object sender, EventArgs e)
         {
@@ -923,12 +486,517 @@ namespace AgOpenGPS
             }
         }
 
+        private void nudMaxCounts_Click(object sender, EventArgs e)
+        {
+            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
+            {
+                pboxSendSteer.Visible = true;
+            }
+        }
+
+        private void hsbarSensor_Scroll(object sender, ScrollEventArgs e)
+        {
+            pboxSendSteer.Visible = true;
+            lblhsbarSensor.Text = ((int)((double)hsbarSensor.Value * 0.3921568627)).ToString() + "%";
+        }
+
+        #endregion
+
+
+        #region Tab Settings
+
+        private void tabSettings_Enter(object sender, EventArgs e)
+        {
+            cboxSteerInReverse.Checked = Properties.Settings.Default.setAS_isSteerInReverse;
+
+            if (mf.isStanleyUsed)
+            {
+                btnStanleyPure.Image = Resources.ModeStanley;
+            }
+            else
+            {
+                btnStanleyPure.Image = Resources.ModePurePursuit;
+            }
+        }
+
+        private void tabSettings_Leave(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.setAS_isSteerInReverse = cboxSteerInReverse.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void hsbarUTurnCompensation_ValueChanged(object sender, EventArgs e)
+        {
+            mf.vehicle.uturnCompensation = hsbarUTurnCompensation.Value * 0.1;
+            lblUTurnCompensation.Text = (hsbarUTurnCompensation.Value - 10).ToString();
+        }
+
+        private void cboxSteerInReverse_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.setAS_isSteerInReverse = cboxSteerInReverse.Checked;
+            mf.isSteerInReverse = cboxSteerInReverse.Checked;
+        }
+
+        private void hsbarSideHillComp_ValueChanged(object sender, EventArgs e)
+        {
+            double deg = hsbarSideHillComp.Value;
+            deg *= 0.01;
+            lblSideHillComp.Text = (deg.ToString("N2") + "\u00B0");
+            Properties.Settings.Default.setAS_sideHillComp = deg;
+            mf.gyd.sideHillCompFactor = deg;
+        }
+
+        private void btnStanleyPure_Click(object sender, EventArgs e)
+        {
+            mf.isStanleyUsed = !mf.isStanleyUsed;
+
+            if (mf.isStanleyUsed)
+            {
+                btnStanleyPure.Image = Resources.ModeStanley;
+                Log.EventWriter("Stanley Steer Mode Selectede");
+            }
+            else
+            {
+                btnStanleyPure.Image = Resources.ModePurePursuit;
+                Log.EventWriter("Pure Pursuit Steer Mode Selected");
+            }
+
+            tabControl1.TabPages.Remove(tabPP);
+            tabControl1.TabPages.Remove(tabPPAdv);
+            tabControl1.TabPages.Remove(tabGain);
+            tabControl1.TabPages.Remove(tabSteer);
+            tabControl1.TabPages.Remove(tabStan);
+
+
+            Properties.Settings.Default.setVehicle_isStanleyUsed = mf.isStanleyUsed;
+            Properties.Settings.Default.Save();
+
+            if (mf.isStanleyUsed)
+            {
+                this.tabControl1.ItemSize = new System.Drawing.Size(105, 48);
+                tabControl1.TabPages.Add(tabStan);
+                tabControl1.TabPages.Add(tabGain);
+                tabControl1.TabPages.Add(tabSteer);
+            }
+            else
+            {
+                tabControl1.TabPages.Add(tabPP);
+                tabControl1.TabPages.Add(tabGain);
+                tabControl1.TabPages.Add(tabSteer);
+                tabControl1.TabPages.Add(tabPPAdv);
+
+                this.tabControl1.ItemSize = new System.Drawing.Size(89, 48);
+            }
+        }
+
+        #endregion
+
+
+        #region Alarms Tab
+
+        private void tabAlarm_Enter(object sender, EventArgs e)
+        {
+            if (mf.isMetric)
+            {
+                nudMaxSteerSpeed.Value = (decimal)(Properties.Settings.Default.setAS_maxSteerSpeed);
+                nudMinSteerSpeed.Value = (decimal)(Properties.Settings.Default.setAS_minSteerSpeed);
+                nudGuidanceSpeedLimit.Value = (decimal)Properties.Settings.Default.setAS_functionSpeedLimit;
+                label160.Text = label163.Text = label166.Text = "kmh";
+            }
+            else
+            {
+                nudMaxSteerSpeed.Value = (decimal)(Properties.Settings.Default.setAS_maxSteerSpeed * 0.62137);
+                nudMinSteerSpeed.Value = (decimal)(Properties.Settings.Default.setAS_minSteerSpeed * 0.62137);
+                nudGuidanceSpeedLimit.Value = (decimal)(Properties.Settings.Default.setAS_functionSpeedLimit * 0.62137);
+                label160.Text = label163.Text = label166.Text = "mph";
+            }
+
+            label20.Text = mf.unitsInCm;
+        }
+
+        private void tabAlarm_Leave(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+
+        private void nudMinSteerSpeed_Click(object sender, EventArgs e)
+        {
+            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
+            {
+                Properties.Settings.Default.setAS_minSteerSpeed = ((double)nudMinSteerSpeed.Value);
+                if (!mf.isMetric) Properties.Settings.Default.setAS_minSteerSpeed *= 1.609344;
+                mf.vehicle.minSteerSpeed = Properties.Settings.Default.setAS_minSteerSpeed;
+            }
+        }
+
+        private void nudMaxSteerSpeed_Click(object sender, EventArgs e)
+        {
+            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
+            {
+                Properties.Settings.Default.setAS_maxSteerSpeed = ((double)nudMaxSteerSpeed.Value);
+                if (!mf.isMetric) Properties.Settings.Default.setAS_maxSteerSpeed *= 1.609344;
+                mf.vehicle.maxSteerSpeed = Properties.Settings.Default.setAS_maxSteerSpeed;
+            }
+        }
+
+        private void nudGuidanceSpeedLimit_Click(object sender, EventArgs e)
+        {
+            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
+            {
+                Properties.Settings.Default.setAS_functionSpeedLimit = ((double)nudGuidanceSpeedLimit.Value);
+                if (!mf.isMetric) Properties.Settings.Default.setAS_functionSpeedLimit *= 1.609344;
+                mf.vehicle.functionSpeedLimit = Properties.Settings.Default.setAS_functionSpeedLimit;
+            }
+        }
+
+        #endregion
+
+
+        #region Tab On the Line
+
+        private void tabOnTheLine_Enter(object sender, EventArgs e)
+        {
+            chkDisplayLightbar.Checked = mf.isLightbarOn;
+            if (chkDisplayLightbar.Checked) { chkDisplayLightbar.Image = Resources.SwitchOn; }
+            else { chkDisplayLightbar.Image = Resources.SwitchOff; }
+
+            if (mf.isMetric)
+            {
+                nudSnapDistance.DecimalPlaces = 0;
+                nudSnapDistance.Value = (int)((double)Properties.Settings.Default.setAS_snapDistance * mf.cm2CmOrIn);
+            }
+            else
+            {
+                nudSnapDistance.DecimalPlaces = 1;
+                nudSnapDistance.Value = (decimal)Math.Round(((double)Properties.Settings.Default.setAS_snapDistance * mf.cm2CmOrIn), 1, MidpointRounding.AwayFromZero);
+            }
+
+            nudGuidanceLookAhead.Value = (decimal)Properties.Settings.Default.setAS_guidanceLookAheadTime;
+
+            nudLineWidth.Value = Properties.Settings.Default.setDisplay_lineWidth;
+
+            nudcmPerPixel.Value = Properties.Settings.Default.setDisplay_lightbarCmPerPixel;
+
+            label20.Text = mf.unitsInCm;
+            label43.Text = mf.unitsInCm;
+        }
+
+        private void tabOnTheLine_Leave(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void nudcmPerPixel_Click(object sender, EventArgs e)
+        {
+            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
+            {
+                Properties.Settings.Default.setDisplay_lightbarCmPerPixel = ((int)nudcmPerPixel.Value);
+                mf.lightbarCmPerPixel = Properties.Settings.Default.setDisplay_lightbarCmPerPixel;
+            }
+        }
+
+        private void nudLineWidth_Click(object sender, EventArgs e)
+        {
+            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
+            {
+                Properties.Settings.Default.setDisplay_lineWidth = (int)nudLineWidth.Value;
+                mf.ABLine.lineWidth = Properties.Settings.Default.setDisplay_lineWidth;
+            }
+        }
+
+        private void nudSnapDistance_Click(object sender, EventArgs e)
+        {
+            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
+            {
+                Properties.Settings.Default.setAS_snapDistance = ((double)nudSnapDistance.Value * mf.inOrCm2Cm);
+                mf.ABLine.snapDistance = Properties.Settings.Default.setAS_snapDistance;
+            }
+        }
+
+        private void nudGuidanceLookAhead_Click(object sender, EventArgs e)
+        {
+            if (mf.KeypadToNUD((NudlessNumericUpDown)sender, this))
+            {
+                Properties.Settings.Default.setAS_guidanceLookAheadTime = ((double)nudGuidanceLookAhead.Value);
+                mf.guidanceLookAheadTime = Properties.Settings.Default.setAS_guidanceLookAheadTime;
+            }
+        }
+
+        private void rbtnLightBar_Click(object sender, EventArgs e)
+        {
+            mf.isLightBarNotSteerBar = true;
+            Properties.Settings.Default.setMenu_isLightbarNotSteerBar = mf.isLightBarNotSteerBar;
+            Properties.Settings.Default.Save();
+        }
+
+        private void rbtnSteerBar_Click(object sender, EventArgs e)
+        {
+            mf.isLightBarNotSteerBar = false;
+            Properties.Settings.Default.setMenu_isLightbarNotSteerBar = mf.isLightBarNotSteerBar;
+            Properties.Settings.Default.Save();
+        }
+
+        private void chkDisplayLightbar_Click(object sender, EventArgs e)
+        {
+            if (chkDisplayLightbar.Checked) { chkDisplayLightbar.Image = Resources.SwitchOn; }
+            else { chkDisplayLightbar.Image = Resources.SwitchOff; }
+
+            Properties.Settings.Default.setMenu_isLightbarOn = chkDisplayLightbar.Checked;
+            Properties.Settings.Default.Save();
+            mf.isLightbarOn = chkDisplayLightbar.Checked;
+        }
+
+        #endregion
+
+
+        //main first tabform 
+        #region Gain
+
+        private void hsbarMinPWM_ValueChanged(object sender, EventArgs e)
+        {
+            lblMinPWM.Text = unchecked((byte)hsbarMinPWM.Value).ToString();
+            toSend = true;
+            counter = 0;
+        }
+
+        private void hsbarProportionalGain_ValueChanged(object sender, EventArgs e)
+        {
+            lblProportionalGain.Text = unchecked((byte)hsbarProportionalGain.Value).ToString();
+            toSend = true;
+            counter = 0;
+        }
+
+        private void hsbarHighSteerPWM_ValueChanged(object sender, EventArgs e)
+        {
+            //if (hsbarLowSteerPWM.Value > hsbarHighSteerPWM.Value) hsbarLowSteerPWM.Value = hsbarHighSteerPWM.Value;
+            lblHighSteerPWM.Text = unchecked((byte)hsbarHighSteerPWM.Value).ToString();
+            toSend = true;
+            counter = 0;
+        }
+
+
+        //private void hsbarLowSteerPWM_ValueChanged(object sender, EventArgs e)
+        //{
+        //    if (hsbarLowSteerPWM.Value > hsbarHighSteerPWM.Value) hsbarHighSteerPWM.Value = hsbarLowSteerPWM.Value;
+        //    lblLowSteerPWM.Text = unchecked((byte)hsbarLowSteerPWM.Value).ToString();
+        //    toSend = true;
+        //    counter = 0;
+        //}
+
+        #endregion Gain
+
+        #region Steer
+
+        private void hsbarAckerman_ValueChanged(object sender, EventArgs e)
+        {
+            lblAckerman.Text = unchecked((byte)hsbarAckerman.Value).ToString();
+            toSend = true;
+            counter = 0;
+        }
+
+        private void hsbarMaxSteerAngle_ValueChanged(object sender, EventArgs e)
+        {
+            mf.vehicle.maxSteerAngle = hsbarMaxSteerAngle.Value;
+            lblMaxSteerAngle.Text = hsbarMaxSteerAngle.Value.ToString();
+        }
+
+        private void hsbarCountsPerDegree_ValueChanged(object sender, EventArgs e)
+        {
+            lblCountsPerDegree.Text = unchecked((byte)hsbarCountsPerDegree.Value).ToString();
+            lblSteerAngleSensorZero.Text = (hsbarWasOffset.Value / (double)(hsbarCountsPerDegree.Value)).ToString("N2");
+            toSend = true;
+            counter = 0;
+        }
+
+        private void hsbarSteerAngleSensorZero_ValueChanged(object sender, EventArgs e)
+        {
+            lblSteerAngleSensorZero.Text = (hsbarWasOffset.Value / (double)(hsbarCountsPerDegree.Value)).ToString("N2");
+            toSend = true;
+            counter = 0;
+        }
+
+        private void btnZeroWAS_Click(object sender, EventArgs e)
+        {
+            int offset = (int)(hsbarCountsPerDegree.Value * -mf.mc.actualSteerAngleDegrees + hsbarWasOffset.Value);
+            if (Math.Abs(offset) > 3900)
+            {
+                mf.TimedMessageBox(2000, "Exceeded Range", "Excessive Steer Angle - Cannot Zero");
+                Log.EventWriter("Excessive Steer Angle, No Zero " + offset);
+            }
+            else
+            {
+                hsbarWasOffset.Value += (int)(hsbarCountsPerDegree.Value * -mf.mc.actualSteerAngleDegrees);
+            }
+        }
+
+        private void btnWASZeroReset_Click(object sender, EventArgs e)
+        {
+            hsbarWasOffset.Value = 0;
+        }
+
+        private void btnStartSA_Click(object sender, EventArgs e)
+        {
+            if (!isSA)
+            {
+                isSA = true;
+                startFix = mf.pivotAxlePos;
+                dist = 0;
+                diameter = 0;
+                cntr = 0;
+                btnStartSA.Image = Properties.Resources.boundaryStop;
+                lblDiameter.Text = "0";
+                lblCalcSteerAngleInner.Text = "Drive Steady";
+                //lblCalcSteerAngleOuter.Text = "Consistent Steering Angle!!";
+            }
+            else
+            {
+                isSA = false;
+                lblCalcSteerAngleInner.Text = "0.0" + "\u00B0";
+                //lblCalcSteerAngleOuter.Text = "0.0" + "\u00B0";
+                btnStartSA.Image = Properties.Resources.BoundaryRecord;
+            }
+        }
+
+        #endregion Steer
+
+        # region Stanley
+
+        private void hsbarStanleyGain_ValueChanged(object sender, EventArgs e)
+        {
+            mf.vehicle.stanleyDistanceErrorGain = hsbarStanleyGain.Value * 0.1;
+            lblStanleyGain.Text = mf.vehicle.stanleyDistanceErrorGain.ToString();
+        }
+
+        private void hsbarHeadingErrorGain_ValueChanged(object sender, EventArgs e)
+        {
+            mf.vehicle.stanleyHeadingErrorGain = hsbarHeadingErrorGain.Value * 0.1;
+            lblHeadingErrorGain.Text = mf.vehicle.stanleyHeadingErrorGain.ToString();
+        }
+
+        private void hsbarIntegral_ValueChanged(object sender, EventArgs e)
+        {
+            mf.vehicle.stanleyIntegralGainAB = hsbarIntegral.Value * 0.01;
+            lblIntegralPercent.Text = hsbarIntegral.Value.ToString();
+        }
+
+        #endregion
+
+        #region Pure
+
+        private void hsbarHoldLookAhead_ValueChanged(object sender, EventArgs e)
+        {
+            mf.vehicle.goalPointLookAheadHold = hsbarHoldLookAhead.Value * 0.1;
+            lblHoldLookAhead.Text = mf.vehicle.goalPointLookAheadHold.ToString();
+            lblAcquirePP.Text = (mf.vehicle.goalPointLookAheadHold * mf.vehicle.goalPointAcquireFactor).ToString("N1");
+        }
+
+        private void hsbarIntegralPurePursuit_ValueChanged(object sender, EventArgs e)
+        {
+            mf.vehicle.purePursuitIntegralGain = hsbarIntegralPurePursuit.Value * 0.01;
+            lblPureIntegral.Text = hsbarIntegralPurePursuit.Value.ToString();
+        }
+
+        private void hsbarLookAheadMult_ValueChanged(object sender, EventArgs e)
+        {
+            mf.vehicle.goalPointLookAheadMult = hsbarLookAheadMult.Value * 0.1;
+            lblLookAheadMult.Text = mf.vehicle.goalPointLookAheadMult.ToString();
+        }
+
+        private void hsbarAcquireFactor_ValueChanged(object sender, EventArgs e)
+        {
+            mf.vehicle.goalPointAcquireFactor = hsbarAcquireFactor.Value * 0.01;
+            lblAcquireFactor.Text = mf.vehicle.goalPointAcquireFactor.ToString();
+        }
+
+        private void nudDeadZoneHeading_Click(object sender, EventArgs e)
+        {
+            mf.KeypadToNUD((NudlessNumericUpDown)sender, this);
+            mf.vehicle.deadZoneHeading = (int)(nudDeadZoneHeading.Value * 100);
+        }
+
+        private void nudDeadZoneDelay_Click(object sender, EventArgs e)
+        {
+            mf.KeypadToNUD((NudlessNumericUpDown)sender, this);
+            mf.vehicle.deadZoneDelay = (int)(nudDeadZoneDelay.Value);
+        }
+
+        private void expandWindow_Click(object sender, EventArgs e)
+        {
+            if (windowSizeState++ > 0) windowSizeState = 0;
+            if (windowSizeState == 1)
+            {
+                this.Size = new System.Drawing.Size(918, 673);
+                btnExpand.Image = Properties.Resources.ArrowLeft;
+            }
+            else if (windowSizeState == 0)
+            {
+                this.Size = new System.Drawing.Size(392, 492);
+                btnExpand.Image = Properties.Resources.ArrowRight;
+            }
+        }
+
+
+        #endregion
+
+        #region Free Drive
+
+        private void btnFreeDrive_Click(object sender, EventArgs e)
+        {
+            if (mf.vehicle.isInFreeDriveMode)
+            {
+                //turn OFF free drive mode
+                btnFreeDrive.Image = Properties.Resources.SteerDriveOff;
+                btnFreeDrive.BackColor = Color.FromArgb(50, 50, 70);
+                mf.vehicle.isInFreeDriveMode = false;
+                btnSteerAngleDown.Enabled = false;
+                btnSteerAngleUp.Enabled = false;
+                //hSBarFreeDrive.Value = 0;
+                mf.vehicle.driveFreeSteerAngle = 0;
+            }
+            else
+            {
+                //turn ON free drive mode
+                btnFreeDrive.Image = Properties.Resources.SteerDriveOn;
+                btnFreeDrive.BackColor = Color.LightGreen;
+                mf.vehicle.isInFreeDriveMode = true;
+                btnSteerAngleDown.Enabled = true;
+                btnSteerAngleUp.Enabled = true;
+                //hSBarFreeDrive.Value = 0;
+                mf.vehicle.driveFreeSteerAngle = 0;
+                lblSteerAngle.Text = "0";
+            }
+        }
+
+        private void btnFreeDriveZero_Click(object sender, EventArgs e)
+        {
+            if (mf.vehicle.driveFreeSteerAngle == 0)
+                mf.vehicle.driveFreeSteerAngle = 5;
+            else mf.vehicle.driveFreeSteerAngle = 0;
+            //hSBarFreeDrive.Value = mf.driveFreeSteerAngle;
+        }
+
+        private void btnSteerAngleUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            mf.vehicle.driveFreeSteerAngle++;
+            if (mf.vehicle.driveFreeSteerAngle > 40) mf.vehicle.driveFreeSteerAngle = 40;
+        }
+
+        private void btnSteerAngleDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            mf.vehicle.driveFreeSteerAngle--;
+            if (mf.vehicle.driveFreeSteerAngle < -40) mf.vehicle.driveFreeSteerAngle = -40;
+        }
+
+        #endregion
+
+
         private void btnSendSteerConfigPGN_Click(object sender, EventArgs e)
         {
             SaveSettings();
             mf.SendPgnToLoop(mf.p_251.pgn);
             pboxSendSteer.Visible = false;
-            mf.LogEventWriter("Steer Form, Send and Save Pressed");
+            Log.EventWriter("Steer Form, Send and Save Pressed");
 
             mf.TimedMessageBox(2000, gStr.gsAutoSteerPort, "Settings Sent To Steer Module");
         }
@@ -1046,140 +1114,94 @@ namespace AgOpenGPS
             pboxSendSteer.Visible = false;
         }
 
-        private void hsbarSensor_Scroll(object sender, ScrollEventArgs e)
-        {
-            pboxSendSteer.Visible = true;
-            lblhsbarSensor.Text = ((int)((double)hsbarSensor.Value * 0.3921568627)).ToString() + "%";
-        }
-
-        private void rbtnLightBar_Click(object sender, EventArgs e)
-        {
-            mf.isLightBarNotSteerBar = true;
-            Properties.Settings.Default.setMenu_isLightbarNotSteerBar = mf.isLightBarNotSteerBar;
-            Properties.Settings.Default.Save();
-        }
-
-        private void rbtnSteerBar_Click(object sender, EventArgs e)
-        {
-            mf.isLightBarNotSteerBar = false;
-            Properties.Settings.Default.setMenu_isLightbarNotSteerBar = mf.isLightBarNotSteerBar;
-            Properties.Settings.Default.Save();
-        }
-        private void chkDisplayLightbar_Click(object sender, EventArgs e)
-        {
-            if (chkDisplayLightbar.Checked) { chkDisplayLightbar.Image = Resources.SwitchOn; }
-            else { chkDisplayLightbar.Image = Resources.SwitchOff; }
-
-            Properties.Settings.Default.setMenu_isLightbarOn = chkDisplayLightbar.Checked;
-            Properties.Settings.Default.Save();
-            mf.isLightbarOn = chkDisplayLightbar.Checked;
-        }
-
-
-        #endregion
-
-        #region Free Drive
-
-        private void btnFreeDrive_Click(object sender, EventArgs e)
-        {
-            if (mf.vehicle.isInFreeDriveMode)
-            {
-                //turn OFF free drive mode
-                btnFreeDrive.Image = Properties.Resources.SteerDriveOff;
-                btnFreeDrive.BackColor = Color.FromArgb(50, 50, 70);
-                mf.vehicle.isInFreeDriveMode = false;
-                btnSteerAngleDown.Enabled = false;
-                btnSteerAngleUp.Enabled = false;
-                //hSBarFreeDrive.Value = 0;
-                mf.vehicle.driveFreeSteerAngle = 0;
-            }
-            else
-            {
-                //turn ON free drive mode
-                btnFreeDrive.Image = Properties.Resources.SteerDriveOn;
-                btnFreeDrive.BackColor = Color.LightGreen;
-                mf.vehicle.isInFreeDriveMode = true;
-                btnSteerAngleDown.Enabled = true;
-                btnSteerAngleUp.Enabled = true;
-                //hSBarFreeDrive.Value = 0;
-                mf.vehicle.driveFreeSteerAngle = 0;
-                lblSteerAngle.Text = "0";
-            }
-        }
-
-        private void btnFreeDriveZero_Click(object sender, EventArgs e)
-        {
-            if (mf.vehicle.driveFreeSteerAngle == 0)
-                mf.vehicle.driveFreeSteerAngle = 5;
-            else mf.vehicle.driveFreeSteerAngle = 0;
-            //hSBarFreeDrive.Value = mf.driveFreeSteerAngle;
-        }
-
-
-        private void btnSteerAngleUp_MouseDown(object sender, MouseEventArgs e)
-        {
-            mf.vehicle.driveFreeSteerAngle++;
-            if (mf.vehicle.driveFreeSteerAngle > 40) mf.vehicle.driveFreeSteerAngle = 40;
-        }
-
-        private void btnSteerAngleDown_MouseDown(object sender, MouseEventArgs e)
-        {
-            mf.vehicle.driveFreeSteerAngle--;
-            if (mf.vehicle.driveFreeSteerAngle < -40) mf.vehicle.driveFreeSteerAngle = -40;
-        }
-
-        #endregion
-
-
-        private void btnStanleyPure_Click(object sender, EventArgs e)
-        {
-            mf.isStanleyUsed = !mf.isStanleyUsed;
-
-            if (mf.isStanleyUsed)
-            {
-                btnStanleyPure.Image = Resources.ModeStanley;
-                mf.LogEventWriter("Stanley Steer Mode Selectede");
-            }
-            else
-            {
-                btnStanleyPure.Image = Resources.ModePurePursuit;
-                mf.LogEventWriter("Pure Pursuit Steer Mode Selected");
-            }
-
-            tabControl1.TabPages.Remove(tabPP);
-            tabControl1.TabPages.Remove(tabPPAdv);
-            tabControl1.TabPages.Remove(tabGain);
-            tabControl1.TabPages.Remove(tabSteer);
-            tabControl1.TabPages.Remove(tabStan);
-
-
-            Properties.Settings.Default.setVehicle_isStanleyUsed = mf.isStanleyUsed;
-            Properties.Settings.Default.Save();
-
-            if (mf.isStanleyUsed)
-            {
-                this.tabControl1.ItemSize = new System.Drawing.Size(105, 48);
-                tabControl1.TabPages.Add(tabStan);
-                tabControl1.TabPages.Add(tabGain);
-                tabControl1.TabPages.Add(tabSteer);
-            }
-            else
-            {
-                tabControl1.TabPages.Add(tabPP);
-                tabControl1.TabPages.Add(tabGain);
-                tabControl1.TabPages.Add(tabSteer);
-                tabControl1.TabPages.Add(tabPPAdv);
-
-                this.tabControl1.ItemSize = new System.Drawing.Size(89, 48);
-            }
-
-        }
 
         private void btnSteerWizard_Click(object sender, EventArgs e)
         {
             Close();
             Form form = new FormSteerWiz(mf);
             form.Show(mf);
+        }
+
+        private void btnVehicleReset_Click(object sender, EventArgs e)
+        {
+            DialogResult result3 = MessageBox.Show("Reset This Page to Defaults",
+                "Are you Sure",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+            if (result3 == DialogResult.Yes)
+            {
+                Log.EventWriter("Steer Form - Steer Settings Set to Default");
+
+                mf.TimedMessageBox(2000, "Reset To Default", "Values Set to Inital Default");
+                Properties.Settings.Default.setVehicle_maxSteerAngle = mf.vehicle.maxSteerAngle
+                    = 45;
+
+                Properties.Settings.Default.setAS_countsPerDegree = 110;
+
+                Properties.Settings.Default.setAS_ackerman = 100;
+
+                Properties.Settings.Default.setAS_wasOffset = 3;
+
+                Properties.Settings.Default.setAS_highSteerPWM = 180;
+                Properties.Settings.Default.setAS_Kp = 50;
+                Properties.Settings.Default.setAS_minSteerPWM = 25;
+
+                Properties.Settings.Default.setArdSteer_setting0 = 56;
+                Properties.Settings.Default.setArdSteer_setting1 = 0;
+                Properties.Settings.Default.setArdMac_isDanfoss = false;
+
+                Properties.Settings.Default.setArdSteer_maxPulseCounts = 3;
+
+                Properties.Settings.Default.setVehicle_goalPointAcquireFactor = 0.85;
+                Properties.Settings.Default.setVehicle_goalPointLookAheadHold = 3;
+                Properties.Settings.Default.setVehicle_goalPointLookAheadMult = 1.5;
+
+                Properties.Settings.Default.stanleyHeadingErrorGain = 1;
+                Properties.Settings.Default.stanleyDistanceErrorGain = 1;
+                Properties.Settings.Default.stanleyIntegralGainAB = 0;
+
+                Properties.Settings.Default.purePursuitIntegralGainAB = 0;
+                
+                Properties.Settings.Default.setAS_sideHillComp = 0;
+
+                Properties.Settings.Default.setAS_uTurnCompensation = 1;
+
+                Properties.Settings.Default.setIMU_invertRoll = false;
+
+                Properties.Settings.Default.setIMU_rollZero = 0;
+
+                Properties.Settings.Default.setAS_minSteerSpeed = 0;
+                Properties.Settings.Default.setAS_maxSteerSpeed = 15;
+                Properties.Settings.Default.setAS_functionSpeedLimit = 12;
+                Properties.Settings.Default.setDisplay_lightbarCmPerPixel = 5;
+                Properties.Settings.Default.setDisplay_lineWidth = 2;
+                Properties.Settings.Default.setAS_snapDistance = 20;
+                Properties.Settings.Default.setAS_guidanceLookAheadTime = 1.5;
+                Properties.Settings.Default.setAS_uTurnCompensation = 1;
+
+                Properties.Settings.Default.setVehicle_isStanleyUsed = false;
+                mf.isStanleyUsed = false;
+
+                Properties.Settings.Default.setAS_isSteerInReverse = false;
+                mf.isSteerInReverse = false;
+
+                //save current vehicle
+                RegistrySettings.Save();
+
+                mf.vehicle = new CVehicle(mf);
+
+                FormSteer_Load(this, e);
+
+                toSend = true; counter = 6;
+
+                pboxSendSteer.Visible = true;
+
+                tabControl1.SelectTab(1);
+                tabControl1.SelectTab(0);
+                tabSteerSettings.SelectTab(1);
+                tabSteerSettings.SelectTab(0);
+            }
         }
     }
 }

@@ -52,8 +52,8 @@
             this.menuLanguageRussian = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLanguageFinnish = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLanguageSlovak = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLanguageUkranian = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLanguageTurkish = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLanguageUkranian = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLanguageChinese = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLanguageTest = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
@@ -65,8 +65,6 @@
             this.resetEverythingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.systemLogViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nozzleAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrWatchdog = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStripFlag = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemFlagRed = new System.Windows.Forms.ToolStripMenuItem();
@@ -169,6 +167,7 @@
             this.headlandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.headlandBuildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tramLinesMenuField = new System.Windows.Forms.ToolStripMenuItem();
+            this.tramsMultiMenuField = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteAppliedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagByLatLonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordedPathStripMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -214,19 +213,6 @@
             this.btnMinimizeMainForm = new System.Windows.Forms.Button();
             this.btnFieldStats = new System.Windows.Forms.Button();
             this.lblHardwareMessage = new System.Windows.Forms.Label();
-            this.tlpNozzle = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSprayGalPerMinActual = new System.Windows.Forms.Button();
-            this.btnSprayPSI = new System.Windows.Forms.Button();
-            this.lblPressure = new System.Windows.Forms.Label();
-            this.btnSprayVolumeTotal = new System.Windows.Forms.Button();
-            this.lbl_Volume = new System.Windows.Forms.Label();
-            this.btnSprayGalPerAcre = new System.Windows.Forms.Button();
-            this.cboxSprayAutoManual = new System.Windows.Forms.CheckBox();
-            this.cboxRate1Rate2Select = new System.Windows.Forms.CheckBox();
-            this.btnSprayRateUp = new System.Windows.Forms.Button();
-            this.btnSprayRateDn = new System.Windows.Forms.Button();
-            this.btnNozConfig = new System.Windows.Forms.Button();
-            this.lblGPM_Set = new System.Windows.Forms.Label();
             this.contextMenuStripOpenGL.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStripFlag.SuspendLayout();
@@ -241,7 +227,6 @@
             this.panelBottom.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.panelControlBox.SuspendLayout();
-            this.tlpNozzle.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStripOpenGL
@@ -278,10 +263,10 @@
             this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 22F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(3, 3);
+            this.menuStrip1.Location = new System.Drawing.Point(20, 3);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
-            this.menuStrip1.Size = new System.Drawing.Size(73, 44);
+            this.menuStrip1.Size = new System.Drawing.Size(56, 44);
             this.menuStrip1.TabIndex = 49;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -298,21 +283,19 @@
             this.kioskModeToolStrip,
             this.resetALLToolStripMenuItem,
             this.aboutToolStripMenuItem,
-            this.helpMenuItem,
-            this.systemLogViewerToolStripMenuItem,
-            this.nozzleAppToolStripMenuItem});
+            this.helpMenuItem});
             this.fileToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fileToolStripMenuItem.Image = global::AgOpenGPS.Properties.Resources.fileMenu;
             this.fileToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(68, 44);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(55, 44);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(405, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(379, 6);
             // 
             // menustripLanguage
             // 
@@ -332,12 +315,12 @@
             this.menuLanguageRussian,
             this.menuLanguageFinnish,
             this.menuLanguageSlovak,
-            this.menuLanguageUkranian,
             this.menuLanguageTurkish,
+            this.menuLanguageUkranian,
             this.menuLanguageChinese,
             this.menuLanguageTest});
             this.menustripLanguage.Name = "menustripLanguage";
-            this.menustripLanguage.Size = new System.Drawing.Size(408, 50);
+            this.menustripLanguage.Size = new System.Drawing.Size(382, 50);
             this.menustripLanguage.Text = "Language";
             // 
             // menuLanguageDanish
@@ -391,14 +374,14 @@
             this.menuLanguageLatvian.Name = "menuLanguageLatvian";
             this.menuLanguageLatvian.Size = new System.Drawing.Size(485, 50);
             this.menuLanguageLatvian.Text = "Latviski (Latvia)";
-            this.menuLanguageLatvian.Click += new System.EventHandler(this.latvianToolStripMenuItem_Click);
+            this.menuLanguageLatvian.Click += new System.EventHandler(this.menuLanguageLatvian_Click);
             // 
             // menuLanguageLithuanian
             // 
             this.menuLanguageLithuanian.Name = "menuLanguageLithuanian";
             this.menuLanguageLithuanian.Size = new System.Drawing.Size(485, 50);
             this.menuLanguageLithuanian.Text = "Lietuvių (Lithuania)";
-            this.menuLanguageLithuanian.Click += new System.EventHandler(this.lithuanianToolStripMenuItem_Click);
+            this.menuLanguageLithuanian.Click += new System.EventHandler(this.menuLanguageLithuanian_Click);
             // 
             // menuLanguageHungarian
             // 
@@ -442,7 +425,7 @@
             this.menuLanguageFinnish.Name = "menuLanguageFinnish";
             this.menuLanguageFinnish.Size = new System.Drawing.Size(485, 50);
             this.menuLanguageFinnish.Text = "Suomalainen (Finland)";
-            this.menuLanguageFinnish.Click += new System.EventHandler(this.finnishToolStripMenuItem_Click);
+            this.menuLanguageFinnish.Click += new System.EventHandler(this.menuLanguageFinnish_Click);
             // 
             // menuLanguageSlovak
             // 
@@ -451,19 +434,19 @@
             this.menuLanguageSlovak.Text = "Slovenčina (Slovakia)";
             this.menuLanguageSlovak.Click += new System.EventHandler(this.menuLanguageSlovak_Click);
             // 
-            // menuLanguageUkranian
-            // 
-            this.menuLanguageUkranian.Name = "menuLanguageUkranian";
-            this.menuLanguageUkranian.Size = new System.Drawing.Size(485, 50);
-            this.menuLanguageUkranian.Text = "Yкраїнська (Ukraine)";
-            this.menuLanguageUkranian.Click += new System.EventHandler(this.menuLanguageUkranian_Click);
-            // 
             // menuLanguageTurkish
             // 
             this.menuLanguageTurkish.Name = "menuLanguageTurkish";
             this.menuLanguageTurkish.Size = new System.Drawing.Size(485, 50);
             this.menuLanguageTurkish.Text = "Türkçe (Turkey)";
             this.menuLanguageTurkish.Click += new System.EventHandler(this.menuLanguageTurkish_Click);
+            // 
+            // menuLanguageUkranian
+            // 
+            this.menuLanguageUkranian.Name = "menuLanguageUkranian";
+            this.menuLanguageUkranian.Size = new System.Drawing.Size(485, 50);
+            this.menuLanguageUkranian.Text = "Yкраїнська (Ukraine)";
+            this.menuLanguageUkranian.Click += new System.EventHandler(this.menuLanguageUkranian_Click);
             // 
             // menuLanguageChinese
             // 
@@ -482,32 +465,32 @@
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(405, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(379, 6);
             // 
             // simulatorOnToolStripMenuItem
             // 
             this.simulatorOnToolStripMenuItem.CheckOnClick = true;
             this.simulatorOnToolStripMenuItem.Name = "simulatorOnToolStripMenuItem";
-            this.simulatorOnToolStripMenuItem.Size = new System.Drawing.Size(408, 50);
+            this.simulatorOnToolStripMenuItem.Size = new System.Drawing.Size(382, 50);
             this.simulatorOnToolStripMenuItem.Text = "Simulator On";
             this.simulatorOnToolStripMenuItem.Click += new System.EventHandler(this.simulatorOnToolStripMenuItem_Click);
             // 
             // enterSimCoordsToolStripMenuItem
             // 
             this.enterSimCoordsToolStripMenuItem.Name = "enterSimCoordsToolStripMenuItem";
-            this.enterSimCoordsToolStripMenuItem.Size = new System.Drawing.Size(408, 50);
+            this.enterSimCoordsToolStripMenuItem.Size = new System.Drawing.Size(382, 50);
             this.enterSimCoordsToolStripMenuItem.Text = "Enter Sim Coords";
             this.enterSimCoordsToolStripMenuItem.Click += new System.EventHandler(this.enterSimCoordsToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(405, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(379, 6);
             // 
             // kioskModeToolStrip
             // 
             this.kioskModeToolStrip.Name = "kioskModeToolStrip";
-            this.kioskModeToolStrip.Size = new System.Drawing.Size(408, 50);
+            this.kioskModeToolStrip.Size = new System.Drawing.Size(382, 50);
             this.kioskModeToolStrip.Text = "Kiosk Mode";
             this.kioskModeToolStrip.Click += new System.EventHandler(this.kioskModeToolStrip_Click);
             // 
@@ -516,7 +499,7 @@
             this.resetALLToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetEverythingToolStripMenuItem});
             this.resetALLToolStripMenuItem.Name = "resetALLToolStripMenuItem";
-            this.resetALLToolStripMenuItem.Size = new System.Drawing.Size(408, 50);
+            this.resetALLToolStripMenuItem.Size = new System.Drawing.Size(382, 50);
             this.resetALLToolStripMenuItem.Text = "Reset All";
             // 
             // resetEverythingToolStripMenuItem
@@ -529,31 +512,16 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(408, 50);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(382, 50);
             this.aboutToolStripMenuItem.Text = "About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpMenuItem
             // 
             this.helpMenuItem.Name = "helpMenuItem";
-            this.helpMenuItem.Size = new System.Drawing.Size(408, 50);
+            this.helpMenuItem.Size = new System.Drawing.Size(382, 50);
             this.helpMenuItem.Text = "Help";
             this.helpMenuItem.Click += new System.EventHandler(this.helpMenuItem_Click);
-            // 
-            // systemLogViewerToolStripMenuItem
-            // 
-            this.systemLogViewerToolStripMenuItem.Name = "systemLogViewerToolStripMenuItem";
-            this.systemLogViewerToolStripMenuItem.Size = new System.Drawing.Size(408, 50);
-            this.systemLogViewerToolStripMenuItem.Text = "System Log Viewer";
-            this.systemLogViewerToolStripMenuItem.Click += new System.EventHandler(this.systemLogViewerToolStripMenuItem_Click);
-            // 
-            // nozzleAppToolStripMenuItem
-            // 
-            this.nozzleAppToolStripMenuItem.Name = "nozzleAppToolStripMenuItem";
-            this.nozzleAppToolStripMenuItem.Size = new System.Drawing.Size(408, 50);
-            this.nozzleAppToolStripMenuItem.Text = "Nozzle App";
-            this.nozzleAppToolStripMenuItem.Visible = false;
-            this.nozzleAppToolStripMenuItem.Click += new System.EventHandler(this.nozzleAppToolStripMenuItem_Click);
             // 
             // tmrWatchdog
             // 
@@ -860,7 +828,7 @@
             this.hsbarSteerAngle.Location = new System.Drawing.Point(158, 1);
             this.hsbarSteerAngle.Maximum = 800;
             this.hsbarSteerAngle.Name = "hsbarSteerAngle";
-            this.hsbarSteerAngle.Size = new System.Drawing.Size(167, 40);
+            this.hsbarSteerAngle.Size = new System.Drawing.Size(153, 40);
             this.hsbarSteerAngle.TabIndex = 179;
             this.hsbarSteerAngle.Value = 400;
             this.hsbarSteerAngle.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hsbarSteerAngle_Scroll);
@@ -880,7 +848,7 @@
             this.btnSection8Man.TabIndex = 125;
             this.btnSection8Man.Text = "8";
             this.btnSection8Man.UseVisualStyleBackColor = false;
-            this.btnSection8Man.Click += new System.EventHandler(this.btnSection8Man_Click);
+            this.btnSection8Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection7Man
             // 
@@ -897,7 +865,7 @@
             this.btnSection7Man.TabIndex = 126;
             this.btnSection7Man.Text = "7";
             this.btnSection7Man.UseVisualStyleBackColor = false;
-            this.btnSection7Man.Click += new System.EventHandler(this.btnSection7Man_Click);
+            this.btnSection7Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection6Man
             // 
@@ -914,7 +882,7 @@
             this.btnSection6Man.TabIndex = 127;
             this.btnSection6Man.Text = "6";
             this.btnSection6Man.UseVisualStyleBackColor = false;
-            this.btnSection6Man.Click += new System.EventHandler(this.btnSection6Man_Click);
+            this.btnSection6Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection5Man
             // 
@@ -931,7 +899,7 @@
             this.btnSection5Man.TabIndex = 103;
             this.btnSection5Man.Text = "5";
             this.btnSection5Man.UseVisualStyleBackColor = false;
-            this.btnSection5Man.Click += new System.EventHandler(this.btnSection5Man_Click);
+            this.btnSection5Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection4Man
             // 
@@ -948,7 +916,7 @@
             this.btnSection4Man.TabIndex = 102;
             this.btnSection4Man.Text = "4";
             this.btnSection4Man.UseVisualStyleBackColor = false;
-            this.btnSection4Man.Click += new System.EventHandler(this.btnSection4Man_Click);
+            this.btnSection4Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection3Man
             // 
@@ -965,7 +933,7 @@
             this.btnSection3Man.TabIndex = 101;
             this.btnSection3Man.Text = "3";
             this.btnSection3Man.UseVisualStyleBackColor = false;
-            this.btnSection3Man.Click += new System.EventHandler(this.btnSection3Man_Click);
+            this.btnSection3Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection2Man
             // 
@@ -982,7 +950,7 @@
             this.btnSection2Man.TabIndex = 100;
             this.btnSection2Man.Text = "2";
             this.btnSection2Man.UseVisualStyleBackColor = false;
-            this.btnSection2Man.Click += new System.EventHandler(this.btnSection2Man_Click);
+            this.btnSection2Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection1Man
             // 
@@ -999,7 +967,7 @@
             this.btnSection1Man.TabIndex = 99;
             this.btnSection1Man.Text = "1";
             this.btnSection1Man.UseVisualStyleBackColor = false;
-            this.btnSection1Man.Click += new System.EventHandler(this.btnSection1Man_Click);
+            this.btnSection1Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection9Man
             // 
@@ -1016,7 +984,7 @@
             this.btnSection9Man.TabIndex = 174;
             this.btnSection9Man.Text = "9";
             this.btnSection9Man.UseVisualStyleBackColor = false;
-            this.btnSection9Man.Click += new System.EventHandler(this.btnSection9Man_Click);
+            this.btnSection9Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection10Man
             // 
@@ -1033,7 +1001,7 @@
             this.btnSection10Man.TabIndex = 175;
             this.btnSection10Man.Text = "10";
             this.btnSection10Man.UseVisualStyleBackColor = false;
-            this.btnSection10Man.Click += new System.EventHandler(this.btnSection10Man_Click);
+            this.btnSection10Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection11Man
             // 
@@ -1050,7 +1018,7 @@
             this.btnSection11Man.TabIndex = 176;
             this.btnSection11Man.Text = "11";
             this.btnSection11Man.UseVisualStyleBackColor = false;
-            this.btnSection11Man.Click += new System.EventHandler(this.btnSection11Man_Click);
+            this.btnSection11Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection12Man
             // 
@@ -1067,7 +1035,7 @@
             this.btnSection12Man.TabIndex = 177;
             this.btnSection12Man.Text = "12";
             this.btnSection12Man.UseVisualStyleBackColor = false;
-            this.btnSection12Man.Click += new System.EventHandler(this.btnSection12Man_Click);
+            this.btnSection12Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // oglMain
             // 
@@ -1247,7 +1215,7 @@
             this.eventViewerToolStripMenuItem.Image = global::AgOpenGPS.Properties.Resources.ABTracks;
             this.eventViewerToolStripMenuItem.Name = "eventViewerToolStripMenuItem";
             this.eventViewerToolStripMenuItem.Size = new System.Drawing.Size(450, 70);
-            this.eventViewerToolStripMenuItem.Text = "Event Viewer";
+            this.eventViewerToolStripMenuItem.Text = "Log Viewer";
             this.eventViewerToolStripMenuItem.Click += new System.EventHandler(this.eventViewerToolStripMenuItem_Click);
             // 
             // guidelinesToolStripMenuItem
@@ -1300,12 +1268,12 @@
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
-            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 17F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.panelSim.Controls.Add(this.btnSpeedDn, 5, 0);
             this.panelSim.Controls.Add(this.btnSimSpeedUp, 7, 0);
             this.panelSim.Controls.Add(this.btnResetSim, 0, 0);
@@ -1313,7 +1281,7 @@
             this.panelSim.Controls.Add(this.btnResetSteerAngle, 1, 0);
             this.panelSim.Controls.Add(this.hsbarSteerAngle, 3, 0);
             this.panelSim.Controls.Add(this.btnSimReverseDirection, 8, 0);
-            this.panelSim.Location = new System.Drawing.Point(296, 594);
+            this.panelSim.Location = new System.Drawing.Point(301, 594);
             this.panelSim.Name = "panelSim";
             this.panelSim.RowCount = 1;
             this.panelSim.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1328,9 +1296,9 @@
             this.btnSpeedDn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSpeedDn.FlatAppearance.BorderSize = 0;
             this.btnSpeedDn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSpeedDn.Location = new System.Drawing.Point(342, 4);
+            this.btnSpeedDn.Location = new System.Drawing.Point(333, 4);
             this.btnSpeedDn.Name = "btnSpeedDn";
-            this.btnSpeedDn.Size = new System.Drawing.Size(58, 34);
+            this.btnSpeedDn.Size = new System.Drawing.Size(84, 34);
             this.btnSpeedDn.TabIndex = 533;
             this.btnSpeedDn.UseVisualStyleBackColor = false;
             this.btnSpeedDn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSpeedDn_MouseDown);
@@ -1343,9 +1311,9 @@
             this.btnSimSpeedUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSimSpeedUp.FlatAppearance.BorderSize = 0;
             this.btnSimSpeedUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSimSpeedUp.Location = new System.Drawing.Point(483, 4);
+            this.btnSimSpeedUp.Location = new System.Drawing.Point(481, 4);
             this.btnSimSpeedUp.Name = "btnSimSpeedUp";
-            this.btnSimSpeedUp.Size = new System.Drawing.Size(58, 34);
+            this.btnSimSpeedUp.Size = new System.Drawing.Size(84, 34);
             this.btnSimSpeedUp.TabIndex = 532;
             this.btnSimSpeedUp.UseVisualStyleBackColor = false;
             this.btnSimSpeedUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSimSpeedUp_MouseDown);
@@ -1359,9 +1327,9 @@
             this.btnSimSetSpeedToZero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSimSetSpeedToZero.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.btnSimSetSpeedToZero.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSimSetSpeedToZero.Location = new System.Drawing.Point(407, 4);
+            this.btnSimSetSpeedToZero.Location = new System.Drawing.Point(424, 4);
             this.btnSimSetSpeedToZero.Name = "btnSimSetSpeedToZero";
-            this.btnSimSetSpeedToZero.Size = new System.Drawing.Size(69, 34);
+            this.btnSimSetSpeedToZero.Size = new System.Drawing.Size(50, 34);
             this.btnSimSetSpeedToZero.TabIndex = 453;
             this.btnSimSetSpeedToZero.UseVisualStyleBackColor = false;
             this.btnSimSetSpeedToZero.Click += new System.EventHandler(this.btnSimSetSpeedToZero_Click);
@@ -1376,7 +1344,7 @@
             this.btnSimReverseDirection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSimReverseDirection.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.btnSimReverseDirection.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSimReverseDirection.Location = new System.Drawing.Point(562, 4);
+            this.btnSimReverseDirection.Location = new System.Drawing.Point(574, 4);
             this.btnSimReverseDirection.Name = "btnSimReverseDirection";
             this.btnSimReverseDirection.Size = new System.Drawing.Size(35, 34);
             this.btnSimReverseDirection.TabIndex = 537;
@@ -1398,7 +1366,7 @@
             this.btnSection16Man.TabIndex = 448;
             this.btnSection16Man.Text = "16";
             this.btnSection16Man.UseVisualStyleBackColor = false;
-            this.btnSection16Man.Click += new System.EventHandler(this.btnSection16Man_Click);
+            this.btnSection16Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection15Man
             // 
@@ -1415,7 +1383,7 @@
             this.btnSection15Man.TabIndex = 449;
             this.btnSection15Man.Text = "15";
             this.btnSection15Man.UseVisualStyleBackColor = false;
-            this.btnSection15Man.Click += new System.EventHandler(this.btnSection15Man_Click);
+            this.btnSection15Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection14Man
             // 
@@ -1432,7 +1400,7 @@
             this.btnSection14Man.TabIndex = 450;
             this.btnSection14Man.Text = "14";
             this.btnSection14Man.UseVisualStyleBackColor = false;
-            this.btnSection14Man.Click += new System.EventHandler(this.btnSection14Man_Click);
+            this.btnSection14Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // btnSection13Man
             // 
@@ -1449,7 +1417,7 @@
             this.btnSection13Man.TabIndex = 451;
             this.btnSection13Man.Text = "13";
             this.btnSection13Man.UseVisualStyleBackColor = false;
-            this.btnSection13Man.Click += new System.EventHandler(this.btnSection13Man_Click);
+            this.btnSection13Man.Click += new System.EventHandler(this.btnSectionXMan_Click);
             // 
             // panelNavigation
             // 
@@ -1690,7 +1658,7 @@
             this.lblFix.AutoSize = true;
             this.lblFix.BackColor = System.Drawing.Color.Transparent;
             this.lblFix.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFix.Location = new System.Drawing.Point(84, -1);
+            this.lblFix.Location = new System.Drawing.Point(84, 1);
             this.lblFix.Name = "lblFix";
             this.lblFix.Size = new System.Drawing.Size(87, 19);
             this.lblFix.TabIndex = 489;
@@ -1712,7 +1680,7 @@
             this.btnZone1.TabIndex = 496;
             this.btnZone1.Text = "1";
             this.btnZone1.UseVisualStyleBackColor = false;
-            this.btnZone1.Click += new System.EventHandler(this.btnZone1_Click);
+            this.btnZone1.Click += new System.EventHandler(this.btnZoneX_Click);
             // 
             // btnZone2
             // 
@@ -1729,7 +1697,7 @@
             this.btnZone2.TabIndex = 497;
             this.btnZone2.Text = "2";
             this.btnZone2.UseVisualStyleBackColor = false;
-            this.btnZone2.Click += new System.EventHandler(this.btnZone2_Click);
+            this.btnZone2.Click += new System.EventHandler(this.btnZoneX_Click);
             // 
             // btnZone3
             // 
@@ -1746,7 +1714,7 @@
             this.btnZone3.TabIndex = 498;
             this.btnZone3.Text = "3";
             this.btnZone3.UseVisualStyleBackColor = false;
-            this.btnZone3.Click += new System.EventHandler(this.btnZone3_Click);
+            this.btnZone3.Click += new System.EventHandler(this.btnZoneX_Click);
             // 
             // btnZone4
             // 
@@ -1763,7 +1731,7 @@
             this.btnZone4.TabIndex = 499;
             this.btnZone4.Text = "4";
             this.btnZone4.UseVisualStyleBackColor = false;
-            this.btnZone4.Click += new System.EventHandler(this.btnZone4_Click);
+            this.btnZone4.Click += new System.EventHandler(this.btnZoneX_Click);
             // 
             // btnZone5
             // 
@@ -1780,7 +1748,7 @@
             this.btnZone5.TabIndex = 500;
             this.btnZone5.Text = "5";
             this.btnZone5.UseVisualStyleBackColor = false;
-            this.btnZone5.Click += new System.EventHandler(this.btnZone5_Click);
+            this.btnZone5.Click += new System.EventHandler(this.btnZoneX_Click);
             // 
             // btnZone6
             // 
@@ -1797,7 +1765,7 @@
             this.btnZone6.TabIndex = 501;
             this.btnZone6.Text = "6";
             this.btnZone6.UseVisualStyleBackColor = false;
-            this.btnZone6.Click += new System.EventHandler(this.btnZone6_Click);
+            this.btnZone6.Click += new System.EventHandler(this.btnZoneX_Click);
             // 
             // btnZone7
             // 
@@ -1814,7 +1782,7 @@
             this.btnZone7.TabIndex = 503;
             this.btnZone7.Text = "7";
             this.btnZone7.UseVisualStyleBackColor = false;
-            this.btnZone7.Click += new System.EventHandler(this.btnZone7_Click);
+            this.btnZone7.Click += new System.EventHandler(this.btnZoneX_Click);
             // 
             // btnZone8
             // 
@@ -1831,7 +1799,7 @@
             this.btnZone8.TabIndex = 504;
             this.btnZone8.Text = "8";
             this.btnZone8.UseVisualStyleBackColor = false;
-            this.btnZone8.Click += new System.EventHandler(this.btnZone8_Click);
+            this.btnZone8.Click += new System.EventHandler(this.btnZoneX_Click);
             // 
             // panelLeft
             // 
@@ -2096,6 +2064,7 @@
             this.headlandToolStripMenuItem,
             this.headlandBuildToolStripMenuItem,
             this.tramLinesMenuField,
+            this.tramsMultiMenuField,
             this.deleteAppliedToolStripMenuItem,
             this.flagByLatLonToolStripMenuItem,
             this.recordedPathStripMenu});
@@ -2145,6 +2114,14 @@
             this.tramLinesMenuField.Size = new System.Drawing.Size(445, 70);
             this.tramLinesMenuField.Text = "TramLines";
             this.tramLinesMenuField.Click += new System.EventHandler(this.tramLinesMenuField_Click);
+            // 
+            // tramsMultiMenuField
+            // 
+            this.tramsMultiMenuField.Image = global::AgOpenGPS.Properties.Resources.TramMulti;
+            this.tramsMultiMenuField.Name = "tramsMultiMenuField";
+            this.tramsMultiMenuField.Size = new System.Drawing.Size(445, 70);
+            this.tramsMultiMenuField.Text = "Tramlines Add  ";
+            this.tramsMultiMenuField.Click += new System.EventHandler(this.tramLinesMenuMulti_Click);
             // 
             // deleteAppliedToolStripMenuItem
             // 
@@ -3046,298 +3023,6 @@
             this.lblHardwareMessage.Visible = false;
             this.lblHardwareMessage.Click += new System.EventHandler(this.lblHardwareMessage_Click);
             // 
-            // tlpNozzle
-            // 
-            this.tlpNozzle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.tlpNozzle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(40)))));
-            this.tlpNozzle.ColumnCount = 4;
-            this.tlpNozzle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
-            this.tlpNozzle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.625F));
-            this.tlpNozzle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.375F));
-            this.tlpNozzle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
-            this.tlpNozzle.Controls.Add(this.btnSprayGalPerMinActual, 2, 0);
-            this.tlpNozzle.Controls.Add(this.btnSprayPSI, 1, 1);
-            this.tlpNozzle.Controls.Add(this.lblPressure, 1, 2);
-            this.tlpNozzle.Controls.Add(this.btnSprayVolumeTotal, 1, 3);
-            this.tlpNozzle.Controls.Add(this.lbl_Volume, 1, 4);
-            this.tlpNozzle.Controls.Add(this.btnSprayGalPerAcre, 1, 5);
-            this.tlpNozzle.Controls.Add(this.cboxSprayAutoManual, 1, 8);
-            this.tlpNozzle.Controls.Add(this.cboxRate1Rate2Select, 1, 6);
-            this.tlpNozzle.Controls.Add(this.btnSprayRateUp, 2, 7);
-            this.tlpNozzle.Controls.Add(this.btnSprayRateDn, 1, 7);
-            this.tlpNozzle.Controls.Add(this.btnNozConfig, 1, 9);
-            this.tlpNozzle.Controls.Add(this.lblGPM_Set, 0, 0);
-            this.tlpNozzle.Location = new System.Drawing.Point(78, 50);
-            this.tlpNozzle.Name = "tlpNozzle";
-            this.tlpNozzle.RowCount = 10;
-            this.tlpNozzle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.175529F));
-            this.tlpNozzle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.535604F));
-            this.tlpNozzle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.25268F));
-            this.tlpNozzle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.01292F));
-            this.tlpNozzle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.02959F));
-            this.tlpNozzle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.94353F));
-            this.tlpNozzle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.69931F));
-            this.tlpNozzle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.7289F));
-            this.tlpNozzle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.31096F));
-            this.tlpNozzle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.31096F));
-            this.tlpNozzle.Size = new System.Drawing.Size(197, 601);
-            this.tlpNozzle.TabIndex = 545;
-            // 
-            // btnSprayGalPerMinActual
-            // 
-            this.btnSprayGalPerMinActual.BackColor = System.Drawing.Color.Transparent;
-            this.btnSprayGalPerMinActual.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tlpNozzle.SetColumnSpan(this.btnSprayGalPerMinActual, 2);
-            this.btnSprayGalPerMinActual.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSprayGalPerMinActual.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnSprayGalPerMinActual.FlatAppearance.BorderSize = 0;
-            this.btnSprayGalPerMinActual.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayGalPerMinActual.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayGalPerMinActual.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayGalPerMinActual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSprayGalPerMinActual.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSprayGalPerMinActual.ForeColor = System.Drawing.Color.Yellow;
-            this.btnSprayGalPerMinActual.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSprayGalPerMinActual.Location = new System.Drawing.Point(99, 0);
-            this.btnSprayGalPerMinActual.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSprayGalPerMinActual.Name = "btnSprayGalPerMinActual";
-            this.btnSprayGalPerMinActual.Size = new System.Drawing.Size(98, 31);
-            this.btnSprayGalPerMinActual.TabIndex = 613;
-            this.btnSprayGalPerMinActual.Text = "10.9";
-            this.btnSprayGalPerMinActual.UseVisualStyleBackColor = false;
-            // 
-            // btnSprayPSI
-            // 
-            this.btnSprayPSI.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSprayPSI.BackColor = System.Drawing.Color.Transparent;
-            this.btnSprayPSI.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tlpNozzle.SetColumnSpan(this.btnSprayPSI, 2);
-            this.btnSprayPSI.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnSprayPSI.FlatAppearance.BorderSize = 0;
-            this.btnSprayPSI.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayPSI.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayPSI.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayPSI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSprayPSI.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSprayPSI.ForeColor = System.Drawing.Color.Yellow;
-            this.btnSprayPSI.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSprayPSI.Location = new System.Drawing.Point(24, 34);
-            this.btnSprayPSI.Name = "btnSprayPSI";
-            this.btnSprayPSI.Size = new System.Drawing.Size(147, 45);
-            this.btnSprayPSI.TabIndex = 554;
-            this.btnSprayPSI.Text = "10.7";
-            this.btnSprayPSI.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSprayPSI.UseVisualStyleBackColor = false;
-            // 
-            // lblPressure
-            // 
-            this.lblPressure.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblPressure.BackColor = System.Drawing.Color.Transparent;
-            this.tlpNozzle.SetColumnSpan(this.lblPressure, 2);
-            this.lblPressure.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPressure.ForeColor = System.Drawing.Color.White;
-            this.lblPressure.Location = new System.Drawing.Point(29, 82);
-            this.lblPressure.Name = "lblPressure";
-            this.lblPressure.Size = new System.Drawing.Size(138, 19);
-            this.lblPressure.TabIndex = 553;
-            this.lblPressure.Text = "Pressure";
-            this.lblPressure.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btnSprayVolumeTotal
-            // 
-            this.btnSprayVolumeTotal.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSprayVolumeTotal.BackColor = System.Drawing.Color.Transparent;
-            this.btnSprayVolumeTotal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tlpNozzle.SetColumnSpan(this.btnSprayVolumeTotal, 2);
-            this.btnSprayVolumeTotal.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.btnSprayVolumeTotal.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayVolumeTotal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayVolumeTotal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayVolumeTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSprayVolumeTotal.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSprayVolumeTotal.ForeColor = System.Drawing.Color.Aqua;
-            this.btnSprayVolumeTotal.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSprayVolumeTotal.Location = new System.Drawing.Point(15, 120);
-            this.btnSprayVolumeTotal.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSprayVolumeTotal.Name = "btnSprayVolumeTotal";
-            this.btnSprayVolumeTotal.Size = new System.Drawing.Size(166, 53);
-            this.btnSprayVolumeTotal.TabIndex = 552;
-            this.btnSprayVolumeTotal.Text = "9999.9";
-            this.btnSprayVolumeTotal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSprayVolumeTotal.UseVisualStyleBackColor = false;
-            this.btnSprayVolumeTotal.Click += new System.EventHandler(this.btnSprayVolumeTotal_Click);
-            // 
-            // lbl_Volume
-            // 
-            this.lbl_Volume.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_Volume.BackColor = System.Drawing.Color.Transparent;
-            this.tlpNozzle.SetColumnSpan(this.lbl_Volume, 2);
-            this.lbl_Volume.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Volume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.lbl_Volume.Location = new System.Drawing.Point(29, 173);
-            this.lbl_Volume.Name = "lbl_Volume";
-            this.lbl_Volume.Size = new System.Drawing.Size(138, 24);
-            this.lbl_Volume.TabIndex = 551;
-            this.lbl_Volume.Text = "Tank Gallons";
-            this.lbl_Volume.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btnSprayGalPerAcre
-            // 
-            this.btnSprayGalPerAcre.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSprayGalPerAcre.BackColor = System.Drawing.Color.Transparent;
-            this.btnSprayGalPerAcre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tlpNozzle.SetColumnSpan(this.btnSprayGalPerAcre, 2);
-            this.btnSprayGalPerAcre.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.btnSprayGalPerAcre.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayGalPerAcre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayGalPerAcre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayGalPerAcre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSprayGalPerAcre.Font = new System.Drawing.Font("Tahoma", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSprayGalPerAcre.ForeColor = System.Drawing.Color.White;
-            this.btnSprayGalPerAcre.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSprayGalPerAcre.Location = new System.Drawing.Point(12, 205);
-            this.btnSprayGalPerAcre.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSprayGalPerAcre.Name = "btnSprayGalPerAcre";
-            this.btnSprayGalPerAcre.Size = new System.Drawing.Size(171, 69);
-            this.btnSprayGalPerAcre.TabIndex = 546;
-            this.btnSprayGalPerAcre.Text = "999.9";
-            this.btnSprayGalPerAcre.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSprayGalPerAcre.UseVisualStyleBackColor = false;
-            this.btnSprayGalPerAcre.Click += new System.EventHandler(this.btnSprayRate_Click);
-            // 
-            // cboxSprayAutoManual
-            // 
-            this.cboxSprayAutoManual.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cboxSprayAutoManual.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cboxSprayAutoManual.BackColor = System.Drawing.Color.DarkRed;
-            this.cboxSprayAutoManual.Checked = true;
-            this.cboxSprayAutoManual.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tlpNozzle.SetColumnSpan(this.cboxSprayAutoManual, 2);
-            this.cboxSprayAutoManual.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.cboxSprayAutoManual.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(50)))), ((int)(((byte)(20)))));
-            this.cboxSprayAutoManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboxSprayAutoManual.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxSprayAutoManual.ForeColor = System.Drawing.Color.White;
-            this.cboxSprayAutoManual.Location = new System.Drawing.Point(29, 459);
-            this.cboxSprayAutoManual.Name = "cboxSprayAutoManual";
-            this.cboxSprayAutoManual.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cboxSprayAutoManual.Size = new System.Drawing.Size(138, 55);
-            this.cboxSprayAutoManual.TabIndex = 582;
-            this.cboxSprayAutoManual.Text = "Auto";
-            this.cboxSprayAutoManual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cboxSprayAutoManual.UseVisualStyleBackColor = false;
-            this.cboxSprayAutoManual.Click += new System.EventHandler(this.cboxSprayAutoManual_Click);
-            // 
-            // cboxRate1Rate2Select
-            // 
-            this.cboxRate1Rate2Select.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cboxRate1Rate2Select.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cboxRate1Rate2Select.BackColor = System.Drawing.Color.Transparent;
-            this.tlpNozzle.SetColumnSpan(this.cboxRate1Rate2Select, 2);
-            this.cboxRate1Rate2Select.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.cboxRate1Rate2Select.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.cboxRate1Rate2Select.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.cboxRate1Rate2Select.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.cboxRate1Rate2Select.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboxRate1Rate2Select.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxRate1Rate2Select.ForeColor = System.Drawing.Color.White;
-            this.cboxRate1Rate2Select.Location = new System.Drawing.Point(28, 301);
-            this.cboxRate1Rate2Select.Margin = new System.Windows.Forms.Padding(0);
-            this.cboxRate1Rate2Select.Name = "cboxRate1Rate2Select";
-            this.cboxRate1Rate2Select.Size = new System.Drawing.Size(139, 49);
-            this.cboxRate1Rate2Select.TabIndex = 602;
-            this.cboxRate1Rate2Select.Text = "Rate: 1";
-            this.cboxRate1Rate2Select.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cboxRate1Rate2Select.UseVisualStyleBackColor = false;
-            this.cboxRate1Rate2Select.Click += new System.EventHandler(this.cboxRate1Rate2Select_Click);
-            // 
-            // btnSprayRateUp
-            // 
-            this.btnSprayRateUp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSprayRateUp.BackColor = System.Drawing.Color.Transparent;
-            this.btnSprayRateUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSprayRateUp.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.btnSprayRateUp.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayRateUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PowderBlue;
-            this.btnSprayRateUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayRateUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSprayRateUp.Font = new System.Drawing.Font("Tahoma", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSprayRateUp.ForeColor = System.Drawing.Color.Black;
-            this.btnSprayRateUp.Image = global::AgOpenGPS.Properties.Resources.UpArrow64;
-            this.btnSprayRateUp.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSprayRateUp.Location = new System.Drawing.Point(110, 369);
-            this.btnSprayRateUp.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSprayRateUp.Name = "btnSprayRateUp";
-            this.btnSprayRateUp.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnSprayRateUp.Size = new System.Drawing.Size(62, 62);
-            this.btnSprayRateUp.TabIndex = 615;
-            this.btnSprayRateUp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSprayRateUp.UseVisualStyleBackColor = false;
-            this.btnSprayRateUp.Click += new System.EventHandler(this.btnSprayRateUp_Click);
-            // 
-            // btnSprayRateDn
-            // 
-            this.btnSprayRateDn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSprayRateDn.BackColor = System.Drawing.Color.Transparent;
-            this.btnSprayRateDn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSprayRateDn.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.btnSprayRateDn.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayRateDn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PowderBlue;
-            this.btnSprayRateDn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSprayRateDn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSprayRateDn.Font = new System.Drawing.Font("Tahoma", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSprayRateDn.ForeColor = System.Drawing.Color.Black;
-            this.btnSprayRateDn.Image = global::AgOpenGPS.Properties.Resources.DnArrow64;
-            this.btnSprayRateDn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSprayRateDn.Location = new System.Drawing.Point(24, 369);
-            this.btnSprayRateDn.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSprayRateDn.Name = "btnSprayRateDn";
-            this.btnSprayRateDn.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnSprayRateDn.Size = new System.Drawing.Size(62, 62);
-            this.btnSprayRateDn.TabIndex = 616;
-            this.btnSprayRateDn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSprayRateDn.UseVisualStyleBackColor = false;
-            this.btnSprayRateDn.Click += new System.EventHandler(this.btnSprayRateDn_Click);
-            // 
-            // btnNozConfig
-            // 
-            this.btnNozConfig.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNozConfig.BackColor = System.Drawing.Color.Transparent;
-            this.btnNozConfig.BackgroundImage = global::AgOpenGPS.Properties.Resources.SpecialFunctions;
-            this.btnNozConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tlpNozzle.SetColumnSpan(this.btnNozConfig, 2);
-            this.btnNozConfig.FlatAppearance.BorderColor = System.Drawing.Color.Olive;
-            this.btnNozConfig.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.btnNozConfig.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnNozConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnNozConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNozConfig.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNozConfig.ForeColor = System.Drawing.Color.Aqua;
-            this.btnNozConfig.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnNozConfig.Location = new System.Drawing.Point(56, 538);
-            this.btnNozConfig.Name = "btnNozConfig";
-            this.btnNozConfig.Size = new System.Drawing.Size(84, 48);
-            this.btnNozConfig.TabIndex = 553;
-            this.btnNozConfig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNozConfig.UseVisualStyleBackColor = false;
-            this.btnNozConfig.Click += new System.EventHandler(this.btnNozConfig_Click);
-            // 
-            // lblGPM_Set
-            // 
-            this.lblGPM_Set.BackColor = System.Drawing.Color.Transparent;
-            this.tlpNozzle.SetColumnSpan(this.lblGPM_Set, 2);
-            this.lblGPM_Set.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGPM_Set.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGPM_Set.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(220)))), ((int)(((byte)(70)))));
-            this.lblGPM_Set.Location = new System.Drawing.Point(0, 0);
-            this.lblGPM_Set.Margin = new System.Windows.Forms.Padding(0);
-            this.lblGPM_Set.Name = "lblGPM_Set";
-            this.lblGPM_Set.Size = new System.Drawing.Size(99, 31);
-            this.lblGPM_Set.TabIndex = 612;
-            this.lblGPM_Set.Text = "Flow";
-            this.lblGPM_Set.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // FormGPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -3384,7 +3069,6 @@
             this.Controls.Add(this.lblCurrentField);
             this.Controls.Add(this.lblGuidanceLine);
             this.Controls.Add(this.lblHardwareMessage);
-            this.Controls.Add(this.tlpNozzle);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 12F);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -3417,7 +3101,6 @@
             this.panelBottom.ResumeLayout(false);
             this.panelRight.ResumeLayout(false);
             this.panelControlBox.ResumeLayout(false);
-            this.tlpNozzle.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3603,21 +3286,7 @@
         private System.Windows.Forms.Label lblHardwareMessage;
         private System.Windows.Forms.ToolStripMenuItem eventViewerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem guidelinesToolStripMenuItem;
-        private System.Windows.Forms.TableLayoutPanel tlpNozzle;
-        public System.Windows.Forms.Button btnSprayGalPerMinActual;
-        private System.Windows.Forms.Label lblGPM_Set;
-        public System.Windows.Forms.Button btnSprayPSI;
-        private System.Windows.Forms.Label lblPressure;
-        public System.Windows.Forms.Button btnSprayVolumeTotal;
-        public System.Windows.Forms.Label lbl_Volume;
-        public System.Windows.Forms.Button btnSprayGalPerAcre;
-        private System.Windows.Forms.CheckBox cboxSprayAutoManual;
-        private System.Windows.Forms.CheckBox cboxRate1Rate2Select;
-        public System.Windows.Forms.Button btnSprayRateUp;
-        public System.Windows.Forms.Button btnSprayRateDn;
-        public System.Windows.Forms.Button btnNozConfig;
-        private System.Windows.Forms.ToolStripMenuItem nozzleAppToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem systemLogViewerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tramsMultiMenuField;
     }
 }
 

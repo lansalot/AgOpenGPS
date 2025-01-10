@@ -1,4 +1,5 @@
-﻿using AgOpenGPS.Culture;
+﻿using AgLibrary.Logging;
+using AgOpenGPS.Culture;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -31,14 +32,14 @@ namespace AgOpenGPS
             timer1.Enabled = true;
             ListViewItem itm;
 
-            string[] dirs = Directory.GetDirectories(mf.fieldsDirectory);
+            string[] dirs = Directory.GetDirectories(RegistrySettings.fieldsDirectory);
 
             //fileList?.Clear();
 
             if (dirs == null || dirs.Length < 1)
             {
                 mf.TimedMessageBox(2000, gStr.gsCreateNewField, gStr.gsFileError);
-                mf.LogEventWriter("File Picker, No Fields");
+                Log.EventWriter("File Picker, No Fields");
                 Close();
                 return;
             }
@@ -49,7 +50,7 @@ namespace AgOpenGPS
                 double lonStart = 0;
                 double distance = 0;
                 string fieldDirectory = Path.GetFileName(dir);
-                string filename = dir + "\\Field.txt";
+                string filename = Path.Combine(dir, "Field.txt");
                 string line;
 
                 //make sure directory has a field.txt in it
@@ -90,11 +91,11 @@ namespace AgOpenGPS
                                 fileList.Add("Error");
                             }
                         }
-                        catch (Exception)
+                        catch (Exception eg)
                         {
                             MessageBox.Show(fieldDirectory + " is Damaged, Please Delete, Field.txt is Broken", gStr.gsFileError,
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                            Log.EventWriter("Field.txt is Broken" + eg.ToString());
                             fileList.Add(fieldDirectory);
                             fileList.Add("Error");
                         }
@@ -103,7 +104,7 @@ namespace AgOpenGPS
                 else continue;
 
                 //grab the boundary area
-                filename = dir + "\\Boundary.txt";
+                filename = Path.Combine(dir, "Boundary.txt");
                 if (File.Exists(filename))
                 {
                     List<vec3> pointList = new List<vec3>();
@@ -175,6 +176,7 @@ namespace AgOpenGPS
                         catch (Exception)
                         {
                             area = 0;
+                            Log.EventWriter("Field.txt is Broken" + e.ToString());
                         }
                     }
                     if (area == 0) fileList.Add("No Bndry");
@@ -188,13 +190,13 @@ namespace AgOpenGPS
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                filename = dir + "\\Field.txt";
+                filename = Path.Combine(dir, "Field.txt");
             }
 
             if (fileList == null || fileList.Count < 1)
             {
                 mf.TimedMessageBox(2000, gStr.gsNoFieldsFound, gStr.gsCreateNewField);
-                mf.LogEventWriter("File Picker, No fields Sorted");
+                Log.EventWriter("File Picker, No fields Sorted");
                 Close();
                 return;
             }
@@ -221,7 +223,7 @@ namespace AgOpenGPS
             else
             {
                 mf.TimedMessageBox(2000, gStr.gsNoFieldsFound, gStr.gsCreateNewField);
-                mf.LogEventWriter("File Picker, No Line items");
+                Log.EventWriter("File Picker, No Line items");
                 Close();
                 return;
             }
@@ -309,9 +311,9 @@ namespace AgOpenGPS
                 else
                 {
                     if (order == 0) mf.filePickerFileAndDirectory =
-                            (mf.fieldsDirectory + lvLines.SelectedItems[0].SubItems[0].Text + "\\Field.txt");
+                            Path.Combine(RegistrySettings.fieldsDirectory, lvLines.SelectedItems[0].SubItems[0].Text, "Field.txt");
                     else mf.filePickerFileAndDirectory =
-                            (mf.fieldsDirectory + lvLines.SelectedItems[0].SubItems[1].Text + "\\Field.txt");
+                            Path.Combine(RegistrySettings.fieldsDirectory, lvLines.SelectedItems[0].SubItems[1].Text, "Field.txt");
                     Close();
                 }
             }
@@ -328,8 +330,10 @@ namespace AgOpenGPS
             string dir2Delete;
             if (count > 0)
             {
-                if (order == 0) dir2Delete = (mf.fieldsDirectory + lvLines.SelectedItems[0].SubItems[0].Text);
-                else dir2Delete = (mf.fieldsDirectory + lvLines.SelectedItems[0].SubItems[1].Text);
+                if (order == 0)
+                    dir2Delete = Path.Combine(RegistrySettings.fieldsDirectory, lvLines.SelectedItems[0].SubItems[0].Text);
+                else
+                    dir2Delete = Path.Combine(RegistrySettings.fieldsDirectory, lvLines.SelectedItems[0].SubItems[1].Text);
 
                 DialogResult result3 = MessageBox.Show(
                     dir2Delete,
@@ -347,7 +351,7 @@ namespace AgOpenGPS
 
             ListViewItem itm;
 
-            string[] dirs = Directory.GetDirectories(mf.fieldsDirectory);
+            string[] dirs = Directory.GetDirectories(RegistrySettings.fieldsDirectory);
 
             fileList?.Clear();
 
@@ -357,7 +361,7 @@ namespace AgOpenGPS
                 double lonStart = 0;
                 double distance = 0;
                 string fieldDirectory = Path.GetFileName(dir);
-                string filename = dir + "\\Field.txt";
+                string filename = Path.Combine(dir, "Field.txt");
                 string line;
 
                 //make sure directory has a field.txt in it
@@ -402,14 +406,14 @@ namespace AgOpenGPS
                         {
                             MessageBox.Show(fieldDirectory + " is Damaged, Please Delete, Field.txt is Broken", gStr.gsFileError,
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                            Log.EventWriter("Field.txt is Broken" + e.ToString());
                             fileList.Add(fieldDirectory);
                             fileList.Add("Error");
                         }
                     }
 
                     //grab the boundary area
-                    filename = dir + "\\Boundary.txt";
+                    filename = Path.Combine(dir, "Boundary.txt");
                     if (File.Exists(filename))
                     {
                         List<vec3> pointList = new List<vec3>();
@@ -481,6 +485,7 @@ namespace AgOpenGPS
                             catch (Exception)
                             {
                                 area = 0;
+                                Log.EventWriter("Field.txt is Broken" + e.ToString());
                             }
                         }
                         if (area == 0) fileList.Add("No Bndry");

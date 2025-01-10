@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO.Ports;
 using System.Windows.Forms;
+using AgLibrary.Logging;
 
 namespace AgIO
 {
@@ -71,8 +72,12 @@ namespace AgIO
 
             Properties.Settings.Default.setPort_portNameRadio = cboxRadioPort.Text;
             Properties.Settings.Default.setPort_baudRateRadio = cboxBaud.Text;
+
             Properties.Settings.Default.Save();
 
+            Log.EventWriter("Program Reset: Button OK on Serial Pass Form");
+
+            RegistrySettings.Save();
             Application.Restart();
             Environment.Exit(0);
             Close();
@@ -110,6 +115,7 @@ namespace AgIO
             catch (Exception ex)
             {
                 mf.TimedMessageBox(3000, "Error opening port", ex.Message);
+                Log.EventWriter("Catch - > Error opening port" + ex.ToString());
             }
         }
 

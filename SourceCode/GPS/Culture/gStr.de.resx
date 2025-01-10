@@ -193,7 +193,7 @@
     <value>Farben</value>
   </data>
   <data name="gsCompletelyDeleteBoundary" xml:space="preserve">
-    <value>Ganze Schlaggrenze löschen</value>
+    <value>Alle Schlaggrenzen löschen</value>
   </data>
   <data name="gsConfiguration" xml:space="preserve">
     <value>Konfiguration</value>
@@ -298,7 +298,7 @@
     <value>Dateien fehlerhaft</value>
   </data>
   <data name="gsFlagByLatLon" xml:space="preserve">
-    <value>Flagge von Lat Lon</value>
+    <value>Flagge bei Länge/Breite</value>
   </data>
   <data name="gsFlagFileIsCorrupt" xml:space="preserve">
     <value>Flaggen Datei fehlerhaft</value>
@@ -538,7 +538,7 @@
     <value>Westen</value>
   </data>
   <data name="gsWindowsStillOpen" xml:space="preserve">
-    <value>Windows ist immer noch geöffnet</value>
+    <value>weiteres Fester ist geöffnet</value>
   </data>
   <data name="gsXTEChart" xml:space="preserve">
     <value>Abweichung von der Linie (XTE)</value>

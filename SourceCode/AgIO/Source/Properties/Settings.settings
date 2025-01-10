@@ -80,12 +80,6 @@
     <Setting Name="setPgm_defaultLon" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="setF_culture" Type="System.String" Scope="User">
-      <Value Profile="(Default)">en</Value>
-    </Setting>
-    <Setting Name="setF_workingDirectory" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Default</Value>
-    </Setting>
     <Setting Name="setGPS_SimLatitude" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
@@ -184,9 +178,6 @@
     </Setting>
     <Setting Name="setDisplay_isAutoRunGPS_Out" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="setConfig_profileName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Default Profile</Value>
     </Setting>
   </Settings>
 </SettingsFile>

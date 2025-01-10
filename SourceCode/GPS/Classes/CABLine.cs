@@ -439,10 +439,7 @@ namespace AgOpenGPS
 
                 GL.Color4(0,0,0, 0.5);
 
-                if (mf.camera.camSetDistance > mf.tool.width * -100)
-                    GL.LineWidth(4);
-                else
-                    GL.LineWidth(2);
+                GL.LineWidth(lineWidth * 3);
 
                 GL.Begin(PrimitiveType.Lines);
 
@@ -460,8 +457,8 @@ namespace AgOpenGPS
                     //GL.Enable(EnableCap.LineStipple);
                     //GL.LineStipple(1, 0x000F);
 
-                    GL.Color4(0.9907f, 0.990f, 0.9750f, 0.5f);
-                    GL.LineWidth(1);
+                    GL.Color4(0.19907f, 0.990f, 0.19750f, 0.6f);
+                    GL.LineWidth(lineWidth);
                     GL.Begin(PrimitiveType.Lines);
 
                     for (int i = 1; i <= numGuideLines; i++)

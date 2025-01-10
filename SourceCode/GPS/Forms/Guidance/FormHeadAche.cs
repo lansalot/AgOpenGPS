@@ -1,4 +1,6 @@
-﻿using OpenTK;
+﻿using AgLibrary.Logging;
+using AgOpenGPS.Helpers;
+using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
@@ -62,7 +64,7 @@ namespace AgOpenGPS
             this.Left = (area.Width - this.Width) / 2;
             FormHeadAche_ResizeEnd(this, e);
 
-            if (!mf.IsOnScreen(Location, Size, 1))
+            if (!ScreenHelper.IsOnScreen(Bounds))
             {
                 Top = 0;
                 Left = 0;
@@ -742,7 +744,7 @@ namespace AgOpenGPS
                 if (nextLine == lineNum)
                 {
                     mf.TimedMessageBox(2000, "Create Error", "Is there maybe only 1 line?");
-                    mf.LogEventWriter("Headache, Only 1 Line");
+                    Log.EventWriter("Headache, Only 1 Line");
 
                     return;
                 }
@@ -782,7 +784,7 @@ namespace AgOpenGPS
             if (crossings.Count != mf.hdl.tracksArr.Count * 2)
             {
                 mf.TimedMessageBox(2000, "Crosings Error", "Make sure all ends cross and only once");
-                mf.LogEventWriter("Headache, All ends cross and only once");
+                Log.EventWriter("Headache, All ends cross and only once");
                 mf.bnd.bndList[0].hdLine?.Clear();
                 return;
             }
@@ -990,7 +992,7 @@ namespace AgOpenGPS
             GL.Enable(EnableCap.CullFace);
             GL.CullFace(CullFaceMode.Back);
             GL.ClearColor(0.22f, 0.22f, 0.22f, 1.0f);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
         }
     }
 }

@@ -144,9 +144,6 @@
   <data name="gsAutoSteer" xml:space="preserve">
     <value>Autoguiado</value>
   </data>
-  <data name="gsConfiguration" xml:space="preserve">
-    <value>Configuración </value>
-  </data>
   <data name="gsAutoSteerConfiguration" xml:space="preserve">
     <value>Configuración Autoguiado</value>
   </data>
@@ -197,6 +194,9 @@
   </data>
   <data name="gsCompletelyDeleteBoundary" xml:space="preserve">
     <value>Borrar completamente Linderos</value>
+  </data>
+  <data name="gsConfiguration" xml:space="preserve">
+    <value>Configuración </value>
   </data>
   <data name="gsContourFileIsCorrupt" xml:space="preserve">
     <value>Fichero de contorno corrupto</value>

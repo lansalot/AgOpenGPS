@@ -27,13 +27,15 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <!-- Only write to build log in one project (AgOpenGPS), otherwise GitVersion will fail -->
+    <WriteVersionInfoToBuildLog>false</WriteVersionInfoToBuildLog>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\AgOpenGPS_v64\</OutputPath>
+    <OutputPath>..\..\..\AgOpenGPS\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -42,7 +44,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\AgOpenGPS_v64\</OutputPath>
+    <OutputPath>..\..\..\AgOpenGPS\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,10 +53,6 @@
     <ApplicationIcon>AgIO_ico.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Keypad, Version=5.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\References\Keypad.dll</HintPath>
-    </Reference>
     <Reference Include="RepeatButtonControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\References\RepeatButtonControl.dll</HintPath>
@@ -72,23 +70,23 @@
     <Compile Include="Classes\ListViewColumnSorterExt.cs" />
     <Compile Include="Classes\CRadioChannel.cs" />
     <Compile Include="Classes\CSettings.cs" />
-    <Compile Include="Forms\FormCommPicker.cs">
+    <Compile Include="Forms\FormProfiles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormCommPicker.designer.cs">
-      <DependentUpon>FormCommPicker.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormCommSaver.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormCommSaver.designer.cs">
-      <DependentUpon>FormCommSaver.cs</DependentUpon>
+    <Compile Include="Forms\FormProfiles.designer.cs">
+      <DependentUpon>FormProfiles.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormCommSetGPS.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormCommSetGPS.Designer.cs">
       <DependentUpon>FormCommSetGPS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormEventViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEventViewer.Designer.cs">
+      <DependentUpon>FormEventViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormSerialMonitor.cs">
       <SubType>Form</SubType>
@@ -197,17 +195,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\FormCommPicker.resx">
-      <DependentUpon>FormCommPicker.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormCommSaver.resx">
-      <DependentUpon>FormCommSaver.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormProfiles.resx">
+      <DependentUpon>FormProfiles.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCommSetGPS.resx">
       <DependentUpon>FormCommSetGPS.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormEventViewer.resx">
+      <DependentUpon>FormEventViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSerialMonitor.resx">
       <DependentUpon>FormSerialMonitor.cs</DependentUpon>
@@ -332,6 +329,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgIO_ico.ico" />
+    <None Include="btnImages\FileSaveAs.png" />
+    <None Include="btnImages\Reset_Default.png" />
+    <None Include="btnImages\LogViewer.png" />
     <None Include="btnImages\ModuleSim2.png" />
     <None Include="btnImages\EthernetOff.png" />
     <None Include="btnImages\WindowMinimize.png" />
@@ -396,6 +396,19 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgLibrary\AgLibrary.csproj">
+      <Project>{692b4970-37f1-4f02-8f7f-a514283fc399}</Project>
+      <Name>AgLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Keypad\Keypad.csproj">
+      <Project>{f1053bac-22c7-4e6f-a3ea-cc1e1fba9cb0}</Project>
+      <Name>Keypad</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GitVersion.MsBuild" Version="5.12.0" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

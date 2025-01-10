@@ -22,37 +22,7 @@ namespace AgIO
             keyboardString.SelectionLength = 0;
             keyboard1.Focus();
 
-            //opening the subkey
-            RegistryKey regKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\AgOpenGPS");
-
-            //create default keys if not existing
-            if (regKey == null)
-            {
-                RegistryKey Key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\AgOpenGPS");
-
-                //storing the values
-                Key.SetValue("Language", "en");
-                Key.Close();
-
-                Properties.Settings.Default.setF_culture = "en";
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.setF_culture = regKey.GetValue("Language").ToString();
-                Properties.Settings.Default.Save();
-                regKey.Close();
-            }
-
-            string language = Properties.Settings.Default.setF_culture;
-            if (language == "fr")
-            {
-                this.Height = 587;
-            }
-            else
-            {
-                this.Height = 500;
-            }
+            this.Height = 500;
         }
 
         private void RegisterKeyboard1_ButtonPressed(object sender, KeyPressEventArgs e)

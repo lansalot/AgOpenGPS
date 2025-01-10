@@ -1,18 +1,44 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
+using AgLibrary.Logging;
 
 namespace AgOpenGPS
 {
     public partial class FormEventViewer : Form
     {
         //class variables
-        private readonly FormGPS mf = null;
+        string filename;
 
-        public FormEventViewer(Form callingForm)
+        public FormEventViewer(string _filename)
         {
             //get copy of the calling main form
-            mf = callingForm as FormGPS;
             InitializeComponent();
+            filename = _filename;
+        }
+
+        private void FormEventViewer_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                using (StreamReader sr = File.OpenText(filename))
+                {
+                    //rtbLogViewer.Text = String.Empty;
+                    while (!sr.EndOfStream)
+                    {
+                        rtbLogViewer.AppendText(sr.ReadLine() + "\r");
+                    }
+
+                }
+            }
+            catch (Exception ex) 
+            {
+                rtbLogViewer.AppendText("Catch ->  error loading logfile" + ex.ToString());
+            }
+
+            rtbLogViewer.AppendText(" **** Current Session Below ***** \r\n\r\n");
+
+            rtbLogViewer.AppendText(Log.sbEvents.ToString());
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -20,18 +46,31 @@ namespace AgOpenGPS
             Close();
         }
 
-        private void FormEventViewer_Load(object sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
-            rtbAutoSteerStopEvents.HideSelection = false;
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (rtbAutoSteerStopEvents.TextLength != mf.sbSystemEvents.Length)
+            rtbLogViewer.Clear();
+            rtbLogViewer.HideSelection = false;
+            try
             {
-                rtbAutoSteerStopEvents.Clear();
-                rtbAutoSteerStopEvents.AppendText(mf.sbSystemEvents.ToString());
+                using (StreamReader sr = File.OpenText(filename))
+                {
+                    //rtbLogViewer.Text = String.Empty;
+                    while (!sr.EndOfStream)
+                    {
+                        rtbLogViewer.AppendText(sr.ReadLine() + "\r");
+                    }
+
+                }
             }
+            catch (Exception ex)
+            {
+                rtbLogViewer.AppendText("Catch ->  error loading logfile" + ex.ToString());
+            }
+
+            rtbLogViewer.AppendText(" **** Current Session Below ***** \r\n\r\n");
+
+            rtbLogViewer.AppendText(Log.sbEvents.ToString());
+
         }
     }
 }

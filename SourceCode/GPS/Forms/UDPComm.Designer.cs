@@ -7,6 +7,8 @@ using System.Globalization;
 using System.Diagnostics;
 using System.Xml.Linq;
 using AgOpenGPS.Culture;
+using System.Text;
+using AgLibrary.Logging;
 
 namespace AgOpenGPS
 {
@@ -23,7 +25,7 @@ namespace AgOpenGPS
         private byte[] loopBuffer = new byte[1024];
 
         // Status delegate
-        public int udpWatchCounts = 0;
+        public int missedSentenceCount = 0;
         public int udpWatchLimit = 70;
 
         private readonly Stopwatch udpWatch = new Stopwatch();
@@ -68,10 +70,7 @@ namespace AgOpenGPS
                         {
                             if (udpWatch.ElapsedMilliseconds < udpWatchLimit)
                             {
-                                udpWatchCounts++;
-                                if (isLogNMEA) pn.logNMEASentence.Append("*** "
-                                    + DateTime.UtcNow.ToString("ss.ff -> ", CultureInfo.InvariantCulture)
-                                    + udpWatch.ElapsedMilliseconds + "\r\n");
+                                missedSentenceCount++;
                                 return;
                             }
                             udpWatch.Reset();
@@ -171,11 +170,6 @@ namespace AgOpenGPS
 
                                 sentenceCounter = 0;
 
-                                if (isLogNMEA)
-                                    pn.logNMEASentence.Append(
-                                        DateTime.UtcNow.ToString("mm:ss.ff", CultureInfo.InvariantCulture) + " " +
-                                        Lat.ToString("N7") + " " + Lon.ToString("N7"));
-
                                 UpdateFixPosition();
                             }
                         }
@@ -252,12 +246,6 @@ namespace AgOpenGPS
                             //Actual PWM
                             mc.pwmDisplay = data[12];
 
-                            if (isLogNMEA)
-                                pn.logNMEASentence.Append(
-                                    DateTime.UtcNow.ToString("mm:ss.ff", CultureInfo.InvariantCulture) + " AS " +
-                                    mc.actualSteerAngleDegrees.ToString("N1") + "\r\n"
-                                    );
-
                             break;
                         }
 
@@ -280,7 +268,7 @@ namespace AgOpenGPS
                                 lblHardwareMessage.Visible = true;
                                 hardwareLineCounter = data[5] * 10;
 
-                                LogEventWriter(lblHardwareMessage.Text);
+                                Log.EventWriter(lblHardwareMessage.Text);
 
                                 //color based on byte 6
                                 if (data[6] == 0) lblHardwareMessage.BackColor = Color.Salmon;
@@ -293,23 +281,16 @@ namespace AgOpenGPS
                             }
                             break;
                         }
-
-                    //back from spray controller
-                    case 224:
+                    case 222: // DE
                         {
-                            nozz.volumeApplied = (Int16)((data[6] << 8) + data[5]);
-                            nozz.volumeApplied *= 0.1;
-
-                            //times 100
-                            nozz.volumePerMinuteActual = (Int16)((data[8] << 8) + data[7]);
-
-                            nozz.pressureActual = data[9];
-
-                            nozz.isFlowingFlag = data[10];
-
-                            nozz.pwmDriveActual = data[11];
-                            if (data[12] == 0) nozz.pwmDriveActual *= -1;
-
+                            //{ 0x80, 0x81, 0x7f, 222, number bytes, mask, command CRC };
+                            if (data.Length < 6) break;
+                            if (((data[5] & 1) == 1)) //mask bit #0 set and command bit #0 nudge line to the 0 = left 1 = right
+                            {
+                                double dist = Properties.Settings.Default.setAS_snapDistance * 0.01;
+                                if ((data[6] & 1) != 1) { trk.NudgeTrack(-dist); }
+                                if ((data[6] & 1) == 1) { trk.NudgeTrack(dist); }
+                            }
                             break;
                         }
 
@@ -343,10 +324,12 @@ namespace AgOpenGPS
                 loopBackSocket.Bind(new IPEndPoint(IPAddress.Loopback, 15555));
                 loopBackSocket.BeginReceiveFrom(loopBuffer, 0, loopBuffer.Length, SocketFlags.None,
                     ref endPointLoopBack, new AsyncCallback(ReceiveAppData), null);
+                Log.EventWriter("UDP Loopback network started: " + IPAddress.Loopback.ToString() + ":" + "15555");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Load Error: " + ex.Message, "UDP Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.EventWriter("Catch -> Load UDP Loopback Error: " + ex.ToString());
             }
         }
 
@@ -405,10 +388,10 @@ namespace AgOpenGPS
                     loopBackSocket.BeginSendTo(byteData, 0, byteData.Length, SocketFlags.None,
                         epAgIO, new AsyncCallback(SendAsyncLoopData), null);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    //WriteErrorLog("Sending UDP Message" + e.ToString());
-                    MessageBox.Show("Send Error: " + e.Message, "UDP Client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //Log.EventWriter("Sending UDP Message" + e.ToString());
+                    //MessageBox.Show("Send Error: " + e.Message, "UDP Client", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

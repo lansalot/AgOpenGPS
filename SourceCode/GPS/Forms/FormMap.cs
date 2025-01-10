@@ -1,4 +1,6 @@
-﻿using AgOpenGPS.Culture;
+﻿using AgLibrary.Logging;
+using AgOpenGPS.Culture;
+using AgOpenGPS.Helpers;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Drawing;
@@ -65,7 +67,7 @@ namespace AgOpenGPS
             if (mf.worldGrid.isGeoMap) cboxDrawMap.Image = Properties.Resources.MappingOn;
             else cboxDrawMap.Image = Properties.Resources.MappingOff;
 
-            if (!mf.IsOnScreen(Location, Size, 1))
+            if (!ScreenHelper.IsOnScreen(Bounds))
             {
                 Top = 0;
                 Left = 0;
@@ -371,7 +373,7 @@ namespace AgOpenGPS
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, 9729);
             }
 
-            String fileAndDirectory = mf.fieldsDirectory + mf.currentFieldDirectory + "\\BackPic.png";
+            string fileAndDirectory = Path.Combine(RegistrySettings.fieldsDirectory, mf.currentFieldDirectory, "BackPic.png");
             try
             {
                 if (File.Exists(fileAndDirectory))
@@ -428,13 +430,13 @@ namespace AgOpenGPS
 
             mf.worldGrid.isGeoMap = true;
 
-            CornerPoint geoRef = mapControl.TopLeftCorner;
+            GeoPoint geoRef = mapControl.TopLeft;
             mf.pn.ConvertWGS84ToLocal(geoRef.Latitude, geoRef.Longitude, out double nor, out double eas);
             if (Math.Abs(nor) > 4000 || Math.Abs(eas) > 4000) mf.worldGrid.isGeoMap = false;
             mf.worldGrid.northingMaxGeo = nor;
             mf.worldGrid.eastingMinGeo = eas;
 
-            geoRef = mapControl.BottomRightCorner;
+            geoRef = mapControl.BottomRight;
             mf.pn.ConvertWGS84ToLocal(geoRef.Latitude, geoRef.Longitude, out nor, out eas);
             if (Math.Abs(nor) > 4000 || Math.Abs(eas) > 4000) mf.worldGrid.isGeoMap = false;
             mf.worldGrid.northingMinGeo = nor;
@@ -444,7 +446,7 @@ namespace AgOpenGPS
             if (!mf.worldGrid.isGeoMap)
             {
                 mf.TimedMessageBox(2000, "Map Error", "Map Too Large");
-                mf.LogEventWriter("GeoMap, Map Too Large");
+                Log.EventWriter("GeoMap, Map Too Large");
                 ResetMapGrid();
                 return;
             }
@@ -457,7 +459,7 @@ namespace AgOpenGPS
                 bitmap = glm.MakeGrayscale3(bitmap);
             }
 
-            String fileAndDirectory = mf.fieldsDirectory + mf.currentFieldDirectory + "\\BackPic.png";
+            string fileAndDirectory = Path.Combine(RegistrySettings.fieldsDirectory, mf.currentFieldDirectory, "BackPic.png");
             try
             {
                 if (File.Exists(fileAndDirectory))
@@ -476,7 +478,7 @@ namespace AgOpenGPS
             catch
             {
                 mf.TimedMessageBox(2000, "File in Use", "Try loading again");
-                mf.LogEventWriter("GeoMap File in Use, Try Reload");
+                Log.EventWriter("GeoMap File in Use, Try Reload");
                 return;
             }
 
