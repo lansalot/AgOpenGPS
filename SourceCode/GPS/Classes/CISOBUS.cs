@@ -27,15 +27,15 @@ namespace AgOpenGPS
         /// <summary>
         /// Set up the PGN structure with the number of sections
         /// </summary>
-        public void initialisePGN(int _NOS)
+        public void initialisePGN(int _numberofSections)
         {
-            numberOfSections = _NOS;
-            pgn = new byte[6 + _NOS];
+            numberOfSections = _numberofSections;
+            pgn = new byte[6 + _numberofSections];
             pgn[0] = 0x80; // standard AIO header
             pgn[1] = 0x81; // PGN header
             pgn[2] = 0x70; // PGN major header
             pgn[3] = 0x00; // PGN minor header
-            pgn[4] = (byte)_NOS;
+            pgn[4] = (byte)_numberofSections;
         }
         /// <summary>
         /// Reset all section widths to 0 within the predefined PGN structure.
