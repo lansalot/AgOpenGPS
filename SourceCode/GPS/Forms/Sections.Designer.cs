@@ -526,23 +526,7 @@ namespace AgOpenGPS
                 p_229.pgn[p_229.toolLSpeed] = unchecked((byte)(tool.farLeftSpeed * 10));
                 p_229.pgn[p_229.toolRSpeed] = unchecked((byte)(tool.farRightSpeed * 10));
                 // ^^^ Andrew, this isn't right for p229 at all, sections are the first 8 bytes
-
-                // Andrew, here you're treating this like E5 (64-sections) rather than ISOBUS
-                if (isobus.numberOfSections != tool.numOfSections)
-                    isobus.ResetSections(tool.numOfSections);
-
-                int byteIndex = 5;
-                // make sure we're good here
-                isobus.ResetSections(tool.numOfSections);
-                for (int curSect = 0; curSect < tool.numOfSections; curSect++)
-                {
-                    // let's get straight into our 2-byte section info
-                    if (section[curSect].isSectionOn)
-                        isobus.pgn[byteIndex] = 1;
-                    else
-                        isobus.pgn[byteIndex] = 0;
-                    byteIndex++;
-                }
+              
             }
             else
             {
@@ -578,6 +562,23 @@ namespace AgOpenGPS
 
             p_239.pgn[p_239.speed] = unchecked((byte)(avgSpeed * 10));
             p_239.pgn[p_239.tram] = unchecked((byte)tram.controlByte);
+
+            // Andrew, here you're treating this like E5 (64-sections) rather than ISOBUS
+            //if (isobus.numberOfSections != tool.numOfSections) //Pat ask: not needed?
+            //    isobus.ResetSections(tool.numOfSections); //Pat ask: not needed?
+
+            int byteIndex = 5;
+            // make sure we're good here
+            isobus.ResetSections(tool.numOfSections);
+            for (int curSect = 0; curSect < tool.numOfSections; curSect++)
+            {
+                // let's get straight into our 2-byte section info
+                if (section[curSect].isSectionOn)
+                    isobus.pgn[byteIndex] = 1;
+                else
+                    isobus.pgn[byteIndex] = 0;
+                byteIndex++;
+            }
         }
 
 
