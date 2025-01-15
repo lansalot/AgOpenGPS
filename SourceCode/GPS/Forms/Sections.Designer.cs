@@ -43,25 +43,7 @@ namespace AgOpenGPS
 
             //go set the butons and section states
             if (tool.isSectionsNotZones)
-            {
-                AllSectionsAndButtonsToState(manualBtnState);
-                // this should only trigger if an ISOBUS request was sent - it currently happens when yellow button pressed
-                for (int i = 1; i <= isobus.numberOfSections; i++) // buttons start numbering at 1 in UI :(
-                {
-                    if (isobus.pgn[4 + i] == 1)
-                    {
-                        IndividualSectionAndButonToState(btnStates.On, i - 1, this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button);
-                        section[i - 1].isSectionOn = true;
-                        section[i - 1].isSectionRequiredOn = true;
-                    }
-                    else
-                    {
-                        IndividualSectionAndButonToState(btnStates.Off, i - 1, this.Controls.Find("btnSection" + i.ToString() + "Man", true).FirstOrDefault() as Button);
-                        section[i - 1].isSectionOn = false;
-                        section[i - 1].isSectionRequiredOn = false;
-                    }
-                }
-            }
+                AllSectionsAndButtonsToState(manualBtnState);               
             else
                 AllZonesAndButtonsToState(manualBtnState);
         }

@@ -63,7 +63,9 @@ namespace AgOpenGPS
                             // this better not bite you in the ass tmrw
                             Buffer.BlockCopy(data, 3, isobus.pgn, 3, data[4] + 3);
                             if (isobus.MakeCRC(data[data.Length - 1]) == data[data.Length - 1])
-                                btnSectionMasterManual_Click(this, EventArgs.Empty);
+                            {
+
+                            }
                             break;
                         }
                     case 0xD6:
