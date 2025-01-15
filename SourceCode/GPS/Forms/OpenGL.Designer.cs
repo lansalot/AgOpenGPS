@@ -1164,13 +1164,26 @@ namespace AgOpenGPS
             }
 
             isobus.ISOBUStimer--;
-            if (isobus.ISOBUStimer > 1)
+            if (isobus.ISOBUStimer > 1 )
             {
-                if (!isobus.isISOBUSenabled)
+                if(isobus.numberOfSections == tool.numOfSections)
                 {
-                    TimedMessageBox(1500, "ISOBUS", "ISOBUS connected");
+                    if (!isobus.isISOBUSenabled)
+                    {
+                        TimedMessageBox(1500, "ISOBUS", "ISOBUS connected");
+                    }
+                    isobus.isISOBUSenabled = true;
+                    isobus.displaySectionsNotMatching = true;
                 }
-                isobus.isISOBUSenabled = true;
+                else
+                {
+                    isobus.isISOBUSenabled = false;
+                    if (isobus.displaySectionsNotMatching)
+                    {
+                        TimedMessageBox(1500, "ISOBUS", "section nbr not matching");
+                        isobus.displaySectionsNotMatching = false;
+                    }
+                }
             }
             else
             {
@@ -1180,7 +1193,12 @@ namespace AgOpenGPS
                 }
                 isobus.isISOBUSenabled = false;
                 isobus.ISOBUStimer = 1;
+                isobus.displaySectionsNotMatching = true;
             }
+
+
+
+
 
             //Set all the on and off times based from on off section requests
             for (int j = 0; j < tool.numOfSections; j++)
