@@ -8,12 +8,19 @@ namespace AgOpenGPS
 {
     public class CISOBUS
     {
+        private readonly FormGPS mf;
+
+        private bool wasAlive;
         private long timestamp;
 
         private bool sectionControlEnabled;
-        private bool desiredSectionControlEnabled;
-
         private List<bool> actualSectionStates = new List<bool>();
+
+        public CISOBUS(FormGPS _f)
+        {
+            //constructor
+            mf = _f;
+        }
 
         public bool IsSectionOn(int section)
         {
@@ -24,15 +31,61 @@ namespace AgOpenGPS
             return false;
         }
 
+        public void RequestSectionControlEnabled(bool enabled)
+        {
+            // Send the request
+            byte[] data = new byte[7];
+            data[0] = 0x80; // standard AIO header
+            data[1] = 0x81; // PGN header
+            data[2] = 0x7F; // SRC address
+            data[3] = 0xF1; // PGN
+            data[4] = 0x02; // Length
+            data[5] = (byte)(enabled ? 0x01 : 0x00); // Section control enabled request
+            mf.SendPgnToLoop(data);
+        }
+
         public bool IsSectionControlEnabled()
         {
             return sectionControlEnabled;
         }
 
+        private void SetSectionControlEnabled(bool enabled)
+        {
+            if (sectionControlEnabled != enabled)
+            {
+                // Changed, act accordingly
+                sectionControlEnabled = enabled;
+
+                if (sectionControlEnabled)
+                {
+                    mf.btnIsobusSC.Image = Properties.Resources.IsobusSectionControlOff;
+                }
+                else // Section control disabled
+                {
+                    mf.btnIsobusSC.Image = Properties.Resources.IsobusSectionControlOn;
+                }
+            }
+        }
+
         public bool IsAlive()
         {
             // Check if the timestamp is not older than 1 second
-            return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - timestamp < 1000;
+            bool isAlive = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - timestamp < 1000;
+
+     
+            if (wasAlive && !isAlive)
+            {
+                // Lost connection
+                mf.btnIsobusSC.Visible = false;
+            }
+            else if (!wasAlive && isAlive)
+            {
+                // Reconnected
+                mf.btnIsobusSC.Visible = true;
+            }
+
+            wasAlive = isAlive;
+            return isAlive;
         }
 
 
@@ -74,7 +127,7 @@ namespace AgOpenGPS
                 return false;
             }
 
-            this.sectionControlEnabled = ReadBit(data, 0);
+            SetSectionControlEnabled(ReadBit(data, 0));
             int numberOfSections = data[1];
 
             if (data.Length != 2 + Math.Ceiling(numberOfSections / 8.0))

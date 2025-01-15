@@ -183,6 +183,7 @@ namespace AgOpenGPS
             this.btnAutoYouTurn = new System.Windows.Forms.Button();
             this.btnSectionMasterAuto = new System.Windows.Forms.Button();
             this.btnSectionMasterManual = new System.Windows.Forms.Button();
+            this.btnIsobusSC = new System.Windows.Forms.Button();
             this.btnAutoTrack = new System.Windows.Forms.Button();
             this.btnCycleLinesBk = new System.Windows.Forms.Button();
             this.btnCycleLines = new System.Windows.Forms.Button();
@@ -2492,6 +2493,7 @@ namespace AgOpenGPS
             this.panelRight.Controls.Add(this.btnAutoYouTurn);
             this.panelRight.Controls.Add(this.btnSectionMasterAuto);
             this.panelRight.Controls.Add(this.btnSectionMasterManual);
+            this.panelRight.Controls.Add(this.btnIsobusSC);
             this.panelRight.Controls.Add(this.btnAutoTrack);
             this.panelRight.Controls.Add(this.btnCycleLinesBk);
             this.panelRight.Controls.Add(this.btnCycleLines);
@@ -2593,6 +2595,29 @@ namespace AgOpenGPS
             this.btnSectionMasterManual.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSectionMasterManual.UseVisualStyleBackColor = false;
             this.btnSectionMasterManual.Click += new System.EventHandler(this.btnSectionMasterManual_Click);
+            // 
+            // btnIsobusSC
+            // 
+            this.btnIsobusSC.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnIsobusSC.BackColor = System.Drawing.Color.Transparent;
+            this.btnIsobusSC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnIsobusSC.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnIsobusSC.FlatAppearance.BorderSize = 0;
+            this.btnIsobusSC.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.btnIsobusSC.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnIsobusSC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnIsobusSC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIsobusSC.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIsobusSC.Image = global::AgOpenGPS.Properties.Resources.IsobusSectionControlOff;
+            this.btnIsobusSC.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnIsobusSC.Location = new System.Drawing.Point(3, 379);
+            this.btnIsobusSC.Name = "btnIsobusSC";
+            this.btnIsobusSC.Size = new System.Drawing.Size(64, 64);
+            this.btnIsobusSC.TabIndex = 544;
+            this.btnIsobusSC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnIsobusSC.UseVisualStyleBackColor = false;
+            this.btnIsobusSC.Visible = false;
+            this.btnIsobusSC.Click += new System.EventHandler(this.btnIsobusSC_Click);
             // 
             // btnAutoTrack
             // 
@@ -3114,6 +3139,7 @@ namespace AgOpenGPS
         private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadProfileToolStripMenuItem;
+        public System.Windows.Forms.Button btnIsobusSC;
     }
 }
 
