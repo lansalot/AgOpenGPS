@@ -58,11 +58,11 @@ namespace AgOpenGPS
 
                 if (sectionControlEnabled)
                 {
-                    mf.btnIsobusSC.Image = Properties.Resources.IsobusSectionControlOff;
+                    mf.btnIsobusSC.Image = Properties.Resources.IsobusSectionControlOn;
                 }
                 else // Section control disabled
                 {
-                    mf.btnIsobusSC.Image = Properties.Resources.IsobusSectionControlOn;
+                    mf.btnIsobusSC.Image = Properties.Resources.IsobusSectionControlOff;
                 }
             }
         }
