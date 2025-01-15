@@ -17,8 +17,10 @@ namespace AgOpenGPS
 
         public byte[] pgn;
         public int numberOfSections;
-
-
+        public bool isISOBUSreceived = false;
+        public bool isISOBUSenabled = false;
+        public byte ISOBUStimer = 1;
+        public bool displaySectionsNotMatching = true;
         public ISOBUS(FormGPS _f)
         {
             mf = _f;

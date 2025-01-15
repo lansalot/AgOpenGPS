@@ -1155,6 +1155,51 @@ namespace AgOpenGPS
 
             }  // end of go thru all sections "for"
 
+
+            //check if there is and active ISOBUS sentence
+            if (isobus.isISOBUSreceived)
+            {
+                isobus.isISOBUSreceived = false;
+                isobus.ISOBUStimer = 16;
+            }
+
+            isobus.ISOBUStimer--;
+            if (isobus.ISOBUStimer > 1 )
+            {
+                if(isobus.numberOfSections == tool.numOfSections)
+                {
+                    if (!isobus.isISOBUSenabled)
+                    {
+                        TimedMessageBox(1500, "ISOBUS", "ISOBUS connected");
+                    }
+                    isobus.isISOBUSenabled = true;
+                    isobus.displaySectionsNotMatching = true;
+                }
+                else
+                {
+                    isobus.isISOBUSenabled = false;
+                    if (isobus.displaySectionsNotMatching)
+                    {
+                        TimedMessageBox(1500, "ISOBUS", "section nbr not matching");
+                        isobus.displaySectionsNotMatching = false;
+                    }
+                }
+            }
+            else
+            {
+                if (isobus.isISOBUSenabled)
+                {
+                    TimedMessageBox(1500, "ISOBUS", "ISOBUS contact lost");
+                }
+                isobus.isISOBUSenabled = false;
+                isobus.ISOBUStimer = 1;
+                isobus.displaySectionsNotMatching = true;
+            }
+
+
+
+
+
             //Set all the on and off times based from on off section requests
             for (int j = 0; j < tool.numOfSections; j++)
             {
@@ -1208,8 +1253,9 @@ namespace AgOpenGPS
                 {
                     section[j].mappingOffTimer = 0;
                 }
-
+ 
                 //MAPPING - Not the making of triangle patches - only status - on or off
+                //do this even with actual setion state, to not mess the timers
                 if (section[j].sectionOnRequest)
                 {
                     section[j].mappingOffTimer = 0;
@@ -1226,6 +1272,19 @@ namespace AgOpenGPS
                     section[j].mappingOnTimer = 0;
                     if (section[j].mappingOffTimer > 1)
                         section[j].mappingOffTimer--;
+                    else
+                    {
+                        section[j].isMappingOn = false;
+                    }
+                }
+
+                if (isobus.isISOBUSenabled)
+                {
+                    //now overwrite AOG desired status with the actual status
+                    if(isobus.pgn[5 +j] == 1)
+                    {
+                        section[j].isMappingOn = true;
+                    }
                     else
                     {
                         section[j].isMappingOn = false;
