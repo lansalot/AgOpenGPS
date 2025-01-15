@@ -1237,6 +1237,7 @@ namespace AgOpenGPS
                 }
  
                 //MAPPING - Not the making of triangle patches - only status - on or off
+                //do this even with actual setion state, to not mess the timers
                 if (section[j].sectionOnRequest)
                 {
                     section[j].mappingOffTimer = 0;
@@ -1253,6 +1254,19 @@ namespace AgOpenGPS
                     section[j].mappingOnTimer = 0;
                     if (section[j].mappingOffTimer > 1)
                         section[j].mappingOffTimer--;
+                    else
+                    {
+                        section[j].isMappingOn = false;
+                    }
+                }
+
+                if (isobus.isISOBUSenabled)
+                {
+                    //now overwrite AOG desired status with the actual status
+                    if(isobus.pgn[5 +j] == 1)
+                    {
+                        section[j].isMappingOn = true;
+                    }
                     else
                     {
                         section[j].isMappingOn = false;
