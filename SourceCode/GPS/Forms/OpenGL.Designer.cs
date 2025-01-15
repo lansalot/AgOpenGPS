@@ -1209,6 +1209,32 @@ namespace AgOpenGPS
                     section[j].mappingOffTimer = 0;
                 }
 
+                //check if there is and active ISOBUS sentence
+                if (isobus.isISOBUSreceived)
+                {
+                    isobus.isISOBUSreceived = false;
+                    isobus.ISOBUStimer = 16;
+                }
+
+                isobus.ISOBUStimer-- ;
+                if(isobus.ISOBUStimer > 1)
+                {
+                    if (!isobus.isISOBUSenabled)
+                    {
+                        TimedMessageBox(1500, "ISOBUS", "ISOBUS connected");
+                    }
+                    isobus.isISOBUSenabled = true;
+                }
+                else
+                {
+                    if (isobus.isISOBUSenabled)
+                    {
+                        TimedMessageBox(1500, "ISOBUS", "ISOBUS contact lost");
+                    }
+                    isobus.isISOBUSenabled = false;
+                    isobus.ISOBUStimer = 1;
+                }
+
                 //MAPPING - Not the making of triangle patches - only status - on or off
                 if (section[j].sectionOnRequest)
                 {

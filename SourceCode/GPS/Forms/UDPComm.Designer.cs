@@ -64,7 +64,7 @@ namespace AgOpenGPS
                             Buffer.BlockCopy(data, 3, isobus.pgn, 3, data[4] + 3);
                             if (isobus.MakeCRC(data[data.Length - 1]) == data[data.Length - 1])
                             {
-
+                                isobus.isISOBUSreceived = true;
                             }
                             break;
                         }
