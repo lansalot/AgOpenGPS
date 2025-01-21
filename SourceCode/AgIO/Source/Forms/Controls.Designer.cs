@@ -271,6 +271,12 @@ namespace AgIO
             Process.Start("devmgmt.msc");
         }
 
+
+        private void isobusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowISOBUS();
+        }
+
         private void serialPassThroughToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (RegistrySettings.profileName == "")
@@ -377,6 +383,11 @@ namespace AgIO
         {
             var form = new FormSerialMonitor(this);
             form.Show(this);
+        }
+
+        public void ShowISOBUS()
+        {
+            isobusForm.Show(this);    
         }
 
         private void SettingsCommunicationGPS()
@@ -525,6 +536,6 @@ namespace AgIO
 
         private ToolStripDropDownButton toolStripDropDownButton1;
         private ToolStripMenuItem toolStripMenuProfiles;
-        private ToolStripMenuItem deviceManagerToolStripMenuItem;
+        private ToolStripMenuItem isobusToolStripMenuItem;
     }
 }
