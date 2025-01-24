@@ -785,7 +785,7 @@ namespace AgOpenGPS
 
         private void btnIsobusSC_Click(object sender, EventArgs e)
         {
-            isobus.RequestSectionControlEnabled(!isobus.IsSectionControlEnabled());
+            isobus.RequestSectionControlEnabled(!isobus.SectionControlEnabled);
         }
 
         private void FormGPS_Move(object sender, EventArgs e)

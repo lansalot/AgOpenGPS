@@ -103,7 +103,11 @@
             this.cboxRadioAdapter.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold);
             this.cboxRadioAdapter.FormattingEnabled = true;
             this.cboxRadioAdapter.Items.AddRange(new object[] {
-            "PCAN-USB"});
+            "PEAK-PCAN",
+            "InnoMaker-USB2CAN",
+            "Rusoku-TouCAN",
+            "SYS-TEC-USB2CAN",
+            "NTCAN"});
             this.cboxRadioAdapter.Location = new System.Drawing.Point(3, 21);
             this.cboxRadioAdapter.Name = "cboxRadioAdapter";
             this.cboxRadioAdapter.Size = new System.Drawing.Size(221, 37);

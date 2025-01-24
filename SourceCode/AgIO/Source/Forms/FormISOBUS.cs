@@ -9,34 +9,26 @@ namespace AgIO
     public partial class FormISOBUS : Form
     {
         private Process aogTaskControllerProcess;
-        private int lastChannelIndex = 0;
-        private int lastAdapterIndex = 0;
 
         public FormISOBUS()
         {
             InitializeComponent();
-            cboxRadioAdapter.SelectedIndex = lastAdapterIndex;
-
-            string path = GetInstallationPath();
-            if (!string.IsNullOrEmpty(path))
-            {
-                // Close any existing process
-                Process[] pname = Process.GetProcessesByName("AOG-TaskController");
-                foreach (Process p in pname)
-                {
-                    p.CloseMainWindow();
-                    if (!p.WaitForExit(5000))
-                    {
-                        p.Kill();
-                    }
-                    p.Close();
-                }
-
-                UpdateComponentVisibility();
-            }
+            cboxRadioAdapter.SelectedIndex = Properties.Settings.Default.isobus_canAdapterIndex;
+            cboxRadioChannel.SelectedIndex = Properties.Settings.Default.isobus_canChannelIndex;
         }
 
         private void btnOpenIsobus_Click(object sender, EventArgs e)
+        {
+            StartAogTaskController();
+        }
+
+        private void btnCloseIsobus_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.isobus_isOn = false;
+            StopAogTaskControllerProcess();
+        }
+
+        public void StartAogTaskController()
         {
             textBoxRcv.Clear();
             try
@@ -47,7 +39,15 @@ namespace AgIO
                     MessageBox.Show("AOG-TaskController is not installed??");
                     return;
                 }
-                path += "\\bin\\AOG-TaskController.exe";
+
+                // Stop any other running instances
+                Process[] processes = Process.GetProcessesByName("AOG-TaskController");
+                foreach (Process process in processes)
+                {
+                    process.Kill();
+                }
+
+                path += @"\bin\AOG-TaskController.exe";
 
                 aogTaskControllerProcess = new Process
                 {
@@ -64,6 +64,7 @@ namespace AgIO
                 };
 
                 aogTaskControllerProcess.OutputDataReceived += AogTaskControllerProcess_OutputDataReceived;
+                aogTaskControllerProcess.ErrorDataReceived += AogTaskControllerProcess_OutputDataReceived;
                 aogTaskControllerProcess.Exited += (_, __) =>
                 {
                     UpdateComponentVisibility();
@@ -72,6 +73,8 @@ namespace AgIO
                 aogTaskControllerProcess.BeginOutputReadLine();
 
                 UpdateComponentVisibility();
+
+                Properties.Settings.Default.isobus_isOn = true;
             }
             catch (Exception ex)
             {
@@ -79,27 +82,21 @@ namespace AgIO
             }
         }
 
-        private void btnCloseIsobus_Click(object sender, EventArgs e)
-        {
-            StopAogTaskControllerProcess();
-        }
-
-        private void StopAogTaskControllerProcess()
+        public void StopAogTaskControllerProcess()
         {
             try
             {
-                if (aogTaskControllerProcess != null && !aogTaskControllerProcess.HasExited)
-                {
-                    aogTaskControllerProcess.CloseMainWindow();
-                    if (!aogTaskControllerProcess.WaitForExit(5000))
-                    {
-                        aogTaskControllerProcess.Kill(); // Force close if not exiting gracefully
-                    }
-                    aogTaskControllerProcess.Close();
-                    aogTaskControllerProcess = null;
-                    AppendLog(">>> AOG-TaskController.exe stopped");
-                }
+                if (aogTaskControllerProcess == null || aogTaskControllerProcess.HasExited)
+                    return;
 
+                aogTaskControllerProcess.CloseMainWindow();
+                if (!aogTaskControllerProcess.WaitForExit(5000))
+                {
+                    aogTaskControllerProcess.Kill(); // Force close if not exiting gracefully
+                }
+                aogTaskControllerProcess.Close();
+                aogTaskControllerProcess = null;
+                AppendLog(">>> AOG-TaskController.exe stopped");
                 UpdateComponentVisibility();
             }
             catch (Exception ex)
@@ -108,10 +105,10 @@ namespace AgIO
             }
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
+        protected override void OnShown(EventArgs e)
         {
-            StopAogTaskControllerProcess(); // Ensure the process is stopped when the application closes
-            base.OnFormClosing(e);
+            base.OnShown(e);
+            UpdateComponentVisibility();
         }
 
         private void AogTaskControllerProcess_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -218,14 +215,14 @@ namespace AgIO
         private void cboxRadioAdapter_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateChannelSelection();
-            lastAdapterIndex = cboxRadioAdapter.SelectedIndex;
+            Properties.Settings.Default.isobus_canAdapterIndex = cboxRadioAdapter.SelectedIndex;
         }
 
         private void UpdateChannelSelection()
         {
             if (InvokeRequired)
             {
-                Invoke(new Action(UpdateComponentVisibility));
+                Invoke(new Action(UpdateChannelSelection));
             }
             else
             {
@@ -239,7 +236,7 @@ namespace AgIO
                 {
                     // Check if current adapter allows channel selection
                     string adapter = cboxRadioAdapter.SelectedItem.ToString();
-                    if (adapter == "PCAN-USB")
+                    if (adapter == "PEAK-PCAN")
                     {
                         flowLayoutChannel.Visible = true;
                         cboxRadioChannel.Items.Clear();
@@ -247,18 +244,56 @@ namespace AgIO
                         {
                             cboxRadioChannel.Items.Add(i);
                         }
-                        if (lastAdapterIndex == cboxRadioAdapter.SelectedIndex)
+                    }
+                    else if (adapter == "InnoMaker-USB2CAN")
+                    {
+                        flowLayoutChannel.Visible = true;
+                        cboxRadioChannel.Items.Clear();
+                        for (int i = 1; i <= 2; i++)
                         {
-                            cboxRadioChannel.SelectedIndex = lastChannelIndex;
+                            cboxRadioChannel.Items.Add(i);
                         }
-                        else
+                    }
+                    else if (adapter == "Rusoku-TouCAN")
+                    {
+                        flowLayoutChannel.Visible = true;
+                        cboxRadioChannel.Items.Clear();
+                        for (int i = 1; i <= 16; i++)
                         {
-                            cboxRadioChannel.SelectedIndex = 0;
+                            cboxRadioChannel.Items.Add(i);
+                        }
+                    }
+                    else if (adapter == "SYS-TEC-USB2CAN")
+                    {
+                        flowLayoutChannel.Visible = true;
+                        cboxRadioChannel.Items.Clear();
+                        for (int i = 1; i <= 2; i++)
+                        {
+                            cboxRadioChannel.Items.Add(i);
+                        }
+                    }
+                    else if (adapter == "NTCAN")
+                    {
+                        flowLayoutChannel.Visible = true;
+                        cboxRadioChannel.Items.Clear();
+                        for (int i = 1; i <= 42; i++)
+                        {
+                            cboxRadioChannel.Items.Add(i);
                         }
                     }
                     else
-                    {
+                    { 
                         flowLayoutChannel.Visible = false;
+                    }
+
+                    // Set the channel index to the known item, only if the adapter is the same
+                    if (Properties.Settings.Default.isobus_canAdapterIndex == cboxRadioAdapter.SelectedIndex)
+                    {
+                        cboxRadioChannel.SelectedIndex = Properties.Settings.Default.isobus_canChannelIndex;
+                    }
+                    else
+                    {
+                        cboxRadioChannel.SelectedIndex = 0;
                     }
 
                     // Disable channel selection if the process is running
@@ -276,7 +311,7 @@ namespace AgIO
 
         private void cboxRadioChannel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lastChannelIndex = cboxRadioChannel.SelectedIndex;
+            Properties.Settings.Default.isobus_canChannelIndex = cboxRadioChannel.SelectedIndex;
         }
     }
 }

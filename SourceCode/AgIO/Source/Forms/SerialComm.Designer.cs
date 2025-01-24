@@ -83,8 +83,6 @@ namespace AgIO
         //private byte[] pgnModule3 = new byte[262];
         private byte[] pgnIMU = new byte[22];
 
-        private readonly FormISOBUS isobusForm = new FormISOBUS();
-
         #region IMUSerialPort //--------------------------------------------------------------------
         private void ReceiveIMUPort(byte[] Data)
         {
