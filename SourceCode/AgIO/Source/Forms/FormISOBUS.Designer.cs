@@ -106,8 +106,7 @@
             "PEAK-PCAN",
             "InnoMaker-USB2CAN",
             "Rusoku-TouCAN",
-            "SYS-TEC-USB2CAN",
-            "NTCAN"});
+            "SYS-TEC-USB2CAN"});
             this.cboxRadioAdapter.Location = new System.Drawing.Point(3, 21);
             this.cboxRadioAdapter.Name = "cboxRadioAdapter";
             this.cboxRadioAdapter.Size = new System.Drawing.Size(221, 37);

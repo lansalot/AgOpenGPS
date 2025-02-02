@@ -49,12 +49,14 @@ namespace AgIO
 
                 path += @"\bin\AOG-TaskController.exe";
 
+                var arguments = $"--can_adapter={cboxRadioAdapter.SelectedItem} --can_channel={cboxRadioChannel.SelectedItem} --log_level=debug  --log2file";
+
                 aogTaskControllerProcess = new Process
                 {
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = path,
-                        Arguments = $"--can_adapter={cboxRadioAdapter.SelectedItem} --can_channel={cboxRadioChannel.SelectedItem}",
+                        Arguments = arguments,
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
@@ -268,15 +270,6 @@ namespace AgIO
                         flowLayoutChannel.Visible = true;
                         cboxRadioChannel.Items.Clear();
                         for (int i = 1; i <= 2; i++)
-                        {
-                            cboxRadioChannel.Items.Add(i);
-                        }
-                    }
-                    else if (adapter == "NTCAN")
-                    {
-                        flowLayoutChannel.Visible = true;
-                        cboxRadioChannel.Items.Clear();
-                        for (int i = 1; i <= 42; i++)
                         {
                             cboxRadioChannel.Items.Add(i);
                         }
