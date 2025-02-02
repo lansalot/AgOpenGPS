@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -238,44 +239,25 @@ namespace AgIO
                 {
                     // Check if current adapter allows channel selection
                     string adapter = cboxRadioAdapter.SelectedItem.ToString();
-                    if (adapter == "PEAK-PCAN")
+
+                    Dictionary<string, int> adapterChannels = new Dictionary<string, int>
+                    {
+                        { "PEAK-PCAN", 16 },
+                        { "InnoMaker-USB2CAN", 2 },
+                        { "Rusoku-TouCAN", 16 },
+                        { "SYS-TEC-USB2CAN", 2 }
+                    };
+                    if (adapterChannels.ContainsKey(adapter))
                     {
                         flowLayoutChannel.Visible = true;
                         cboxRadioChannel.Items.Clear();
-                        for (int i = 1; i <= 16; i++)
-                        {
-                            cboxRadioChannel.Items.Add(i);
-                        }
-                    }
-                    else if (adapter == "InnoMaker-USB2CAN")
-                    {
-                        flowLayoutChannel.Visible = true;
-                        cboxRadioChannel.Items.Clear();
-                        for (int i = 1; i <= 2; i++)
-                        {
-                            cboxRadioChannel.Items.Add(i);
-                        }
-                    }
-                    else if (adapter == "Rusoku-TouCAN")
-                    {
-                        flowLayoutChannel.Visible = true;
-                        cboxRadioChannel.Items.Clear();
-                        for (int i = 1; i <= 16; i++)
-                        {
-                            cboxRadioChannel.Items.Add(i);
-                        }
-                    }
-                    else if (adapter == "SYS-TEC-USB2CAN")
-                    {
-                        flowLayoutChannel.Visible = true;
-                        cboxRadioChannel.Items.Clear();
-                        for (int i = 1; i <= 2; i++)
+                        for (int i = 1; i <= adapterChannels[adapter]; i++)
                         {
                             cboxRadioChannel.Items.Add(i);
                         }
                     }
                     else
-                    { 
+                    {
                         flowLayoutChannel.Visible = false;
                     }
 
