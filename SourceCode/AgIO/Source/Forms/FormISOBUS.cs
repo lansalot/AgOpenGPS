@@ -93,9 +93,15 @@ namespace AgIO
                     return;
 
                 aogTaskControllerProcess.CloseMainWindow();
-                if (!aogTaskControllerProcess.WaitForExit(5000))
+                var startTime = DateTime.UtcNow;
+                while (!aogTaskControllerProcess.HasExited)
                 {
-                    aogTaskControllerProcess.Kill(); // Force close if not exiting gracefully
+                    if ((DateTime.UtcNow - startTime).TotalSeconds > 5)
+                    {
+                        aogTaskControllerProcess.Kill(); // Force close if not exiting gracefully
+                        break;
+                    }
+                    Application.DoEvents();
                 }
                 aogTaskControllerProcess.Close();
                 aogTaskControllerProcess = null;
