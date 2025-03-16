@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -10,7 +11,7 @@ using AgLibrary.Logging;
 namespace AgIO
 {
     public class CTraffic
-    {     
+    {
         public int cntrGPSIn = 0;
         public int cntrGPSInBytes = 0;
         public int cntrGPSOut = 0;
@@ -20,10 +21,10 @@ namespace AgIO
 
     public class CScanReply
     {
-        public string steerIP =   "";
+        public string steerIP = "";
         public string machineIP = "";
-        public string GPS_IP =    "";
-        public string IMU_IP =    "";
+        public string GPS_IP = "";
+        public string IMU_IP = "";
         public string subnetStr = "";
 
         public byte[] subnet = { 0, 0, 0 };
@@ -42,7 +43,7 @@ namespace AgIO
         // UDP Socket
         public Socket UDPSocket;
         private EndPoint endPointUDP = new IPEndPoint(IPAddress.Any, 0);
-        
+
         public bool isUDPNetworkConnected;
 
         //2 endpoints for local and 2 udp
@@ -52,7 +53,7 @@ namespace AgIO
             Properties.Settings.Default.eth_loopTwo.ToString() + "." +
             Properties.Settings.Default.eth_loopThree.ToString() + "." +
             Properties.Settings.Default.eth_loopFour.ToString()), 15555);
-        
+
         public IPEndPoint epModule = new IPEndPoint(IPAddress.Parse(
                 Properties.Settings.Default.etIP_SubnetOne.ToString() + "." +
                 Properties.Settings.Default.etIP_SubnetTwo.ToString() + "." +
@@ -68,7 +69,7 @@ namespace AgIO
 
         //scan results placed here
         public string scanReturn = "Scanning...";
-        
+
         // Data stream
         private byte[] buffer = new byte[1024];
 
@@ -76,6 +77,8 @@ namespace AgIO
         private byte[] helloFromAgIO = { 0x80, 0x81, 0x7F, 200, 3, 56, 0, 0, 0x47 };
 
         public IPAddress ipCurrent;
+        private string lastUDPString;
+
         //initialize loopback and udp network
         public void LoadUDPNetwork()
         {
@@ -88,7 +91,7 @@ namespace AgIO
                 {
                     if (IPA.AddressFamily == AddressFamily.InterNetwork)
                     {
-                        string  data = IPA.ToString();
+                        string data = IPA.ToString();
                         lblIP.Text += IPA.ToString().Trim() + "\r\n";
                     }
                 }
@@ -133,13 +136,13 @@ namespace AgIO
         }
 
         private void LoadLoopback()
-        { 
+        {
             try //loopback
             {
                 loopBackSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
                 loopBackSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, true);
                 loopBackSocket.Bind(new IPEndPoint(IPAddress.Loopback, 17777));
-                loopBackSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointLoopBack, 
+                loopBackSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointLoopBack,
                     new AsyncCallback(ReceiveDataLoopAsync), null);
                 Log.EventWriter("Loopback is Connected: " + IPAddress.Loopback.ToString() + ":17777");
 
@@ -225,13 +228,15 @@ namespace AgIO
                     case 0xFB: //251 steer config
                         {
                             SendSteerModulePort(data, data.Length);
-                            break;                        }
+                            break;
+                        }
 
                     case 0xEE: //238 machine config
                         {
                             SendMachineModulePort(data, data.Length);
                             SendSteerModulePort(data, data.Length);
-                            break;                        }
+                            break;
+                        }
 
                     case 0xEC: //236 machine config
                         {
@@ -240,7 +245,7 @@ namespace AgIO
                             break;
                         }
                 }
-            }                            
+            }
         }
 
         private void ReceiveDataLoopAsync(IAsyncResult asyncResult)
@@ -254,7 +259,7 @@ namespace AgIO
                 Array.Copy(buffer, localMsg, msgLen);
 
                 // Listen for more connections again...
-                loopBackSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointLoopBack, 
+                loopBackSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointLoopBack,
                     new AsyncCallback(ReceiveDataLoopAsync), null);
 
                 BeginInvoke((MethodInvoker)(() => ReceiveFromLoopBack(localMsg)));
@@ -329,13 +334,13 @@ namespace AgIO
                 Array.Copy(buffer, localMsg, msgLen);
 
                 // Listen for more connections again...
-                UDPSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointUDP, 
+                UDPSocket.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref endPointUDP,
                     new AsyncCallback(ReceiveDataUDPAsync), null);
 
                 BeginInvoke((MethodInvoker)(() => ReceiveFromUDP(localMsg)));
 
             }
-            catch 
+            catch
             {
             }
         }
@@ -348,7 +353,27 @@ namespace AgIO
                 {
                     //module return via udp sent to AOG
                     SendToLoopBackMessageAOG(data);
+                    if (data[2] == 0x7f && data[3] == 0xAE)
+                    {
+                        // extract the string at positions [10] to [20]
+                        string str = Encoding.ASCII.GetString(data, 4, data.Length - 4);
+                        if (str != lastUDPString)
+                        {
+                            // this needs to update a control in a different existing form
+                            Form f1 = Application.OpenForms.OfType<FormUDPMonitor>().Single();
+                            // and update the text box on that form
+                            f1.Controls["textBoxRcv"].Text += str;
+                            f1.Controls["textBoxRcv"].Invoke(new Action(() =>
+                            {
+                                TextBox textBox = (TextBox)f1.Controls["textBoxRcv"];
+                                textBox.SelectionStart = textBox.Text.Length;
+                                textBox.ScrollToCaret();
+                            }));
 
+                        }
+                        lastUDPString = str;
+                        return;
+                    }
                     //check for Scan and Hello
                     if (data[3] == 126 && data.Length == 11)
                     {
@@ -385,6 +410,7 @@ namespace AgIO
                     //scan Reply
                     else if (data[3] == 203 && data.Length == 13) //
                     {
+
                         if (data[2] == 126)  //steer module
                         {
                             scanReply.steerIP = data[5].ToString() + "." + data[6].ToString() + "." + data[7].ToString() + "." + data[8].ToString();

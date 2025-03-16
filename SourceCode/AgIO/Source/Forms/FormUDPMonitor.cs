@@ -51,8 +51,8 @@ namespace AgIO
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            textBoxRcv.AppendText(mf.logUDPSentence.ToString());
-            mf.logUDPSentence.Clear();
+            //textBoxRcv.AppendText(mf.logUDPSentence.ToString());
+            //mf.logUDPSentence.Clear();
         }
 
         private void btnFileSave_Click(object sender, EventArgs e)
