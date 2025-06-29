@@ -3,6 +3,7 @@
 using AgLibrary.Logging;
 using AgOpenGPS;
 using AgOpenGPS.Culture;
+using AgOpenGPS.Forms;
 using AgOpenGPS.Properties;
 using Microsoft.Win32;
 using OpenTK;
@@ -264,6 +265,7 @@ namespace AgOpenGPS
             }
         }
 
+        public Sidekick[] Sidekicks { get; set; }
         public FormGPS()
         {
             //winform initialization
@@ -491,6 +493,14 @@ namespace AgOpenGPS
                     form.ShowDialog(this);
                 }
             }
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // show the Form_Sidekick form
+            Form_Sidekick form = new Form_Sidekick(this);
+            form.Show(this);
+
         }
 
         private void FormGPS_FormClosing(object sender, FormClosingEventArgs e)
