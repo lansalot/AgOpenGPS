@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Xml;
 using AgLibrary.Logging;
 using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.Streamers;
 using AgOpenGPS.Core.Translations;
 using AgOpenGPS.IO;
 using AgOpenGPS.Protocols.ISOBUS;
@@ -182,26 +183,10 @@ namespace AgOpenGPS
                 panelDrag.Visible = recPath.recList.Count > 0;
             }
 
-            // --- BackPic ---
-            var backPic = BackPicFiles.Load(dir);
-            worldGrid.isGeoMap = backPic.IsGeoMap;
-            if (worldGrid.isGeoMap)
-            {
-                worldGrid.eastingMaxGeo = backPic.EastingMax;
-                worldGrid.eastingMinGeo = backPic.EastingMin;
-                worldGrid.northingMaxGeo = backPic.NorthingMax;
-                worldGrid.northingMinGeo = backPic.NorthingMin;
-
-                var bitmap = BackPicFiles.LoadImage(dir);
-                if (bitmap != null)
-                {
-                    worldGrid.BingBitmap = bitmap;
-                }
-                else
-                {
-                    worldGrid.isGeoMap = false;
-                }
-            }
+            // ---BingMap ---
+            DirectoryInfo fieldDirectoryInfo = new DirectoryInfo(dir);
+            BingMapStreamer bingMapStreamer = new BingMapStreamer();
+            worldGrid.BingMap = bingMapStreamer.TryRead(fieldDirectoryInfo);
 
             // optional
             TryLoad("Elevation.txt", LoadCriticality.Optional, () => ElevationFiles.Load(dir), out var elevation);
