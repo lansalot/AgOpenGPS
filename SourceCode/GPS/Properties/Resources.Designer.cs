@@ -3422,16 +3422,6 @@ namespace AgOpenGPS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap z_bingMap {
-            get {
-                object obj = ResourceManager.GetObject("z_bingMap", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap z_Compass {
             get {
                 object obj = ResourceManager.GetObject("z_Compass", resourceCulture);

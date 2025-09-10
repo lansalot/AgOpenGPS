@@ -383,7 +383,6 @@ namespace AgOpenGPS
 
         private void ResetMapGrid()
         {
-            mf.worldGrid.BingBitmap = Properties.Resources.z_bingMap;
             string fileAndDirectory = Path.Combine(RegistrySettings.fieldsDirectory, mf.currentFieldDirectory, "BackPic.png");
             try
             {

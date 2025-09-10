@@ -43,10 +43,9 @@ namespace AgOpenGPS.Core
 
         public double gridRotation = 0.0;
 
-        public WorldGrid(Bitmap floorBitmap, Bitmap bingBitmap)
+        public WorldGrid(Bitmap floorBitmap)
         {
             _floorBitmap = floorBitmap;
-            _bingBitmap = bingBitmap;
             northingMaxGeo = 300;
             northingMinGeo = -300;
             eastingMaxGeo = 300;
