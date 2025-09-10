@@ -11,12 +11,9 @@ namespace AgOpenGPS.Core.Streamers
     public class BingMapStreamer : FieldAspectStreamer
     {
         private readonly BingMapBitmapStreamer _bitmapStreamer;
-        public BingMapStreamer(
-            IFieldStreamerPresenter presenter
-        ) :
-            base("BackPic.txt", presenter)
+        public BingMapStreamer() : base("BackPic.txt", null)
         {
-            _bitmapStreamer = new BingMapBitmapStreamer(presenter);
+            _bitmapStreamer = new BingMapBitmapStreamer();
         }
 
         public BingMap TryRead(DirectoryInfo fieldDirectory)
@@ -100,10 +97,7 @@ namespace AgOpenGPS.Core.Streamers
 
         private class BingMapBitmapStreamer : FieldAspectStreamer
         {
-            public BingMapBitmapStreamer(
-                IFieldStreamerPresenter presenter
-            ) :
-                base("BackPic.png", presenter)
+            public BingMapBitmapStreamer() : base("BackPic.png", null)
             {
             }
 
