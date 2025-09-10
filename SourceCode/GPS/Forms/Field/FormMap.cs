@@ -326,7 +326,13 @@ namespace AgOpenGPS
             if (cboxDrawMap.Checked)
             {
                 cboxDrawMap.Image = Properties.Resources.MappingOn;
-                SetAndSaveBingMap(CreateBingMap());
+                BingMap bingMap = CreateBingMap();
+                if (bingMap == null)
+                {
+                    mf.TimedMessageBox(2000, "BingMap Error", "Map Too Large");
+                    Log.EventWriter("BingMap, Map Too Large");
+                }
+                SetAndSaveBingMap(bingMap);
             }
             else
             {
