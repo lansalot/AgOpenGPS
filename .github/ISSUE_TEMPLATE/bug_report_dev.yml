@@ -9,33 +9,12 @@ body:
         ## Development Branch Bug Report
         For bugs found in the `develop` branch or during development/testing.
 
-  - type: dropdown
-    id: branch
-    attributes:
-      label: Branch
-      description: Which branch is affected?
-      options:
-        - develop (main development)
-        - feature branch
-        - release candidate
-    validations:
-      required: true
-
   - type: input
-    id: commit
+    id: branch_commit
     attributes:
-      label: Commit Hash
-      description: The specific commit where this bug was found (first 7-8 characters is fine)
-      placeholder: "e.g., a1b2c3d or full hash"
-    validations:
-      required: true
-
-  - type: input
-    id: pr
-    attributes:
-      label: Related PR (if applicable)
-      description: Link to the PR that may have introduced or is related to this bug
-      placeholder: "#123 or https://github.com/AgOpenGPS-Official/AgOpenGPS/pull/123"
+      label: Branch/Commit
+      description: Which branch or commit hash?
+      placeholder: "e.g., develop, a1b2c3d, or PR #123"
     validations:
       required: false
 
@@ -64,29 +43,23 @@ body:
     id: reproduction
     attributes:
       label: Reproduction Steps
-      description: Detailed steps to reproduce the issue
+      description: Steps to reproduce the issue
       placeholder: |
-        1. Checkout commit a1b2c3d from develop
-        2. Build solution in Visual Studio
-        3. Run AgOpenGPS.exe
-        4. Navigate to...
-        5. Observe error...
+        1. Checkout develop branch
+        2. Run AgOpenGPS
+        3. Click/navigate to...
+        4. Observe error...
     validations:
       required: true
 
   - type: textarea
-    id: expected
+    id: expected_actual
     attributes:
-      label: Expected Behavior
-      description: What should happen?
-    validations:
-      required: true
-
-  - type: textarea
-    id: actual
-    attributes:
-      label: Actual Behavior
-      description: What actually happens?
+      label: Expected vs Actual Behavior
+      description: What should happen vs what actually happens?
+      placeholder: |
+        Expected: Should save field data
+        Actual: Application crashes with NullReferenceException
     validations:
       required: true
 
@@ -96,68 +69,19 @@ body:
       label: Severity
       description: How severe is this bug?
       options:
-        - Critical (crashes, data loss, blocks merge to master)
-        - High (major functionality broken)
-        - Medium (workaround available)
-        - Low (minor issue, cosmetic)
-    validations:
-      required: true
-
-  - type: dropdown
-    id: regression
-    attributes:
-      label: Is this a regression?
-      description: Did this work before in develop or master?
-      options:
-        - "Yes - this worked in a previous commit"
-        - "No - new feature/code"
-        - "Unknown"
-    validations:
-      required: true
-
-  - type: input
-    id: last_working
-    attributes:
-      label: Last Known Working Commit (if regression)
-      description: If regression, what commit last worked correctly?
-      placeholder: "e.g., b2c3d4e"
+        - Critical (crashes, data loss)
+        - High (major feature broken)
+        - Medium (minor issue)
+        - Low (cosmetic)
     validations:
       required: false
 
   - type: textarea
     id: code_location
     attributes:
-      label: Affected Code/Files
+      label: Affected Code/Files (if known)
       description: Which files or classes are affected?
-      placeholder: |
-        - FormGPS.cs line 456
-        - clsContour.cs
-        - Autosteer module
-    validations:
-      required: false
-
-  - type: textarea
-    id: environment
-    attributes:
-      label: Development Environment
-      description: Build environment details
-      placeholder: |
-        - Visual Studio 2022 Community
-        - Windows 11 Pro
-        - .NET Framework 4.8
-        - Testing with simulator / actual hardware
-    validations:
-      required: false
-
-  - type: textarea
-    id: hardware
-    attributes:
-      label: Hardware Used (if applicable)
-      description: Hardware setup used during testing
-      placeholder: |
-        - PCB: v4.1 Standard
-        - GPS: F9P via USB
-        - Section control board connected
+      placeholder: "e.g., FormGPS.cs line 456, CYouTurn.cs"
     validations:
       required: false
 

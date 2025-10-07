@@ -8,17 +8,12 @@ body:
       value: |
         Thanks for reporting this issue! Please provide as much detail as possible to help us fix it.
 
-  - type: dropdown
+  - type: input
     id: version
     attributes:
       label: AgOpenGPS Version
       description: Which version are you using? (Check Help > About in the application)
-      options:
-        - v7.x (latest release)
-        - v6.x
-        - v5.x
-        - v4.x or older
-        - Not sure
+      placeholder: "e.g., v6.8.0, v7.0.1, or 'latest from GitHub'"
     validations:
       required: true
 
@@ -91,11 +86,12 @@ body:
     id: hardware_details
     attributes:
       label: Hardware Details (if applicable)
-      description: PCB version, GPS model, communication method, etc.
+      description: What hardware are you using?
       placeholder: |
-        - PCB: v4.1 Standard
-        - GPS: F9P
-        - Connection: USB / Ethernet / UDP
+        GPS receiver: (e.g., F9P, BNO085)
+        Connection type: (e.g., USB, Ethernet, UDP)
+        PCB board: (e.g., v4.1 Standard, v5.0)
+        Auto-steer motor: (if using auto-steer)
     validations:
       required: false
 
@@ -117,8 +113,11 @@ body:
     id: logs
     attributes:
       label: Error Messages/Logs
-      description: Any error messages or log files
-      placeholder: Paste error messages here or attach log files
+      description: Any error messages, crash dialogs, or log files
+      placeholder: |
+        Copy and paste any error messages you see.
+        Log files can be found in the AgOpenGPS installation folder.
+      render: text
     validations:
       required: false
 
