@@ -9,7 +9,7 @@ namespace AgOpenGPS
     public class CISOBUS
     {
         private readonly FormGPS mf;
-        
+
         private DateTimeOffset timestamp;
 
         private bool sectionControlEnabled;

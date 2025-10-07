@@ -9,6 +9,7 @@ namespace AgIO
 {
     public partial class FormISOBUS : Form
     {
+        // TODO: separate the logic in this Form into another class
         private Process aogTaskControllerProcess;
 
         public FormISOBUS()
@@ -128,6 +129,7 @@ namespace AgIO
             }
         }
 
+        private const int MaxLogLength = 100000; // Limit to 100,000 characters
         private void AppendLog(string message)
         {
             if (InvokeRequired)
@@ -137,6 +139,15 @@ namespace AgIO
             else
             {
                 textBoxRcv.AppendText(message + Environment.NewLine);
+
+                // Trim log if it exceeds the maximum allowed length
+                if (textBoxRcv.TextLength > MaxLogLength)
+                {
+                    // Remove oldest lines to keep memory usage low
+                    int excess = textBoxRcv.TextLength - MaxLogLength;
+                    textBoxRcv.Select(0, excess);
+                    textBoxRcv.SelectedText = string.Empty;
+                }
             }
         }
 

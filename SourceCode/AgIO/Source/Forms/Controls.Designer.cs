@@ -387,7 +387,7 @@ namespace AgIO
 
         public void ShowISOBUS()
         {
-            isobusForm.Show(this);    
+            isobusForm.Show(this);
         }
 
         private void SettingsCommunicationGPS()
