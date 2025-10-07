@@ -15,6 +15,14 @@ namespace AgOpenGPS
         private bool sectionControlEnabled;
         private bool[] actualSectionStates;
 
+        private int lastGuidanceLineDeviation;
+        private DateTimeOffset guidanceLineDeviationTime;
+        private int lastActualSpeed;
+        private DateTimeOffset actualSpeedTime;
+        private int lastTotalDistance;
+        private DateTimeOffset totalDistanceTime;
+
+
         public CISOBUS(FormGPS _f)
         {
             //constructor
@@ -38,9 +46,72 @@ namespace AgOpenGPS
             data[1] = 0x81; // PGN header
             data[2] = 0x7F; // SRC address
             data[3] = 0xF1; // PGN
-            data[4] = 0x01; // Length
+            data[4] = 1; // Length
             data[5] = (byte)(enabled ? 0x01 : 0x00); // Section control enabled request
             mf.SendPgnToLoop(data);
+        }
+
+        private void SendProcessData(ushort identifier, int data)
+        {
+            byte[] dataBytes = BitConverter.GetBytes(data);
+            byte[] message = new byte[12];
+            message[0] = 0x80; // standard AIO header
+            message[1] = 0x81; // PGN header
+            message[2] = 0x7F; // SRC address
+            message[3] = 0xF2; // PGN
+            message[4] = 6; // Length
+            message[5] = (byte)(identifier & 0xFF);
+            message[6] = (byte)(identifier >> 8);
+            message[7] = dataBytes[0];
+            message[8] = dataBytes[1];
+            message[9] = dataBytes[2];
+            message[10] = dataBytes[3];
+            mf.SendPgnToLoop(message);
+        }
+
+        public void SetGuidanceLineDeviation(int deviation)
+        {
+            if (deviation == lastGuidanceLineDeviation)
+            {
+                return;
+            }
+            if (DateTimeOffset.Now - guidanceLineDeviationTime < TimeSpan.FromMilliseconds(100))
+            {
+                return;
+            }
+            lastGuidanceLineDeviation = deviation;
+            guidanceLineDeviationTime = DateTimeOffset.Now;
+            SendProcessData(513, deviation);
+        }
+
+        public void SetActualSpeed(int speed)
+        {
+            if (speed == lastActualSpeed)
+            {
+                return;
+            }
+            if (DateTimeOffset.Now - actualSpeedTime < TimeSpan.FromMilliseconds(100))
+            {
+                return;
+            }
+            lastActualSpeed = speed;
+            actualSpeedTime = DateTimeOffset.Now;
+            SendProcessData(397, speed);
+        }
+
+        public void SetTotalDistance(int distance)
+        {
+            if (distance == lastTotalDistance)
+            {
+                return;
+            }
+            if (DateTimeOffset.Now - totalDistanceTime < TimeSpan.FromMilliseconds(100))
+            {
+                return;
+            }
+            lastTotalDistance = distance;
+            totalDistanceTime = DateTimeOffset.Now;
+            SendProcessData(597, distance);
         }
 
         public bool SectionControlEnabled
