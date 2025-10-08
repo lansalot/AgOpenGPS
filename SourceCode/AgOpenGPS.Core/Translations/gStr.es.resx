@@ -701,4 +701,73 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
   </data>
+  <data name="gsAllSettings" xml:space="preserve">
+    <value>Ver Configuraciones</value>
+  </data>
+  <data name="gsAutoSwitchDualFix" xml:space="preserve">
+    <value>Auto Dual &lt;&gt; Fijo</value>
+  </data>
+  <data name="gsBottomMenu" xml:space="preserve">
+    <value>Menu Inferior</value>
+  </data>
+  <data name="gsBackground" xml:space="preserve">
+    <value>Fondo</value>
+  </data>
+  <data name="gsAutoSwitchDualFixSpeed" xml:space="preserve">
+    <value>Velocidad de cambio (km/h)</value>
+  </data>
+  <data name="gsCurrentTurnSensor" xml:space="preserve">
+    <value>Sensor de Corriente para Giro</value>
+  </data>
+  <data name="gsCurve" xml:space="preserve">
+    <value>Curva</value>
+  </data>
+  <data name="gsDay" xml:space="preserve">
+    <value>Día</value>
+  </data>
+  <data name="gsDeadzone" xml:space="preserve">
+    <value>---Zona Muerta---</value>
+  </data>
+  <data name="gsDefault" xml:space="preserve">
+    <value>Por defecto</value>
+  </data>
+  <data name="gsDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
+    <value>Esta acción eliminará todos los linderos. ¿Desea continuar?</value>
+  </data>
+  <data name="gsDeleteField" xml:space="preserve">
+    <value>Borrar Parcela</value>
+  </data>
+  <data name="gsDiameter" xml:space="preserve">
+    <value>Diámetro</value>
+  </data>
+  <data name="gsDirect" xml:space="preserve">
+    <value>Directo</value>
+  </data>
+  <data name="gsDirectionMarkers" xml:space="preserve">
+    <value>Marcadores de Dirección</value>
+  </data>
+  <data name="gsDisagree" xml:space="preserve">
+    <value>En desacuerdo</value>
+  </data>
+  <data name="gsDiscussions" xml:space="preserve">
+    <value>Discusión en:</value>
+  </data>
+  <data name="gsDistanceToFlag" xml:space="preserve">
+    <value>Distancia a Bandera</value>
+  </data>
+  <data name="gsDualAntennaSetting" xml:space="preserve">
+    <value>Configuración de Antena Dual</value>
+  </data>
+  <data name="gsElevationlog" xml:space="preserve">
+    <value>Registro de Elevación</value>
+  </data>
+  <data name="gsEnable" xml:space="preserve">
+    <value>Habilitar</value>
+  </data>
+  <data name="gsEnterName" xml:space="preserve">
+    <value>Digitar Nombre</value>
+  </data>
 </root>
