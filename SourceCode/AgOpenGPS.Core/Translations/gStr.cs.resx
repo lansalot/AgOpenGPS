@@ -77,7 +77,7 @@
     <value>O nás...</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
-    <value>Čeština</value>
+    <value>Ackermann</value>
   </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>Akce byla zrušena</value>
@@ -86,7 +86,7 @@
     <value>Aktivace</value>
   </data>
   <data name="gsActual" xml:space="preserve">
-    <value>O nás</value>
+    <value>Aktuální</value>
   </data>
   <data name="gsAdvancedTramLines" xml:space="preserve">
     <value>Votvoř pokročilé kolejové řádky</value>
@@ -181,7 +181,7 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
     <value>Obrysový soubor poškozen</value>
   </data>
   <data name="gsContourOn" xml:space="preserve">
-    <value>Contour On</value>
+    <value>Kontura Zap</value>
   </data>
   <data name="gsCouldntGenerateValidPath" xml:space="preserve">
     <value>Žádná platná cesta</value>
@@ -695,5 +695,191 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
   </data>
   <data name="gsOffsetFix" xml:space="preserve">
     <value>Posun Fix</value>
+  </data>
+  <data name="gsMachinePort" xml:space="preserve">
+    <value>Stroj Port</value>
+  </data>
+  <data name="gsMode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="gsN_East" xml:space="preserve">
+    <value>NVychod</value>
+  </data>
+  <data name="gsOn" xml:space="preserve">
+    <value>Zap</value>
+  </data>
+  <data name="gsOnDelay" xml:space="preserve">
+    <value>Zap-Zpozdeni</value>
+  </data>
+  <data name="gsOnOff" xml:space="preserve">
+    <value>Zap/Vyp</value>
+  </data>
+  <data name="gsImuFusion" xml:space="preserve">
+    <value>Splynuti</value>
+  </data>
+  <data name="gsKMH" xml:space="preserve">
+    <value>kmh</value>
+  </data>
+  <data name="gsMPH" xml:space="preserve">
+    <value>mph</value>
+  </data>
+  <data name="gsOpacity" xml:space="preserve">
+    <value>Neprůsvitnost:</value>
+  </data>
+  <data name="gsOpen" xml:space="preserve">
+    <value>Otevřít</value>
+  </data>
+  <data name="gsOuter" xml:space="preserve">
+    <value>Venkovní</value>
+  </data>
+  <data name="gsOverlap" xml:space="preserve">
+    <value>Překryv:</value>
+  </data>
+  <data name="gsOverlapGap" xml:space="preserve">
+    <value>Překryv / Díra</value>
+  </data>
+  <data name="gsOverride" xml:space="preserve">
+    <value>Přepsat</value>
+  </data>
+  <data name="gsOvershootReduction" xml:space="preserve">
+    <value>Přesné snížení</value>
+  </data>
+  <data name="gsPasses" xml:space="preserve">
+    <value>Průchody</value>
+  </data>
+  <data name="gsPastEndOfCurve" xml:space="preserve">
+    <value>Minulý konec křivky</value>
+  </data>
+  <data name="gsPause" xml:space="preserve">
+    <value>Pauza</value>
+  </data>
+  <data name="gsPivot" xml:space="preserve">
+    <value>Pivot</value>
+  </data>
+  <data name="gsPivotDistance" xml:space="preserve">
+    <value>Vzdalenost Pivotu</value>
+  </data>
+  <data name="gsPlantPop" xml:space="preserve">
+    <value>Rostlina Pop</value>
+  </data>
+  <data name="gsPleaseEnterABLine" xml:space="preserve">
+    <value>Prosím vlož ABLine</value>
+  </data>
+  <data name="gsPleaseWait" xml:space="preserve">
+    <value>Prosím čekej...</value>
+  </data>
+  <data name="gsPoint" xml:space="preserve">
+    <value>Bod</value>
+  </data>
+  <data name="gsPoints" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="gsPointsToProcess" xml:space="preserve">
+    <value>Body na zpracování</value>
+  </data>
+  <data name="gsPolygons" xml:space="preserve">
+    <value>Polygony</value>
+  </data>
+  <data name="gsPowerLoss" xml:space="preserve">
+    <value>Ztráta napětí Vypínám</value>
+  </data>
+  <data name="gsPresetColor" xml:space="preserve">
+    <value>Vyber Barvu</value>
+  </data>
+  <data name="gsPressureTurnSensor" xml:space="preserve">
+    <value>Tlakový zatáčecí sensor</value>
+  </data>
+  <data name="gsPreview" xml:space="preserve">
+    <value>Náhled</value>
+  </data>
+  <data name="gsProblemMakingPath" xml:space="preserve">
+    <value>Chyba vytvoření cesty</value>
+  </data>
+  <data name="gsProgramWillExitPleaseRestart" xml:space="preserve">
+    <value>Program se ukončí restartuj</value>
+  </data>
+  <data name="gsProportionalGain" xml:space="preserve">
+    <value>Proporcionální Zesílení</value>
+  </data>
+  <data name="gsQuickAB" xml:space="preserve">
+    <value>Rychlý AB line tvůrce</value>
+  </data>
+  <data name="gsRaiseTime" xml:space="preserve">
+    <value>Zvyš čas</value>
+  </data>
+  <data name="gsRate" xml:space="preserve">
+    <value>Hodnotit</value>
+  </data>
+  <data name="gsReallyResetEverything" xml:space="preserve">
+    <value>Opravdu obnovit vše?</value>
+  </data>
+  <data name="gsRecord" xml:space="preserve">
+    <value>Záznam</value>
+  </data>
+  <data name="gsRecordedPathFileIsCorrupt" xml:space="preserve">
+    <value>Záznam souboru cesty poškozen</value>
+  </data>
+  <data name="gsRecordedPathMenu" xml:space="preserve">
+    <value>Zaznamenané cesty</value>
+  </data>
+  <data name="gsRecordedPathPicker" xml:space="preserve">
+    <value>Nahraj zaznamenané cesty</value>
+  </data>
+  <data name="gsReducedPoints" xml:space="preserve">
+    <value>Snížené body</value>
+  </data>
+  <data name="gsRemain" xml:space="preserve">
+    <value>Ponechat</value>
+  </data>
+  <data name="gsRemoveOffset" xml:space="preserve">
+    <value>Odebrat Offset</value>
+  </data>
+  <data name="gsReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="gsResetAll" xml:space="preserve">
+    <value>Resetovat vše</value>
+  </data>
+  <data name="gsResetAllForSure" xml:space="preserve">
+    <value>Obnovit vše Určitě?</value>
+  </data>
+  <data name="gsResume" xml:space="preserve">
+    <value>Pokračuj</value>
+  </data>
+  <data name="gsReverseDistance" xml:space="preserve">
+    <value>Otoč Vzdálenost</value>
+  </data>
+  <data name="gsReverseSteer" xml:space="preserve">
+    <value>Otoč detekci</value>
+  </data>
+  <data name="gsRight" xml:space="preserve">
+    <value>Vpravo</value>
+  </data>
+  <data name="gsRightMenu" xml:space="preserve">
+    <value>Pravá nabídka</value>
+  </data>
+  <data name="gsRollFilter" xml:space="preserve">
+    <value>Roll filtr</value>
+  </data>
+  <data name="gsS_East" xml:space="preserve">
+    <value>SE</value>
+  </data>
+  <data name="gsS_West" xml:space="preserve">
+    <value>SW</value>
+  </data>
+  <data name="gsSaveAllDone" xml:space="preserve">
+    <value>Vše hotovo. Zavřít..</value>
+  </data>
+  <data name="gsSaveAndReturn" xml:space="preserve">
+    <value>Uložit a vrátit</value>
+  </data>
+  <data name="gsSaveBeerTime" xml:space="preserve">
+    <value>Čas na pivo! Čeština!</value>
+  </data>
+  <data name="gsSaveField" xml:space="preserve">
+    <value>Ukládám pole..</value>
+  </data>
+  <data name="gsSaveFieldParam" xml:space="preserve">
+    <value>Ukládání parametrů polí...</value>
   </data>
 </root>
