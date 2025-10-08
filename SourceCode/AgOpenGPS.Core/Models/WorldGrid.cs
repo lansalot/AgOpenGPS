@@ -3,6 +3,7 @@
 using AgOpenGPS.Core.Drawing;
 using AgOpenGPS.Core.DrawLib;
 using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.Visuals;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,10 @@ namespace AgOpenGPS.Core
 {
     public class WorldGrid
     {
+        private BingMap _bingMap;
+        private BingMapVisual _bingMapVisual;
         private Bitmap _floorBitmap;
-        private Bitmap _bingBitmap;
         private GeoTexture2D _floorTexture;
-        private GeoTexture2D _bingTexture;
 
         //Y
         public double northingMax;
@@ -27,42 +28,31 @@ namespace AgOpenGPS.Core
 
         public double eastingMin;
 
-        //Y
-        public double northingMaxGeo;
-
-        public double northingMinGeo;
-
-        //X
-        public double eastingMaxGeo;
-
-        public double eastingMinGeo;
-
         public double GridSize = 6000;
         public double Count = 40;
-        public bool isGeoMap = false;
 
         public double gridRotation = 0.0;
 
-        public WorldGrid(Bitmap floorBitmap, Bitmap bingBitmap)
+        public WorldGrid(Bitmap floorBitmap)
         {
             _floorBitmap = floorBitmap;
-            _bingBitmap = bingBitmap;
-            northingMaxGeo = 300;
-            northingMinGeo = -300;
-            eastingMaxGeo = 300;
-            eastingMinGeo = -300;
         }
 
         public double GridStep { private get; set; }
-
-        public Bitmap BingBitmap
+        public BingMap BingMap
         {
+            private get
+            {
+                return _bingMap;
+            }
             set
             {
-                _bingBitmap = value;
-                _bingTexture?.SetBitmap(_bingBitmap);
+                _bingMap = value;
+                _bingMapVisual = (_bingMap != null) ? new BingMapVisual(_bingMap) : null;
             }
         }
+
+        public bool HasBingMap => BingMap != null;
 
         private GeoTexture2D FloorTexture
         {
@@ -70,15 +60,6 @@ namespace AgOpenGPS.Core
             {
                 if (null == _floorTexture) _floorTexture = new GeoTexture2D(_floorBitmap);
                 return _floorTexture;
-            }
-        }
-
-        private GeoTexture2D BingTexture
-        {
-            get
-            {
-                if (null == _bingTexture) _bingTexture = new GeoTexture2D(_bingBitmap);
-                return _bingTexture;
             }
         }
 
@@ -110,14 +91,7 @@ namespace AgOpenGPS.Core
                 GeoCoord uCountvCount = new GeoCoord(eastingMax, northingMin);
                 FloorTexture.DrawRepeatedZ(u0v0, uCountvCount, -0.10, Count);
             }
-
-            if (isGeoMap)
-            {
-                GL.Color4(0.6f, 0.6f, 0.6f, 0.5f);
-                GeoCoord u0v0Map = new GeoCoord(eastingMinGeo, northingMaxGeo);
-                GeoCoord u1v1Map = new GeoCoord(eastingMaxGeo, northingMinGeo);
-                BingTexture.DrawZ(u0v0Map, u1v1Map, -0.05);
-            }
+            _bingMapVisual?.Draw();
         }
 
         public void DrawWorldGrid(ColorRgb worldGridColor)

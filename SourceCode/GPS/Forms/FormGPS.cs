@@ -317,7 +317,7 @@ namespace AgOpenGPS
                 Properties.Settings.Default.setDisplay_camPitch,
                 Properties.Settings.Default.setDisplay_camZoom);
 
-            worldGrid = new WorldGrid(Resources.z_Floor, Resources.z_bingMap);
+            worldGrid = new WorldGrid(Resources.z_Floor);
 
             //our vehicle made with gl object and pointer of mainform
             vehicle = new CVehicle(this);
@@ -1104,7 +1104,7 @@ namespace AgOpenGPS
 
             PanelsAndOGLSize();
             SetZoom();
-            worldGrid.isGeoMap = false;
+            worldGrid.BingMap = null;
 
             panelSim.Top = Height - 60;
 
@@ -1112,12 +1112,9 @@ namespace AgOpenGPS
 
             btnSection1Man.Text = "1";
 
-            worldGrid.BingBitmap = Properties.Resources.z_bingMap;
-
             // Reset AgShare upload state and clear snapshot after field is closed
             isAgShareUploadStarted = false;
             snapshot = null;
-
         }
 
         public void FieldMenuButtonEnableDisable(bool isOn)
