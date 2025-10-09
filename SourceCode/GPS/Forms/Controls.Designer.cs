@@ -1,5 +1,13 @@
 //Please, if you use this, share the improvements
 
+using AgLibrary.Logging;
+using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.Translations;
+using AgOpenGPS.Forms;
+using AgOpenGPS.Forms.Pickers;
+using AgOpenGPS.Forms.Profiles;
+using AgOpenGPS.IO;
+using AgOpenGPS.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,13 +17,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AgLibrary.Logging;
-using AgOpenGPS.Core.Models;
-using AgOpenGPS.Core.Translations;
-using AgOpenGPS.Forms;
-using AgOpenGPS.Forms.Pickers;
-using AgOpenGPS.Forms.Profiles;
-using AgOpenGPS.Properties;
 
 namespace AgOpenGPS
 {
@@ -1151,6 +1152,7 @@ namespace AgOpenGPS
                 pn.fix.easting, pn.fix.northing,
                 fixHeading, flagColor, nextflag, nextflag.ToString());
             flagPts.Add(flagPt);
+            flagPts = FlagsFiles.DeduplicateFlags(flagPts);
             FileSaveFlags();
 
             Form fc = Application.OpenForms["FormFlags"];
