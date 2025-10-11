@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="gsABDraw" xml:space="preserve">
+    <value>Desenați AB - Faceți clic pe 2 puncte de pe limită pentru a începe</value>
+  </data>
+  <data name="gsABline" xml:space="preserve">
+    <value>Linie AB</value>
+  </data>
+  <data name="gsADConverter" xml:space="preserve">
+    <value>Convertor AD</value>
+  </data>
+  <data name="gsAOGMenu" xml:space="preserve">
+    <value>Meniu AOG</value>
+  </data>
+  <data name="gsAPlus" xml:space="preserve">
+    <value>A+</value>
+  </data>
+  <data name="gsAbout" xml:space="preserve">
+    <value>Despre...</value>
+  </data>
+  <data name="gsActionHasBeenCancelled" xml:space="preserve">
+    <value>Acțiunea a fost anulată</value>
+  </data>
+  <data name="gsActive" xml:space="preserve">
+    <value>Activa</value>
+  </data>
+  <data name="gsActual" xml:space="preserve">
+    <value>Actual</value>
+  </data>
+  <data name="gsAdvancedTramLines" xml:space="preserve">
+    <value>Creați urme tehnologice avansate</value>
+  </data>
+  <data name="gsAgree" xml:space="preserve">
+    <value>Sunt de acord cu Termenii și Condițiile</value>
+  </data>
+  <data name="gsAgressiveness" xml:space="preserve">
+    <value>Agresivitate</value>
+  </data>
+  <data name="gsAllSettings" xml:space="preserve">
+    <value>Vedeți toate setările</value>
+  </data>
+  <data name="gsAlpha" xml:space="preserve">
+    <value>Alfa</value>
+  </data>
+  <data name="gsAntennaHeight" xml:space="preserve">
+    <value>Înălțimea antenei</value>
+  </data>
+  <data name="gsAntennaOffset" xml:space="preserve">
+    <value>Decalajul antenei</value>
+  </data>
+  <data name="gsApplied" xml:space="preserve">
+    <value>Aplicat</value>
+  </data>
+  <data name="gsAquire" xml:space="preserve">
+    <value>Dobândi</value>
+  </data>
+  <data name="gsAquireDescription" xml:space="preserve">
+    <value>Dobândi = Factorul * Menținere</value>
+  </data>
+  <data name="gsAquireFactor" xml:space="preserve">
+    <value>Factorul dobândit</value>
+  </data>
+  <data name="gsArea" xml:space="preserve">
+    <value>Zonă</value>
+  </data>
+  <data name="gsArrangeText" xml:space="preserve">
+    <value>Atingeți butoanele din partea stângă pe care doriți să le afișați în meniu (partea dreaptă)
+
+Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în sus.</value>
+  </data>
+  <data name="gsAttachmentStyle" xml:space="preserve">
+    <value>Stilul atașamentului</value>
+  </data>
+  <data name="gsAuto" xml:space="preserve">
+    <value>Automat</value>
+  </data>
+  <data name="gsAutoOffAgIO" xml:space="preserve">
+    <value>Oprire automată AgIO</value>
+  </data>
+  <data name="gsAutoStartAgIO" xml:space="preserve">
+    <value>Pornire automată AgIO</value>
+  </data>
+  <data name="gsAutoSteer" xml:space="preserve">
+    <value>Direcție automată</value>
+  </data>
+  <data name="gsAutoSteerConfiguration" xml:space="preserve">
+    <value>Configurare direcție automata</value>
+  </data>
+  <data name="gsAutoSteerPort" xml:space="preserve">
+    <value>Port direcție automată</value>
+  </data>
+  <data name="gsAutoSwitchDualFixSpeed" xml:space="preserve">
+    <value>Viteza de comutare (km/h)</value>
+  </data>
+  <data name="gsBackground" xml:space="preserve">
+    <value>Fundal</value>
+  </data>
+  <data name="gsBasedOnField" xml:space="preserve">
+    <value>Pe baza câmpului:</value>
+  </data>
+  <data name="gsBottomMenu" xml:space="preserve">
+    <value>Meniul de jos</value>
+  </data>
+  <data name="gsBoundary" xml:space="preserve">
+    <value>Limită</value>
+  </data>
+  <data name="gsBoundaryLineFilesAreCorrupt" xml:space="preserve">
+    <value>Fișierul cu linii de delimitare este corupt</value>
+  </data>
+  <data name="gsBrightness" xml:space="preserve">
+    <value>Luminozitate</value>
+  </data>
+  <data name="gsBuild" xml:space="preserve">
+    <value>Crea</value>
+  </data>
+  <data name="gsBuildAround" xml:space="preserve">
+    <value>Creați în jur</value>
+  </data>
+  <data name="gsButFieldIsLoaded" xml:space="preserve">
+    <value>Dar câmpul este încărcat</value>
+  </data>
+  <data name="gsButtonPicker" xml:space="preserve">
+    <value>Selector buton</value>
+  </data>
+  <data name="gsCameraBehavior" xml:space="preserve">
+    <value>Comportamentul camerei</value>
+  </data>
+  <data name="gsCancel" xml:space="preserve">
+    <value>Anulează</value>
+  </data>
+  <data name="gsCenter" xml:space="preserve">
+    <value>Centru</value>
+  </data>
+  <data name="gsCentimeters" xml:space="preserve">
+    <value>Centimetru</value>
+  </data>
+  <data name="gsCharts" xml:space="preserve">
+    <value>Grafice</value>
+  </data>
+  <data name="gsCheckForUpdates" xml:space="preserve">
+    <value>Verifică pentru actualizări</value>
+  </data>
+  <data name="gsChoose" xml:space="preserve">
+    <value>Alege</value>
+  </data>
+  <data name="gsChooseADifferentField" xml:space="preserve">
+    <value>Alegeți un alt câmp</value>
+  </data>
+  <data name="gsChooseADifferentName" xml:space="preserve">
+    <value>Alegeți un alt nume</value>
+  </data>
+  <data name="gsChooseBuildDifferentone" xml:space="preserve">
+    <value>Alegeți sau creați unul diferit</value>
+  </data>
+  <data name="gsClose" xml:space="preserve">
+    <value>Închide</value>
+  </data>
+  <data name="gsCloseAllWindowsFirst" xml:space="preserve">
+    <value>Închideți mai întâi toate ferestrele</value>
+  </data>
+  <data name="gsCloseFieldFirst" xml:space="preserve">
+    <value>Închideți câmpul mai întâi</value>
+  </data>
+  <data name="gsColorPicker" xml:space="preserve">
+    <value>Selector culoare</value>
+  </data>
+  <data name="gsColors" xml:space="preserve">
+    <value>Culori</value>
+  </data>
+  <data name="gsCompletelyDeleteBoundary" xml:space="preserve">
+    <value>Ștergeți complet limita</value>
+  </data>
+  <data name="gsConfiguration" xml:space="preserve">
+    <value>Configurare</value>
+  </data>
+  <data name="gsContourFileIsCorrupt" xml:space="preserve">
+    <value>Fișier contur corupt</value>
+  </data>
+  <data name="gsContourOn" xml:space="preserve">
+    <value>Contur activat</value>
+  </data>
+  <data name="gsCouldntGenerateValidPath" xml:space="preserve">
+    <value>Nicio cale validă</value>
+  </data>
+  <data name="gsCoverage" xml:space="preserve">
+    <value>% acoperire</value>
+  </data>
+  <data name="gsCreate" xml:space="preserve">
+    <value>Creează</value>
+  </data>
+  <data name="gsCreateABoundaryFirst" xml:space="preserve">
+    <value>Creează mai întâi o limită</value>
+  </data>
+  <data name="gsCreateNewField" xml:space="preserve">
+    <value>Creați un câmp nou</value>
+  </data>
+  <data name="gsCreateNewFromIsoXML" xml:space="preserve">
+    <value>Creați un câmp nou din ISO-XML</value>
+  </data>
+  <data name="gsCurrent" xml:space="preserve">
+    <value>Actual</value>
+  </data>
+  <data name="gsCurve" xml:space="preserve">
+    <value>Curbă</value>
+  </data>
+  <data name="gsCurveLineFileIsCorrupt" xml:space="preserve">
+    <value>Fișier linie curbă corupt</value>
+  </data>
+  <data name="gsCurveNotOn" xml:space="preserve">
+    <value>Curba nu este activată</value>
+  </data>
+  <data name="gsDay" xml:space="preserve">
+    <value>Zi</value>
+  </data>
+  <data name="gsDeadzone" xml:space="preserve">
+    <value>---Zonă moartă---</value>
+  </data>
+  <data name="gsDefault" xml:space="preserve">
+    <value>Implicit</value>
+  </data>
+  <data name="gsDelete" xml:space="preserve">
+    <value>Şterge</value>
+  </data>
+  <data name="gsDeleteAllContoursAndSections" xml:space="preserve">
+    <value>Ștergeți toate secțiunile și contururile</value>
+  </data>
+  <data name="gsDeleteAppliedArea" xml:space="preserve">
+    <value>Ștergeți zona aplicată</value>
+  </data>
+  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
+    <value>Această acțiune va șterge toate limitele. Doriți să continuați?</value>
+  </data>
+  <data name="gsDeleteContourPaths" xml:space="preserve">
+    <value>Ștergeți traseele de contur</value>
+  </data>
+  <data name="gsDeleteField" xml:space="preserve">
+    <value>Șterge câmpul</value>
+  </data>
+  <data name="gsDeleteForSure" xml:space="preserve">
+    <value>Șterge, ești sigur?</value>
+  </data>
+  <data name="gsDiameter" xml:space="preserve">
+    <value>Diametru</value>
+  </data>
+  <data name="gsDirect" xml:space="preserve">
+    <value>Direct</value>
+  </data>
+  <data name="gsDirectionMarkers" xml:space="preserve">
+    <value>Marcatori de direcție</value>
+  </data>
+  <data name="gsDirectories" xml:space="preserve">
+    <value>Registre</value>
+  </data>
+  <data name="gsDirectoryExists" xml:space="preserve">
+    <value>Registrul există</value>
+  </data>
+  <data name="gsDisagree" xml:space="preserve">
+    <value>Nu sunt de acord</value>
+  </data>
+  <data name="gsDiscussions" xml:space="preserve">
+    <value>Discuții la:</value>
+  </data>
+  <data name="gsDisplay" xml:space="preserve">
+    <value>Afişaj</value>
+  </data>
+  <data name="gsDistance" xml:space="preserve">
+    <value>Distanță</value>
+  </data>
+  <data name="gsDistanceToFlag" xml:space="preserve">
+    <value>Distanța până la steag</value>
+  </data>
+  <data name="gsDriveIn" xml:space="preserve">
+    <value>Condu în</value>
+  </data>
+  <data name="gsDriveThru" xml:space="preserve">
+    <value>Condu Prin</value>
+  </data>
+  <data name="gsDriving" xml:space="preserve">
+    <value>Condu</value>
+  </data>
+  <data name="gsDualAntennaSetting" xml:space="preserve">
+    <value>Setări pentru antenă duală</value>
+  </data>
+  <data name="gsDualpositionAntennaRight" xml:space="preserve">
+    <value>Antena cu poziție dublă este pe partea dreaptă</value>
+  </data>
+  <data name="gsEast" xml:space="preserve">
+    <value>Est</value>
+  </data>
+  <data name="gsEditABLine" xml:space="preserve">
+    <value>Editați linia AB</value>
+  </data>
+  <data name="gsEditColor" xml:space="preserve">
+    <value>Editați culoarea</value>
+  </data>
+  <data name="gsEditFieldName" xml:space="preserve">
+    <value>Editați numele câmpului</value>
+  </data>
+</root>

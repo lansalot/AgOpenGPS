@@ -770,4 +770,10 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="gsEnterName" xml:space="preserve">
     <value>Digitar Nombre</value>
   </data>
+  <data name="gsEditColor" xml:space="preserve">
+    <value>Editar Color</value>
+  </data>
+  <data name="gsDisplay" xml:space="preserve">
+    <value>Mostrar</value>
+  </data>
 </root>

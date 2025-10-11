@@ -882,4 +882,308 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
   <data name="gsSaveFieldParam" xml:space="preserve">
     <value>Ukládání parametrů polí...</value>
   </data>
+  <data name="gsSaveFieldParamSaved" xml:space="preserve">
+    <value>Parametry pole uložené.</value>
+  </data>
+  <data name="gsSaveFieldSavedLocal" xml:space="preserve">
+    <value>Oblast uložená lokálně.</value>
+  </data>
+  <data name="gsSaveFinalizeShutdown" xml:space="preserve">
+    <value>Konečné vypnutí..</value>
+  </data>
+  <data name="gsSaveSettings" xml:space="preserve">
+    <value>Ukládání nastavení...</value>
+  </data>
+  <data name="gsSaveSettingsSaved" xml:space="preserve">
+    <value>Nastavení uloženo.</value>
+  </data>
+  <data name="gsSaveUploadCompleted" xml:space="preserve">
+    <value>Nahrát kompletní.</value>
+  </data>
+  <data name="gsSaveUploadFailed" xml:space="preserve">
+    <value>Nahrát neúspěšné.</value>
+  </data>
+  <data name="gsSaveUploadToAgshare" xml:space="preserve">
+    <value>Nahrát pole do AgShare...</value>
+  </data>
+  <data name="gsScreenButtons" xml:space="preserve">
+    <value>Tlačítka obrazovky</value>
+  </data>
+  <data name="gsSectionColorsSet" xml:space="preserve">
+    <value>Nastav barvy sekcí</value>
+  </data>
+  <data name="gsSectionLines" xml:space="preserve">
+    <value>Linie sekcí</value>
+  </data>
+  <data name="gsSections" xml:space="preserve">
+    <value>Sekce:</value>
+  </data>
+  <data name="gsSelectButtons" xml:space="preserve">
+    <value>Vyberte tlačítka</value>
+  </data>
+  <data name="gsSelectPreset" xml:space="preserve">
+    <value>Vyber Barvu</value>
+  </data>
+  <data name="gsSendAndSave" xml:space="preserve">
+    <value>Odeslat + Uložit</value>
+  </data>
+  <data name="gsSentToMachineModule" xml:space="preserve">
+    <value>Pošli do Modulu Mašiny</value>
+  </data>
+  <data name="gsSetPoint" xml:space="preserve">
+    <value>SetPoint</value>
+  </data>
+  <data name="gsShiftGPSPosition" xml:space="preserve">
+    <value>Pozice Shift GPS (cm)</value>
+  </data>
+  <data name="gsShutdown" xml:space="preserve">
+    <value>Vypnout</value>
+  </data>
+  <data name="gsShutdownIn" xml:space="preserve">
+    <value>Vypnutí za:</value>
+  </data>
+  <data name="gsSideHillComp" xml:space="preserve">
+    <value>Kompenzace stranového náklonu</value>
+  </data>
+  <data name="gsSimpleTramLines" xml:space="preserve">
+    <value>tvůrce Jednoduchých kolejáků</value>
+  </data>
+  <data name="gsSimulatorOn" xml:space="preserve">
+    <value>Simulátor Zap</value>
+  </data>
+  <data name="gsSingleAntennaSetting" xml:space="preserve">
+    <value>Nastavení Jedna Anténa</value>
+  </data>
+  <data name="gsSlow" xml:space="preserve">
+    <value>Pomalu</value>
+  </data>
+  <data name="gsSlowDownBelow" xml:space="preserve">
+    <value>Zpomal pod</value>
+  </data>
+  <data name="gsSmooth" xml:space="preserve">
+    <value>Plynule</value>
+  </data>
+  <data name="gsSmoothABCurve" xml:space="preserve">
+    <value>Plynulá AB křivka</value>
+  </data>
+  <data name="gsSort" xml:space="preserve">
+    <value>Seřadit</value>
+  </data>
+  <data name="gsSound" xml:space="preserve">
+    <value>Zvuky</value>
+  </data>
+  <data name="gsSouth" xml:space="preserve">
+    <value>Jih</value>
+  </data>
+  <data name="gsSpacing" xml:space="preserve">
+    <value>Rozestup (cm)</value>
+  </data>
+  <data name="gsSpeedFactor" xml:space="preserve">
+    <value>Rychlostní faktor</value>
+  </data>
+  <data name="gsSpeedo" xml:space="preserve">
+    <value>Rychlost do</value>
+  </data>
+  <data name="gsStart" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="gsStartDeleteABoundary" xml:space="preserve">
+    <value>Začněte nebo odstraňte hranici</value>
+  </data>
+  <data name="gsStartFullscreen" xml:space="preserve">
+    <value>Spustit celou obrazovku</value>
+  </data>
+  <data name="gsStartNewField" xml:space="preserve">
+    <value>Začněte nové pole</value>
+  </data>
+  <data name="gsStatus" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="gsSteerAngle" xml:space="preserve">
+    <value>Zatáčecí úhel</value>
+  </data>
+  <data name="gsSteerBar" xml:space="preserve">
+    <value>Zatáčecí lišta</value>
+  </data>
+  <data name="gsSteerChart" xml:space="preserve">
+    <value>Graf zatáčení</value>
+  </data>
+  <data name="gsSteerDescription" xml:space="preserve">
+    <value>Tlačítko - Stiskněte Zap. Stiskněte Vyp
+Přepínač - Sepnuto Zap., Uvolněno Vyp</value>
+  </data>
+  <data name="gsSteerEnable" xml:space="preserve">
+    <value>Externí povolení</value>
+  </data>
+  <data name="gsSteerInReverse" xml:space="preserve">
+    <value>Zatáčet při couvání</value>
+  </data>
+  <data name="gsSteerResponse" xml:space="preserve">
+    <value>Zatáčení odpověď</value>
+  </data>
+  <data name="gsSteerSwitch" xml:space="preserve">
+    <value>Spínač zatáčení</value>
+  </data>
+  <data name="gsSteerWizard" xml:space="preserve">
+    <value>Průvodce zatáčením</value>
+  </data>
+  <data name="gsStopRecordPauseBoundary" xml:space="preserve">
+    <value>Zastav Záznam Pauza Hranice</value>
+  </data>
+  <data name="gsTermsConditions" xml:space="preserve">
+    <value>Podmínky pro verzi: </value>
+  </data>
+  <data name="gsTermsOne" xml:space="preserve">
+    <value>Pokud šíříte kopie tohoto BEZPLATNÉHO programu, ať už zdarma nebo za poplatek, vylepšené nebo pozměněné, musíte příjemcům předat stejnou svobodu, kterou jste obdrželi jak je uvedeno v licenci GPLv3.</value>
+  </data>
+  <data name="gsTermsThree" xml:space="preserve">
+    <value>AgOpenGPS je přísně vzdělávací software, který se dozví o vedení systémů, GPS cvičení a teoretické aplikaci řízení stroje.
+
+Není to žádný způsob, jak používat na skutečném zařízení v jakékoliv okolnostech. Simulátor je určen k tomu, aby student mohl bezpečně zažít vedení stroje.
+
+V softwaru nejsou k dispozici žádné bezpečnostní systémy.
+
+POUŽÍVÁNÍ NA VLASTNÍCH RISK.</value>
+  </data>
+  <data name="gsTermsTwo" xml:space="preserve">
+    <value>Musíte se ujistit, že obdrží nebo může získat zdrojový kód. A musíte ukázat tyto podmínky. Nekrást práci ostatních a zavolej mu.</value>
+  </data>
+  <data name="gsToFile" xml:space="preserve">
+    <value>Do souboru</value>
+  </data>
+  <data name="gsTooFast" xml:space="preserve">
+    <value>Moc Rychle</value>
+  </data>
+  <data name="gsToolLeft" xml:space="preserve">
+    <value>Nástroj vlevo</value>
+  </data>
+  <data name="gsToolOffset" xml:space="preserve">
+    <value>Posun Nástroje</value>
+  </data>
+  <data name="gsToolRight" xml:space="preserve">
+    <value>Nástroj Vpravo</value>
+  </data>
+  <data name="gsToolsMenu" xml:space="preserve">
+    <value>Nabídka nástrojů</value>
+  </data>
+  <data name="gsTotal" xml:space="preserve">
+    <value>Celkem</value>
+  </data>
+  <data name="gsTrack" xml:space="preserve">
+    <value>Stopa</value>
+  </data>
+  <data name="gsTracks" xml:space="preserve">
+    <value>Stopy</value>
+  </data>
+  <data name="gsTramLines" xml:space="preserve">
+    <value>Kolejové řádky</value>
+  </data>
+  <data name="gsTramWidth" xml:space="preserve">
+    <value>Šířka kolejáků:</value>
+  </data>
+  <data name="gsTurnABCurveOn" xml:space="preserve">
+    <value>Zapni AB křivku</value>
+  </data>
+  <data name="gsTurnOffDelay" xml:space="preserve">
+    <value>Vypnout zpoždění</value>
+  </data>
+  <data name="gsTurnOffRecordedPath" xml:space="preserve">
+    <value>Vypnout nahrani stopy</value>
+  </data>
+  <data name="gsTurnOnContourOrMakeABLine" xml:space="preserve">
+    <value>Zapni konturu AB Line</value>
+  </data>
+  <data name="gsTurnSensor" xml:space="preserve">
+    <value>Otočný senzor</value>
+  </data>
+  <data name="gsUnit" xml:space="preserve">
+    <value>Jednotky:</value>
+  </data>
+  <data name="gsUnits" xml:space="preserve">
+    <value>Jednotky</value>
+  </data>
+  <data name="gsUseSelected" xml:space="preserve">
+    <value>Použití vybrané</value>
+  </data>
+  <data name="gsUser1" xml:space="preserve">
+    <value>Uživatel 1</value>
+  </data>
+  <data name="gsUser2" xml:space="preserve">
+    <value>Uživatel 2</value>
+  </data>
+  <data name="gsUser3" xml:space="preserve">
+    <value>Uživatel 3</value>
+  </data>
+  <data name="gsUser4" xml:space="preserve">
+    <value>Uživatel 4</value>
+  </data>
+  <data name="gsUturn" xml:space="preserve">
+    <value>Otáčení U</value>
+  </data>
+  <data name="gsUturnCompensation" xml:space="preserve">
+    <value>Kompenzace U-Turn</value>
+  </data>
+  <data name="gsUturnExtension" xml:space="preserve">
+    <value>Nastav délku prodloužení do 2 nebo 3x Radius</value>
+  </data>
+  <data name="gsUturnSmooth" xml:space="preserve">
+    <value>Nastav plynulost 3-4x Radius</value>
+  </data>
+  <data name="gsVehiclegroupbox" xml:space="preserve">
+    <value>Typ vozidla:</value>
+  </data>
+  <data name="gsWasZero" xml:space="preserve">
+    <value>Byla Nula</value>
+  </data>
+  <data name="gsWebCam" xml:space="preserve">
+    <value>WebCam</value>
+  </data>
+  <data name="gsWest" xml:space="preserve">
+    <value>Západ</value>
+  </data>
+  <data name="gsWheelbase" xml:space="preserve">
+    <value>Wheelbase:</value>
+  </data>
+  <data name="gsWidth" xml:space="preserve">
+    <value>Šířka:</value>
+  </data>
+  <data name="gsWindowsStillOpen" xml:space="preserve">
+    <value>Windows stále otevřeno</value>
+  </data>
+  <data name="gsWizard" xml:space="preserve">
+    <value>Průvodce</value>
+  </data>
+  <data name="gsWizards" xml:space="preserve">
+    <value>Průvodci</value>
+  </data>
+  <data name="gsWorkSwitch" xml:space="preserve">
+    <value>Pracvní spínač</value>
+  </data>
+  <data name="gsWorkWidth" xml:space="preserve">
+    <value>Šířka</value>
+  </data>
+  <data name="gsWorked" xml:space="preserve">
+    <value>Práce</value>
+  </data>
+  <data name="gsXTEChart" xml:space="preserve">
+    <value>XTE Graf</value>
+  </data>
+  <data name="gsZeroRoll" xml:space="preserve">
+    <value>Nulový válec</value>
+  </data>
+  <data name="gsZone" xml:space="preserve">
+    <value>Zóna</value>
+  </data>
+  <data name="gsZones" xml:space="preserve">
+    <value>Zóny</value>
+  </data>
+  <data name="gsZoomIn" xml:space="preserve">
+    <value>Přiblížít</value>
+  </data>
+  <data name="v_AboutIntro" xml:space="preserve">
+    <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
+  </data>
+  <data name="gsSvennArrow" xml:space="preserve">
+    <value>Naváděcí Šipka</value>
+  </data>
 </root>
