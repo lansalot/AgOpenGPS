@@ -26,13 +26,12 @@ namespace AgOpenGPS.IO
             }
             return distinctFlags;
         }
+
         public static List<CFlag> Load(string fieldDirectory)
         {
             var result = new List<CFlag>();
             var path = Path.Combine(fieldDirectory, "Flags.txt");
             if (!File.Exists(path)) return result;
-
-            var seen = new HashSet<string>();
 
             using (var reader = new StreamReader(path))
             {
@@ -79,18 +78,20 @@ namespace AgOpenGPS.IO
 
             // Prevent saving duplicates based on latitude and longitude
             var distinctFlags = new List<CFlag>();
-            foreach (var f in flags ?? new List<CFlag>())
+            if (flags != null)
             {
-                bool duplicate = distinctFlags.Any(d =>
-                    Math.Abs(d.latitude - f.latitude) < 1e-8 &&
-                    Math.Abs(d.longitude - f.longitude) < 1e-8);
-
-                if (!duplicate)
+                foreach (var f in flags ?? new List<CFlag>())
                 {
-                    distinctFlags.Add(f);
+                    bool duplicate = distinctFlags.Any(d =>
+                        Math.Abs(d.latitude - f.latitude) < 1e-8 &&
+                        Math.Abs(d.longitude - f.longitude) < 1e-8);
+
+                    if (!duplicate)
+                    {
+                        distinctFlags.Add(f);
+                    }
                 }
             }
-
             using (var writer = new StreamWriter(filename, false))
             {
                 writer.WriteLine("$Flags");
