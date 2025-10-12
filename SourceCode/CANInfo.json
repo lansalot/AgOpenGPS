@@ -1,0 +1,339 @@
+{
+    "Brands": {
+        "Case": {
+            "Work": [
+                {
+                    "ButtonLabel": "Hitch Height",
+                    "CANBUSID": "KBUS",
+                    "CANFilterID": "0x18FE4523",
+                    "Bits": "9-16",
+                    "Operation": "Work",
+                    "Type": "Range"
+                }
+            ],
+            "Models": [
+                {
+                    "Model": "General",
+                    "Claim": "AA",
+                    "Notes": "There are many different Case models with different CAN messages. Try them in turn to find what works. Typically, you can find this on the plug on rear pillar",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "Case Puma CVX 160 2015, button behind joystick",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18FFB306",
+                            "Byte": 2,
+                            "OnStateAND": 1
+                        },
+                        {
+                            "ButtonLabel": "Case Puma CVX 160 2015, steer button on armrest",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18FFB031",
+                            "Byte": 2,
+                            "OnStateAND": 16
+                        },
+                        {
+                            "ButtonLabel": "Case Puma CVX 165 2022, steer button on armrest",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x14FF7706",
+                            "Byte": 0,
+                            "OnStateAND": 130
+                        },
+                        {
+                            "ButtonLabel": "Case Puma CVX 165 2022, steer button on armrest",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x14FF7706",
+                            "Byte": 0,
+                            "OnStateAND": 178
+                        },
+                        {
+                            "ButtonLabel": "Case Puma CVX 165 2022, steer button on armrest",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x14FF7706",
+                            "Byte": 2,
+                            "OnStateAND": 193
+                        },
+                        {
+                            "ButtonLabel": "Case Puma CVX 165 2022, steer button on armrest ",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x14FF7706",
+                            "Byte": 2,
+                            "OnStateAND": 196
+                        }
+                    ]
+                }
+            ]
+        },
+        "New Holland": {
+            "Models": [
+                {
+                    "Model": "General",
+                    "Notes": "Steer engage is typically the button on the joystick.",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "NH, steer button on joystick",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18FF1A03",
+                            "Byte": 2,
+                            "OnStateAND": 21
+                        }
+                    ]
+                }
+            ]
+        },
+        "Massey Ferguson": {
+            "Work": [
+                {
+                    "ButtonLabel": "PTO",
+                    "CANBUSID": "KBUS",
+                    "CANFilterID": "0x45a",
+                    "Byte": 1,
+                    "OnStateAND": 4,
+                    "Operation": "Work",
+                    "Type": "State"
+                },
+                {
+                    "ButtonLabel": "Hitch Height",
+                    "CANBUSID": "KBUS",
+                    "CANFilterID": "0x45a",
+                    "Bits": "9-16",
+                    "Operation": "Work",
+                    "Type": "Range"
+                }
+            ],
+            "Models": [
+                {
+                    "Model": "6000 Series",
+                    "Claim": "AA",
+                    "Notes": "Steer engage is typically the headland management button on the joystick, or autosteer button if fitted",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "6000 seriesHeadland management button",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x45a",
+                            "Byte": 1,
+                            "OnStateAND": 4,
+                            "Operation": "Work"
+                        }
+                    ]
+                },
+                {
+                    "Model": "S-Series",
+                    "Claim": "AA",
+                    "Notes": "Steer engage is typically the headland management button on the joystick, or autosteer button if fitted",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "S-series Steering engage button",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0xCFF2621",
+                            "Byte": 3,
+                            "OnStateAND": 4
+                        }
+                    ],
+                    "Work": [
+                        {
+                            "ButtonLabel": "PTO Overridden here for example",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x445545a",
+                            "Byte": 1,
+                            "OnStateAND": 4,
+                            "Operation": "Work",
+                            "Type": "State"
+                        }
+                    ]
+                },
+                {
+                    "Model": "7000-Series",
+                    "Claim": "AA",
+                    "Notes": "Steer engage is typically the headland management button on the joystick, or autosteer button if fitted",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "S-series Steering engage button",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x210",
+                            "Byte": 1,
+                            "OnStateAND": 21
+                        }
+                    ]
+                }
+            ]
+        },
+        "Fendt": {
+            "Models": [
+                {
+                    "Model": "S4",
+                    "Notes": "Steer engage is the white button on the armrest",
+                    "Claim": "2C",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "Fendt armrest button",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x613",
+                            "Byte": 1,
+                            "OnStateAND": 4
+                        }
+                    ]
+                },
+                {
+                    "Model": "FendtOne",
+                    "Notes": "FendtOne steer engage button",
+                    "Claim": "2C",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "FendtOne Engage button",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0xCFFD899",
+                            "Byte": 3,
+                            "OnStateAND": 246
+                        }
+                    ]
+                }
+            ]
+        },
+        "Claas": {
+            "Models": [
+                {
+                    "Model": "Pre-MR",
+                    "Claim": "1E",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "Engage button",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18EF1CD2",
+                            "Byte": 2,
+                            "OnStateAND": 196
+                        }
+                    ],
+                    "InWork": {
+                        "CANBUSID": "KBUS",
+                        "Label": "CSM1",
+                        "CANFilterID": "0x14204146",
+                        "Send": "0xF1,0xFC,0xFF,0xFF,0xFF,0xFF,0xFF,0x67",
+                        "Operation": "Work"
+                    },
+                    "OutWork": {
+                        "CANBUSID": "KBUS",
+                        "Label": "CSM2",
+                        "CANFilterID": "0x14204146",
+                        "Send": "0xF4,0xFC,0xFF,0xFF,0xFF,0xFF,0xFF,0x3F",
+                        "Operation": "OutWork"
+                    }
+                },
+                {
+                    "Model": "Stage5",
+                    "Claim": "1E",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "Engage button",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18EF1CD2",
+                            "Byte": 2,
+                            "OnStateAND": 196
+                        }
+                    ],
+                    "InWork": {
+                        "CANBUSID": "KBUS",
+                        "Label": "CSM1",
+                        "CANFilterID": "0x14204146",
+                        "Send": "0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x7A",
+                        "Operation": "Work"
+                    },
+                    "OutWork": {
+                        "CANBUSID": "KBUS",
+                        "Label": "CSM2",
+                        "CANFilterID": "0x14204146",
+                        "Send": "0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x22",
+                        "Operation": "OutWork"
+                    }
+                }
+            ]
+        },
+        "Valtra": {
+            "Models": [
+                {
+                    "Model": "General",
+                    "Claim": "1C",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "Engage button",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18EF1C32",
+                            "Byte": 2,
+                            "OnStateAND": 1
+                        },
+                        {
+                            "ButtonLabel": "Engage button (alternative)",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18EF1C00",
+                            "Byte": 2,
+                            "OnStateAND": 196
+                        }
+                    ]
+                }
+            ]
+        },
+        "JCB": {
+            "Models": [
+                {
+                    "Model": "General",
+                    "Claim": "AB",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "Engage button",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18EFAB27",
+                            "Byte": 2,
+                            "OnStateAND": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        "Caterpillar": {
+            "Models": [
+                {
+                    "Model": "Late",
+                    "Claim": "1C",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "MT-series Engage button (code unsure)",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18EF1CF0",
+                            "Byte": 0,
+                            "OnStateAND": 15
+                        }
+                    ]
+                },
+                {
+                    "Model": "Early",
+                    "Claim": "2CC",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "MT-series Engage button (code unsure)",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18EF1CF0",
+                            "Byte": 0,
+                            "OnStateAND": 15
+                        }
+                    ]
+                }
+            ]
+        },
+        "Lindner": {
+            "Models": [
+                {
+                    "Model": "General",
+                    "Claim": "F0",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "MT-series Engage button (code unsure)",
+                            "CANBUSID": "KBUS",
+                            "CANFilterID": "0x18EF1CF0",
+                            "Byte": 0,
+                            "OnStateAND": 15
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
