@@ -1,10 +1,16 @@
 {
     "Brands": {
         "Case": {
+            "VFilter": "0x0CACAA08,0x18FFBB03",
+            "VSendCurve": "0x0CAD08AA",
+            "CurveData": "0,0,0,255,255,255,255,255",
+            "CurveLoHi": "0,1",
+            "ITS1": "2,253",
+            "ITS0": "2,252",
             "Work": [
                 {
                     "ButtonLabel": "Hitch Height",
-                    "CANBUSID": "KBUS",
+                    "Bus": "KBUS",
                     "CANFilterID": "0x18FE4523",
                     "Bits": "9-16",
                     "Operation": "Work",
@@ -14,47 +20,47 @@
             "Models": [
                 {
                     "Model": "General",
-                    "Claim": "AA",
+                    "VClaim": "AA",
                     "Notes": "There are many different Case models with different CAN messages. Try them in turn to find what works. Typically, you can find this on the plug on rear pillar",
                     "Steer": [
                         {
                             "ButtonLabel": "Case Puma CVX 160 2015, button behind joystick",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18FFB306",
                             "Byte": 2,
                             "OnStateAND": 1
                         },
                         {
                             "ButtonLabel": "Case Puma CVX 160 2015, steer button on armrest",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18FFB031",
                             "Byte": 2,
                             "OnStateAND": 16
                         },
                         {
                             "ButtonLabel": "Case Puma CVX 165 2022, steer button on armrest",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x14FF7706",
                             "Byte": 0,
                             "OnStateAND": 130
                         },
                         {
                             "ButtonLabel": "Case Puma CVX 165 2022, steer button on armrest",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x14FF7706",
                             "Byte": 0,
                             "OnStateAND": 178
                         },
                         {
                             "ButtonLabel": "Case Puma CVX 165 2022, steer button on armrest",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x14FF7706",
                             "Byte": 2,
                             "OnStateAND": 193
                         },
                         {
                             "ButtonLabel": "Case Puma CVX 165 2022, steer button on armrest ",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x14FF7706",
                             "Byte": 2,
                             "OnStateAND": 196
@@ -71,7 +77,7 @@
                     "Steer": [
                         {
                             "ButtonLabel": "NH, steer button on joystick",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18FF1A03",
                             "Byte": 2,
                             "OnStateAND": 21
@@ -81,10 +87,11 @@
             ]
         },
         "Massey Ferguson": {
+            "VFilter": "0x0CAC1C13,0x18EF1C00",
             "Work": [
                 {
                     "ButtonLabel": "PTO",
-                    "CANBUSID": "KBUS",
+                    "Bus": "KBUS",
                     "CANFilterID": "0x45a",
                     "Byte": 1,
                     "OnStateAND": 4,
@@ -93,7 +100,7 @@
                 },
                 {
                     "ButtonLabel": "Hitch Height",
-                    "CANBUSID": "KBUS",
+                    "Bus": "KBUS",
                     "CANFilterID": "0x45a",
                     "Bits": "9-16",
                     "Operation": "Work",
@@ -103,12 +110,12 @@
             "Models": [
                 {
                     "Model": "6000 Series",
-                    "Claim": "AA",
+                    "VClaim": "AA",
                     "Notes": "Steer engage is typically the headland management button on the joystick, or autosteer button if fitted",
                     "Steer": [
                         {
                             "ButtonLabel": "6000 seriesHeadland management button",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x45a",
                             "Byte": 1,
                             "OnStateAND": 4,
@@ -118,12 +125,12 @@
                 },
                 {
                     "Model": "S-Series",
-                    "Claim": "AA",
+                    "VClaim": "AA",
                     "Notes": "Steer engage is typically the headland management button on the joystick, or autosteer button if fitted",
                     "Steer": [
                         {
                             "ButtonLabel": "S-series Steering engage button",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0xCFF2621",
                             "Byte": 3,
                             "OnStateAND": 4
@@ -132,7 +139,7 @@
                     "Work": [
                         {
                             "ButtonLabel": "PTO Overridden here for example",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x445545a",
                             "Byte": 1,
                             "OnStateAND": 4,
@@ -143,12 +150,12 @@
                 },
                 {
                     "Model": "7000-Series",
-                    "Claim": "AA",
+                    "VClaim": "AA",
                     "Notes": "Steer engage is typically the headland management button on the joystick, or autosteer button if fitted",
                     "Steer": [
                         {
                             "ButtonLabel": "S-series Steering engage button",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x210",
                             "Byte": 1,
                             "OnStateAND": 21
@@ -158,29 +165,74 @@
             ]
         },
         "Fendt": {
+            "VFilter": "0x0CEF2CF0",
+            "curveMod": -32128,
+            "VSendCurve": "0x0CEFF02C",
+            "VDataLeng": 6,
+            "CurveDataSteer": "5,9,3,10,0,0",
+            "CurveDataNoSteer": "5,9,2,10,0,0",
+            "CurveSteerLoHi": "4,5",
+            "ITS1": "2,253",
+            "ITS0": "2,252",
             "Models": [
                 {
                     "Model": "S4",
                     "Notes": "Steer engage is the white button on the armrest",
-                    "Claim": "2C",
+                    "VClaim": "2C",
                     "Steer": [
                         {
                             "ButtonLabel": "Fendt armrest button",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x613",
                             "Byte": 1,
                             "OnStateAND": 4
                         }
+                    ],
+                    "Work": [
+                        {
+                            "InWork": {
+                                "Bus": "KBUS",
+                                "Label": "Big-Go",
+                                "CANFilterID": "0x14204146",
+                                "Send": "0x15,0x20,0x06,0xCA,0x80,0x01,0x00,0x00",
+                                "Operation": "Work"
+                            },
+                            "OutWork": {
+                                "Bus": "KBUS",
+                                "Label": "Big-End",
+                                "CANFilterID": "0x14204146",
+                                "Send": "0x15,0x21,0x06,0xCA,0x80,0x03,0x00,0x00",
+                                "Operation": "OutWork"
+                            }
+                        },
+                        {
+                            "InWork": {
+                                "Bus": "KBUS",
+                                "Label": "Small-Go",
+                                "CANFilterID": "0x14204146",
+                                "Send": "0x15,0x20,0x06,0xCA,0x80,0x01,0x00,0x00",
+                                "Operation": "Work"
+                            },
+                            "OutWork": {
+                                "Bus": "KBUS",
+                                "Label": "Small-End",
+                                "CANFilterID": "0x14204146",
+                                "Send": "0x15,0x21,0x06,0xCA,0x80,0x03,0x00,0x00",
+                                "Operation": "OutWork"
+                            }
+                        }
                     ]
                 },
                 {
+                    "VFilter": "0x0CEF2CF0",
                     "Model": "FendtOne",
                     "Notes": "FendtOne steer engage button",
-                    "Claim": "2C",
+                    "VClaim": "2C",
+                    "VBusBaud": 500000,
                     "Steer": [
                         {
                             "ButtonLabel": "FendtOne Engage button",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0xCFFD899",
                             "Byte": 3,
                             "OnStateAND": 246
@@ -190,28 +242,34 @@
             ]
         },
         "Claas": {
+            "VFilter": "0x0CAC1E13,0x18EF1CD2,0x1CFFE6D2",
+            "VSendCurve": "0x0CAD131E",
+            "CurveData": "0,0,0,0,0,0,0",
+            "CurveLoHi": "0,1",
+            "ITS1": "2,253",
+            "ITS0": "2,252",
             "Models": [
                 {
                     "Model": "Pre-MR",
-                    "Claim": "1E",
+                    "VClaim": "1E",
                     "Steer": [
                         {
                             "ButtonLabel": "Engage button",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18EF1CD2",
                             "Byte": 2,
                             "OnStateAND": 196
                         }
                     ],
                     "InWork": {
-                        "CANBUSID": "KBUS",
+                        "Bus": "KBUS",
                         "Label": "CSM1",
                         "CANFilterID": "0x14204146",
                         "Send": "0xF1,0xFC,0xFF,0xFF,0xFF,0xFF,0xFF,0x67",
                         "Operation": "Work"
                     },
                     "OutWork": {
-                        "CANBUSID": "KBUS",
+                        "Bus": "KBUS",
                         "Label": "CSM2",
                         "CANFilterID": "0x14204146",
                         "Send": "0xF4,0xFC,0xFF,0xFF,0xFF,0xFF,0xFF,0x3F",
@@ -220,49 +278,59 @@
                 },
                 {
                     "Model": "Stage5",
-                    "Claim": "1E",
+                    "VClaim": "1E",
                     "Steer": [
                         {
                             "ButtonLabel": "Engage button",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18EF1CD2",
                             "Byte": 2,
                             "OnStateAND": 196
                         }
                     ],
-                    "InWork": {
-                        "CANBUSID": "KBUS",
-                        "Label": "CSM1",
-                        "CANFilterID": "0x14204146",
-                        "Send": "0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x7A",
-                        "Operation": "Work"
-                    },
-                    "OutWork": {
-                        "CANBUSID": "KBUS",
-                        "Label": "CSM2",
-                        "CANFilterID": "0x14204146",
-                        "Send": "0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x22",
-                        "Operation": "OutWork"
-                    }
+                    "Work": [
+                        {
+                            "InWork": {
+                                "Bus": "KBUS",
+                                "Label": "CSM1",
+                                "CANFilterID": "0x14204146",
+                                "Send": "0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x7A",
+                                "Operation": "Work"
+                            },
+                            "OutWork": {
+                                "Bus": "KBUS",
+                                "Label": "CSM2",
+                                "CANFilterID": "0x14204146",
+                                "Send": "0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x22",
+                                "Operation": "OutWork"
+                            }
+                        }
+                    ]
                 }
             ]
         },
         "Valtra": {
+            "VFilter": "0x0CAC1C13,0x18EF1C32",
+            "VSendCurve": "0x0CAD131C",
+            "CurveData": "0,0,0,0,0,0,0",
+            "CurveLoHi": "0,1",
+            "ITS1": "2,253",
+            "ITS0": "2,252",
             "Models": [
                 {
                     "Model": "General",
-                    "Claim": "1C",
+                    "VClaim": "1C",
                     "Steer": [
                         {
                             "ButtonLabel": "Engage button",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18EF1C32",
                             "Byte": 2,
                             "OnStateAND": 1
                         },
                         {
                             "ButtonLabel": "Engage button (alternative)",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18EF1C00",
                             "Byte": 2,
                             "OnStateAND": 196
@@ -272,14 +340,20 @@
             ]
         },
         "JCB": {
+            "VFilter": "0x0CACAB13,0x18EFAB27",
+            "VSendCurve": "0x0CAD13AB",
+            "CurveData": "0,0,0,255,255,255,255,255",
+            "CurveLoHi": "0,1",
+            "ITS1": "2,253",
+            "ITS0": "2,252",
             "Models": [
                 {
                     "Model": "General",
-                    "Claim": "AB",
+                    "VClaim": "AB",
                     "Steer": [
                         {
                             "ButtonLabel": "Engage button",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18EFAB27",
                             "Byte": 2,
                             "OnStateAND": 1
@@ -291,12 +365,18 @@
         "Caterpillar": {
             "Models": [
                 {
+                    "VFilter": "0x18EF1CF0",
+                    "VSendCurve": "0x1CEFF01C",
+                    "CurveData": "240,31,0,0,255,255,255,255",
+                    "CurveLoHi": "1,0",
+                    "ITS1": "2,253",
+                    "ITS0": "2,252",
                     "Model": "Late",
-                    "Claim": "1C",
+                    "VClaim": "1C",
                     "Steer": [
                         {
                             "ButtonLabel": "MT-series Engage button (code unsure)",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18EF1CF0",
                             "Byte": 0,
                             "OnStateAND": 15
@@ -304,12 +384,18 @@
                     ]
                 },
                 {
+                    "VFilter": "0x0CEFFF76",
                     "Model": "Early",
-                    "Claim": "2CC",
+                    "VClaim": "2CC",
+                    "VSendCurve": "0x0CEF762C",
+                    "CurveData": "240,31,0,0,255,255,255,255",
+                    "CurveLoHi": "1,0",
+                    "ITS1": "4,253",
+                    "ITS0": "4,252",
                     "Steer": [
                         {
                             "ButtonLabel": "MT-series Engage button (code unsure)",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18EF1CF0",
                             "Byte": 0,
                             "OnStateAND": 15
@@ -319,14 +405,20 @@
             ]
         },
         "Lindner": {
+            "VFilter": "0x0CACF013,0x0CEFF021",
+            "VSendCurve": "0x0CAD13F0",
+            "CurveData": "255,255,255,255,255,255,255",
+            "CurveLoHi": "0,1",
+            "ITS1": "2,253",
+            "ITS0": "2,252",
             "Models": [
                 {
                     "Model": "General",
-                    "Claim": "F0",
+                    "VClaim": "F0",
                     "Steer": [
                         {
                             "ButtonLabel": "MT-series Engage button (code unsure)",
-                            "CANBUSID": "KBUS",
+                            "Bus": "KBUS",
                             "CANFilterID": "0x18EF1CF0",
                             "Byte": 0,
                             "OnStateAND": 15
@@ -334,6 +426,31 @@
                     ]
                 }
             ]
-        }
+        },
+        "McCormick": {
+            "VFilter": "0x0CAC1C13,0x18EF1CFC",
+            "Models": [
+                {
+                    "Model": "General",
+                    "VClaim": "1C",
+                    "Steer": [
+                        {
+                            "ButtonLabel": "Engage button",
+                            "Bus": "KBUS",
+                            "CANFilterID": "0x18EF1CFC",
+                            "Byte": 2,
+                            "OnStateAND": 1
+                        },
+                        {
+                            "ButtonLabel": "Engage button (alternative)",
+                            "Bus": "KBUS",
+                            "CANFilterID": "0x18FF8306",
+                            "Byte": 2,
+                            "OnStateAND": 196
+                        }
+                    ]
+                }
+            ]
+        },
     }
 }
