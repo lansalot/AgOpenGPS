@@ -3,8 +3,8 @@
         "Case": {
             "VFilter": "0x0CACAA08,0x18FFBB03",
             "VSendCurve": "0x0CAD08AA",
-            "CurveData": "0,0,0,255,255,255,255,255",
-            "CurveLoHi": "0,1",
+            "SendCurve": "0,0,0,255,255,255,255,255",
+            "SendCurveLoHi": "0,1",
             "ITS1": "2,253",
             "ITS0": "2,252",
             "Work": [
@@ -70,6 +70,12 @@
             ]
         },
         "New Holland": {
+            "VFilter": "0x0CACAA08,0x18FFBB03",
+            "VSendCurve": "0x0CAD08AA",
+            "SendCurve": "0,0,0,255,255,255,255,255",
+            "SendCurveLoHi": "0,1",
+            "ITS1": "2,253",
+            "ITS0": "2,252",
             "Models": [
                 {
                     "Model": "General",
@@ -88,6 +94,13 @@
         },
         "Massey Ferguson": {
             "VFilter": "0x0CAC1C13,0x18EF1C00",
+            "VSendCurve": "0x0CAD131C",
+            "SendCurve": "0,0,0,0,0,0,0",
+            "SendCurveLoHi": "0,1",
+            "VReceiveCurve": "0x0CAC1E13",
+            "ReceiveCurveLoHi": "0,1",
+            "ITS1": "2,253",
+            "ITS0": "2,252",
             "Work": [
                 {
                     "ButtonLabel": "PTO",
@@ -168,9 +181,9 @@
             "VFilter": "0x0CEF2CF0",
             "curveMod": -32128,
             "VSendCurve": "0x0CEFF02C",
-            "VDataLeng": 6,
-            "CurveDataSteer": "5,9,3,10,0,0",
-            "CurveDataNoSteer": "5,9,2,10,0,0",
+            "VDataLen": 6,
+            "SendCurveSteer": "5,9,3,10,0,0",
+            "SendCurveNoSteer": "5,9,2,10,0,0",
             "CurveSteerLoHi": "4,5",
             "ITS1": "2,253",
             "ITS0": "2,252",
@@ -244,8 +257,11 @@
         "Claas": {
             "VFilter": "0x0CAC1E13,0x18EF1CD2,0x1CFFE6D2",
             "VSendCurve": "0x0CAD131E",
-            "CurveData": "0,0,0,0,0,0,0",
-            "CurveLoHi": "0,1",
+            "SendCurve": "0,0,0,0,0,0,0",
+            "SendCurveLoHi": "0,1",
+            "VReceiveCurve": "0x0CAC1E13",
+            "ReceiveCurveLoHi": "0,1",
+            "ValveState": 2,
             "ITS1": "2,253",
             "ITS0": "2,252",
             "Models": [
@@ -312,8 +328,10 @@
         "Valtra": {
             "VFilter": "0x0CAC1C13,0x18EF1C32",
             "VSendCurve": "0x0CAD131C",
-            "CurveData": "0,0,0,0,0,0,0",
-            "CurveLoHi": "0,1",
+            "SendCurve": "0,0,0,0,0,0,0",
+            "SendCurveLoHi": "0,1",
+            "VReceiveCurve": "0x0CAC1E13",
+            "ReceiveCurveLoHi": "0,1",
             "ITS1": "2,253",
             "ITS0": "2,252",
             "Models": [
@@ -342,8 +360,8 @@
         "JCB": {
             "VFilter": "0x0CACAB13,0x18EFAB27",
             "VSendCurve": "0x0CAD13AB",
-            "CurveData": "0,0,0,255,255,255,255,255",
-            "CurveLoHi": "0,1",
+            "SendCurve": "0,0,0,255,255,255,255,255",
+            "SendCurveLoHi": "0,1",
             "ITS1": "2,253",
             "ITS0": "2,252",
             "Models": [
@@ -367,8 +385,8 @@
                 {
                     "VFilter": "0x18EF1CF0",
                     "VSendCurve": "0x1CEFF01C",
-                    "CurveData": "240,31,0,0,255,255,255,255",
-                    "CurveLoHi": "1,0",
+                    "SendCurve": "240,31,0,0,255,255,255,255",
+                    "SendCurveLoHi": "1,0",
                     "ITS1": "2,253",
                     "ITS0": "2,252",
                     "Model": "Late",
@@ -388,8 +406,8 @@
                     "Model": "Early",
                     "VClaim": "2CC",
                     "VSendCurve": "0x0CEF762C",
-                    "CurveData": "240,31,0,0,255,255,255,255",
-                    "CurveLoHi": "1,0",
+                    "SendCurve": "240,31,0,0,255,255,255,255",
+                    "SendCurveLoHi": "1,0",
                     "ITS1": "4,253",
                     "ITS0": "4,252",
                     "Steer": [
@@ -407,8 +425,8 @@
         "Lindner": {
             "VFilter": "0x0CACF013,0x0CEFF021",
             "VSendCurve": "0x0CAD13F0",
-            "CurveData": "255,255,255,255,255,255,255",
-            "CurveLoHi": "0,1",
+            "SendCurve": "255,255,255,255,255,255,255",
+            "SendCurveLoHi": "0,1",
             "ITS1": "2,253",
             "ITS0": "2,252",
             "Models": [
