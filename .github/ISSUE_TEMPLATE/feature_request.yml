@@ -1,25 +1,13 @@
 name: Feature Request
 description: Suggest a new feature or enhancement for AgOpenGPS
-title: "[Feature] "
-labels: ["enhancement", "needs-triage"]
+title: ""
+labels: ["needs-triage"]
+type: "Feature"
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for suggesting a new feature! Please describe your idea below.
-
-  - type: dropdown
-    id: application
-    attributes:
-      label: Which Application?
-      description: Which program should have this feature?
-      options:
-        - AgOpenGPS (main application)
-        - AgIO (communication hub)
-        - Both
-        - Other
-    validations:
-      required: true
 
   - type: textarea
     id: problem
@@ -35,19 +23,12 @@ body:
     id: solution
     attributes:
       label: Proposed Solution
-      description: How would you like this feature to work?
-      placeholder: Describe your ideal solution
+      description: How would you like this feature to work? 
+      placeholder: |
+        Describe your ideal solution. 
+        If this involves UI changes, attach mockups, sketches, or screenshots
     validations:
       required: true
-
-  - type: textarea
-    id: alternatives
-    attributes:
-      label: Alternatives Considered
-      description: Have you considered any alternative solutions or workarounds?
-      placeholder: Other ways to solve this problem
-    validations:
-      required: false
 
   - type: dropdown
     id: priority
@@ -63,15 +44,6 @@ body:
       required: false
 
   - type: textarea
-    id: mockup
-    attributes:
-      label: UI Mockup or Screenshots
-      description: If this involves UI changes, attach mockups, sketches, or screenshots
-      placeholder: Drag and drop images here or paste links
-    validations:
-      required: false
-
-  - type: textarea
     id: additional
     attributes:
       label: Additional Context
@@ -79,13 +51,3 @@ body:
       placeholder: Links to similar features in other software, technical details, etc.
     validations:
       required: false
-
-  - type: checkboxes
-    id: contribution
-    attributes:
-      label: Would you be willing to help implement this?
-      description: We welcome contributions! Let us know if you'd like to help.
-      options:
-        - label: I would like to implement this feature myself
-        - label: I can help test this feature
-        - label: I can provide domain expertise/field testing
