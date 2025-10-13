@@ -1,0 +1,2734 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "version": {
+            "type": "string"
+        },
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "type": "string"
+                },
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "lastUpdated",
+                "schema"
+            ]
+        },
+        "functions": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "steering": {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "icon": {
+                            "type": "string"
+                        },
+                        "color": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "exclusive": {
+                            "type": "boolean"
+                        },
+                        "bitValue": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "icon",
+                        "color",
+                        "description",
+                        "exclusive",
+                        "bitValue"
+                    ]
+                },
+                "buttons": {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "icon": {
+                            "type": "string"
+                        },
+                        "color": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "exclusive": {
+                            "type": "boolean"
+                        },
+                        "bitValue": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "icon",
+                        "color",
+                        "description",
+                        "exclusive",
+                        "bitValue"
+                    ]
+                },
+                "hitch": {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "icon": {
+                            "type": "string"
+                        },
+                        "color": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "exclusive": {
+                            "type": "boolean"
+                        },
+                        "bitValue": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "icon",
+                        "color",
+                        "description",
+                        "exclusive",
+                        "bitValue"
+                    ]
+                },
+                "implement": {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "icon": {
+                            "type": "string"
+                        },
+                        "color": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "exclusive": {
+                            "type": "boolean"
+                        },
+                        "bitValue": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "icon",
+                        "color",
+                        "description",
+                        "exclusive",
+                        "bitValue"
+                    ]
+                },
+                "keya": {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "icon": {
+                            "type": "string"
+                        },
+                        "color": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "exclusive": {
+                            "type": "boolean"
+                        },
+                        "bitValue": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "icon",
+                        "color",
+                        "description",
+                        "exclusive",
+                        "bitValue"
+                    ]
+                }
+            },
+            "required": [
+                "steering",
+                "buttons",
+                "hitch",
+                "implement",
+                "keya"
+            ]
+        },
+        "busTypes": {
+    "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "None": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "displayName",
+                        "description"
+                    ]
+                },
+                "Keya": {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "displayName",
+                        "description"
+                    ]
+                },
+                "V_Bus": {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "defaultSpeed": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "displayName",
+                        "description",
+                        "defaultSpeed"
+                    ]
+                },
+                "K_Bus": {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "defaultSpeed": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "displayName",
+                        "description",
+                        "defaultSpeed"
+                    ]
+                },
+                "ISO_Bus": {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "defaultSpeed": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "displayName",
+                        "description",
+                        "defaultSpeed"
+                    ]
+                }
+            },
+            "required": [
+                "None",
+                "Keya",
+                "V_Bus",
+                "K_Bus",
+                "ISO_Bus"
+            ]
+        },
+        "brands": {
+            "type": "array",
+            "items": [
+                {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "type": "object"
+                        },
+                        "uiNotes": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "uiNotes"
+                    ]
+                },
+                {
+    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+    "additionalProperties": false,
+                            "type": "object",
+                            "properties": {
+                                "V_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "K_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "ISO_Bus": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            },
+                            "required": [
+                                "V_Bus",
+                                "K_Bus",
+                                "ISO_Bus"
+                            ]
+                        },
+                        "uiNotes": {
+                            "type": "string"
+                        },
+                        "canConfig": {
+    "additionalProperties": false,
+                            "type": "object",
+                            "properties": {
+                                "VFilter": {
+                                    "type": "string"
+                                },
+                                "VSendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurveLoHi": {
+                                    "type": "string"
+                                },
+                                "ReceiveCurve": {
+                                    "type": "string"
+                                },
+                                "ReceiveCurveLoHi": {
+                                    "type": "string"
+                                },
+                                "ValveStateByte": {
+                                    "type": "integer"
+                                },
+                                "ITS1": {
+                                    "type": "string"
+                                },
+                                "ITS0": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "VFilter",
+                                "VSendCurve",
+                                "SendCurve",
+                                "SendCurveLoHi",
+                                "ReceiveCurve",
+                                "ReceiveCurveLoHi",
+                                "ValveStateByte",
+                                "ITS1",
+                                "ITS0"
+                            ]
+                        },
+                        "work": {
+                            "type": "array",
+                            "items": [
+                                {
+    "additionalProperties": false,
+                                    "type": "object",
+                                    "properties": {
+                                        "buttonLabel": {
+                                            "type": "string"
+                                        },
+                                        "bus": {
+                                            "type": "string"
+                                        },
+                                        "canFilterID": {
+                                            "type": "string"
+                                        },
+                                        "bits": {
+                                            "type": "string"
+                                        },
+                                        "operation": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "buttonLabel",
+                                        "bus",
+                                        "canFilterID",
+                                        "bits",
+                                        "operation",
+                                        "type"
+                                    ]
+                                }
+                            ]
+                        },
+                        "models": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "uiNotes",
+                        "canConfig",
+                        "work",
+                        "models"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "type": "object",
+                            "properties": {
+                                "V_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "K_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "ISO_Bus": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            },
+                            "required": [
+                                "V_Bus",
+                                "K_Bus",
+                                "ISO_Bus"
+                            ]
+                        },
+                        "uiNotes": {
+                            "type": "string"
+                        },
+                        "canConfig": {
+                            "type": "object",
+                            "properties": {
+                                "VFilter": {
+                                    "type": "string"
+                                },
+                                "VSendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurveLoHi": {
+                                    "type": "string"
+                                },
+                                "ReceiveCurve": {
+                                    "type": "string"
+                                },
+                                "ReceiveCurveLoHi": {
+                                    "type": "string"
+                                },
+                                "ValveStateByte": {
+                                    "type": "integer"
+                                },
+                                "ITS1": {
+                                    "type": "string"
+                                },
+                                "ITS0": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "VFilter",
+                                "VSendCurve",
+                                "SendCurve",
+                                "SendCurveLoHi",
+                                "ReceiveCurve",
+                                "ReceiveCurveLoHi",
+                                "ValveStateByte",
+                                "ITS1",
+                                "ITS0"
+                            ]
+                        },
+                        "work": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "buttonLabel": {
+                                            "type": "string"
+                                        },
+                                        "bus": {
+                                            "type": "string"
+                                        },
+                                        "canFilterID": {
+                                            "type": "string"
+                                        },
+                                        "bits": {
+                                            "type": "string"
+                                        },
+                                        "operation": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "buttonLabel",
+                                        "bus",
+                                        "canFilterID",
+                                        "bits",
+                                        "operation",
+                                        "type"
+                                    ]
+                                }
+                            ]
+                        },
+                        "steer": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "buttonLabel": {
+                                            "type": "string"
+                                        },
+                                        "bus": {
+                                            "type": "string"
+                                        },
+                                        "canFilterID": {
+                                            "type": "string"
+                                        },
+                                        "byte": {
+                                            "type": "integer"
+                                        },
+                                        "onStateAND": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "required": [
+                                        "buttonLabel",
+                                        "bus",
+                                        "canFilterID",
+                                        "byte",
+                                        "onStateAND"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "uiNotes",
+                        "canConfig",
+                        "work",
+                        "steer"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "type": "object",
+                            "properties": {
+                                "V_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "K_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "ISO_Bus": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            },
+                            "required": [
+                                "V_Bus",
+                                "K_Bus",
+                                "ISO_Bus"
+                            ]
+                        },
+                        "uiNotes": {
+                            "type": "null"
+                        },
+                        "models": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "canConfig": {
+                                            "type": "object",
+                                            "properties": {
+                                                "VFilter": {
+                                                    "type": "string"
+                                                },
+                                                "VSendCurve": {
+                                                    "type": "string"
+                                                },
+                                                "SendCurve": {
+                                                    "type": "string"
+                                                },
+                                                "SendCurveLoHi": {
+                                                    "type": "string"
+                                                },
+                                                "ValveStateByte": {
+                                                    "type": "integer"
+                                                },
+                                                "ITS1": {
+                                                    "type": "string"
+                                                },
+                                                "ITS0": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "VFilter",
+                                                "VSendCurve",
+                                                "SendCurve",
+                                                "SendCurveLoHi",
+                                                "ValveStateByte",
+                                                "ITS1",
+                                                "ITS0"
+                                            ]
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "canConfig",
+                                        "steer"
+                                    ]
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "canConfig": {
+                                            "type": "object",
+                                            "properties": {
+                                                "VFilter": {
+                                                    "type": "string"
+                                                },
+                                                "VSendCurve": {
+                                                    "type": "string"
+                                                },
+                                                "SendCurve": {
+                                                    "type": "string"
+                                                },
+                                                "SendCurveLoHi": {
+                                                    "type": "string"
+                                                },
+                                                "ITS1": {
+                                                    "type": "string"
+                                                },
+                                                "ITS0": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "VFilter",
+                                                "VSendCurve",
+                                                "SendCurve",
+                                                "SendCurveLoHi",
+                                                "ITS1",
+                                                "ITS0"
+                                            ]
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "canConfig",
+                                        "steer"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "uiNotes",
+                        "models"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "type": "object",
+                            "properties": {
+                                "V_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "K_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "ISO_Bus": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            },
+                            "required": [
+                                "V_Bus",
+                                "K_Bus",
+                                "ISO_Bus"
+                            ]
+                        },
+                        "uiNotes": {
+                            "type": "null"
+                        },
+                        "canConfig": {
+                            "type": "object",
+                            "properties": {
+                                "VFilter": {
+                                    "type": "string"
+                                },
+                                "VSendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurveLoHi": {
+                                    "type": "string"
+                                },
+                                "ReceiveCurve": {
+                                    "type": "string"
+                                },
+                                "ReceiveCurveLoHi": {
+                                    "type": "string"
+                                },
+                                "ValveStateByte": {
+                                    "type": "integer"
+                                },
+                                "ITS1": {
+                                    "type": "string"
+                                },
+                                "ITS0": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "VFilter",
+                                "VSendCurve",
+                                "SendCurve",
+                                "SendCurveLoHi",
+                                "ReceiveCurve",
+                                "ReceiveCurveLoHi",
+                                "ValveStateByte",
+                                "ITS1",
+                                "ITS0"
+                            ]
+                        },
+                        "models": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "work": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "inWork": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "bus": {
+                                                                    "type": "string"
+                                                                },
+                                                                "label": {
+                                                                    "type": "string"
+                                                                },
+                                                                "canFilterID": {
+                                                                    "type": "string"
+                                                                },
+                                                                "send": {
+                                                                    "type": "string"
+                                                                },
+                                                                "operation": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "bus",
+                                                                "label",
+                                                                "canFilterID",
+                                                                "send",
+                                                                "operation"
+                                                            ]
+                                                        },
+                                                        "outWork": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "bus": {
+                                                                    "type": "string"
+                                                                },
+                                                                "label": {
+                                                                    "type": "string"
+                                                                },
+                                                                "canFilterID": {
+                                                                    "type": "string"
+                                                                },
+                                                                "send": {
+                                                                    "type": "string"
+                                                                },
+                                                                "operation": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "bus",
+                                                                "label",
+                                                                "canFilterID",
+                                                                "send",
+                                                                "operation"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "inWork",
+                                                        "outWork"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer",
+                                        "work"
+                                    ]
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "work": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "inWork": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "bus": {
+                                                                    "type": "string"
+                                                                },
+                                                                "label": {
+                                                                    "type": "string"
+                                                                },
+                                                                "canFilterID": {
+                                                                    "type": "string"
+                                                                },
+                                                                "send": {
+                                                                    "type": "string"
+                                                                },
+                                                                "operation": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "bus",
+                                                                "label",
+                                                                "canFilterID",
+                                                                "send",
+                                                                "operation"
+                                                            ]
+                                                        },
+                                                        "outWork": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "bus": {
+                                                                    "type": "string"
+                                                                },
+                                                                "label": {
+                                                                    "type": "string"
+                                                                },
+                                                                "canFilterID": {
+                                                                    "type": "string"
+                                                                },
+                                                                "send": {
+                                                                    "type": "string"
+                                                                },
+                                                                "operation": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "bus",
+                                                                "label",
+                                                                "canFilterID",
+                                                                "send",
+                                                                "operation"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "inWork",
+                                                        "outWork"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer",
+                                        "work"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "uiNotes",
+                        "canConfig",
+                        "models"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "type": "object",
+                            "properties": {
+                                "V_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "K_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "ISO_Bus": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            },
+                            "required": [
+                                "V_Bus",
+                                "K_Bus",
+                                "ISO_Bus"
+                            ]
+                        },
+                        "uiNotes": {
+                            "type": "string"
+                        },
+                        "canConfig": {
+                            "type": "object",
+                            "properties": {
+                                "VFilter": {
+                                    "type": "string"
+                                },
+                                "curveMod": {
+                                    "type": "integer"
+                                },
+                                "VSendCurve": {
+                                    "type": "string"
+                                },
+                                "VDataLen": {
+                                    "type": "integer"
+                                },
+                                "SendCurveSteer": {
+                                    "type": "string"
+                                },
+                                "SendCurveNoSteer": {
+                                    "type": "string"
+                                },
+                                "CurveSteerLoHi": {
+                                    "type": "string"
+                                },
+                                "ITS1": {
+                                    "type": "string"
+                                },
+                                "ITS0": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "VFilter",
+                                "curveMod",
+                                "VSendCurve",
+                                "VDataLen",
+                                "SendCurveSteer",
+                                "SendCurveNoSteer",
+                                "CurveSteerLoHi",
+                                "ITS1",
+                                "ITS0"
+                            ]
+                        },
+                        "models": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "work": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "inWork": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "bus": {
+                                                                    "type": "string"
+                                                                },
+                                                                "label": {
+                                                                    "type": "string"
+                                                                },
+                                                                "canFilterID": {
+                                                                    "type": "string"
+                                                                },
+                                                                "send": {
+                                                                    "type": "string"
+                                                                },
+                                                                "operation": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "bus",
+                                                                "label",
+                                                                "canFilterID",
+                                                                "send",
+                                                                "operation"
+                                                            ]
+                                                        },
+                                                        "outWork": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "bus": {
+                                                                    "type": "string"
+                                                                },
+                                                                "label": {
+                                                                    "type": "string"
+                                                                },
+                                                                "canFilterID": {
+                                                                    "type": "string"
+                                                                },
+                                                                "send": {
+                                                                    "type": "string"
+                                                                },
+                                                                "operation": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "bus",
+                                                                "label",
+                                                                "canFilterID",
+                                                                "send",
+                                                                "operation"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "inWork",
+                                                        "outWork"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "inWork": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "bus": {
+                                                                    "type": "string"
+                                                                },
+                                                                "label": {
+                                                                    "type": "string"
+                                                                },
+                                                                "canFilterID": {
+                                                                    "type": "string"
+                                                                },
+                                                                "send": {
+                                                                    "type": "string"
+                                                                },
+                                                                "operation": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "bus",
+                                                                "label",
+                                                                "canFilterID",
+                                                                "send",
+                                                                "operation"
+                                                            ]
+                                                        },
+                                                        "outWork": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "bus": {
+                                                                    "type": "string"
+                                                                },
+                                                                "label": {
+                                                                    "type": "string"
+                                                                },
+                                                                "canFilterID": {
+                                                                    "type": "string"
+                                                                },
+                                                                "send": {
+                                                                    "type": "string"
+                                                                },
+                                                                "operation": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "bus",
+                                                                "label",
+                                                                "canFilterID",
+                                                                "send",
+                                                                "operation"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "inWork",
+                                                        "outWork"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer",
+                                        "work"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "uiNotes",
+                        "canConfig",
+                        "models"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "type": "object",
+                            "properties": {
+                                "V_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "K_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "ISO_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "V_Bus",
+                                "K_Bus",
+                                "ISO_Bus"
+                            ]
+                        },
+                        "uiNotes": {
+                            "type": "null"
+                        },
+                        "canConfig": {
+                            "type": "object",
+                            "properties": {
+                                "VFilter": {
+                                    "type": "string"
+                                },
+                                "VBusBaud": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "VFilter",
+                                "VBusBaud"
+                            ]
+                        },
+                        "models": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "uiNotes",
+                        "canConfig",
+                        "models"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "type": "object",
+                            "properties": {
+                                "V_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "K_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "ISO_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "None": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "V_Bus",
+                                "K_Bus",
+                                "ISO_Bus",
+                                "None"
+                            ]
+                        },
+                        "allowsKeya": {
+                            "type": "boolean"
+                        },
+                        "uiNotes": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "allowsKeya",
+                        "uiNotes"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "type": "object",
+                            "properties": {
+                                "V_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "K_Bus": {
+                                    "type": "array",
+                                    "items": {}
+                                },
+                                "ISO_Bus": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            },
+                            "required": [
+                                "V_Bus",
+                                "K_Bus",
+                                "ISO_Bus"
+                            ]
+                        },
+                        "uiNotes": {
+                            "type": "null"
+                        },
+                        "canConfig": {
+                            "type": "object",
+                            "properties": {
+                                "VFilter": {
+                                    "type": "string"
+                                },
+                                "VSendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurveLoHi": {
+                                    "type": "string"
+                                },
+                                "ITS1": {
+                                    "type": "string"
+                                },
+                                "ITS0": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "VFilter",
+                                "VSendCurve",
+                                "SendCurve",
+                                "SendCurveLoHi",
+                                "ITS1",
+                                "ITS0"
+                            ]
+                        },
+                        "models": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "uiNotes",
+                        "canConfig",
+                        "models"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "type": "object",
+                            "properties": {
+                                "V_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "K_Bus": {
+                                    "type": "array",
+                                    "items": {}
+                                },
+                                "ISO_Bus": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            },
+                            "required": [
+                                "V_Bus",
+                                "K_Bus",
+                                "ISO_Bus"
+                            ]
+                        },
+                        "uiNotes": {
+                            "type": "null"
+                        },
+                        "canConfig": {
+                            "type": "object",
+                            "properties": {
+                                "VFilter": {
+                                    "type": "string"
+                                },
+                                "VSendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurveLoHi": {
+                                    "type": "string"
+                                },
+                                "ITS1": {
+                                    "type": "string"
+                                },
+                                "ITS0": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "VFilter",
+                                "VSendCurve",
+                                "SendCurve",
+                                "SendCurveLoHi",
+                                "ITS1",
+                                "ITS0"
+                            ]
+                        },
+                        "models": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "uiNotes",
+                        "canConfig",
+                        "models"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "capabilities": {
+                            "type": "object",
+                            "properties": {
+                                "V_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "K_Bus": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "ISO_Bus": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            },
+                            "required": [
+                                "V_Bus",
+                                "K_Bus",
+                                "ISO_Bus"
+                            ]
+                        },
+                        "uiNotes": {
+                            "type": "string"
+                        },
+                        "canConfig": {
+                            "type": "object",
+                            "properties": {
+                                "VFilter": {
+                                    "type": "string"
+                                },
+                                "VSendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurve": {
+                                    "type": "string"
+                                },
+                                "SendCurveLoHi": {
+                                    "type": "string"
+                                },
+                                "ReceiveCurve": {
+                                    "type": "string"
+                                },
+                                "ReceiveCurveLoHi": {
+                                    "type": "string"
+                                },
+                                "ITS1": {
+                                    "type": "string"
+                                },
+                                "ITS0": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "VFilter",
+                                "VSendCurve",
+                                "SendCurve",
+                                "SendCurveLoHi",
+                                "ReceiveCurve",
+                                "ReceiveCurveLoHi",
+                                "ITS1",
+                                "ITS0"
+                            ]
+                        },
+                        "work": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "buttonLabel": {
+                                            "type": "string"
+                                        },
+                                        "bus": {
+                                            "type": "string"
+                                        },
+                                        "canFilterID": {
+                                            "type": "string"
+                                        },
+                                        "byte": {
+                                            "type": "integer"
+                                        },
+                                        "onStateAND": {
+                                            "type": "integer"
+                                        },
+                                        "operation": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "buttonLabel",
+                                        "bus",
+                                        "canFilterID",
+                                        "byte",
+                                        "onStateAND",
+                                        "operation",
+                                        "type"
+                                    ]
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "buttonLabel": {
+                                            "type": "string"
+                                        },
+                                        "bus": {
+                                            "type": "string"
+                                        },
+                                        "canFilterID": {
+                                            "type": "string"
+                                        },
+                                        "bits": {
+                                            "type": "string"
+                                        },
+                                        "operation": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "buttonLabel",
+                                        "bus",
+                                        "canFilterID",
+                                        "bits",
+                                        "operation",
+                                        "type"
+                                    ]
+                                }
+                            ]
+                        },
+                        "models": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        },
+                                                        "operation": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND",
+                                                        "operation"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer"
+                                    ]
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        "work": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        },
+                                                        "operation": {
+                                                            "type": "string"
+                                                        },
+                                                        "type": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND",
+                                                        "operation",
+                                                        "type"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer",
+                                        "work"
+                                    ]
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer"
+                                    ]
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "vClaim": {
+                                            "type": "string"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "steer": {
+                                            "type": "array",
+                                            "items": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "buttonLabel": {
+                                                            "type": "string"
+                                                        },
+                                                        "bus": {
+                                                            "type": "string"
+                                                        },
+                                                        "canFilterID": {
+                                                            "type": "string"
+                                                        },
+                                                        "byte": {
+                                                            "type": "integer"
+                                                        },
+                                                        "onStateAND": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "buttonLabel",
+                                                        "bus",
+                                                        "canFilterID",
+                                                        "byte",
+                                                        "onStateAND"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "model",
+                                        "vClaim",
+                                        "notes",
+                                        "steer"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "displayName",
+                        "description",
+                        "capabilities",
+                        "uiNotes",
+                        "canConfig",
+                        "work",
+                        "models"
+                    ]
+                }
+            ]
+        }
+    },
+    "required": [
+        "version",
+        "metadata",
+        "functions",
+        "busTypes",
+        "brands"
+    ]
+}
