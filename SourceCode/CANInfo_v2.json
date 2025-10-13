@@ -10,7 +10,6 @@
     "feck": 0,
     "steering": {
       "name": "Steering",
-      "icon": "🚗",
       "color": "#3498db",
       "description": "Valve/Motor steering control",
       "exclusive": true,
@@ -18,7 +17,6 @@
     },
     "buttons": {
       "name": "Buttons",
-      "icon": "🔘",
       "color": "#2ecc71",
       "description": "Control button inputs",
       "exclusive": false,
@@ -26,7 +24,6 @@
     },
     "hitch": {
       "name": "Hitch",
-      "icon": "🚜",
       "color": "#e74c3c",
       "description": "3-point hitch control",
       "exclusive": false,
@@ -34,7 +31,6 @@
     },
     "implement": {
       "name": "Implement",
-      "icon": "🌾",
       "color": "#f39c12",
       "description": "ISO implement control",
       "exclusive": false,
@@ -42,7 +38,6 @@
     },
     "keya": {
       "name": "Keya Motor",
-      "icon": "⚙️",
       "color": "#9b59b6",
       "description": "Keya CAN motor control",
       "exclusive": true,

@@ -1,6 +1,89 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
+    
+        "definitions": {
+        "canConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "VFilter": { "type": "string" },
+                "VSendCurve": { "type": "string" },
+                "SendCurve": { "type": "string" },
+                "SendCurveLoHi": { "type": "string" },
+                "ReceiveCurve": { "type": "string" },
+                "ReceiveCurveLoHi": { "type": "string" },
+                "ValveStateByte": { "type": "integer" },
+                "ITS1": { "type": "string" },
+                "ITS0": { "type": "string" },
+                "curveMod": { "type": "integer" },
+                "VDataLen": { "type": "integer" },
+                "SendCurveSteer": { "type": "string" },
+                "SendCurveNoSteer": { "type": "string" },
+                "CurveSteerLoHi": { "type": "string" },
+                "VBusBaud": { "type": "integer" }
+            }
+        },
+        "workItem": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "buttonLabel": { "type": "string" },
+                "bus": { "type": "string" },
+                "canFilterID": { "type": "string" },
+                "bits": { "type": "string" },
+                "operation": { "type": "string" },
+                "type": { "type": "string" }
+            },
+            "required": ["buttonLabel", "bus", "canFilterID", "bits", "operation", "type"]
+        },
+        "steerItem": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "buttonLabel": { "type": "string" },
+                "bus": { "type": "string" },
+                "canFilterID": { "type": "string" },
+                "byte": { "type": "integer" },
+                "onStateAND": { "type": "integer" }
+            },
+            "required": ["buttonLabel", "bus", "canFilterID", "byte", "onStateAND"]
+        },
+        "capabilities": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "V_Bus": { "type": "array", "items": { "type": "string" } },
+                "K_Bus": { "type": "array", "items": { "type": "string" } },
+                "ISO_Bus": { "type": "array", "items": { "type": "string" } },
+                "None": { "type": "array", "items": { "type": "string" } }
+            },
+            "required": ["V_Bus", "K_Bus", "ISO_Bus"]
+        },
+        "functionDefinition": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": { "type": "string" },
+                "color": { "type": "string" },
+                "description": { "type": "string" },
+                "exclusive": { "type": "boolean" },
+                "bitValue": { "type": "integer" }
+            },
+            "required": ["name", "color", "description", "exclusive", "bitValue"]
+        },
+        "busType": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": { "type": "integer" },
+                "displayName": { "type": "string" },
+                "description": { "type": "string" },
+                "defaultSpeed": { "type": "integer" }
+            },
+            "required": ["id", "displayName", "description"]
+        }
+    },
     "properties": {
         "version": {
             "type": "string"
@@ -29,164 +112,19 @@
             "type": "object",
             "properties": {
                 "steering": {
-    "additionalProperties": false,
-                    "type": "object",
-                    "properties": {
-                        "name": {
-                            "type": "string"
-                        },
-                        "icon": {
-                            "type": "string"
-                        },
-                        "color": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        },
-                        "exclusive": {
-                            "type": "boolean"
-                        },
-                        "bitValue": {
-                            "type": "integer"
-                        }
-                    },
-                    "required": [
-                        "name",
-                        "icon",
-                        "color",
-                        "description",
-                        "exclusive",
-                        "bitValue"
-                    ]
+                    "$ref": "#/definitions/functionDefinition"
                 },
                 "buttons": {
-    "additionalProperties": false,
-                    "type": "object",
-                    "properties": {
-                        "name": {
-                            "type": "string"
-                        },
-                        "icon": {
-                            "type": "string"
-                        },
-                        "color": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        },
-                        "exclusive": {
-                            "type": "boolean"
-                        },
-                        "bitValue": {
-                            "type": "integer"
-                        }
-                    },
-                    "required": [
-                        "name",
-                        "icon",
-                        "color",
-                        "description",
-                        "exclusive",
-                        "bitValue"
-                    ]
+                    "$ref": "#/definitions/functionDefinition"
                 },
                 "hitch": {
-    "additionalProperties": false,
-                    "type": "object",
-                    "properties": {
-                        "name": {
-                            "type": "string"
-                        },
-                        "icon": {
-                            "type": "string"
-                        },
-                        "color": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        },
-                        "exclusive": {
-                            "type": "boolean"
-                        },
-                        "bitValue": {
-                            "type": "integer"
-                        }
-                    },
-                    "required": [
-                        "name",
-                        "icon",
-                        "color",
-                        "description",
-                        "exclusive",
-                        "bitValue"
-                    ]
+                    "$ref": "#/definitions/functionDefinition"
                 },
                 "implement": {
-    "additionalProperties": false,
-                    "type": "object",
-                    "properties": {
-                        "name": {
-                            "type": "string"
-                        },
-                        "icon": {
-                            "type": "string"
-                        },
-                        "color": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        },
-                        "exclusive": {
-                            "type": "boolean"
-                        },
-                        "bitValue": {
-                            "type": "integer"
-                        }
-                    },
-                    "required": [
-                        "name",
-                        "icon",
-                        "color",
-                        "description",
-                        "exclusive",
-                        "bitValue"
-                    ]
+                    "$ref": "#/definitions/functionDefinition"
                 },
                 "keya": {
-    "additionalProperties": false,
-                    "type": "object",
-                    "properties": {
-                        "name": {
-                            "type": "string"
-                        },
-                        "icon": {
-                            "type": "string"
-                        },
-                        "color": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        },
-                        "exclusive": {
-                            "type": "boolean"
-                        },
-                        "bitValue": {
-                            "type": "integer"
-                        }
-                    },
-                    "required": [
-                        "name",
-                        "icon",
-                        "color",
-                        "description",
-                        "exclusive",
-                        "bitValue"
-                    ]
+                    "$ref": "#/definitions/functionDefinition"
                 }
             },
             "required": [
@@ -202,115 +140,19 @@
             "type": "object",
             "properties": {
                 "None": {
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "integer"
-                        },
-                        "displayName": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "id",
-                        "displayName",
-                        "description"
-                    ]
+                    "$ref": "#/definitions/busType"
                 },
                 "Keya": {
-    "additionalProperties": false,
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "integer"
-                        },
-                        "displayName": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "id",
-                        "displayName",
-                        "description"
-                    ]
+                    "$ref": "#/definitions/busType"
                 },
                 "V_Bus": {
-    "additionalProperties": false,
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "integer"
-                        },
-                        "displayName": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        },
-                        "defaultSpeed": {
-                            "type": "integer"
-                        }
-                    },
-                    "required": [
-                        "id",
-                        "displayName",
-                        "description",
-                        "defaultSpeed"
-                    ]
+                    "$ref": "#/definitions/busType"
                 },
                 "K_Bus": {
-    "additionalProperties": false,
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "integer"
-                        },
-                        "displayName": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        },
-                        "defaultSpeed": {
-                            "type": "integer"
-                        }
-                    },
-                    "required": [
-                        "id",
-                        "displayName",
-                        "description",
-                        "defaultSpeed"
-                    ]
+                    "$ref": "#/definitions/busType"
                 },
                 "ISO_Bus": {
-    "additionalProperties": false,
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "integer"
-                        },
-                        "displayName": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        },
-                        "defaultSpeed": {
-                            "type": "integer"
-                        }
-                    },
-                    "required": [
-                        "id",
-                        "displayName",
-                        "description",
-                        "defaultSpeed"
-                    ]
+                    "$ref": "#/definitions/busType"
                 }
             },
             "required": [
@@ -455,40 +297,9 @@
                         },
                         "work": {
                             "type": "array",
-                            "items": [
-                                {
-    "additionalProperties": false,
-                                    "type": "object",
-                                    "properties": {
-                                        "buttonLabel": {
-                                            "type": "string"
-                                        },
-                                        "bus": {
-                                            "type": "string"
-                                        },
-                                        "canFilterID": {
-                                            "type": "string"
-                                        },
-                                        "bits": {
-                                            "type": "string"
-                                        },
-                                        "operation": {
-                                            "type": "string"
-                                        },
-                                        "type": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "required": [
-                                        "buttonLabel",
-                                        "bus",
-                                        "canFilterID",
-                                        "bits",
-                                        "operation",
-                                        "type"
-                                    ]
-                                }
-                            ]
+                            "items": {
+                                "$ref": "#/definitions/workItem"
+                            }
                         },
                         "models": {
                             "type": "array",
@@ -505,36 +316,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                },
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } },
                                                 {
                                                     "type": "object",
                                                     "properties": {
@@ -789,72 +571,10 @@
                                 "ITS0"
                             ]
                         },
-                        "work": {
-                            "type": "array",
-                            "items": [
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "buttonLabel": {
-                                            "type": "string"
-                                        },
-                                        "bus": {
-                                            "type": "string"
-                                        },
-                                        "canFilterID": {
-                                            "type": "string"
-                                        },
-                                        "bits": {
-                                            "type": "string"
-                                        },
-                                        "operation": {
-                                            "type": "string"
-                                        },
-                                        "type": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "required": [
-                                        "buttonLabel",
-                                        "bus",
-                                        "canFilterID",
-                                        "bits",
-                                        "operation",
-                                        "type"
-                                    ]
-                                }
+                        "work": { "type": "array", "items": { "$ref": "#/definitions/workItem" } }
                             ]
                         },
-                        "steer": {
-                            "type": "array",
-                            "items": [
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "buttonLabel": {
-                                            "type": "string"
-                                        },
-                                        "bus": {
-                                            "type": "string"
-                                        },
-                                        "canFilterID": {
-                                            "type": "string"
-                                        },
-                                        "byte": {
-                                            "type": "integer"
-                                        },
-                                        "onStateAND": {
-                                            "type": "integer"
-                                        }
-                                    },
-                                    "required": [
-                                        "buttonLabel",
-                                        "bus",
-                                        "canFilterID",
-                                        "byte",
-                                        "onStateAND"
-                                    ]
-                                }
+                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                             ]
                         }
                     },
@@ -968,36 +688,7 @@
                                                 "ITS0"
                                             ]
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         }
                                     },
@@ -1052,36 +743,7 @@
                                                 "ITS0"
                                             ]
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         }
                                     },
@@ -1212,36 +874,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         },
                                         "work": {
@@ -1333,36 +966,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         },
                                         "work": {
@@ -1565,36 +1169,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         },
                                         "work": {
@@ -1839,36 +1414,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         }
                                     },
@@ -2064,36 +1610,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         }
                                     },
@@ -2208,36 +1725,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         }
                                     },
@@ -2438,40 +1926,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        },
-                                                        "operation": {
-                                                            "type": "string"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND",
-                                                        "operation"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         }
                                     },
@@ -2494,36 +1949,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         },
                                         "work": {
@@ -2587,36 +2013,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                }
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } }
                                             ]
                                         }
                                     },
@@ -2639,36 +2036,7 @@
                                         "notes": {
                                             "type": "string"
                                         },
-                                        "steer": {
-                                            "type": "array",
-                                            "items": [
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "buttonLabel": {
-                                                            "type": "string"
-                                                        },
-                                                        "bus": {
-                                                            "type": "string"
-                                                        },
-                                                        "canFilterID": {
-                                                            "type": "string"
-                                                        },
-                                                        "byte": {
-                                                            "type": "integer"
-                                                        },
-                                                        "onStateAND": {
-                                                            "type": "integer"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "buttonLabel",
-                                                        "bus",
-                                                        "canFilterID",
-                                                        "byte",
-                                                        "onStateAND"
-                                                    ]
-                                                },
+                                        "steer": { "type": "array", "items": { "$ref": "#/definitions/steerItem" } },
                                                 {
                                                     "type": "object",
                                                     "properties": {
