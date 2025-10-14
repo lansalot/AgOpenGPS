@@ -18,15 +18,6 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: os
-    attributes:
-      label: Operating System
-      description: What OS are you running?
-      placeholder: "e.g., Windows 11, Windows 10, Ubuntu 24.04 with Wine..."
-    validations:
-      required: true
-
   - type: textarea
     id: description
     attributes:
@@ -58,47 +49,37 @@ body:
       required: true
 
   - type: textarea
-    id: actual
+    id: severity
     attributes:
-      label: Actual Behavior
-      description: What actually happened?
+      label: Severity and Impact
+      description: How severe is this bug and why?
+      placeholder: |
+        Describe the severity level and justify your assessment:
+        - Critical: Application crashes, data loss, or completely unusable
+        - High: Major feature is broken or severely impaired
+        - Medium: Minor feature issue or workaround exists
+        - Low: Cosmetic issue or very minor inconvenience
+
+        Example: "High - Auto-steer disengages randomly during operation, requiring constant manual intervention"
+    validations:
+      required: false
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: What OS are you running?
+      placeholder: "e.g., Windows 11, Windows 10, Ubuntu 24.04 with Wine..."
     validations:
       required: true
 
-  - type: dropdown
-    id: severity
-    attributes:
-      label: Severity
-      description: How severe is this bug?
-      options:
-        - Critical (crashes, data loss)
-        - High (major feature broken)
-        - Medium (minor issue)
-        - Low (cosmetic)
-    validations:
-      required: false
-
-  - type: dropdown
+  - type: textarea
     id: hardware
     attributes:
       label: Hardware Setup
-      description: What type of hardware setup are you using?
-      options:
-        - GPS receiver only
-        - GPS + Section Control
-        - GPS + Auto-steer
-        - Full setup (GPS + Section Control + Auto-steer)
-        - Simulator (no hardware)
-        - Other
-    validations:
-      required: false
-
-  - type: textarea
-    id: hardware_details
-    attributes:
-      label: Hardware Details (if applicable)
-      description: Provide specific details about your hardware components
+      description: Describe your hardware configuration
       placeholder: |
+        Setup type: (e.g., GPS receiver only, GPS + Section Control, GPS + Auto-steer, Full setup, Simulator, Other)
         GPS receiver: (e.g., F9P, BNO085)
         Connection type: (e.g., USB, Ethernet, UDP)
         PCB board: (e.g., v4.1 Standard, v5.0)
@@ -107,25 +88,18 @@ body:
       required: false
 
   - type: textarea
-    id: logs
+    id: additional
     attributes:
-      label: Error Messages/Logs
-      description: Any error messages, crash dialogs, or log files
+      label: Additional Information
+      description: Error messages, logs, screenshots, videos, field files, configuration files, etc.
       placeholder: |
         Copy and paste any error messages you see.
         Log files can be found in the AgOpenGPS installation folder.
-      render: text
-    validations:
-      required: false
 
-  - type: textarea
-    id: additional
-    attributes:
-      label: Additional Context
-      description: Screenshots, videos, field files, configuration files, etc.
-      placeholder: |
-        Add any other context that might help diagnose the issue.
-        If the issue relates to a field, please upload the field folder as a zip file
-        found in C:\Users\username\Documents\AgOpenGPS\Fields\
+        Add any other context that might help diagnose the issue:
+        - Screenshots or videos
+        - Field files (upload the field folder as a zip file from C:\Users\username\Documents\AgOpenGPS\Fields\)
+        - Configuration files
+      render: text
     validations:
       required: false
