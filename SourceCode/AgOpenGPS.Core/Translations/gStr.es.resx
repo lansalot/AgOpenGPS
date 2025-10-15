@@ -770,4 +770,67 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="gsEnterName" xml:space="preserve">
     <value>Digitar Nombre</value>
   </data>
+  <data name="gsEditColor" xml:space="preserve">
+    <value>Editar Color</value>
+  </data>
+  <data name="gsDisplay" xml:space="preserve">
+    <value>Mostrar</value>
+  </data>
+  <data name="gsDualpositionAntennaRight" xml:space="preserve">
+    <value>Antena Dual está en el lado Derecho</value>
+  </data>
+  <data name="gsEnterRecordName" xml:space="preserve">
+    <value>Digite el nombre de grabación</value>
+  </data>
+  <data name="gsExit" xml:space="preserve">
+    <value>Salir</value>
+  </data>
+  <data name="gsExitToWindows" xml:space="preserve">
+    <value>Salir a Windows en:</value>
+  </data>
+  <data name="gsExtraGuideLines" xml:space="preserve">
+    <value>Lineas Guía Extra</value>
+  </data>
+  <data name="gsFast" xml:space="preserve">
+    <value>Rápido</value>
+  </data>
+  <data name="gsFieldMenu" xml:space="preserve">
+    <value>Menú de Parcela</value>
+  </data>
+  <data name="gsFieldPicker" xml:space="preserve">
+    <value>Cargar Archivo</value>
+  </data>
+  <data name="gsFieldTexture" xml:space="preserve">
+    <value>Textura de Parcela</value>
+  </data>
+  <data name="gsFix2Fix" xml:space="preserve">
+    <value>Distancia Fijo a Fijo</value>
+  </data>
+  <data name="gsFixAlarm" xml:space="preserve">
+    <value>Alarma RTK Fijo</value>
+  </data>
+  <data name="gsFixAlarmStop" xml:space="preserve">
+    <value>Alarma Detiene Autopiloto</value>
+  </data>
+  <data name="gsFlags" xml:space="preserve">
+    <value>Crear Banderas</value>
+  </data>
+  <data name="gsFormFlag" xml:space="preserve">
+    <value>Banderas</value>
+  </data>
+  <data name="gsGpsStep" xml:space="preserve">
+    <value>Paso GPS mínimo</value>
+  </data>
+  <data name="gsGrid" xml:space="preserve">
+    <value>Grilla</value>
+  </data>
+  <data name="gsGuidanceStopped" xml:space="preserve">
+    <value>Autoguía detenida</value>
+  </data>
+  <data name="gsHardwareMessages" xml:space="preserve">
+    <value>Mensajes de Hardware</value>
+  </data>
+  <data name="gsHeading" xml:space="preserve">
+    <value>Rumbo</value>
+  </data>
 </root>
