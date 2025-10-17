@@ -148,7 +148,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Port direcție automată</value>
   </data>
   <data name="gsAutoSwitchDualFixSpeed" xml:space="preserve">
-    <value>Viteza de comutare (km/h)</value>
+    <value>Viteza de comutare</value>
   </data>
   <data name="gsBackground" xml:space="preserve">
     <value>Fundal</value>
