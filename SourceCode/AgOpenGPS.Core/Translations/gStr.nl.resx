@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -480,7 +480,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Tijdelijk</value>
   </data>
   <data name="gsFormFlag" xml:space="preserve">
-    <value> </value>
+    <value>Vlaggen</value>
   </data>
   <data name="gsFromExisting" xml:space="preserve">
     <value>Vanuit bestaand</value>
@@ -1146,9 +1146,6 @@ GEBRUIK OP EIGEN RISICO.</value>
     <value>Download Alles</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gsGetSelected" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="gsDownloading" xml:space="preserve">
     <value>Ophalen...Even wachten</value>
   </data>
