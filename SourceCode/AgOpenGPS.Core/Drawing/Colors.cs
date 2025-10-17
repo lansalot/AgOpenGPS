@@ -15,6 +15,7 @@ namespace AgOpenGPS.Core.Drawing
 
         // Functional colors
         static public ColorRgb AntennaColor = new ColorRgb(0.20f, 0.98f, 0.98f);
+        static public ColorRgba BingMapBackgroundColor = new ColorRgba(0.6f, 0.6f, 0.6f, 0.5f);
         static public ColorRgb FlagRedColor = Red;
         static public ColorRgb FlagGreenColor = Green;
         static public ColorRgb FlagYellowColor = Yellow;

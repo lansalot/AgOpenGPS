@@ -1,14 +1,17 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using AgOpenGPS.Core.Models;
 using OpenTK.Graphics.OpenGL;
 
 namespace AgOpenGPS.Core.DrawLib
 {
-    public class Texture2D
+    public class Texture2D : IDisposable
     {
         private readonly Bitmap _bitmap;
         private int _textureId;
+        private bool isDisposed;
+
         public Texture2D(Bitmap bitmap)
         {
             _bitmap = bitmap;
@@ -24,7 +27,7 @@ namespace AgOpenGPS.Core.DrawLib
 
         public void Draw(
             XyCoord u0v0, // The corner (u==0.0 && v==0.0) of the texture will be mapped to this coord
-            XyCoord u1v1  // The corner (u==1.0 && v==1.0) of the texture will be apped to this coord
+            XyCoord u1v1  // The corner (u==1.0 && v==1.0) of the texture will be mapped to this coord
         )
         {
             GL.Enable(EnableCap.Texture2D);
@@ -84,5 +87,40 @@ namespace AgOpenGPS.Core.DrawLib
             if (_bitmap != null) SetBitmap(_bitmap);
         }
 
+        private void DeleteTexture()
+        {
+            if (0 != _textureId)
+            {
+                GL.DeleteTexture(_textureId);
+            }
+            _textureId = 0;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!isDisposed)
+            {
+                if (disposing)
+                {
+                    // Only delete texture when explicitly disposed, not during finalization
+                    // OpenGL calls require an active context and must be on the correct thread
+                    DeleteTexture();
+                }
+                isDisposed = true;
+            }
+        }
+
+        ~Texture2D()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: false);
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

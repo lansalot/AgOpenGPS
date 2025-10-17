@@ -261,6 +261,11 @@ namespace AgOpenGPS
         private AgShareClient agShareClient;
 
 
+        /// <summary>
+        /// The ISOBUS communication class
+        /// </summary>
+        public CISOBUS isobus;
+
         #endregion // Class Props and instances
 
         //The method assigned to the PowerModeChanged event call
@@ -317,7 +322,7 @@ namespace AgOpenGPS
                 Properties.Settings.Default.setDisplay_camPitch,
                 Properties.Settings.Default.setDisplay_camZoom);
 
-            worldGrid = new WorldGrid(Resources.z_Floor, Resources.z_bingMap);
+            worldGrid = new WorldGrid(Resources.z_Floor);
 
             //our vehicle made with gl object and pointer of mainform
             vehicle = new CVehicle(this);
@@ -390,6 +395,8 @@ namespace AgOpenGPS
 
             //brightness object class
             displayBrightness = new CWindowsSettingsBrightnessController(Properties.Settings.Default.setDisplay_isBrightnessOn);
+
+            isobus = new CISOBUS(this);
         }
 
         private void FormGPS_Load(object sender, EventArgs e)
@@ -776,6 +783,11 @@ namespace AgOpenGPS
             }
         }
 
+        private void btnIsobusSC_Click(object sender, EventArgs e)
+        {
+            isobus.RequestSectionControlEnabled(!isobus.SectionControlEnabled);
+        }
+
         private void FormGPS_Move(object sender, EventArgs e)
         {
             Form f = Application.OpenForms["FormGPSData"];
@@ -1104,7 +1116,7 @@ namespace AgOpenGPS
 
             PanelsAndOGLSize();
             SetZoom();
-            worldGrid.isGeoMap = false;
+            worldGrid.BingMap = null;
 
             panelSim.Top = Height - 60;
 
@@ -1112,12 +1124,9 @@ namespace AgOpenGPS
 
             btnSection1Man.Text = "1";
 
-            worldGrid.BingBitmap = Properties.Resources.z_bingMap;
-
             // Reset AgShare upload state and clear snapshot after field is closed
             isAgShareUploadStarted = false;
             snapshot = null;
-
         }
 
         public void FieldMenuButtonEnableDisable(bool isOn)

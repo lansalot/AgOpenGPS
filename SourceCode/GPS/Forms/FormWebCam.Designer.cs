@@ -31,7 +31,7 @@
             this.deviceComboBox = new System.Windows.Forms.ComboBox();
             this.stopButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
-            this.videoSourcePlayer = new Accord.Controls.VideoSourcePlayer();
+            this.videoSourcePlayer = new AgLibrary.Controls.VideoSourcePlayer();
             this.SuspendLayout();
             // 
             // deviceComboBox
@@ -118,6 +118,6 @@
         private System.Windows.Forms.ComboBox deviceComboBox;
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Button startButton;
-        private Accord.Controls.VideoSourcePlayer videoSourcePlayer;
+        private AgLibrary.Controls.VideoSourcePlayer videoSourcePlayer;
     }
 }

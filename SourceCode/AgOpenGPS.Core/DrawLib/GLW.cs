@@ -86,7 +86,7 @@ namespace AgOpenGPS.Core.DrawLib
         {
             Vertex2Array vertex2Array = new Vertex2Array(vertices);
             GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
-            vertex2Array.DeleteBuffer();
+            vertex2Array.Dispose();
         }
 
         private static void DrawPrimitiveLayered(
@@ -100,7 +100,7 @@ namespace AgOpenGPS.Core.DrawLib
                 SetLineStyle(lineStyle);
                 GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
             }
-            vertex2Array.DeleteBuffer();
+            vertex2Array.Dispose();
         }
 
         public static void Translate(double x, double y, double z)

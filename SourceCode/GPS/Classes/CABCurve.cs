@@ -344,48 +344,11 @@ namespace AgOpenGPS
 
                         arr[arr.Length - 1].heading = arr[arr.Length - 2].heading;
 
-                        //if (mf.tool.isToolTrailing)
-                        //{
-                        //    //depending on hitch is different profile of draft
-                        //    double hitch;
-                        //    if (mf.tool.isToolTBT && mf.tool.tankTrailingHitchLength < 0)
-                        //    {
-                        //        hitch = mf.tool.tankTrailingHitchLength * 0.65;
-                        //        hitch += mf.tool.trailingHitchLength * 0.5;
-                        //    }
-                        //    else hitch = mf.tool.trailingHitchLength * 1.0;// - mf.vehicle.wheelbase;
-
-                        //    //move the line forward based on hitch length ratio
-                        //    for (int i = 0; i < arr.Length; i++)
-                        //    {
-                        //        arr[i].easting -= Math.Sin(arr[i].heading) * (hitch);
-                        //        arr[i].northing -= Math.Cos(arr[i].heading) * (hitch);
-                        //    }
-
-                        //    ////average the points over 3, center weighted
-                        //    //for (int i = 1; i < arr.Length - 2; i++)
-                        //    //{
-                        //    //    arr2[i].easting = (arr[i - 1].easting + arr[i].easting + arr[i + 1].easting) / 3;
-                        //    //    arr2[i].northing = (arr[i - 1].northing + arr[i].northing + arr[i + 1].northing) / 3;
-                        //    //}
-
-                        //    //recalculate the heading
-                        //    for (int i = 0; i < (arr.Length - 1); i++)
-                        //    {
-                        //        arr[i].heading = Math.Atan2(arr[i + 1].easting - arr[i].easting, arr[i + 1].northing - arr[i].northing);
-                        //        if (arr[i].heading < 0) arr[i].heading += glm.twoPI;
-                        //        if (arr[i].heading >= glm.twoPI) arr[i].heading -= glm.twoPI;
-                        //    }
-
-                        //    arr[arr.Length - 1].heading = arr[arr.Length - 2].heading;
-                        //}
-
                         cnt = arr.Length;
                         double distance;
 
                         //add the first point of loop - it will be p1
                         newCurList.Add(arr[0]);
-                        //newCurList.Add(arr[1]);
 
                         for (int i = 0; i < cnt - 3; i++)
                         {
@@ -988,7 +951,6 @@ namespace AgOpenGPS
                 mf.font.DrawText3D(mf.trk.gArr[mf.trk.idx].ptA.easting, mf.trk.gArr[mf.trk.idx].ptA.northing, "&A", mf.camHeading);
                 mf.font.DrawText3D(mf.trk.gArr[mf.trk.idx].ptB.easting, mf.trk.gArr[mf.trk.idx].ptB.northing, "&B", mf.camHeading);
 
-                //just draw ref and smoothed line if smoothing window is open
                 if (isSmoothWindowOpen)
                 {
                     if (smooList == null || smooList.Count == 0) return;
@@ -1032,8 +994,6 @@ namespace AgOpenGPS
 
                     GL.LineWidth(mf.ABLine.lineWidth);
                     GL.Color3(0.95f, 0.2f, 0.95f);
-
-                    //ablines and curves are a line - the rest a loop
                     if (mf.trk.gArr[mf.trk.idx].mode <= TrackMode.Curve)
                     {
                         GL.Begin(PrimitiveType.LineStrip);
@@ -1054,16 +1014,7 @@ namespace AgOpenGPS
                     for (int h = 0; h < curList.Count; h++) GL.Vertex3(curList[h].easting, curList[h].northing, 0);
                     GL.End();
 
-                    //GL.Disable(EnableCap.LineSmooth);
-
                     mf.yt.DrawYouTurn();
-
-                    //GL.PointSize(3.0f);
-                    //GL.Begin(PrimitiveType.Points);
-                    //GL.Color3(0.920f, 0.6f, 0.950f);
-                    //for (int h = 0; h < curList.Count; h++) GL.Vertex3(curList[h].easting, curList[h].northing, 0);
-                    //GL.End();
-                    //GL.PointSize(1.0f);
                 }
             }
 
@@ -1338,7 +1289,6 @@ namespace AgOpenGPS
                 for (int i = 0; i < cnt - 1; i++)
                 {
                     int j = i + 1;
-                    //if (j == cnt) j = 0;
                     double distance = glm.Distance(xList[i], xList[j]);
                     if (distance > minDistance)
                     {

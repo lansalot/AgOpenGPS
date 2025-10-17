@@ -1,5 +1,13 @@
 //Please, if you use this, share the improvements
 
+using AgLibrary.Logging;
+using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.Translations;
+using AgOpenGPS.Forms;
+using AgOpenGPS.Forms.Pickers;
+using AgOpenGPS.Forms.Profiles;
+using AgOpenGPS.IO;
+using AgOpenGPS.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,13 +17,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AgLibrary.Logging;
-using AgOpenGPS.Core.Models;
-using AgOpenGPS.Core.Translations;
-using AgOpenGPS.Forms;
-using AgOpenGPS.Forms.Pickers;
-using AgOpenGPS.Forms.Profiles;
-using AgOpenGPS.Properties;
 
 namespace AgOpenGPS
 {
@@ -1151,6 +1152,7 @@ namespace AgOpenGPS
                 pn.fix.easting, pn.fix.northing,
                 fixHeading, flagColor, nextflag, nextflag.ToString());
             flagPts.Add(flagPt);
+            flagPts = FlagsFiles.DeduplicateFlags(flagPts);
             FileSaveFlags();
 
             Form fc = Application.OpenForms["FormFlags"];
@@ -1532,6 +1534,7 @@ namespace AgOpenGPS
         private void InitializeLanguages()
         {
             menustripLanguage.DropDownItems.Clear();
+            menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Čeština (Czech)", "cs"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Dansk (Denmark)", "da"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Deutsch (Germany)", "de"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("English (Canada)", "en"));
@@ -1546,6 +1549,7 @@ namespace AgOpenGPS
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Norsk (Norway)", "no"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Polski (Poland)", "pl"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Português (Portuguese)", "pt"));
+            menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Română (Romanian)", "ro"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("русский (Russia)", "ru"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Suomalainen (Finland)", "fi"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Slovenčina (Slovakia)", "sk"));

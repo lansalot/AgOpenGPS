@@ -4,9 +4,10 @@ using System;
 
 namespace AgOpenGPS.Core.DrawLib
 {
-    public abstract class VertexArrayBase
+    public abstract class VertexArrayBase : IDisposable
     {
-        private readonly int _bufId;
+        private int _bufId;
+        private bool isDisposed;
 
         public VertexArrayBase(int nDimensions)
         {
@@ -23,9 +24,33 @@ namespace AgOpenGPS.Core.DrawLib
             GL.BindBuffer(BufferTarget.ArrayBuffer, _bufId);
         }
 
-        public void DeleteBuffer()
+        private void DeleteBuffer()
         {
-            GL.DeleteBuffer(_bufId);
+            if (0 != _bufId)
+            {
+                GL.DeleteBuffer(_bufId);
+            }
+            _bufId = 0;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!isDisposed)
+            {
+                DeleteBuffer();
+                isDisposed = true;
+            }
+        }
+
+        ~VertexArrayBase()
+        {
+            Dispose(disposing: false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 

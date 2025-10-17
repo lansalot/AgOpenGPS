@@ -878,6 +878,7 @@ namespace AgOpenGPS
                     case 7:
                         panelRight.Controls.Add(btnContour);
                         panelRight.Controls.Add(btnContourLock);
+                        panelRight.Controls.Add(btnIsobusSectionControl);
                         break;
 
                     default:

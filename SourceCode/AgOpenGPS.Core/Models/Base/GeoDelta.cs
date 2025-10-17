@@ -21,5 +21,10 @@ namespace AgOpenGPS.Core.Models
 
         public double LengthSquared => NorthingDelta * NorthingDelta + EastingDelta * EastingDelta;
         public double Length => Math.Sqrt(LengthSquared);
+
+        public static GeoDelta operator *(double factor, GeoDelta delta)
+        {
+            return new GeoDelta(factor * delta.NorthingDelta, factor * delta.EastingDelta);
+        }
     }
 }
