@@ -7,38 +7,32 @@
     "schema": "Supports drag-and-drop UI configuration and detailed CAN protocol implementation"
   },
   "functions": {
-    "feck": 0,
     "steering": {
       "name": "Steering",
-      "color": "#3498db",
       "description": "Valve/Motor steering control",
       "exclusive": true,
       "bitValue": 1
     },
     "buttons": {
       "name": "Buttons",
-      "color": "#2ecc71",
       "description": "Control button inputs",
       "exclusive": false,
       "bitValue": 2
     },
     "hitch": {
       "name": "Hitch",
-      "color": "#e74c3c",
       "description": "3-point hitch control",
       "exclusive": false,
       "bitValue": 4
     },
     "implement": {
       "name": "Implement",
-      "color": "#f39c12",
       "description": "ISO implement control",
       "exclusive": false,
       "bitValue": 8
     },
     "keya": {
       "name": "Keya Motor",
-      "color": "#9b59b6",
       "description": "Keya CAN motor control",
       "exclusive": true,
       "bitValue": 16

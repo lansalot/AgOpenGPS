@@ -1,9 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
-    
         "definitions": {
-        "canConfig": {
+        "dCanConfig": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -24,7 +23,7 @@
                 "VBusBaud": { "type": "integer" }
             }
         },
-        "workItem": {
+        "dWorkItem": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -37,7 +36,7 @@
             },
             "required": ["buttonLabel", "bus", "canFilterID", "bits", "operation", "type"]
         },
-        "steerItem": {
+        "dSteerEnable": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -49,7 +48,7 @@
             },
             "required": ["buttonLabel", "bus", "canFilterID", "byte", "onStateAND"]
         },
-        "capabilities": {
+        "dCapabilities": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -60,17 +59,16 @@
             },
             "required": ["V_Bus", "K_Bus", "ISO_Bus"]
         },
-        "functionDefinition": {
+        "dFunctions": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "name": { "type": "string" },
-                "color": { "type": "string" },
                 "description": { "type": "string" },
                 "exclusive": { "type": "boolean" },
                 "bitValue": { "type": "integer" }
             },
-            "required": ["name", "color", "description", "exclusive", "bitValue"]
+            "required": ["name", "description", "exclusive", "bitValue"]
         },
         "busType": {
             "type": "object",
@@ -136,7 +134,7 @@
             ]
         },
         "busTypes": {
-    "additionalProperties": false,
+            "additionalProperties": false,
             "type": "object",
             "properties": {
                 "None": {
@@ -167,7 +165,7 @@
             "type": "array",
             "items": [
                 {
-    "additionalProperties": false,
+                    "additionalProperties": false,
                     "type": "object",
                     "properties": {
                         "id": {
