@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -714,7 +714,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Fondo</value>
   </data>
   <data name="gsAutoSwitchDualFixSpeed" xml:space="preserve">
-    <value>Velocidad de cambio (km/h)</value>
+    <value>Velocidad de cambio</value>
   </data>
   <data name="gsCurrentTurnSensor" xml:space="preserve">
     <value>Sensor de Corriente para Giro</value>
@@ -1138,5 +1138,96 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   </data>
   <data name="gsUturnSmooth" xml:space="preserve">
     <value>Fije el Suavizado a 3-4x el Radio</value>
+  </data>
+  <data name="gsPoints" xml:space="preserve">
+    <value>Puntos</value>
+  </data>
+  <data name="gsPointsToProcess" xml:space="preserve">
+    <value>Puntos a Procesar</value>
+  </data>
+  <data name="gsPolygons" xml:space="preserve">
+    <value>Polígonos</value>
+  </data>
+  <data name="gsPowerLoss" xml:space="preserve">
+    <value>Apagado por Batería</value>
+  </data>
+  <data name="gsPresetColor" xml:space="preserve">
+    <value>Elija Color Predeterminado</value>
+  </data>
+  <data name="gsPressureTurnSensor" xml:space="preserve">
+    <value>Sensor de Presión para Giro</value>
+  </data>
+  <data name="gsPreview" xml:space="preserve">
+    <value>Vista previa</value>
+  </data>
+  <data name="gsHydraulicLift" xml:space="preserve">
+    <value>Levante Hidráulico</value>
+  </data>
+  <data name="gsHydraulicLiftConfig" xml:space="preserve">
+    <value>Config Levante Hidráulico</value>
+  </data>
+  <data name="gsProportionalGain" xml:space="preserve">
+    <value>Ganancia Proporcional</value>
+  </data>
+  <data name="gsQuickAB" xml:space="preserve">
+    <value>Creador Línea AB ráoida</value>
+  </data>
+  <data name="gsRate" xml:space="preserve">
+    <value>Capacidad</value>
+  </data>
+  <data name="gsReducedPoints" xml:space="preserve">
+    <value>Puntos Reducidos</value>
+  </data>
+  <data name="gsSimpleTramLines" xml:space="preserve">
+    <value>Creador Tráfico Simple</value>
+  </data>
+  <data name="gsSteerDescription" xml:space="preserve">
+    <value>Botón - Presiona On. Presiona Off
+Interruptor - Presiona On, Suelta Off</value>
+  </data>
+  <data name="gsSteerInReverse" xml:space="preserve">
+    <value>Autopiloto en reversa</value>
+  </data>
+  <data name="gsSteerResponse" xml:space="preserve">
+    <value>Respuesta de Autopiloto</value>
+  </data>
+  <data name="gsSteerSwitch" xml:space="preserve">
+    <value>Interruptor de Autopiloto</value>
+  </data>
+  <data name="gsSvennArrow" xml:space="preserve">
+    <value>Flecha Svenn</value>
+  </data>
+  <data name="gsTermsConditions" xml:space="preserve">
+    <value>Términos y Condiciones para versión: </value>
+  </data>
+  <data name="gsTramWidth" xml:space="preserve">
+    <value>Ancho de Tráfico:</value>
+  </data>
+  <data name="gsSteerEnable" xml:space="preserve">
+    <value>Hibilitar Externo</value>
+  </data>
+  <data name="gsTermsOne" xml:space="preserve">
+    <value>Si distribuye copias de este programa GRATUITO, ya sea gratis o mediante pago, mejorado o modificado, debe transmitir a los destinatarios las mismas libertades que recibió, tal como se describe en la Licencia GPLv3.</value>
+  </data>
+  <data name="gsTermsThree" xml:space="preserve">
+    <value>AgOpenGPS es un software estrictamente educativo para aprender sobre sistemas de guiado, sentencias GPS y la aplicación teórica del control de máquinas.
+
+No debe utilizarse en equipos reales bajo ninguna circunstancia. Se proporciona un simulador para que el estudiante experimente de forma segura el guiado de máquinas.
+
+El software no incluye sistemas de seguridad, ni se implica ninguno.
+
+USAR BAJO SU PROPIA RESPONSABILIDAD.</value>
+  </data>
+  <data name="gsTermsTwo" xml:space="preserve">
+    <value>Debe asegurarse de que reciban o puedan obtener el código fuente. Y debe mostrarles estos términos para que conozcan sus derechos. No robe el trabajo de otros para hacerlo suyo.</value>
+  </data>
+  <data name="gsToolLeft" xml:space="preserve">
+    <value>Implemento a la Izquierda</value>
+  </data>
+  <data name="gsTrack" xml:space="preserve">
+    <value>Carril</value>
+  </data>
+  <data name="gsTracks" xml:space="preserve">
+    <value>Carriles</value>
   </data>
 </root>
