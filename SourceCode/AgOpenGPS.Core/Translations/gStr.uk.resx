@@ -933,7 +933,7 @@
     <value>Зберегти і повернутися</value>
   </data>
   <data name="gsSaveBeerTime" xml:space="preserve">
-    <value>Час на пиво! Бувай!</value>
+    <value>До зустрічі наступного разу!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Збереження поля..</value>
@@ -1246,4 +1246,19 @@
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="gsForceOverwrite" xml:space="preserve">
+    <value>Примусове перезаписування</value>
+  </data>
+  <data name="gsDownloadAll" xml:space="preserve">
+    <value>Отримати все</value>
+  </data>
+  <data name="gsGetSelected" xml:space="preserve">
+    <value>Отримати обраний</value>
+  </data>
+  <data name="gsDownloading" xml:space="preserve">
+    <value>Завантаження... Зачекайте</value>
+  </data>
+  <data name="gsAgShareDownloader" xml:space="preserve">
+    <value>Завантажити поля з AgShare</value>
+  </data>
 </root>
