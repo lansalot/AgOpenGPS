@@ -859,7 +859,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Salvați și reveniți</value>
   </data>
   <data name="gsSaveBeerTime" xml:space="preserve">
-    <value>E timpul pentru o bere! La revedere!</value>
+    <value>Ne vedem data viitoare!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Salvare câmp...</value>
@@ -1185,5 +1185,20 @@ UTILIZAȚI PE PROPRIUL RISC.</value>
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
+  </data>
+  <data name="gsForceOverwrite" xml:space="preserve">
+    <value>Suprascrie forțată</value>
+  </data>
+  <data name="gsDownloadAll" xml:space="preserve">
+    <value>Obțineți totul</value>
+  </data>
+  <data name="gsGetSelected" xml:space="preserve">
+    <value>Obțineți selecția</value>
+  </data>
+  <data name="gsDownloading" xml:space="preserve">
+    <value>Descărcare... Vă rugăm să așteptați</value>
+  </data>
+  <data name="gsAgShareDownloader" xml:space="preserve">
+    <value>Descărcați câmpurile din AgShare</value>
   </data>
 </root>
