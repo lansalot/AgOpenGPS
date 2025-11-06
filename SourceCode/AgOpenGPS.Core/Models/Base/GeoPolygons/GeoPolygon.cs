@@ -56,12 +56,14 @@ namespace AgOpenGPS.Core.Models
         {
             _coords.Clear();
             _areaValid = false;
+            _bbValid = false;
         }
 
         public virtual void Add(GeoCoord coord)
         {
             _coords.Add(coord);
             _areaValid = false;
+            _bbValid = false;
         }
 
         public bool IsFarAwayFromPath(GeoCoord testCoord, double minimumDistanceSquared)
