@@ -191,9 +191,20 @@ namespace AgOpenGPS
 
                         case 2:
                             if (trk.idx > -1)
-                                lblCurrentField.Text = "Line: " + trk.gArr[trk.idx].name;
+                            {
+                                double oppositeAbAngle = glm.toDegrees(trk.gArr[trk.idx].heading) + 180;
+                                if (oppositeAbAngle > 360)
+                                {
+                                    oppositeAbAngle = oppositeAbAngle - 360;
+                                }
+
+                                GeoDir headingDir = new GeoDir(trk.gArr[trk.idx].heading);
+                                lblCurrentField.Text = gStr.gsABline + ": " + trk.gArr[trk.idx].name + "  " + headingDir.HeadingString("N3") + ", " + headingDir.Inverted.HeadingString("N3");
+                            }
                             else
-                                lblCurrentField.Text = "Line: " + gStr.gsNoGuidanceLines;
+                            {
+                                lblCurrentField.Text = gStr.gsABline + ": " + gStr.gsNoGuidanceLines;
+                            }
                             break;
 
                         case 3:
