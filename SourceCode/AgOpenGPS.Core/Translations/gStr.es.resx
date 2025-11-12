@@ -1230,4 +1230,25 @@ USAR BAJO SU PROPIA RESPONSABILIDAD.</value>
   <data name="gsTracks" xml:space="preserve">
     <value>Carriles</value>
   </data>
+  <data name="gsAgShareDownloader" xml:space="preserve">
+    <value>Descargar parcelas desde AgShare</value>
+  </data>
+  <data name="gsPastEndOfCurve" xml:space="preserve">
+    <value>Pasado final de la curva</value>
+  </data>
+  <data name="gsSideHillComp" xml:space="preserve">
+    <value>Compensación por º de inclinación</value>
+  </data>
+  <data name="gsDownloadAll" xml:space="preserve">
+    <value>Todo</value>
+  </data>
+  <data name="gsGetSelected" xml:space="preserve">
+    <value>Seleccionado</value>
+  </data>
+  <data name="gsDownloading" xml:space="preserve">
+    <value>Descargando...Espere por favor</value>
+  </data>
+  <data name="gsOverride" xml:space="preserve">
+    <value>Anular</value>
+  </data>
 </root>

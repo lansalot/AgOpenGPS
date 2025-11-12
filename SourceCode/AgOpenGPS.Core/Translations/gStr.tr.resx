@@ -328,7 +328,7 @@
     <value>İç (Dahili)</value>
   </data>
   <data name="gsKMH" xml:space="preserve">
-    <value>kmh</value>
+    <value>km/h</value>
   </data>
   <data name="gsLanguage" xml:space="preserve">
     <value>Lisan</value>
@@ -406,7 +406,7 @@
     <value>Limit aşımı Azaltma</value>
   </data>
   <data name="gsPasses" xml:space="preserve">
-    <value>Passes</value>
+    <value>Geçişler</value>
   </data>
   <data name="gsPause" xml:space="preserve">
     <value>Duraklat</value>
@@ -496,7 +496,7 @@
     <value>Seçileni Kullan</value>
   </data>
   <data name="gsWebCam" xml:space="preserve">
-    <value>WebCam</value>
+    <value>Web Kamerası</value>
   </data>
   <data name="gsWest" xml:space="preserve">
     <value>Batı</value>
