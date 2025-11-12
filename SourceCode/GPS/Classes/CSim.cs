@@ -61,7 +61,8 @@ namespace AgOpenGPS
                 steerangleAve = steerAngle;
             }
 
-            mf.mc.actualSteerAngleDegrees = steerangleAve;
+            // Add the simulator wheel angle scrollbar value to the actual steer angle
+            mf.mc.actualSteerAngleDegrees = steerangleAve + steerAngleScrollBar;
 
             double temp = stepDistance * Math.Tan(steerangleAve * 0.0165329252) / 2;
             headingTrue += temp;
