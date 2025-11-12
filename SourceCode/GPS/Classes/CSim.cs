@@ -29,6 +29,8 @@ namespace AgOpenGPS
         public void DoSimTick(double _st)
         {
             steerAngle = _st;
+            // Add the actual wheel angle value to the simulator angle.
+            steerAngle += mf.mc.actualSteerAngleDegrees;
 
             double diff = Math.Abs(steerAngle - steerangleAve);
 
@@ -61,8 +63,7 @@ namespace AgOpenGPS
                 steerangleAve = steerAngle;
             }
 
-            // Add the simulator wheel angle scrollbar value to the actual steer angle
-            mf.mc.actualSteerAngleDegrees = steerangleAve + steerAngleScrollBar;
+
 
             double temp = stepDistance * Math.Tan(steerangleAve * 0.0165329252) / 2;
             headingTrue += temp;
