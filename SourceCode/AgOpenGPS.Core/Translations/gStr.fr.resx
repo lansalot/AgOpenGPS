@@ -1209,4 +1209,22 @@ UTILISER À VOS PROPRES RISQUES.</value>
   <data name="gsStartFullscreen" xml:space="preserve">
     <value>Démarrer en plein écran</value>
   </data>
+  <data name="gsTurnOffRecordedPath" xml:space="preserve">
+    <value>Arrêter Chemins Enregistrés</value>
+  </data>
+  <data name="gsAgShareDownloader" xml:space="preserve">
+    <value>Télécharger les Parcelles depuis AgShare</value>
+  </data>
+  <data name="gsGpsStep" xml:space="preserve">
+    <value>Pas GPS Minimum</value>
+  </data>
+  <data name="gsSound" xml:space="preserve">
+    <value>Sons</value>
+  </data>
+  <data name="gsDownloading" xml:space="preserve">
+    <value>Téléchargement... Patientez</value>
+  </data>
+  <data name="gsForceOverwrite" xml:space="preserve">
+    <value>Forcer l'enregistrement</value>
+  </data>
 </root>
