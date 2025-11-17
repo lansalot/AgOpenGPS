@@ -1554,6 +1554,7 @@ namespace AgOpenGPS
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Eesti (Estonia)", "et"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Español (Spanish)", "es"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Français (France)", "fr"));
+            menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Hrvatski (Croatia)", "hr"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Italiano (Italy)", "it"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Latviski (Latvia)", "lv"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Lietuvių (Lithuania)", "lt"));
