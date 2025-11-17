@@ -1,5 +1,6 @@
 ﻿using AgLibrary.Logging;
 using AgOpenGPS.Controls;
+using AgOpenGPS.Core.Models;
 using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Helpers;
 using OpenTK;
@@ -818,18 +819,11 @@ namespace AgOpenGPS
             {
                 for (int k = 0; k < mf.bnd.bndList[0].hdLine.Count - 2; k++)
                 {
-                    int res = GetLineIntersection(
-                    sliceArr[i].easting,
-                    sliceArr[i].northing,
-                    sliceArr[i + 1].easting,
-                    sliceArr[i + 1].northing,
+                    GeoLineSegment sliceSegment = GeoRefactorHelper.GetLineSegment(sliceArr, i);
+                    GeoLineSegment headLineSegment = mf.bnd.bndList[0].GetHeadLineSegment(k);
+                    GeoCoord? intersectionPoint = sliceSegment.IntersectionPoint(headLineSegment);
 
-                    mf.bnd.bndList[0].hdLine[k].easting,
-                    mf.bnd.bndList[0].hdLine[k].northing,
-                    mf.bnd.bndList[0].hdLine[k + 1].easting,
-                    mf.bnd.bndList[0].hdLine[k + 1].northing,
-                    ref iE, ref iN);
-                    if (res == 1)
+                    if (intersectionPoint.HasValue)
                     {
                         if (isStart == 0)
                         {
@@ -1019,35 +1013,6 @@ namespace AgOpenGPS
             mf.bnd.isHeadlandOn = false;
             mf.vehicle.isHydLiftOn = false;
             Close();
-        }
-
-        public int GetLineIntersection(double p0x, double p0y, double p1x, double p1y,
-        double p2x, double p2y, double p3x, double p3y, ref double iEast, ref double iNorth)
-        {
-            double s1x, s1y, s2x, s2y;
-            s1x = p1x - p0x;
-            s1y = p1y - p0y;
-
-            s2x = p3x - p2x;
-            s2y = p3y - p2y;
-
-            double s, t;
-            s = (-s1y * (p0x - p2x) + s1x * (p0y - p2y)) / (-s2x * s1y + s1x * s2y);
-
-            if (s >= 0 && s <= 1)
-            {
-                //check oher side
-                t = (s2x * (p0y - p2y) - s2y * (p0x - p2x)) / (-s2x * s1y + s1x * s2y);
-                if (t >= 0 && t <= 1)
-                {
-                    // Collision detected
-                    iEast = p0x + (t * s1x);
-                    iNorth = p0y + (t * s1y);
-                    return 1;
-                }
-            }
-
-            return 0; // No collision
         }
 
     }

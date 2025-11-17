@@ -16,6 +16,20 @@ namespace AgOpenGPS.Core.Tests.Models
 
 
         [Test]
+        public void Test_Intersects()
+        {
+            GeoCoord coordA = new GeoCoord(13.0, -10.0);
+            GeoCoord coordB = new GeoCoord(12.0, -19.0);
+            GeoCoord otherCoordA = new GeoCoord(14.0, -18.0);
+            GeoCoord otherCoordB = new GeoCoord(-8, -5);
+            GeoLineSegment lineSegment = new GeoLineSegment(coordA, coordB);
+            GeoLineSegment otherLineSegment = new GeoLineSegment(otherCoordA, otherCoordB);
+            GeoCoord? interSectionPoint = lineSegment.IntersectionPoint(otherLineSegment);
+
+            Assert.That(interSectionPoint.HasValue, Is.EqualTo(true));
+        }
+
+        [Test]
         public void Test_SymetricalSegmentsCrossInTheMiddle()
         {
             GeoLineSegment nwseLineSegment = new GeoLineSegment(_nwCoord, _seCoord);
