@@ -349,14 +349,12 @@ namespace AgOpenGPS
             //new instance of contour mode
             ct = new CContour(this);
 
-            //new instance of contour mode
             curve = new CABCurve(this);
 
             //new track instance
             trk = new CTrack(this);
 
-            //new instance of contour mode
-            hdl = new CHeadLine(this);
+            hdl = new CHeadLine();
 
             ////new instance of auto headland turn
             yt = new CYouTurn(this);
