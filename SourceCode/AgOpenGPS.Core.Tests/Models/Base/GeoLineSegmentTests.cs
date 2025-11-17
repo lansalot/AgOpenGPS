@@ -55,5 +55,19 @@ namespace AgOpenGPS.Core.Tests.Models
             Assert.That(intersectionPoint.Value.Easting, Is.EqualTo(almostEnd.Easting));
         }
 
+        [Test]
+        public void Test_SameEndPoints()
+        {
+            GeoCoord coordA = new GeoCoord(16.88, -15.488);
+            GeoCoord otherCoordA = new GeoCoord(16.88, -15.488);
+            GeoCoord sharedEndPoint = new GeoCoord(16.99, -13.55);
+            GeoLineSegment segment = new GeoLineSegment(coordA, sharedEndPoint);
+            GeoLineSegment otherSegment = new GeoLineSegment(otherCoordA, sharedEndPoint);
+
+            GeoCoord? intersectionPoint = segment.IntersectionPoint(otherSegment);
+
+            Assert.That(intersectionPoint.HasValue, Is.EqualTo(true));
+            Assert.That(intersectionPoint.Value, Is.EqualTo(sharedEndPoint));
+        }
     }
 }
