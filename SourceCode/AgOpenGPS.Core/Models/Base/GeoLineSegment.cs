@@ -16,6 +16,8 @@
 
         public GeoCoord? IntersectionPoint(GeoLineSegment otherSegment)
         {
+            const double epsilon = 1e-9;
+
             GeoCoord? intersectionPoint = null;
             GeoDelta delta = Delta;
             GeoDelta otherDelta = otherSegment.Delta;
@@ -25,10 +27,10 @@
                 GeoDelta aToOtherADelta = new GeoDelta(CoordA, otherSegment.CoordA);
 
                 double s = aToOtherADelta.CrossProductZ(delta) / denominator;
-                if (0.0 <= s && s <= 1.0)
+                if (-epsilon <= s && s <= 1.0 + epsilon)
                 {
                     double t = aToOtherADelta.CrossProductZ(otherDelta) / denominator;
-                    if (0.0 <= t && t <= 1.0)
+                    if (-epsilon <= t && t <= 1.0 + epsilon)
                     {
                         intersectionPoint = CoordA + t * delta;
                     }
