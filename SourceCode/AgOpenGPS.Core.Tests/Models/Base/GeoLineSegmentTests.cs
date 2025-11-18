@@ -27,6 +27,30 @@ namespace AgOpenGPS.Core.Tests.Models
             GeoCoord? interSectionPoint = lineSegment.IntersectionPoint(otherLineSegment);
 
             Assert.That(interSectionPoint.HasValue, Is.EqualTo(true));
+            // Intersection point must lie on first segment
+            Assert.That(
+                coordA.Distance(interSectionPoint.Value) + interSectionPoint.Value.Distance(coordB),
+                Is.EqualTo(coordA.Distance(coordB))
+            );
+            // Intersection point must lie on other segment too
+            Assert.That(
+                otherCoordA.Distance(interSectionPoint.Value) + interSectionPoint.Value.Distance(otherCoordB),
+                Is.EqualTo(otherCoordA.Distance(otherCoordB))
+            );
+        }
+
+        [Test]
+        public void Test_NoIntersection()
+        {
+            GeoCoord coordA = new GeoCoord(13.0, -1);
+            GeoCoord coordB = new GeoCoord(18.0, -1);
+            GeoCoord otherCoordA = new GeoCoord(-2.0, -18.0);
+            GeoCoord otherCoordB = new GeoCoord(-2.0, 100);
+            GeoLineSegment northHeadingSegment = new GeoLineSegment(coordA, coordB);
+            GeoLineSegment eastHeadingSegment = new GeoLineSegment(otherCoordA, otherCoordB);
+            GeoCoord? interSectionPoint = northHeadingSegment.IntersectionPoint(eastHeadingSegment);
+
+            Assert.That(interSectionPoint.HasValue, Is.EqualTo(false));
         }
 
         [Test]
