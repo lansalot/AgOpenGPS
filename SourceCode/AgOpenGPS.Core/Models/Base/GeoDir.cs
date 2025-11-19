@@ -14,6 +14,9 @@ namespace AgOpenGPS.Core.Models
             AngleInRadians = Math.Atan2(delta.EastingDelta, delta.NorthingDelta);
             if (AngleInRadians < 0.0) AngleInRadians += 2 * Math.PI;
         }
+        public GeoDir(GeoCoord fromCoord, GeoCoord toCoord) : this(new GeoDelta(fromCoord, toCoord))
+        {
+        }
 
         // The returned angle will be in the range [0.0 ... 2 * PI >
         // Also internally, GeoDir will always keep the angle in this range, so it does not need to be checked

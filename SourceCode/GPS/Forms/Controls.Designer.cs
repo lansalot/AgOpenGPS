@@ -989,6 +989,21 @@ namespace AgOpenGPS
             }
         }
 
+        private void copyTracksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (isJobStarted)
+            {
+                using (Forms.Field.FormCopyTracks form = new Forms.Field.FormCopyTracks(this))
+                {
+                    form.ShowDialog(this);
+                }
+            }
+            else
+            {
+                TimedMessageBox(3000, gStr.gsFieldNotOpen, gStr.gsStartNewField);
+            }
+        }
+
         #endregion
 
         #region Left Panel Menu

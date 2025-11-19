@@ -375,7 +375,7 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>Delete Field</value>
   </data>
   <data name="gsDeleteForSure" xml:space="preserve">
-    <value>Delete For Sure?</value>
+    <value>Are you sure you want to delete?</value>
   </data>
   <data name="gsDiameter" xml:space="preserve">
     <value>Diameter</value>

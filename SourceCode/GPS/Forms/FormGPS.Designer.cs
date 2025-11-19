@@ -154,6 +154,7 @@ namespace AgOpenGPS
             this.deleteAppliedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagByLatLonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordedPathStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyTracksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblCurrentField = new System.Windows.Forms.Label();
             this.lblGuidanceLine = new System.Windows.Forms.Label();
             this.flp1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -1902,7 +1903,8 @@ namespace AgOpenGPS
             this.tramsMultiMenuField,
             this.deleteAppliedToolStripMenuItem,
             this.flagByLatLonToolStripMenuItem,
-            this.recordedPathStripMenu});
+            this.recordedPathStripMenu,
+            this.copyTracksToolStripMenuItem});
             this.toolStripBtnFieldTools.Enabled = false;
             this.toolStripBtnFieldTools.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripBtnFieldTools.Image = global::AgOpenGPS.Properties.Resources.FieldTools;
@@ -1977,14 +1979,23 @@ namespace AgOpenGPS
             this.flagByLatLonToolStripMenuItem.Click += new System.EventHandler(this.flagByLatLonToolStripMenuItem_Click);
             // 
             // recordedPathStripMenu
-            // 
+            //
             this.recordedPathStripMenu.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recordedPathStripMenu.Image = global::AgOpenGPS.Properties.Resources.RecPath;
             this.recordedPathStripMenu.Name = "recordedPathStripMenu";
             this.recordedPathStripMenu.Size = new System.Drawing.Size(445, 70);
             this.recordedPathStripMenu.Text = "Recorded Path";
             this.recordedPathStripMenu.Click += new System.EventHandler(this.recordedPathStripMenu_Click);
-            // 
+            //
+            // copyTracksToolStripMenuItem
+            //
+            this.copyTracksToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.copyTracksToolStripMenuItem.Image = global::AgOpenGPS.Properties.Resources.FileNew;
+            this.copyTracksToolStripMenuItem.Name = "copyTracksToolStripMenuItem";
+            this.copyTracksToolStripMenuItem.Size = new System.Drawing.Size(445, 70);
+            this.copyTracksToolStripMenuItem.Text = "Import Tracks";
+            this.copyTracksToolStripMenuItem.Click += new System.EventHandler(this.copyTracksToolStripMenuItem_Click);
+            //
             // lblCurrentField
             // 
             this.lblCurrentField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -3098,6 +3109,7 @@ namespace AgOpenGPS
         private System.Windows.Forms.ToolStripMenuItem tramLinesMenuField;
         private System.Windows.Forms.ToolStripMenuItem flagByLatLonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recordedPathStripMenu;
+        private System.Windows.Forms.ToolStripMenuItem copyTracksToolStripMenuItem;
         private System.Windows.Forms.Panel panelControlBox;
         public System.Windows.Forms.Button btnTiltDn;
         public System.Windows.Forms.Button btnTiltUp;
