@@ -5,15 +5,6 @@ namespace AgOpenGPS.Core.Tests.Models
 {
     public class GeoLineSegmentTests
     {
-        const double _minNorthing = -1.0;
-        const double _maxNorthing = 3.0;
-        const double _minEasting = 2.0;
-        const double _maxEasting = 4.0;
-        readonly GeoCoord _neCoord = new GeoCoord(_maxNorthing, _maxEasting);
-        readonly GeoCoord _seCoord = new GeoCoord(_minNorthing, _maxEasting);
-        readonly GeoCoord _swCoord = new GeoCoord(_minNorthing, _minEasting);
-        readonly GeoCoord _nwCoord = new GeoCoord(_maxNorthing, _minEasting);
-
 
         [Test]
         public void Test_Intersects()
@@ -56,21 +47,35 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_SymetricalSegmentsCrossInTheMiddle()
         {
-            GeoLineSegment nwseLineSegment = new GeoLineSegment(_nwCoord, _seCoord);
-            GeoLineSegment swneLineSegment = new GeoLineSegment(_swCoord, _neCoord);
+            const double minNorthing = -1.0;
+            const double maxNorthing = 3.0;
+            const double minEasting = 2.0;
+            const double maxEasting = 4.0;
+            GeoCoord neCoord = new GeoCoord(maxNorthing, maxEasting);
+            GeoCoord seCoord = new GeoCoord(minNorthing, maxEasting);
+            GeoCoord swCoord = new GeoCoord(minNorthing, minEasting);
+            GeoCoord nwCoord = new GeoCoord(maxNorthing, minEasting);
+            GeoLineSegment nwseLineSegment = new GeoLineSegment(nwCoord, seCoord);
+            GeoLineSegment swneLineSegment = new GeoLineSegment(swCoord, neCoord);
             GeoCoord? interSectionPoint = nwseLineSegment.IntersectionPoint(swneLineSegment);
 
             // Assert
             Assert.That(interSectionPoint.HasValue, Is.EqualTo(true));
-            Assert.That(interSectionPoint.Value.Distance(_nwCoord), Is.EqualTo(interSectionPoint.Value.Distance(_seCoord)));
+            Assert.That(interSectionPoint.Value.Distance(nwCoord), Is.EqualTo(interSectionPoint.Value.Distance(seCoord)));
         }
 
         [Test]
         public void Test_ParallelSegmentsDoNotIntersect()
         {
+            const double minNorthing = -1.0;
+            const double maxNorthing = 3.0;
+            const double minEasting = 2.0;
+            const double maxEasting = 4.0;
+            GeoCoord seCoord = new GeoCoord(minNorthing, maxEasting);
+            GeoCoord nwCoord = new GeoCoord(maxNorthing, minEasting);
             GeoDelta shift = new GeoDelta(1.0, 0.0);
-            GeoLineSegment nwseLineSegment = new GeoLineSegment(_nwCoord, _seCoord);
-            GeoLineSegment shiftedSegment = new GeoLineSegment(_nwCoord + shift, _seCoord + shift);
+            GeoLineSegment nwseLineSegment = new GeoLineSegment(nwCoord, seCoord);
+            GeoLineSegment shiftedSegment = new GeoLineSegment(nwCoord + shift, seCoord + shift);
             GeoCoord? intersectionPoint = nwseLineSegment.IntersectionPoint(shiftedSegment);
 
             Assert.That(intersectionPoint, Is.EqualTo(null));
@@ -79,9 +84,16 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_LongLineSegment()
         {
-            GeoDelta delta = new GeoDelta(_nwCoord, _seCoord);
-            GeoLineSegment nwseLineSegment = new GeoLineSegment(_nwCoord, _nwCoord + 1000.0 * delta);
-            GeoCoord almostEnd = _nwCoord + 999.0 * delta;
+            const double minNorthing = -1.0;
+            const double maxNorthing = 3.0;
+            const double minEasting = 2.0;
+            const double maxEasting = 4.0;
+            GeoCoord seCoord = new GeoCoord(minNorthing, maxEasting);
+            GeoCoord nwCoord = new GeoCoord(maxNorthing, minEasting);
+
+            GeoDelta delta = new GeoDelta(nwCoord, seCoord);
+            GeoLineSegment nwseLineSegment = new GeoLineSegment(nwCoord, nwCoord + 1000.0 * delta);
+            GeoCoord almostEnd = nwCoord + 999.0 * delta;
 
             GeoLineSegment otherSegment = new GeoLineSegment(
                 almostEnd - 1.0 * new GeoDir(delta).PerpendicularLeft,
