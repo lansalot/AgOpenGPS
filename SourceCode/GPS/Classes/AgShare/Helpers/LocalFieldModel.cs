@@ -27,6 +27,11 @@ namespace AgOpenGPS.Classes.AgShare.Helpers
             Northing = n;
             Heading = heading;
         }
+
+        public GeoCoord ToGeoCoord()
+        {
+            return new GeoCoord(Northing, Easting);
+        }
     }
 
 

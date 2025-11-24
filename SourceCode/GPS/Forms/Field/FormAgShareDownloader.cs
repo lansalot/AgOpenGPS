@@ -2,11 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using AgOpenGPS.Classes.AgShare.Helpers;
-using System.Threading.Tasks;
-using System.IO;
 using AgOpenGPS.Core.Translations;
+using AgOpenGPS.Core.Models;
 
 namespace AgOpenGPS.Forms.Field
 {
@@ -18,7 +18,6 @@ namespace AgOpenGPS.Forms.Field
     {
         private readonly FormGPS gps;
         private readonly CAgShareDownloader downloader;
-
 
         public FormAgShareDownloader(FormGPS gpsContext)
         {
@@ -214,18 +213,20 @@ namespace AgOpenGPS.Forms.Field
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
             // Determine scaling based on boundary extents, or AB lines if no boundary
-            double minX, minY, maxX, maxY;
-            GetBounds(field.Boundaries, field.AbLines, out minX, out minY, out maxX, out maxY);
+            GeoBoundingBox fieldBb = GetBoundingBox(field.Boundaries, field.AbLines);
 
             // Ensure non-zero margins even for vertical/horizontal lines or single points
-            double marginX = Math.Max((maxX - minX) * 0.05, 50);
-            double marginY = Math.Max((maxY - minY) * 0.05, 50);
+            GeoDelta bbMargin = new GeoDelta(
+                Math.Max(0.05 * (fieldBb.MaxNorthing - fieldBb.MinNorthing), 50),
+                Math.Max(0.05 * (fieldBb.MaxEasting - fieldBb.MinEasting), 50));
+            GeoBoundingBox bbWithMargin = new GeoBoundingBox(fieldBb.MinCoord - bbMargin, fieldBb.MaxCoord + bbMargin);
 
             // Configure orthographic projection
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
-            GL.Ortho(minX - marginX, maxX + marginX, minY - marginY, maxY + marginY, -1, 1);
-
+            GL.Ortho(
+                bbWithMargin.MinEasting, bbWithMargin.MaxEasting,
+                bbWithMargin.MinNorthing, bbWithMargin.MaxNorthing, -1, 1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
@@ -272,15 +273,9 @@ namespace AgOpenGPS.Forms.Field
             glControl1.SwapBuffers();
         }
 
-        // Calculates min and max coordinate extents for given field boundaries and AB lines
-        private void GetBounds(List<List<LocalPoint>> boundaries, List<AbLineLocal> abLines,
-            out double minX, out double minY, out double maxX, out double maxY)
+        private GeoBoundingBox GetBoundingBox(List<List<LocalPoint>> boundaries, List<AbLineLocal> abLines)
         {
-            minX = minY = double.MaxValue;
-            maxX = maxY = double.MinValue;
-
-            bool hasPoints = false;
-
+            GeoBoundingBox bb = GeoBoundingBox.CreateEmpty();
             // Check boundaries first
             if (boundaries != null)
             {
@@ -288,17 +283,13 @@ namespace AgOpenGPS.Forms.Field
                 {
                     foreach (var pt in ring)
                     {
-                        if (pt.Easting < minX) minX = pt.Easting;
-                        if (pt.Easting > maxX) maxX = pt.Easting;
-                        if (pt.Northing < minY) minY = pt.Northing;
-                        if (pt.Northing > maxY) maxY = pt.Northing;
-                        hasPoints = true;
+                        bb.Include(pt.ToGeoCoord());
                     }
                 }
             }
 
             // If no boundary, use AB lines to calculate bounds
-            if (!hasPoints && abLines != null)
+            if (bb.IsEmpty && abLines != null)
             {
                 foreach (var ab in abLines)
                 {
@@ -306,43 +297,30 @@ namespace AgOpenGPS.Forms.Field
                     {
                         foreach (var pt in ab.CurvePoints)
                         {
-                            if (pt.Easting < minX) minX = pt.Easting;
-                            if (pt.Easting > maxX) maxX = pt.Easting;
-                            if (pt.Northing < minY) minY = pt.Northing;
-                            if (pt.Northing > maxY) maxY = pt.Northing;
-                            hasPoints = true;
+                            bb.Include(pt.ToGeoCoord());
                         }
                     }
                     else
                     {
                         // AB line (two points)
-                        if (ab.PtA.Easting < minX) minX = ab.PtA.Easting;
-                        if (ab.PtA.Easting > maxX) maxX = ab.PtA.Easting;
-                        if (ab.PtA.Northing < minY) minY = ab.PtA.Northing;
-                        if (ab.PtA.Northing > maxY) maxY = ab.PtA.Northing;
-
-                        if (ab.PtB.Easting < minX) minX = ab.PtB.Easting;
-                        if (ab.PtB.Easting > maxX) maxX = ab.PtB.Easting;
-                        if (ab.PtB.Northing < minY) minY = ab.PtB.Northing;
-                        if (ab.PtB.Northing > maxY) maxY = ab.PtB.Northing;
-                        hasPoints = true;
+                        bb.Include(ab.PtA.ToGeoCoord());
+                        bb.Include(ab.PtB.ToGeoCoord());
                     }
                 }
             }
-
             // Fallback to default bounds if no data
-            if (!hasPoints)
+            if (bb.IsEmpty)
             {
-                minX = minY = -100;
-                maxX = maxY = 100;
+                bb.Include(new GeoCoord(-100.0, -100.0));
+                bb.Include(new GeoCoord(100.0, 100.0));
             }
+            return bb;
         }
 
         #endregion
 
         private void glControl1_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
