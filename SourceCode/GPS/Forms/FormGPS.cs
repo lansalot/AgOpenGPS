@@ -527,7 +527,7 @@ namespace AgOpenGPS
 
             hotkeys = Properties.Settings.Default.setKey_hotkeys.ToCharArray();
 
-            if (RegistrySettings.vehicleFileName == "")
+            if (RegistrySettings.vehiclesDirectory == "")
             {
                 if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "agOpenGPS")))
                 {
