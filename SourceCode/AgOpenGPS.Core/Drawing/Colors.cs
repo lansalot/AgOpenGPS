@@ -7,18 +7,15 @@ namespace AgOpenGPS.Core.Drawing
         // Physical colors
         static public readonly ColorRgba Black = new ColorRgba(0, 0, 0);
         static public readonly ColorRgb White = new ColorRgb(255, 255, 225);
-        static public readonly ColorRgb Red = new ColorRgb(255, 0, 0);
-        static public readonly ColorRgb Green = new ColorRgb(0, 255, 0);
-        static public readonly ColorRgb Yellow = new ColorRgb(255, 255, 0);
+        static public readonly ColorRgba Red = new ColorRgba(255, 0, 0);
+        static public readonly ColorRgba Green = new ColorRgba(0, 255, 0);
+        static public readonly ColorRgba Yellow = new ColorRgba(255, 255, 0);
         static public readonly ColorRgba Gray012 = new ColorRgba(0.12f, 0.12f, 0.12f);
         static public readonly ColorRgba Gray025 = new ColorRgba(0.25f, 0.25f, 0.25f);
 
         // Functional colors
         static public readonly ColorRgba AntennaColor = new ColorRgba(0.20f, 0.98f, 0.98f);
         static public readonly ColorRgba BingMapBackgroundColor = new ColorRgba(0.6f, 0.6f, 0.6f, 0.5f);
-        static public readonly ColorRgb FlagRedColor = Red;
-        static public readonly ColorRgb FlagGreenColor = Green;
-        static public readonly ColorRgb FlagYellowColor = Yellow;
         static public readonly ColorRgba FlagSelectedBoxColor = new ColorRgba(0.980f, 0.0f, 0.980f);
 
         static public readonly ColorRgba GoalPointColor = new ColorRgba(0.98f, 0.98f, 0.098f);
