@@ -2956,7 +2956,7 @@ namespace AgOpenGPS
         public GeoBoundingBox fieldBoundingBox;
         public GeoCoord FieldCenter => fieldBoundingBox.CenterCoord;
         public double fieldCenterX => FieldCenter.Easting;
-        public double fieldCenterY => FieldCenter.Easting;
+        public double fieldCenterY => FieldCenter.Northing;
         public double maxFieldDistance, maxCrossFieldLength;
 
         //determine mins maxs of patches and whole field.
@@ -2994,13 +2994,13 @@ namespace AgOpenGPS
             }
             else
             {
-                foreach (var patch in triStrip)
+                foreach (CPatches patches in triStrip)
                 {
                     //for every new chunk of patch
-                    foreach (List<vec3> triList in patch.patchList)
+                    foreach (List<vec3> triList in patches.patchList)
                     {
-                        int count2 = triList.Count;
-                        for (int i = 1; i < count2; i += 3)
+                        // Skip the first entry. It is the color disguised as vec3
+                        for (int i = 1; i < triList.Count; i += 3)
                         {
                             bb.Include(triList[i].ToGeoCoord());
                         }
