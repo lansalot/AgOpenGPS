@@ -887,7 +887,7 @@ namespace AgOpenGPS
                     }
                 }
 
-                mf.bnd.bndList[bndSelect].FixFenceLine(0);
+                mf.bnd.bndList[bndSelect].FixFenceLine(bndSelect);
 
                 mf.CalculateMinMax();
                 mf.bnd.BuildTurnLines();
