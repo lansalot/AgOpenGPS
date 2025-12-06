@@ -20,5 +20,76 @@ namespace AgOpenGPS.Core.Tests.Models
             Assert.That(centerCoord, Is.EqualTo(correctCenterCoord));
         }
 
+        [Test]
+        public void Test_IncludeBoundingBox_NotEmpty_NotEmpty()
+        {
+            GeoCoord coordA1 = new GeoCoord(-10.0, 20.0);
+            GeoCoord coordA2 = new GeoCoord(-30.0, 40.0);
+            GeoBoundingBox bbA = GeoBoundingBox.CreateEmpty();
+            bbA.Include(coordA1);
+            bbA.Include(coordA2);
+
+            GeoCoord coordB1 = new GeoCoord(-20.0, 30.0);
+            GeoCoord coordB2 = new GeoCoord(-40.0, 50.0);
+            GeoBoundingBox bbB = GeoBoundingBox.CreateEmpty();
+            bbA.Include(coordB1);
+            bbA.Include(coordB2);
+            bbA.Include(bbB);
+
+            Assert.That(bbA.IsEmpty, Is.False);
+            Assert.That(bbA.MinNorthing, Is.EqualTo(-40.0));
+            Assert.That(bbA.MaxNorthing, Is.EqualTo(-10.0));
+            Assert.That(bbA.MinEasting, Is.EqualTo(20.0));
+            Assert.That(bbA.MaxEasting, Is.EqualTo(50.0));
+        }
+
+        [Test]
+        public void Test_IncludeBoundingBox_NotEmpty_Empty()
+        {
+            GeoCoord coordA1 = new GeoCoord(-10.0, 20.0);
+            GeoCoord coordA2 = new GeoCoord(-30.0, 40.0);
+            GeoBoundingBox bbA = GeoBoundingBox.CreateEmpty();
+            bbA.Include(coordA1);
+            bbA.Include(coordA2);
+
+            GeoBoundingBox bbB = GeoBoundingBox.CreateEmpty();
+            bbA.Include(bbB);
+
+            Assert.That(bbA.IsEmpty, Is.False);
+            Assert.That(bbA.MinNorthing, Is.EqualTo(-30.0));
+            Assert.That(bbA.MaxNorthing, Is.EqualTo(-10.0));
+            Assert.That(bbA.MinEasting, Is.EqualTo(20.0));
+            Assert.That(bbA.MaxEasting, Is.EqualTo(40.0));
+        }
+
+        [Test]
+        public void Test_IncludeBoundingBox_Empty_NotEmpty()
+        {
+            GeoBoundingBox bbA = GeoBoundingBox.CreateEmpty();
+
+            GeoCoord coordB1 = new GeoCoord(-20.0, 30.0);
+            GeoCoord coordB2 = new GeoCoord(-40.0, 50.0);
+            GeoBoundingBox bbB = GeoBoundingBox.CreateEmpty();
+            bbA.Include(coordB1);
+            bbA.Include(coordB2);
+            bbA.Include(bbB);
+
+            Assert.That(bbA.IsEmpty, Is.False);
+            Assert.That(bbA.MinNorthing, Is.EqualTo(-40.0));
+            Assert.That(bbA.MaxNorthing, Is.EqualTo(-20.0));
+            Assert.That(bbA.MinEasting, Is.EqualTo(30.0));
+            Assert.That(bbA.MaxEasting, Is.EqualTo(50.0));
+        }
+
+        [Test]
+        public void Test_IncludeBoundingBox_Empty_Empty()
+        {
+            GeoBoundingBox bbA = GeoBoundingBox.CreateEmpty();
+            GeoBoundingBox bbB = GeoBoundingBox.CreateEmpty();
+            bbA.Include(bbB);
+
+            Assert.That(bbA.IsEmpty, Is.True);
+        }
+
     }
 }
