@@ -49,7 +49,7 @@ namespace AgOpenGPS.Core.Tests.Models
 
             GeoCoord middleCoord = coord1.Average(coord2);
 
-            Assert.That(middleCoord, Is.EqualTo(new GeoCoord(0.5 * (3.14 - 314), 0.5 * (1.596 + 1596))));
+            Assert.That(middleCoord, Is.EqualTo(new GeoCoord(-155.43, 798.798)));
         }
 
         [Test]
