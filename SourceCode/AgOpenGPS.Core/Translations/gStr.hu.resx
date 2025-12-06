@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>A programról...</value>
+    <value>A programról</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -832,7 +832,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Adj meg AB vonalat</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Kérlek várj...</value>
+    <value>Kérlek várj</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Pont</value>
@@ -943,10 +943,10 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Viszlát legközelebb!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Tábla mentése..</value>
+    <value>Tábla mentése</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Tábla paramétereinek mentése...</value>
+    <value>Tábla paramétereinek mentése</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Tábla paraméterei elmentve.</value>
@@ -955,10 +955,10 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Tábla helyben elmentve.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Leállítás befejezése folyamatban..</value>
+    <value>Leállítás befejezése folyamatban</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Beállítások mentése...</value>
+    <value>Beállítások mentése</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Beállítások elmentve.</value>
@@ -970,7 +970,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>A feltöltés sikertelen.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Feltöltés az AgShare-re...</value>
+    <value>Feltöltés az AgShare-re</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Kijelző gombok</value>

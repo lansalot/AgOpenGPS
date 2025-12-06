@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Tietoja...</value>
+    <value>Tietoja</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -828,7 +828,7 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Syötä AB-Linja</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Odota...</value>
+    <value>Odota</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Piste</value>
@@ -939,10 +939,10 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Nähdään ensi kerralla!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Tallennetaan peltoa..</value>
+    <value>Tallennetaan peltoa</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Tallennetaan peltoasetuksia...</value>
+    <value>Tallennetaan peltoasetuksia</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Peltoasetukset tallennettu.</value>
@@ -951,10 +951,10 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Pelto tallennettu paikallisesti.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Sammutus viimeistellään..</value>
+    <value>Sammutus viimeistellään</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Tallennetaan asetuksia...</value>
+    <value>Tallennetaan asetuksia</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Asetukset tallennettu.</value>
@@ -966,7 +966,7 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Lataus epäonnistui.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Ladataan AgShareen...</value>
+    <value>Ladataan AgShareen</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Näytön Napit</value>

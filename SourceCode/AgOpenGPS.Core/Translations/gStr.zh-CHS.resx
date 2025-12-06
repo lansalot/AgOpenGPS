@@ -136,7 +136,7 @@
     <value>优秀</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>关于...</value>
+    <value>关于</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>阿克曼转向</value>
@@ -828,7 +828,7 @@
     <value>请输入AB线</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>请稍候…</value>
+    <value>请稍候</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>点</value>
@@ -939,10 +939,10 @@
     <value>结束！再见！</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>保存字段..</value>
+    <value>保存字段</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>正在保存字段参数...</value>
+    <value>正在保存字段参数</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>字段参数已保存。</value>
@@ -951,10 +951,10 @@
     <value>字段已本地保存。</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>正在完成关闭..</value>
+    <value>正在完成关闭</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>保存设置...</value>
+    <value>保存设置</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>设置已保存。</value>
@@ -966,7 +966,7 @@
     <value>上传失败。</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>正将田间数据上传...</value>
+    <value>正将田间数据上传</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>屏幕按钮</value>

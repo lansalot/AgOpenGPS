@@ -88,7 +88,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About....
+        ///   Looks up a localized string similar to About.
         /// </summary>
         public static string gsAbout {
             get {
@@ -2232,7 +2232,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please Wait....
+        ///   Looks up a localized string similar to Please Wait.
         /// </summary>
         public static string gsPleaseWait {
             get {
@@ -2565,7 +2565,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Saving field...
+        ///   Looks up a localized string similar to Saving field.
         /// </summary>
         public static string gsSaveField {
             get {
@@ -2574,7 +2574,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Saving field parameters....
+        ///   Looks up a localized string similar to Saving field parameters.
         /// </summary>
         public static string gsSaveFieldParam {
             get {
@@ -2601,7 +2601,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Finalizing shutdown...
+        ///   Looks up a localized string similar to Finalizing shutdown.
         /// </summary>
         public static string gsSaveFinalizeShutdown {
             get {
@@ -2610,7 +2610,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Saving settings....
+        ///   Looks up a localized string similar to Saving settings.
         /// </summary>
         public static string gsSaveSettings {
             get {
@@ -2646,7 +2646,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uploading field to AgShare....
+        ///   Looks up a localized string similar to Uploading field to AgShare.
         /// </summary>
         public static string gsSaveUploadToAgshare {
             get {

@@ -117,7 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="gsABDrawHint" xml:space="preserve">
     <value>A점B점을찍은후시작하세요</value>
   </data>
@@ -134,7 +133,7 @@
     <value>A플러스</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>조향보조설명...</value>
+    <value>조향보조설명</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>좌각도</value>
@@ -826,7 +825,7 @@
     <value>AB라인을 지정하세요</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>기다려 주세요..</value>
+    <value>기다려 주세요</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>지점</value>
@@ -937,10 +936,10 @@
     <value>다음에 또 봐요!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>들판저장중..</value>
+    <value>들판저장중</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>들판설정저장중...</value>
+    <value>들판설정저장중</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>들판설정저장되었습니다.</value>
@@ -949,10 +948,10 @@
     <value>들판정보저장완료.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>마지막종료중입니다..</value>
+    <value>마지막종료중입니다</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>설정저장중...</value>
+    <value>설정저장중</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>저장된설정.</value>
@@ -964,7 +963,7 @@
     <value>업로드실패.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>AgShare에들판업로드중...</value>
+    <value>AgShare에들판업로드중</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>화면버튼들</value>

@@ -117,7 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="gsABDrawHint" xml:space="preserve">
     <value>AB çizgisinde rota oluşturmak için 2 sınır noktasına tıkla</value>
   </data>
@@ -134,7 +133,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Hakkında...</value>
+    <value>Hakkında</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -841,7 +840,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Lütfen ABline girin</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Lütfen bekleyin...</value>
+    <value>Lütfen bekleyin</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Nokta</value>
@@ -952,10 +951,10 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Bir dahaki sefere görüşmek üzere!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Alan kaydediliyor..</value>
+    <value>Alan kaydediliyor</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Alan parametreleri kaydediliyor...</value>
+    <value>Alan parametreleri kaydediliyor</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Alan parametreleri kaydedildi.</value>
@@ -964,10 +963,10 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Alan yerel olarak kaydedildi.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Kapatma işlemi tamamlanıyor..</value>
+    <value>Kapatma işlemi tamamlanıyor</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Ayarlar kaydediliyor...</value>
+    <value>Ayarlar kaydediliyor</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Ayarlar kaydedildi.</value>
@@ -979,7 +978,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Yükleme başarısız oldu.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Alan AgShare'e yükleniyor...</value>
+    <value>Alan AgShare'e yükleniyor</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Ekran Düğmeleri</value>

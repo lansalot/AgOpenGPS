@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>A Proposito Di…</value>
+    <value>A Proposito Di</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -816,7 +816,7 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Inserire Linea AB</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Attendi...</value>
+    <value>Attendi</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Punto</value>
@@ -927,10 +927,10 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Ci vediamo la prossima volta!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Salvataggio campo..</value>
+    <value>Salvataggio campo</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Salvataggio parametri campo...</value>
+    <value>Salvataggio parametri campo</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Parametri del campo salvati.</value>
@@ -939,10 +939,10 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Campo salvato localmente.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Completamento arresto..</value>
+    <value>Completamento arresto</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Salvataggio impostazioni...</value>
+    <value>Salvataggio impostazioni</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Impostazioni salvate.</value>
@@ -954,7 +954,7 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Caricamento fallito.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Caricamento su AgShare...</value>
+    <value>Caricamento su AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Pulsanti a Schermo</value>

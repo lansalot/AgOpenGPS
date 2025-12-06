@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>O nás...</value>
+    <value>O nás</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -828,7 +828,7 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
     <value>Prosím vlož ABLine</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Prosím čekej...</value>
+    <value>Prosím čekej</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Bod</value>
@@ -939,10 +939,10 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
     <value>Čas na pivo! Čeština!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Ukládám pole..</value>
+    <value>Ukládám pole</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Ukládání parametrů polí...</value>
+    <value>Ukládání parametrů polí</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Parametry pole uložené.</value>
@@ -951,10 +951,10 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
     <value>Oblast uložená lokálně.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Konečné vypnutí..</value>
+    <value>Konečné vypnutí</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Ukládání nastavení...</value>
+    <value>Ukládání nastavení</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Nastavení uloženo.</value>
@@ -966,7 +966,7 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
     <value>Nahrát neúspěšné.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Nahrát pole do AgShare...</value>
+    <value>Nahrát pole do AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Tlačítka obrazovky</value>

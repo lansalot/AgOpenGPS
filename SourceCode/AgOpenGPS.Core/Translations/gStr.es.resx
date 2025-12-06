@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Acerca de...</value>
+    <value>Acerca de</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -834,7 +834,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Introducir una línea AB</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Espera por favor...</value>
+    <value>Espera por favor</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Punto</value>
@@ -945,10 +945,10 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>¡Hasta la próxima!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Guardando campo..</value>
+    <value>Guardando campo</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Guardando parámetros del campo...</value>
+    <value>Guardando parámetros del campo</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Parámetros del campo guardados.</value>
@@ -957,10 +957,10 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Campo guardado localmente.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Finalizando apagado..</value>
+    <value>Finalizando apagado</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Guardando configuración...</value>
+    <value>Guardando configuración</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Configuración guardada.</value>
@@ -972,7 +972,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Error al cargar.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Cargando en AgShare...</value>
+    <value>Cargando en AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Botones de Pantalla</value>

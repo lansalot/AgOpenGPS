@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Par...</value>
+    <value>Par</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -843,7 +843,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Lūdzu, ievadiet AB Līniju</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Lūdzu, pagaidiet ...</value>
+    <value>Lūdzu, pagaidiet</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Punkts</value>
@@ -954,10 +954,10 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Uz tikšanos nākamreiz!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Saglabā lauku..</value>
+    <value>Saglabā lauku</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Saglabā lauka parametrus...</value>
+    <value>Saglabā lauka parametrus</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Lauka parametri ir saglabāti.</value>
@@ -966,10 +966,10 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Lauks saglabāts lokāli.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Tiek pabeigta izslēgšana..</value>
+    <value>Tiek pabeigta izslēgšana</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Tiek saglabāti iestatījumi...</value>
+    <value>Tiek saglabāti iestatījumi</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Iestatījumi saglabāti.</value>
@@ -981,7 +981,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Augšupielāde neizdevās.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Tiek augšupielādēts lauks uz AgShare...</value>
+    <value>Tiek augšupielādēts lauks uz AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Ekrāna pogas</value>

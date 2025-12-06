@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>O programie…</value>
+    <value>O programie</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -810,7 +810,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Wprowadź Linię AB</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Prosze czekać...</value>
+    <value>Prosze czekać</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Punkt</value>
@@ -909,10 +909,10 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Do zobaczenia następnym razem!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Zapisywanie pola..</value>
+    <value>Zapisywanie pola</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Zapisywanie parametrów pola...</value>
+    <value>Zapisywanie parametrów pola</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Parametry pola zapisane.</value>
@@ -921,10 +921,10 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Pole zapisane lokalnie.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Zamykanie końcowe..</value>
+    <value>Zamykanie końcowe</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Zapisywanie ustawień...</value>
+    <value>Zapisywanie ustawień</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Ustawienia zapisane.</value>
@@ -936,7 +936,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Przesyłanie nie powiodło się.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Przesyłanie do AgShare...</value>
+    <value>Przesyłanie do AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Przyciski ekranowe</value>

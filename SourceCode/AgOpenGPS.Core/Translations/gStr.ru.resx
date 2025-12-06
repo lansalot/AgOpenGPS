@@ -130,7 +130,7 @@
     <value>Меню</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>О программе...</value>
+    <value>О программе</value>
   </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>Действие было отменено</value>
@@ -676,7 +676,7 @@
     <value>Пожалуйста, введите линию АВ</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Пожалуйста ждите...</value>
+    <value>Пожалуйста ждите</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Точка</value>
@@ -766,10 +766,10 @@
     <value>Увидимся в следующий раз!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Сохранение поля..</value>
+    <value>Сохранение поля</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Сохранение параметров поля...</value>
+    <value>Сохранение параметров поля</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Параметры поля сохранены.</value>
@@ -778,10 +778,10 @@
     <value>Поле сохранено локально.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Завершение завершения..</value>
+    <value>Завершение завершения</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Сохранение настроек...</value>
+    <value>Сохранение настроек</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Настройки сохранены.</value>
@@ -793,7 +793,7 @@
     <value>Ошибка загрузки.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Загрузка на AgShare...</value>
+    <value>Загрузка на AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Кнопки на экране</value>

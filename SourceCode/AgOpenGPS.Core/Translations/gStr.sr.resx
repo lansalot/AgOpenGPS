@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>O programu...</value>
+    <value>O programu</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann geometrija</value>
@@ -843,7 +843,7 @@
     <value>Unesite AB Liniju</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Molim sačekajte...</value>
+    <value>Molim sačekajte</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Tačka</value>
@@ -954,10 +954,10 @@
     <value>Vidimo se sljedeći put!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Spremam polje..</value>
+    <value>Spremam polje</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Spremam parametre polja..</value>
+    <value>Spremam parametre polja</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Parametri polja spremljeni.</value>
@@ -966,10 +966,10 @@
     <value>Polje spremljeno lokalno.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Završavam gašenje..</value>
+    <value>Završavam gašenje</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Spremam postavke..</value>
+    <value>Spremam postavke</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Postavke spremljene.</value>
@@ -981,7 +981,7 @@
     <value>Greška Prijenosa.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>“Prijenos polja na AgShare...</value>
+    <value>Prijenos polja na AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Dugmad ekrana</value>

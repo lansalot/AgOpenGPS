@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Tarkvara kohta...</value>
+    <value>Tarkvara kohta</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -810,7 +810,7 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
     <value>Palun sisestage AB-joon</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Palun oodake...</value>
+    <value>Palun oodake</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Punkt</value>
@@ -915,10 +915,10 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
     <value>Näeme järgmisel korral!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Põllu salvestamine..</value>
+    <value>Põllu salvestamine</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Põllu parameetrite salvestamine...</value>
+    <value>Põllu parameetrite salvestamine</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Põllu parameetrid salvestatud.</value>
@@ -927,10 +927,10 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
     <value>Põld salvestatud kohalikult.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Sulgemise lõpetamine..</value>
+    <value>Sulgemise lõpetamine</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Sätete salvestamine...</value>
+    <value>Sätete salvestamine</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Sätted salvestatud.</value>
@@ -942,7 +942,7 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
     <value>Üleslaadimine ebaõnnestus.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Põllu üleslaadimine AgShare'i...</value>
+    <value>Põllu üleslaadimine AgShare'i</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Ekraani nupud</value>

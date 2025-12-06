@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Über...</value>
+    <value>Über</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Geometrieversatz</value>
@@ -819,7 +819,7 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
     <value>Bitte A-B Linie eingeben</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Bitte warten...</value>
+    <value>Bitte warten</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Punkt</value>
@@ -930,10 +930,10 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
     <value>Bis zum nächsten Mal!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Feld wird gespeichert..</value>
+    <value>Feld wird gespeichert</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Feldparameter werden gespeichert...</value>
+    <value>Feldparameter werden gespeichert</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Feldparameter gespeichert.</value>
@@ -942,10 +942,10 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
     <value>Feld lokal gespeichert.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Herunterfahren wird abgeschlossen..</value>
+    <value>Herunterfahren wird abgeschlossen</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Einstellungen werden gespeichert...</value>
+    <value>Einstellungen werden gespeichert</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Einstellungen gespeichert.</value>
@@ -957,7 +957,7 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
     <value>Hochladen fehlgeschlagen.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Hochladen zu AgShare...</value>
+    <value>Hochladen zu AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Bildschirmtasten</value>

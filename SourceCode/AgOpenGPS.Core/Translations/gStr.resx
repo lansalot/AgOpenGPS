@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>About...</value>
+    <value>About</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -843,7 +843,7 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>Please Enter ABLine</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Please Wait...</value>
+    <value>Please Wait</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Point</value>
@@ -954,10 +954,10 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>See you next time!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Saving field..</value>
+    <value>Saving field</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Saving field parameters...</value>
+    <value>Saving field parameters</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Field parameters saved.</value>
@@ -966,10 +966,10 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>Field saved locally.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Finalizing shutdown..</value>
+    <value>Finalizing shutdown</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Saving settings...</value>
+    <value>Saving settings</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Settings saved.</value>
@@ -981,7 +981,7 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>Upload failed.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Uploading field to AgShare...</value>
+    <value>Uploading field to AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Screen Buttons</value>

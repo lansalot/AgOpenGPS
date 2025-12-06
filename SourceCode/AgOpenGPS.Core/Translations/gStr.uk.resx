@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>О програмі...</value>
+    <value>О програмі</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Акерманн</value>
@@ -843,7 +843,7 @@
     <value>Будь ласка, Введіть (AB) лінію</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Будь ласка, зачекайте...</value>
+    <value>Будь ласка, зачекайте</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Точка</value>
@@ -954,10 +954,10 @@
     <value>До зустрічі наступного разу!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Збереження поля..</value>
+    <value>Збереження поля</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Збереження параметрів поля...</value>
+    <value>Збереження параметрів поля</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Параметри поля збережено.</value>
@@ -966,10 +966,10 @@
     <value>Поле збережено локально.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Завершення завершення..</value>
+    <value>Завершення завершення</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Збереження налаштувань...</value>
+    <value>Збереження налаштувань</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Налаштування збережено.</value>
@@ -981,7 +981,7 @@
     <value>Не вдалося завантажити.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Завантаження в AgShare...</value>
+    <value>Завантаження в AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Екранні кнопки</value>

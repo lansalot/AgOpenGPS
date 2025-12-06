@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Apie...</value>
+    <value>Apie</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Akermanas</value>
@@ -822,7 +822,7 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
     <value>Prašome įvesti į AB liniją</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Palaukite...</value>
+    <value>Palaukite</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Taškas</value>

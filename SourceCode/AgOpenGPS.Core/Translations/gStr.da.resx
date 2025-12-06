@@ -127,7 +127,7 @@
     <value>AB Linje</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Om…</value>
+    <value>Om</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -669,7 +669,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Vælg AB Linie</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Vent venligst...</value>
+    <value>Vent venligst</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Punkt</value>
@@ -741,10 +741,10 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Vi ses næste gang!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Gemmer felt..</value>
+    <value>Gemmer felt</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Gemmer feltparametre...</value>
+    <value>Gemmer feltparametre</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Feltparametre gemt.</value>
@@ -753,10 +753,10 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Felt gemt lokalt.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Afslutning af lukning..</value>
+    <value>Afslutning af lukning</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Gemmer indstillinger...</value>
+    <value>Gemmer indstillinger</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Indstillinger gemt.</value>
@@ -768,7 +768,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Upload mislykkedes.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Upload til AgShare...</value>
+    <value>Upload til AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Skærm knapper</value>

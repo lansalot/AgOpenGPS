@@ -130,7 +130,7 @@
     <value>ADS-configuratie</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Over...</value>
+    <value>Over</value>
   </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>Actie geannuleerd</value>
@@ -783,7 +783,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Volg AB lijn aub</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Even wachten...</value>
+    <value>Even wachten</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Punt</value>
@@ -891,10 +891,10 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Tot de volgende keer!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Veld opslaan..</value>
+    <value>Veld opslaan</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Veldparameters opslaan...</value>
+    <value>Veldparameters opslaan</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Veldparameters opgeslagen.</value>
@@ -903,10 +903,10 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Veld lokaal opgeslagen.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Afsluiten wordt voltooid..</value>
+    <value>Afsluiten wordt voltooid</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Instellingen opslaan...</value>
+    <value>Instellingen opslaan</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Instellingen opgeslagen.</value>
@@ -918,7 +918,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Upload mislukt.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Uploaden naar AgShare...</value>
+    <value>Uploaden naar AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Scherm Knoppen</value>

@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>À propos de...</value>
+    <value>À propos de</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -819,7 +819,7 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
     <value>Entrer une ligne AB</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Attendez...</value>
+    <value>Attendez</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Point</value>
@@ -927,10 +927,10 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
     <value>À la prochaine !</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Sauvegarde du champ..</value>
+    <value>Sauvegarde du champ</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Sauvegarde des paramètres du champ...</value>
+    <value>Sauvegarde des paramètres du champ</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Paramètres du champ enregistrés.</value>
@@ -939,10 +939,10 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
     <value>Champ enregistré localement.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Finalisation de l'arrêt..</value>
+    <value>Finalisation de l'arrêt</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Sauvegarde des paramètres...</value>
+    <value>Sauvegarde des paramètres</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Paramètres enregistrés.</value>
@@ -954,7 +954,7 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
     <value>Échec du téléversement.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Téléversement sur AgShare...</value>
+    <value>Téléversement sur AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Ecran bouttons</value>
