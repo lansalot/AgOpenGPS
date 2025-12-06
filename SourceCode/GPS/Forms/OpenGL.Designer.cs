@@ -1,4 +1,5 @@
 ﻿using AgLibrary.Logging;
+using AgOpenGPS;
 using AgOpenGPS.Core.Drawing;
 using AgOpenGPS.Core.DrawLib;
 using AgOpenGPS.Core.Models;
@@ -6,6 +7,7 @@ using AgOpenGPS.Properties;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
@@ -2951,104 +2953,60 @@ namespace AgOpenGPS
             frustum[23] = clip[15] - clip[13];
         }
 
-        public double maxFieldX, maxFieldY, minFieldX, minFieldY, fieldCenterX, fieldCenterY, maxFieldDistance, maxCrossFieldLength;
+        private GeoBoundingBox fieldBoundingBox;
+        public GeoCoord FieldCenter => fieldBoundingBox.CenterCoord;
+        public double fieldCenterX => FieldCenter.Easting;
+        public double fieldCenterY => FieldCenter.Northing;
+        public double maxFieldDistance;
 
         //determine mins maxs of patches and whole field.
         public void CalculateMinMax()
         {
-
-            minFieldX = 9999999; minFieldY = 9999999;
-            maxFieldX = -9999999; maxFieldY = -9999999;
-
-            //min max of the boundary
-            //min max of the boundary
-            if (bnd.bndList.Count > 0)
+            fieldBoundingBox = CalculateFieldBoundingBox();
+            if (fieldBoundingBox.IsEmpty)
             {
-                int bndCnt = bnd.bndList[0].fenceLine.Count;
-                for (int i = 0; i < bndCnt; i++)
-                {
-                    double x = bnd.bndList[0].fenceLine[i].easting;
-                    double y = bnd.bndList[0].fenceLine[i].northing;
-
-                    //also tally the max/min of field x and z
-                    if (minFieldX > x) minFieldX = x;
-                    if (maxFieldX < x) maxFieldX = x;
-                    if (minFieldY > y) minFieldY = y;
-                    if (maxFieldY < y) maxFieldY = y;
-                }
-
+                fieldBoundingBox.Include(new GeoCoord(0.0, 0.0));
+                maxFieldDistance = 1500;
             }
             else
             {
-                //draw patches j= # of sections
-                for (int j = 0; j < triStrip.Count; j++)
+                //the largest distance across field
+                double eastingDistance = fieldBoundingBox.MaxEasting - fieldBoundingBox.MinEasting;
+                double northingDistance = fieldBoundingBox.MaxNorthing - fieldBoundingBox.MinNorthing;
+
+                maxFieldDistance = Math.Max(eastingDistance, northingDistance);
+
+                if (maxFieldDistance < 100) maxFieldDistance = 100;
+                if (maxFieldDistance > 5000) maxFieldDistance = 5000;
+            }
+        }
+
+        private GeoBoundingBox CalculateFieldBoundingBox()
+        {
+            GeoBoundingBox bb = GeoBoundingBox.CreateEmpty();
+            if (bnd.bndList.Count > 0)
+            {
+                foreach (vec3 vertex in bnd.bndList[0].fenceLine)
                 {
-                    //every time the section turns off and on is a new patch
-                    int patchCount = triStrip[j].patchList.Count;
-
-                    if (patchCount > 0)
+                    bb.Include(vertex.ToGeoCoord());
+                }
+            }
+            else
+            {
+                foreach (CPatches patches in triStrip)
+                {
+                    //for every new chunk of patch
+                    foreach (List<vec3> triList in patches.patchList)
                     {
-                        //for every new chunk of patch
-                        foreach (var triList in triStrip[j].patchList)
+                        // Skip the first entry. It is the color disguised as vec3
+                        for (int i = 1; i < triList.Count; i += 3)
                         {
-                            int count2 = triList.Count;
-                            for (int i = 1; i < count2; i += 3)
-                            {
-                                double x = triList[i].easting;
-                                double y = triList[i].northing;
-
-                                //also tally the max/min of field x and z
-                                if (minFieldX > x) minFieldX = x;
-                                if (maxFieldX < x) maxFieldX = x;
-                                if (minFieldY > y) minFieldY = y;
-                                if (maxFieldY < y) maxFieldY = y;
-                            }
+                            bb.Include(triList[i].ToGeoCoord());
                         }
                     }
                 }
             }
-
-            if (maxFieldX == -9999999 | minFieldX == 9999999 | maxFieldY == -9999999 | minFieldY == 9999999)
-            {
-                maxFieldX = 0; minFieldX = 0; maxFieldY = 0; minFieldY = 0; maxFieldDistance = 1500;
-            }
-            else
-            {
-                //the largest distancew across field
-                double dist = Math.Abs(minFieldX - maxFieldX);
-                double dist2 = Math.Abs(minFieldY - maxFieldY);
-
-                maxCrossFieldLength = Math.Sqrt(dist * dist + dist2 * dist2) * 1.0;
-
-                if (dist > dist2) maxFieldDistance = (dist);
-                else maxFieldDistance = (dist2);
-
-                if (maxFieldDistance < 100) maxFieldDistance = 100;
-                if (maxFieldDistance > 5000) maxFieldDistance = 5000;
-                //lblMax.Text = ((int)maxFieldDistance).ToString();
-
-                fieldCenterX = (maxFieldX + minFieldX) / 2.0;
-                fieldCenterY = (maxFieldY + minFieldY) / 2.0;
-            }
-
-            //minFieldX -= 8;
-            //minFieldY -= 8;
-            //maxFieldX += 8;
-            //maxFieldY += 8;
-
-            //if (isMetric)
-            //{
-            //    lblFieldWidthEastWest.Text = Math.Abs((maxFieldX - minFieldX)).ToString("N0") + " m";
-            //    lblFieldWidthNorthSouth.Text = Math.Abs((maxFieldY - minFieldY)).ToString("N0") + " m";
-            //}
-            //else
-            //{
-            //    lblFieldWidthEastWest.Text = Math.Abs((maxFieldX - minFieldX) * glm.m2ft).ToString("N0") + " ft";
-            //    lblFieldWidthNorthSouth.Text = Math.Abs((maxFieldY - minFieldY) * glm.m2ft).ToString("N0") + " ft";
-            //}
-
-            //lblZooom.Text = ((int)(maxFieldDistance)).ToString();
-
+            return bb;
         }
     }
 }
