@@ -138,6 +138,12 @@
   <data name="gsAckermann" xml:space="preserve">
     <value>阿克曼转向</value>
   </data>
+  <data name="gsAcquire" xml:space="preserve">
+    <value>获取</value>
+  </data>
+  <data name="gsAcquireFactor" xml:space="preserve">
+    <value>增长系数</value>
+  </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>动作已被取消</value>
   </data>
@@ -170,12 +176,6 @@
   </data>
   <data name="gsApplied" xml:space="preserve">
     <value>应用</value>
-  </data>
-  <data name="gsAquire" xml:space="preserve">
-    <value>获取</value>
-  </data>
-  <data name="gsAquireFactor" xml:space="preserve">
-    <value>增长系数</value>
   </data>
   <data name="gsArea" xml:space="preserve">
     <value>面积</value>

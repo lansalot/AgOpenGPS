@@ -66,10 +66,10 @@ namespace AgOpenGPS
             labelHeadingDegree.Text = gStr.gsHeading;
             labelOnDelay.Text = gStr.gsOnDelay;
             labelSpeedFactor.Text = gStr.gsSpeedFactor;
-            labelAquireFactor.Text = gStr.gsAquireFactor;
-            labelAquireDescription.Text = $"{gStr.gsAquire} = {gStr.gsFactor} * {gStr.gsHold}";
+            labelAcquireFactor.Text = gStr.gsAcquireFactor;
+            labelAcquireDescription.Text = $"{gStr.gsAcquire} = {gStr.gsFactor} * {gStr.gsHold}";
             labelDist.Text = gStr.gsDistance;
-            labelAquire2.Text = gStr.gsAquire;
+            labelAcquire2.Text = gStr.gsAcquire;
             labelHold.Text = gStr.gsHold;
 
             //translate pop-out

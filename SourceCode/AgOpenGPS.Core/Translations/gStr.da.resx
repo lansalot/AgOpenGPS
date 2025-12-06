@@ -132,6 +132,12 @@
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
   </data>
+  <data name="gsAcquire" xml:space="preserve">
+    <value>Erhverve</value>
+  </data>
+  <data name="gsAcquireFactor" xml:space="preserve">
+    <value>Erhverve Faktor</value>
+  </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>Handling afbrudt</value>
   </data>
@@ -158,12 +164,6 @@
   </data>
   <data name="gsApplied" xml:space="preserve">
     <value>Bearbejdet</value>
-  </data>
-  <data name="gsAquire" xml:space="preserve">
-    <value>Erhverve</value>
-  </data>
-  <data name="gsAquireFactor" xml:space="preserve">
-    <value>Erhverve Faktor</value>
   </data>
   <data name="gsArea" xml:space="preserve">
     <value>Areal</value>

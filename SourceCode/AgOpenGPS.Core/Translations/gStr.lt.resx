@@ -138,6 +138,12 @@
   <data name="gsAckermann" xml:space="preserve">
     <value>Akermanas</value>
   </data>
+  <data name="gsAcquire" xml:space="preserve">
+    <value>Pasiekti</value>
+  </data>
+  <data name="gsAcquireFactor" xml:space="preserve">
+    <value>Pasiekimo faktorius</value>
+  </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>Veiksmas atšauktas</value>
   </data>
@@ -167,12 +173,6 @@
   </data>
   <data name="gsApplied" xml:space="preserve">
     <value>Apdirbta</value>
-  </data>
-  <data name="gsAquire" xml:space="preserve">
-    <value>Pasiekti</value>
-  </data>
-  <data name="gsAquireFactor" xml:space="preserve">
-    <value>Pasiekimo faktorius</value>
   </data>
   <data name="gsArea" xml:space="preserve">
     <value>Plotas</value>

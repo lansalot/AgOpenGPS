@@ -132,6 +132,12 @@
   <data name="gsAbout" xml:space="preserve">
     <value>Over</value>
   </data>
+  <data name="gsAcquire" xml:space="preserve">
+    <value>Aquisitie</value>
+  </data>
+  <data name="gsAcquireFactor" xml:space="preserve">
+    <value>Lijn Aquisitie</value>
+  </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>Actie geannuleerd</value>
   </data>
@@ -164,12 +170,6 @@
   </data>
   <data name="gsApplied" xml:space="preserve">
     <value>Bewerkt</value>
-  </data>
-  <data name="gsAquire" xml:space="preserve">
-    <value>Aquisitie</value>
-  </data>
-  <data name="gsAquireFactor" xml:space="preserve">
-    <value>Lijn Aquisitie</value>
   </data>
   <data name="gsArea" xml:space="preserve">
     <value>Areaal</value>

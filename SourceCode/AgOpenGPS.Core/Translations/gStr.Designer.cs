@@ -106,6 +106,24 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acquire.
+        /// </summary>
+        public static string gsAcquire {
+            get {
+                return ResourceManager.GetString("gsAcquire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acquire Factor.
+        /// </summary>
+        public static string gsAcquireFactor {
+            get {
+                return ResourceManager.GetString("gsAcquireFactor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Action Has Been Cancelled.
         /// </summary>
         public static string gsActionHasBeenCancelled {
@@ -228,24 +246,6 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsApplied {
             get {
                 return ResourceManager.GetString("gsApplied", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Acquire.
-        /// </summary>
-        public static string gsAquire {
-            get {
-                return ResourceManager.GetString("gsAquire", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Aquire Factor.
-        /// </summary>
-        public static string gsAquireFactor {
-            get {
-                return ResourceManager.GetString("gsAquireFactor", resourceCulture);
             }
         }
         

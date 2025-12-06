@@ -61,6 +61,9 @@
   <data name="gsAbout" xml:space="preserve">
     <value>…حقندە</value>
   </data>
+  <data name="gsAcquire" xml:space="preserve">
+    <value>ایدنمك</value>
+  </data>
   <data name="gsActive" xml:space="preserve">
     <value>آقتیفلشدر</value>
   </data>
@@ -69,9 +72,6 @@
   </data>
   <data name="gsApplied" xml:space="preserve">
     <value>اویغولاندی</value>
-  </data>
-  <data name="gsAquire" xml:space="preserve">
-    <value>ایدنمك</value>
   </data>
   <data name="gsArea" xml:space="preserve">
     <value>آلان</value>

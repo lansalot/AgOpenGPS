@@ -135,6 +135,12 @@
   <data name="gsAckermann" xml:space="preserve">
     <value>좌각도</value>
   </data>
+  <data name="gsAcquire" xml:space="preserve">
+    <value>습득</value>
+  </data>
+  <data name="gsAcquireFactor" xml:space="preserve">
+    <value>습득요인</value>
+  </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>작업취소</value>
   </data>
@@ -167,12 +173,6 @@
   </data>
   <data name="gsApplied" xml:space="preserve">
     <value>적용</value>
-  </data>
-  <data name="gsAquire" xml:space="preserve">
-    <value>습득</value>
-  </data>
-  <data name="gsAquireFactor" xml:space="preserve">
-    <value>습득요인</value>
   </data>
   <data name="gsArea" xml:space="preserve">
     <value>구역</value>
