@@ -339,7 +339,7 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
     <value>Dag</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---Død sone---</value>
+    <value>Død sone</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Standard</value>

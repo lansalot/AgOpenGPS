@@ -345,7 +345,7 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Päivä</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>--Kuollut Alue--</value>
+    <value>Kuollut Alue</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Oletus</value>

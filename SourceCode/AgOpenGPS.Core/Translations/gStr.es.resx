@@ -348,7 +348,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Día</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---Zona Muerta---</value>
+    <value>Zona Muerta</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Por defecto</value>

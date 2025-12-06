@@ -348,7 +348,7 @@
     <value>День</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---Мертва зона---</value>
+    <value>Мертва зона</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>За замовчуванням</value>

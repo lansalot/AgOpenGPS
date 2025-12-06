@@ -348,7 +348,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Dia</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---Zona Morta---</value>
+    <value>Zona Morta</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Padrão</value>

@@ -348,7 +348,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Diena</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>--- Mirusī zona ---</value>
+    <value>Mirusī zona</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Noklusējums</value>

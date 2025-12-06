@@ -345,7 +345,7 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
     <value>Den</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---Mrtvázóna---</value>
+    <value>Mrtvázóna</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Výchozí</value>

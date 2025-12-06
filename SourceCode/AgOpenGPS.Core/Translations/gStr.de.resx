@@ -342,7 +342,7 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
     <value>Tag</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>--Totbereich--</value>
+    <value>Totbereich</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Standart</value>

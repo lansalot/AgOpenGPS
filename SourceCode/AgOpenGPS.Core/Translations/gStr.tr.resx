@@ -345,7 +345,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Gün</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---Ölü Bölge---</value>
+    <value>Ölü Bölge</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Varsayılan</value>

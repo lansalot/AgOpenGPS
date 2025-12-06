@@ -342,7 +342,7 @@
     <value>날짜</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---데드존---</value>
+    <value>데드존</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>기본값</value>

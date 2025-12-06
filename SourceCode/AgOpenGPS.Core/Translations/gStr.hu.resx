@@ -345,7 +345,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Nap</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---Halott zóna---</value>
+    <value>Halott zóna</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Alapértelmezett</value>

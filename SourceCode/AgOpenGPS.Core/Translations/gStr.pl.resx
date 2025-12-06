@@ -342,7 +342,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Dzień</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>-Martwa strefa-</value>
+    <value>Martwa strefa</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Domyślny</value>

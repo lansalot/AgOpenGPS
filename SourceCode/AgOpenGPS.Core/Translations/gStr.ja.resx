@@ -345,7 +345,7 @@
     <value>日中</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---デッドゾーン---</value>
+    <value>デッドゾーン</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>デフォルト</value>

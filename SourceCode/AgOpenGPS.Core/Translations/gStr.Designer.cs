@@ -747,7 +747,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ---Deadzone---.
+        ///   Looks up a localized string similar to Deadzone.
         /// </summary>
         public static string gsDeadzone {
             get {

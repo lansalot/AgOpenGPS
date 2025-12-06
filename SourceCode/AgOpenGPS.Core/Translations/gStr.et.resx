@@ -336,7 +336,7 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
     <value>Päev</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---Surnud tsoon---</value>
+    <value>Surnud tsoon</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Vaikimisi</value>

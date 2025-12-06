@@ -342,7 +342,7 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Giorno</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>--Deadzone--</value>
+    <value>Deadzone</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Default</value>

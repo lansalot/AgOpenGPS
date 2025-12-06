@@ -342,7 +342,7 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
     <value>Jour</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---Zone morte---</value>
+    <value>Zone morte</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Défaut</value>
