@@ -848,8 +848,8 @@ namespace AgOpenGPS
                     }
                 }
 
-                vec3[] arr = new vec3[mf.bnd.bndList[0].fenceLine.Count];
-                mf.bnd.bndList[0].fenceLine.CopyTo(arr);
+                vec3[] arr = new vec3[mf.bnd.bndList[bndSelect].fenceLine.Count];
+                mf.bnd.bndList[bndSelect].fenceLine.CopyTo(arr);
 
                 if (start++ == arr.Length) start--;
                 //if (end-- == -1) end = 0;
@@ -887,7 +887,7 @@ namespace AgOpenGPS
                     }
                 }
 
-                mf.bnd.bndList[0].FixFenceLine(0);
+                mf.bnd.bndList[bndSelect].FixFenceLine(bndSelect);
 
                 mf.CalculateMinMax();
                 mf.bnd.BuildTurnLines();
@@ -1064,6 +1064,7 @@ namespace AgOpenGPS
 
             if (mf.bnd.bndList.Count > 0)
             {
+                // outter boundary
                 GLW.SetLineWidth(2.0f);
                 GLW.SetColor(boundaryColor);
                 GeoCoord[] fenceLineArray = GeoRefactorHelper.ToGeoCoordArray(mf.bnd.bndList[0].fenceLine);
@@ -1071,6 +1072,21 @@ namespace AgOpenGPS
 
                 GLW.SetPointSize(4.0f);
                 GLW.DrawPointsPrimitive(fenceLineArray);
+
+                if (mf.bnd.bndList.Count > 1)
+                {
+                    //inner boundaries
+                    for (int i = 1; i < mf.bnd.bndList.Count; i++)
+                    {
+                        GLW.SetLineWidth(2.0f);
+                        GLW.SetColor(boundaryColor); //Change color to something else than main boundary color, maybe yellow?
+                        GeoCoord[] innerFenceLineArray = GeoRefactorHelper.ToGeoCoordArray(mf.bnd.bndList[i].fenceLine);
+                        GLW.DrawLineLoopPrimitive(innerFenceLineArray);
+
+                        GLW.SetPointSize(4.0f);
+                        GLW.DrawPointsPrimitive(innerFenceLineArray);
+                    }
+                }
             }
 
             //new boundary being made
@@ -1109,10 +1125,10 @@ namespace AgOpenGPS
                     GLW.SetColor(orange);
                     List<GeoCoord> orangeLineStrip = new List<GeoCoord>
                     {
-                        mf.bnd.bndList[0].fenceLine[start].ToGeoCoord()
+                        mf.bnd.bndList[bndSelect].fenceLine[start].ToGeoCoord()
                     };
                     if (isC) orangeLineStrip.Add(pint.ToGeoCoord());
-                    orangeLineStrip.Add(mf.bnd.bndList[0].fenceLine[end].ToGeoCoord());
+                    orangeLineStrip.Add(mf.bnd.bndList[bndSelect].fenceLine[end].ToGeoCoord());
                     GLW.DrawLineStripPrimitive(orangeLineStrip.ToArray());
                 }
             }
