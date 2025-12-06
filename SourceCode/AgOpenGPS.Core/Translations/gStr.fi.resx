@@ -129,9 +129,6 @@
   <data name="gsADConverter" xml:space="preserve">
     <value>AD-muunnin</value>
   </data>
-  <data name="gsAOGMenu" xml:space="preserve">
-    <value>AOG Valikko</value>
-  </data>
   <data name="gsAPlus" xml:space="preserve">
     <value>A+</value>
   </data>

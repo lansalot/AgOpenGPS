@@ -126,9 +126,6 @@
   <data name="gsABline" xml:space="preserve">
     <value>Линия АВ</value>
   </data>
-  <data name="gsAOGMenu" xml:space="preserve">
-    <value>Меню</value>
-  </data>
   <data name="gsAbout" xml:space="preserve">
     <value>О программе</value>
   </data>

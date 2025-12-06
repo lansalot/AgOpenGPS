@@ -129,9 +129,6 @@
   <data name="gsADConverter" xml:space="preserve">
     <value>模拟数字转换器</value>
   </data>
-  <data name="gsAOGMenu" xml:space="preserve">
-    <value>AgOpenGPS软件菜单</value>
-  </data>
   <data name="gsAPlus" xml:space="preserve">
     <value>优秀</value>
   </data>

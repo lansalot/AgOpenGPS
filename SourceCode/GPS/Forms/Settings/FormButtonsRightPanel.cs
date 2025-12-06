@@ -24,7 +24,7 @@ namespace AgOpenGPS
             //translate all the controls
             this.Text = gStr.gsButtonPicker;
             groupBoxSelectButtons.Text = gStr.gsSelectButtons;
-            groupBoxAOGMenu.Text = gStr.gsAOGMenu;
+            groupBoxAOGMenu.Text = gStr.gsRightMenu;
             labelButtonArrangeOne.Text = gStr.gsArrangeText;
             buttonLabelDefault.Text = gStr.gsDefault;
             buttonLabelReset.Text = gStr.gsReset;

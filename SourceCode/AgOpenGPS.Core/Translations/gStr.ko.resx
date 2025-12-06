@@ -126,9 +126,6 @@
   <data name="gsADConverter" xml:space="preserve">
     <value>AD변환</value>
   </data>
-  <data name="gsAOGMenu" xml:space="preserve">
-    <value>AOG메뉴</value>
-  </data>
   <data name="gsAPlus" xml:space="preserve">
     <value>A플러스</value>
   </data>

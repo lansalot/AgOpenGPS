@@ -214,15 +214,6 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AOG Menu.
-        /// </summary>
-        public static string gsAOGMenu {
-            get {
-                return ResourceManager.GetString("gsAOGMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A+.
         /// </summary>
         public static string gsAPlus {
