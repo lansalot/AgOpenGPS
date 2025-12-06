@@ -174,9 +174,6 @@
   <data name="gsAquire" xml:space="preserve">
     <value>Rátalálás</value>
   </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>Rátalálás = Arány * Tartás</value>
-  </data>
   <data name="gsAquireFactor" xml:space="preserve">
     <value>Rátalálási arány</value>
   </data>
@@ -467,6 +464,9 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Extra irányvonalak</value>
+  </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Arány</value>
   </data>
   <data name="gsFast" xml:space="preserve">
     <value>Gyors</value>

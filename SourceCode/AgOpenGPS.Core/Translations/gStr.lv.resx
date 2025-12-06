@@ -177,9 +177,6 @@
   <data name="gsAquire" xml:space="preserve">
     <value>Sasniedzamība</value>
   </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>Sasniedzamība = Faktors * Aizture</value>
-  </data>
   <data name="gsAquireFactor" xml:space="preserve">
     <value>Sasniedzamības faktors</value>
   </data>
@@ -475,6 +472,9 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Papildu vadlīnijas</value>
+  </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Faktors</value>
   </data>
   <data name="gsFast" xml:space="preserve">
     <value>Ātri</value>

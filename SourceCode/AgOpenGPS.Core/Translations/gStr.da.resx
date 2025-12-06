@@ -162,9 +162,6 @@
   <data name="gsAquire" xml:space="preserve">
     <value>Erhverve</value>
   </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>Erhverve = Faktor * Hold</value>
-  </data>
   <data name="gsAquireFactor" xml:space="preserve">
     <value>Erhverve Faktor</value>
   </data>
@@ -424,6 +421,9 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Ekstra hjælpelinjer</value>
+  </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Faktor</value>
   </data>
   <data name="gsFast" xml:space="preserve">
     <value>Hurtig</value>

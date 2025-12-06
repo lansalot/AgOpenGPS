@@ -177,9 +177,6 @@
   <data name="gsAquire" xml:space="preserve">
     <value>Adquirir</value>
   </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>Adquirir = Fator * Manter</value>
-  </data>
   <data name="gsAquireFactor" xml:space="preserve">
     <value>Fator de Aquisição</value>
   </data>
@@ -475,6 +472,9 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Diretrizes extras</value>
+  </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Fator</value>
   </data>
   <data name="gsFast" xml:space="preserve">
     <value>Rápido</value>

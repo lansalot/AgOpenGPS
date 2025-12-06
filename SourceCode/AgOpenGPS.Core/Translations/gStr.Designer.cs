@@ -241,15 +241,6 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Acquire = Factor * Hold.
-        /// </summary>
-        public static string gsAquireDescription {
-            get {
-                return ResourceManager.GetString("gsAquireDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Aquire Factor.
         /// </summary>
         public static string gsAquireFactor {
@@ -1130,6 +1121,15 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsExtraGuideLines {
             get {
                 return ResourceManager.GetString("gsExtraGuideLines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Factor.
+        /// </summary>
+        public static string gsFactor {
+            get {
+                return ResourceManager.GetString("gsFactor", resourceCulture);
             }
         }
         

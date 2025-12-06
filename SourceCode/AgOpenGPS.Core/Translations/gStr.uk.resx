@@ -177,9 +177,6 @@
   <data name="gsAquire" xml:space="preserve">
     <value>Отримати</value>
   </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>Отримання = Фактор * Утримання</value>
-  </data>
   <data name="gsAquireFactor" xml:space="preserve">
     <value>Фактор придбання</value>
   </data>
@@ -475,6 +472,9 @@
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Додаткові рекомендації</value>
+  </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Фактор</value>
   </data>
   <data name="gsFast" xml:space="preserve">
     <value>Швидкий</value>

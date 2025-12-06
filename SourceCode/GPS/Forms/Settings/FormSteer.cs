@@ -67,7 +67,7 @@ namespace AgOpenGPS
             labelOnDelay.Text = gStr.gsOnDelay;
             labelSpeedFactor.Text = gStr.gsSpeedFactor;
             labelAquireFactor.Text = gStr.gsAquireFactor;
-            labelAquireDescription.Text = gStr.gsAquireDescription;
+            labelAquireDescription.Text = $"{gStr.gsAquire} = {gStr.gsFactor} * {gStr.gsHold}";
             labelDist.Text = gStr.gsDistance;
             labelAquire2.Text = gStr.gsAquire;
             labelHold.Text = gStr.gsHold;

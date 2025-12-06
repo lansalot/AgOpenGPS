@@ -171,9 +171,6 @@
   <data name="gsAquire" xml:space="preserve">
     <value>Skaffe</value>
   </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>Skaffe = Faktor * Hold</value>
-  </data>
   <data name="gsAquireFactor" xml:space="preserve">
     <value>Aquire faktor</value>
   </data>
@@ -454,6 +451,9 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Ekstra retningslinjer</value>
+  </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Faktor</value>
   </data>
   <data name="gsFast" xml:space="preserve">
     <value>Hurtig</value>

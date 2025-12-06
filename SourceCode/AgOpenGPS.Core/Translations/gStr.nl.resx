@@ -443,6 +443,9 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Extra geleidingslijnen</value>
   </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Factor</value>
+  </data>
   <data name="gsFast" xml:space="preserve">
     <value>Snel</value>
   </data>

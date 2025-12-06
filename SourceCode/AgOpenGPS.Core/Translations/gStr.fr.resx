@@ -464,6 +464,9 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Multilignes</value>
   </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Facteur</value>
+  </data>
   <data name="gsFast" xml:space="preserve">
     <value>Rapide</value>
   </data>

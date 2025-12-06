@@ -174,9 +174,6 @@
   <data name="gsAquire" xml:space="preserve">
     <value>Edinmek</value>
   </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>Edinme = Faktör * Tutma</value>
-  </data>
   <data name="gsAquireFactor" xml:space="preserve">
     <value>Edinilmiş Faktör</value>
   </data>
@@ -472,6 +469,9 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Ek Yönergeler</value>
+  </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Faktör</value>
   </data>
   <data name="gsFast" xml:space="preserve">
     <value>Hızlı</value>

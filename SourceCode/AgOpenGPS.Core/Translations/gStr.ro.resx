@@ -177,9 +177,6 @@
   <data name="gsAquire" xml:space="preserve">
     <value>Dobândi</value>
   </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>Dobândi = Factorul * Menținere</value>
-  </data>
   <data name="gsAquireFactor" xml:space="preserve">
     <value>Factorul dobândit</value>
   </data>
@@ -475,6 +472,9 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Linii ghidare suplimentare</value>
+  </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Factorul</value>
   </data>
   <data name="gsFast" xml:space="preserve">
     <value>Rapid</value>
