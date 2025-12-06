@@ -287,8 +287,8 @@
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Спершу закрити поле</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>См -&gt; Піксель</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>См</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Вибір кольору</value>
@@ -829,6 +829,9 @@
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Відстань повороту</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Піксель</value>
   </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>Рослинний поп</value>

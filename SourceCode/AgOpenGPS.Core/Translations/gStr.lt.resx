@@ -281,8 +281,8 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Pirmiausia uždaryti lauką</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Pixel'is</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Spalvo parinkimas</value>
@@ -808,6 +808,9 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Atstumas nuo galinės ašies</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Pixel'is</value>
   </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>Padargo pop</value>

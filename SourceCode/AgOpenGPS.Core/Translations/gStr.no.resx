@@ -278,8 +278,8 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Lukk skiftet først</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Piksel</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Fargevelger</value>
@@ -799,6 +799,9 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Pivotavstand</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Piksel</value>
   </data>
   <data name="gsPleaseEnterABLine" xml:space="preserve">
     <value>Vennligst skriv inn AB-linje</value>

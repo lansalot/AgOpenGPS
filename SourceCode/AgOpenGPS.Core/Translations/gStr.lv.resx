@@ -287,8 +287,8 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Vispirms aizveriet lauku</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Pikselis</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Krāsu izvēle</value>
@@ -829,6 +829,9 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Attālums no aizmugurējās ass</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Pikselis</value>
   </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>Augu blīvums</value>

@@ -284,8 +284,8 @@
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>フィールドを先に閉じる</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; ピクセル</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>カラーピッカー</value>
@@ -814,5 +814,8 @@
   </data>
   <data name="gsPasses" xml:space="preserve">
     <value>パス</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>ピクセル</value>
   </data>
 </root>

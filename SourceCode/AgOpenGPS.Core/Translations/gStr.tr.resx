@@ -284,7 +284,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Önce Alanı Kapat</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
+  <data name="gsCm" xml:space="preserve">
     <value>Cm -&gt; Piksel</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
@@ -1241,5 +1241,8 @@ KULLANIM RİSKİNİZ KENDİ TARAFINIZCA YAPILMAKTADIR.</value>
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Piksel</value>
   </data>
 </root>

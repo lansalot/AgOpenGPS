@@ -278,8 +278,8 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Kõigepealt sulge põld</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Piksel</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Värvivalija</value>
@@ -796,6 +796,9 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Pöördekaugus</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Piksel</value>
   </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>Taimepop</value>

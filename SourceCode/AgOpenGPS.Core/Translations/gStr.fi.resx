@@ -284,8 +284,8 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Sulje ensin pelto</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Pixel</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Värin Valitsin</value>
@@ -814,6 +814,9 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Pivot Etäisyys</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Pixel</value>
   </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>Kasvitiheys</value>

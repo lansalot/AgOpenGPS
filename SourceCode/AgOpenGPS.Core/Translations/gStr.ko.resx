@@ -281,8 +281,8 @@
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>들판먼저닫기</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>센치미터-&gt;픽셀</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>센치미터</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>색상선택</value>
@@ -811,6 +811,9 @@
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>중심축거리</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>픽셀</value>
   </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>식재밀도</value>

@@ -284,8 +284,8 @@
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>请先关闭田块</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>厘米 -&gt; 像素</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>厘米</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>颜色选择器</value>
@@ -814,6 +814,9 @@
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>支点距离</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>像素</value>
   </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>植株密度</value>

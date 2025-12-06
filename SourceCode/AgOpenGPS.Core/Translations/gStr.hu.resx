@@ -284,8 +284,8 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Zárd be a területet először</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Pixel</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Színválasztó</value>
@@ -818,6 +818,9 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Csuklópont távolság</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Pixel</value>
   </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>Tőszám</value>

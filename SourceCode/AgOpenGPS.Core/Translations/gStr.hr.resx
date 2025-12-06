@@ -287,8 +287,8 @@
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Najprije zatvorite polje</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Pixel</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Izbor boje</value>
@@ -829,6 +829,9 @@
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>udaljenost Točke zakreta</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Pixel</value>
   </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>Gustoća biljaka</value>

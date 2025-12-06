@@ -567,11 +567,11 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cm -&gt; Pixel.
+        ///   Looks up a localized string similar to Cm.
         /// </summary>
-        public static string gsCmPix {
+        public static string gsCm {
             get {
-                return ResourceManager.GetString("gsCmPix", resourceCulture);
+                return ResourceManager.GetString("gsCm", resourceCulture);
             }
         }
         
@@ -2192,6 +2192,15 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsPivotDistance {
             get {
                 return ResourceManager.GetString("gsPivotDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pixel.
+        /// </summary>
+        public static string gsPixel {
+            get {
+                return ResourceManager.GetString("gsPixel", resourceCulture);
             }
         }
         

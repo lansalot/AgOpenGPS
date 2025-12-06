@@ -284,8 +284,8 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Feld vorher schließen</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Pixel</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Farbauswahl</value>
@@ -805,6 +805,9 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Abstand Antenne zur Hinterachse</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Pixel</value>
   </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>Anlage</value>

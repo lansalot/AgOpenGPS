@@ -287,8 +287,8 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Antes cierre el fichero</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Pixel</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Seleccionador de colores</value>
@@ -823,6 +823,9 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Distancia de Pivote</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Pixel</value>
   </data>
   <data name="gsPleaseEnterABLine" xml:space="preserve">
     <value>Introducir una línea AB</value>

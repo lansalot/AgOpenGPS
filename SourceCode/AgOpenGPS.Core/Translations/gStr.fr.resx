@@ -281,8 +281,8 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Fermez d'abord le champ</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Pixel</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>Cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Sélecteur de couleurs</value>
@@ -811,6 +811,9 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Distance du pivot</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Pixel</value>
   </data>
   <data name="gsPleaseEnterABLine" xml:space="preserve">
     <value>Entrer une ligne AB</value>
