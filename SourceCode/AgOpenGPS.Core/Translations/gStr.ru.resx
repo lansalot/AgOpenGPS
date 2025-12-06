@@ -175,7 +175,7 @@
     <value>Фон</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>Основа поля:</value>
+    <value>Основа поля</value>
   </data>
   <data name="gsBottomMenu" xml:space="preserve">
     <value>Нижнее меню</value>
@@ -334,7 +334,7 @@
     <value>Не согласен</value>
   </data>
   <data name="gsDiscussions" xml:space="preserve">
-    <value>Форум:</value>
+    <value>Форум</value>
   </data>
   <data name="gsDisplay" xml:space="preserve">
     <value>Отображать</value>
@@ -400,7 +400,7 @@
     <value>Выход</value>
   </data>
   <data name="gsExitToWindows" xml:space="preserve">
-    <value>Выход в Windows:</value>
+    <value>Выход в Windows</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Дополнительные линии</value>
@@ -499,7 +499,7 @@
     <value>Если направление неправильное, коснитесь транспорта</value>
   </data>
   <data name="gsImage" xml:space="preserve">
-    <value>Без изображения:</value>
+    <value>Без изображения</value>
   </data>
   <data name="gsImuFusion" xml:space="preserve">
     <value>Выравнивание</value>
@@ -625,7 +625,7 @@
     <value>Ничего не удалено</value>
   </data>
   <data name="gsNudge" xml:space="preserve">
-    <value>Сдвиг линии:</value>
+    <value>Сдвиг линии</value>
   </data>
   <data name="gsNudgeRefTrack" xml:space="preserve">
     <value>Сдвиг опорной линии</value>
@@ -643,7 +643,7 @@
     <value>Вкл.</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
-    <value>Прозрачность:</value>
+    <value>Прозрачность</value>
   </data>
   <data name="gsOpen" xml:space="preserve">
     <value>Открыть</value>
@@ -805,7 +805,7 @@
     <value>Разделительные линии прохода</value>
   </data>
   <data name="gsSections" xml:space="preserve">
-    <value>Секции:</value>
+    <value>Секции</value>
   </data>
   <data name="gsSelectButtons" xml:space="preserve">
     <value>Выберите кнопки</value>
@@ -829,7 +829,7 @@
     <value>Выключение</value>
   </data>
   <data name="gsShutdownIn" xml:space="preserve">
-    <value>Выключение:</value>
+    <value>Выключение</value>
   </data>
   <data name="gsSimpleTramLines" xml:space="preserve">
     <value>Создание тех.колеи</value>
@@ -895,7 +895,7 @@
     <value>Стрелка</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
-    <value>Условия и положения для версии: </value>
+    <value>Условия и положения для версии</value>
   </data>
   <data name="gsTermsOne" xml:space="preserve">
     <value>Если вы распространяете копии этой БЕСПЛАТНОЙ программы бесплатно, за плату, улучшенные, измененные, вы должны передать получателям те же свободы, которые вы получили, как указано в Лицензии GPLv3.</value>
@@ -934,7 +934,7 @@
     <value>Технологическая колея</value>
   </data>
   <data name="gsTramWidth" xml:space="preserve">
-    <value>Ширина тех.колеи:</value>
+    <value>Ширина тех.колеи</value>
   </data>
   <data name="gsTurnABCurveOn" xml:space="preserve">
     <value>Включите кривую AB</value>
@@ -961,7 +961,7 @@
     <value>Мин. сглаживание 3-4 радиуса</value>
   </data>
   <data name="gsVehiclegroupbox" xml:space="preserve">
-    <value>Тип транспорта:</value>
+    <value>Тип транспорта</value>
   </data>
   <data name="gsWebCam" xml:space="preserve">
     <value>Вебкамера</value>
@@ -970,10 +970,10 @@
     <value>Запад</value>
   </data>
   <data name="gsWheelbase" xml:space="preserve">
-    <value>Колесная база:</value>
+    <value>Колесная база</value>
   </data>
   <data name="gsWidth" xml:space="preserve">
-    <value>Ширина:</value>
+    <value>Ширина</value>
   </data>
   <data name="gsWindowsStillOpen" xml:space="preserve">
     <value>Окна еще открыты</value>

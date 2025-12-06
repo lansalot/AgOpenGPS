@@ -225,7 +225,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Fons</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>Pamatojoties uz lauku:</value>
+    <value>Pamatojoties uz lauku</value>
   </data>
   <data name="gsBottomMenu" xml:space="preserve">
     <value>Apakšējā izvēlne</value>
@@ -399,7 +399,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Nepiekrītu</value>
   </data>
   <data name="gsDiscussions" xml:space="preserve">
-    <value>Diskusijas:</value>
+    <value>Diskusijas</value>
   </data>
   <data name="gsDisplay" xml:space="preserve">
     <value>Parādīt</value>
@@ -477,7 +477,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Iziet</value>
   </data>
   <data name="gsExitToWindows" xml:space="preserve">
-    <value>Iziet uz Windows:</value>
+    <value>Iziet uz Windows</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Papildu vadlīnijas</value>
@@ -600,7 +600,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Ja nepareizs virziens, pieskarieties transportlīdzeklim</value>
   </data>
   <data name="gsImage" xml:space="preserve">
-    <value>Nav attēla:</value>
+    <value>Nav attēla</value>
   </data>
   <data name="gsImuFusion" xml:space="preserve">
     <value>Izlīdzināšana</value>
@@ -669,7 +669,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Garums</value>
   </data>
   <data name="gsLookAhead" xml:space="preserve">
-    <value>Skatoties uz priekšu:</value>
+    <value>Skatoties uz priekšu</value>
   </data>
   <data name="gsLookAheadTiming" xml:space="preserve">
     <value>Aizkaves laika iestatīšana</value>
@@ -774,7 +774,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Nekas nav izdzēsts</value>
   </data>
   <data name="gsNudge" xml:space="preserve">
-    <value>Pabīdīt:</value>
+    <value>Pabīdīt</value>
   </data>
   <data name="gsNudgeDistance" xml:space="preserve">
     <value>Nobīdes attālums</value>
@@ -801,7 +801,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Ieslēgt/izslēgt</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
-    <value>Caurspīdīgums:</value>
+    <value>Caurspīdīgums</value>
   </data>
   <data name="gsOpen" xml:space="preserve">
     <value>Atvērt</value>
@@ -810,7 +810,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Ārējais</value>
   </data>
   <data name="gsOverlap" xml:space="preserve">
-    <value>Pārklājums:</value>
+    <value>Pārklājums</value>
   </data>
   <data name="gsOverlapGap" xml:space="preserve">
     <value>Pārklājums / sprauga</value>
@@ -993,7 +993,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Sekciju līnijas</value>
   </data>
   <data name="gsSections" xml:space="preserve">
-    <value>Sekcijas:</value>
+    <value>Sekcijas</value>
   </data>
   <data name="gsSelectButtons" xml:space="preserve">
     <value>Izvēlieties Pogas</value>
@@ -1017,7 +1017,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Izslēgšana</value>
   </data>
   <data name="gsShutdownIn" xml:space="preserve">
-    <value>Izslēgšana:</value>
+    <value>Izslēgšana</value>
   </data>
   <data name="gsSideHillComp" xml:space="preserve">
     <value>Nogāzes slīpuma kompensācija</value>
@@ -1111,7 +1111,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Svena bulta</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
-    <value>Versijas noteikumi un nosacījumi: </value>
+    <value>Versijas noteikumi un nosacījumi</value>
   </data>
   <data name="gsTermsOne" xml:space="preserve">
     <value>Ja izplatāt šīs BEZMAKSAS programmas kopijas, neatkarīgi no tā, vai tā ir bez maksas vai par maksu, uzlabotas, mainītas, jums ir jānodod saņēmējiem tās pašas brīvības, kuras saņēmāt saskaņā ar GPLv3 licenci.</value>
@@ -1159,7 +1159,7 @@ IZMANTOJIET UZ SAVU RISKU.</value>
     <value>Tehnoloģiskās sliedes</value>
   </data>
   <data name="gsTramWidth" xml:space="preserve">
-    <value>Attālums starp tehnoloģiskajām sliedēm:</value>
+    <value>Attālums starp tehnoloģiskajām sliedēm</value>
   </data>
   <data name="gsTurnABCurveOn" xml:space="preserve">
     <value>Ieslēdziet AB līkni</value>
@@ -1176,11 +1176,8 @@ IZMANTOJIET UZ SAVU RISKU.</value>
   <data name="gsTurnSensor" xml:space="preserve">
     <value>Stūres sensors</value>
   </data>
-  <data name="gsUnit" xml:space="preserve">
-    <value>Vienības:</value>
-  </data>
   <data name="gsUnits" xml:space="preserve">
-    <value>Metriskā/Imperial</value>
+    <value>Vienības</value>
   </data>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Izmantojiet atlasīto</value>
@@ -1210,7 +1207,7 @@ IZMANTOJIET UZ SAVU RISKU.</value>
     <value>Iestatiet izlīdzināšanu 3 līdz 4 rādiusa garumā</value>
   </data>
   <data name="gsVehiclegroupbox" xml:space="preserve">
-    <value>Transportlīdzekļa tips:</value>
+    <value>Transportlīdzekļa tips</value>
   </data>
   <data name="gsWasZero" xml:space="preserve">
     <value>WAS (stūres leņķa sensors) atiestatīts uz 0</value>
@@ -1222,10 +1219,10 @@ IZMANTOJIET UZ SAVU RISKU.</value>
     <value>Rietumi</value>
   </data>
   <data name="gsWheelbase" xml:space="preserve">
-    <value>Riteņu bāze:</value>
+    <value>Riteņu bāze</value>
   </data>
   <data name="gsWidth" xml:space="preserve">
-    <value>Platums:</value>
+    <value>Platums</value>
   </data>
   <data name="gsWindowsStillOpen" xml:space="preserve">
     <value>Logi joprojām ir atvērti</value>

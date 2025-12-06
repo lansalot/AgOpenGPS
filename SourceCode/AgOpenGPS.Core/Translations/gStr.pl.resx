@@ -216,7 +216,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Tło</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>Na podstawie pola:</value>
+    <value>Na podstawie pola</value>
   </data>
   <data name="gsBottomMenu" xml:space="preserve">
     <value>Dolne menu</value>
@@ -387,7 +387,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Katalog istnieje</value>
   </data>
   <data name="gsDiscussions" xml:space="preserve">
-    <value>Forum na:</value>
+    <value>Forum na</value>
   </data>
   <data name="gsDisplay" xml:space="preserve">
     <value>Wyświetlacz</value>
@@ -462,7 +462,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Exit</value>
   </data>
   <data name="gsExitToWindows" xml:space="preserve">
-    <value>Exit to Windows in:</value>
+    <value>Exit to Windows in</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Dodatkowe Linie</value>
@@ -579,7 +579,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Zły kierunek? Stuknij Pojazd</value>
   </data>
   <data name="gsImage" xml:space="preserve">
-    <value>Brak obrazu:</value>
+    <value>Brak obrazu</value>
   </data>
   <data name="gsImuFusion" xml:space="preserve">
     <value>Fuzja</value>
@@ -645,7 +645,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Długość geograficzna</value>
   </data>
   <data name="gsLookAhead" xml:space="preserve">
-    <value>Spójrz w przyszłość:</value>
+    <value>Spójrz w przyszłość</value>
   </data>
   <data name="gsLookAheadTiming" xml:space="preserve">
     <value>Ustawienia czasu patrzenia z wyprzedzeniem</value>
@@ -750,7 +750,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Nic nie usunięto</value>
   </data>
   <data name="gsNudge" xml:space="preserve">
-    <value>Przes. ścieżki:</value>
+    <value>Przes. ścieżki</value>
   </data>
   <data name="gsNudgeDistance" xml:space="preserve">
     <value>Przyrost przes.</value>
@@ -774,7 +774,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>On/Off</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
-    <value>Przeźroczystość:</value>
+    <value>Przeźroczystość</value>
   </data>
   <data name="gsOpen" xml:space="preserve">
     <value>Otwórz</value>
@@ -783,7 +783,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Zewnętrzny</value>
   </data>
   <data name="gsOverlap" xml:space="preserve">
-    <value>Nakładka:</value>
+    <value>Nakładka</value>
   </data>
   <data name="gsOverlapGap" xml:space="preserve">
     <value>Nakładka / Odstęp</value>
@@ -948,7 +948,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Linie sekcji</value>
   </data>
   <data name="gsSections" xml:space="preserve">
-    <value>Sekcje:</value>
+    <value>Sekcje</value>
   </data>
   <data name="gsSelectButtons" xml:space="preserve">
     <value>Wybierz przyciski</value>
@@ -972,7 +972,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Zamknij</value>
   </data>
   <data name="gsShutdownIn" xml:space="preserve">
-    <value>Zamknij w:</value>
+    <value>Zamknij w</value>
   </data>
   <data name="gsSimpleTramLines" xml:space="preserve">
     <value>Kreator ścieżek technologicznych</value>
@@ -1047,7 +1047,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Zatrzymaj nagrywanie, wstrzymaj granicę</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
-    <value>Warunki i zasady dla wersji: </value>
+    <value>Warunki i zasady dla wersji</value>
   </data>
   <data name="gsTermsOne" xml:space="preserve">
     <value>Jeśli rozpowszechniasz kopie tego BEZPŁATNEGO programu, niezależnie od tego, czy za darmo, czy za opłatą, ulepszone, zmienione, musisz przekazać odbiorcom te same wolności, które otrzymałeś, zgodnie z licencją GPLv3.</value>
@@ -1095,7 +1095,7 @@ UŻYWAJ NA WŁASNE RYZYKO.</value>
     <value>Ścieżki technologiczne</value>
   </data>
   <data name="gsTramWidth" xml:space="preserve">
-    <value>Rozstaw ścieżek tech.:</value>
+    <value>Rozstaw ścieżek tech.</value>
   </data>
   <data name="gsTurnABCurveOn" xml:space="preserve">
     <value>Włącz krzywą AB</value>
@@ -1111,9 +1111,6 @@ UŻYWAJ NA WŁASNE RYZYKO.</value>
   </data>
   <data name="gsTurnSensor" xml:space="preserve">
     <value>Czujnik skrętu</value>
-  </data>
-  <data name="gsUnit" xml:space="preserve">
-    <value>Jednostka:</value>
   </data>
   <data name="gsUnits" xml:space="preserve">
     <value>Jednostka</value>
@@ -1146,7 +1143,7 @@ UŻYWAJ NA WŁASNE RYZYKO.</value>
     <value>Ustaw wygładzanie na 3-4x promień</value>
   </data>
   <data name="gsVehiclegroupbox" xml:space="preserve">
-    <value>Typ pojazdu:</value>
+    <value>Typ pojazdu</value>
   </data>
   <data name="gsWasZero" xml:space="preserve">
     <value>Was Zero</value>
@@ -1158,10 +1155,10 @@ UŻYWAJ NA WŁASNE RYZYKO.</value>
     <value>Zachód</value>
   </data>
   <data name="gsWheelbase" xml:space="preserve">
-    <value>Rozstaw osi:</value>
+    <value>Rozstaw osi</value>
   </data>
   <data name="gsWidth" xml:space="preserve">
-    <value>Szerokość:</value>
+    <value>Szerokość</value>
   </data>
   <data name="gsWindowsStillOpen" xml:space="preserve">
     <value>Okna nadal otwarte</value>
