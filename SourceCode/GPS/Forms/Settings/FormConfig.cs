@@ -158,10 +158,10 @@ namespace AgOpenGPS
             labelGroupSteerSwitch.Text = gStr.gsSteerSwitch;
             chkSelectWorkSwitch.Text = gStr.gsActive;
             chkSelectSteerSwitch.Text = gStr.gsActive;
-            chkSetManualSections.Text = gStr.gsManual + gStr.gsSections;
-            chkSetManualSectionsSteer.Text = gStr.gsManual + gStr.gsSections;
-            chkSetAutoSections.Text = gStr.gsAuto + gStr.gsSections;
-            chkSetAutoSectionsSteer.Text = gStr.gsAuto + gStr.gsSections;
+            chkSetManualSections.Text = $"{gStr.gsSections}: {gStr.gsManual}";
+            chkSetManualSectionsSteer.Text = $"{gStr.gsSections}: {gStr.gsManual}";
+            chkSetAutoSections.Text = $"{gStr.gsSections}: {gStr.gsAuto}";
+            chkSetAutoSectionsSteer.Text = $"{gStr.gsSections}: {gStr.gsAuto}";
             //sectiontiming
             labelLookAheadTiming.Text = gStr.gsLookAheadTiming;
             labelOnTime.Text = gStr.gsOn + "(secs)";
