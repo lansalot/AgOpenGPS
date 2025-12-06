@@ -285,7 +285,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Tæller pr. grad</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% dækning</value>
+    <value>dækning</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Lav</value>

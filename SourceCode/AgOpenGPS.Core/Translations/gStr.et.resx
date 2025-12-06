@@ -303,7 +303,7 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
     <value>Kehtiv töökäik on puudu</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Töödeldud</value>
+    <value>Töödeldud</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Loo</value>

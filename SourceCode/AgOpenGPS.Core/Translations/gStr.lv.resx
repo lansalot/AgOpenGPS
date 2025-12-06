@@ -315,7 +315,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Impulsi uz grādu</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Apstrādāts</value>
+    <value>Apstrādāts</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Izveidot</value>

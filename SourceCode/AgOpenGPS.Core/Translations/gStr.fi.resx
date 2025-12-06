@@ -312,7 +312,7 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Pulssia / Asteelle</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Peitto</value>
+    <value>Peitto</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Luo</value>

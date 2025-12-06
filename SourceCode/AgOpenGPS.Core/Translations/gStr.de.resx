@@ -312,7 +312,7 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
     <value>Zählungen pro Grad</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Deckung</value>
+    <value>Deckung</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Erstellen</value>

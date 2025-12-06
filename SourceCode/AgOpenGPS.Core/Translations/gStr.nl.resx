@@ -297,7 +297,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Stap-per-graad</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Dekking</value>
+    <value>Dekking</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Creër</value>

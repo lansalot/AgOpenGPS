@@ -312,7 +312,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Derece Başına Sayım</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Kapsam</value>
+    <value>Kapsam</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Oluştur</value>
@@ -827,6 +827,9 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Pivot Mesafesi</value>
   </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Piksel</value>
+  </data>
   <data name="gsPlantPop" xml:space="preserve">
     <value>Bitki Pop</value>
   </data>
@@ -1241,8 +1244,5 @@ KULLANIM RİSKİNİZ KENDİ TARAFINIZCA YAPILMAKTADIR.</value>
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
-  </data>
-  <data name="gsPixel" xml:space="preserve">
-    <value>Piksel</value>
   </data>
 </root>

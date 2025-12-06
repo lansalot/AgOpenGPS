@@ -315,7 +315,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Contagens por Grau</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Cobertura</value>
+    <value>Cobertura</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Criar</value>

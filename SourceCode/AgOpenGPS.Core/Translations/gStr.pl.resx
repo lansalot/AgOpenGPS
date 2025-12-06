@@ -309,7 +309,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Liczba na stopień</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Pokrycia</value>
+    <value>Pokrycia</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Utwórz</value>

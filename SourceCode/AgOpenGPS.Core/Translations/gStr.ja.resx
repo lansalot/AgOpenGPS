@@ -312,7 +312,7 @@
     <value>1度あたりのカウント数</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>%の適用範囲</value>
+    <value>の適用範囲</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>作成する</value>

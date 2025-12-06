@@ -315,7 +315,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Numărătoare pe grad</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% acoperire</value>
+    <value>acoperire</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Creează</value>

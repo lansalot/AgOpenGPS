@@ -648,7 +648,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to % Coverage.
+        ///   Looks up a localized string similar to Coverage.
         /// </summary>
         public static string gsCoverage {
             get {

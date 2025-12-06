@@ -152,7 +152,7 @@ namespace AgOpenGPS
             labelNumOfSections.Text = gStr.gsSections;
             labelChoose.Text = gStr.gsChoose;
             labelBoundary.Text = gStr.gsBoundary;
-            labelCoverage.Text = gStr.gsCoverage;
+            labelCoverage.Text = $"% {gStr.gsCoverage}";
             //sectionswitches
             labelGroupWorkSwitch.Text = gStr.gsWorkSwitch;
             labelGroupSteerSwitch.Text = gStr.gsSteerSwitch;

@@ -309,7 +309,7 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
     <value>Counts par degrés</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% couverture</value>
+    <value>couverture</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Créer</value>

@@ -312,7 +312,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>CPD osztószám</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>lefedési cél %</value>
+    <value>lefedési cél</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Készít</value>

@@ -312,7 +312,7 @@
     <value>每度计数</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>%覆盖率</value>
+    <value>覆盖率</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>创造</value>

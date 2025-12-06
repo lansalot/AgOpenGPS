@@ -315,7 +315,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Pulsos por grado</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Cobertura</value>
+    <value>Cobertura</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Crear</value>

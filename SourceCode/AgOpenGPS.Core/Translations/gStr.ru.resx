@@ -262,7 +262,7 @@
     <value>Неправильный путь</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Покрытия</value>
+    <value>Покрытия</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Создать</value>

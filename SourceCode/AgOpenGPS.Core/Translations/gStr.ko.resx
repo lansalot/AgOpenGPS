@@ -309,7 +309,7 @@
     <value>우측각도</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% 커버리지</value>
+    <value>커버리지</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>처음만들기</value>

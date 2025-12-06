@@ -306,7 +306,7 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
     <value>Steg pr grad</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Dekning</value>
+    <value>Dekning</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Lag</value>
