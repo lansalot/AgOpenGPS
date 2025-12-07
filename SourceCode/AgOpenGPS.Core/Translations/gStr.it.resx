@@ -347,6 +347,9 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsDefault" xml:space="preserve">
     <value>Default</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>Gradi</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Cancella</value>
   </data>
@@ -540,7 +543,7 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Grafico Direzione</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Disallineamento Direzione in Gradi</value>
+    <value>Disallineamento Direzione</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Capezzagna</value>

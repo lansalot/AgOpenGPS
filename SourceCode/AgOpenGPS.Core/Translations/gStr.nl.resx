@@ -329,6 +329,9 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
   <data name="gsDefault" xml:space="preserve">
     <value>Standaard</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>Graden</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Verwijder</value>
   </data>
@@ -522,7 +525,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Richting grafiek</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Richting Correctie (Graden)</value>
+    <value>Richting Correctie</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Kopakker</value>

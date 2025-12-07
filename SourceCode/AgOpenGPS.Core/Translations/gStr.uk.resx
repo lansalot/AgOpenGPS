@@ -353,6 +353,9 @@
   <data name="gsDefault" xml:space="preserve">
     <value>За замовчуванням</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>градуси</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Видалити</value>
   </data>
@@ -561,7 +564,7 @@
     <value>Діаграма курса</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Зсув курсу (градуси)</value>
+    <value>Зсув курсу</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Відступ</value>

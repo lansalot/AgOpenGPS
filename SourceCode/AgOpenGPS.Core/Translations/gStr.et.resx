@@ -341,6 +341,9 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
   <data name="gsDefault" xml:space="preserve">
     <value>Vaikimisi</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>kraad</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Kustuta</value>
   </data>
@@ -534,7 +537,7 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
     <value>Suuna graafik</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Suuna nihe (kraad)</value>
+    <value>Suuna nihe</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Põllu ots</value>

@@ -353,6 +353,9 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   <data name="gsDefault" xml:space="preserve">
     <value>Noklusējums</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>grādi</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Dzēst</value>
   </data>
@@ -561,7 +564,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Virziena diagramma</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Virziena nobīde (grādi)</value>
+    <value>Virziena nobīde</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Laukmala</value>

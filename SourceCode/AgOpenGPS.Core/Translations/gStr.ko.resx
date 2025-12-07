@@ -347,6 +347,9 @@
   <data name="gsDefault" xml:space="preserve">
     <value>기본값</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>각도</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>삭제</value>
   </data>
@@ -543,7 +546,7 @@
     <value>진행방향차트</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>진행방향수정(각도)</value>
+    <value>진행방향수정</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>회전구역</value>

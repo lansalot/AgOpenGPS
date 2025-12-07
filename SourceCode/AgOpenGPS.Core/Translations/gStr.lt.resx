@@ -344,6 +344,9 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
   <data name="gsDefault" xml:space="preserve">
     <value>Numatytasis</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>laipsniais</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Ištrinti</value>
   </data>
@@ -540,7 +543,7 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
     <value>Važiavimo krypties diagrama</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Krypties kompensavimas (laipsniais)</value>
+    <value>Krypties kompensavimas</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Galulaukės</value>

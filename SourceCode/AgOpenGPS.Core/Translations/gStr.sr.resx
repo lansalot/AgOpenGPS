@@ -353,6 +353,9 @@
   <data name="gsDefault" xml:space="preserve">
     <value>Podrazumevano</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>°</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Obriši</value>
   </data>
@@ -561,7 +564,7 @@
     <value>Grafikon pravca</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Pomeraj pravca (°)</value>
+    <value>Pomeraj pravca</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Uvrtine</value>

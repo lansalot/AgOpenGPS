@@ -350,6 +350,9 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
   <data name="gsDefault" xml:space="preserve">
     <value>Varsayılan</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>Derece</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Sil</value>
   </data>
@@ -558,7 +561,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Başlık Tablosu</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Yön ötelemesi (Derece)</value>
+    <value>Yön ötelemesi</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Sürülmemiş Alan</value>

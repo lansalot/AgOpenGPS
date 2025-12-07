@@ -350,6 +350,9 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   <data name="gsDefault" xml:space="preserve">
     <value>Alapértelmezett</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>fok</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Törlés</value>
   </data>
@@ -549,7 +552,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Irány grafikon</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Irány eltérés (fok)</value>
+    <value>Irány eltérés</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Forgó</value>

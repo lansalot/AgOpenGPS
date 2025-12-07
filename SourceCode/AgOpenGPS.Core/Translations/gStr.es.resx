@@ -353,6 +353,9 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="gsDefault" xml:space="preserve">
     <value>Por defecto</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>º</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Borrar</value>
   </data>
@@ -558,7 +561,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Gráfico de rumbo</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Diferencia rumbo admitido (º)</value>
+    <value>Diferencia rumbo admitido</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Cabecero</value>

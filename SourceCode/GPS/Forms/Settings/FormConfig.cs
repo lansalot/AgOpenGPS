@@ -170,7 +170,7 @@ namespace AgOpenGPS
             //antenna-imu configuration
             labelGboxDual.Text = gStr.gsDualAntennaSetting;
             labelGboxSingle.Text = gStr.gsSingleAntennaSetting;
-            labelHeadingOffset.Text = gStr.gsHeadingOffset;
+            labelHeadingOffset.Text = $"{gStr.gsHeadingOffset} ({gStr.gsDegree})";
             labelReverseDistance.Text = gStr.gsReverseDistance;
             labelGpsStep.Text = gStr.gsGpsStep;
             labelFixAlarm.Text = gStr.gsFixAlarm;

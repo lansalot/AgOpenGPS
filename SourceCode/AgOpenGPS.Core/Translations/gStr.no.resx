@@ -344,6 +344,9 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
   <data name="gsDefault" xml:space="preserve">
     <value>Standard</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>Grad</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Slett</value>
   </data>
@@ -534,7 +537,7 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
     <value>Retningsdiagram</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Retningsforskyvning (Grad)</value>
+    <value>Retningsforskyvning</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Vendeteig</value>

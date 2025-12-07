@@ -350,6 +350,9 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
   <data name="gsDefault" xml:space="preserve">
     <value>Výchozí</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>stupeň</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Smazat</value>
   </data>
@@ -546,7 +549,7 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
     <value>Graf vedení</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Vedeni offset (stupeň)</value>
+    <value>Vedeni offset</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Souvrať</value>

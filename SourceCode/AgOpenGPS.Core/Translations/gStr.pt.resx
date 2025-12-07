@@ -353,6 +353,9 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
   <data name="gsDefault" xml:space="preserve">
     <value>Padrão</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>grau</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Excluir</value>
   </data>
@@ -561,7 +564,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Gráfico de títulos</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Deslocamento de direção (grau)</value>
+    <value>Deslocamento de direção</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Promontório</value>

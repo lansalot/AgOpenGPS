@@ -353,6 +353,9 @@ The order you push them will be the order they appear on the menu from bottom up
   <data name="gsDefault" xml:space="preserve">
     <value>Default</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>Degree</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -561,7 +564,7 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>Heading Chart</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Heading Offset (Degree)</value>
+    <value>Heading Offset</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Headland</value>

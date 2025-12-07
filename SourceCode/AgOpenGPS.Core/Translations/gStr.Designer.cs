@@ -765,6 +765,15 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Degree.
+        /// </summary>
+        public static string gsDegree {
+            get {
+                return ResourceManager.GetString("gsDegree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string gsDelete {
@@ -1386,7 +1395,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Heading Offset (Degree).
+        ///   Looks up a localized string similar to Heading Offset.
         /// </summary>
         public static string gsHeadingOffset {
             get {

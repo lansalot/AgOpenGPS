@@ -350,6 +350,9 @@
   <data name="gsDefault" xml:space="preserve">
     <value>デフォルト</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>角度</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>削除</value>
   </data>
@@ -558,7 +561,7 @@
     <value>機首チャート</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>機首オフセット（角度）</value>
+    <value>機首オフセット</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>ヘッドランド</value>

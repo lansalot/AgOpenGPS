@@ -320,6 +320,9 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
   <data name="gsDefault" xml:space="preserve">
     <value>Standard</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>grader</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Slet</value>
   </data>
@@ -489,7 +492,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Retning diagram</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Retning offset (grader)</value>
+    <value>Retning offset</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Forager</value>

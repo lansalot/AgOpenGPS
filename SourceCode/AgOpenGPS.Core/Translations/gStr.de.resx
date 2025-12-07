@@ -347,6 +347,9 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
   <data name="gsDefault" xml:space="preserve">
     <value>Standart</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>Grad</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Löschen</value>
   </data>
@@ -546,7 +549,7 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
     <value>Richtung</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Richtungsversatz (Grad)</value>
+    <value>Richtungsversatz</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Vorgewende</value>

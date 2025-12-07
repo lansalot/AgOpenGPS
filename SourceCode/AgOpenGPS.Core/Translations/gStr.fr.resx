@@ -347,6 +347,9 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   <data name="gsDefault" xml:space="preserve">
     <value>Défaut</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>degrés</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Supprimer</value>
   </data>
@@ -549,7 +552,7 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
     <value>Graph. Cap</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Décalage de cap (degrés)</value>
+    <value>Décalage de cap</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Tournières</value>

@@ -350,6 +350,9 @@
   <data name="gsDefault" xml:space="preserve">
     <value>默认</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>度</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>删除</value>
   </data>
@@ -546,7 +549,7 @@
     <value>上述图表</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>偏航偏移（度）</value>
+    <value>偏航偏移</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>地头</value>

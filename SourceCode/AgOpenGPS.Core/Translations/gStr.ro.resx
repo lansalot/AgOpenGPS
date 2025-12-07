@@ -353,6 +353,9 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
   <data name="gsDefault" xml:space="preserve">
     <value>Implicit</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>grade</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Şterge</value>
   </data>
@@ -561,7 +564,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Tabel direcții</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Decalaj de direcție (grade)</value>
+    <value>Decalaj de direcție</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Capăt de câmp</value>

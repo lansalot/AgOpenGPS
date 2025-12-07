@@ -350,6 +350,9 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
   <data name="gsDefault" xml:space="preserve">
     <value>Oletus</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>aste</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Poista</value>
   </data>
@@ -546,7 +549,7 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Suunta kaavio</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Suuntapoikkeama (aste)</value>
+    <value>Suuntapoikkeama</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Päiste</value>
