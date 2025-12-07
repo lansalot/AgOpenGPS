@@ -405,7 +405,7 @@
     <value>Preuzmi sve</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Preuzmanje...pričekaj</value>
+    <value>Preuzmanje</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Nađi ovde</value>

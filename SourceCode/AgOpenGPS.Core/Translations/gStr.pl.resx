@@ -396,7 +396,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Pobierz wszystkie</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Trwa pobieranie...Proszę czekać</value>
+    <value>Trwa pobieranie</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Pola w pobliżu</value>

@@ -29,7 +29,7 @@ namespace AgOpenGPS.Forms.Field
             chkForceOverwrite.Text = gStr.gsForceOverwrite;
             btnSaveAll.Text = gStr.gsDownloadAll;
             btnGetSelected.Text = gStr.gsGetSelected;
-            lblDownloading.Text = gStr.gsDownloading;
+            lblDownloading.Text = $"{gStr.gsDownloading}... {gStr.gsPleaseWait}";
             this.Text = gStr.gsAgShareDownloader;
 
         }

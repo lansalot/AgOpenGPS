@@ -405,7 +405,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Obter tudo</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Baixando...Aguarde</value>
+    <value>Baixando</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Dirija</value>

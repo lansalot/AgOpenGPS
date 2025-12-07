@@ -396,7 +396,7 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
     <value>Distance drapeau</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Téléchargement... Patientez</value>
+    <value>Téléchargement</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>En Route</value>

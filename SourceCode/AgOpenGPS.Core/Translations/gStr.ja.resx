@@ -402,7 +402,7 @@
     <value>お問い合わせ</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>ダウンロード中…お待ち下さい</value>
+    <value>ダウンロード中</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>現在地から選択</value>

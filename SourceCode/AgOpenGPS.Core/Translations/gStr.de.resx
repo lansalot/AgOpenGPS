@@ -396,7 +396,7 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
     <value>Entfernung zur Flagge</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Herunterladen... Bitte warten</value>
+    <value>Herunterladen</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Nahegelegende Felder</value>

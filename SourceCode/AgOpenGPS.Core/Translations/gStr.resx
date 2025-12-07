@@ -405,7 +405,7 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>Get All</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Downloading...Please Wait</value>
+    <value>Downloading</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Drive In</value>

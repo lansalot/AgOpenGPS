@@ -405,7 +405,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Todo</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Descargando...Espere por favor</value>
+    <value>Descargando</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Conducir en</value>

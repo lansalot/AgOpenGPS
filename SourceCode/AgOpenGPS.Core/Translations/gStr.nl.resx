@@ -375,7 +375,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Download Alles</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Ophalen...Even wachten</value>
+    <value>Ophalen</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Rij in perceel</value>

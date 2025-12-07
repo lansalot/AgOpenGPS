@@ -405,7 +405,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Obțineți totul</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Descărcare... Vă rugăm să așteptați</value>
+    <value>Descărcare</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Condu în</value>

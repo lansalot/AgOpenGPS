@@ -405,7 +405,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Saņemt visu</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Notiek lejupielāde... Lūdzu, uzgaidiet</value>
+    <value>Notiek lejupielāde</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Iebraukt</value>

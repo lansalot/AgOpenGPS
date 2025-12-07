@@ -405,7 +405,7 @@
     <value>Отримати все</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Завантаження... Зачекайте</value>
+    <value>Завантаження</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>В'їзд</value>

@@ -402,7 +402,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Hepsini Al</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>İndiriliyor...Lütfen Bekleyin</value>
+    <value>İndiriliyor</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>İçeri Girmek</value>

@@ -918,7 +918,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloading...Please Wait.
+        ///   Looks up a localized string similar to Downloading.
         /// </summary>
         public static string gsDownloading {
             get {
