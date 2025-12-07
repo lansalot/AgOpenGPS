@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AgOpenGPS.Core.Models
+﻿namespace AgOpenGPS.Core.Models
 {
     public struct GeoBoundingBox
     {
@@ -35,6 +33,12 @@ namespace AgOpenGPS.Core.Models
         {
             _minCoord = _minCoord.Min(geoCoord);
             _maxCoord = _maxCoord.Max(geoCoord);
+        }
+
+        public void Include(GeoBoundingBox bb)
+        {
+            _minCoord = _minCoord.Min(bb.MinCoord);
+            _maxCoord = _maxCoord.Max(bb.MaxCoord);
         }
 
         public bool IsInside(GeoCoord testCoord)
