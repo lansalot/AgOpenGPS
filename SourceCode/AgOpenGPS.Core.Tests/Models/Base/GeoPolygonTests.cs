@@ -1,5 +1,4 @@
 ﻿using Accord;
-using Accord.Math;
 using AgOpenGPS.Core.Models;
 using NUnit.Framework;
 using System;
@@ -66,9 +65,11 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_ForceWinding()
         {
+            // Arrange
             GeoPolygon cwPolygon = CopyPolygon(_cwPolygon);
             double cwArea = cwPolygon.Area;
 
+            // Act
             // Assert
             Assert.That(cwPolygon.IsClockwise, Is.EqualTo(true));
             cwPolygon.ForceCounterClockwiseWinding();
@@ -94,9 +95,11 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_InvalidateArea()
         {
+            // Arrange
             GeoPolygon cwPolygon = CopyPolygon(_cwPolygon);
             double orgArea = cwPolygon.Area;
 
+            // Act
             GeoCoord farNorth = new GeoCoord(10.0, 0.0);
             cwPolygon.Add(farNorth);
 
@@ -107,9 +110,11 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_InvalidateBoundingBox()
         {
+            // Arrange
             GeoPolygon cwPolygon = CopyPolygon(_cwPolygon);
             double orgMaxNorthing = cwPolygon.BoundingBox.MaxNorthing;
 
+            // Act
             GeoCoord farNorth = new GeoCoord(10.0, 0.0);
             cwPolygon.Add(farNorth);
 
@@ -120,6 +125,7 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_GetLength_Circle()
         {
+            // Arrange
             const int nVertices = 120;
             const double radius = 100.0;
             GeoPolygon polygon = new GeoPolygon();
@@ -128,12 +134,14 @@ namespace AgOpenGPS.Core.Tests.Models
                 double angle = i * 2.0 * Math.PI / nVertices;
                 polygon.Add(new GeoCoord(radius * Math.Cos(angle), radius * Math.Sin(angle)));
             }
+            // Act
             // east, south, west and north half circle
             double eLength = polygon.GetLength(0 * nVertices / 4, 2 * nVertices / 4);
             double sLength = polygon.GetLength(1 * nVertices / 4, 3 * nVertices / 4);
             double wLength = polygon.GetLength(2 * nVertices / 4, 0 * nVertices / 4);
             double nLength = polygon.GetLength(3 * nVertices / 4, 1 * nVertices / 4);
 
+            // Assert
             Assert.That(eLength.IsGreaterThan(3.1 * radius));
             Assert.That(eLength.IsLessThan(Math.PI * radius));
             Assert.That(sLength.IsGreaterThan(3.1 * radius));
@@ -147,12 +155,14 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_GetLength_Triangle()
         {
+            // Arrange
             // Triangle with edge lengths 3, 4, and 5
             GeoPolygon polygon = new GeoPolygon();
             polygon.Add(new GeoCoord(20.0 - 3.0, 30.0));
             polygon.Add(new GeoCoord(20.0, 30.0));
             polygon.Add(new GeoCoord(20.0, 30.0 + 4.0));
 
+            // Act
             double length3 = polygon.GetLength(0, 1);
             double lenght4 = polygon.GetLength(1, 2);
             double length5 = polygon.GetLength(2, 0);
@@ -161,6 +171,7 @@ namespace AgOpenGPS.Core.Tests.Models
             double length4_5 = polygon.GetLength(1, 0);
             double length5_3 = polygon.GetLength(2, 1);
 
+            // Assert
             Assert.That(length3, Is.EqualTo(3.0));
             Assert.That(lenght4, Is.EqualTo(4.0));
             Assert.That(length5, Is.EqualTo(5.0));
@@ -172,6 +183,7 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_RemoveSelfIntersections_Multiple()
         {
+            // Arrange
             GeoPolygon polygon = new GeoPolygon();
             polygon.Add(new GeoCoord(0, 1));
             polygon.Add(new GeoCoord(0, 2));
@@ -192,7 +204,11 @@ namespace AgOpenGPS.Core.Tests.Models
                     p.Add(polygon[(i + rotate) % polygon.Count]);
                 }
                 double oldArea = p.Area;
+
+                // Act
                 int nInterSection = p.RemoveSelfIntersections();
+
+                // Assert
                 Assert.That(nInterSection, Is.EqualTo(2));
                 Assert.That(p.Area, Is.EqualTo(1.5));
             }
@@ -201,6 +217,7 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_RemoveSelfIntersections_First()
         {
+            // Arrange
             GeoPolygon polygon = new GeoPolygon();
             polygon.Add(new GeoCoord(4, 0));  // 1_0
             polygon.Add(new GeoCoord(4, -3)); //  \|
@@ -208,7 +225,11 @@ namespace AgOpenGPS.Core.Tests.Models
             polygon.Add(new GeoCoord(-8, 0)); //   |\
                                               //   | \
                                               //  3|__\2
+
+            // Act
             int nInterSection = polygon.RemoveSelfIntersections();
+
+            // Assert
             Assert.That(nInterSection, Is.EqualTo(1));
             Assert.That(polygon.Area, Is.EqualTo(0.5 * 6 * 8));
         }
@@ -216,13 +237,18 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_RemoveCloseNeighbours_First()
         {
+            // Arrange
             GeoPolygon originalPolygon = new GeoPolygon();
             originalPolygon.Add(new GeoCoord(1.01, 1.0)); // Too close
             originalPolygon.Add(new GeoCoord(2.0, -3.0));
             originalPolygon.Add(new GeoCoord(-2.0, -4.0));
             originalPolygon.Add(new GeoCoord(1.0, 1.0));
             GeoPolygon testPolygon = CopyPolygon(originalPolygon);
+
+            // Act
             int nRemoved = testPolygon.RemoveCloseNeighbours(0.1);
+
+            // Assert
             Assert.That(nRemoved, Is.EqualTo(1));
             Assert.That(testPolygon.Count + nRemoved, Is.EqualTo(originalPolygon.Count));
             Assert.That(testPolygon[0], Is.EqualTo(originalPolygon[1]));
@@ -233,13 +259,18 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_RemoveCloseNeighbours_Last()
         {
+            // Arrange
             GeoPolygon originalPolygon = new GeoPolygon();
             originalPolygon.Add(new GeoCoord(2.0, -3.0));
             originalPolygon.Add(new GeoCoord(-2.0, -4.0));
             originalPolygon.Add(new GeoCoord(1.0, 1.0));
             originalPolygon.Add(new GeoCoord(1.01, 1.0)); // Too close
             GeoPolygon testPolygon = CopyPolygon(originalPolygon);
+
+            // Act
             int nRemoved = testPolygon.RemoveCloseNeighbours(0.1);
+
+            // Assert
             Assert.That(nRemoved, Is.EqualTo(1));
             Assert.That(testPolygon.Count + nRemoved, Is.EqualTo(originalPolygon.Count));
             Assert.That(testPolygon[0], Is.EqualTo(originalPolygon[0]));
@@ -250,6 +281,7 @@ namespace AgOpenGPS.Core.Tests.Models
         [Test]
         public void Test_RemoveSelfIntersections_Last()
         {
+            // Arrange
             GeoPolygon polygon = new GeoPolygon();
             polygon.Add(new GeoCoord(4, 0));  // 3_0
             polygon.Add(new GeoCoord(-8, 0)); //  \|
@@ -257,7 +289,10 @@ namespace AgOpenGPS.Core.Tests.Models
             polygon.Add(new GeoCoord(4, -3)); //   |\
                                               //   | \
                                               //  1|__\2
+            // Act
             int nInterSection = polygon.RemoveSelfIntersections();
+
+            // Assert
             Assert.That(nInterSection, Is.EqualTo(1));
             Assert.That(polygon.Area, Is.EqualTo(0.5 * 6 * 8));
         }

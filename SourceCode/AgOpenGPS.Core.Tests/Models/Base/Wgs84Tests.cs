@@ -42,7 +42,6 @@ namespace AgOpenGPS.Core.Tests.Models
             Assert.That(distance, Is.EqualTo(distanceBack));
         }
 
-
         [Test]
         public void Test_LocalOffsets()
         {
