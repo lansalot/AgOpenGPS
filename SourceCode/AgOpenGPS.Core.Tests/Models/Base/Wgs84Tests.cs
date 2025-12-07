@@ -7,7 +7,7 @@ namespace AgOpenGPS.Core.Tests.Models
     public class Wgs84Tests
     {
         [Test]
-        public void Test_RegionalDistance()
+        public void Test_DistanceInMeters_RegionalDistance()
         {
             // Arrange
             Wgs84 amsterdam = new Wgs84(52.377956, 4.897070);
@@ -25,7 +25,7 @@ namespace AgOpenGPS.Core.Tests.Models
         }
 
         [Test]
-        public void Test_LongDistance()
+        public void Test_DistanceInMeters_LongDistance()
         {
             // Arrange
             Wgs84 amsterdam = new Wgs84(52.377956, 4.897070);
@@ -43,7 +43,7 @@ namespace AgOpenGPS.Core.Tests.Models
         }
 
         [Test]
-        public void Test_LocalOffsets()
+        public void Test_DistanceInMeters_LocalOffsets()
         {
             // Arrange
             Wgs84 amsterdam = new Wgs84(52.377956, 4.897070);

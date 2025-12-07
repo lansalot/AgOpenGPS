@@ -7,7 +7,7 @@ namespace AgOpenGPS.Core.Tests.Models
     {
 
         [Test]
-        public void Test_Intersects()
+        public void Test_IntersectionPoint_Intersects()
         {
             // Arrange
             GeoCoord coordA = new GeoCoord(13.0, -10.0);
@@ -35,7 +35,7 @@ namespace AgOpenGPS.Core.Tests.Models
         }
 
         [Test]
-        public void Test_NoIntersection()
+        public void Test_IntersectionPoint_NoIntersection()
         {
             // Arrange
             GeoCoord coordA = new GeoCoord(13.0, -1);
@@ -53,7 +53,7 @@ namespace AgOpenGPS.Core.Tests.Models
         }
 
         [Test]
-        public void Test_SymetricalSegmentsCrossInTheMiddle()
+        public void Test_IntersectionPoint_SymetricalSegmentsCrossInTheMiddle()
         {
             // Arrange
             const double minNorthing = -1.0;
@@ -76,7 +76,7 @@ namespace AgOpenGPS.Core.Tests.Models
         }
 
         [Test]
-        public void Test_ParallelSegmentsDoNotIntersect()
+        public void Test_IntersectionPoint_ParallelSegmentsDoNotIntersect()
         {
             // Arrange
             const double minNorthing = -1.0;
@@ -97,7 +97,7 @@ namespace AgOpenGPS.Core.Tests.Models
         }
 
         [Test]
-        public void Test_LongLineSegment()
+        public void Test_IntersectionPoint_LongLineSegment()
         {
             // Arrange
             const double minNorthing = -1.0;
@@ -124,7 +124,7 @@ namespace AgOpenGPS.Core.Tests.Models
         }
 
         [Test]
-        public void Test_SameEndPoints()
+        public void Test_IntersectionPoint_SharedEndPoints()
         {
             // Arrange
             GeoCoord coordA = new GeoCoord(16.88, -15.488);
