@@ -288,7 +288,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Antes cierre el fichero</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Seleccionador de colores</value>
@@ -1029,7 +1029,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Sur</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Espaciado (cm)</value>
+    <value>Espaciado</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Factor de Velocidad</value>

@@ -285,7 +285,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Zárd be a területet először</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Színválasztó</value>
@@ -1027,7 +1027,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Dél</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Távolság (cm)</value>
+    <value>Távolság</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Sebesség arányos szorzó</value>

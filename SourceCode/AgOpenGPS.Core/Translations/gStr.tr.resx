@@ -285,7 +285,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Önce Alanı Kapat</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm -&gt; Piksel</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Renk Seçici</value>
@@ -1035,7 +1035,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Güneş ışığı</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Aralık (cm)</value>
+    <value>Aralık</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Hız Faktörü</value>

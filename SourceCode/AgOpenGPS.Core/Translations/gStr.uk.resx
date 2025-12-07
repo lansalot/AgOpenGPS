@@ -288,7 +288,7 @@
     <value>Спершу закрити поле</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>См</value>
+    <value>см</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Вибір кольору</value>
@@ -1038,7 +1038,7 @@
     <value>Південь</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Інтервал (см)</value>
+    <value>Інтервал</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Коефіцієнт швидкості</value>

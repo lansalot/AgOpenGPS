@@ -282,7 +282,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Najpierw zamknij pole</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Wybór koloru</value>
@@ -987,7 +987,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Południe</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Rozstaw (cm)</value>
+    <value>Rozstaw</value>
   </data>
   <data name="gsSpeedo" xml:space="preserve">
     <value>Prędkościomierz</value>

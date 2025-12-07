@@ -844,7 +844,7 @@
     <value>Юг</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Расстояние (см)</value>
+    <value>Расстояние</value>
   </data>
   <data name="gsSpeedo" xml:space="preserve">
     <value>Спидометр</value>

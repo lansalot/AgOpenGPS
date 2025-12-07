@@ -1023,7 +1023,7 @@
     <value>南极</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>间距 (cm)</value>
+    <value>间距</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>速度因素</value>

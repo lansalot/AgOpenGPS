@@ -288,7 +288,7 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>Close Field First</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Color Picker</value>
@@ -1038,7 +1038,7 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>South</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Spacing (cm)</value>
+    <value>Spacing</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Speed Factor</value>

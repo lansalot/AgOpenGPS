@@ -288,7 +288,7 @@
     <value>Najprije zatvorite polje</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Izbor boje</value>
@@ -1038,7 +1038,7 @@
     <value>Jug</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Razmak (cm)</value>
+    <value>Razmak</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Faktor brzine</value>

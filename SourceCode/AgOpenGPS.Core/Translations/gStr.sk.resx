@@ -466,7 +466,7 @@
     <value>Juh</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Rozostup (cm)</value>
+    <value>Rozostup</value>
   </data>
   <data name="gsStartDeleteABoundary" xml:space="preserve">
     <value>Vytvoriť alebo vymazať hranicu</value>

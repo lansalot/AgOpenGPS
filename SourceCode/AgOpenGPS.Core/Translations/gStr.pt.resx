@@ -288,7 +288,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Fechar campo primeiro</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Seletor de cores</value>
@@ -1038,7 +1038,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Sul</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Espaçamento (cm)</value>
+    <value>Espaçamento</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Fator de velocidade</value>

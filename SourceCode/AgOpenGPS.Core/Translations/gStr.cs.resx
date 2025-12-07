@@ -285,7 +285,7 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
     <value>Zavřít pole První</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Barevny Picker</value>
@@ -1023,7 +1023,7 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
     <value>Jih</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Rozestup (cm)</value>
+    <value>Rozestup</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Rychlostní faktor</value>

@@ -822,7 +822,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Syd</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Afstand (cm)</value>
+    <value>Afstand</value>
   </data>
   <data name="gsStartDeleteABoundary" xml:space="preserve">
     <value>Start Eller Slet Kant</value>

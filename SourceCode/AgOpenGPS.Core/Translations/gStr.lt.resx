@@ -282,7 +282,7 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
     <value>Pirmiausia uždaryti lauką</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Spalvo parinkimas</value>
@@ -987,7 +987,7 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
     <value>Pietūs</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Tarpai (cm)</value>
+    <value>Tarpai</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Greičio faktorius</value>

@@ -288,7 +288,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Vispirms aizveriet lauku</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Krāsu izvēle</value>
@@ -1038,7 +1038,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Dienvidi</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Atstatums (cm)</value>
+    <value>Atstatums</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Ātruma faktors</value>

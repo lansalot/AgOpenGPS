@@ -1020,7 +1020,7 @@
     <value>남쪽</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>간격(cm)</value>
+    <value>간격</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>속도계수</value>

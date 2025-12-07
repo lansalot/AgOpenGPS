@@ -279,7 +279,7 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
     <value>Lukk skiftet først</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Fargevelger</value>
@@ -1002,7 +1002,7 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
     <value>Sør</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Avstand (cm)</value>
+    <value>Avstand</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Hastighetsfaktor</value>

@@ -282,7 +282,7 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Prima Chiudere Il Campo</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Selettore Colore</value>
@@ -1011,7 +1011,7 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Sud</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Spaziatura (cm)</value>
+    <value>Spaziatura</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Coefficiente di Velocità</value>

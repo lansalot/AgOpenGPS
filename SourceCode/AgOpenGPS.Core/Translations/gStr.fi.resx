@@ -285,7 +285,7 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Sulje ensin pelto</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Värin Valitsin</value>
@@ -1023,7 +1023,7 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Etelä</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Etäisyys (cm)</value>
+    <value>Etäisyys</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Nopeuden kerroin</value>

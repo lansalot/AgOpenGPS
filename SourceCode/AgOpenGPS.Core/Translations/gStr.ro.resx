@@ -288,7 +288,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Închideți câmpul mai întâi</value>
   </data>
   <data name="gsCm" xml:space="preserve">
-    <value>Cm</value>
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Selector culoare</value>
@@ -1038,7 +1038,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Sud</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Spațiere (cm)</value>
+    <value>Spațiere</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Factorul de viteză</value>

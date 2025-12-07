@@ -978,7 +978,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Zuid</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Afstand (cm)</value>
+    <value>Afstand</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Snelheid-Factor</value>

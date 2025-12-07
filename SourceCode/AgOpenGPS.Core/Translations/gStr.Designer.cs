@@ -567,7 +567,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cm.
+        ///   Looks up a localized string similar to cm.
         /// </summary>
         public static string gsCm {
             get {
@@ -2817,7 +2817,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Spacing (cm).
+        ///   Looks up a localized string similar to Spacing.
         /// </summary>
         public static string gsSpacing {
             get {
