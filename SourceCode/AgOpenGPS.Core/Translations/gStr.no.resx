@@ -602,7 +602,7 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
   <data name="gsInvertWas" xml:space="preserve">
     <value>Inverter WAS</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>km/t</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -763,9 +763,6 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
   </data>
   <data name="gsOnDelay" xml:space="preserve">
     <value>På-forsinkelse</value>
-  </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>På/Av</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Gjennomsiktighet</value>

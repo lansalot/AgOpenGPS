@@ -614,7 +614,7 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   <data name="gsInvertWas" xml:space="preserve">
     <value>Inverser WAS</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>km/h</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -778,9 +778,6 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   </data>
   <data name="gsOnDelay" xml:space="preserve">
     <value>Délais-On</value>
-  </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>On/Off</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Opacité</value>

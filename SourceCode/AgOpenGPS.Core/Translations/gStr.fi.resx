@@ -779,9 +779,6 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
   <data name="gsOnDelay" xml:space="preserve">
     <value>Päällekytkennän viive</value>
   </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>Päälle/Pois</value>
-  </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Läpinäkyvyys</value>
   </data>

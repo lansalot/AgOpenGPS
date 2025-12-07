@@ -629,7 +629,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
   <data name="gsInvertWas" xml:space="preserve">
     <value>Inverter Sensor de Ângulo de Roda 'WAS'</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>km/h</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -793,9 +793,6 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
   </data>
   <data name="gsOnDelay" xml:space="preserve">
     <value>Atraso ao Ligar</value>
-  </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>Ativar/Desativar</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Opacidade</value>

@@ -618,7 +618,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   <data name="gsInvertWas" xml:space="preserve">
     <value>Szögszenzor invertálása</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>Km/h</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -782,9 +782,6 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   </data>
   <data name="gsOnDelay" xml:space="preserve">
     <value>Be késleltetés</value>
-  </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>Be/Ki</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Átlátszóság</value>

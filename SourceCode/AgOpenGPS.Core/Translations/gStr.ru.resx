@@ -510,7 +510,7 @@
   <data name="gsInvertRoll" xml:space="preserve">
     <value>Инвертировать наклон</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>км/ч</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">

@@ -95,7 +95,7 @@ namespace AgOpenGPS
             labelNudgeDistance.Text = gStr.gsNudgeDistance;
             labelNextGuidanceLine.Text = gStr.gsNextGuidanceLine;
             labelCmPix.Text = $"{gStr.gsCm} -> {gStr.gsPixel}";
-            labelOnOff.Text = gStr.gsOnOff;
+            labelOnOff.Text = $"{gStr.gsOn}/{gStr.gsOff}";
             labelLightbar.Text = gStr.gsLightbar;
             labelSteerBar.Text = gStr.gsSteerBar;
             labelWizard.Text = gStr.gsWizard;

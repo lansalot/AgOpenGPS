@@ -779,9 +779,6 @@
   <data name="gsOnDelay" xml:space="preserve">
     <value>延迟</value>
   </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>开/关</value>
-  </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>不透明度</value>
   </data>

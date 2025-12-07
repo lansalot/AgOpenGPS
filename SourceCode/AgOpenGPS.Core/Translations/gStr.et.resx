@@ -761,9 +761,6 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
   <data name="gsOnDelay" xml:space="preserve">
     <value>Sisselülitusviivitus</value>
   </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>Sees/väljas</value>
-  </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Läbipaistvus</value>
   </data>

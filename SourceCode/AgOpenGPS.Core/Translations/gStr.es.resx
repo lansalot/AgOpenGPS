@@ -623,7 +623,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="gsInvertWas" xml:space="preserve">
     <value>Invertir WAS</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>km/h</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -787,9 +787,6 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   </data>
   <data name="gsOnDelay" xml:space="preserve">
     <value>Retardo a la conexión</value>
-  </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>Encendido/Apagado</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Opacidad</value>

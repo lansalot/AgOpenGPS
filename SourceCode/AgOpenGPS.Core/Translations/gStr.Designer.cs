@@ -2088,15 +2088,6 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to On/Off.
-        /// </summary>
-        public static string gsOnOff {
-            get {
-                return ResourceManager.GetString("gsOnOff", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Opacity.
         /// </summary>
         public static string gsOpacity {

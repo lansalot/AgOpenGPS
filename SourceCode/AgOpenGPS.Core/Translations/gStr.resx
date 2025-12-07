@@ -794,9 +794,6 @@ The order you push them will be the order they appear on the menu from bottom up
   <data name="gsOnDelay" xml:space="preserve">
     <value>On-Delay</value>
   </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>On/Off</value>
-  </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Opacity</value>
   </data>

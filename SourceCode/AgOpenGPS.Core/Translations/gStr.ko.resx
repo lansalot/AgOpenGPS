@@ -611,7 +611,7 @@
   <data name="gsInvertWas" xml:space="preserve">
     <value>각도반전</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>킬로미터</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -775,9 +775,6 @@
   </data>
   <data name="gsOnDelay" xml:space="preserve">
     <value>지연켜기</value>
-  </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>켜기/끄기</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>선명도</value>

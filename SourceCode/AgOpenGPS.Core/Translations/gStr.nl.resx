@@ -584,7 +584,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
   <data name="gsInvertWas" xml:space="preserve">
     <value>Stuurh.sensor</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>km/u</value>
   </data>
   <data name="gsLanguage" xml:space="preserve">
@@ -739,9 +739,6 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
   </data>
   <data name="gsOnDelay" xml:space="preserve">
     <value>Vertraging</value>
-  </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>Aan/Uit</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Transparantie</value>

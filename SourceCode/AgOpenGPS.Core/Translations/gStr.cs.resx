@@ -779,9 +779,6 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
   <data name="gsOnDelay" xml:space="preserve">
     <value>Zap-Zpozdeni</value>
   </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>Zap/Vyp</value>
-  </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Neprůsvitnost</value>
   </data>

@@ -626,7 +626,7 @@
   <data name="gsInvertWas" xml:space="preserve">
     <value>WASの反転</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>時速</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -790,9 +790,6 @@
   </data>
   <data name="gsOnDelay" xml:space="preserve">
     <value>オン遅延</value>
-  </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>オン/オフ</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>不透明度</value>
