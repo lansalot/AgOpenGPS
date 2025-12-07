@@ -1160,17 +1160,8 @@ POUŽÍVÁNÍ NA VLASTNÍCH RISK.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Použití vybrané</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Uživatel 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Uživatel 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Uživatel 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Uživatel 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Uživatel {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>Otáčení U</value>

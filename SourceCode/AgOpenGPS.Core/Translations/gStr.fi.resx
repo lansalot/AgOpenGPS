@@ -1160,17 +1160,8 @@ KÄYTTÖ OMALLA VASTUULLA.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Käytä valittuja</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Käyttäjä 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Käyttäjä 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Käyttäjä 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Käyttäjä 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Käyttäjä {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>U-käännös</value>

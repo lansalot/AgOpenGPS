@@ -1175,17 +1175,8 @@ UTILIZAȚI PE PROPRIUL RISC.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Utilizați selecția</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Utilizator 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Utilizator 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Utilizator 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Utilizator 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Utilizator {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>Întoarcere în U</value>

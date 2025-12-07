@@ -1172,17 +1172,8 @@ KULLANIM RİSKİNİZ KENDİ TARAFINIZCA YAPILMAKTADIR.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Seçileni Kullan</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Kullanıcı 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Kullanıcı 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Kullanıcı 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Kullanıcı 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Kullanıcı {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>U Dönüşü</value>

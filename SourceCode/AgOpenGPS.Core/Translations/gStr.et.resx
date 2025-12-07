@@ -1130,17 +1130,8 @@ KASUTA OMAL RISKIL.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Kasuta valitud</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Kasutaja 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Kasutaja 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Kasutaja 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Kasutaja 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Kasutaja {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>U-pööre</value>

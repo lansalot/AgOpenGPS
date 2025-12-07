@@ -1160,17 +1160,8 @@
   <data name="gsUseSelected" xml:space="preserve">
     <value>使用选定项</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>使用者1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>使用者2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>使用者3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>使用者4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>使用者{0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>地头转弯</value>

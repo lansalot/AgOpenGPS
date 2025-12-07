@@ -1136,17 +1136,8 @@ BRUK PÅ EGEN RISIKO.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Bruk valgt</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Bruker 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Bruker 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Bruker 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Bruker 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Bruker {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>U-sving</value>

@@ -1175,17 +1175,8 @@ IZMANTOJIET UZ SAVU RISKU.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Izmantojiet atlasīto</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Lietotājs 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Lietotājs 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Lietotājs 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Lietotājs 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Lietotājs {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>U-pagrieziens</value>

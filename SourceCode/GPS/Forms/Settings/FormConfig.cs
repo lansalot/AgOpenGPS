@@ -196,10 +196,10 @@ namespace AgOpenGPS
             labelLowTime.Text = gStr.gsLowerTime;
             labelPlantPop.Text = gStr.gsPlantPop;
             labelHydLiftSec.Text = gStr.gsHydraulicLiftLookAhead;
-            labelUser1.Text = gStr.gsUser1;
-            labelUser2.Text = gStr.gsUser2;
-            labelUser3.Text = gStr.gsUser3;
-            labelUser4.Text = gStr.gsUser4;
+            labelUser1.Text = string.Format(gStr.gsUserNo, 1);
+            labelUser2.Text = string.Format(gStr.gsUserNo, 2);
+            labelUser3.Text = string.Format(gStr.gsUserNo, 3);
+            labelUser4.Text = string.Format(gStr.gsUserNo, 4);
             labelHydLiftInvert.Text = gStr.gsInvertHydraulicRelays;
             labelSendSaveHydraulicLift.Text = gStr.gsSendAndSave;
             //tramsconfig

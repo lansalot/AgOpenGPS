@@ -1145,17 +1145,8 @@ UTILIZZATELO A VOSTRO RISCHIO E PERICOLO.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Utilizzare Quello Selezionato</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Utente 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Utente 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Utente 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Utente 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Utente {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>Svolta Automatica di fine campo</value>

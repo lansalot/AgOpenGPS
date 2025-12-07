@@ -3210,38 +3210,11 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User 1.
+        ///   Looks up a localized string similar to User {0}.
         /// </summary>
-        public static string gsUser1 {
+        public static string gsUserNo {
             get {
-                return ResourceManager.GetString("gsUser1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User 2.
-        /// </summary>
-        public static string gsUser2 {
-            get {
-                return ResourceManager.GetString("gsUser2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User 3.
-        /// </summary>
-        public static string gsUser3 {
-            get {
-                return ResourceManager.GetString("gsUser3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User 4.
-        /// </summary>
-        public static string gsUser4 {
-            get {
-                return ResourceManager.GetString("gsUser4", resourceCulture);
+                return ResourceManager.GetString("gsUserNo", resourceCulture);
             }
         }
         

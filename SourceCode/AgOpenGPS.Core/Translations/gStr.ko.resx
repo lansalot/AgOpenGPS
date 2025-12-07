@@ -1157,17 +1157,8 @@
   <data name="gsUseSelected" xml:space="preserve">
     <value>저장목록선택</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>사용자1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>사용자2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>사용자3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>사용자4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>사용자{0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>회전</value>

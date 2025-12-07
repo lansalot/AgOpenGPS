@@ -1124,17 +1124,8 @@ NAUDOJIMAS SAVO RIZIKA.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Naudoti pasirinktą</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>1 Baitas</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>2 Baitas</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>3 Baitas</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>4 Baitas</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>{0} Baitas</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>U apsisukimas</value>

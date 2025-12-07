@@ -1175,17 +1175,8 @@ KORIŠTENJE NA VLASTITU ODGOVORNOST.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Koristi odabrano</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Korisnik 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Korisnik 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Korisnik 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Korisnik 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Korisnik {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>U-Okretanje</value>

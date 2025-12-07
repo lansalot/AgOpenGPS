@@ -1164,17 +1164,8 @@ HASZNÁLAT SAJÁT FELELŐSSÉGRE.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Kiválasztott használata</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Felhasználó 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Felhasználó 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Felhasználó 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Felhasználó 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Felhasználó {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>Automata forduló</value>
