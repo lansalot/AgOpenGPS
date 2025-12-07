@@ -233,6 +233,12 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>Aga põld on avatud</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Nupp</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Vajuta sisse. Vajuta välja</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Nupuvalija</value>
   </data>
@@ -1031,10 +1037,6 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
   <data name="gsSteerChart" xml:space="preserve">
     <value>Rooli graafik</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Nupp - Vajuta sisse. Vajuta välja
-Lüliti - Vajuta sisse, vabasta välja</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Väline lülitus</value>
   </data>
@@ -1055,6 +1057,12 @@ Lüliti - Vajuta sisse, vabasta välja</value>
   </data>
   <data name="gsSvennArrow" xml:space="preserve">
     <value>Svenni nool</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Lüliti</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>Vajuta sisse, vabasta välja</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Versiooni tingimused</value>

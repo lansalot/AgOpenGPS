@@ -84,7 +84,7 @@ namespace AgOpenGPS
             labelADConverter.Text = gStr.gsADConverter;
             labelIMUAxis.Text = gStr.gsIMUAxis;
             labelSteerEnable.Text = gStr.gsSteerEnable;
-            labelSteerDescription.Text = gStr.gsSteerDescription;
+            labelSteerDescription.Text = $"{gStr.gsButton} - {gStr.gsButtonDescription}\n{gStr.gsSwitch} - {gStr.gsSwitchDescription}";
             labelUturnCompensation.Text = gStr.gsUturnCompensation;
             labelSideHill.Text = gStr.gsSideHillComp;
             labelSteerInReverse.Text = gStr.gsSteerInReverse;

@@ -432,6 +432,24 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Button.
+        /// </summary>
+        public static string gsButton {
+            get {
+                return ResourceManager.GetString("gsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Push On. Push Off.
+        /// </summary>
+        public static string gsButtonDescription {
+            get {
+                return ResourceManager.GetString("gsButtonDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Button Picker.
         /// </summary>
         public static string gsButtonPicker {
@@ -2916,16 +2934,6 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Button - Push On. Push Off
-        ///Switch - Pushed On, Release Off.
-        /// </summary>
-        public static string gsSteerDescription {
-            get {
-                return ResourceManager.GetString("gsSteerDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to External Enable.
         /// </summary>
         public static string gsSteerEnable {
@@ -2985,6 +2993,24 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsSvennArrow {
             get {
                 return ResourceManager.GetString("gsSvennArrow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch.
+        /// </summary>
+        public static string gsSwitch {
+            get {
+                return ResourceManager.GetString("gsSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pushed On, Release Off.
+        /// </summary>
+        public static string gsSwitchDescription {
+            get {
+                return ResourceManager.GetString("gsSwitchDescription", resourceCulture);
             }
         }
         

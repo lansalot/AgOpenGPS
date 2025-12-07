@@ -236,6 +236,12 @@
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>하지만들판은로드되었습니다</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>버튼</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>누르면 켜기. 누르면 끄기</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>버튼선택기</value>
   </data>
@@ -1052,10 +1058,6 @@
   <data name="gsSteerChart" xml:space="preserve">
     <value>핸들차트</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>버튼 - 누르면 켜기. 누르면 끄기
-스위치 - 켜기. 끄기</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>외부스위치활성</value>
   </data>
@@ -1076,6 +1078,12 @@
   </data>
   <data name="gsSvennArrow" xml:space="preserve">
     <value>화살표시</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>스위치</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>켜기. 끄기</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>사용약관</value>

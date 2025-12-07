@@ -242,6 +242,12 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>Lauks jau ir ielādēts</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Poga</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>nospiediet ieslēgts/ nospiediet izslēgts</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Pogu izvēle</value>
   </data>
@@ -1070,10 +1076,6 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   <data name="gsSteerChart" xml:space="preserve">
     <value>Stūrēšanas diagrammas</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Poga — nospiediet ieslēgts/ nospiediet izslēgts
- Slēdzis - ieslēgšanas / izslēgšanas slēdzis</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Attālā braukšanas uzsākšana</value>
   </data>
@@ -1094,6 +1096,12 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   </data>
   <data name="gsSvennArrow" xml:space="preserve">
     <value>Svena bulta</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Slēdzis</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>ieslēgšanas / izslēgšanas slēdzis</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Versijas noteikumi un nosacījumi</value>

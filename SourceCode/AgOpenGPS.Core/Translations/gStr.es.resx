@@ -242,6 +242,12 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>Parcela todavía cargada</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Botón</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Presiona On. Presiona Off</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Seleccionador de botones</value>
   </data>
@@ -1061,10 +1067,6 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="gsSteerChart" xml:space="preserve">
     <value>Gráficos de Manejo</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Botón - Presiona On. Presiona Off
-Interruptor - Presiona On, Suelta Off</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Hibilitar Externo</value>
   </data>
@@ -1085,6 +1087,12 @@ Interruptor - Presiona On, Suelta Off</value>
   </data>
   <data name="gsSvennArrow" xml:space="preserve">
     <value>Flecha Svenn</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Interruptor</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>Presiona On, Suelta Off</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Términos y Condiciones para versión</value>

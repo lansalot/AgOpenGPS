@@ -242,6 +242,12 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>Dar câmpul este încărcat</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Buton</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Apăsați pentru pornire. Apăsați pentru oprire</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Selector buton</value>
   </data>
@@ -1070,10 +1076,6 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
   <data name="gsSteerChart" xml:space="preserve">
     <value>Grafice de direcție</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Buton - Apăsați pentru pornire. Apăsați pentru oprire
-Întrerupător - Apăsat pentru pornire, eliberează pentru oprire</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Activare externă</value>
   </data>
@@ -1094,6 +1096,12 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
   </data>
   <data name="gsSvennArrow" xml:space="preserve">
     <value>Săgeata lui Svenn</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Întrerupător</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>Apăsat pentru pornire, eliberează pentru oprire</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Termeni și condiții pentru versiunea</value>

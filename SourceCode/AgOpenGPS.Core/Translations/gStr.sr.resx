@@ -242,6 +242,12 @@
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>Parcela je već učitana</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Dugme</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Pritisni za pokretanje/zaustavljanje navođenja</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>odabir Tipke</value>
   </data>
@@ -1070,10 +1076,6 @@
   <data name="gsSteerChart" xml:space="preserve">
     <value>Grafikoni upravljanja</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Dugme - Pritisni za pokretanje/zaustavljanje navođenja
-Prekidač - Uključi/isključi</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Eksterno pokretanje</value>
   </data>
@@ -1094,6 +1096,12 @@ Prekidač - Uključi/isključi</value>
   </data>
   <data name="gsSvennArrow" xml:space="preserve">
     <value>Strelica smjera</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Prekidač</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>Uključi/isključi</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Uvjeti korištenja za verziju</value>

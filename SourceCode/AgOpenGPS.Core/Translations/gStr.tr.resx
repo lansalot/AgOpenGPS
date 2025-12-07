@@ -239,6 +239,12 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>Ama Alan Yüklendi</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Düğme</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Basarak Aç. Basarak Kapat</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Düğme Seçici</value>
   </data>
@@ -1067,10 +1073,6 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
   <data name="gsSteerChart" xml:space="preserve">
     <value>Yön Tabloları</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Düğme - Basarak Aç. Basarak Kapat
-Anahtar - Basıldığında Aç, Bırakıldığında Kapat</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Harici Etkinleştirme</value>
   </data>
@@ -1091,6 +1093,12 @@ Anahtar - Basıldığında Aç, Bırakıldığında Kapat</value>
   </data>
   <data name="gsSvennArrow" xml:space="preserve">
     <value>Kalfalık Oku</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Anahtar</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>Basıldığında Aç, Bırakıldığında Kapat</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Sürüm için Şartlar ve Koşullar</value>

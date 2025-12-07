@@ -236,6 +236,12 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>Champ tout de même chargé</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Bouton</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Appuie On, Appuie Off</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Sélecteur de boutons</value>
   </data>
@@ -1046,10 +1052,6 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   <data name="gsSteerChart" xml:space="preserve">
     <value>Graph. direction</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Bouton - Appuie On, Appuie Off
-Switch - interrupteur On / Off</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Activation externe</value>
   </data>
@@ -1067,6 +1069,12 @@ Switch - interrupteur On / Off</value>
   </data>
   <data name="gsStopRecordPauseBoundary" xml:space="preserve">
     <value>Enregistrement de la Bordure</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Switch</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>interrupteur On / Off</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Termes et conditions de version</value>

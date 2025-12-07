@@ -236,6 +236,12 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>Campo Gia' Caricato</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Pulsante</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Premere per attivare, Premere per disattivare</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Selettore Pulsante</value>
   </data>
@@ -1043,10 +1049,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsSteerChart" xml:space="preserve">
     <value>Grafico dello Sterzo</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Pulsante - Premere per attivare, Premere per disattivare
-Interruttore - Spingere per attivare, Rilasciare per disattivare</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Attivazione esterna</value>
   </data>
@@ -1064,6 +1066,12 @@ Interruttore - Spingere per attivare, Rilasciare per disattivare</value>
   </data>
   <data name="gsStopRecordPauseBoundary" xml:space="preserve">
     <value>Stop Registrazione Pausa Confine</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Interruttore</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>Spingere per attivare, Rilasciare per disattivare</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Termini e Condizioni per la versione</value>

@@ -236,6 +236,12 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>Laukas užkrautas</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Nefiksuojantis mygtukas</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>įjungta/išjungta</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Mygtuko parinkimas</value>
   </data>
@@ -1019,10 +1025,6 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
   <data name="gsSteerChart" xml:space="preserve">
     <value>Vairavimo diagrama</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Nefiksuojantis mygtukas: įjungta/išjungta
-Fiksuojantis mygtukas: įjungta/išjungta</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Vairavimo paleidimas nuotoliu</value>
   </data>
@@ -1043,6 +1045,12 @@ Fiksuojantis mygtukas: įjungta/išjungta</value>
   </data>
   <data name="gsSvennArrow" xml:space="preserve">
     <value>Svenn rodyklė</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Fiksuojantis mygtukas</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>įjungta/išjungta</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Terminai ir sąlygos esamai versijai</value>

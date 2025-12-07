@@ -239,6 +239,12 @@
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>田块已加载</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>按钮</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>按下开，按下关</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>选择器</value>
   </data>
@@ -1055,10 +1061,6 @@
   <data name="gsSteerChart" xml:space="preserve">
     <value>方向盘数据</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>按钮 - 按下开，按下关
-开关 - 按下开启，松开关闭</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>外部启用</value>
   </data>
@@ -1079,6 +1081,12 @@
   </data>
   <data name="gsSvennArrow" xml:space="preserve">
     <value>Svenn箭头</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>开关</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>按下开启，松开关闭</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>版本的条款和条件</value>

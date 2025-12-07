@@ -239,6 +239,12 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>aber Feld wurde geladen</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Taster</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>tastend</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Tastenauswahl</value>
   </data>
@@ -1046,10 +1052,6 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
   <data name="gsSteerChart" xml:space="preserve">
     <value>Lenkdiagramm</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Taster - tastend
-Schalter - rastend</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Externe Aktivierung</value>
   </data>
@@ -1067,6 +1069,12 @@ Schalter - rastend</value>
   </data>
   <data name="gsStopRecordPauseBoundary" xml:space="preserve">
     <value>Grenze aufzeichnen, pausieren, stoppen</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Schalter</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>rastend</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Nutzungsbedingungen für die Version</value>

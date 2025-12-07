@@ -242,6 +242,12 @@ The order you push them will be the order they appear on the menu from bottom up
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>But Field Is Loaded</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Button</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Push On. Push Off</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Button Picker</value>
   </data>
@@ -1070,10 +1076,6 @@ The order you push them will be the order they appear on the menu from bottom up
   <data name="gsSteerChart" xml:space="preserve">
     <value>Steer Charts</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Button - Push On. Push Off
-Switch - Pushed On, Release Off</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>External Enable</value>
   </data>
@@ -1094,6 +1096,12 @@ Switch - Pushed On, Release Off</value>
   </data>
   <data name="gsSvennArrow" xml:space="preserve">
     <value>Svenn Arrow</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Switch</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>Pushed On, Release Off</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Terms and Conditions for version</value>
