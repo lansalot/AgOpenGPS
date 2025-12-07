@@ -996,7 +996,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Punct de referință</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Deplasare poziție GPS (cm)</value>
+    <value>Deplasare poziție GPS</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Oprire</value>

@@ -975,7 +975,7 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
     <value>Consigne</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Décaler la position GPS (cm)</value>
+    <value>Décaler la position GPS</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Fermer</value>

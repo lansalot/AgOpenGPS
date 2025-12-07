@@ -945,7 +945,7 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
     <value>Nustatytas taškas</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Paslinkti GPS padėtį (cm)</value>
+    <value>Paslinkti GPS padėtį</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Išjingti</value>

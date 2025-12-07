@@ -978,7 +978,7 @@
     <value>설정값</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>GPS위치이동(cm)</value>
+    <value>GPS위치이동</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>모두종료</value>

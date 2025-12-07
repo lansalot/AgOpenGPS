@@ -996,7 +996,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Ponto de ajuste</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Mudar posição GPS (cm)</value>
+    <value>Mudar posição GPS</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Desligar</value>

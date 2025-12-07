@@ -993,7 +993,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Ayar Noktası</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>GPS Konumunu Değiştir (cm)</value>
+    <value>GPS Konumunu Değiştir</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Kapat</value>

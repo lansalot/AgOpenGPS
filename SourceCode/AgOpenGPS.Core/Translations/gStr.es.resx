@@ -987,7 +987,7 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
     <value>Punto de ajuste</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Cambiar posición GPS(cm)</value>
+    <value>Cambiar posición GPS</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Apagar</value>

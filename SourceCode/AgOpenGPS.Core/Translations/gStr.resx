@@ -996,7 +996,7 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>SetPoint</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Shift GPS Position (cm)</value>
+    <value>Shift GPS Position</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Shutdown</value>

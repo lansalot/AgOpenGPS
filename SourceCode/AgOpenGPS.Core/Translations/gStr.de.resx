@@ -972,7 +972,7 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
     <value>Sollwert</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>GPS Position verschieben (cm)</value>
+    <value>GPS Position verschieben</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Herunterfahren</value>

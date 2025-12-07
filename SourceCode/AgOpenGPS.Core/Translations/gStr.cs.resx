@@ -981,7 +981,7 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
     <value>SetPoint</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Pozice Shift GPS (cm)</value>
+    <value>Pozice Shift GPS</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Vypnout</value>

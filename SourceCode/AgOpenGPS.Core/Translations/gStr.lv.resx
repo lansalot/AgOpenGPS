@@ -996,7 +996,7 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
     <value>Iestatīt punktu</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>GPS pozīcijas maiņa (cm)</value>
+    <value>GPS pozīcijas maiņa</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Izslēgšana</value>

@@ -936,7 +936,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Setpunt</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Verschuif GPS Positie (cm)</value>
+    <value>Verschuif GPS Positie</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Uit zetten</value>

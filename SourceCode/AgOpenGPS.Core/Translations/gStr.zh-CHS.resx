@@ -981,7 +981,7 @@
     <value>设置点</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>偏移GPS位置 (cm)</value>
+    <value>偏移GPS位置</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>关闭</value>

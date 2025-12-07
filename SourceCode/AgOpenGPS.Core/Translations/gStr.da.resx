@@ -792,7 +792,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Setpunkt</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Skift GPS Position cm</value>
+    <value>Skift GPS Position</value>
   </data>
   <data name="gsSimpleTramLines" xml:space="preserve">
     <value>Dan Simpel kørespor</value>

@@ -951,7 +951,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Ustaw punkt</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Przesunięcie pozycji GPS (cm)</value>
+    <value>Przesunięcie pozycji GPS</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Zamknij</value>

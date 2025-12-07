@@ -963,7 +963,7 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
     <value>Sett punkt</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Forskyv GPS-posisjon (cm)</value>
+    <value>Forskyv GPS-posisjon</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Nedstengning</value>

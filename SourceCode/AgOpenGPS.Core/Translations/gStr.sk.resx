@@ -448,7 +448,7 @@
     <value>Požadovaný</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Posun GPS pozície (cm)</value>
+    <value>Posun GPS pozície</value>
   </data>
   <data name="gsSimulatorOn" xml:space="preserve">
     <value>Simulátor zapnutý</value>

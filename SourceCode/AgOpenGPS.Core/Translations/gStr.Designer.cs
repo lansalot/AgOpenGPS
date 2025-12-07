@@ -2691,7 +2691,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shift GPS Position (cm).
+        ///   Looks up a localized string similar to Shift GPS Position.
         /// </summary>
         public static string gsShiftGPSPosition {
             get {

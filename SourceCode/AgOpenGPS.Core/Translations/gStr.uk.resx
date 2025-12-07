@@ -996,7 +996,7 @@
     <value>Точка встановл</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Зсув GPS позиц. (см)</value>
+    <value>Зсув GPS позиц.</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Вимкнення</value>

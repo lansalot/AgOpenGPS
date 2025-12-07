@@ -981,7 +981,7 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Asetuspiste</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Siirrä GPS -sijainti (CM)</value>
+    <value>Siirrä GPS -sijainti</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Sammuta</value>

@@ -985,7 +985,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Pontbeállítás</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>GPS pozíció elmozdítása (cm)</value>
+    <value>GPS pozíció elmozdítása</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Leállítás</value>

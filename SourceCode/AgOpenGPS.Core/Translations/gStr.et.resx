@@ -957,7 +957,7 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
     <value>Seadepunkt</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Nihuta GPS-positsiooni (cm)</value>
+    <value>Nihuta GPS-positsiooni</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Lülita välja</value>

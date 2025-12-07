@@ -996,7 +996,7 @@
     <value>Podesi tačku</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Pomeraj pocizije (cm)</value>
+    <value>Pomeraj pocizije</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Gašenje</value>
