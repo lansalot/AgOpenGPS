@@ -88,15 +88,6 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
-        /// </summary>
-        public static string gsAbout {
-            get {
-                return ResourceManager.GetString("gsAbout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Ackermann.
         /// </summary>
         public static string gsAckermann {

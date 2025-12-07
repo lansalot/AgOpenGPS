@@ -129,9 +129,6 @@
   <data name="gsADConverter" xml:space="preserve">
     <value>ADS-configuratie</value>
   </data>
-  <data name="gsAbout" xml:space="preserve">
-    <value>Over</value>
-  </data>
   <data name="gsAcquire" xml:space="preserve">
     <value>Aquisitie</value>
   </data>
