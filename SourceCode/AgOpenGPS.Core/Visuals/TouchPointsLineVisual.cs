@@ -13,7 +13,8 @@ namespace AgOpenGPS.Core.Visuals
         private static readonly PointStyle pointCStyle = new PointStyle(16, new ColorRgba(0.95f, 0.95f, 0.35f));
         private static readonly ColorRgb lineOrange = new ColorRgb(0.90f, 0.5f, 0.25f);
 
-        public static void DrawTouchPointsLine(GeoCoord? coordA, GeoCoord? coordB, GeoCoord? coordC = null)
+
+        public static void DrawTouchPoints(GeoCoord? coordA, GeoCoord? coordB, GeoCoord? coordC = null)
         {
             // Draw backgrounds first. Looks better when points overlap.
             List<GeoCoord> backGrounds = new List<GeoCoord>();
@@ -38,7 +39,11 @@ namespace AgOpenGPS.Core.Visuals
                 GLW.SetPointStyle(pointCStyle);
                 GLW.DrawPoint(coordC.Value);
             }
+        }
 
+        public static void DrawTouchPointsLine(GeoCoord? coordA, GeoCoord? coordB, GeoCoord? coordC = null)
+        {
+            DrawTouchPoints(coordA, coordB, coordC);
             if (coordA.HasValue && coordB.HasValue)
             {
                 GLW.SetLineWidth(4);
