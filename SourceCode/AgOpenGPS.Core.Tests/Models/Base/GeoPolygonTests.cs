@@ -289,6 +289,7 @@ namespace AgOpenGPS.Core.Tests.Models
             polygon.Add(new GeoCoord(4, -3)); //   |\
                                               //   | \
                                               //  1|__\2
+
             // Act
             int nInterSection = polygon.RemoveSelfIntersections();
 
