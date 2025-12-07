@@ -365,9 +365,6 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Uygulanan Alanı Sil</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Bu işlem tüm sınırları silecektir. Devam etmek istiyor musunuz?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Kontur Yollarını Sil</value>
   </data>
@@ -899,9 +896,6 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Yol Yükünü Kaydet</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Noktaları Azalt</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Sürdürmek</value>
   </data>
@@ -952,12 +946,6 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Alan kaydediliyor</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Alan parametreleri kaydediliyor</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Alan parametreleri kaydedildi.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Alan yerel olarak kaydedildi.</value>

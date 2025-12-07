@@ -359,9 +359,6 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Usuń zmapowany obszar</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>To działanie usunie wszystkie granice. Czy chcesz kontynuować?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Usuń ścieżki konturowe</value>
   </data>
@@ -910,12 +907,6 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Zapisywanie pola</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Zapisywanie parametrów pola</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Parametry pola zapisane.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Pole zapisane lokalnie.</value>

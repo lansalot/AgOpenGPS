@@ -332,9 +332,6 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Slet Bearbejdet Areal</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Dette vil slette alle markgrænser. Vil du fortsætte?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Slet kontur spor</value>
   </data>
@@ -742,12 +739,6 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Gemmer felt</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Gemmer feltparametre</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Feltparametre gemt.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Felt gemt lokalt.</value>

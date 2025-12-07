@@ -359,9 +359,6 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Supprimer la zone appliquée</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Cette action supprimera tous les contours. Voulez vous continuer ?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Supprimer chemins de tournières</value>
   </data>
@@ -928,12 +925,6 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Sauvegarde du champ</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Sauvegarde des paramètres du champ</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Paramètres du champ enregistrés.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Champ enregistré localement.</value>

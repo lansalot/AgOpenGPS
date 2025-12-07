@@ -368,9 +368,6 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Ștergeți zona aplicată</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Această acțiune va șterge toate limitele. Doriți să continuați?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Ștergeți traseele de contur</value>
   </data>
@@ -902,9 +899,6 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Drumul înregistrat se încarca</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Puncte reduse</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Rămâneți</value>
   </data>
@@ -955,12 +949,6 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Salvare câmp</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Salvarea parametrilor câmpului</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Parametrii câmpului au fost salvați.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Câmp salvat local.</value>

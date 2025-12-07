@@ -362,9 +362,6 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Bearbeitete Fläche löschen</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Diese Aktion löscht alle Grenzen. Möchtest Du fortfahren?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Konturpfade löschen</value>
   </data>
@@ -878,9 +875,6 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Aufgezeichneten Pfad laden</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Punkte reduzieren</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Verbleibend</value>
   </data>
@@ -931,12 +925,6 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Feld wird gespeichert</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Feldparameter werden gespeichert</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Feldparameter gespeichert.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Feld lokal gespeichert.</value>

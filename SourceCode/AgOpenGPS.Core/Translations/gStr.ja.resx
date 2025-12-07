@@ -365,9 +365,6 @@
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>応用領域の削除</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>このアクションは全ての境界線を削除します。 実行しますか?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>輪郭パスの削除</value>
   </data>

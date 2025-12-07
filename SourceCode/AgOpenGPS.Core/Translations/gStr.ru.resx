@@ -306,9 +306,6 @@
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Удалить обработанную область поля</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Удаление всех границ поля. Продолжить?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Удалить линии контура</value>
   </data>
@@ -767,12 +764,6 @@
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Сохранение поля</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Сохранение параметров поля</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Параметры поля сохранены.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Поле сохранено локально.</value>

@@ -362,9 +362,6 @@
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>적용된영역삭제</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>모든경계를 삭제합니다.계속하시겠습니까?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>등고선경로삭제</value>
   </data>
@@ -884,9 +881,6 @@
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>저장된경로로드</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>경로점간소화</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>미완료</value>
   </data>
@@ -937,12 +931,6 @@
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>들판저장중</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>들판설정저장중</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>들판설정저장되었습니다.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>들판정보저장완료.</value>

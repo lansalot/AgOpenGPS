@@ -365,9 +365,6 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Poista käsitelty alue</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Tämä toiminto poistaa kaikki rajat. Haluatko jatkaa?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Poista ääriviivat</value>
   </data>
@@ -887,9 +884,6 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Tallenetun polun avaus</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Vähennä Pisteitä</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Jäljellä</value>
   </data>
@@ -940,12 +934,6 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Tallennetaan peltoa</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Tallennetaan peltoasetuksia</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Peltoasetukset tallennettu.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Pelto tallennettu paikallisesti.</value>

@@ -368,9 +368,6 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Borrar Area seleccionada</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Esta acción eliminará todos los linderos. ¿Desea continuar?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Borrar rutas de Contorno</value>
   </data>
@@ -893,9 +890,6 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Cargar Ruta de Recorrido</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Puntos Reducidos</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Restante</value>
   </data>
@@ -946,12 +940,6 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Guardando campo</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Guardando parámetros del campo</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Parámetros del campo guardados.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Campo guardado localmente.</value>

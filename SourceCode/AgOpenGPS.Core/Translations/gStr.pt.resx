@@ -368,9 +368,6 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Excluir área aplicada</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Esta ação excluirá todos os limites. Você deseja continuar?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Excluir caminhos de contorno</value>
   </data>
@@ -902,9 +899,6 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Gravar Trajeto Carregar:</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Pontos reduzidos</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Continuar</value>
   </data>
@@ -955,12 +949,6 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Salvando campo</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Salvando parâmetros do campo</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Parâmetros do campo salvos.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Campo salvo localmente.</value>

@@ -359,9 +359,6 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Ištrinti apdirbtą plotą</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Ar tikrai norite ištrinti visas ribas???</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Ištrinkite kontūro kelius</value>
   </data>
@@ -880,9 +877,6 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
   </data>
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Įkelti įrašytą kelią</value>
-  </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Sumažintas taškų skaičius</value>
   </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Liko</value>

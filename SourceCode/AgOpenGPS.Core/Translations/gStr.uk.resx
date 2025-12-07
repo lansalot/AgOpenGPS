@@ -368,9 +368,6 @@
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Видал.застосовану площу</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Ця дія видалить усі межі. Продовжити?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Видал.шляхи контурів</value>
   </data>
@@ -902,9 +899,6 @@
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Завантаження шляху запису</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Зменшені бали</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Залишатися</value>
   </data>
@@ -955,12 +949,6 @@
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Збереження поля</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Збереження параметрів поля</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Параметри поля збережено.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Поле збережено локально.</value>

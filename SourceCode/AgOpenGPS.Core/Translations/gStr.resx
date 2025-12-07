@@ -368,9 +368,6 @@ The order you push them will be the order they appear on the menu from bottom up
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Delete Applied Area</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>This action will delete all the boundaries. Do you want to continue?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Delete Contour Paths</value>
   </data>
@@ -902,9 +899,6 @@ The order you push them will be the order they appear on the menu from bottom up
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Record Path Load</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Reduced Points</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Remain</value>
   </data>
@@ -955,12 +949,6 @@ The order you push them will be the order they appear on the menu from bottom up
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Saving field</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Saving field parameters</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Field parameters saved.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Field saved locally.</value>

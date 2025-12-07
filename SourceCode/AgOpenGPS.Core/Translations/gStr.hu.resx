@@ -365,9 +365,6 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Megművelt terület (festés) törlése</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Ez a művelet törli a terület határait. Biztosan akarja?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Kontúrvonalak törlése</value>
   </data>
@@ -891,9 +888,6 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Rögzített útvonal betöltése</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Kevesebb pont</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Hátralévő</value>
   </data>
@@ -944,12 +938,6 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Tábla mentése</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Tábla paramétereinek mentése</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Tábla paraméterei elmentve.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Tábla helyben elmentve.</value>

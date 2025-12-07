@@ -365,9 +365,6 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Smazat aplikovanou oblast</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Tato akce odstraní všechny hranice. Chcete pokračovat?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Smazat Contour cesty</value>
   </data>
@@ -887,9 +884,6 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Nahraj zaznamenané cesty</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Snížené body</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Ponechat</value>
   </data>
@@ -940,12 +934,6 @@ Objednávku, kterou je tlačíte, bude objednávka, která se objeví v menu od 
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Ukládám pole</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Ukládání parametrů polí</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Parametry pole uložené.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Oblast uložená lokálně.</value>

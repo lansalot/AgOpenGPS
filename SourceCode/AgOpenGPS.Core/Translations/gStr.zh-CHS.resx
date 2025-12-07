@@ -365,9 +365,6 @@
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>删除应用区域</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>此操作将删除所有边界。您要继续这项操作吗？</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>删除曲线路径</value>
   </data>
@@ -887,9 +884,6 @@
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>记录路径加载</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>点集简化</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>保持</value>
   </data>
@@ -940,12 +934,6 @@
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>保存字段</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>正在保存字段参数</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>字段参数已保存。</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>字段已本地保存。</value>

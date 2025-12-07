@@ -353,9 +353,6 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Kustuta töödeldud pindala</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>See toiming kustutab kõik põllupiirid. Kas te soovite jätkata?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Kustuta kontuuri rajad</value>
   </data>
@@ -866,9 +863,6 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
   <data name="gsRecordedPathMenu" xml:space="preserve">
     <value>Salvestatud töökäik</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Vähendatud punktid</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Jäänud</value>
   </data>
@@ -916,12 +910,6 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Põllu salvestamine</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Põllu parameetrite salvestamine</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Põllu parameetrid salvestatud.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Põld salvestatud kohalikult.</value>

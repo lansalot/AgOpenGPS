@@ -368,9 +368,6 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Dzēst apstrādāto platību</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Šī darbība izdzēsīs visas robežas. Vai vēlaties turpināt?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Dzēst kontūru ceļus</value>
   </data>
@@ -902,9 +899,6 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Ielādējiet ierakstīto ceļu</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Samazināts punktu skaits</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Atlikušais</value>
   </data>
@@ -955,12 +949,6 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Saglabā lauku</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Saglabā lauka parametrus</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Lauka parametri ir saglabāti.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Lauks saglabāts lokāli.</value>

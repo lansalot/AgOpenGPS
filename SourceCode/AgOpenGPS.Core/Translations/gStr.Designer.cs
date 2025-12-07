@@ -810,15 +810,6 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This action will delete all the boundaries. Do you want to continue?.
-        /// </summary>
-        public static string gsDeleteBoundaryMapping {
-            get {
-                return ResourceManager.GetString("gsDeleteBoundaryMapping", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Delete Contour Paths.
         /// </summary>
         public static string gsDeleteContourPaths {
@@ -2412,15 +2403,6 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reduced Points.
-        /// </summary>
-        public static string gsReducedPoints {
-            get {
-                return ResourceManager.GetString("gsReducedPoints", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Remain.
         /// </summary>
         public static string gsRemain {
@@ -2570,24 +2552,6 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsSaveField {
             get {
                 return ResourceManager.GetString("gsSaveField", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Saving field parameters.
-        /// </summary>
-        public static string gsSaveFieldParam {
-            get {
-                return ResourceManager.GetString("gsSaveFieldParam", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Field parameters saved..
-        /// </summary>
-        public static string gsSaveFieldParamSaved {
-            get {
-                return ResourceManager.GetString("gsSaveFieldParamSaved", resourceCulture);
             }
         }
         

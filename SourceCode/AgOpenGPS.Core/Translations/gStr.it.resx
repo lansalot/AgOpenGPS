@@ -362,9 +362,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Cancellare L'Area Lavorata</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Cancellerai tutti i confini. Vuoi continuare?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Eliminare I Percorsi Di Perimetro</value>
   </data>
@@ -875,9 +872,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Caricamento Percorso Registrato</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Ridurre i Punti</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Rimanente</value>
   </data>
@@ -928,12 +922,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Salvataggio campo</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Salvataggio parametri campo</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Parametri del campo salvati.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Campo salvato localmente.</value>

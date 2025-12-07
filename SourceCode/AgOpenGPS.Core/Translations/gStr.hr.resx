@@ -368,9 +368,6 @@
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Brisanje obrađene površine</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Da li zaista želite da obrišete Međe polja?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Brisanje kontura</value>
   </data>
@@ -902,9 +899,6 @@
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Učitaj putanju</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Reducirane točke</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Preostalo</value>
   </data>
@@ -955,12 +949,6 @@
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Spremam polje</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Spremam parametre polja</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Parametri polja spremljeni.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Polje spremljeno lokalno.</value>

@@ -338,9 +338,6 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Verwijder bewerkte oppervlakte</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Deze actie verwijdert de perceelgrens!</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Verwijder contour-paden</value>
   </data>
@@ -839,9 +836,6 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Opgenomen Lijn Laden</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Verminder Punten</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Te doen</value>
   </data>
@@ -892,12 +886,6 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Veld opslaan</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Veldparameters opslaan</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Veldparameters opgeslagen.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Veld lokaal opgeslagen.</value>

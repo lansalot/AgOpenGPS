@@ -359,9 +359,6 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Nullstill bearbeidet areal</value>
   </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Denne handlingen vil slette alle grensene. Vil du fortsette?</value>
-  </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Slett konturlinjer</value>
   </data>
@@ -869,9 +866,6 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Last inn vei</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Reduserte punkt</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Gjenstår</value>
   </data>
@@ -922,12 +916,6 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
   </data>
   <data name="gsSaveField" xml:space="preserve">
     <value>Lagrer felt</value>
-  </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Lagrer feltparametere</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Feltparametere lagret.</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Felt lagret lokalt.</value>
