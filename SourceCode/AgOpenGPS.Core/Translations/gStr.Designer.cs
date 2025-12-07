@@ -88,7 +88,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About....
+        ///   Looks up a localized string similar to About.
         /// </summary>
         public static string gsAbout {
             get {
@@ -378,7 +378,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Based on Field:.
+        ///   Looks up a localized string similar to Based on Field.
         /// </summary>
         public static string gsBasedOnField {
             get {
@@ -900,7 +900,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discussions at:.
+        ///   Looks up a localized string similar to Discussions at.
         /// </summary>
         public static string gsDiscussions {
             get {
@@ -1134,7 +1134,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exit to Windows in:.
+        ///   Looks up a localized string similar to Exit to Windows in.
         /// </summary>
         public static string gsExitToWindows {
             get {
@@ -1494,7 +1494,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Image:.
+        ///   Looks up a localized string similar to No Image.
         /// </summary>
         public static string gsImage {
             get {
@@ -1710,7 +1710,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Look Ahead:.
+        ///   Looks up a localized string similar to Look Ahead.
         /// </summary>
         public static string gsLookAhead {
             get {
@@ -2025,7 +2025,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nudge:.
+        ///   Looks up a localized string similar to Nudge.
         /// </summary>
         public static string gsNudge {
             get {
@@ -2106,7 +2106,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opacity:.
+        ///   Looks up a localized string similar to Opacity.
         /// </summary>
         public static string gsOpacity {
             get {
@@ -2133,7 +2133,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overlap:.
+        ///   Looks up a localized string similar to Overlap.
         /// </summary>
         public static string gsOverlap {
             get {
@@ -2232,7 +2232,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please Wait....
+        ///   Looks up a localized string similar to Please Wait.
         /// </summary>
         public static string gsPleaseWait {
             get {
@@ -2565,7 +2565,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Saving field...
+        ///   Looks up a localized string similar to Saving field.
         /// </summary>
         public static string gsSaveField {
             get {
@@ -2574,7 +2574,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Saving field parameters....
+        ///   Looks up a localized string similar to Saving field parameters.
         /// </summary>
         public static string gsSaveFieldParam {
             get {
@@ -2601,7 +2601,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Finalizing shutdown...
+        ///   Looks up a localized string similar to Finalizing shutdown.
         /// </summary>
         public static string gsSaveFinalizeShutdown {
             get {
@@ -2610,7 +2610,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Saving settings....
+        ///   Looks up a localized string similar to Saving settings.
         /// </summary>
         public static string gsSaveSettings {
             get {
@@ -2646,7 +2646,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uploading field to AgShare....
+        ///   Looks up a localized string similar to Uploading field to AgShare.
         /// </summary>
         public static string gsSaveUploadToAgshare {
             get {
@@ -2682,7 +2682,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sections:.
+        ///   Looks up a localized string similar to Sections.
         /// </summary>
         public static string gsSections {
             get {
@@ -2754,7 +2754,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shutdown in:.
+        ///   Looks up a localized string similar to Shutdown in.
         /// </summary>
         public static string gsShutdownIn {
             get {
@@ -3034,7 +3034,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Terms and Conditions for version: .
+        ///   Looks up a localized string similar to Terms and Conditions for version.
         /// </summary>
         public static string gsTermsConditions {
             get {
@@ -3166,7 +3166,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tram Width:.
+        ///   Looks up a localized string similar to Tram Width.
         /// </summary>
         public static string gsTramWidth {
             get {
@@ -3216,15 +3216,6 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsTurnSensor {
             get {
                 return ResourceManager.GetString("gsTurnSensor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Units:.
-        /// </summary>
-        public static string gsUnit {
-            get {
-                return ResourceManager.GetString("gsUnit", resourceCulture);
             }
         }
         
@@ -3319,7 +3310,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vehicle Type:.
+        ///   Looks up a localized string similar to Vehicle Type.
         /// </summary>
         public static string gsVehiclegroupbox {
             get {
@@ -3355,7 +3346,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wheelbase:.
+        ///   Looks up a localized string similar to Wheelbase.
         /// </summary>
         public static string gsWheelbase {
             get {
@@ -3364,7 +3355,7 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Width:.
+        ///   Looks up a localized string similar to Width.
         /// </summary>
         public static string gsWidth {
             get {

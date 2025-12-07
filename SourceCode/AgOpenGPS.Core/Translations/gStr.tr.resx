@@ -117,7 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="gsABDrawHint" xml:space="preserve">
     <value>AB çizgisinde rota oluşturmak için 2 sınır noktasına tıkla</value>
   </data>
@@ -134,7 +133,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Hakkında...</value>
+    <value>Hakkında</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -223,7 +222,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Arka plan</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>Alana Göre:</value>
+    <value>Alana Göre</value>
   </data>
   <data name="gsBottomMenu" xml:space="preserve">
     <value>Alt Menü</value>
@@ -397,7 +396,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Katılmıyorum</value>
   </data>
   <data name="gsDiscussions" xml:space="preserve">
-    <value>Tartışmalar:</value>
+    <value>Tartışmalar</value>
   </data>
   <data name="gsDisplay" xml:space="preserve">
     <value>Görüntüle</value>
@@ -475,7 +474,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Çıkış yap</value>
   </data>
   <data name="gsExitToWindows" xml:space="preserve">
-    <value>Windows'a çıkış:</value>
+    <value>Windows'a çıkış</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Ek Yönergeler</value>
@@ -598,7 +597,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Yanlış yön? Araç'a dokunun</value>
   </data>
   <data name="gsImage" xml:space="preserve">
-    <value>Resim Yok:</value>
+    <value>Resim Yok</value>
   </data>
   <data name="gsImuFusion" xml:space="preserve">
     <value>Füzyon</value>
@@ -667,7 +666,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Boylam</value>
   </data>
   <data name="gsLookAhead" xml:space="preserve">
-    <value>İleri Bak:</value>
+    <value>İleri Bak</value>
   </data>
   <data name="gsLookAheadTiming" xml:space="preserve">
     <value>İleriye Dönük Zaman Ayarları</value>
@@ -772,7 +771,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Hiçbir şey Silinmedi</value>
   </data>
   <data name="gsNudge" xml:space="preserve">
-    <value>Dürtmek:</value>
+    <value>Dürtmek</value>
   </data>
   <data name="gsNudgeDistance" xml:space="preserve">
     <value>Dürtme Mesafesi</value>
@@ -799,7 +798,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Açık/Kapalı</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
-    <value>Şeffaflık:</value>
+    <value>Şeffaflık</value>
   </data>
   <data name="gsOpen" xml:space="preserve">
     <value>Açık</value>
@@ -808,7 +807,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Dış</value>
   </data>
   <data name="gsOverlap" xml:space="preserve">
-    <value>Çakışma:</value>
+    <value>Çakışma</value>
   </data>
   <data name="gsOverlapGap" xml:space="preserve">
     <value>Çakışma / Boşluk</value>
@@ -841,7 +840,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Lütfen ABline girin</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Lütfen bekleyin...</value>
+    <value>Lütfen bekleyin</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Nokta</value>
@@ -952,10 +951,10 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Bir dahaki sefere görüşmek üzere!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Alan kaydediliyor..</value>
+    <value>Alan kaydediliyor</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Alan parametreleri kaydediliyor...</value>
+    <value>Alan parametreleri kaydediliyor</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Alan parametreleri kaydedildi.</value>
@@ -964,10 +963,10 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Alan yerel olarak kaydedildi.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Kapatma işlemi tamamlanıyor..</value>
+    <value>Kapatma işlemi tamamlanıyor</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Ayarlar kaydediliyor...</value>
+    <value>Ayarlar kaydediliyor</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Ayarlar kaydedildi.</value>
@@ -979,7 +978,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Yükleme başarısız oldu.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Alan AgShare'e yükleniyor...</value>
+    <value>Alan AgShare'e yükleniyor</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Ekran Düğmeleri</value>
@@ -991,7 +990,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Bölüm Çizgileri</value>
   </data>
   <data name="gsSections" xml:space="preserve">
-    <value>Bölümler:</value>
+    <value>Bölümler</value>
   </data>
   <data name="gsSelectButtons" xml:space="preserve">
     <value>Düğmeleri Seçin</value>
@@ -1015,7 +1014,7 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
     <value>Kapat</value>
   </data>
   <data name="gsShutdownIn" xml:space="preserve">
-    <value>Kapatma süresi:</value>
+    <value>Kapatma süresi</value>
   </data>
   <data name="gsSideHillComp" xml:space="preserve">
     <value>Derece Başına Yan Tepe Telafisi</value>
@@ -1109,7 +1108,7 @@ Anahtar - Basıldığında Aç, Bırakıldığında Kapat</value>
     <value>Kalfalık Oku</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
-    <value>Sürüm için Şartlar ve Koşullar: </value>
+    <value>Sürüm için Şartlar ve Koşullar</value>
   </data>
   <data name="gsTermsOne" xml:space="preserve">
     <value>Bu ÜCRETSİZ programın kopyalarını, ister ücretsiz, ister ücretli, geliştirilmiş, değiştirilmiş olarak dağıtırsanız, GPLv3 Lisansı'nda belirtilen özgürlüklerin aynısını alıcılara da aktarmalısınız.</value>
@@ -1157,7 +1156,7 @@ KULLANIM RİSKİNİZ KENDİ TARAFINIZCA YAPILMAKTADIR.</value>
     <value>Temel İlkeler</value>
   </data>
   <data name="gsTramWidth" xml:space="preserve">
-    <value>Tramvay Genişliği:</value>
+    <value>Tramvay Genişliği</value>
   </data>
   <data name="gsTurnABCurveOn" xml:space="preserve">
     <value>AB Eğrisini Aç</value>
@@ -1173,9 +1172,6 @@ KULLANIM RİSKİNİZ KENDİ TARAFINIZCA YAPILMAKTADIR.</value>
   </data>
   <data name="gsTurnSensor" xml:space="preserve">
     <value>Dönüş Sensörü</value>
-  </data>
-  <data name="gsUnit" xml:space="preserve">
-    <value>Birimler:</value>
   </data>
   <data name="gsUnits" xml:space="preserve">
     <value>Birimler</value>
@@ -1208,7 +1204,7 @@ KULLANIM RİSKİNİZ KENDİ TARAFINIZCA YAPILMAKTADIR.</value>
     <value>Düzeltmeyi 3-4x Yarıçapında Ayarla</value>
   </data>
   <data name="gsVehiclegroupbox" xml:space="preserve">
-    <value>Araç Tipi:</value>
+    <value>Araç Tipi</value>
   </data>
   <data name="gsWasZero" xml:space="preserve">
     <value>Was Sıfır</value>
@@ -1220,10 +1216,10 @@ KULLANIM RİSKİNİZ KENDİ TARAFINIZCA YAPILMAKTADIR.</value>
     <value>Batı</value>
   </data>
   <data name="gsWheelbase" xml:space="preserve">
-    <value>Dingil açıklığı:</value>
+    <value>Dingil açıklığı</value>
   </data>
   <data name="gsWidth" xml:space="preserve">
-    <value>Genişlik:</value>
+    <value>Genişlik</value>
   </data>
   <data name="gsWindowsStillOpen" xml:space="preserve">
     <value>Windows Hala Açık</value>

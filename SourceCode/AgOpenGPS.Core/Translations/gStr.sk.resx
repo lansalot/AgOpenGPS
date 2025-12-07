@@ -121,7 +121,7 @@
     <value>AB línia</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>O programe...</value>
+    <value>O programe</value>
   </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>Akcia bola ukončená</value>
@@ -145,7 +145,7 @@
     <value>Autopilot Port</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>Použiť pole:</value>
+    <value>Použiť pole</value>
   </data>
   <data name="gsBoundary" xml:space="preserve">
     <value>Hranica</value>

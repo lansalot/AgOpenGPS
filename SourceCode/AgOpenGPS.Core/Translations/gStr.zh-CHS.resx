@@ -136,7 +136,7 @@
     <value>优秀</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>关于...</value>
+    <value>关于</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>阿克曼转向</value>
@@ -222,7 +222,7 @@
     <value>背景</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>基本:</value>
+    <value>基本</value>
   </data>
   <data name="gsBottomMenu" xml:space="preserve">
     <value>底部菜单</value>
@@ -396,7 +396,7 @@
     <value>不同意</value>
   </data>
   <data name="gsDiscussions" xml:space="preserve">
-    <value>讨论：</value>
+    <value>讨论</value>
   </data>
   <data name="gsDisplay" xml:space="preserve">
     <value>显示</value>
@@ -468,7 +468,7 @@
     <value>退出</value>
   </data>
   <data name="gsExitToWindows" xml:space="preserve">
-    <value>退出到 Windows 中：</value>
+    <value>退出到 Windows 中</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>补充指南</value>
@@ -585,7 +585,7 @@
     <value>若方向错误，请点击车辆</value>
   </data>
   <data name="gsImage" xml:space="preserve">
-    <value>不生成影像：</value>
+    <value>不生成影像</value>
   </data>
   <data name="gsImuFusion" xml:space="preserve">
     <value>融合</value>
@@ -654,7 +654,7 @@
     <value>经度</value>
   </data>
   <data name="gsLookAhead" xml:space="preserve">
-    <value>预观：</value>
+    <value>预观</value>
   </data>
   <data name="gsLookAheadTiming" xml:space="preserve">
     <value>提前查看时间设置</value>
@@ -759,7 +759,7 @@
     <value>未删除</value>
   </data>
   <data name="gsNudge" xml:space="preserve">
-    <value>推测：</value>
+    <value>推测</value>
   </data>
   <data name="gsNudgeDistance" xml:space="preserve">
     <value>推动距离</value>
@@ -786,7 +786,7 @@
     <value>开/关</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
-    <value>不透明度：</value>
+    <value>不透明度</value>
   </data>
   <data name="gsOpen" xml:space="preserve">
     <value>打开</value>
@@ -795,7 +795,7 @@
     <value>外面的</value>
   </data>
   <data name="gsOverlap" xml:space="preserve">
-    <value>重叠：</value>
+    <value>重叠</value>
   </data>
   <data name="gsOverlapGap" xml:space="preserve">
     <value>重叠 / 缺口</value>
@@ -828,7 +828,7 @@
     <value>请输入AB线</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>请稍候…</value>
+    <value>请稍候</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>点</value>
@@ -939,10 +939,10 @@
     <value>结束！再见！</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>保存字段..</value>
+    <value>保存字段</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>正在保存字段参数...</value>
+    <value>正在保存字段参数</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>字段参数已保存。</value>
@@ -951,10 +951,10 @@
     <value>字段已本地保存。</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>正在完成关闭..</value>
+    <value>正在完成关闭</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>保存设置...</value>
+    <value>保存设置</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>设置已保存。</value>
@@ -966,7 +966,7 @@
     <value>上传失败。</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>正将田间数据上传...</value>
+    <value>正将田间数据上传</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>屏幕按钮</value>
@@ -978,7 +978,7 @@
     <value>分区控制线</value>
   </data>
   <data name="gsSections" xml:space="preserve">
-    <value>部分：</value>
+    <value>部分</value>
   </data>
   <data name="gsSelectButtons" xml:space="preserve">
     <value>选择按钮</value>
@@ -1002,7 +1002,7 @@
     <value>关闭</value>
   </data>
   <data name="gsShutdownIn" xml:space="preserve">
-    <value>关闭：</value>
+    <value>关闭</value>
   </data>
   <data name="gsSideHillComp" xml:space="preserve">
     <value>山坡坡度每度补偿</value>
@@ -1096,7 +1096,7 @@
     <value>Svenn箭头</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
-    <value>版本的条款和条件： </value>
+    <value>版本的条款和条件</value>
   </data>
   <data name="gsTermsOne" xml:space="preserve">
     <value>如果您分发此自由软件（无论无偿或有偿），必须向接收者传递您所获得的相同自由权利，该权利遵循GPLv3许可证的规定。</value>
@@ -1144,7 +1144,7 @@
     <value>目标路径</value>
   </data>
   <data name="gsTramWidth" xml:space="preserve">
-    <value>轨道宽度：</value>
+    <value>轨道宽度</value>
   </data>
   <data name="gsTurnABCurveOn" xml:space="preserve">
     <value>打开AB曲线</value>
@@ -1160,9 +1160,6 @@
   </data>
   <data name="gsTurnSensor" xml:space="preserve">
     <value>打开传感器</value>
-  </data>
-  <data name="gsUnit" xml:space="preserve">
-    <value>单位：</value>
   </data>
   <data name="gsUnits" xml:space="preserve">
     <value>单位</value>
@@ -1195,7 +1192,7 @@
     <value>设置优化轨迹为半径的3-4倍</value>
   </data>
   <data name="gsVehiclegroupbox" xml:space="preserve">
-    <value>车辆类型：</value>
+    <value>车辆类型</value>
   </data>
   <data name="gsWasZero" xml:space="preserve">
     <value>为零</value>
@@ -1207,10 +1204,10 @@
     <value>西</value>
   </data>
   <data name="gsWheelbase" xml:space="preserve">
-    <value>轴距：</value>
+    <value>轴距</value>
   </data>
   <data name="gsWidth" xml:space="preserve">
-    <value>宽度：</value>
+    <value>宽度</value>
   </data>
   <data name="gsWindowsStillOpen" xml:space="preserve">
     <value>保持系统开机</value>

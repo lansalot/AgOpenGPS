@@ -130,7 +130,7 @@
     <value>ADS-configuratie</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Over...</value>
+    <value>Over</value>
   </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>Actie geannuleerd</value>
@@ -204,7 +204,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Achtergrond</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>Gebaseerd op veld:</value>
+    <value>Gebaseerd op veld</value>
   </data>
   <data name="gsBottomMenu" xml:space="preserve">
     <value>Onderste Rij Menu</value>
@@ -363,7 +363,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Afwijzen</value>
   </data>
   <data name="gsDiscussions" xml:space="preserve">
-    <value>Discussies vindt je hier:</value>
+    <value>Discussies vindt je hier</value>
   </data>
   <data name="gsDisplay" xml:space="preserve">
     <value>Activeer Knoppen</value>
@@ -441,7 +441,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Afsluiten</value>
   </data>
   <data name="gsExitToWindows" xml:space="preserve">
-    <value>Afsluiten over:</value>
+    <value>Afsluiten over</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Extra geleidingslijnen</value>
@@ -549,7 +549,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Verkeerde richting? Druk op Voertuig</value>
   </data>
   <data name="gsImage" xml:space="preserve">
-    <value>Geen afbeelding:</value>
+    <value>Geen afbeelding</value>
   </data>
   <data name="gsImuFusion" xml:space="preserve">
     <value>Fusering</value>
@@ -609,7 +609,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Breedtegraad</value>
   </data>
   <data name="gsLookAhead" xml:space="preserve">
-    <value>Goal-punt:</value>
+    <value>Goal-punt</value>
   </data>
   <data name="gsLookAheadTiming" xml:space="preserve">
     <value>In/Uitschakeltijd Configuratie</value>
@@ -714,7 +714,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Niets verwijderd</value>
   </data>
   <data name="gsNudge" xml:space="preserve">
-    <value>Lijn-Nudge:</value>
+    <value>Lijn-Nudge</value>
   </data>
   <data name="gsNudgeDistance" xml:space="preserve">
     <value>Verplaats-afstand</value>
@@ -741,7 +741,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Aan/Uit</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
-    <value>Transparantie:</value>
+    <value>Transparantie</value>
   </data>
   <data name="gsOpen" xml:space="preserve">
     <value>Openen</value>
@@ -750,7 +750,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Buitenste</value>
   </data>
   <data name="gsOverlap" xml:space="preserve">
-    <value>Overlapping:</value>
+    <value>Overlapping</value>
   </data>
   <data name="gsOverlapGap" xml:space="preserve">
     <value>Overlapping / Gat</value>
@@ -783,7 +783,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Volg AB lijn aub</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Even wachten...</value>
+    <value>Even wachten</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Punt</value>
@@ -891,10 +891,10 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Tot de volgende keer!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Veld opslaan..</value>
+    <value>Veld opslaan</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Veldparameters opslaan...</value>
+    <value>Veldparameters opslaan</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Veldparameters opgeslagen.</value>
@@ -903,10 +903,10 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Veld lokaal opgeslagen.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Afsluiten wordt voltooid..</value>
+    <value>Afsluiten wordt voltooid</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Instellingen opslaan...</value>
+    <value>Instellingen opslaan</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Instellingen opgeslagen.</value>
@@ -918,7 +918,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Upload mislukt.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Uploaden naar AgShare...</value>
+    <value>Uploaden naar AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Scherm Knoppen</value>
@@ -930,7 +930,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Sectie scheidingslijnen</value>
   </data>
   <data name="gsSections" xml:space="preserve">
-    <value>Secties:</value>
+    <value>Secties</value>
   </data>
   <data name="gsSelectButtons" xml:space="preserve">
     <value>Kies Knoppen</value>
@@ -954,7 +954,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Uit zetten</value>
   </data>
   <data name="gsShutdownIn" xml:space="preserve">
-    <value>Uitzetten over:</value>
+    <value>Uitzetten over</value>
   </data>
   <data name="gsSideHillComp" xml:space="preserve">
     <value>Helling-Compensatie</value>
@@ -1038,7 +1038,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Svenn Pijl</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
-    <value>Algemene Voorwaarden van versie: </value>
+    <value>Algemene Voorwaarden van versie</value>
   </data>
   <data name="gsTermsOne" xml:space="preserve">
     <value>Als u kopieën van dit GRATIS programma verspreidt, hetzij gratis of tegen betaling, verbeterd of gewijzigd, moet u aan de ontvangers dezelfde vrijheden doorgeven die u zelf hebt ontvangen, zoals uiteengezet in de GPLv3-licentie.</value>
@@ -1086,7 +1086,7 @@ GEBRUIK OP EIGEN RISICO.</value>
     <value>Spuitpaden</value>
   </data>
   <data name="gsTramWidth" xml:space="preserve">
-    <value>Spuit Breedte:</value>
+    <value>Spuit Breedte</value>
   </data>
   <data name="gsTurnABCurveOn" xml:space="preserve">
     <value>Schakel AB Curve in</value>
@@ -1103,11 +1103,8 @@ GEBRUIK OP EIGEN RISICO.</value>
   <data name="gsTurnSensor" xml:space="preserve">
     <value>Draai-sensor</value>
   </data>
-  <data name="gsUnit" xml:space="preserve">
-    <value>Maatvoering:</value>
-  </data>
   <data name="gsUnits" xml:space="preserve">
-    <value>Metrisch/Imperiaal</value>
+    <value>Maatvoering</value>
   </data>
   <data name="gsUseSelected" xml:space="preserve">
     <value>gebruik geselecteerde</value>
@@ -1125,16 +1122,16 @@ GEBRUIK OP EIGEN RISICO.</value>
     <value>Minimale afvlakking is 3-4x Radius</value>
   </data>
   <data name="gsVehiclegroupbox" xml:space="preserve">
-    <value>Voertuig Type:</value>
+    <value>Voertuig Type</value>
   </data>
   <data name="gsWasZero" xml:space="preserve">
     <value>0-stellen Stuurhoeksensor</value>
   </data>
   <data name="gsWheelbase" xml:space="preserve">
-    <value>Wielbasis:</value>
+    <value>Wielbasis</value>
   </data>
   <data name="gsWidth" xml:space="preserve">
-    <value>Breedte:</value>
+    <value>Breedte</value>
   </data>
   <data name="gsWindowsStillOpen" xml:space="preserve">
     <value>Vensters nog geopend</value>

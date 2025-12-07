@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Despre...</value>
+    <value>Despre</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -225,7 +225,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Fundal</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>Pe baza câmpului:</value>
+    <value>Pe baza câmpului</value>
   </data>
   <data name="gsBottomMenu" xml:space="preserve">
     <value>Meniul de jos</value>
@@ -399,7 +399,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Nu sunt de acord</value>
   </data>
   <data name="gsDiscussions" xml:space="preserve">
-    <value>Discuții la:</value>
+    <value>Discuții la</value>
   </data>
   <data name="gsDisplay" xml:space="preserve">
     <value>Afişaj</value>
@@ -477,7 +477,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Ieșire</value>
   </data>
   <data name="gsExitToWindows" xml:space="preserve">
-    <value>Ieșire în Windows în:</value>
+    <value>Ieșire în Windows în</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Linii ghidare suplimentare</value>
@@ -600,7 +600,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Dacă direcția este greșită, atingeți vehiculul</value>
   </data>
   <data name="gsImage" xml:space="preserve">
-    <value>Fără imagine:</value>
+    <value>Fără imagine</value>
   </data>
   <data name="gsImuFusion" xml:space="preserve">
     <value>Fuziune</value>
@@ -669,7 +669,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Longitudine</value>
   </data>
   <data name="gsLookAhead" xml:space="preserve">
-    <value>Privire anticipată:</value>
+    <value>Privire anticipată</value>
   </data>
   <data name="gsLookAheadTiming" xml:space="preserve">
     <value>Setări pentru perioada de timp anticipată</value>
@@ -774,7 +774,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Nimic șters</value>
   </data>
   <data name="gsNudge" xml:space="preserve">
-    <value>Ajustare:</value>
+    <value>Ajustare</value>
   </data>
   <data name="gsNudgeDistance" xml:space="preserve">
     <value>Distanța de ajustare</value>
@@ -801,7 +801,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Pornit/Oprit</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
-    <value>Opacitate:</value>
+    <value>Opacitate</value>
   </data>
   <data name="gsOpen" xml:space="preserve">
     <value>Deschis</value>
@@ -810,7 +810,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Exterior</value>
   </data>
   <data name="gsOverlap" xml:space="preserve">
-    <value>Suprapunere:</value>
+    <value>Suprapunere</value>
   </data>
   <data name="gsOverlapGap" xml:space="preserve">
     <value>Suprapunere / Spațiu liber</value>
@@ -843,7 +843,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Vă rugăm să introduceți linia AB</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Vă rugăm să așteptați...</value>
+    <value>Vă rugăm să așteptați</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Punct</value>
@@ -954,10 +954,10 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Ne vedem data viitoare!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Salvare câmp...</value>
+    <value>Salvare câmp</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Salvarea parametrilor câmpului...</value>
+    <value>Salvarea parametrilor câmpului</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Parametrii câmpului au fost salvați.</value>
@@ -966,10 +966,10 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Câmp salvat local.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Finalizarea oprire..</value>
+    <value>Finalizarea oprire</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Salvarea setărilor...</value>
+    <value>Salvarea setărilor</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Setări salvate.</value>
@@ -981,7 +981,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Încărcarea a eșuat.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Încărcare câmp în AgShare...</value>
+    <value>Încărcare câmp în AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Butoane ecran</value>
@@ -993,7 +993,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Linii de secțiune</value>
   </data>
   <data name="gsSections" xml:space="preserve">
-    <value>Secțiuni:</value>
+    <value>Secțiuni</value>
   </data>
   <data name="gsSelectButtons" xml:space="preserve">
     <value>Selectați butoanele</value>
@@ -1017,7 +1017,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Oprire</value>
   </data>
   <data name="gsShutdownIn" xml:space="preserve">
-    <value>Oprire în:</value>
+    <value>Oprire în</value>
   </data>
   <data name="gsSideHillComp" xml:space="preserve">
     <value>Compensare pentru pantă laterală pe grade</value>
@@ -1111,7 +1111,7 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
     <value>Săgeata lui Svenn</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
-    <value>Termeni și condiții pentru versiunea: </value>
+    <value>Termeni și condiții pentru versiunea</value>
   </data>
   <data name="gsTermsOne" xml:space="preserve">
     <value>Dacă distribuiți copii ale acestui program GRATUIT, fie gratuit, fie contra cost, îmbunătățit, modificat, trebuie să transmiteți destinatarilor aceleași libertăți pe care le-ați primit, astfel cum sunt descrise în Licența GPLv3.</value>
@@ -1159,7 +1159,7 @@ UTILIZAȚI PE PROPRIUL RISC.</value>
     <value>Linii de urme tehnologice</value>
   </data>
   <data name="gsTramWidth" xml:space="preserve">
-    <value>Lătime urme tehnologice:</value>
+    <value>Lătime urme tehnologice</value>
   </data>
   <data name="gsTurnABCurveOn" xml:space="preserve">
     <value>Activați curba AB</value>
@@ -1175,9 +1175,6 @@ UTILIZAȚI PE PROPRIUL RISC.</value>
   </data>
   <data name="gsTurnSensor" xml:space="preserve">
     <value>Senzor de virare</value>
-  </data>
-  <data name="gsUnit" xml:space="preserve">
-    <value>Unități:</value>
   </data>
   <data name="gsUnits" xml:space="preserve">
     <value>Unități</value>
@@ -1210,7 +1207,7 @@ UTILIZAȚI PE PROPRIUL RISC.</value>
     <value>Setare netezire 3-4x rază</value>
   </data>
   <data name="gsVehiclegroupbox" xml:space="preserve">
-    <value>Tipul vehiculului:</value>
+    <value>Tipul vehiculului</value>
   </data>
   <data name="gsWasZero" xml:space="preserve">
     <value>WAS Zero</value>
@@ -1222,10 +1219,10 @@ UTILIZAȚI PE PROPRIUL RISC.</value>
     <value>Vest</value>
   </data>
   <data name="gsWheelbase" xml:space="preserve">
-    <value>Ampatament:</value>
+    <value>Ampatament</value>
   </data>
   <data name="gsWidth" xml:space="preserve">
-    <value>Lățime:</value>
+    <value>Lățime</value>
   </data>
   <data name="gsWindowsStillOpen" xml:space="preserve">
     <value>Ferestrele încă deschise</value>

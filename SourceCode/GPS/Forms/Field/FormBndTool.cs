@@ -120,7 +120,7 @@ namespace AgOpenGPS
             //translate
             labelCreate.Text = gStr.gsCreate;
             labelSmooth.Text = gStr.gsSmooth;
-            labelPleaseWait.Text = gStr.gsPleaseWait;
+            labelPleaseWait.Text = gStr.gsPleaseWait + "...";
             labelReset.Text = "Reset";
             labelSpacing.Text = gStr.gsSpacing;
             labelPoints.Text = gStr.gsPoints;

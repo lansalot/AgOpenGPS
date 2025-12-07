@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>詳細...</value>
+    <value>詳細</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>アッカーマン</value>
@@ -222,7 +222,7 @@
     <value>バックグラウンド</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>フィールドに基づく:</value>
+    <value>フィールドに基づく</value>
   </data>
   <data name="gsBottomMenu" xml:space="preserve">
     <value>メニュー</value>
@@ -396,7 +396,7 @@
     <value>反対</value>
   </data>
   <data name="gsDiscussions" xml:space="preserve">
-    <value>議論は以下で行われています：</value>
+    <value>議論は以下で行われています</value>
   </data>
   <data name="gsDisplay" xml:space="preserve">
     <value>表示</value>
@@ -474,7 +474,7 @@
     <value>終了</value>
   </data>
   <data name="gsExitToWindows" xml:space="preserve">
-    <value>終了してWindowsに戻る:</value>
+    <value>終了してWindowsに戻る</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>追加のガイドライン</value>
@@ -597,7 +597,7 @@
     <value>間違った方向にタップすると車両が移動します</value>
   </data>
   <data name="gsImage" xml:space="preserve">
-    <value>イメージ無し:</value>
+    <value>イメージ無し</value>
   </data>
   <data name="gsImuFusion" xml:space="preserve">
     <value>フュージョン</value>
@@ -666,7 +666,7 @@
     <value>経度</value>
   </data>
   <data name="gsLookAhead" xml:space="preserve">
-    <value>先を見据えて：</value>
+    <value>先を見据えて</value>
   </data>
   <data name="gsLookAheadTiming" xml:space="preserve">
     <value>先読み時間設定</value>
@@ -771,7 +771,7 @@
     <value>何も削除されていません</value>
   </data>
   <data name="gsNudge" xml:space="preserve">
-    <value>ナッジ：</value>
+    <value>ナッジ</value>
   </data>
   <data name="gsNudgeDistance" xml:space="preserve">
     <value>押し出し距離</value>
@@ -798,7 +798,7 @@
     <value>オン/オフ</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
-    <value>不透明度:</value>
+    <value>不透明度</value>
   </data>
   <data name="gsOpen" xml:space="preserve">
     <value>開く</value>
@@ -807,7 +807,7 @@
     <value>外側</value>
   </data>
   <data name="gsOverlap" xml:space="preserve">
-    <value>オーバーラップ:</value>
+    <value>オーバーラップ</value>
   </data>
   <data name="gsOverlapGap" xml:space="preserve">
     <value>オーバーラップ/間隔</value>

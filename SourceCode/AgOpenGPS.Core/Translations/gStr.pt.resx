@@ -136,7 +136,7 @@
     <value>A+</value>
   </data>
   <data name="gsAbout" xml:space="preserve">
-    <value>Sobre...</value>
+    <value>Sobre</value>
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
@@ -225,7 +225,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Fundo</value>
   </data>
   <data name="gsBasedOnField" xml:space="preserve">
-    <value>Com base no campo:</value>
+    <value>Com base no campo</value>
   </data>
   <data name="gsBottomMenu" xml:space="preserve">
     <value>Menu inferior</value>
@@ -399,7 +399,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Discordo</value>
   </data>
   <data name="gsDiscussions" xml:space="preserve">
-    <value>Discussões em:</value>
+    <value>Discussões em</value>
   </data>
   <data name="gsDisplay" xml:space="preserve">
     <value>Mostrar</value>
@@ -477,7 +477,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Saída</value>
   </data>
   <data name="gsExitToWindows" xml:space="preserve">
-    <value>Sair para o Windows em:</value>
+    <value>Sair para o Windows em</value>
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Diretrizes extras</value>
@@ -600,7 +600,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Se a direção errada, toque no veículo</value>
   </data>
   <data name="gsImage" xml:space="preserve">
-    <value>Sem imagem:</value>
+    <value>Sem imagem</value>
   </data>
   <data name="gsImuFusion" xml:space="preserve">
     <value>Fusão</value>
@@ -669,7 +669,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Longtitude</value>
   </data>
   <data name="gsLookAhead" xml:space="preserve">
-    <value>Olhar à Frente:</value>
+    <value>Olhar à Frente</value>
   </data>
   <data name="gsLookAheadTiming" xml:space="preserve">
     <value>Configurações de tempo de visualização antecipada</value>
@@ -801,7 +801,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Ativar/Desativar</value>
   </data>
   <data name="gsOpacity" xml:space="preserve">
-    <value>Opacidade:</value>
+    <value>Opacidade</value>
   </data>
   <data name="gsOpen" xml:space="preserve">
     <value>Abrir</value>
@@ -810,7 +810,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Exterior</value>
   </data>
   <data name="gsOverlap" xml:space="preserve">
-    <value>Sobreposição:</value>
+    <value>Sobreposição</value>
   </data>
   <data name="gsOverlapGap" xml:space="preserve">
     <value>Sobreposição/Vão</value>
@@ -843,7 +843,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Por favor, insira a linha AB</value>
   </data>
   <data name="gsPleaseWait" xml:space="preserve">
-    <value>Por favor, aguarde...</value>
+    <value>Por favor, aguarde</value>
   </data>
   <data name="gsPoint" xml:space="preserve">
     <value>Ponto de navegação</value>
@@ -954,10 +954,10 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Até a próxima!</value>
   </data>
   <data name="gsSaveField" xml:space="preserve">
-    <value>Salvando campo..</value>
+    <value>Salvando campo</value>
   </data>
   <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Salvando parâmetros do campo...</value>
+    <value>Salvando parâmetros do campo</value>
   </data>
   <data name="gsSaveFieldParamSaved" xml:space="preserve">
     <value>Parâmetros do campo salvos.</value>
@@ -966,10 +966,10 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Campo salvo localmente.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
-    <value>Finalizando desligamento..</value>
+    <value>Finalizando desligamento</value>
   </data>
   <data name="gsSaveSettings" xml:space="preserve">
-    <value>Salvando configurações...</value>
+    <value>Salvando configurações</value>
   </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Configurações salvas.</value>
@@ -981,7 +981,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Falha no upload.</value>
   </data>
   <data name="gsSaveUploadToAgshare" xml:space="preserve">
-    <value>Enviando para AgShare...</value>
+    <value>Enviando para AgShare</value>
   </data>
   <data name="gsScreenButtons" xml:space="preserve">
     <value>Botões da tela</value>
@@ -993,7 +993,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Linhas de Seção</value>
   </data>
   <data name="gsSections" xml:space="preserve">
-    <value>Seções:</value>
+    <value>Seções</value>
   </data>
   <data name="gsSelectButtons" xml:space="preserve">
     <value>Botões de seleção</value>
@@ -1017,7 +1017,7 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
     <value>Desligar</value>
   </data>
   <data name="gsShutdownIn" xml:space="preserve">
-    <value>Desligamento em:</value>
+    <value>Desligamento em</value>
   </data>
   <data name="gsSideHillComp" xml:space="preserve">
     <value>Compensação por Grau de Inclinação Lateral</value>
@@ -1111,7 +1111,7 @@ Interruptor - Ligar e Desligar</value>
     <value>Svenn Arrow</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
-    <value>Termos e Condições para a versão: </value>
+    <value>Termos e Condições para a versão</value>
   </data>
   <data name="gsTermsOne" xml:space="preserve">
     <value>Se você distribuir cópias deste programa GRATUITO, seja de forma gratuita ou por uma taxa, melhorado ou alterado, você deve transmitir aos destinatários as mesmas liberdades que você recebeu, conforme descrito na Licença GPLv3.</value>
@@ -1176,9 +1176,6 @@ USE POR SUA CONTA E RISCO.</value>
   <data name="gsTurnSensor" xml:space="preserve">
     <value>Sensor de direção</value>
   </data>
-  <data name="gsUnit" xml:space="preserve">
-    <value>Unidades:</value>
-  </data>
   <data name="gsUnits" xml:space="preserve">
     <value>Unidades</value>
   </data>
@@ -1210,7 +1207,7 @@ USE POR SUA CONTA E RISCO.</value>
     <value>Definir suavização de raio 3-4x</value>
   </data>
   <data name="gsVehiclegroupbox" xml:space="preserve">
-    <value>Tipo de veículo:</value>
+    <value>Tipo de veículo</value>
   </data>
   <data name="gsWasZero" xml:space="preserve">
     <value>Was Zero</value>
@@ -1222,10 +1219,10 @@ USE POR SUA CONTA E RISCO.</value>
     <value>Oeste</value>
   </data>
   <data name="gsWheelbase" xml:space="preserve">
-    <value>Distância entre eixos:</value>
+    <value>Distância entre eixos</value>
   </data>
   <data name="gsWidth" xml:space="preserve">
-    <value>Largura:</value>
+    <value>Largura</value>
   </data>
   <data name="gsWindowsStillOpen" xml:space="preserve">
     <value>Janelas ainda abertas</value>
