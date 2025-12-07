@@ -26,23 +26,6 @@ namespace AgOpenGPS
 
         private static readonly ColorRgba stepSectionColor = new ColorRgba(0.64f, 0.64f, 0.6f);
 
-        private static readonly ColorRgb orange = new ColorRgb(0.90f, 0.5f, 0.25f);
-        private static readonly PointStyle[] pointAStyles = new PointStyle[]
-        {
-            new PointStyle(24, Colors.Black),
-            new PointStyle(16, new ColorRgba(0.950f, 0.75f, 0.50f))
-        };
-        private static readonly PointStyle[] pointBStyles = new PointStyle[]
-        {
-            new PointStyle(24, Colors.Black),
-            new PointStyle(16, new ColorRgba(0.5f, 0.5f, 0.935f))
-        };
-        private static readonly PointStyle[] pointCStyles = new PointStyle[]
-        {
-            new PointStyle(24, Colors.Black),
-            new PointStyle(16, new ColorRgba(0.95f, 0.95f, 0.35f))
-        };
-
         private Point fixPt;
         private vec3 ptA = new vec3();
         private vec3 ptB = new vec3();
