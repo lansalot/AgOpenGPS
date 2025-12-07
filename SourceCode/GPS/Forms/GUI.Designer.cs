@@ -1430,7 +1430,7 @@ namespace AgOpenGPS
             if (isMetric)
             {
                 TimedMessageBox(2000, gStr.gsTooFast, gStr.gsSlowDownBelow + " "
-                    + vehicle.functionSpeedLimit.ToString("N0") + " " + gStr.gsKMH);
+                    + vehicle.functionSpeedLimit.ToString("N0") + " " + gStr.gsKmH);
             }
             else
             {

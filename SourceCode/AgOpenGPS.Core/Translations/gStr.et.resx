@@ -599,8 +599,8 @@ Nende vajutamise järjekord on menüüs kuvamise järjekord alt ülespoole.</val
   <data name="gsInvertWas" xml:space="preserve">
     <value>Pööra WAS ümber</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
-    <value>kmh</value>
+  <data name="gsKmH" xml:space="preserve">
+    <value>km/h</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
     <value>Klaviatuur</value>

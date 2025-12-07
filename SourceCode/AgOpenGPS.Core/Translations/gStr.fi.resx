@@ -614,8 +614,8 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
   <data name="gsInvertWas" xml:space="preserve">
     <value>Vaihda WAS suunta (pyöränkulmaanturi)</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
-    <value>kmh</value>
+  <data name="gsKmH" xml:space="preserve">
+    <value>km/h</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
     <value>Näppäimistö</value>

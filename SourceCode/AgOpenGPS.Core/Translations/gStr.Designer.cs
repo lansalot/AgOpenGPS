@@ -1602,11 +1602,11 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to kmh.
+        ///   Looks up a localized string similar to km/h.
         /// </summary>
-        public static string gsKMH {
+        public static string gsKmH {
             get {
-                return ResourceManager.GetString("gsKMH", resourceCulture);
+                return ResourceManager.GetString("gsKmH", resourceCulture);
             }
         }
         
