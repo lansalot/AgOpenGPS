@@ -795,9 +795,6 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   <data name="gsOverlap" xml:space="preserve">
     <value>Átfedés</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Átfedés / Kihagyás</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Felülír</value>
   </data>

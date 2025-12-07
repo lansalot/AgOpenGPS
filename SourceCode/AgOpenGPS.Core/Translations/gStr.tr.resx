@@ -803,9 +803,6 @@ Menüde aşağıdan yukarıya doğru seçtiğiniz sıraya göre görünecektir.<
   <data name="gsOverlap" xml:space="preserve">
     <value>Çakışma</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Çakışma / Boşluk</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Geçersiz kıl</value>
   </data>

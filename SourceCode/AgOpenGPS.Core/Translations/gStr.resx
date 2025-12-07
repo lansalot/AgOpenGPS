@@ -806,9 +806,6 @@ The order you push them will be the order they appear on the menu from bottom up
   <data name="gsOverlap" xml:space="preserve">
     <value>Overlap</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Overlap / Gap</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Override</value>
   </data>

@@ -2124,15 +2124,6 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overlap / Gap.
-        /// </summary>
-        public static string gsOverlapGap {
-            get {
-                return ResourceManager.GetString("gsOverlapGap", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Override.
         /// </summary>
         public static string gsOverride {

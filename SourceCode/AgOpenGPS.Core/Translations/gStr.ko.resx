@@ -788,9 +788,6 @@
   <data name="gsOverlap" xml:space="preserve">
     <value>겹침</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>겹침 / 간격</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>강제조작</value>
   </data>

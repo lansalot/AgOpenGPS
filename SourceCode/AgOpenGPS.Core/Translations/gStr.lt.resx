@@ -785,9 +785,6 @@ Kokia tvarka juos paspausite, tokia tvarka atsiras Menu.</value>
   <data name="gsOverlap" xml:space="preserve">
     <value>Persidengimas</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Persidengimas/Tarpas</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Nepaisyti</value>
   </data>

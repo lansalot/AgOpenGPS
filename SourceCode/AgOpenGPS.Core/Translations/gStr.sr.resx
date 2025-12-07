@@ -806,9 +806,6 @@
   <data name="gsOverlap" xml:space="preserve">
     <value>Preklop</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Preklop/razmak</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Prepiši</value>
   </data>

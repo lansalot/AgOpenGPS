@@ -776,9 +776,6 @@ Rekkefølgen du trykker på dem, vil være rekkefølgen de vises i menyen fra bu
   <data name="gsOverlap" xml:space="preserve">
     <value>Overlapp</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Overlapp / Gap</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Overstyring</value>
   </data>

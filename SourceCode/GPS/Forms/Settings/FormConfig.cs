@@ -133,7 +133,7 @@ namespace AgOpenGPS
             labelDualPositionOnRight.Text = gStr.gsDualpositionAntennaRight;
             //toolconfig
             labelToolOffset.Text = gStr.gsToolOffset;
-            labelOverlapGap.Text = gStr.gsOverlapGap;
+            labelOverlapGap.Text = $"{gStr.gsOverlap} / {gStr.gsGap}";
             labelToolLeft.Text = gStr.gsToolLeft;
             labelToolRight.Text = gStr.gsToolRight;
             labelOverlap2.Text = gStr.gsOverlap;

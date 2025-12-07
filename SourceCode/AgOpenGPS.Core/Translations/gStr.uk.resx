@@ -806,9 +806,6 @@
   <data name="gsOverlap" xml:space="preserve">
     <value>Перекриття</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Перекриття / Розрив</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Перевизначити</value>
   </data>

@@ -645,9 +645,6 @@
   <data name="gsOuter" xml:space="preserve">
     <value>Внешний</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Перекрытие / Пропуск</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Заменить</value>
   </data>

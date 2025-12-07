@@ -782,9 +782,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsOverlap" xml:space="preserve">
     <value>Sormonto</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Sormonto / Spaziatura</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Sovrascrivi</value>
   </data>

@@ -806,9 +806,6 @@ Ordinea în care le apăsați va fi ordinea în care apar în meniu de jos în s
   <data name="gsOverlap" xml:space="preserve">
     <value>Suprapunere</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Suprapunere / Spațiu liber</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Suprascrie</value>
   </data>

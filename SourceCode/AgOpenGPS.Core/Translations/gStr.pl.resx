@@ -776,9 +776,6 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
   <data name="gsOverlap" xml:space="preserve">
     <value>Nakładka</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Nakładka / Odstęp</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Zastąpić</value>
   </data>

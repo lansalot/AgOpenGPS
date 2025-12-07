@@ -791,9 +791,6 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
   <data name="gsOverlap" xml:space="preserve">
     <value>Limitys</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Limitys / Väli</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Ylikirjoita</value>
   </data>

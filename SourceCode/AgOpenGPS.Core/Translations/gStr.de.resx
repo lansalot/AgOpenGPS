@@ -782,9 +782,6 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
   <data name="gsOverlap" xml:space="preserve">
     <value>Überlappung</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Überlappung / Lücke</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Manuell aktivieren</value>
   </data>

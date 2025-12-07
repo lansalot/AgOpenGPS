@@ -800,9 +800,6 @@ El orden en que los presiones será el orden en que aparecerán en el menú de a
   <data name="gsOverlap" xml:space="preserve">
     <value>Traslape</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Traslape / Brecha</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Anular</value>
   </data>

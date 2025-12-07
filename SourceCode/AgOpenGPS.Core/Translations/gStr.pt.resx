@@ -806,9 +806,6 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
   <data name="gsOverlap" xml:space="preserve">
     <value>Sobreposição</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Sobreposição/Vão</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Substituir</value>
   </data>

@@ -791,9 +791,6 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   <data name="gsOverlap" xml:space="preserve">
     <value>Doublure</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Chevauchement / Écart</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Remplacer</value>
   </data>

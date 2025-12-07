@@ -791,9 +791,6 @@
   <data name="gsOverlap" xml:space="preserve">
     <value>重叠</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>重叠 / 缺口</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>覆盖</value>
   </data>

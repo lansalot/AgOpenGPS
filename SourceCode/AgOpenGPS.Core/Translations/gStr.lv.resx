@@ -806,9 +806,6 @@ Secība, kādā tos nospiedīsiet, būs secība, kādā tie parādīsies izvēln
   <data name="gsOverlap" xml:space="preserve">
     <value>Pārklājums</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Pārklājums / sprauga</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Aizstāt</value>
   </data>

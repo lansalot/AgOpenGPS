@@ -752,9 +752,6 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
   <data name="gsOverlap" xml:space="preserve">
     <value>Overlapping</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Overlapping / Gat</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Handmatig inschakelen</value>
   </data>
