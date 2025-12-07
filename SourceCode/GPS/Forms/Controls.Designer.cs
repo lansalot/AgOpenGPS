@@ -1478,7 +1478,7 @@ namespace AgOpenGPS
 
         private void helpMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = new Form_Help(this))
+            using (var form = new FormHelp())
             {
                 form.ShowDialog(this);
             }

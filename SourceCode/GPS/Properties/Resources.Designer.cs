@@ -243,16 +243,6 @@ namespace AgOpenGPS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap AgOpenYouTubeChannel {
-            get {
-                object obj = ResourceManager.GetObject("AgOpenYouTubeChannel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap AgShare {
             get {
                 object obj = ResourceManager.GetObject("AgShare", resourceCulture);
@@ -2441,9 +2431,19 @@ namespace AgOpenGPS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap QRAOG {
+        internal static System.Drawing.Bitmap QRDiscourse {
             get {
-                object obj = ResourceManager.GetObject("QRAOG", resourceCulture);
+                object obj = ResourceManager.GetObject("QRDiscourse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QRGitHub {
+            get {
+                object obj = ResourceManager.GetObject("QRGitHub", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
