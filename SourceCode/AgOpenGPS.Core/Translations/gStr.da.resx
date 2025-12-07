@@ -132,6 +132,12 @@
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
   </data>
+  <data name="gsAcquire" xml:space="preserve">
+    <value>Erhverve</value>
+  </data>
+  <data name="gsAcquireFactor" xml:space="preserve">
+    <value>Erhverve Faktor</value>
+  </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>Handling afbrudt</value>
   </data>
@@ -158,15 +164,6 @@
   </data>
   <data name="gsApplied" xml:space="preserve">
     <value>Bearbejdet</value>
-  </data>
-  <data name="gsAquire" xml:space="preserve">
-    <value>Erhverve</value>
-  </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>Erhverve = Faktor * Hold</value>
-  </data>
-  <data name="gsAquireFactor" xml:space="preserve">
-    <value>Erhverve Faktor</value>
   </data>
   <data name="gsArea" xml:space="preserve">
     <value>Areal</value>
@@ -288,7 +285,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Tæller pr. grad</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% dækning</value>
+    <value>dækning</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Lav</value>
@@ -323,6 +320,9 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
   <data name="gsDefault" xml:space="preserve">
     <value>Standard</value>
   </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>grader</value>
+  </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Slet</value>
   </data>
@@ -331,9 +331,6 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
   </data>
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Slet Bearbejdet Areal</value>
-  </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Dette vil slette alle markgrænser. Vil du fortsætte?</value>
   </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Slet kontur spor</value>
@@ -428,6 +425,9 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Ekstra hjælpelinjer</value>
   </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Faktor</value>
+  </data>
   <data name="gsFast" xml:space="preserve">
     <value>Hurtig</value>
   </data>
@@ -492,7 +492,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Retning diagram</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Retning offset (grader)</value>
+    <value>Retning offset</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Forager</value>
@@ -539,7 +539,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
   <data name="gsInvertWas" xml:space="preserve">
     <value>omvend WAS</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>km/t</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -743,12 +743,6 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
   <data name="gsSaveField" xml:space="preserve">
     <value>Gemmer felt</value>
   </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Gemmer feltparametre</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Feltparametre gemt.</value>
-  </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Felt gemt lokalt.</value>
   </data>
@@ -798,7 +792,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Setpunkt</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Skift GPS Position cm</value>
+    <value>Skift GPS Position</value>
   </data>
   <data name="gsSimpleTramLines" xml:space="preserve">
     <value>Dan Simpel kørespor</value>
@@ -828,7 +822,7 @@ Rækkefølgen du klikker på dem, angiver placeringen nedefra og op.</value>
     <value>Syd</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Afstand (cm)</value>
+    <value>Afstand</value>
   </data>
   <data name="gsStartDeleteABoundary" xml:space="preserve">
     <value>Start Eller Slet Kant</value>

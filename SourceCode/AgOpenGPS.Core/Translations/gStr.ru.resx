@@ -126,9 +126,6 @@
   <data name="gsABline" xml:space="preserve">
     <value>Линия АВ</value>
   </data>
-  <data name="gsAOGMenu" xml:space="preserve">
-    <value>Меню</value>
-  </data>
   <data name="gsAbout" xml:space="preserve">
     <value>О программе</value>
   </data>
@@ -265,7 +262,7 @@
     <value>Неправильный путь</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Покрытия</value>
+    <value>Покрытия</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Создать</value>
@@ -305,9 +302,6 @@
   </data>
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Удалить обработанную область поля</value>
-  </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Удаление всех границ поля. Продолжить?</value>
   </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Удалить линии контура</value>
@@ -516,7 +510,7 @@
   <data name="gsInvertRoll" xml:space="preserve">
     <value>Инвертировать наклон</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>км/ч</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -651,9 +645,6 @@
   <data name="gsOuter" xml:space="preserve">
     <value>Внешний</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Перекрытие / Пропуск</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Заменить</value>
   </data>
@@ -768,12 +759,6 @@
   <data name="gsSaveField" xml:space="preserve">
     <value>Сохранение поля</value>
   </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Сохранение параметров поля</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Параметры поля сохранены.</value>
-  </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Поле сохранено локально.</value>
   </data>
@@ -823,7 +808,7 @@
     <value>Заданное значение</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Сдвиг положения GPS (см)</value>
+    <value>Сдвиг положения GPS</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Выключение</value>
@@ -859,7 +844,7 @@
     <value>Юг</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Расстояние (см)</value>
+    <value>Расстояние</value>
   </data>
   <data name="gsSpeedo" xml:space="preserve">
     <value>Спидометр</value>

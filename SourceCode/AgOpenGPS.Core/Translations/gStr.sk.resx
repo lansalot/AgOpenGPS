@@ -318,7 +318,7 @@
   <data name="gsInner" xml:space="preserve">
     <value>Vnútorná</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>km/h</value>
   </data>
   <data name="gsLanguage" xml:space="preserve">
@@ -448,7 +448,7 @@
     <value>Požadovaný</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Posun GPS pozície (cm)</value>
+    <value>Posun GPS pozície</value>
   </data>
   <data name="gsSimulatorOn" xml:space="preserve">
     <value>Simulátor zapnutý</value>
@@ -466,7 +466,7 @@
     <value>Juh</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Rozostup (cm)</value>
+    <value>Rozostup</value>
   </data>
   <data name="gsStartDeleteABoundary" xml:space="preserve">
     <value>Vytvoriť alebo vymazať hranicu</value>

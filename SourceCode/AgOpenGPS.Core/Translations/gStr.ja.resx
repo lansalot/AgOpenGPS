@@ -129,9 +129,6 @@
   <data name="gsADConverter" xml:space="preserve">
     <value>AD コンバーター</value>
   </data>
-  <data name="gsAOGMenu" xml:space="preserve">
-    <value>AOGメニュー</value>
-  </data>
   <data name="gsAPlus" xml:space="preserve">
     <value>A+</value>
   </data>
@@ -140,6 +137,12 @@
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>アッカーマン</value>
+  </data>
+  <data name="gsAcquire" xml:space="preserve">
+    <value>取得する</value>
+  </data>
+  <data name="gsAcquireFactor" xml:space="preserve">
+    <value>取得要因</value>
   </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>アクションはキャンセルされました</value>
@@ -176,15 +179,6 @@
   </data>
   <data name="gsApplied" xml:space="preserve">
     <value>適用済み</value>
-  </data>
-  <data name="gsAquire" xml:space="preserve">
-    <value>取得する</value>
-  </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>取得 = 要因 * 保有</value>
-  </data>
-  <data name="gsAquireFactor" xml:space="preserve">
-    <value>取得要因</value>
   </data>
   <data name="gsArea" xml:space="preserve">
     <value>エリア</value>
@@ -290,8 +284,8 @@
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>フィールドを先に閉じる</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; ピクセル</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>カラーピッカー</value>
@@ -318,7 +312,7 @@
     <value>1度あたりのカウント数</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>%の適用範囲</value>
+    <value>の適用範囲</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>作成する</value>
@@ -351,10 +345,13 @@
     <value>日中</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>---デッドゾーン---</value>
+    <value>デッドゾーン</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>デフォルト</value>
+  </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>角度</value>
   </data>
   <data name="gsDelete" xml:space="preserve">
     <value>削除</value>
@@ -364,9 +361,6 @@
   </data>
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>応用領域の削除</value>
-  </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>このアクションは全ての境界線を削除します。 実行しますか?</value>
   </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>輪郭パスの削除</value>
@@ -411,7 +405,7 @@
     <value>お問い合わせ</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>ダウンロード中…お待ち下さい</value>
+    <value>ダウンロード中</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>現在地から選択</value>
@@ -478,6 +472,9 @@
   </data>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>追加のガイドライン</value>
+  </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>要因</value>
   </data>
   <data name="gsFast" xml:space="preserve">
     <value>速い</value>
@@ -564,7 +561,7 @@
     <value>機首チャート</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>機首オフセット（角度）</value>
+    <value>機首オフセット</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>ヘッドランド</value>
@@ -629,7 +626,7 @@
   <data name="gsInvertWas" xml:space="preserve">
     <value>WASの反転</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>時速</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -794,9 +791,6 @@
   <data name="gsOnDelay" xml:space="preserve">
     <value>オン遅延</value>
   </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>オン/オフ</value>
-  </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>不透明度</value>
   </data>
@@ -809,9 +803,6 @@
   <data name="gsOverlap" xml:space="preserve">
     <value>オーバーラップ</value>
   </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>オーバーラップ/間隔</value>
-  </data>
   <data name="gsOverride" xml:space="preserve">
     <value>上書き</value>
   </data>
@@ -820,5 +811,8 @@
   </data>
   <data name="gsPasses" xml:space="preserve">
     <value>パス</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>ピクセル</value>
   </data>
 </root>

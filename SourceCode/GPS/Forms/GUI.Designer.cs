@@ -387,6 +387,7 @@ namespace AgOpenGPS
             enterSimCoordsToolStripMenuItem.Text = gStr.gsEnterSimCoords;
             aboutToolStripMenuItem.Text = gStr.gsAbout + "...";
             menustripLanguage.Text = gStr.gsLanguage;
+            helpMenuItem.Text = gStr.gsHelp;
 
             simulatorOnToolStripMenuItem.Text = gStr.gsSimulatorOn;
             resetALLToolStripMenuItem.Text = gStr.gsResetAll;
@@ -1429,7 +1430,7 @@ namespace AgOpenGPS
             if (isMetric)
             {
                 TimedMessageBox(2000, gStr.gsTooFast, gStr.gsSlowDownBelow + " "
-                    + vehicle.functionSpeedLimit.ToString("N0") + " " + gStr.gsKMH);
+                    + vehicle.functionSpeedLimit.ToString("N0") + " " + gStr.gsKmH);
             }
             else
             {

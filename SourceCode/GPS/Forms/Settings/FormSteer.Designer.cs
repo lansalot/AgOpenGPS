@@ -48,7 +48,7 @@
             this.lblPercentFS = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPP = new System.Windows.Forms.TabPage();
-            this.labelAquire = new System.Windows.Forms.Label();
+            this.labelAcquire = new System.Windows.Forms.Label();
             this.labelIntegralInfo = new System.Windows.Forms.Label();
             this.labelSlow = new System.Windows.Forms.Label();
             this.labelFast = new System.Windows.Forms.Label();
@@ -95,7 +95,7 @@
             this.hsbarWasOffset = new System.Windows.Forms.HScrollBar();
             this.lblSteerAngleSensorZero = new System.Windows.Forms.Label();
             this.tabPPAdv = new System.Windows.Forms.TabPage();
-            this.labelAquireFactor = new System.Windows.Forms.Label();
+            this.labelAcquireFactor = new System.Windows.Forms.Label();
             this.lblDistanceAdv = new System.Windows.Forms.Label();
             this.hsbarLookAheadMult = new System.Windows.Forms.HScrollBar();
             this.labelDist = new System.Windows.Forms.Label();
@@ -105,10 +105,10 @@
             this.lblAcqAdv = new System.Windows.Forms.Label();
             this.labelDeadzone = new System.Windows.Forms.Label();
             this.hsbarAcquireFactor = new System.Windows.Forms.HScrollBar();
-            this.labelAquire2 = new System.Windows.Forms.Label();
+            this.labelAcquire2 = new System.Windows.Forms.Label();
             this.lblAcquireFactor = new System.Windows.Forms.Label();
             this.labelHold = new System.Windows.Forms.Label();
-            this.labelAquireDescription = new System.Windows.Forms.Label();
+            this.labelAcquireDescription = new System.Windows.Forms.Label();
             this.labelOnDelay = new System.Windows.Forms.Label();
             this.labelHeadingDegree = new System.Windows.Forms.Label();
             this.nudDeadZoneDelay = new AgOpenGPS.NudlessNumericUpDown();
@@ -495,7 +495,7 @@
             this.tabPP.BackColor = System.Drawing.Color.Gainsboro;
             this.tabPP.BackgroundImage = global::AgOpenGPS.Properties.Resources.Sf_PP;
             this.tabPP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tabPP.Controls.Add(this.labelAquire);
+            this.tabPP.Controls.Add(this.labelAcquire);
             this.tabPP.Controls.Add(this.labelIntegralInfo);
             this.tabPP.Controls.Add(this.labelSlow);
             this.tabPP.Controls.Add(this.labelFast);
@@ -516,17 +516,17 @@
             this.tabPP.Size = new System.Drawing.Size(365, 346);
             this.tabPP.TabIndex = 16;
             // 
-            // labelAquire
+            // labelAcquire
             // 
-            this.labelAquire.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAquire.ForeColor = System.Drawing.Color.Black;
-            this.labelAquire.Location = new System.Drawing.Point(85, 159);
-            this.labelAquire.Name = "labelAquire";
-            this.labelAquire.Size = new System.Drawing.Size(111, 24);
-            this.labelAquire.TabIndex = 548;
-            this.labelAquire.Text = "Acquire:";
-            this.labelAquire.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.labelAquire.Visible = false;
+            this.labelAcquire.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAcquire.ForeColor = System.Drawing.Color.Black;
+            this.labelAcquire.Location = new System.Drawing.Point(85, 159);
+            this.labelAcquire.Name = "labelAcquire";
+            this.labelAcquire.Size = new System.Drawing.Size(111, 24);
+            this.labelAcquire.TabIndex = 548;
+            this.labelAcquire.Text = "Acquire:";
+            this.labelAcquire.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelAcquire.Visible = false;
             // 
             // labelIntegralInfo
             // 
@@ -1075,7 +1075,7 @@
             // tabPPAdv
             // 
             this.tabPPAdv.BackColor = System.Drawing.Color.Gainsboro;
-            this.tabPPAdv.Controls.Add(this.labelAquireFactor);
+            this.tabPPAdv.Controls.Add(this.labelAcquireFactor);
             this.tabPPAdv.Controls.Add(this.lblDistanceAdv);
             this.tabPPAdv.Controls.Add(this.hsbarLookAheadMult);
             this.tabPPAdv.Controls.Add(this.labelDist);
@@ -1085,10 +1085,10 @@
             this.tabPPAdv.Controls.Add(this.lblAcqAdv);
             this.tabPPAdv.Controls.Add(this.labelDeadzone);
             this.tabPPAdv.Controls.Add(this.hsbarAcquireFactor);
-            this.tabPPAdv.Controls.Add(this.labelAquire2);
+            this.tabPPAdv.Controls.Add(this.labelAcquire2);
             this.tabPPAdv.Controls.Add(this.lblAcquireFactor);
             this.tabPPAdv.Controls.Add(this.labelHold);
-            this.tabPPAdv.Controls.Add(this.labelAquireDescription);
+            this.tabPPAdv.Controls.Add(this.labelAcquireDescription);
             this.tabPPAdv.Controls.Add(this.labelOnDelay);
             this.tabPPAdv.Controls.Add(this.labelHeadingDegree);
             this.tabPPAdv.Controls.Add(this.nudDeadZoneDelay);
@@ -1100,16 +1100,16 @@
             this.tabPPAdv.Size = new System.Drawing.Size(365, 346);
             this.tabPPAdv.TabIndex = 17;
             // 
-            // labelAquireFactor
+            // labelAcquireFactor
             // 
-            this.labelAquireFactor.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAquireFactor.ForeColor = System.Drawing.Color.Black;
-            this.labelAquireFactor.Location = new System.Drawing.Point(85, 208);
-            this.labelAquireFactor.Name = "labelAquireFactor";
-            this.labelAquireFactor.Size = new System.Drawing.Size(250, 24);
-            this.labelAquireFactor.TabIndex = 548;
-            this.labelAquireFactor.Text = "Acquire Factor";
-            this.labelAquireFactor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAcquireFactor.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAcquireFactor.ForeColor = System.Drawing.Color.Black;
+            this.labelAcquireFactor.Location = new System.Drawing.Point(85, 208);
+            this.labelAcquireFactor.Name = "labelAcquireFactor";
+            this.labelAcquireFactor.Size = new System.Drawing.Size(250, 24);
+            this.labelAcquireFactor.TabIndex = 548;
+            this.labelAcquireFactor.Text = "Acquire Factor";
+            this.labelAcquireFactor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblDistanceAdv
             // 
@@ -1215,16 +1215,16 @@
             this.hsbarAcquireFactor.Value = 75;
             this.hsbarAcquireFactor.ValueChanged += new System.EventHandler(this.hsbarAcquireFactor_ValueChanged);
             // 
-            // labelAquire2
+            // labelAcquire2
             // 
-            this.labelAquire2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAquire2.ForeColor = System.Drawing.Color.Black;
-            this.labelAquire2.Location = new System.Drawing.Point(139, 312);
-            this.labelAquire2.Name = "labelAquire2";
-            this.labelAquire2.Size = new System.Drawing.Size(80, 23);
-            this.labelAquire2.TabIndex = 512;
-            this.labelAquire2.Text = "Acquire:";
-            this.labelAquire2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAcquire2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAcquire2.ForeColor = System.Drawing.Color.Black;
+            this.labelAcquire2.Location = new System.Drawing.Point(139, 312);
+            this.labelAcquire2.Name = "labelAcquire2";
+            this.labelAcquire2.Size = new System.Drawing.Size(80, 23);
+            this.labelAcquire2.TabIndex = 512;
+            this.labelAcquire2.Text = "Acquire:";
+            this.labelAcquire2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblAcquireFactor
             // 
@@ -1248,16 +1248,16 @@
             this.labelHold.Text = "Hold:";
             this.labelHold.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelAquireDescription
+            // labelAcquireDescription
             // 
-            this.labelAquireDescription.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAquireDescription.ForeColor = System.Drawing.Color.Black;
-            this.labelAquireDescription.Location = new System.Drawing.Point(103, 269);
-            this.labelAquireDescription.Name = "labelAquireDescription";
-            this.labelAquireDescription.Size = new System.Drawing.Size(246, 23);
-            this.labelAquireDescription.TabIndex = 510;
-            this.labelAquireDescription.Text = "Acquire = Factor * Hold";
-            this.labelAquireDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAcquireDescription.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAcquireDescription.ForeColor = System.Drawing.Color.Black;
+            this.labelAcquireDescription.Location = new System.Drawing.Point(103, 269);
+            this.labelAcquireDescription.Name = "labelAcquireDescription";
+            this.labelAcquireDescription.Size = new System.Drawing.Size(246, 23);
+            this.labelAcquireDescription.TabIndex = 510;
+            this.labelAcquireDescription.Text = "Acquire = Factor * Hold";
+            this.labelAcquireDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelOnDelay
             // 
@@ -3237,17 +3237,17 @@
         private NudlessNumericUpDown nudDeadZoneDelay;
         private System.Windows.Forms.Label labelDeadzone;
         private System.Windows.Forms.Label labelHold;
-        private System.Windows.Forms.Label labelAquireDescription;
+        private System.Windows.Forms.Label labelAcquireDescription;
         private System.Windows.Forms.Label lblAcquireFactor;
         private System.Windows.Forms.HScrollBar hsbarAcquireFactor;
         private System.Windows.Forms.Label lblHoldAdv;
         private System.Windows.Forms.Label lblAcqAdv;
-        private System.Windows.Forms.Label labelAquire2;
+        private System.Windows.Forms.Label labelAcquire2;
         private System.Windows.Forms.Label lblDistanceAdv;
         private System.Windows.Forms.Label labelDist;
         private System.Windows.Forms.TabPage tabPPAdv;
-        private System.Windows.Forms.Label labelAquireFactor;
-        private System.Windows.Forms.Label labelAquire;
+        private System.Windows.Forms.Label labelAcquireFactor;
+        private System.Windows.Forms.Label labelAcquire;
         private System.Windows.Forms.Label lblAcquirePP;
         private System.Windows.Forms.Label labelWasZero;
         private System.Windows.Forms.Button btnClose;

@@ -129,9 +129,6 @@
   <data name="gsADConverter" xml:space="preserve">
     <value>Przetwornik AD</value>
   </data>
-  <data name="gsAOGMenu" xml:space="preserve">
-    <value>Menu AOG</value>
-  </data>
   <data name="gsAPlus" xml:space="preserve">
     <value>A+</value>
   </data>
@@ -284,8 +281,8 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Najpierw zamknij pole</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Pixel</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Wybór koloru</value>
@@ -312,7 +309,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Liczba na stopień</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Pokrycia</value>
+    <value>Pokrycia</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Utwórz</value>
@@ -345,7 +342,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Dzień</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>-Martwa strefa-</value>
+    <value>Martwa strefa</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Domyślny</value>
@@ -358,9 +355,6 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
   </data>
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Usuń zmapowany obszar</value>
-  </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>To działanie usunie wszystkie granice. Czy chcesz kontynuować?</value>
   </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Usuń ścieżki konturowe</value>
@@ -402,7 +396,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Pobierz wszystkie</value>
   </data>
   <data name="gsDownloading" xml:space="preserve">
-    <value>Trwa pobieranie...Proszę czekać</value>
+    <value>Trwa pobieranie</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Pola w pobliżu</value>
@@ -611,7 +605,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
   <data name="gsInvertWas" xml:space="preserve">
     <value>Odwróć WAS</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>Km/h</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -770,9 +764,6 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
   <data name="gsOn" xml:space="preserve">
     <value>On</value>
   </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>On/Off</value>
-  </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Przeźroczystość</value>
   </data>
@@ -784,9 +775,6 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
   </data>
   <data name="gsOverlap" xml:space="preserve">
     <value>Nakładka</value>
-  </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Nakładka / Odstęp</value>
   </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Zastąpić</value>
@@ -805,6 +793,9 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Odległość obrotu</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Pixel</value>
   </data>
   <data name="gsPleaseEnterABLine" xml:space="preserve">
     <value>Wprowadź Linię AB</value>
@@ -911,12 +902,6 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
   <data name="gsSaveField" xml:space="preserve">
     <value>Zapisywanie pola</value>
   </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Zapisywanie parametrów pola</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Parametry pola zapisane.</value>
-  </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Pole zapisane lokalnie.</value>
   </data>
@@ -966,7 +951,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Ustaw punkt</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Przesunięcie pozycji GPS (cm)</value>
+    <value>Przesunięcie pozycji GPS</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Zamknij</value>
@@ -1002,7 +987,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Południe</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Rozstaw (cm)</value>
+    <value>Rozstaw</value>
   </data>
   <data name="gsSpeedo" xml:space="preserve">
     <value>Prędkościomierz</value>
@@ -1118,17 +1103,8 @@ UŻYWAJ NA WŁASNE RYZYKO.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Użyj wybranych</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>User 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>User 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>User 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>User 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>User {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>U-Turn</value>

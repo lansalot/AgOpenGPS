@@ -129,9 +129,6 @@
   <data name="gsADConverter" xml:space="preserve">
     <value>Convertitore AD</value>
   </data>
-  <data name="gsAOGMenu" xml:space="preserve">
-    <value>AOG Menu</value>
-  </data>
   <data name="gsAPlus" xml:space="preserve">
     <value>A+</value>
   </data>
@@ -140,6 +137,12 @@
   </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
+  </data>
+  <data name="gsAcquire" xml:space="preserve">
+    <value>Acquisizione</value>
+  </data>
+  <data name="gsAcquireFactor" xml:space="preserve">
+    <value>Coefficiente di Acquisizione</value>
   </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>L'Azione E' Stata Annullata</value>
@@ -170,15 +173,6 @@
   </data>
   <data name="gsApplied" xml:space="preserve">
     <value>Applicata</value>
-  </data>
-  <data name="gsAquire" xml:space="preserve">
-    <value>Acquisizione</value>
-  </data>
-  <data name="gsAquireDescription" xml:space="preserve">
-    <value>Acquisizione Linea = Coefficiente * Hold</value>
-  </data>
-  <data name="gsAquireFactor" xml:space="preserve">
-    <value>Coefficiente di Acquisizione</value>
   </data>
   <data name="gsArea" xml:space="preserve">
     <value>Area</value>
@@ -242,6 +236,12 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsButFieldIsLoaded" xml:space="preserve">
     <value>Campo Gia' Caricato</value>
   </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Pulsante</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Premere per attivare, Premere per disattivare</value>
+  </data>
   <data name="gsButtonPicker" xml:space="preserve">
     <value>Selettore Pulsante</value>
   </data>
@@ -287,8 +287,8 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsCloseFieldFirst" xml:space="preserve">
     <value>Prima Chiudere Il Campo</value>
   </data>
-  <data name="gsCmPix" xml:space="preserve">
-    <value>Cm -&gt; Pixel</value>
+  <data name="gsCm" xml:space="preserve">
+    <value>cm</value>
   </data>
   <data name="gsColorPicker" xml:space="preserve">
     <value>Selettore Colore</value>
@@ -315,7 +315,7 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Conteggi per Grado</value>
   </data>
   <data name="gsCoverage" xml:space="preserve">
-    <value>% Copertura</value>
+    <value>Copertura</value>
   </data>
   <data name="gsCreate" xml:space="preserve">
     <value>Crea</value>
@@ -348,10 +348,13 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Giorno</value>
   </data>
   <data name="gsDeadzone" xml:space="preserve">
-    <value>--Deadzone--</value>
+    <value>Deadzone</value>
   </data>
   <data name="gsDefault" xml:space="preserve">
     <value>Default</value>
+  </data>
+  <data name="gsDegree" xml:space="preserve">
+    <value>Gradi</value>
   </data>
   <data name="gsDelete" xml:space="preserve">
     <value>Cancella</value>
@@ -361,9 +364,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   </data>
   <data name="gsDeleteAppliedArea" xml:space="preserve">
     <value>Cancellare L'Area Lavorata</value>
-  </data>
-  <data name="gsDeleteBoundaryMapping" xml:space="preserve">
-    <value>Cancellerai tutti i confini. Vuoi continuare?</value>
   </data>
   <data name="gsDeleteContourPaths" xml:space="preserve">
     <value>Eliminare I Percorsi Di Perimetro</value>
@@ -470,6 +470,9 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsExtraGuideLines" xml:space="preserve">
     <value>Ulteriori Linee</value>
   </data>
+  <data name="gsFactor" xml:space="preserve">
+    <value>Coefficiente</value>
+  </data>
   <data name="gsFast" xml:space="preserve">
     <value>Veloce</value>
   </data>
@@ -546,7 +549,7 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Grafico Direzione</value>
   </data>
   <data name="gsHeadingOffset" xml:space="preserve">
-    <value>Disallineamento Direzione in Gradi</value>
+    <value>Disallineamento Direzione</value>
   </data>
   <data name="gsHeadland" xml:space="preserve">
     <value>Capezzagna</value>
@@ -608,7 +611,7 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsInvertWas" xml:space="preserve">
     <value>Inverti WAS</value>
   </data>
-  <data name="gsKMH" xml:space="preserve">
+  <data name="gsKmH" xml:space="preserve">
     <value>Km/h</value>
   </data>
   <data name="gsKeyboard" xml:space="preserve">
@@ -773,9 +776,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsOnDelay" xml:space="preserve">
     <value>Delay-ON</value>
   </data>
-  <data name="gsOnOff" xml:space="preserve">
-    <value>On/Off</value>
-  </data>
   <data name="gsOpacity" xml:space="preserve">
     <value>Opacità</value>
   </data>
@@ -787,9 +787,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   </data>
   <data name="gsOverlap" xml:space="preserve">
     <value>Sormonto</value>
-  </data>
-  <data name="gsOverlapGap" xml:space="preserve">
-    <value>Sormonto / Spaziatura</value>
   </data>
   <data name="gsOverride" xml:space="preserve">
     <value>Sovrascrivi</value>
@@ -811,6 +808,9 @@ L'ordina sarà dal basso verso l'alto.</value>
   </data>
   <data name="gsPivotDistance" xml:space="preserve">
     <value>Distanza Antenna da Asse Posteriore</value>
+  </data>
+  <data name="gsPixel" xml:space="preserve">
+    <value>Pixel</value>
   </data>
   <data name="gsPleaseEnterABLine" xml:space="preserve">
     <value>Inserire Linea AB</value>
@@ -875,9 +875,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsRecordedPathPicker" xml:space="preserve">
     <value>Caricamento Percorso Registrato</value>
   </data>
-  <data name="gsReducedPoints" xml:space="preserve">
-    <value>Ridurre i Punti</value>
-  </data>
   <data name="gsRemain" xml:space="preserve">
     <value>Rimanente</value>
   </data>
@@ -929,12 +926,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsSaveField" xml:space="preserve">
     <value>Salvataggio campo</value>
   </data>
-  <data name="gsSaveFieldParam" xml:space="preserve">
-    <value>Salvataggio parametri campo</value>
-  </data>
-  <data name="gsSaveFieldParamSaved" xml:space="preserve">
-    <value>Parametri del campo salvati.</value>
-  </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
     <value>Campo salvato localmente.</value>
   </data>
@@ -984,7 +975,7 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Impostato</value>
   </data>
   <data name="gsShiftGPSPosition" xml:space="preserve">
-    <value>Sposta La Posizione GPS (cm)</value>
+    <value>Sposta La Posizione GPS</value>
   </data>
   <data name="gsShutdown" xml:space="preserve">
     <value>Spegnimento</value>
@@ -1026,7 +1017,7 @@ L'ordina sarà dal basso verso l'alto.</value>
     <value>Sud</value>
   </data>
   <data name="gsSpacing" xml:space="preserve">
-    <value>Spaziatura (cm)</value>
+    <value>Spaziatura</value>
   </data>
   <data name="gsSpeedFactor" xml:space="preserve">
     <value>Coefficiente di Velocità</value>
@@ -1058,10 +1049,6 @@ L'ordina sarà dal basso verso l'alto.</value>
   <data name="gsSteerChart" xml:space="preserve">
     <value>Grafico dello Sterzo</value>
   </data>
-  <data name="gsSteerDescription" xml:space="preserve">
-    <value>Pulsante - Premere per attivare, Premere per disattivare
-Interruttore - Spingere per attivare, Rilasciare per disattivare</value>
-  </data>
   <data name="gsSteerEnable" xml:space="preserve">
     <value>Attivazione esterna</value>
   </data>
@@ -1079,6 +1066,12 @@ Interruttore - Spingere per attivare, Rilasciare per disattivare</value>
   </data>
   <data name="gsStopRecordPauseBoundary" xml:space="preserve">
     <value>Stop Registrazione Pausa Confine</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Interruttore</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>Spingere per attivare, Rilasciare per disattivare</value>
   </data>
   <data name="gsTermsConditions" xml:space="preserve">
     <value>Termini e Condizioni per la versione</value>
@@ -1152,17 +1145,8 @@ UTILIZZATELO A VOSTRO RISCHIO E PERICOLO.</value>
   <data name="gsUseSelected" xml:space="preserve">
     <value>Utilizzare Quello Selezionato</value>
   </data>
-  <data name="gsUser1" xml:space="preserve">
-    <value>Utente 1</value>
-  </data>
-  <data name="gsUser2" xml:space="preserve">
-    <value>Utente 2</value>
-  </data>
-  <data name="gsUser3" xml:space="preserve">
-    <value>Utente 3</value>
-  </data>
-  <data name="gsUser4" xml:space="preserve">
-    <value>Utente 4</value>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Utente {0}</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>Svolta Automatica di fine campo</value>
