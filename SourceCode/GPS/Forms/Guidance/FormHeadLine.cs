@@ -2,6 +2,7 @@
 using AgOpenGPS.Controls;
 using AgOpenGPS.Core.Models;
 using AgOpenGPS.Core.Translations;
+using AgOpenGPS.Core.Visuals;
 using AgOpenGPS.Helpers;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -449,14 +450,7 @@ namespace AgOpenGPS
                 }
                 GL.End();
             }
-
-            //the vehicle
-            GL.PointSize(16.0f);
-            GL.Begin(PrimitiveType.Points);
-            GL.Color3(0.95f, 0.190f, 0.20f);
-            GL.Vertex3(mf.pivotAxlePos.easting, mf.pivotAxlePos.northing, 0.0);
-            GL.End();
-
+            VehicleDotVisual.DrawVehicleDot(mf.pivotAxlePos.ToGeoCoord());
             //draw the line building graphics
             if (start != 99999 || end != 99999) DrawABTouchLine();
 
