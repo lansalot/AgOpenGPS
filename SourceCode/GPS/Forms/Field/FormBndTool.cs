@@ -2,6 +2,7 @@ using AgOpenGPS.Core.Drawing;
 using AgOpenGPS.Core.DrawLib;
 using AgOpenGPS.Core.Models;
 using AgOpenGPS.Core.Translations;
+using AgOpenGPS.Core.Visuals;
 using AgOpenGPS.Helpers;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -24,23 +25,6 @@ namespace AgOpenGPS
         private static readonly ColorRgba newBoundaryLoopColor = new ColorRgba(0.82f, 0.835f, 0.5f);
 
         private static readonly ColorRgba stepSectionColor = new ColorRgba(0.64f, 0.64f, 0.6f);
-
-        private static readonly ColorRgb orange = new ColorRgb(0.90f, 0.5f, 0.25f);
-        private static readonly PointStyle[] pointAStyles = new PointStyle[]
-        {
-            new PointStyle(24, Colors.Black),
-            new PointStyle(16, new ColorRgba(0.950f, 0.75f, 0.50f))
-        };
-        private static readonly PointStyle[] pointBStyles = new PointStyle[]
-        {
-            new PointStyle(24, Colors.Black),
-            new PointStyle(16, new ColorRgba(0.5f, 0.5f, 0.935f))
-        };
-        private static readonly PointStyle[] pointCStyles = new PointStyle[]
-        {
-            new PointStyle(24, Colors.Black),
-            new PointStyle(16, new ColorRgba(0.95f, 0.95f, 0.35f))
-        };
 
         private Point fixPt;
         private vec3 ptA = new vec3();
@@ -1112,46 +1096,29 @@ namespace AgOpenGPS
                 GLW.SetColor(isStep ? stepSectionColor : Colors.Yellow);
                 GLW.DrawPointsPrimitive(GeoRefactorHelper.ToGeoCoordArray(secList));
             }
-
-            //draw the line building graphics
-            if (start != 99999 || end != 99999) DrawABTouchPoints();
-
-            if (mf.bnd.bndList.Count != 0)
-            {
-                //draw the actual built lines
-                if (start != 99999 && end != 99999)
-                {
-                    GLW.SetLineWidth(4);
-                    GLW.SetColor(orange);
-                    List<GeoCoord> orangeLineStrip = new List<GeoCoord>
-                    {
-                        mf.bnd.bndList[bndSelect].fenceLine[start].ToGeoCoord()
-                    };
-                    if (isC) orangeLineStrip.Add(pint.ToGeoCoord());
-                    orangeLineStrip.Add(mf.bnd.bndList[bndSelect].fenceLine[end].ToGeoCoord());
-                    GLW.DrawLineStripPrimitive(orangeLineStrip.ToArray());
-                }
-            }
+            DrawTouchPointsLine();
             GL.Flush();
             oglSelf.SwapBuffers();
         }
 
-        private void DrawABTouchPoints()
+        private void DrawTouchPointsLine()
         {
+            GeoCoord? coordA = null;
+            GeoCoord? coordB = null;
+            GeoCoord? coordC = null;
             if (start != 99999)
             {
-                GeoCoord coordA = ((mf.bnd.bndList.Count != 0) ? mf.bnd.bndList[bndSelect].fenceLine[start] : ptA).ToGeoCoord();
-                GLW.DrawPointLayered(pointAStyles, coordA);
+                coordA = ((mf.bnd.bndList.Count != 0) ? mf.bnd.bndList[bndSelect].fenceLine[start] : ptA).ToGeoCoord();
             }
             if (end != 99999)
             {
-                GeoCoord coordB = ((mf.bnd.bndList.Count != 0) ? mf.bnd.bndList[bndSelect].fenceLine[end] : ptB).ToGeoCoord();
-                GLW.DrawPointLayered(pointBStyles, coordB);
+                coordB = ((mf.bnd.bndList.Count != 0) ? mf.bnd.bndList[bndSelect].fenceLine[end] : ptB).ToGeoCoord();
             }
             if (isC)
             {
-                GLW.DrawPointLayered(pointCStyles, pint.ToGeoCoord());
+                coordC = pint.ToGeoCoord();
             }
+            TouchPointsLineVisual.DrawTouchPointsLine(coordA, coordB, coordC);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
