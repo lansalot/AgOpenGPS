@@ -1,51 +1,47 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿using AgOpenGPS.Core.DrawLib;
+using AgOpenGPS.Core.Models;
 using System.Collections.Generic;
 
 namespace AgOpenGPS.Visuals
 {
     public class SectionsVisual
     {
+        private static ColorRgba sectionsColor = new ColorRgba(0.9f, 0.9f, 0.8f);
         public static void DrawSections(List<CPatches> triStrip)
         {
-            int cnt, step, patchCount;
-            int mipmap = 8;
+            const int mipmap = 8;
 
-            GL.Color3(0.9f, 0.9f, 0.8f);
-
-            //draw patches j= # of sections
-            for (int j = 0; j < triStrip.Count; j++)
+            foreach (CPatches patches in triStrip)
             {
-                //every time the section turns off and on is a new patch
-                patchCount = triStrip[j].patchList.Count;
-
-                if (patchCount > 0)
+                foreach (List<vec3> triList in patches.patchList)
                 {
-                    //for every new chunk of patch
-                    foreach (System.Collections.Generic.List<vec3> triList in triStrip[j].patchList)
+                    GLW.BeginTriangleStripPrimitive();
+                    int cnt = triList.Count;
+
+                    //if large enough patch and camera zoomed out, fake mipmap the patches, skip triangles
+                    if (cnt >= (mipmap))
                     {
-                        //draw the triangle in each triangle strip
-                        GL.Begin(PrimitiveType.TriangleStrip);
-                        cnt = triList.Count;
-
-                        //if large enough patch and camera zoomed out, fake mipmap the patches, skip triangles
-                        if (cnt >= (mipmap))
+                        int step = mipmap;
+                        for (int i = 1; i < cnt; i += step)
                         {
-                            step = mipmap;
-                            for (int i = 1; i < cnt; i += step)
-                            {
-                                GL.Vertex3(triList[i].easting, triList[i].northing, 0); i++;
-                                GL.Vertex3(triList[i].easting, triList[i].northing, 0); i++;
+                            GLW.Vertex2(triList[i++].ToGeoCoord());
+                            GLW.Vertex2(triList[i++].ToGeoCoord());
 
-                                //too small to mipmap it
-                                if (cnt - i <= (mipmap + 2))
-                                    step = 0;
-                            }
+                            //too small to mipmap it
+                            if (cnt - i <= (mipmap + 2))
+                                step = 0;
                         }
-                        else { for (int i = 1; i < cnt; i++) GL.Vertex3(triList[i].easting, triList[i].northing, 0); }
-                        GL.End();
                     }
+                    else
+                    {
+                        for (int i = 1; i < cnt; i++)
+                        {
+                            GLW.Vertex2(triList[i].ToGeoCoord());
+                        }
+                    }
+                    GLW.EndPrimitive();
                 }
-            } //end of section patches
+            }
         }
     }
 }

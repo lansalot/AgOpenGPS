@@ -18,6 +18,11 @@ namespace AgOpenGPS.Core.DrawLib
             GL.Begin(PrimitiveType.Points);
         }
 
+        public static void BeginTriangleStripPrimitive()
+        {
+            GL.Begin(PrimitiveType.TriangleStrip);
+        }
+
         public static void EndPrimitive()
         {
             GL.End();
