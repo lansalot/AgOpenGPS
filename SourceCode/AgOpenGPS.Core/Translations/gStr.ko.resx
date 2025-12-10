@@ -129,9 +129,6 @@
   <data name="gsAPlus" xml:space="preserve">
     <value>A플러스</value>
   </data>
-  <data name="gsAbout" xml:space="preserve">
-    <value>조향보조설명</value>
-  </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>좌각도</value>
   </data>

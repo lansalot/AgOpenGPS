@@ -132,9 +132,6 @@
   <data name="gsAPlus" xml:space="preserve">
     <value>A+</value>
   </data>
-  <data name="gsAbout" xml:space="preserve">
-    <value>Om</value>
-  </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>Ackermann</value>
   </data>

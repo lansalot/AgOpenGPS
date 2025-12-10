@@ -132,9 +132,6 @@
   <data name="gsAPlus" xml:space="preserve">
     <value>优秀</value>
   </data>
-  <data name="gsAbout" xml:space="preserve">
-    <value>关于</value>
-  </data>
   <data name="gsAckermann" xml:space="preserve">
     <value>阿克曼转向</value>
   </data>

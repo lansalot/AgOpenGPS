@@ -126,9 +126,6 @@
   <data name="gsABline" xml:space="preserve">
     <value>Линия АВ</value>
   </data>
-  <data name="gsAbout" xml:space="preserve">
-    <value>О программе</value>
-  </data>
   <data name="gsActionHasBeenCancelled" xml:space="preserve">
     <value>Действие было отменено</value>
   </data>

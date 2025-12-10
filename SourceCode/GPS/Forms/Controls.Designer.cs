@@ -1428,13 +1428,7 @@ namespace AgOpenGPS
                 form.ShowDialog(this);
             }
         }
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var form = new Form_About())
-            {
-                form.ShowDialog(this);
-            }
-        }
+
         private void kioskModeToolStrip_Click(object sender, EventArgs e)
         {
             isKioskMode = !isKioskMode;
@@ -1484,7 +1478,7 @@ namespace AgOpenGPS
 
         private void helpMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = new Form_Help(this))
+            using (var form = new FormHelp())
             {
                 form.ShowDialog(this);
             }
