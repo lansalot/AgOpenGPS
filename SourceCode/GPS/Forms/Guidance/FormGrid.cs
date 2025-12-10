@@ -1,13 +1,11 @@
-﻿using AgOpenGPS.Helpers;
+﻿using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.Visuals;
+using AgOpenGPS.Helpers;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AgOpenGPS
 {
@@ -18,17 +16,12 @@ namespace AgOpenGPS
 
         private Point fixPt;
 
-        private bool isA = true;
-        private int start = 99999, end = 99999;
-        private int bndSelect = 0, originalLine;
+        private int bndSelect = 0;
 
         private double zoom = 1, sX = 0, sY = 0;
 
-        public vec3 pint = new vec3(0.0, 1.0, 0.0);
-        public vec3 pntA = new vec3(0.0, 1.0, 0.0);
-        public vec3 pntB = new vec3(0.0, 1.0, 0.0);
-
-        private bool isDrawSections = true;
+        public GeoCoord? _coordA;
+        public GeoCoord? _coordB;
 
         public FormGrid(Form callingForm)
         {
@@ -42,12 +35,9 @@ namespace AgOpenGPS
 
         private void FormABDraw_Load(object sender, EventArgs e)
         {
-            originalLine = mf.trk.idx;
-
             Size = Properties.Settings.Default.setWindow_gridSize;
 
             Screen myScreen = Screen.FromControl(this);
-            Rectangle area = myScreen.WorkingArea;
 
             Location = Properties.Settings.Default.setWindow_gridLocation;
             FormABDraw_ResizeEnd(this, e);
@@ -84,10 +74,8 @@ namespace AgOpenGPS
 
         private void btnCancelTouch_Click(object sender, EventArgs e)
         {
-            //update the arrays
-            start = 99999; end = 99999;
-            isA = true;
-
+            _coordA = null;
+            _coordB = null;
             mf.curve.desList?.Clear();
 
             zoom = 1;
@@ -103,59 +91,37 @@ namespace AgOpenGPS
 
             int wid = oglSelf.Width;
             int halfWid = oglSelf.Width / 2;
-            double scale = (double)wid * 0.903;
-
-            //if (cboxIsZoom.Checked && !zoomToggle)
-            //{
-            //    sX = (( halfWid - (double)pt.X) / wid)*1.1;
-            //    sY = ((halfWid - (double)pt.Y) / -wid)*1.1;
-            //    zoom = 0.1;
-            //    return;
-            //}
+            double scale = wid * 0.903;
 
             //Convert to Origin in the center of window, 800 pixels
             fixPt.X = pt.X - halfWid;
             fixPt.Y = (wid - pt.Y - halfWid);
-            vec3 plotPt = new vec3
+            vec2 plotPt = new vec2
             {
                 //convert screen coordinates to field coordinates
                 easting = fixPt.X * mf.maxFieldDistance / scale * zoom,
                 northing = fixPt.Y * mf.maxFieldDistance / scale * zoom,
-                heading = 0
             };
 
             plotPt.easting += mf.fieldCenterX + mf.maxFieldDistance * -sX;
             plotPt.northing += mf.fieldCenterY + mf.maxFieldDistance * -sY;
 
-            pint.easting = plotPt.easting;
-            pint.northing = plotPt.northing;
+            GeoCoord mouseDownCoord = plotPt.ToGeoCoord();
 
             zoom = 1;
             sX = 0;
             sY = 0;
 
-            if (isA)
+            if (!_coordA.HasValue)
             {
-                start = 99999; end = 99999;
-                start = 1;
-                pntA = new vec3(plotPt);
-                isA = false;
+                _coordA = mouseDownCoord;
             }
             else
             {
-                isA = true;
-                pntB = new vec3(plotPt);
-                end = 1;
-
-                mf.worldGrid.gridRotation =
-            Math.Atan2(
-                pntB.easting - pntA.easting,
-                pntB.northing - pntA.northing);
-                if (mf.worldGrid.gridRotation < 0) mf.worldGrid.gridRotation += glm.twoPI;
-
-                mf.worldGrid.gridRotation = glm.toDegrees(mf.worldGrid.gridRotation);
+                _coordB = mouseDownCoord;
+                GeoDir abDir = new GeoDir(_coordA.Value, _coordB.Value);
+                mf.worldGrid.gridRotation = abDir.AngleInDegrees;
             }
-
             oglSelf.Refresh();
         }
 
@@ -172,7 +138,7 @@ namespace AgOpenGPS
             //translate to that spot in the world
             GL.Translate(-mf.fieldCenterX + sX * mf.maxFieldDistance, -mf.fieldCenterY + sY * mf.maxFieldDistance, 0);
 
-            if (isDrawSections) DrawSections();
+            DrawSections();
 
             GL.LineWidth(3);
 
@@ -191,47 +157,11 @@ namespace AgOpenGPS
                 GL.End();
             }
 
-            //the vehicle
-            GL.PointSize(16.0f);
-            GL.Begin(PrimitiveType.Points);
-            GL.Color3(1.0f, 0.00f, 0.0f);
-            GL.Vertex3(mf.pivotAxlePos.easting, mf.pivotAxlePos.northing, 0.0);
-            GL.End();
-
-            GL.PointSize(8.0f);
-            GL.Begin(PrimitiveType.Points);
-            GL.Color3(0.00f, 0.0f, 0.0f);
-            GL.Vertex3(mf.pivotAxlePos.easting, mf.pivotAxlePos.northing, 0.0);
-            GL.End();
-
-
-            //draw the line building graphics
-            if (start != 99999 || end != 99999) DrawABTouchPoints();
+            VehicleDotVisual.DrawVehicleDot(mf.pivotAxlePos.ToGeoCoord());
+            TouchPointsLineVisual.DrawTouchPoints(_coordA, _coordB);
 
             GL.Flush();
             oglSelf.SwapBuffers();
-        }
-
-        private void DrawABTouchPoints()
-        {
-            GL.Color3(0.65, 0.650, 0.0);
-            GL.PointSize(24);
-            GL.Begin(PrimitiveType.Points);
-
-            GL.Color3(0, 0, 0);
-            if (start != 99999) GL.Vertex3(pntA.easting, pntA.northing, 0);
-            if (end != 99999) GL.Vertex3(pntB.easting, pntB.northing, 0);
-            GL.End();
-
-            GL.PointSize(16);
-            GL.Begin(PrimitiveType.Points);
-
-            GL.Color3(1.0f, 0.75f, 0.350f);
-            if (start != 99999) GL.Vertex3(pntA.easting, pntA.northing, 0);
-
-            GL.Color3(0.5f, 0.5f, 1.0f);
-            if (end != 99999) GL.Vertex3(pntB.easting, pntB.northing, 0);
-            GL.End();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

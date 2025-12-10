@@ -554,15 +554,6 @@ namespace AgOpenGPS
                 GL.End();
             }
 
-            //the vehicle
-            //GL.PointSize(8.0f);
-            //GL.Begin(PrimitiveType.Points);
-            //GL.Color3(0.95f, 0.90f, 0.0f);
-            //GL.Vertex3(mf.pivotAxlePos.easting, mf.pivotAxlePos.northing, 0.0);
-            //GL.End();
-
-            //draw the line building graphics
-            //if (start != 99999 || end != 99999)
             //draw the actual built lines
             //if (start == 99999 && end == 99999)
             {
