@@ -1,4 +1,6 @@
-﻿using AgOpenGPS.Core.Translations;
+﻿using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.Translations;
+using AgOpenGPS.Core.Visuals;
 using AgOpenGPS.Helpers;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -600,27 +602,14 @@ namespace AgOpenGPS
             //translate to that spot in the world
             GL.Translate(-mf.fieldCenterX, -mf.fieldCenterY, 0);
 
-            GL.LineWidth(3);
-
             for (int j = 0; j < mf.bnd.bndList.Count; j++)
             {
-                if (j == 0)
-                    GL.Color3(1.0f, 1.0f, 1.0f);
-                else
-                    GL.Color3(0.62f, 0.635f, 0.635f);
-
-                GL.Begin(PrimitiveType.LineLoop);
-                for (int i = 0; i < mf.bnd.bndList[j].fenceLineEar.Count; i++)
-                {
-                    GL.Vertex3(mf.bnd.bndList[j].fenceLineEar[i].easting, mf.bnd.bndList[j].fenceLineEar[i].northing, 0);
-                }
-                GL.End();
+                GeoCoord[] fenceLineEar = GeoRefactorHelper.ToGeoCoordArray(mf.bnd.bndList[j].fenceLineEar);
+                bool isSelected = j == 0;
+                FenceLineVisual.DrawFenceLine(fenceLineEar, isSelected);
             }
-
             DrawBuiltLines();
-
             DrawTrams();
-
             DrawNewTrams();
 
             GL.PointSize(18);
