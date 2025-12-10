@@ -240,7 +240,7 @@ Kolejność, w jakiej je naciśniesz, będzie kolejnością, w jakiej pojawią s
     <value>Zachowanie kamery</value>
   </data>
   <data name="gsCancel" xml:space="preserve">
-    <value>Zamknij</value>
+    <value>Anuluj</value>
   </data>
   <data name="gsCenter" xml:space="preserve">
     <value>środek</value>
