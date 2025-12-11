@@ -6,7 +6,7 @@ namespace AgOpenGPS.Core.Drawing
     {
         // Physical colors
         static public readonly ColorRgba Black = new ColorRgba(0, 0, 0);
-        static public readonly ColorRgb White = new ColorRgb(255, 255, 225);
+        static public readonly ColorRgba White = new ColorRgba(255, 255, 225);
         static public readonly ColorRgba Red = new ColorRgba(255, 0, 0);
         static public readonly ColorRgba Green = new ColorRgba(0, 255, 0);
         static public readonly ColorRgba Yellow = new ColorRgba(255, 255, 0);
