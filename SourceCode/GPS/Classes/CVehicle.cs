@@ -279,22 +279,22 @@ namespace AgOpenGPS
             {
                 GL.Color4(1.2, 1.20, 0.0, VehicleConfig.Opacity);
                 GL.Begin(PrimitiveType.TriangleFan);
-                GL.Vertex3(0, VehicleConfig.AntennaPivot, -0.0);
-                GL.Vertex3(1.0, -0, 0.0);
+                GL.Vertex2(0, VehicleConfig.AntennaPivot);
+                GL.Vertex2(1.0, -0);
                 GL.Color4(0.0, 1.20, 1.22, VehicleConfig.Opacity);
-                GL.Vertex3(0, VehicleConfig.Wheelbase, 0.0);
+                GL.Vertex2(0, VehicleConfig.Wheelbase);
                 GL.Color4(1.220, 0.0, 1.2, VehicleConfig.Opacity);
-                GL.Vertex3(-1.0, -0, 0.0);
-                GL.Vertex3(1.0, -0, 0.0);
+                GL.Vertex2(-1.0, -0);
+                GL.Vertex2(1.0, -0);
                 GL.End();
 
                 GL.LineWidth(3);
                 GL.Color3(0.12, 0.12, 0.12);
                 GL.Begin(PrimitiveType.LineLoop);
                 {
-                    GL.Vertex3(-1.0, 0, 0);
-                    GL.Vertex3(1.0, 0, 0);
-                    GL.Vertex3(0, VehicleConfig.Wheelbase, 0);
+                    GL.Vertex2(-1.0, 0);
+                    GL.Vertex2(1.0, 0);
+                    GL.Vertex2(0, VehicleConfig.Wheelbase);
                 }
                 GL.End();
             }
@@ -315,10 +315,10 @@ namespace AgOpenGPS
                     GL.Color3(0.0, 1.270, 0.0);
                     GL.Begin(PrimitiveType.LineStrip);
                     {
-                        GL.Vertex3(0.0, 0, 0);
+                        GL.Vertex2(0.0, 0.0);
                         GL.Color3(1.270, 1.220, 0.20);
-                        GL.Vertex3(mf.bnd.createBndOffset, 0, 0);
-                        GL.Vertex3(mf.bnd.createBndOffset * 0.75, 0.25, 0);
+                        GL.Vertex2(mf.bnd.createBndOffset, 0);
+                        GL.Vertex2(mf.bnd.createBndOffset * 0.75, 0.25);
                     }
                     GL.End();
                 }
@@ -329,10 +329,10 @@ namespace AgOpenGPS
                     GL.Color3(0.0, 1.270, 0.0);
                     GL.Begin(PrimitiveType.LineStrip);
                     {
-                        GL.Vertex3(0.0, 0, 0);
+                        GL.Vertex2(0.0, 0.0);
                         GL.Color3(1.270, 1.220, 0.20);
-                        GL.Vertex3(-mf.bnd.createBndOffset, 0, 0);
-                        GL.Vertex3(-mf.bnd.createBndOffset * 0.75, 0.25, 0);
+                        GL.Vertex2(-mf.bnd.createBndOffset, 0);
+                        GL.Vertex2(-mf.bnd.createBndOffset * 0.75, 0.25);
                     }
                     GL.End();
                 }
