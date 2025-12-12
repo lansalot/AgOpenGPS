@@ -278,21 +278,20 @@ namespace AgOpenGPS
 
                 //lookahead section on
                 GL.Color3(0.20f, 0.7f, 0.2f);
-                GL.Vertex3(mf.tool.farLeftPosition, (mf.tool.lookAheadDistanceOnPixelsLeft) * 0.1 + trailingTool, 0);
-                GL.Vertex3(mf.tool.farRightPosition, (mf.tool.lookAheadDistanceOnPixelsRight) * 0.1 + trailingTool, 0);
+                GL.Vertex2(mf.tool.farLeftPosition, (mf.tool.lookAheadDistanceOnPixelsLeft) * 0.1 + trailingTool);
+                GL.Vertex2(mf.tool.farRightPosition, (mf.tool.lookAheadDistanceOnPixelsRight) * 0.1 + trailingTool);
 
                 //lookahead section off
                 GL.Color3(0.70f, 0.2f, 0.2f);
-                GL.Vertex3(mf.tool.farLeftPosition, (mf.tool.lookAheadDistanceOffPixelsLeft) * 0.1 + trailingTool, 0);
-                GL.Vertex3(mf.tool.farRightPosition, (mf.tool.lookAheadDistanceOffPixelsRight) * 0.1 + trailingTool, 0);
+                GL.Vertex2(mf.tool.farLeftPosition, (mf.tool.lookAheadDistanceOffPixelsLeft) * 0.1 + trailingTool);
+                GL.Vertex2(mf.tool.farRightPosition, (mf.tool.lookAheadDistanceOffPixelsRight) * 0.1 + trailingTool);
 
                 if (mf.vehicle.isHydLiftOn)
                 {
                     GL.Color3(0.70f, 0.2f, 0.72f);
-                    GL.Vertex3(mf.section[0].positionLeft, (mf.vehicle.hydLiftLookAheadDistanceLeft * 0.1) + trailingTool, 0);
-                    GL.Vertex3(mf.section[mf.tool.numOfSections - 1].positionRight, (mf.vehicle.hydLiftLookAheadDistanceRight * 0.1) + trailingTool, 0);
+                    GL.Vertex2(mf.section[0].positionLeft, (mf.vehicle.hydLiftLookAheadDistanceLeft * 0.1) + trailingTool);
+                    GL.Vertex2(mf.section[mf.tool.numOfSections - 1].positionRight, (mf.vehicle.hydLiftLookAheadDistanceRight * 0.1) + trailingTool);
                 }
-
                 GL.End();
             }
 
@@ -352,10 +351,9 @@ namespace AgOpenGPS
                 for (int i = 1; i < zones; i++)
                 {
                     GL.Color3(0.5f, 0.80f, 0.950f);
-                    GL.Vertex3(mf.section[zoneRanges[i]].positionLeft, trailingTool - 0.4, 0);
-                    GL.Vertex3(mf.section[zoneRanges[i]].positionLeft, trailingTool + 0.2, 0);
+                    GL.Vertex2(mf.section[zoneRanges[i]].positionLeft, trailingTool - 0.4);
+                    GL.Vertex2(mf.section[zoneRanges[i]].positionLeft, trailingTool + 0.2);
                 }
-
                 GL.End();
             }
 
@@ -375,9 +373,9 @@ namespace AgOpenGPS
                     // section markers
                     GL.Begin(PrimitiveType.Points);
                     GLW.SetColor(rightMarkerColor);
-                    GL.Vertex3(rightX, trailingTool, 0);
+                    GL.Vertex2(rightX, trailingTool);
                     GLW.SetColor(leftMarkerColor);
-                    GL.Vertex3(leftX, trailingTool, 0);
+                    GL.Vertex2(leftX, trailingTool);
                     GL.End();
                 }
             }
