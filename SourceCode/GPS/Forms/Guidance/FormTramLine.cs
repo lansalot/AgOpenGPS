@@ -7,11 +7,7 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AgOpenGPS
 {
@@ -616,12 +612,12 @@ namespace AgOpenGPS
 
             GL.Begin(PrimitiveType.Points);
             GL.Color3(1.0, 0, 0);
-            GL.Vertex3(ptA.easting, ptA.northing, 0);
+            GL.Vertex2(ptA.easting, ptA.northing);
             GL.End();
 
             GL.Begin(PrimitiveType.Points);
             GL.Color3(0, 1.0, 0);
-            GL.Vertex3(ptB.easting, ptB.northing, 0);
+            GL.Vertex2(ptB.easting, ptB.northing);
             GL.End();
 
             if (step == 2)
@@ -630,10 +626,9 @@ namespace AgOpenGPS
 
                 GL.Begin(PrimitiveType.Lines);
                 GL.Color3(1.0, 0, 0);
-                GL.Vertex3(ptA.easting, ptA.northing, 0);
+                GL.Vertex2(ptA.easting, ptA.northing);
                 GL.Color3(0, 1.0, 0);
-                GL.Vertex3(ptB.easting, ptB.northing, 0);
-
+                GL.Vertex2(ptB.easting, ptB.northing);
                 GL.End();
             }
 
@@ -653,7 +648,9 @@ namespace AgOpenGPS
                 {
                     GL.Begin(PrimitiveType.LineStrip);
                     for (int h = 0; h < mf.tram.tramList[i].Count; h++)
-                        GL.Vertex3(mf.tram.tramList[i][h].easting, mf.tram.tramList[i][h].northing, 0);
+                    {
+                        GL.Vertex2(mf.tram.tramList[i][h].easting, mf.tram.tramList[i][h].northing);
+                    }
                     GL.End();
                 }
             }
@@ -663,10 +660,16 @@ namespace AgOpenGPS
                 GL.Color4(0.830f, 0.72f, 0.3530f, mf.tram.alpha);
 
                 GL.Begin(PrimitiveType.LineLoop);
-                for (int h = 0; h < mf.tram.tramBndOuterArr.Count; h++) GL.Vertex3(mf.tram.tramBndOuterArr[h].easting, mf.tram.tramBndOuterArr[h].northing, 0);
+                for (int h = 0; h < mf.tram.tramBndOuterArr.Count; h++)
+                {
+                    GL.Vertex2(mf.tram.tramBndOuterArr[h].easting, mf.tram.tramBndOuterArr[h].northing);
+                }
                 GL.End();
                 GL.Begin(PrimitiveType.LineLoop);
-                for (int h = 0; h < mf.tram.tramBndInnerArr.Count; h++) GL.Vertex3(mf.tram.tramBndInnerArr[h].easting, mf.tram.tramBndInnerArr[h].northing, 0);
+                for (int h = 0; h < mf.tram.tramBndInnerArr.Count; h++)
+                {
+                    GL.Vertex2(mf.tram.tramBndInnerArr[h].easting, mf.tram.tramBndInnerArr[h].northing);
+                }
                 GL.End();
             }
         }
@@ -683,7 +686,9 @@ namespace AgOpenGPS
                 {
                     GL.Begin(PrimitiveType.LineStrip);
                     for (int h = 0; h < tramList[i].Count; h++)
-                        GL.Vertex3(tramList[i][h].easting, tramList[i][h].northing, 0);
+                    {
+                        GL.Vertex2(tramList[i][h].easting, tramList[i][h].northing);
+                    }
                     GL.End();
                 }
             }
@@ -709,10 +714,12 @@ namespace AgOpenGPS
                     GL.Color3(1.0f, 0.20f, 0.20f);
 
                     GL.Begin(PrimitiveType.Lines);
-
-                    GL.Vertex3(gTemp[i].ptA.easting - (Math.Sin(gTemp[i].heading) * mf.ABLine.abLength), gTemp[i].ptA.northing - (Math.Cos(gTemp[i].heading) * mf.ABLine.abLength), 0);
-                    GL.Vertex3(gTemp[i].ptB.easting + (Math.Sin(gTemp[i].heading) * mf.ABLine.abLength), gTemp[i].ptB.northing + (Math.Cos(gTemp[i].heading) * mf.ABLine.abLength), 0);
-
+                    GL.Vertex2(
+                        gTemp[i].ptA.easting - (Math.Sin(gTemp[i].heading) * mf.ABLine.abLength),
+                        gTemp[i].ptA.northing - (Math.Cos(gTemp[i].heading) * mf.ABLine.abLength));
+                    GL.Vertex2(
+                        gTemp[i].ptB.easting + (Math.Sin(gTemp[i].heading) * mf.ABLine.abLength),
+                        gTemp[i].ptB.northing + (Math.Cos(gTemp[i].heading) * mf.ABLine.abLength));
                     GL.End();
 
                     GL.Disable(EnableCap.LineStipple);
@@ -738,7 +745,7 @@ namespace AgOpenGPS
                     GL.Begin(PrimitiveType.LineStrip);
                     foreach (vec3 pts in gTemp[i].curvePts)
                     {
-                        GL.Vertex3(pts.easting, pts.northing, 0);
+                        GL.Vertex2(pts.easting, pts.northing);
                     }
                     GL.End();
 
@@ -750,15 +757,12 @@ namespace AgOpenGPS
                     GL.Color3(1.0f, 0.75f, 0.350f);
                     GL.Begin(PrimitiveType.Points);
 
-                    GL.Vertex3(gTemp[i].curvePts[0].easting,
-                                gTemp[i].curvePts[0].northing,
-                                0);
-
+                    GL.Vertex2(gTemp[i].curvePts[0].easting, gTemp[i].curvePts[0].northing);
 
                     GL.Color3(0.5f, 0.5f, 1.0f);
-                    GL.Vertex3(gTemp[i].curvePts[gTemp[i].curvePts.Count - 1].easting,
-                                gTemp[i].curvePts[gTemp[i].curvePts.Count - 1].northing,
-                                0);
+                    GL.Vertex2(
+                        gTemp[i].curvePts[gTemp[i].curvePts.Count - 1].easting,
+                        gTemp[i].curvePts[gTemp[i].curvePts.Count - 1].northing);
                     GL.End();
                 }
             }

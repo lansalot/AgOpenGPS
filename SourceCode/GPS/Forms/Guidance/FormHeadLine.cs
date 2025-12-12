@@ -446,7 +446,7 @@ namespace AgOpenGPS
                 GL.Begin(PrimitiveType.LineStrip);
                 for (int i = 0; i < mf.bnd.bndList[j].fenceLine.Count; i++)
                 {
-                    GL.Vertex3(mf.bnd.bndList[j].fenceLine[i].easting, mf.bnd.bndList[j].fenceLine[i].northing, 0);
+                    GL.Vertex2(mf.bnd.bndList[j].fenceLine[i].easting, mf.bnd.bndList[j].fenceLine[i].northing);
                 }
                 GL.End();
             }
@@ -467,23 +467,13 @@ namespace AgOpenGPS
         }
         private void DrawBuiltLines()
         {
-            //GL.LineWidth(8);
-            //GL.Color3(0.03f, 0.0f, 0.150f);
-            //GL.Begin(PrimitiveType.LineLoop);
-
-            //for (int i = 0; i < mf.bnd.bndList[0].hdLine.Count; i++)
-            //{
-            //    GL.Vertex3(mf.bnd.bndList[0].hdLine[i].easting, mf.bnd.bndList[0].hdLine[i].northing, 0);
-            //}
-            //GL.End();
-
             GL.LineWidth(8);
             GL.Color3(0.943f, 0.9083f, 0.09150f);
             GL.Begin(PrimitiveType.LineLoop);
 
             for (int i = 0; i < mf.bnd.bndList[0].hdLine.Count; i++)
             {
-                GL.Vertex3(mf.bnd.bndList[0].hdLine[i].easting, mf.bnd.bndList[0].hdLine[i].northing, 0);
+                GL.Vertex2(mf.bnd.bndList[0].hdLine[i].easting, mf.bnd.bndList[0].hdLine[i].northing);
             }
             GL.End();
 
@@ -505,7 +495,7 @@ namespace AgOpenGPS
                 GL.Begin(PrimitiveType.LineStrip);
                 foreach (vec3 item in sliceArr)
                 {
-                    GL.Vertex3(item.easting, item.northing, 0);
+                    GL.Vertex2(item.easting, item.northing);
                 }
                 GL.End();
 
@@ -513,9 +503,9 @@ namespace AgOpenGPS
                 GL.PointSize(24);
                 GL.Color3(1.0f, 0.6f, 0.3f);
                 GL.Begin(PrimitiveType.Points);
-                GL.Vertex3(sliceArr[0].easting, sliceArr[0].northing, 0);
+                GL.Vertex2(sliceArr[0].easting, sliceArr[0].northing);
                 GL.Color3(0.5f, 0.73f, 0.99f);
-                GL.Vertex3(sliceArr[cnt].easting, sliceArr[cnt].northing, 0);
+                GL.Vertex2(sliceArr[cnt].easting, sliceArr[cnt].northing);
                 GL.End();
             }
         }
@@ -526,18 +516,37 @@ namespace AgOpenGPS
             GL.Begin(PrimitiveType.Points);
 
             GL.Color3(0, 0, 0);
-            if (start != 99999) GL.Vertex3(mf.bnd.bndList[bndSelect].fenceLine[start].easting, mf.bnd.bndList[bndSelect].fenceLine[start].northing, 0);
-            if (end != 99999) GL.Vertex3(mf.bnd.bndList[bndSelect].fenceLine[end].easting, mf.bnd.bndList[bndSelect].fenceLine[end].northing, 0);
+            if (start != 99999)
+            {
+                GL.Vertex2(
+                    mf.bnd.bndList[bndSelect].fenceLine[start].easting,
+                    mf.bnd.bndList[bndSelect].fenceLine[start].northing);
+            }
+            if (end != 99999)
+            {
+                GL.Vertex2(
+                    mf.bnd.bndList[bndSelect].fenceLine[end].easting,
+                    mf.bnd.bndList[bndSelect].fenceLine[end].northing);
+            }
             GL.End();
 
             GL.PointSize(18);
             GL.Begin(PrimitiveType.Points);
 
             GL.Color3(1.0f, 0.75f, 0.350f);
-            if (start != 99999) GL.Vertex3(mf.bnd.bndList[bndSelect].fenceLine[start].easting, mf.bnd.bndList[bndSelect].fenceLine[start].northing, 0);
-
+            if (start != 99999)
+            {
+                GL.Vertex2(
+                    mf.bnd.bndList[bndSelect].fenceLine[start].easting,
+                    mf.bnd.bndList[bndSelect].fenceLine[start].northing);
+            }
             GL.Color3(0.5f, 0.75f, 1.0f);
-            if (end != 99999) GL.Vertex3(mf.bnd.bndList[bndSelect].fenceLine[end].easting, mf.bnd.bndList[bndSelect].fenceLine[end].northing, 0);
+            if (end != 99999)
+            {
+                GL.Vertex2(
+                    mf.bnd.bndList[bndSelect].fenceLine[end].easting,
+                    mf.bnd.bndList[bndSelect].fenceLine[end].northing);
+            }
             GL.End();
         }
 

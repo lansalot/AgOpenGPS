@@ -73,7 +73,9 @@ namespace AgOpenGPS
                     {
                         GL.Begin(PrimitiveType.LineStrip);
                         for (int h = 0; h < tramList[i].Count; h++)
-                            GL.Vertex3(tramList[i][h].easting, tramList[i][h].northing, 0);
+                        {
+                            GL.Vertex2(tramList[i][h].easting, tramList[i][h].northing);
+                        }
                         GL.End();
                     }
                 }
@@ -84,10 +86,16 @@ namespace AgOpenGPS
                 if (tramBndOuterArr.Count > 0)
                 {
                     GL.Begin(PrimitiveType.LineStrip);
-                    for (int h = 0; h < tramBndOuterArr.Count; h++) GL.Vertex3(tramBndOuterArr[h].easting, tramBndOuterArr[h].northing, 0);
+                    for (int h = 0; h < tramBndOuterArr.Count; h++)
+                    {
+                        GL.Vertex2(tramBndOuterArr[h].easting, tramBndOuterArr[h].northing);
+                    }
                     GL.End();
                     GL.Begin(PrimitiveType.LineStrip);
-                    for (int h = 0; h < tramBndInnerArr.Count; h++) GL.Vertex3(tramBndInnerArr[h].easting, tramBndInnerArr[h].northing, 0);
+                    for (int h = 0; h < tramBndInnerArr.Count; h++)
+                    {
+                        GL.Vertex2(tramBndInnerArr[h].easting, tramBndInnerArr[h].northing);
+                    }
                     GL.End();
                 }
             }
@@ -105,7 +113,9 @@ namespace AgOpenGPS
                     {
                         GL.Begin(PrimitiveType.LineStrip);
                         for (int h = 0; h < tramList[i].Count; h++)
-                            GL.Vertex3(tramList[i][h].easting, tramList[i][h].northing, 0);
+                        {
+                            GL.Vertex2(tramList[i][h].easting, tramList[i][h].northing);
+                        }
                         GL.End();
                     }
                 }
@@ -116,10 +126,16 @@ namespace AgOpenGPS
                 if (tramBndOuterArr.Count > 0)
                 {
                     GL.Begin(PrimitiveType.LineStrip);
-                    for (int h = 0; h < tramBndOuterArr.Count; h++) GL.Vertex3(tramBndOuterArr[h].easting, tramBndOuterArr[h].northing, 0);
+                    for (int h = 0; h < tramBndOuterArr.Count; h++)
+                    {
+                        GL.Vertex2(tramBndOuterArr[h].easting, tramBndOuterArr[h].northing);
+                    }
                     GL.End();
                     GL.Begin(PrimitiveType.LineStrip);
-                    for (int h = 0; h < tramBndInnerArr.Count; h++) GL.Vertex3(tramBndInnerArr[h].easting, tramBndInnerArr[h].northing, 0);
+                    for (int h = 0; h < tramBndInnerArr.Count; h++)
+                    {
+                        GL.Vertex2(tramBndInnerArr[h].easting, tramBndInnerArr[h].northing);
+                    }
                     GL.End();
                 }
             }
