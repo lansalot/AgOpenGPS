@@ -9,12 +9,6 @@ namespace AgOpenGPS.Core.Models
             ByteArray = new byte[4] { red, green, blue, alpha };
         }
 
-        public ColorRgba(ColorRgb colorRgb, float alpha = 1.0f)
-        {
-            if (alpha < 0.0f || 1.0f < alpha) throw new ArgumentOutOfRangeException(nameof(alpha), "Argument out of range");
-            ByteArray = new byte[4] { colorRgb.Red, colorRgb.Green, colorRgb.Blue, FloatToByte(alpha) };
-        }
-
         public ColorRgba(float red, float green, float blue, float alpha = 1.0f)
         {
             if (red < 0.0f || 1.0f < red) throw new ArgumentOutOfRangeException(nameof(red), "Argument out of range");

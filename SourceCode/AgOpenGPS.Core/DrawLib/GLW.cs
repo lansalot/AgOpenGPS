@@ -7,10 +7,6 @@ namespace AgOpenGPS.Core.DrawLib
     // Please use this class in stead of direct calls to functions in the GL toolkit.
     public static partial class GLW
     {
-        public static void SetColor(ColorRgb color)
-        {
-            GL.Color3(color.Red, color.Green, color.Blue);
-        }
 
         public static void SetColor(ColorRgba color)
         {

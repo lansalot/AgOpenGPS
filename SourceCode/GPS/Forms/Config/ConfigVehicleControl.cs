@@ -139,7 +139,7 @@ namespace AgOpenGPS.Forms.Config
                 pboxAlpha.BackgroundImage = BrandImages.BrandTriangleVehicle;
             }
 
-            _vehicleConfig.Color = new ColorRgb(254, 254, 254);
+            _vehicleConfig.Color = new ColorRgba(254, 254, 254);
 
             cboxIsImage.Checked = !_vehicleConfig.IsImage;
             ResetImage();
