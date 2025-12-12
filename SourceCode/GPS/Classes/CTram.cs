@@ -145,8 +145,8 @@ namespace AgOpenGPS
 
             if (isBndExist)
             {
-                tramBndOuterArr = CreateBoundaryTramTrack(0.5 * tramWidth - halfWheelTrack);
-                tramBndInnerArr = CreateBoundaryTramTrack(0.5 * tramWidth + halfWheelTrack);
+                CreateBoundaryOuterTrack();
+                CreateBoundaryInnerTrack();
             }
             else
             {
@@ -155,7 +155,17 @@ namespace AgOpenGPS
             }
         }
 
-        public List<vec2> CreateBoundaryTramTrack(double distance)
+        public void CreateBoundaryOuterTrack()
+        {
+            tramBndOuterArr = CreateBoundaryTrack(0.5 * tramWidth - halfWheelTrack);
+        }
+
+        public void CreateBoundaryInnerTrack()
+        {
+            tramBndInnerArr = CreateBoundaryTrack(0.5 * tramWidth + halfWheelTrack);
+        }
+
+        private List<vec2> CreateBoundaryTrack(double distance)
         {
             List<vec2> newTrack = new List<vec2>();
 
