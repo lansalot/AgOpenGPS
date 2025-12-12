@@ -14,7 +14,7 @@ namespace AgOpenGPS.Core.DrawLib
 
         public static void SetColor(ColorRgba color)
         {
-            GL.Color4(color.Red, color.Green, color.Blue, color.Alpha);
+            GL.Color4(color.ByteArray);
         }
 
         public static void SetLineWidth(float lineWidth)
