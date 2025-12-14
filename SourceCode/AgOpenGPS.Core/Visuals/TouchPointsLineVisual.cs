@@ -11,8 +11,7 @@ namespace AgOpenGPS.Core.Visuals
         private static readonly PointStyle pointAStyle = new PointStyle(16, new ColorRgba(0.950f, 0.75f, 0.50f));
         private static readonly PointStyle pointBStyle = new PointStyle(16, new ColorRgba(0.5f, 0.5f, 0.935f));
         private static readonly PointStyle pointCStyle = new PointStyle(16, new ColorRgba(0.95f, 0.95f, 0.35f));
-        private static readonly ColorRgb lineOrange = new ColorRgb(0.90f, 0.5f, 0.25f);
-
+        private static readonly ColorRgba lineOrange = new ColorRgba(0.90f, 0.5f, 0.25f);
 
         public static void DrawTouchPoints(GeoCoord? coordA, GeoCoord? coordB, GeoCoord? coordC = null)
         {

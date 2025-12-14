@@ -188,7 +188,12 @@ namespace AgOpenGPS
             }
 
             //3 vehicle types  tractor=0 harvestor=1 Articulated=2
-            ColorRgba vehicleColor = new ColorRgba(VehicleConfig.Color, (float)VehicleConfig.Opacity);
+            ColorRgba vehicleColor = new ColorRgba(
+                VehicleConfig.Color.Red,
+                VehicleConfig.Color.Green,
+                VehicleConfig.Color.Blue,
+                (byte)(255.0 * VehicleConfig.Opacity));
+
             if (VehicleConfig.IsImage)
             {
                 if (VehicleConfig.Type == VehicleType.Tractor)
@@ -234,7 +239,11 @@ namespace AgOpenGPS
                         mf.timerSim.Enabled ? mf.sim.steerAngle : mf.mc.actualSteerAngleDegrees,
                         out double leftAckermannAngle,
                         out double rightAckermannAngle);
-                    ColorRgba harvesterWheelColor = new ColorRgba(Colors.HarvesterWheelColor, (float)VehicleConfig.Opacity);
+                    ColorRgba harvesterWheelColor = new ColorRgba(
+                        Colors.HarvesterWheelColor.Red,
+                        Colors.HarvesterWheelColor.Green,
+                        Colors.HarvesterWheelColor.Blue,
+                        (byte)(255.0 * VehicleConfig.Opacity));
                     GLW.SetColor(harvesterWheelColor);
                     //right wheel
                     GL.PushMatrix();

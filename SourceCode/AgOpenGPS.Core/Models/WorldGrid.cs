@@ -63,7 +63,7 @@ namespace AgOpenGPS.Core
             }
         }
 
-        public void DrawFieldSurface(ColorRgb fieldColor, double cameraZoom, bool mustDrawFieldTexture)
+        public void DrawFieldSurface(ColorRgba fieldColor, double cameraZoom, bool mustDrawFieldTexture)
         {
             //adjust bitmap zoom based on cam zoom
             if (cameraZoom > 100) Count = 4;

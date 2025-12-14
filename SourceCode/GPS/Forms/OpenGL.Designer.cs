@@ -1841,16 +1841,16 @@ namespace AgOpenGPS
 
         private void DrawFlags()
         {
-            ColorRgb flagRedColor = new ColorRgb(255, 0, 0);
-            ColorRgb flagGreenColor = new ColorRgb(0, 255, 0);
-            ColorRgb flagYellowColor = new ColorRgb(255, 255, 0);
+            ColorRgba flagRedColor = new ColorRgba(255, 0, 0);
+            ColorRgba flagGreenColor = new ColorRgba(0, 255, 0);
+            ColorRgba flagYellowColor = new ColorRgba(255, 255, 0);
             try
             {
                 foreach (CFlag flag in flagPts)
                 {
                     GL.PointSize(8.0f);
                     GL.Begin(PrimitiveType.Points);
-                    ColorRgb flagColorRgb = flagRedColor;
+                    ColorRgba flagColorRgb = flagRedColor;
                     string flagColor = "&";
                     if (flag.color == 1)
                     {
