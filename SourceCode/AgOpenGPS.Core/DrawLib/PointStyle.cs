@@ -4,13 +4,13 @@ namespace AgOpenGPS.Core.DrawLib
 {
     public class PointStyle
     {
-        public PointStyle(float size, ColorRgba colorRgba)
+        public PointStyle(float pointSize, ColorRgba colorRgba)
         {
-            Size = size;
+            PointSize = pointSize;
             Color = colorRgba;
         }
 
-        public float Size { get; set; }
+        public float PointSize { get; set; }
         public ColorRgba Color { get; set; }
     }
 }

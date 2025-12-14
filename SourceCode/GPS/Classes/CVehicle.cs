@@ -176,8 +176,7 @@ namespace AgOpenGPS
                 }
                 LineStyle backgroundLineStyle = new LineStyle(4, Colors.Black);
                 LineStyle foregroundLineStyle = new LineStyle(1, Colors.HitchRigidColor);
-                LineStyle[] layerStyles = { backgroundLineStyle, foregroundLineStyle };
-                GLW.DrawLinesPrimitiveLayered(layerStyles, vertices);
+                GLW.DrawLinesPrimitiveLayered(vertices, backgroundLineStyle, foregroundLineStyle);
             }
 
             //draw the vehicle Body
@@ -310,10 +309,14 @@ namespace AgOpenGPS
             if (mf.camera.camSetDistance > -75 && mf.isFirstHeadingSet)
             {
                 //draw the bright antenna dot
-                PointStyle antennaBackgroundStyle = new PointStyle(16, Colors.Black);
-                PointStyle antennaForegroundStyle = new PointStyle(10, Colors.AntennaColor);
-                PointStyle[] layerStyles = { antennaBackgroundStyle, antennaForegroundStyle };
-                GLW.DrawPointLayered(layerStyles, -VehicleConfig.AntennaOffset, VehicleConfig.AntennaPivot, 0.1);
+                // background layer
+                GLW.SetPointSize(16.0f);
+                GLW.SetColor(Colors.Black);
+                GLW.DrawPoint(-VehicleConfig.AntennaOffset, VehicleConfig.AntennaPivot, 0.1);
+                // foreground layer
+                GLW.SetPointSize(10.0f);
+                GLW.SetColor(Colors.AntennaColor);
+                GLW.DrawPoint(-VehicleConfig.AntennaOffset, VehicleConfig.AntennaPivot, 0.1);
             }
 
             if (mf.bnd.isBndBeingMade && mf.bnd.isDrawAtPivot)
@@ -353,8 +356,8 @@ namespace AgOpenGPS
                 //double offs = mf.curve.distanceFromCurrentLinePivot * 0.3;
                 double svennDist = mf.camera.camSetDistance * -0.07;
                 double svennWidth = svennDist * 0.22;
-                LineStyle svenArrowLineStyle = new LineStyle(mf.ABLine.lineWidth, Colors.SvenArrowColor);
-                GLW.SetLineStyle(svenArrowLineStyle);
+                GLW.SetLineWidth(mf.ABLine.lineWidth);
+                GLW.SetColor(Colors.SvenArrowColor);
                 XyCoord[] vertices = {
                     new XyCoord(svennWidth, VehicleConfig.Wheelbase + svennDist),
                     new XyCoord(0, VehicleConfig.Wheelbase + svennWidth + 0.5 + svennDist),

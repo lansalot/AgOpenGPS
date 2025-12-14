@@ -1,6 +1,5 @@
 ﻿using AgOpenGPS.Core.Models;
 using OpenTK.Graphics.OpenGL;
-using System.Linq;
 
 namespace AgOpenGPS.Core.DrawLib
 {
@@ -14,15 +13,17 @@ namespace AgOpenGPS.Core.DrawLib
         }
 
         public static void DrawLinesPrimitiveLayered(
-            LineStyle[] lineStyles,
-            GeoLineSegment[] segments)
+            GeoLineSegment[] lineSegments,
+            LineStyle backgroundStyle,
+            LineStyle foregroundStyle)
         {
-            DrawPrimitiveLayered(PrimitiveType.Lines, lineStyles, segments);
+            DrawPrimitiveLayered(PrimitiveType.Lines, lineSegments, backgroundStyle, foregroundStyle);
         }
 
         private static void DrawPrimitive(PrimitiveType primitiveType, GeoLineSegment[] lineSegments)
         {
-            if (2 * lineSegments.Length >= MinVerticesForArray)
+            const int nVerticesPerSegment = 2;
+            if (nVerticesPerSegment * lineSegments.Length >= MinVerticesForArray)
             {
                 Vertex2Array vertex2Array = new Vertex2Array(lineSegments);
                 GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
@@ -42,32 +43,47 @@ namespace AgOpenGPS.Core.DrawLib
 
         private static void DrawPrimitiveLayered(
             PrimitiveType primitiveType,
-            LineStyle[] lineStyles,
-            GeoLineSegment[] lineSegments)
+            GeoLineSegment[] lineSegments,
+            LineStyle backgroundStyle,
+            LineStyle foregroundStyle)
         {
-            if (2 * lineStyles.Length * lineSegments.Length >= MinVerticesForArray)
+            const int nLayers = 2;
+            const int nVerticesPerSegment = 2;
+            if (nLayers * nVerticesPerSegment * lineSegments.Length >= MinVerticesForArray)
             {
                 Vertex2Array vertex2Array = new Vertex2Array(lineSegments);
-                foreach (LineStyle lineStyle in lineStyles)
-                {
-                    SetLineStyle(lineStyle);
-                    GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
-                }
+                // background layer
+                SetLineWidth(backgroundStyle.Width);
+                SetColor(backgroundStyle.Color);
+                GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
+                // foreground layer
+                SetLineWidth(foregroundStyle.Width);
+                SetColor(foregroundStyle.Color);
+                GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
                 vertex2Array.Dispose();
             }
             else
             {
-                foreach (LineStyle lineStyle in lineStyles)
+                // background layer
+                SetLineWidth(backgroundStyle.Width);
+                SetColor(backgroundStyle.Color);
+                GL.Begin(primitiveType);
+                foreach (var segment in lineSegments)
                 {
-                    SetLineStyle(lineStyle);
-                    GL.Begin(primitiveType);
-                    foreach (var segment in lineSegments)
-                    {
-                        Vertex2(segment.CoordA);
-                        Vertex2(segment.CoordB);
-                    }
-                    GL.End();
+                    Vertex2(segment.CoordA);
+                    Vertex2(segment.CoordB);
                 }
+                GL.End();
+                // foreground layer
+                SetLineWidth(foregroundStyle.Width);
+                SetColor(foregroundStyle.Color);
+                GL.Begin(primitiveType);
+                foreach (var segment in lineSegments)
+                {
+                    Vertex2(segment.CoordA);
+                    Vertex2(segment.CoordB);
+                }
+                GL.End();
             }
         }
 

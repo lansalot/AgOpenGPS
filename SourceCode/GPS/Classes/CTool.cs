@@ -183,7 +183,7 @@ namespace AgOpenGPS
             return angle;
         }
 
-        private void DrawHitch(double trailingTank)
+        private static void DrawHitch(double trailingTank)
         {
             XyCoord[] vertices = {
                 new XyCoord(-0.57, trailingTank),
@@ -192,8 +192,7 @@ namespace AgOpenGPS
             };
             LineStyle backgroundLineStyle = new LineStyle(6.0f, Colors.Black);
             LineStyle foregroundLineStyle = new LineStyle(1.0f, Colors.HitchColor);
-            LineStyle[] lineStyles = { backgroundLineStyle, foregroundLineStyle };
-            GLW.DrawLineLoopPrimitiveLayered(lineStyles, vertices);
+            GLW.DrawLineLoopPrimitiveLayered(vertices, backgroundLineStyle, foregroundLineStyle);
         }
 
         private void DrawTrailingHitch(double trailingTool)
@@ -205,8 +204,7 @@ namespace AgOpenGPS
             };
             LineStyle backgroundLineStyle = new LineStyle(6.0f, Colors.Black);
             LineStyle foregroundLineStyle = new LineStyle(1.0f, Colors.HitchTrailingColor);
-            LineStyle[] lineStyles = { backgroundLineStyle, foregroundLineStyle };
-            GLW.DrawLineLoopPrimitiveLayered(lineStyles, vertices);
+            GLW.DrawLineLoopPrimitiveLayered(vertices, backgroundLineStyle, foregroundLineStyle);
         }
 
         public void DrawTool()

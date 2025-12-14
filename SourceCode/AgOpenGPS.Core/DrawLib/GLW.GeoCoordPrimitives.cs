@@ -14,53 +14,58 @@ namespace AgOpenGPS.Core.DrawLib
             GL.End();
         }
 
+        // Inlined by the compiler, so no function call overhead
         public static void DrawLinesPrimitive(GeoCoord[] vertices)
         {
             DrawPrimitive(PrimitiveType.Lines, vertices);
         }
+
+        // Inlined by the compiler, so no function call overhead
         public static void DrawLineLoopPrimitive(GeoCoord[] vertices)
         {
             DrawPrimitive(PrimitiveType.LineLoop, vertices);
         }
 
+        // Inlined by the compiler, so no function call overhead
         public static void DrawLineStripPrimitive(GeoCoord[] vertices)
         {
             DrawPrimitive(PrimitiveType.LineStrip, vertices);
         }
 
+        // Inlined by the compiler, so no function call overhead
         public static void DrawPointsPrimitive(GeoCoord[] vertices)
         {
             DrawPrimitive(PrimitiveType.Points, vertices);
         }
 
+        // Inlined by the compiler, so no function call overhead
         public static void DrawTriangleFanPrimitive(GeoCoord[] vertices)
         {
             DrawPrimitive(PrimitiveType.TriangleFan, vertices);
         }
 
-        public static void DrawPointLayered(
-            PointStyle[] pointStyles,
-            GeoCoord coord)
-        {
-            foreach (PointStyle pointStyle in pointStyles)
-            {
-                SetPointStyle(pointStyle);
-                DrawPoint(coord);
-            }
-        }
-
         public static void DrawLinesPrimitiveLayered(
-            LineStyle[] lineStyles,
-            GeoCoord[] vertices)
+            GeoCoord[] vertices,
+            LineStyle backgroundStyle,
+            LineStyle foregroundStyle)
         {
-            DrawPrimitiveLayered(PrimitiveType.Lines, lineStyles, vertices);
+            DrawPrimitiveLayered(
+                PrimitiveType.Lines,
+                vertices,
+                backgroundStyle,
+                foregroundStyle);
         }
 
         public static void DrawLineLoopPrimitiveLayered(
-            LineStyle[] lineStyles,
-            GeoCoord[] vertices)
+            GeoCoord[] vertices,
+            LineStyle backgroundStyle,
+            LineStyle foregroundStyle)
         {
-            DrawPrimitiveLayered(PrimitiveType.LineLoop, lineStyles, vertices);
+            DrawPrimitiveLayered(
+                PrimitiveType.LineLoop,
+                vertices,
+                backgroundStyle,
+                foregroundStyle);
         }
 
         private static void DrawPrimitive(PrimitiveType primitiveType, GeoCoord[] vertices)
@@ -84,31 +89,46 @@ namespace AgOpenGPS.Core.DrawLib
 
         private static void DrawPrimitiveLayered(
             PrimitiveType primitiveType,
-            LineStyle[] lineStyles,
-            GeoCoord[] vertices)
+            GeoCoord[] vertices,
+            LineStyle backgroundStyle,
+            LineStyle foregroundStyle)
         {
-            if (lineStyles.Length * vertices.Length >= MinVerticesForArray)
+            const int nLayers = 2;
+            if (nLayers * vertices.Length >= MinVerticesForArray)
             {
                 Vertex2Array vertex2Array = new Vertex2Array(vertices);
-                foreach (LineStyle lineStyle in lineStyles)
-                {
-                    SetLineStyle(lineStyle);
-                    GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
-                }
+
+                // background layer
+                SetLineWidth(backgroundStyle.Width);
+                SetColor(backgroundStyle.Color);
+                GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
+                // foreground layer
+                SetLineWidth(foregroundStyle.Width);
+                SetColor(foregroundStyle.Color);
+                GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
+
                 vertex2Array.Dispose();
             }
             else
             {
-                foreach (LineStyle lineStyle in lineStyles)
+                // background layer
+                SetLineWidth(backgroundStyle.Width);
+                SetColor(backgroundStyle.Color);
+                GL.Begin(primitiveType);
+                foreach (GeoCoord vertex in vertices)
                 {
-                    SetLineStyle(lineStyle);
-                    GL.Begin(primitiveType);
-                    foreach (GeoCoord vertex in vertices)
-                    {
-                        Vertex2(vertex);
-                    }
-                    GL.End();
+                    Vertex2(vertex);
                 }
+                GL.End();
+                // foreground layer
+                SetLineWidth(foregroundStyle.Width);
+                SetColor(foregroundStyle.Color);
+                GL.Begin(primitiveType);
+                foreach (GeoCoord vertex in vertices)
+                {
+                    Vertex2(vertex);
+                }
+                GL.End();
             }
         }
 

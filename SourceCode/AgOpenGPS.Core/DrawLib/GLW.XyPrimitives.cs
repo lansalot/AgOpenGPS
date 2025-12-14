@@ -1,6 +1,5 @@
 ﻿using AgOpenGPS.Core.Models;
 using OpenTK.Graphics.OpenGL;
-using System.Collections.Generic;
 
 namespace AgOpenGPS.Core.DrawLib
 {
@@ -16,49 +15,44 @@ namespace AgOpenGPS.Core.DrawLib
             GL.End();
         }
 
+        // Inlined by the compiler, so no function call overhead
         public static void DrawLinesPrimitive(XyCoord[] vertices)
         {
             DrawPrimitive(PrimitiveType.Lines, vertices);
         }
 
+        // Inlined by the compiler, so no function call overhead
         public static void DrawLineLoopPrimitive(XyCoord[] vertices)
         {
             DrawPrimitive(PrimitiveType.LineLoop, vertices);
         }
 
+        // Inlined by the compiler, so no function call overhead
         public static void DrawLineStripPrimitive(XyCoord[] vertices)
         {
             DrawPrimitive(PrimitiveType.LineStrip, vertices);
         }
 
+        // Inlined by the compiler, so no function call overhead
         public static void DrawTriangleFanPrimitive(XyCoord[] vertices)
         {
             DrawPrimitive(PrimitiveType.TriangleFan, vertices);
         }
 
-        public static void DrawPointLayered(
-            PointStyle[] pointStyles,
-            double x, double y, double z)
-        {
-            foreach (PointStyle pointStyle in pointStyles)
-            {
-                SetPointStyle(pointStyle);
-                DrawPoint(x, y, z);
-            }
-        }
-
         public static void DrawLinesPrimitiveLayered(
-            LineStyle[] lineStyles,
-            XyCoord[] vertices)
+            XyCoord[] vertices,
+            LineStyle backgroundStyle,
+            LineStyle foregroundStyle)
         {
-            DrawPrimitiveLayered(PrimitiveType.Lines, lineStyles, vertices);
+            DrawPrimitiveLayered(PrimitiveType.Lines, vertices, backgroundStyle, foregroundStyle);
         }
 
         public static void DrawLineLoopPrimitiveLayered(
-            LineStyle[] lineStyles,
-            XyCoord[] vertices)
+            XyCoord[] vertices,
+            LineStyle backgroundStyle,
+            LineStyle foregroundStyle)
         {
-            DrawPrimitiveLayered(PrimitiveType.LineLoop, lineStyles, vertices);
+            DrawPrimitiveLayered(PrimitiveType.LineLoop, vertices, backgroundStyle, foregroundStyle);
         }
 
         private static void DrawPrimitive(PrimitiveType primitiveType, XyCoord[] vertices)
@@ -82,31 +76,46 @@ namespace AgOpenGPS.Core.DrawLib
 
         private static void DrawPrimitiveLayered(
             PrimitiveType primitiveType,
-            LineStyle[] lineStyles,
-            XyCoord[] vertices)
+            XyCoord[] vertices,
+            LineStyle backgroundStyle,
+            LineStyle foregroundStyle)
         {
-            if (vertices.Length * vertices.Length >= MinVerticesForArray)
+            const int nLayers = 2;
+            if (nLayers * vertices.Length >= MinVerticesForArray)
             {
                 Vertex2Array vertex2Array = new Vertex2Array(vertices);
-                foreach (LineStyle lineStyle in lineStyles)
-                {
-                    SetLineStyle(lineStyle);
-                    GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
-                }
+
+                // background layer
+                SetLineWidth(backgroundStyle.Width);
+                SetColor(backgroundStyle.Color);
+                GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
+                // foreground layer
+                SetLineWidth(foregroundStyle.Width);
+                SetColor(foregroundStyle.Color);
+                GL.DrawArrays(primitiveType, 0, vertex2Array.Length);
+
                 vertex2Array.Dispose();
             }
             else
             {
-                foreach (LineStyle lineStyle in lineStyles)
+                // background layer
+                SetLineWidth(backgroundStyle.Width);
+                SetColor(backgroundStyle.Color);
+                GL.Begin(primitiveType);
+                foreach (XyCoord vertex in vertices)
                 {
-                    SetLineStyle(lineStyle);
-                    GL.Begin(primitiveType);
-                    foreach (XyCoord vertex in vertices)
-                    {
-                        GL.Vertex2(vertex.X, vertex.Y);
-                    }
-                    GL.End();
+                    GL.Vertex2(vertex.X, vertex.Y);
                 }
+                GL.End();
+                // foreground layer
+                SetLineWidth(foregroundStyle.Width);
+                SetColor(foregroundStyle.Color);
+                GL.Begin(primitiveType);
+                foreach (XyCoord vertex in vertices)
+                {
+                    GL.Vertex2(vertex.X, vertex.Y);
+                }
+                GL.End();
             }
         }
 

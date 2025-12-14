@@ -455,15 +455,21 @@ namespace AgOpenGPS
                     {
                         if (trk.idx > -1 && !isStanleyUsed)
                         {
-                            PointStyle backgroundPointStyle = new PointStyle(16.0f, Colors.Black);
-                            PointStyle foregroundPointStyle = new PointStyle(8.0f, Colors.GoalPointColor);
-
-                            if (Math.Abs(vehicle.modeActualXTE) > 0.15) foregroundPointStyle.Color = Colors.GoalPointColor;
-                            else foregroundPointStyle.Color = Colors.Green;
-
-                            PointStyle[] pointStyles = { backgroundPointStyle, foregroundPointStyle };
+                            ColorRgba foregroundColor =
+                                Math.Abs(vehicle.modeActualXTE) > 0.15 ?
+                                Colors.GoalPointColor :
+                                Colors.Green;
                             vec2 goalPoint = trk.gArr[trk.idx].mode == TrackMode.AB ? ABLine.goalPointAB : curve.goalPointCu;
-                            GLW.DrawPointLayered(pointStyles, goalPoint.easting, goalPoint.northing, 0.0);
+                            GeoCoord goalCoord = goalPoint.ToGeoCoord();
+
+                            // background layer
+                            GLW.SetPointSize(16.0f);
+                            GLW.SetColor(Colors.Black);
+                            GLW.DrawPoint(goalCoord);
+                            // foreground layer
+                            GLW.SetPointSize(8.0f);
+                            GLW.SetColor(Colors.GoalPointColor);
+                            GLW.DrawPoint(goalCoord);
                         }
                     }
 
@@ -1873,8 +1879,8 @@ namespace AgOpenGPS
                 {
                     ////draw the box around flag
                     double offSet = (camera.ZoomValue * camera.ZoomValue * 0.01);
-                    LineStyle boxLineStyle = new LineStyle(4.0f, Colors.FlagSelectedBoxColor);
-                    GLW.SetLineStyle(boxLineStyle);
+                    GLW.SetLineWidth(4.0f);
+                    GLW.SetColor(Colors.FlagSelectedBoxColor);
                     CFlag flag = flagPts[flagNumberPicked - 1];
                     XyCoord[] squareCorners = {
                         new XyCoord(flag.easting         , flag.northing + offSet),
