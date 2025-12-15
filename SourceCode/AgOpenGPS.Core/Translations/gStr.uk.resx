@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -1240,5 +1240,33 @@
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
+  </data>
+  <data name="gsCopyFrom" xml:space="preserve">
+    <value>Копіювати з</value>
+  </data>
+  <data name="gsCreateNewProfile" xml:space="preserve">
+    <value>Створити новий профіль</value>
+  </data>
+  <data name="gsEmptyProfile" xml:space="preserve">
+    <value>Порожній профіль</value>
+  </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>Навантаження</value>
+  </data>
+  <data name="gsLoadProfile" xml:space="preserve">
+    <value>Профіль навантаження</value>
+  </data>
+  <data name="gsName" xml:space="preserve">
+    <value>Ім'я</value>
+  </data>
+  <data name="gsNew" xml:space="preserve">
+    <value>Новий</value>
+  </data>
+  <data name="gsProfile" xml:space="preserve">
+    <value>Профіль</value>
+  </data>
+  <data name="gsProfileMenuHint" xml:space="preserve">
+    <value>Налаштування транспортного засобу тепер називаються «профілями» та
+х можна створювати/завантажувати в головному меню (угорі ліворуч).</value>
   </data>
 </root>
