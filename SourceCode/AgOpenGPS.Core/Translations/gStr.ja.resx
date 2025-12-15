@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -805,5 +805,369 @@
   </data>
   <data name="gsPixel" xml:space="preserve">
     <value>ピクセル</value>
+  </data>
+  <data name="gsAgree" xml:space="preserve">
+    <value>お問い合わせ</value>
+  </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>ボタン</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>プッシュON・プッシュOFF</value>
+  </data>
+  <data name="gsCopyFrom" xml:space="preserve">
+    <value>コピー元</value>
+  </data>
+  <data name="gsCreateNewProfile" xml:space="preserve">
+    <value>新規プロファイル作成</value>
+  </data>
+  <data name="gsDiscourseForum" xml:space="preserve">
+    <value>ディスカッション・フォーラム</value>
+  </data>
+  <data name="gsEmptyProfile" xml:space="preserve">
+    <value>プロファイルがありません</value>
+  </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>読込</value>
+  </data>
+  <data name="gsLoadProfile" xml:space="preserve">
+    <value>プロファイルの読込</value>
+  </data>
+  <data name="gsName" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="gsNew" xml:space="preserve">
+    <value>新規</value>
+  </data>
+  <data name="gsPause" xml:space="preserve">
+    <value>一時停止</value>
+  </data>
+  <data name="gsPivot" xml:space="preserve">
+    <value>回転</value>
+  </data>
+  <data name="gsPivotDistance" xml:space="preserve">
+    <value>ピボット距離</value>
+  </data>
+  <data name="gsPleaseEnterABLine" xml:space="preserve">
+    <value>ABLineを入力してください</value>
+  </data>
+  <data name="gsPleaseWait" xml:space="preserve">
+    <value>お待ち下さい</value>
+  </data>
+  <data name="gsPoint" xml:space="preserve">
+    <value>ポイント</value>
+  </data>
+  <data name="gsPoints" xml:space="preserve">
+    <value>ポイント</value>
+  </data>
+  <data name="gsPointsToProcess" xml:space="preserve">
+    <value>処理すべきポイント</value>
+  </data>
+  <data name="gsPolygons" xml:space="preserve">
+    <value>ポリゴン</value>
+  </data>
+  <data name="gsPowerLoss" xml:space="preserve">
+    <value>停電によるシャットダウン</value>
+  </data>
+  <data name="gsPresetColor" xml:space="preserve">
+    <value>プリセットカラーを選択</value>
+  </data>
+  <data name="gsPressureTurnSensor" xml:space="preserve">
+    <value>ステアリング油圧センサー</value>
+  </data>
+  <data name="gsPreview" xml:space="preserve">
+    <value>プレビュー</value>
+  </data>
+  <data name="gsProblemMakingPath" xml:space="preserve">
+    <value>経路生成の問題</value>
+  </data>
+  <data name="gsProfile" xml:space="preserve">
+    <value>プロファイル</value>
+  </data>
+  <data name="gsProfileMenuHint" xml:space="preserve">
+    <value>車両設定は「プロファイル」と呼ばれ、
+メインメニュー（左上）で作成・読み込みが可能です。</value>
+  </data>
+  <data name="gsProgramWillExitPleaseRestart" xml:space="preserve">
+    <value>プログラムを終了します　再起動してください</value>
+  </data>
+  <data name="gsProportionalGain" xml:space="preserve">
+    <value>比例ゲイン</value>
+  </data>
+  <data name="gsQuickAB" xml:space="preserve">
+    <value>クイックABライン作成ツール</value>
+  </data>
+  <data name="gsRaiseTime" xml:space="preserve">
+    <value>上昇時間</value>
+  </data>
+  <data name="gsRate" xml:space="preserve">
+    <value>レート</value>
+  </data>
+  <data name="gsReallyResetEverything" xml:space="preserve">
+    <value>本当にすべてをリセットしますか?</value>
+  </data>
+  <data name="gsRecord" xml:space="preserve">
+    <value>レコード</value>
+  </data>
+  <data name="gsRecordedPathFileIsCorrupt" xml:space="preserve">
+    <value>記録されたパスファイルが破損しています</value>
+  </data>
+  <data name="gsRecordedPathMenu" xml:space="preserve">
+    <value>記録済み経路</value>
+  </data>
+  <data name="gsRecordedPathPicker" xml:space="preserve">
+    <value>保存済みパスの読込</value>
+  </data>
+  <data name="gsRemain" xml:space="preserve">
+    <value>留まる</value>
+  </data>
+  <data name="gsRemoveOffset" xml:space="preserve">
+    <value>オフセットを削除</value>
+  </data>
+  <data name="gsReset" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="gsResetAll" xml:space="preserve">
+    <value>すべてをリセット</value>
+  </data>
+  <data name="gsResetAllForSure" xml:space="preserve">
+    <value>すべてをリセットしますか？</value>
+  </data>
+  <data name="gsResume" xml:space="preserve">
+    <value>再開</value>
+  </data>
+  <data name="gsReverseDistance" xml:space="preserve">
+    <value>距離を反転</value>
+  </data>
+  <data name="gsReverseSteer" xml:space="preserve">
+    <value>検出の反転</value>
+  </data>
+  <data name="gsRight" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="gsRightMenu" xml:space="preserve">
+    <value>右メニュー</value>
+  </data>
+  <data name="gsRollFilter" xml:space="preserve">
+    <value>ロールフィルター</value>
+  </data>
+  <data name="gsS_East" xml:space="preserve">
+    <value>南東</value>
+  </data>
+  <data name="gsS_West" xml:space="preserve">
+    <value>南西</value>
+  </data>
+  <data name="gsSaveAllDone" xml:space="preserve">
+    <value>すべて終了　閉じています。</value>
+  </data>
+  <data name="gsSaveAndReturn" xml:space="preserve">
+    <value>保存して戻る</value>
+  </data>
+  <data name="gsSaveBeerTime" xml:space="preserve">
+    <value>また今度！</value>
+  </data>
+  <data name="gsSaveField" xml:space="preserve">
+    <value>フィールドを保存する</value>
+  </data>
+  <data name="gsSaveFieldSavedLocal" xml:space="preserve">
+    <value>フィールドがローカルに保存されました。</value>
+  </data>
+  <data name="gsSaveFinalizeShutdown" xml:space="preserve">
+    <value>シャットダウンの最終処理</value>
+  </data>
+  <data name="gsSaveSettings" xml:space="preserve">
+    <value>セッティングを保存する</value>
+  </data>
+  <data name="gsSaveSettingsSaved" xml:space="preserve">
+    <value>セッティングを保存しました。</value>
+  </data>
+  <data name="gsSaveUploadCompleted" xml:space="preserve">
+    <value>アップロードが完了しました。</value>
+  </data>
+  <data name="gsSaveUploadFailed" xml:space="preserve">
+    <value>アップロードが失敗しました。</value>
+  </data>
+  <data name="gsSaveUploadToAgshare" xml:space="preserve">
+    <value>フィールドをAgShareにアップロードしました</value>
+  </data>
+  <data name="gsScreenButtons" xml:space="preserve">
+    <value>スクリーンボタン</value>
+  </data>
+  <data name="gsSectionColorsSet" xml:space="preserve">
+    <value>セクションカラーの選択</value>
+  </data>
+  <data name="gsSectionLines" xml:space="preserve">
+    <value>セクションライン</value>
+  </data>
+  <data name="gsSections" xml:space="preserve">
+    <value>セクション</value>
+  </data>
+  <data name="gsSelectButtons" xml:space="preserve">
+    <value>選択ボタン</value>
+  </data>
+  <data name="gsSelectPreset" xml:space="preserve">
+    <value>プリセットカラーを選択</value>
+  </data>
+  <data name="gsSendAndSave" xml:space="preserve">
+    <value>送信 + 保存</value>
+  </data>
+  <data name="gsSentToMachineModule" xml:space="preserve">
+    <value>マシンモジュールへ送信</value>
+  </data>
+  <data name="gsSetPoint" xml:space="preserve">
+    <value>セットポイント</value>
+  </data>
+  <data name="gsShiftGPSPosition" xml:space="preserve">
+    <value>GPSポジションをシフトする</value>
+  </data>
+  <data name="gsShutdown" xml:space="preserve">
+    <value>シャットダウン</value>
+  </data>
+  <data name="gsShutdownIn" xml:space="preserve">
+    <value>シャットダウン中</value>
+  </data>
+  <data name="gsSideHillComp" xml:space="preserve">
+    <value>傾斜度補償</value>
+  </data>
+  <data name="gsSimpleTramLines" xml:space="preserve">
+    <value>簡単トラムクリエイター</value>
+  </data>
+  <data name="gsSimulatorOn" xml:space="preserve">
+    <value>シミュレーション　オン</value>
+  </data>
+  <data name="gsSingleAntennaSetting" xml:space="preserve">
+    <value>シングル　アンテナ設定</value>
+  </data>
+  <data name="gsSlow" xml:space="preserve">
+    <value>遅い</value>
+  </data>
+  <data name="gsSlowDownBelow" xml:space="preserve">
+    <value>下り坂では速度を落とせ</value>
+  </data>
+  <data name="gsSmooth" xml:space="preserve">
+    <value>スムーズ</value>
+  </data>
+  <data name="gsSmoothABCurve" xml:space="preserve">
+    <value>スムーズ AB カーブ</value>
+  </data>
+  <data name="gsSort" xml:space="preserve">
+    <value>ソート</value>
+  </data>
+  <data name="gsSound" xml:space="preserve">
+    <value>サウンド</value>
+  </data>
+  <data name="gsSouth" xml:space="preserve">
+    <value>南</value>
+  </data>
+  <data name="gsSpacing" xml:space="preserve">
+    <value>間隔</value>
+  </data>
+  <data name="gsSpeedFactor" xml:space="preserve">
+    <value>速度係数</value>
+  </data>
+  <data name="gsSpeedo" xml:space="preserve">
+    <value>スピード</value>
+  </data>
+  <data name="gsStart" xml:space="preserve">
+    <value>スタート</value>
+  </data>
+  <data name="gsStartDeleteABoundary" xml:space="preserve">
+    <value>A境界の開始または削除</value>
+  </data>
+  <data name="gsStartFullscreen" xml:space="preserve">
+    <value>起動時フルスクリーン</value>
+  </data>
+  <data name="gsStartNewField" xml:space="preserve">
+    <value>新規フィールドを開始</value>
+  </data>
+  <data name="gsStatus" xml:space="preserve">
+    <value>ステータス</value>
+  </data>
+  <data name="gsSteerAngle" xml:space="preserve">
+    <value>操舵角度</value>
+  </data>
+  <data name="gsSteerBar" xml:space="preserve">
+    <value>ステアリング　バー</value>
+  </data>
+  <data name="gsSteerChart" xml:space="preserve">
+    <value>操舵チャート</value>
+  </data>
+  <data name="gsSteerEnable" xml:space="preserve">
+    <value>外部からの有効化</value>
+  </data>
+  <data name="gsSteerInReverse" xml:space="preserve">
+    <value>バックしながら操舵する</value>
+  </data>
+  <data name="gsSteerResponse" xml:space="preserve">
+    <value>ステアリング応答</value>
+  </data>
+  <data name="gsSteerSwitch" xml:space="preserve">
+    <value>操舵スイッチ</value>
+  </data>
+  <data name="gsSteerWizard" xml:space="preserve">
+    <value>操舵ウィザード</value>
+  </data>
+  <data name="gsStopRecordPauseBoundary" xml:space="preserve">
+    <value>境界記録の一時停止</value>
+  </data>
+  <data name="gsSvennArrow" xml:space="preserve">
+    <value>ガイダンス・アロー</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>スイッチ</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>押してオン・離してオフ</value>
+  </data>
+  <data name="gsTerms" xml:space="preserve">
+    <value>AgOpenGPSは、ガイダンスシステム、GPS信号、および機械制御の理論的応用について学ぶための純粋に教育目的のソフトウェアです。
+
+いかなる状況においても実機での使用は一切禁止されています。学生が安全に機械ガイダンスを体験できるよう、シミュレーターが提供されています。
+
+本ソフトウェアには安全システムは一切含まれておらず、またそのようなシステムが暗示されることもありません。
+
+ご自身の責任においてご利用ください。</value>
+  </data>
+  <data name="gsTermsConditions" xml:space="preserve">
+    <value>利用規約</value>
+  </data>
+  <data name="gsToFile" xml:space="preserve">
+    <value>ファイルへ</value>
+  </data>
+  <data name="gsTooFast" xml:space="preserve">
+    <value>速すぎる</value>
+  </data>
+  <data name="gsToolLeft" xml:space="preserve">
+    <value>ツール左</value>
+  </data>
+  <data name="gsToolOffset" xml:space="preserve">
+    <value>ツールのオフセット方向</value>
+  </data>
+  <data name="gsToolRight" xml:space="preserve">
+    <value>ツール右</value>
+  </data>
+  <data name="gsToolsMenu" xml:space="preserve">
+    <value>ツールメニュー</value>
+  </data>
+  <data name="gsTotal" xml:space="preserve">
+    <value>合計</value>
+  </data>
+  <data name="gsTrack" xml:space="preserve">
+    <value>経路</value>
+  </data>
+  <data name="gsTracks" xml:space="preserve">
+    <value>経路</value>
+  </data>
+  <data name="gsTramLines" xml:space="preserve">
+    <value>トラムライン</value>
+  </data>
+  <data name="gsTramWidth" xml:space="preserve">
+    <value>トラム幅</value>
+  </data>
+  <data name="gsPastEndOfCurve" xml:space="preserve">
+    <value>カーブの終わりを過ぎた</value>
+  </data>
+  <data name="gsPlantPop" xml:space="preserve">
+    <value>プラントポップ</value>
   </data>
 </root>
