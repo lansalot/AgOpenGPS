@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -1237,5 +1237,33 @@ ANVÄNDS PÅ EGEN RISK.</value>
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
+  </data>
+  <data name="gsCopyFrom" xml:space="preserve">
+    <value>Kopiera från</value>
+  </data>
+  <data name="gsCreateNewProfile" xml:space="preserve">
+    <value>Skapa ny profil</value>
+  </data>
+  <data name="gsEmptyProfile" xml:space="preserve">
+    <value>Tom profil</value>
+  </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>Ladda</value>
+  </data>
+  <data name="gsLoadProfile" xml:space="preserve">
+    <value>Ladda profil</value>
+  </data>
+  <data name="gsName" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="gsNew" xml:space="preserve">
+    <value>Ny</value>
+  </data>
+  <data name="gsProfile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="gsProfileMenuHint" xml:space="preserve">
+    <value>Fordonsinställningarna är nu kallade "profiler" och
+kan skapas/laddas från huvudmenyn (längst upp till vänster).</value>
   </data>
 </root>
