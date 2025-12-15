@@ -468,7 +468,7 @@ namespace AgOpenGPS
                             GLW.DrawPoint(goalCoord);
                             // foreground layer
                             GLW.SetPointSize(8.0f);
-                            GLW.SetColor(Colors.GoalPointColor);
+                            GLW.SetColor(foregroundColor);
                             GLW.DrawPoint(goalCoord);
                         }
                     }
