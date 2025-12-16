@@ -25,8 +25,8 @@ namespace AgOpenGPS.Core.Drawing
 
         public void Resize(int width, int height)
         {
-            GLW.Viewport(width, height);
             MakeCurrent();
+            GLW.Viewport(width, height);
             GLW.CreatePerspectiveFieldOfView();
         }
 

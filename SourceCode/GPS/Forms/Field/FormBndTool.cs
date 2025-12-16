@@ -1039,7 +1039,6 @@ namespace AgOpenGPS
             }
             DrawTouchPointsLine();
             _viewport.EndPaint();
-            oglSelf.SwapBuffers();
         }
 
         private void DrawTouchPointsLine()

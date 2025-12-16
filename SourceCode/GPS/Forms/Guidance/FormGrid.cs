@@ -110,7 +110,6 @@ namespace AgOpenGPS
             TouchPointsLineVisual.DrawTouchPoints(_coordA, _coordB);
 
             _viewport.EndPaint();
-            oglSelf.SwapBuffers();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
