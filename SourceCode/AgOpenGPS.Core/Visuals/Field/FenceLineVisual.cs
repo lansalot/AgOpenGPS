@@ -6,18 +6,19 @@ namespace AgOpenGPS.Core.Visuals
 {
     public static class FenceLineVisual
     {
-        private static LineStyle normalLineStyle = new LineStyle(3.0f, new ColorRgba(0.62f, 0.635f, 0.635f));
-        private static LineStyle selectedLineStyle = new LineStyle(3.0f, Colors.White);
+        private static ColorRgba normalColor = new ColorRgba(0.62f, 0.635f, 0.635f);
+        private static ColorRgba selectedColor = Colors.White;
 
         public static void DrawFenceLine(GeoCoord[] fenceLineEar, bool isSelected)
         {
+            GLW.SetLineWidth(3.0f);
             if (isSelected)
             {
-                GLW.SetLineStyle(selectedLineStyle);
+                GLW.SetColor(selectedColor);
             }
             else
             {
-                GLW.SetLineStyle(normalLineStyle);
+                GLW.SetColor(normalColor);
             }
             GLW.DrawLineLoopPrimitive(fenceLineEar);
         }

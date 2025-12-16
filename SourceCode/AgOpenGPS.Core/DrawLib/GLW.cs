@@ -8,31 +8,22 @@ namespace AgOpenGPS.Core.DrawLib
     public static partial class GLW
     {
 
+        // Inlined by the compiler, so no function call overhead
         public static void SetColor(ColorRgba color)
         {
             GL.Color4(color.ByteArray);
         }
 
+        // Inlined by the compiler, so no function call overhead
         public static void SetLineWidth(float lineWidth)
         {
             GL.LineWidth(lineWidth);
         }
 
-        public static void SetLineStyle(LineStyle lineStyle)
-        {
-            GL.LineWidth(lineStyle.Width);
-            SetColor(lineStyle.Color);
-        }
-
+        // Inlined by the compiler, so no function call overhead
         public static void SetPointSize(float pointSize)
         {
             GL.PointSize(pointSize);
-        }
-
-        public static void SetPointStyle(PointStyle pointStyle)
-        {
-            GL.PointSize(pointStyle.Size);
-            SetColor(pointStyle.Color);
         }
 
         public static void Translate(double x, double y, double z)

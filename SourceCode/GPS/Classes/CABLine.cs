@@ -413,12 +413,12 @@ namespace AgOpenGPS
 
             //draw current AB Line
             GeoCoord[] currentAbLine = { currentLinePtA.ToGeoCoord(), currentLinePtB.ToGeoCoord() };
-            LineStyle[] purpleOnBlackLineStyles = new LineStyle[]
-            {
-                new LineStyle(lineWidth * 3, Colors.Black),
-                new LineStyle(lineWidth, currentAbLinePurple)
-            };
-            GLW.DrawLinesPrimitiveLayered(purpleOnBlackLineStyles, currentAbLine);
+            LineStyle blackBackgroundStyle = new LineStyle(lineWidth * 3, Colors.Black);
+            LineStyle purpleForgroundStyle = new LineStyle(lineWidth, currentAbLinePurple);
+            GLW.DrawLinesPrimitiveLayered(
+                currentAbLine,
+                blackBackgroundStyle,
+                purpleForgroundStyle);
 
             if (mf.isSideGuideLines && mf.camera.camSetDistance > mf.tool.width * -400)
             {
@@ -443,12 +443,12 @@ namespace AgOpenGPS
                     lines[linesIndex++] = rightEvenLine;
                     lines[linesIndex++] = leftEvenLine;
                 }
-                LineStyle[] greenOnBlackLineStyles = new LineStyle[]
-                {
-                    new LineStyle(lineWidth * 3, extraGuidelinesBlack),
-                    new LineStyle(lineWidth, extraGuidelinesGreen)
-                };
-                GLW.DrawLinesPrimitiveLayered(greenOnBlackLineStyles, lines);
+                LineStyle extraGuidelinesBackgroundStyle = new LineStyle(lineWidth * 3, extraGuidelinesBlack);
+                LineStyle extraGuidelinesForegroundStyle = new LineStyle(lineWidth, extraGuidelinesGreen);
+                GLW.DrawLinesPrimitiveLayered(
+                    lines,
+                    extraGuidelinesBackgroundStyle,
+                    extraGuidelinesForegroundStyle);
             }
             mf.yt.DrawYouTurn();
 

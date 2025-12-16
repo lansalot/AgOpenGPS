@@ -98,8 +98,8 @@ namespace AgOpenGPS.Core
         {
             GLW.RotateZ(-gridRotation);
 
-            LineStyle worldGridLineStyle = new LineStyle(1.0f, worldGridColor);
-            GLW.SetLineStyle(worldGridLineStyle);
+            GLW.SetLineWidth(1.0f);
+            GLW.SetColor(worldGridColor);
             List<XyCoord> vertices = new List<XyCoord>();
             for (double num = Math.Round(eastingMin / GridStep, MidpointRounding.AwayFromZero) * GridStep; num < eastingMax; num += GridStep)
             {
