@@ -1,0 +1,40 @@
+﻿using AgOpenGPS.Core.Drawing;
+using AgOpenGPS.Core.Models;
+using OpenTK;
+using System.Drawing;
+
+namespace AgOpenGPS.WinForms
+{
+    public class GeoViewport : GeoViewportBase
+    {
+        private readonly GLControl _glControl;
+        public GeoViewport(GLControl glControl)
+        {
+            _glControl = glControl;
+            _glControl.MakeCurrent();
+            Initialize();
+        }
+
+        protected override void MakeCurrent()
+        {
+            _glControl.MakeCurrent();
+        }
+
+        public override XyDelta ViewportSize
+        {
+            get
+            {
+                Size size = _glControl.Size;
+                return new XyDelta(size.Width, size.Height);
+            }
+        }
+
+        public override void EndPaint()
+        {
+            base.EndPaint();
+            _glControl.SwapBuffers();
+        }
+
+    }
+
+}
