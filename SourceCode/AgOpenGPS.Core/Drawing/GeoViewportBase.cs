@@ -4,6 +4,14 @@ using System;
 
 namespace AgOpenGPS.Core.Drawing
 {
+    // This is the first rudimentary version that only support an orthogonal view.
+    // Possible future improvements:
+    // - replace the perspective field of view with orthogonal projection
+    // - also support perspective view
+    // - embed this viewport in a reusable ViewportControl that takes care of creation,
+    //   initialization, resizing,etc of the viewport
+    // - support animations when the pan or zoom changes
+
     public abstract class GeoViewportBase
     {
         private const double PanStep = 0.15;
