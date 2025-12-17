@@ -45,7 +45,7 @@ namespace AgOpenGPS.Core.DrawLib
 
         public static void SetClearColor(float red, float green, float blue, float alpha)
         {
-            GL.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            GL.ClearColor(red, green, blue, alpha);
         }
 
         public static void Flush()
