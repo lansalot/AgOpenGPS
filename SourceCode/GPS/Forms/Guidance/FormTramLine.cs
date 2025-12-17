@@ -2,7 +2,7 @@
 using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Core.Visuals;
 using AgOpenGPS.Helpers;
-using OpenTK;
+using AgOpenGPS.WinForms;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
@@ -15,12 +15,12 @@ namespace AgOpenGPS
     {
         //access to the main GPS form and all its variables
         private readonly FormGPS mf = null;
+        private GeoViewport _viewport;
 
         private bool isCancel = false;
 
         private int indx = -1;
 
-        private Point fixPt;
         private vec2 ptA = new vec2(9999999, 9999999);
         private vec2 ptB = new vec2(9999999, 9999999);
         private vec2 ptCut = new vec2(9999999, 9999999);
@@ -49,7 +49,7 @@ namespace AgOpenGPS
         private void FormTramLine_Load(object sender, EventArgs e)
         {
             //translate all the controls
-            this.Text = gStr.gsAdvancedTramLines;
+            Text = gStr.gsAdvancedTramLines;
             lblAplha.Text = ((int)(mf.tram.alpha * 100)).ToString();
 
             mf.tool.halfWidth = (mf.tool.width - mf.tool.overlap) / 2.0;
@@ -62,8 +62,8 @@ namespace AgOpenGPS
             Screen myScreen = Screen.FromControl(this);
             Rectangle area = myScreen.WorkingArea;
 
-            this.Top = (area.Height - this.Height) / 2;
-            this.Left = (area.Width - this.Width) / 2;
+            Top = (area.Height - Height) / 2;
+            Left = (area.Width - Width) / 2;
             FormTramLine_ResizeEnd(this, e);
 
             if (!ScreenHelper.IsOnScreen(Bounds))
@@ -85,16 +85,7 @@ namespace AgOpenGPS
             oglSelf.Left = 1;
             oglSelf.Top = 1;
 
-            oglSelf.MakeCurrent();
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-
-            //58 degrees view
-            GL.Viewport(0, 0, oglSelf.Width, oglSelf.Height);
-            Matrix4 mat = Matrix4.CreatePerspectiveFieldOfView(1.01f, 1.0f, 1.0f, 20000);
-            GL.LoadMatrix(ref mat);
-
-            GL.MatrixMode(MatrixMode.Modelview);
+            _viewport.Resize(oglSelf.Width, oglSelf.Height);
 
             tlp1.Width = Width - oglSelf.Width - 4;
             tlp1.Left = oglSelf.Width;
@@ -102,8 +93,8 @@ namespace AgOpenGPS
             Screen myScreen = Screen.FromControl(this);
             Rectangle area = myScreen.WorkingArea;
 
-            this.Top = (area.Height - this.Height) / 2;
-            this.Left = (area.Width - this.Width) / 2;
+            Top = (area.Height - Height) / 2;
+            Left = (area.Width - Width) / 2;
         }
 
         private void FormTramLine_FormClosing(object sender, FormClosingEventArgs e)
@@ -470,35 +461,20 @@ namespace AgOpenGPS
             step++;
 
             Point ptt = oglSelf.PointToClient(Cursor.Position);
-
-            int wid = oglSelf.Width;
-            int halfWid = oglSelf.Width / 2;
-            double scale = (double)wid * 0.903;
-
-            //Convert to Origin in the center of window, 800 pixels
-            fixPt.X = ptt.X - halfWid;
-            fixPt.Y = (wid - ptt.Y - halfWid);
-            vec2 plotPt = new vec2
-            {
-                //convert screen coordinates to field coordinates
-                easting = fixPt.X * mf.maxFieldDistance / scale,
-                northing = fixPt.Y * mf.maxFieldDistance / scale,
-            };
-
-            plotPt.easting += mf.fieldCenterX;
-            plotPt.northing += mf.fieldCenterY;
+            XyCoord xyClient = new XyCoord(ptt.X, ptt.Y);
+            GeoCoord mouseDownCoord = _viewport.GetGeoCoord(xyClient);
 
             if (step == 1)
             {
-                ptA = plotPt;
+                ptA = new vec2(mouseDownCoord);
             }
             else if (step == 2)
             {
-                ptB = plotPt;
+                ptB = new vec2(mouseDownCoord);
             }
             else
             {
-                ptCut = plotPt;
+                ptCut = new vec2(mouseDownCoord);
 
                 bool isLeft = (ptB.easting - ptA.easting) * (ptCut.northing - ptA.northing)
                     > (ptB.northing - ptA.northing) * (ptCut.easting - ptA.easting);
@@ -587,16 +563,7 @@ namespace AgOpenGPS
 
         private void oglSelf_Paint(object sender, PaintEventArgs e)
         {
-            oglSelf.MakeCurrent();
-
-            GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
-            GL.LoadIdentity();                  // Reset The View
-
-            //back the camera up
-            GL.Translate(0, 0, -mf.maxFieldDistance);
-
-            //translate to that spot in the world
-            GL.Translate(-mf.fieldCenterX, -mf.fieldCenterY, 0);
+            _viewport.BeginPaint();
 
             for (int j = 0; j < mf.bnd.bndList.Count; j++)
             {
@@ -631,9 +598,7 @@ namespace AgOpenGPS
                 GL.Vertex2(ptB.easting, ptB.northing);
                 GL.End();
             }
-
-            GL.Flush();
-            oglSelf.SwapBuffers();
+            _viewport.EndPaint();
         }
 
         private void DrawTrams()
@@ -775,25 +740,28 @@ namespace AgOpenGPS
 
         private void oglSelf_Resize(object sender, EventArgs e)
         {
-            oglSelf.MakeCurrent();
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-
-            //58 degrees view
-            GL.Viewport(0, 0, oglSelf.Width, oglSelf.Height);
-
-            Matrix4 mat = Matrix4.CreatePerspectiveFieldOfView(1.01f, 1.0f, 1.0f, 20000);
-            GL.LoadMatrix(ref mat);
-
-            GL.MatrixMode(MatrixMode.Modelview);
+            if (_viewport == null)
+            {
+                CreateViewport();
+            }
+            _viewport.Resize(oglSelf.Width, oglSelf.Height);
         }
 
         private void oglSelf_Load(object sender, EventArgs e)
         {
-            oglSelf.MakeCurrent();
-            GL.Enable(EnableCap.CullFace);
-            GL.CullFace(CullFaceMode.Back);
-            GL.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            if (_viewport == null)
+            {
+                CreateViewport();
+            }
+        }
+
+        private void CreateViewport()
+        {
+            if (_viewport == null)
+            {
+                _viewport = new GeoViewport(oglSelf);
+            }
+            _viewport.SetBoundingBox(new GeoCoord(mf.fieldCenterY, mf.fieldCenterX), mf.maxFieldDistance);
         }
 
         #endregion
@@ -889,10 +857,10 @@ namespace AgOpenGPS
 
         private void FixLabelsCurve()
         {
-            this.Text = gStr.gsTramLines;
-            this.Text += "    Track: " + (mf.vehicle.VehicleConfig.TrackWidth * mf.m2FtOrM).ToString("N2") + mf.unitsFtM;
-            this.Text += "    Tram: " + (mf.tram.tramWidth * mf.m2FtOrM).ToString("N2") + mf.unitsFtM;
-            this.Text += "    Seed: " + (mf.tool.width * mf.m2FtOrM).ToString("N2") + mf.unitsFtM;
+            Text = gStr.gsTramLines;
+            Text += "    Track: " + (mf.vehicle.VehicleConfig.TrackWidth * mf.m2FtOrM).ToString("N2") + mf.unitsFtM;
+            Text += "    Tram: " + (mf.tram.tramWidth * mf.m2FtOrM).ToString("N2") + mf.unitsFtM;
+            Text += "    Seed: " + (mf.tool.width * mf.m2FtOrM).ToString("N2") + mf.unitsFtM;
 
             if (indx > -1 && gTemp.Count > 0)
             {
@@ -901,7 +869,7 @@ namespace AgOpenGPS
             }
             else
             {
-                this.Text += "   Line ***";
+                Text += "   Line ***";
                 lblCurveSelected.Text = "*";
             }
         }
@@ -910,10 +878,10 @@ namespace AgOpenGPS
         {
             Screen myScreen = Screen.PrimaryScreen;
             Rectangle area = myScreen.WorkingArea;
-            this.Height = area.Height;
-
+            Height = area.Height;
             FormTramLine_ResizeEnd(this, e);
         }
+
         private void btnDnAlpha_Click(object sender, EventArgs e)
         {
             mf.tram.alpha -= 0.1;
@@ -989,5 +957,7 @@ namespace AgOpenGPS
         }
 
         #endregion
+
+
     }
 }

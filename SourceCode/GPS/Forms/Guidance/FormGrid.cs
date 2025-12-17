@@ -2,8 +2,7 @@
 using AgOpenGPS.Core.Visuals;
 using AgOpenGPS.Helpers;
 using AgOpenGPS.Visuals;
-using OpenTK;
-using OpenTK.Graphics.OpenGL;
+using AgOpenGPS.WinForms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -14,12 +13,7 @@ namespace AgOpenGPS
     {
         //access to the main GPS form and all its variables
         private readonly FormGPS mf = null;
-
-        private Point fixPt;
-
-        private int bndSelect = 0;
-
-        private double zoom = 1, sX = 0, sY = 0;
+        private GeoViewport _viewport;
 
         public GeoCoord? _coordA;
         public GeoCoord? _coordB;
@@ -30,15 +24,12 @@ namespace AgOpenGPS
             mf = callingForm as FormGPS;
 
             InitializeComponent();
-
             mf.CalculateMinMax();
         }
 
         private void FormABDraw_Load(object sender, EventArgs e)
         {
             Size = Properties.Settings.Default.setWindow_gridSize;
-
-            Screen myScreen = Screen.FromControl(this);
 
             Location = Properties.Settings.Default.setWindow_gridLocation;
             FormABDraw_ResizeEnd(this, e);
@@ -79,9 +70,7 @@ namespace AgOpenGPS
             _coordB = null;
             mf.curve.desList?.Clear();
 
-            zoom = 1;
-            sX = 0;
-            sY = 0;
+            _viewport.ResetZoomPan();
 
             btnExit.Focus();
         }
@@ -89,29 +78,8 @@ namespace AgOpenGPS
         private void oglSelf_MouseDown(object sender, MouseEventArgs e)
         {
             Point pt = oglSelf.PointToClient(Cursor.Position);
-
-            int wid = oglSelf.Width;
-            int halfWid = oglSelf.Width / 2;
-            double scale = wid * 0.903;
-
-            //Convert to Origin in the center of window, 800 pixels
-            fixPt.X = pt.X - halfWid;
-            fixPt.Y = (wid - pt.Y - halfWid);
-            vec2 plotPt = new vec2
-            {
-                //convert screen coordinates to field coordinates
-                easting = fixPt.X * mf.maxFieldDistance / scale * zoom,
-                northing = fixPt.Y * mf.maxFieldDistance / scale * zoom,
-            };
-
-            plotPt.easting += mf.fieldCenterX + mf.maxFieldDistance * -sX;
-            plotPt.northing += mf.fieldCenterY + mf.maxFieldDistance * -sY;
-
-            GeoCoord mouseDownCoord = plotPt.ToGeoCoord();
-
-            zoom = 1;
-            sX = 0;
-            sY = 0;
+            XyCoord xyClient = new XyCoord(pt.X, pt.Y);
+            GeoCoord mouseDownCoord = _viewport.GetGeoCoord(xyClient);
 
             if (!_coordA.HasValue)
             {
@@ -128,31 +96,20 @@ namespace AgOpenGPS
 
         private void oglSelf_Paint(object sender, PaintEventArgs e)
         {
-            oglSelf.MakeCurrent();
-
-            GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
-            GL.LoadIdentity();                  // Reset The View
-
-            //back the camera up
-            GL.Translate(0, 0, -mf.maxFieldDistance * zoom);
-
-            //translate to that spot in the world
-            GL.Translate(-mf.fieldCenterX + sX * mf.maxFieldDistance, -mf.fieldCenterY + sY * mf.maxFieldDistance, 0);
+            _viewport.BeginPaint();
 
             SectionsVisual.DrawSections(mf.triStrip);
-
 
             for (int j = 0; j < mf.bnd.bndList.Count; j++)
             {
                 GeoCoord[] fenceLineEar = GeoRefactorHelper.ToGeoCoordArray(mf.bnd.bndList[j].fenceLineEar);
-                bool isSelected = j == bndSelect;
+                bool isSelected = j == 0;
                 FenceLineVisual.DrawFenceLine(fenceLineEar, isSelected);
             }
             VehicleDotVisual.DrawVehicleDot(mf.pivotAxlePos.ToGeoCoord());
             TouchPointsLineVisual.DrawTouchPoints(_coordA, _coordB);
 
-            GL.Flush();
-            oglSelf.SwapBuffers();
+            _viewport.EndPaint();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -175,57 +132,37 @@ namespace AgOpenGPS
 
         private void FormABDraw_ResizeEnd(object sender, EventArgs e)
         {
-            Width = (int)((double)Height * 1.09);
-
+            Width = (int)(Height * 1.09);
             oglSelf.Height = oglSelf.Width = Height - 40;
 
             oglSelf.Left = 1;
             oglSelf.Top = 0;
 
-            oglSelf.MakeCurrent();
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-
-            //58 degrees view
-            GL.Viewport(0, 0, oglSelf.Width, oglSelf.Height);
-            Matrix4 mat = Matrix4.CreatePerspectiveFieldOfView(1.01f, 1.0f, 1.0f, 20000);
-            GL.LoadMatrix(ref mat);
-
-            GL.MatrixMode(MatrixMode.Modelview);
+            _viewport.Resize(oglSelf.Width, oglSelf.Height);
 
             tlp1.Width = Width - oglSelf.Width - 10;
             tlp1.Left = oglSelf.Width - 2;
-
-            Screen myScreen = Screen.FromControl(this);
-            Rectangle area = myScreen.WorkingArea;
-
-            //this.Top = (area.Height - this.Height) / 2;
-            //this.Left = (area.Width - this.Width) / 2;
         }
 
         private void oglSelf_Resize(object sender, EventArgs e)
         {
-            oglSelf.MakeCurrent();
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-
-            //58 degrees view
-            GL.Viewport(0, 0, oglSelf.Width, oglSelf.Height);
-
-            Matrix4 mat = Matrix4.CreatePerspectiveFieldOfView(1.01f, 1.0f, 1.0f, 20000);
-            GL.LoadMatrix(ref mat);
-
-            GL.MatrixMode(MatrixMode.Modelview);
+            CreateViewport();
+            _viewport.Resize(oglSelf.Width, oglSelf.Height);
         }
 
         private void oglSelf_Load(object sender, EventArgs e)
         {
-            oglSelf.MakeCurrent();
-            GL.Enable(EnableCap.CullFace);
-            GL.CullFace(CullFaceMode.Back);
-            GL.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            CreateViewport();
         }
 
+        private void CreateViewport()
+        {
+            if (_viewport == null)
+            {
+                _viewport = new GeoViewport(oglSelf);
+            }
+            _viewport.SetBoundingBox(new GeoCoord(mf.fieldCenterY, mf.fieldCenterX), mf.maxFieldDistance);
+        }
 
     }
 }

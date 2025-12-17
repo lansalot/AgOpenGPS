@@ -21,5 +21,17 @@ namespace AgOpenGPS.Core.DrawLib
             GL.Disable(EnableCap.LineStipple);
         }
 
+        public static void EnableCullFace()
+        {
+            GL.Enable(EnableCap.CullFace);
+        }
+
+        public static void SetCullFaceModeBack()
+        {
+            GL.CullFace(CullFaceMode.Back);
+        }
+
+
+
     }
 }

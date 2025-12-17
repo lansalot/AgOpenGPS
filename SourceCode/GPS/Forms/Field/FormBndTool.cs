@@ -4,8 +4,7 @@ using AgOpenGPS.Core.Models;
 using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Core.Visuals;
 using AgOpenGPS.Helpers;
-using OpenTK;
-using OpenTK.Graphics.OpenGL;
+using AgOpenGPS.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,6 +16,7 @@ namespace AgOpenGPS
     {
         //access to the main GPS form and all its variables
         private readonly FormGPS mf = null;
+        private GeoViewport _viewport;
 
         private static readonly ColorRgba boundaryColor = new ColorRgba(0.725f, 0.95f, 0.950f);
 
@@ -26,7 +26,6 @@ namespace AgOpenGPS
 
         private static readonly ColorRgba stepSectionColor = new ColorRgba(0.64f, 0.64f, 0.6f);
 
-        private Point fixPt;
         private vec3 ptA = new vec3();
         private vec3 ptB = new vec3();
         public vec3 pint = new vec3(0.0, 1.0, 0.0);
@@ -35,9 +34,6 @@ namespace AgOpenGPS
         private bool isC = false;
         private int start = 99999, end = 99999;
         private int bndSelect = 0, smPtsChoose = 1, smPts = 4;
-
-        private double zoom = 1, sX = 0, sY = 0;
-        private const double panStep = 0.15;
 
         public List<vec3> secList = new List<vec3>();
         public List<vec3> bndList = new List<vec3>();
@@ -91,8 +87,8 @@ namespace AgOpenGPS
             Screen myScreen = Screen.FromControl(this);
             Rectangle area = myScreen.WorkingArea;
 
-            this.Top = (area.Height - this.Height) / 2;
-            this.Left = (area.Width - this.Width) / 2;
+            Top = (area.Height - Height) / 2;
+            Left = (area.Width - Width) / 2;
             FormBndTool_ResizeEnd(this, e);
 
             if (!ScreenHelper.IsOnScreen(Bounds))
@@ -132,16 +128,7 @@ namespace AgOpenGPS
             oglSelf.Left = 2;
             oglSelf.Top = 2;
 
-            oglSelf.MakeCurrent();
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-
-            //58 degrees view
-            GL.Viewport(0, 0, oglSelf.Width, oglSelf.Height);
-            Matrix4 mat = Matrix4.CreatePerspectiveFieldOfView(1.01f, 1.0f, 1.0f, 20000);
-            GL.LoadMatrix(ref mat);
-
-            GL.MatrixMode(MatrixMode.Modelview);
+            _viewport.Resize(oglSelf.Width, oglSelf.Height);
 
             tlp1.Width = Width - oglSelf.Width - 4;
             tlp1.Left = oglSelf.Width;
@@ -149,8 +136,8 @@ namespace AgOpenGPS
             Screen myScreen = Screen.FromControl(this);
             Rectangle area = myScreen.WorkingArea;
 
-            this.Top = (area.Height - this.Height) / 2;
-            this.Left = (area.Width - this.Width) / 2;
+            Top = (area.Height - Height) / 2;
+            Left = (area.Width - Width) / 2;
         }
 
         private void KNN()
@@ -309,7 +296,7 @@ namespace AgOpenGPS
                 if (rA == firstPoint || rB == firstPoint || rC == firstPoint ||
                         rD == firstPoint || rE == firstPoint || rF == firstPoint || rG == firstPoint)
                 {
-                    isStep = false;
+                    EndStep();
                     timer1.Interval = 500;
                     timer1.Enabled = true;
                     cboxSmooth.Enabled = true;
@@ -387,13 +374,11 @@ namespace AgOpenGPS
 
             //start all over
             start = end = 99999;
-            zoom = 1;
-            sX = 0;
-            sY = 0;
+            _viewport.ResetZoomPan();
 
             btnStartStop.Enabled = true;
 
-            isStep = false;
+            EndStep();
             timer1.Interval = 500;
             prevHeading = Math.PI + glm.PIBy2;
 
@@ -442,7 +427,7 @@ namespace AgOpenGPS
         {
             if (cboxPointDistance.SelectedIndex == 10) return;
             timer1.Interval = 500;
-            isStep = false;
+            EndStep();
 
             minDistDisp = (double)(cboxPointDistance.SelectedIndex + 1);
             minDistSq = minDistDisp * minDistDisp;
@@ -552,8 +537,16 @@ namespace AgOpenGPS
 
             isStep = !isStep;
 
-            if (isStep) timer1.Interval = 50;
-            else timer1.Interval = 500;
+
+            if (isStep)
+            {
+                timer1.Interval = 50;
+            }
+            else
+            {
+                timer1.Interval = 500;
+                EndStep();
+            }
             btnStartStop.BackColor = Color.WhiteSmoke;
 
             //btnStartStop.Enabled = false;
@@ -726,7 +719,6 @@ namespace AgOpenGPS
                     i--;
                 }
             }
-
             CABCurve.CalculateHeadings(ref smooList);
         }
 
@@ -737,7 +729,6 @@ namespace AgOpenGPS
             mf.fd.UpdateFieldBoundaryGUIAreas();
             mf.FileSaveHeadland();
         }
-
 
         private void btnStartStop_Click(object sender, EventArgs e)
         {
@@ -770,34 +761,32 @@ namespace AgOpenGPS
 
         private void btnZoomOut_Click(object sender, EventArgs e)
         {
-            zoom *= 2;
-            if (zoom > 1) zoom = 1;
+            _viewport.ZoomOutStep();
         }
 
         private void btnZoomIn_Click(object sender, EventArgs e)
         {
-            zoom *= 0.5;
-            if (zoom < 0.015625) zoom = 0.015625;
+            _viewport.ZoomInStep();
         }
 
         private void btnMoveDn_Click(object sender, EventArgs e)
         {
-            sY += panStep * zoom;
+            _viewport.PanDown();
         }
 
         private void btnMoveUp_Click(object sender, EventArgs e)
         {
-            sY -= panStep * zoom;
+            _viewport.PanUp();
         }
 
         private void btnMoveLeft_Click(object sender, EventArgs e)
         {
-            sX += panStep * zoom;
+            _viewport.PanLeft();
         }
 
         private void btnMoveRight_Click(object sender, EventArgs e)
         {
-            sX -= panStep * zoom;
+            _viewport.PanRight();
         }
 
         private void btnResetReduce_Click_1(object sender, EventArgs e)
@@ -883,16 +872,11 @@ namespace AgOpenGPS
             start = 99999; end = 99999;
             isA = true;
             isC = false;
-            //zoom = 1;
-            //sX = 0;
-            //sY = 0;
         }
 
         private void btnCenterOGL_Click(object sender, EventArgs e)
         {
-            zoom = 1;
-            sX = 0;
-            sY = 0;
+            _viewport.ResetZoomPan();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -902,7 +886,6 @@ namespace AgOpenGPS
 
         private void btnCancelTouch_Click(object sender, EventArgs e)
         {
-            //update the arrays
             start = 99999; end = 99999;
             btnExit.Focus();
             isC = false;
@@ -914,38 +897,17 @@ namespace AgOpenGPS
         private void oglSelf_MouseDown(object sender, MouseEventArgs e)
         {
             Point ptt = oglSelf.PointToClient(Cursor.Position);
-
-            int wid = oglSelf.Width;
-            int halfWid = oglSelf.Width / 2;
-            double scale = (double)wid * 0.903;
+            XyCoord xyClient = new XyCoord(ptt.X, ptt.Y);
+            GeoCoord mouseDownCoord = _viewport.GetGeoCoord(xyClient);
 
             if (cboxIsZoom.Checked)
             {
-                sX += ((halfWid - (double)ptt.X) / wid) * 1.1 * zoom;
-                sY += ((halfWid - (double)ptt.Y) / -wid) * 1.1 * zoom;
-                zoom = 0.125;
+                _viewport.PointZoom(mouseDownCoord, 0.125);
                 cboxIsZoom.Checked = false;
                 return;
             }
 
-            //if (mf.bnd.bndList.Count < 1) { return; }
-
-            //Convert to Origin in the center of window, 800 pixels
-            fixPt.X = ptt.X - halfWid;
-            fixPt.Y = (wid - ptt.Y - halfWid);
-            vec3 plotPt = new vec3
-            {
-                //convert screen coordinates to field coordinates
-                easting = fixPt.X * mf.maxFieldDistance / scale * zoom,
-                northing = fixPt.Y * mf.maxFieldDistance / scale * zoom,
-                heading = 0
-            };
-
-            plotPt.easting += mf.fieldCenterX + mf.maxFieldDistance * -sX;
-            plotPt.northing += mf.fieldCenterY + mf.maxFieldDistance * -sY;
-
-            pint.easting = plotPt.easting;
-            pint.northing = plotPt.northing;
+            pint = new vec3(mouseDownCoord);
 
             if (mf.bnd.bndList.Count != 0)
             {
@@ -1011,41 +973,20 @@ namespace AgOpenGPS
                     ptB = pint;
                     btnAddPoints.Enabled = true;
                 }
-
                 isA = true;
             }
         }
 
         private void oglSelf_Paint(object sender, PaintEventArgs e)
         {
-            if (isStep) KNN();
-
-
-            oglSelf.MakeCurrent();
-
-            GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
-            GL.LoadIdentity();                  // Reset The View
-
             if (isStep)
             {
-                //back the camera up
-                GLW.Translate(0, 0, -mf.maxFieldDistance * 0.5);
-
-                //translate to that spot in the world
-                GLW.Translate(-secList[currentPoint].easting, -secList[currentPoint].northing, 0);
+                KNN();
+                _viewport.PointZoom(secList[currentPoint].ToGeoCoord(), 0.5);
             }
-            else
-            {
-                //back the camera up
-                GLW.Translate(0, 0, -mf.maxFieldDistance * zoom);
-
-                //translate to that spot in the world
-                GLW.Translate(-mf.fieldCenterX + sX * mf.maxFieldDistance, -mf.fieldCenterY + sY * mf.maxFieldDistance, 0);
-            }
+            _viewport.BeginPaint();
 
             //draw all the boundaries
-
-
             if (mf.bnd.bndList.Count > 0)
             {
                 // outter boundary
@@ -1097,8 +1038,7 @@ namespace AgOpenGPS
                 GLW.DrawPointsPrimitive(GeoRefactorHelper.ToGeoCoordArray(secList));
             }
             DrawTouchPointsLine();
-            GL.Flush();
-            oglSelf.SwapBuffers();
+            _viewport.EndPaint();
         }
 
         private void DrawTouchPointsLine()
@@ -1128,23 +1068,31 @@ namespace AgOpenGPS
 
         private void oglSelf_Resize(object sender, EventArgs e)
         {
-            oglSelf.MakeCurrent();
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-
-            //58 degrees view
-            Matrix4 mat = Matrix4.CreatePerspectiveFieldOfView(1.01f, 1.0f, 1.0f, 20000);
-            GL.LoadMatrix(ref mat);
-
-            GL.MatrixMode(MatrixMode.Modelview);
+            if (_viewport == null)
+            {
+                CreateViewport();
+            }
+            _viewport.Resize(oglSelf.Width, oglSelf.Height);
         }
 
         private void oglSelf_Load(object sender, EventArgs e)
         {
-            oglSelf.MakeCurrent();
-            GL.Enable(EnableCap.CullFace);
-            GL.CullFace(CullFaceMode.Back);
-            GL.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            if (_viewport == null)
+            {
+                CreateViewport();
+            }
+        }
+
+        private void CreateViewport()
+        {
+            _viewport = new GeoViewport(oglSelf);
+            _viewport.SetBoundingBox(new GeoCoord(mf.fieldCenterY, mf.fieldCenterX), mf.maxFieldDistance);
+        }
+
+        private void EndStep()
+        {
+            isStep = false;
+            _viewport.ResetZoomPan();
         }
     }
 }
