@@ -19,8 +19,9 @@ namespace AgOpenGPS.Core.Drawing
         private const double MinZoom = 0.015625;
         private const double MaxZoom = 1.0;
 
-        public GeoViewportBase()
+        public GeoViewportBase(GeoBoundingBox boundingBox)
         {
+            SetBoundingBox(boundingBox);
             ResetZoomPan();
         }
 
@@ -40,7 +41,7 @@ namespace AgOpenGPS.Core.Drawing
 
         protected abstract void MakeCurrent();
 
-        public GeoBoundingBox BoundingBox { get; set; }
+        public GeoBoundingBox BoundingBox { get; private set; }
         private double BoundingBoxWidth => BoundingBox.MaxEasting - BoundingBox.MinEasting;
         private double BoundingBoxHeight => BoundingBox.MaxNorthing - BoundingBox.MinNorthing;
         private double BoundingBoxDistance => Math.Max(BoundingBoxWidth, BoundingBoxHeight);
@@ -52,15 +53,10 @@ namespace AgOpenGPS.Core.Drawing
 
         private double scaleBoundingBoxToViewport;
 
-        public void SetBoundingBox(GeoCoord center, double size)
+        public void SetBoundingBox(GeoBoundingBox boundingBox)
         {
-            GeoBoundingBox bb = GeoBoundingBox.CreateEmpty();
-            bb.Include(center);
-            GeoDelta margin = new GeoDelta(0.5 * size, 0.5 * size);
-            bb.Include(center + margin);
-            bb.Include(center - margin);
-            BoundingBox = bb;
-            ViewportCenter = center;
+            BoundingBox = boundingBox;
+            ViewportCenter = BoundingBox.CenterCoord;
         }
 
         public void BeginPaint()

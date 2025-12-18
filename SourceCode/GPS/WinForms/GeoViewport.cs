@@ -8,7 +8,11 @@ namespace AgOpenGPS.WinForms
     public class GeoViewport : GeoViewportBase
     {
         private readonly GLControl _glControl;
-        public GeoViewport(GLControl glControl)
+        public GeoViewport(
+            GeoBoundingBox boundingBox,
+            GLControl glControl
+        )
+            : base(boundingBox)
         {
             _glControl = glControl;
             _glControl.MakeCurrent();

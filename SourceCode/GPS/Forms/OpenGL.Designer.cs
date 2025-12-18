@@ -2851,8 +2851,8 @@ namespace AgOpenGPS
             frustum[23] = clip[15] - clip[13];
         }
 
-        private GeoBoundingBox fieldBoundingBox;
-        public GeoCoord FieldCenter => fieldBoundingBox.CenterCoord;
+        public GeoBoundingBox FieldBoundingBox { get; private set; }
+        public GeoCoord FieldCenter => FieldBoundingBox.CenterCoord;
         public double fieldCenterX => FieldCenter.Easting;
         public double fieldCenterY => FieldCenter.Northing;
         public double maxFieldDistance;
@@ -2860,17 +2860,17 @@ namespace AgOpenGPS
         //determine mins maxs of patches and whole field.
         public void CalculateMinMax()
         {
-            fieldBoundingBox = CalculateFieldBoundingBox();
-            if (fieldBoundingBox.IsEmpty)
+            FieldBoundingBox = CalculateFieldBoundingBox();
+            if (FieldBoundingBox.IsEmpty)
             {
-                fieldBoundingBox.Include(new GeoCoord(0.0, 0.0));
+                FieldBoundingBox.Include(new GeoCoord(0.0, 0.0));
                 maxFieldDistance = 1500;
             }
             else
             {
                 //the largest distance across field
-                double eastingDistance = fieldBoundingBox.MaxEasting - fieldBoundingBox.MinEasting;
-                double northingDistance = fieldBoundingBox.MaxNorthing - fieldBoundingBox.MinNorthing;
+                double eastingDistance = FieldBoundingBox.MaxEasting - FieldBoundingBox.MinEasting;
+                double northingDistance = FieldBoundingBox.MaxNorthing - FieldBoundingBox.MinNorthing;
 
                 maxFieldDistance = Math.Max(eastingDistance, northingDistance);
 
