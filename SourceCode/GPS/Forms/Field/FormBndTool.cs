@@ -1085,8 +1085,7 @@ namespace AgOpenGPS
 
         private void CreateViewport()
         {
-            _viewport = new GeoViewport(oglSelf);
-            _viewport.SetBoundingBox(new GeoCoord(mf.fieldCenterY, mf.fieldCenterX), mf.maxFieldDistance);
+            _viewport = new GeoViewport(mf.FieldBoundingBox, oglSelf);
         }
 
         private void EndStep()
