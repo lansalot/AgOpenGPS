@@ -10,6 +10,7 @@ namespace AgOpenGPS.Visuals
         public static void DrawSections(List<CPatches> triStrip)
         {
             const int mipmap = 8;
+            GLW.SetColor(sectionsColor);
 
             foreach (CPatches patches in triStrip)
             {
