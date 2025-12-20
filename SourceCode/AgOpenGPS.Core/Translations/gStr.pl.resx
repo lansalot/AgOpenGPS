@@ -1160,4 +1160,53 @@ UŻYWAJ NA WŁASNE RYZYKO.</value>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
   </data>
+  <data name="gsDisagree" xml:space="preserve">
+    <value>Nie zgadzam się</value>
+  </data>
+  <data name="gsSteerEnable" xml:space="preserve">
+    <value>Przycisk</value>
+  </data>
+  <data name="gsName" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="gsNew" xml:space="preserve">
+    <value>Nowy</value>
+  </data>
+  <data name="gsProfile" xml:space="preserve">
+    <value>Profil maszyny</value>
+  </data>
+  <data name="gsCopyFrom" xml:space="preserve">
+    <value>Kopiuj profil</value>
+  </data>
+  <data name="gsCreateNewProfile" xml:space="preserve">
+    <value>Utwórz nowy profil maszyny</value>
+  </data>
+  <data name="gsEmptyProfile" xml:space="preserve">
+    <value>Pusty profil maszyny</value>
+  </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>Wczytaj</value>
+  </data>
+  <data name="gsLoadProfile" xml:space="preserve">
+    <value>Wczytaj profil maszyny</value>
+  </data>
+  <data name="gsProfileMenuHint" xml:space="preserve">
+    <value>Ustawienia pojazdu są teraz nazywane "Profilami maszyny"
+i mogą być utworzone/wczytane w menu głównym (lewy górny narożnik).</value>
+  </data>
+  <data name="gsAgree" xml:space="preserve">
+    <value>Zgadzam się</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Chwilowy</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>Wciśnij ON, Puść OFF</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Naciśnij ON. Naciśnij OFF</value>
+  </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Bistabilny</value>
+  </data>
 </root>
