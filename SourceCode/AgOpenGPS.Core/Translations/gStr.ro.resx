@@ -1241,4 +1241,32 @@ UTILIZAȚI PE PROPRIUL RISC.</value>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
   </data>
+  <data name="gsCopyFrom" xml:space="preserve">
+    <value>Copiați din</value>
+  </data>
+  <data name="gsCreateNewProfile" xml:space="preserve">
+    <value>Creați un profil nou</value>
+  </data>
+  <data name="gsEmptyProfile" xml:space="preserve">
+    <value>Profil gol</value>
+  </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>Încărcare</value>
+  </data>
+  <data name="gsLoadProfile" xml:space="preserve">
+    <value>Profil încărcat</value>
+  </data>
+  <data name="gsName" xml:space="preserve">
+    <value>Nume</value>
+  </data>
+  <data name="gsNew" xml:space="preserve">
+    <value>Nou</value>
+  </data>
+  <data name="gsProfile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="gsProfileMenuHint" xml:space="preserve">
+    <value>Setările vehiculului se numesc acum „profiluri” și
+pot fi create/încărcate în meniul principal (stânga sus).</value>
+  </data>
 </root>
