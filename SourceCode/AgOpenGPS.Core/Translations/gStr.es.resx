@@ -1223,4 +1223,44 @@ USAR BAJO SU PROPIA RESPONSABILIDAD.</value>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
   </data>
+  <data name="gsForceOverwrite" xml:space="preserve">
+    <value>Forzar Sobreescritura</value>
+  </data>
+  <data name="gsAgree" xml:space="preserve">
+    <value>De acuerdo</value>
+  </data>
+  <data name="gsCreateNewProfile" xml:space="preserve">
+    <value>Crear Nuevo Perfil</value>
+  </data>
+  <data name="gsEmptyProfile" xml:space="preserve">
+    <value>Perfil Vacío</value>
+  </data>
+  <data name="gsLoadProfile" xml:space="preserve">
+    <value>Cargar Perfil</value>
+  </data>
+  <data name="gsProfile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="gsProfileMenuHint" xml:space="preserve">
+    <value>La configuración de vehículo ahora se llama "perfiles" y
+pueden ser creados/cargados en el menú principal (arriba izquierda).</value>
+  </data>
+  <data name="gsCopyFrom" xml:space="preserve">
+    <value>Copiar desde</value>
+  </data>
+  <data name="gsDiscourseForum" xml:space="preserve">
+    <value>Foro de Discourse</value>
+  </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>Cargar</value>
+  </data>
+  <data name="gsName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="gsNew" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="gsYouTubeTutorials" xml:space="preserve">
+    <value>Tutoriales en YouTube</value>
+  </data>
 </root>
