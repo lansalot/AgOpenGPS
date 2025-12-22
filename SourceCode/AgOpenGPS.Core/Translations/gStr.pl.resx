@@ -1209,4 +1209,10 @@ i mogą być utworzone/wczytane w menu głównym (lewy górny narożnik).</value
   <data name="gsButton" xml:space="preserve">
     <value>Bistabilny</value>
   </data>
+  <data name="gsRollFilter" xml:space="preserve">
+    <value>Filtr osi Roll</value>
+  </data>
+  <data name="gsPlantPop" xml:space="preserve">
+    <value>Uniesienie osprzętu</value>
+  </data>
 </root>
