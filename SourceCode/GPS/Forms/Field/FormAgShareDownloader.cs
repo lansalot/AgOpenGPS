@@ -18,13 +18,13 @@ namespace AgOpenGPS.Forms.Field
     public partial class FormAgShareDownloader : System.Windows.Forms.Form
     {
         private readonly FormGPS gps;
-        private readonly CAgShareDownloader downloader;
+        private readonly AgShareDownloader downloader;
 
         public FormAgShareDownloader(FormGPS gpsContext)
         {
             InitializeComponent();
             gps = gpsContext;
-            downloader = new CAgShareDownloader();
+            downloader = new AgShareDownloader();
             progressBarDownloadAll.Visible = false;
             lblDownloading.Visible = false;
             chkForceOverwrite.Text = gStr.gsForceOverwrite;

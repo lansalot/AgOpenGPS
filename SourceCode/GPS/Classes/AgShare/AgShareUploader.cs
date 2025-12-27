@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 namespace AgOpenGPS
 {
-    public class CAgShareUploader
+    public class AgShareUploader
     {
 
         // Create a snapshot from the current GPS session to upload

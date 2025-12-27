@@ -628,7 +628,7 @@ namespace AgOpenGPS
                 try
                 {
                     isAgShareUploadStarted = true;
-                    agShareUploadTask = CAgShareUploader.UploadAsync(snapshot, agShareClient, this);
+                    agShareUploadTask = AgShareUploader.UploadAsync(snapshot, agShareClient, this);
                 }
                 catch (Exception ex)
                 {
@@ -696,7 +696,7 @@ namespace AgOpenGPS
         {
             if (!isJobStarted) return;
 
-            snapshot = CAgShareUploader.CreateSnapshot(this);
+            snapshot = AgShareUploader.CreateSnapshot(this);
         }
 
 
@@ -709,7 +709,7 @@ namespace AgOpenGPS
 
             //set bool to true so we don't start another upload by double clicking or something.
             isAgShareUploadStarted = true;
-            agShareUploadTask = CAgShareUploader.UploadAsync(snapshot, agShareClient, this);
+            agShareUploadTask = AgShareUploader.UploadAsync(snapshot, agShareClient, this);
         }
         #endregion
         private void tramLinesMenuField_Click(object sender, EventArgs e)

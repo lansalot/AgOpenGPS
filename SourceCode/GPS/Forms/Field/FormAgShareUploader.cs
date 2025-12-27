@@ -236,7 +236,7 @@ namespace AgOpenGPS.Forms
             }
 
             // Use existing upload logic
-            await CAgShareUploader.UploadAsync(snapshot, agShareClient, null);
+            await AgShareUploader.UploadAsync(snapshot, agShareClient, null);
         }
 
         private async Task<FieldSnapshot> LoadFieldSnapshot(FieldInfo fieldInfo)

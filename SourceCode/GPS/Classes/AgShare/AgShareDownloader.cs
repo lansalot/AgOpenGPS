@@ -14,11 +14,11 @@ namespace AgOpenGPS
     /// <summary>
     /// Central helper class for downloading, parsing and saving AgShare fields locally.
     /// </summary>
-    public class CAgShareDownloader
+    public class AgShareDownloader
     {
         private readonly AgShareClient client;
 
-        public CAgShareDownloader()
+        public AgShareDownloader()
         {
             // Initialize AgShare client using stored settings
             client = new AgShareClient(Settings.Default.AgShareServer, Settings.Default.AgShareApiKey);
