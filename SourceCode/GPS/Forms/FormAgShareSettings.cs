@@ -71,10 +71,10 @@ namespace AgOpenGPS
             labelStatus.Text = "Connecting...";
             labelStatus.ForeColor = Color.Gray;
 
-            _agShareClient.SetBaseUrl(textBoxServer.Text);
-            _agShareClient.SetApiKey(textBoxApiKey.Text);
+            var baseUrl = textBoxServer.Text;
+            var apiKey = textBoxApiKey.Text;
 
-            (bool success, string message) = await _agShareClient.CheckApiAsync();
+            (bool success, string message) = await AgShareClient.CheckApiAsync(baseUrl, apiKey);
 
             if (success)
             {
@@ -92,7 +92,7 @@ namespace AgOpenGPS
         // Save current values to settings
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            _agShareClient.SetBaseUrl(textBoxServer.Text);
+            _agShareClient.SetServerUrl(textBoxServer.Text);
             _agShareClient.SetApiKey(textBoxApiKey.Text);
 
             Settings.Default.AgShareServer = textBoxServer.Text;
