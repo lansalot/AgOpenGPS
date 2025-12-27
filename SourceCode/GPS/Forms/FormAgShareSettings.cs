@@ -16,9 +16,9 @@ namespace AgOpenGPS
         private readonly AgShareClient _agShareClient;
         private Timer clipboardCheckTimer;
 
-        public FormAgShareSettings()
+        public FormAgShareSettings(AgShareClient agShareClient)
         {
-            _agShareClient = new AgShareClient(Settings.Default.AgShareServer, Settings.Default.AgShareApiKey);
+            _agShareClient = agShareClient;
             InitializeComponent();
         }
 

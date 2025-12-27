@@ -6,7 +6,6 @@ using AgLibrary.Logging;
 using AgOpenGPS.Classes.AgShare.Helpers;
 using AgOpenGPS.Core.AgShare;
 using AgOpenGPS.IO;
-using AgOpenGPS.Properties;
 using Newtonsoft.Json;
 
 namespace AgOpenGPS
@@ -16,12 +15,11 @@ namespace AgOpenGPS
     /// </summary>
     public class AgShareDownloader
     {
-        private readonly AgShareClient client;
+        private readonly AgShareClient _client;
 
-        public AgShareDownloader()
+        public AgShareDownloader(AgShareClient client)
         {
-            // Initialize AgShare client using stored settings
-            client = new AgShareClient(Settings.Default.AgShareServer, Settings.Default.AgShareApiKey);
+            _client = client;
         }
 
         // Downloads a field and saves it to disk
@@ -29,7 +27,7 @@ namespace AgOpenGPS
         {
             try
             {
-                string json = await client.DownloadFieldAsync(fieldId);
+                string json = await _client.DownloadFieldAsync(fieldId);
 
                 // Validate JSON response
                 if (string.IsNullOrWhiteSpace(json))
@@ -65,7 +63,7 @@ namespace AgOpenGPS
         // Retrieves a list of user-owned fields
         public async Task<List<AgShareGetOwnFieldDto>> GetOwnFieldsAsync()
         {
-            return await client.GetOwnFieldsAsync();
+            return await _client.GetOwnFieldsAsync();
         }
 
         // Downloads a field DTO for preview only
@@ -73,7 +71,7 @@ namespace AgOpenGPS
         {
             try
             {
-                string json = await client.DownloadFieldAsync(fieldId);
+                string json = await _client.DownloadFieldAsync(fieldId);
 
                 if (string.IsNullOrWhiteSpace(json))
                 {

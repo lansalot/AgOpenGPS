@@ -1,13 +1,13 @@
-﻿using OpenTK.Graphics.OpenGL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using AgOpenGPS.Classes.AgShare.Helpers;
-using AgOpenGPS.Core.Translations;
-using AgOpenGPS.Core.Models;
 using AgOpenGPS.Core.AgShare;
+using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.Translations;
+using OpenTK.Graphics.OpenGL;
 
 namespace AgOpenGPS.Forms.Field
 {
@@ -15,7 +15,7 @@ namespace AgOpenGPS.Forms.Field
     /// Form that allows the user to preview and download their own AgShare fields,
     /// with OpenGL rendering of boundaries and AB lines.
     /// </summary>
-    public partial class FormAgShareDownloader : System.Windows.Forms.Form
+    public partial class FormAgShareDownloader : Form
     {
         private readonly FormGPS gps;
         private readonly AgShareDownloader downloader;
@@ -24,7 +24,7 @@ namespace AgOpenGPS.Forms.Field
         {
             InitializeComponent();
             gps = gpsContext;
-            downloader = new AgShareDownloader();
+            downloader = new AgShareDownloader(gps.agShareClient);
             progressBarDownloadAll.Visible = false;
             lblDownloading.Visible = false;
             chkForceOverwrite.Text = gStr.gsForceOverwrite;

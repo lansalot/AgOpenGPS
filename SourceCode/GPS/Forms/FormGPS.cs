@@ -259,7 +259,7 @@ namespace AgOpenGPS
         /// <summary>
         /// AgShare client for uploading fields
         /// </summary>
-        private AgShareClient agShareClient;
+        public AgShareClient agShareClient;
 
 
         /// <summary>

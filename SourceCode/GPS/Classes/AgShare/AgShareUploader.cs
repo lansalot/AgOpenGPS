@@ -15,6 +15,12 @@ namespace AgOpenGPS
 {
     public class AgShareUploader
     {
+        private readonly AgShareClient _client;
+
+        public AgShareUploader(AgShareClient client)
+        {
+            _client = client;
+        }
 
         // Create a snapshot from the current GPS session to upload
         public static FieldSnapshot CreateSnapshot(FormGPS gps)
@@ -60,7 +66,7 @@ namespace AgOpenGPS
         }
 
         // Upload snapshot to AgShare using boundary with holes
-        public static async Task UploadAsync(FieldSnapshot snapshot, AgShareClient client, FormGPS gps)
+        public async Task UploadAsync(FieldSnapshot snapshot, FormGPS gps)
         {
             try
             {
@@ -91,7 +97,7 @@ namespace AgOpenGPS
                 bool isPublic = false;
                 try
                 {
-                    string json = await client.DownloadFieldAsync(snapshot.FieldId);
+                    string json = await _client.DownloadFieldAsync(snapshot.FieldId);
                     AgShareFieldDto field = JsonConvert.DeserializeObject<AgShareFieldDto>(json);
                     if (field != null) isPublic = field.IsPublic;
                 }
@@ -117,7 +123,7 @@ namespace AgOpenGPS
                     sourceId = (string)null
                 };
 
-                var uploadResult = await client.UploadFieldAsync(snapshot.FieldId, payload);
+                var uploadResult = await _client.UploadFieldAsync(snapshot.FieldId, payload);
                 bool ok = uploadResult.ok;
                 string message = uploadResult.message;
 
