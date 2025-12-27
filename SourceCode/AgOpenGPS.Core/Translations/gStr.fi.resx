@@ -121,7 +121,7 @@
     <value>Piirrä AB</value>
   </data>
   <data name="gsABDrawHint" xml:space="preserve">
-    <value>Valitse kaksi pistettä reunalinjalta</value>
+    <value>Valitse kaksi pistettä rajalta aloittaaksesi</value>
   </data>
   <data name="gsABline" xml:space="preserve">
     <value>Ab -linja</value>
@@ -154,7 +154,7 @@
     <value>Ajourat (edistynyt)</value>
   </data>
   <data name="gsAgressiveness" xml:space="preserve">
-    <value>Agerssiivisuus</value>
+    <value>Aggressiivisuus</value>
   </data>
   <data name="gsAllSettings" xml:space="preserve">
     <value>Katso kaikki asetukset</value>
@@ -204,7 +204,7 @@ Kuvakkeet näkyvät alhaalta ylöspäin siinä järjestyksessä jossa ne ovat va
     <value>Auto Dual &lt;&gt; Fix</value>
   </data>
   <data name="gsAutoSwitchDualFixSpeed" xml:space="preserve">
-    <value>Dual&lt;&gt;Fix</value>
+    <value>Vaihda nopeutta</value>
   </data>
   <data name="gsBackground" xml:space="preserve">
     <value>Tausta</value>
@@ -1216,5 +1216,57 @@ KÄYTTÖ OMALLA VASTUULLA.</value>
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
+  </data>
+  <data name="gsAgShareDownloader" xml:space="preserve">
+    <value>Lataa pellot AgSharesta</value>
+  </data>
+  <data name="gsDownloadAll" xml:space="preserve">
+    <value>Hae kaikki</value>
+  </data>
+  <data name="gsGetSelected" xml:space="preserve">
+    <value>Hae valitut</value>
+  </data>
+  <data name="gsForceOverwrite" xml:space="preserve">
+    <value>Pakota ylikirjoitus</value>
+  </data>
+  <data name="gsAgree" xml:space="preserve">
+    <value>Hyväksy</value>
+  </data>
+  <data name="gsCopyFrom" xml:space="preserve">
+    <value>Kopioi kohteesta</value>
+  </data>
+  <data name="gsCreateNewProfile" xml:space="preserve">
+    <value>Luo uusi profiili</value>
+  </data>
+  <data name="gsDiscourseForum" xml:space="preserve">
+    <value>Discourse foorumi</value>
+  </data>
+  <data name="gsDownloading" xml:space="preserve">
+    <value>Ladataan</value>
+  </data>
+  <data name="gsEmptyProfile" xml:space="preserve">
+    <value>Tyhjä profiili</value>
+  </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>Lataa</value>
+  </data>
+  <data name="gsLoadProfile" xml:space="preserve">
+    <value>Lataa profiili</value>
+  </data>
+  <data name="gsName" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="gsNew" xml:space="preserve">
+    <value>Uusi</value>
+  </data>
+  <data name="gsProfile" xml:space="preserve">
+    <value>Profiili</value>
+  </data>
+  <data name="gsProfileMenuHint" xml:space="preserve">
+    <value>Ajoneuvoasetuksia kutsutaan nyt "profiileiksi" ja niitä 
+voidaan luoda/ladata päävalikosta(ylhällä vasemmalla).</value>
+  </data>
+  <data name="gsYouTubeTutorials" xml:space="preserve">
+    <value>Youtube tutoriaalit</value>
   </data>
 </root>
