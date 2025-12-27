@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using AgOpenGPS.Properties;
 using AgOpenGPS.Controls;
+using AgOpenGPS.Core.AgShare;
 
 namespace AgOpenGPS
 {

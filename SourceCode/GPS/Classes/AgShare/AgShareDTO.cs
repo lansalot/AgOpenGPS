@@ -1,9 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using AgOpenGPS.Core.Models;
-using AgOpenGPS.Classes.AgShare.Helpers;
+using AgOpenGPS.Core.AgShare;
 
 namespace AgOpenGPS
 {
@@ -21,12 +19,6 @@ namespace AgOpenGPS
         public LocalPlane Converter { get; set; }
     }
 
-    public class CoordinateDto
-    {
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-    }
-
     public class AgShareFieldDto
     {
         public Guid Id { get; set; }
@@ -41,24 +33,10 @@ namespace AgOpenGPS
         public List<AbLineUploadDto> AbLines { get; set; }
     }
 
-
     public class AbLineUploadDto
     {
         public string Name { get; set; }
         public string Type { get; set; }
         public List<CoordinateDto> Coords { get; set; }
     }
-
-    public class AgShareGetOwnFieldDto
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public List<CoordinateDto> OuterBoundary { get; set; }
-        public double AreaHa => GeoUtils.CalculateAreaInHa(OuterBoundary);
-
-    }
-
 }
-
-
-

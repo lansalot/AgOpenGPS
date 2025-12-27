@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using AgOpenGPS.Classes.AgShare.Helpers;
 using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.AgShare;
 
 namespace AgOpenGPS.Forms.Field
 {

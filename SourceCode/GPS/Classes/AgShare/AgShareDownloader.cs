@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using AgOpenGPS.Properties;
-using AgOpenGPS.Core.Models;
-using AgOpenGPS.Classes.AgShare.Helpers;
-using AgOpenGPS.IO;
 using AgLibrary.Logging;
+using AgOpenGPS.Classes.AgShare.Helpers;
+using AgOpenGPS.Core.AgShare;
+using AgOpenGPS.IO;
+using AgOpenGPS.Properties;
+using Newtonsoft.Json;
 
 namespace AgOpenGPS
 {
