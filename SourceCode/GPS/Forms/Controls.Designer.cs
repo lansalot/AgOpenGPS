@@ -1,6 +1,7 @@
 //Please, if you use this, share the improvements
 
 using AgLibrary.Logging;
+using AgOpenGPS.Core.AgShare;
 using AgOpenGPS.Core.Models;
 using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Forms;
@@ -627,7 +628,8 @@ namespace AgOpenGPS
                 try
                 {
                     isAgShareUploadStarted = true;
-                    agShareUploadTask = CAgShareUploader.UploadAsync(snapshot, agShareClient, this);
+                    var uploader = new AgShareUploader(agShareClient);
+                    agShareUploadTask = uploader.UploadAsync(snapshot, this);
                 }
                 catch (Exception ex)
                 {
@@ -695,7 +697,7 @@ namespace AgOpenGPS
         {
             if (!isJobStarted) return;
 
-            snapshot = CAgShareUploader.CreateSnapshot(this);
+            snapshot = AgShareUploader.CreateSnapshot(this);
         }
 
 
@@ -708,7 +710,8 @@ namespace AgOpenGPS
 
             //set bool to true so we don't start another upload by double clicking or something.
             isAgShareUploadStarted = true;
-            agShareUploadTask = CAgShareUploader.UploadAsync(snapshot, agShareClient, this);
+            var uploader = new AgShareUploader(agShareClient);
+            agShareUploadTask = uploader.UploadAsync(snapshot, this);
         }
         #endregion
         private void tramLinesMenuField_Click(object sender, EventArgs e)
@@ -1412,11 +1415,7 @@ namespace AgOpenGPS
 
         private void AgShareApiMenuItem_Click(object sender, EventArgs e)
         {
-            var server = Properties.Settings.Default.AgShareServer;
-            var apiKey = Properties.Settings.Default.AgShareApiKey;
-            var client = new AgShareClient(server, apiKey);
-
-            var form = new FormAgShareSettings();
+            var form = new FormAgShareSettings(agShareClient);
             form.ShowDialog(this);
         }
 

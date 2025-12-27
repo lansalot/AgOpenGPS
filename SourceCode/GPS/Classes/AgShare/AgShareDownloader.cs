@@ -2,26 +2,24 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using AgOpenGPS.Properties;
-using AgOpenGPS.Core.Models;
-using AgOpenGPS.Classes.AgShare.Helpers;
-using AgOpenGPS.IO;
 using AgLibrary.Logging;
+using AgOpenGPS.Classes.AgShare.Helpers;
+using AgOpenGPS.Core.AgShare;
+using AgOpenGPS.IO;
+using Newtonsoft.Json;
 
 namespace AgOpenGPS
 {
     /// <summary>
     /// Central helper class for downloading, parsing and saving AgShare fields locally.
     /// </summary>
-    public class CAgShareDownloader
+    public class AgShareDownloader
     {
-        private readonly AgShareClient client;
+        private readonly AgShareClient _client;
 
-        public CAgShareDownloader()
+        public AgShareDownloader(AgShareClient client)
         {
-            // Initialize AgShare client using stored settings
-            client = new AgShareClient(Settings.Default.AgShareServer, Settings.Default.AgShareApiKey);
+            _client = client;
         }
 
         // Downloads a field and saves it to disk
@@ -29,7 +27,7 @@ namespace AgOpenGPS
         {
             try
             {
-                string json = await client.DownloadFieldAsync(fieldId);
+                string json = await _client.DownloadFieldAsync(fieldId);
 
                 // Validate JSON response
                 if (string.IsNullOrWhiteSpace(json))
@@ -65,7 +63,7 @@ namespace AgOpenGPS
         // Retrieves a list of user-owned fields
         public async Task<List<AgShareGetOwnFieldDto>> GetOwnFieldsAsync()
         {
-            return await client.GetOwnFieldsAsync();
+            return await _client.GetOwnFieldsAsync();
         }
 
         // Downloads a field DTO for preview only
@@ -73,7 +71,7 @@ namespace AgOpenGPS
         {
             try
             {
-                string json = await client.DownloadFieldAsync(fieldId);
+                string json = await _client.DownloadFieldAsync(fieldId);
 
                 if (string.IsNullOrWhiteSpace(json))
                 {

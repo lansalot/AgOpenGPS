@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AgLibrary.Logging;
+using AgOpenGPS.Core.AgShare;
 using AgOpenGPS.Core.Models;
 using AgOpenGPS.IO;
 
@@ -13,17 +13,15 @@ namespace AgOpenGPS.Forms
 {
     public partial class FormAgShareUploader : Form
     {
-        private readonly AgShareClient agShareClient;
+        private readonly AgShareUploader uploader;
         private List<FieldInfo> availableFields;
         private bool isUploading = false;
 
-        public FormAgShareUploader()
+        public FormAgShareUploader(AgShareClient agShareClient)
         {
             InitializeComponent();
             // Create AgShareClient using settings directly
-            agShareClient = new AgShareClient(
-                Properties.Settings.Default.AgShareServer,
-                Properties.Settings.Default.AgShareApiKey);
+            uploader = new AgShareUploader(agShareClient);
         }
 
         private void FormAgShareBulkUploader_Load(object sender, EventArgs e)
@@ -236,7 +234,7 @@ namespace AgOpenGPS.Forms
             }
 
             // Use existing upload logic
-            await CAgShareUploader.UploadAsync(snapshot, agShareClient, null);
+            await uploader.UploadAsync(snapshot, null);
         }
 
         private async Task<FieldSnapshot> LoadFieldSnapshot(FieldInfo fieldInfo)

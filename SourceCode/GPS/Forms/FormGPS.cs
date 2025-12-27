@@ -14,6 +14,7 @@ using AgLibrary.Logging;
 using AgOpenGPS.Classes;
 using AgOpenGPS.Controls;
 using AgOpenGPS.Core;
+using AgOpenGPS.Core.AgShare;
 using AgOpenGPS.Core.Models;
 using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Core.ViewModels;
@@ -258,7 +259,7 @@ namespace AgOpenGPS
         /// <summary>
         /// AgShare client for uploading fields
         /// </summary>
-        private AgShareClient agShareClient;
+        public AgShareClient agShareClient;
 
 
         /// <summary>

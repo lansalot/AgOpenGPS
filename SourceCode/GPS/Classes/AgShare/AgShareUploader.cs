@@ -3,20 +3,24 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using System.Linq;
-using System.Diagnostics;
+using System.Threading.Tasks;
 using AgLibrary.Logging;
+using AgOpenGPS.Core.AgShare;
 using AgOpenGPS.Core.Models;
-using AgOpenGPS.Forms;
+using Newtonsoft.Json;
 
 namespace AgOpenGPS
 {
-    public class CAgShareUploader
+    public class AgShareUploader
     {
+        private readonly AgShareClient _client;
+
+        public AgShareUploader(AgShareClient client)
+        {
+            _client = client;
+        }
 
         // Create a snapshot from the current GPS session to upload
         public static FieldSnapshot CreateSnapshot(FormGPS gps)
@@ -62,7 +66,7 @@ namespace AgOpenGPS
         }
 
         // Upload snapshot to AgShare using boundary with holes
-        public static async Task UploadAsync(FieldSnapshot snapshot, AgShareClient client, FormGPS gps)
+        public async Task UploadAsync(FieldSnapshot snapshot, FormGPS gps)
         {
             try
             {
@@ -93,7 +97,7 @@ namespace AgOpenGPS
                 bool isPublic = false;
                 try
                 {
-                    string json = await client.DownloadFieldAsync(snapshot.FieldId);
+                    string json = await _client.DownloadFieldAsync(snapshot.FieldId);
                     AgShareFieldDto field = JsonConvert.DeserializeObject<AgShareFieldDto>(json);
                     if (field != null) isPublic = field.IsPublic;
                 }
@@ -119,7 +123,7 @@ namespace AgOpenGPS
                     sourceId = (string)null
                 };
 
-                var uploadResult = await client.UploadFieldAsync(snapshot.FieldId, payload);
+                var uploadResult = await _client.UploadFieldAsync(snapshot.FieldId, payload);
                 bool ok = uploadResult.ok;
                 string message = uploadResult.message;
 

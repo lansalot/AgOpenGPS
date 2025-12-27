@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace AgOpenGPS
+namespace AgOpenGPS.Core.AgShare
 {
     /// <summary>
     /// HTTP client for communicating with the AgShare API using API key authentication.
@@ -15,44 +14,34 @@ namespace AgOpenGPS
     /// </summary>
     public class AgShareClient
     {
-        private HttpClient client;
-        private string baseUrl;
-        private string apiKey;
+        private readonly HttpClient _client;
 
         // Constructs client with base URL and API key
-        public AgShareClient(string serverUrl, string key)
+        public AgShareClient(string serverUrl, string apiKey)
         {
-            baseUrl = serverUrl.TrimEnd('/');
-            apiKey = key;
-            BuildClient();
-        }
+            _client = new HttpClient();
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _client.Timeout = TimeSpan.FromSeconds(5);
 
-        // Rebuilds the HttpClient with updated headers
-        private void BuildClient()
-        {
-            client = new HttpClient();
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("ApiKey", apiKey);
-            client.Timeout = TimeSpan.FromSeconds(5);
+            SetApiKey(apiKey);
+            SetServerUrl(serverUrl);
         }
 
         // Updates the API key
         public void SetApiKey(string key)
         {
-            apiKey = key;
-            BuildClient();
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("ApiKey", key);
         }
 
-        // Updates the base URL
-        public void SetBaseUrl(string url)
+        // Updates the server URL
+        public void SetServerUrl(string url)
         {
-            baseUrl = url.TrimEnd('/');
-            BuildClient();
+            _client.BaseAddress = new Uri(url);
         }
 
         // Checks if the API key and connection are valid
-        public async Task<(bool ok, string message)> CheckApiAsync()
+        public static async Task<(bool ok, string message)> CheckApiAsync(string baseUrl, string apiKey)
         {
             try
             {
@@ -60,9 +49,9 @@ namespace AgOpenGPS
                 {
                     tempClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     tempClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("ApiKey", apiKey);
+                    tempClient.BaseAddress = new Uri(baseUrl);
 
-                    string requestUrl = $"{baseUrl}/api/fields";
-                    var response = await tempClient.GetAsync(requestUrl);
+                    var response = await tempClient.GetAsync("/api/fields");
                     string responseBody = await response.Content.ReadAsStringAsync();
 
                     if (response.IsSuccessStatusCode)
@@ -86,7 +75,7 @@ namespace AgOpenGPS
             {
                 var json = JsonConvert.SerializeObject(fieldPayload, Formatting.Indented);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await client.PutAsync($"{baseUrl}/api/fields/{fieldId}", content);
+                var response = await _client.PutAsync($"/api/fields/{fieldId}", content);
 
                 if (response.IsSuccessStatusCode)
                     return (true, "Upload successful");
@@ -102,8 +91,7 @@ namespace AgOpenGPS
         // Retrieves a list of fields owned by the current user
         public async Task<List<AgShareGetOwnFieldDto>> GetOwnFieldsAsync()
         {
-            var url = $"{baseUrl}/api/fields/";
-            var response = await client.GetAsync(url);
+            var response = await _client.GetAsync("/api/fields");
             response.EnsureSuccessStatusCode();
 
             string json = await response.Content.ReadAsStringAsync();
@@ -113,7 +101,7 @@ namespace AgOpenGPS
         // Downloads a specific field as raw JSON string
         public async Task<string> DownloadFieldAsync(Guid fieldId)
         {
-            var response = await client.GetAsync($"{baseUrl}/api/fields/{fieldId}");
+            var response = await _client.GetAsync($"/api/fields/{fieldId}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
@@ -122,8 +110,7 @@ namespace AgOpenGPS
         // !!! This is not implemented yet !!!
         public async Task<string> GetPublicFieldsAsync(double lat, double lon, double radius = 50)
         {
-            var url = $"{baseUrl}/api/fields/public?lat={lat}&lon={lon}&radius={radius}";
-            var response = await client.GetAsync(url);
+            var response = await _client.GetAsync($"/api/fields/public?lat={lat}&lon={lon}&radius={radius}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
