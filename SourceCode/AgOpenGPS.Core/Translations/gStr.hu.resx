@@ -1221,4 +1221,56 @@ HASZNÁLAT SAJÁT FELELŐSSÉGRE.</value>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
   </data>
+  <data name="gsAgShareDownloader" xml:space="preserve">
+    <value>Területek letöltése az AgShareből</value>
+  </data>
+  <data name="gsDownloadAll" xml:space="preserve">
+    <value>Összes Letöltése</value>
+  </data>
+  <data name="gsGetSelected" xml:space="preserve">
+    <value>Kiválasztott letöltése</value>
+  </data>
+  <data name="gsForceOverwrite" xml:space="preserve">
+    <value>Felülírás</value>
+  </data>
+  <data name="gsAgree" xml:space="preserve">
+    <value>Elfogad</value>
+  </data>
+  <data name="gsCopyFrom" xml:space="preserve">
+    <value>Másol ebből</value>
+  </data>
+  <data name="gsCreateNewProfile" xml:space="preserve">
+    <value>Új profil létrehozása</value>
+  </data>
+  <data name="gsDiscourseForum" xml:space="preserve">
+    <value>Discourse Fórum</value>
+  </data>
+  <data name="gsDownloading" xml:space="preserve">
+    <value>Letöltés</value>
+  </data>
+  <data name="gsEmptyProfile" xml:space="preserve">
+    <value>Üres Profil</value>
+  </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>Betöltés</value>
+  </data>
+  <data name="gsLoadProfile" xml:space="preserve">
+    <value>Profil betöltése</value>
+  </data>
+  <data name="gsName" xml:space="preserve">
+    <value>Név</value>
+  </data>
+  <data name="gsNew" xml:space="preserve">
+    <value>Új</value>
+  </data>
+  <data name="gsProfile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="gsProfileMenuHint" xml:space="preserve">
+    <value>A járműbeállítások mostantól Profilok és
+a bal felső főmenüből kezelhetőek.</value>
+  </data>
+  <data name="gsYouTubeTutorials" xml:space="preserve">
+    <value>YouTube tutorialok</value>
+  </data>
 </root>
