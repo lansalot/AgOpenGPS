@@ -1170,4 +1170,100 @@
   <data name="gsPlantPop" xml:space="preserve">
     <value>プラントポップ</value>
   </data>
+  <data name="gsTurnABCurveOn" xml:space="preserve">
+    <value>ABカーブをオンにする</value>
+  </data>
+  <data name="gsTurnOffDelay" xml:space="preserve">
+    <value>ディレイ解除</value>
+  </data>
+  <data name="gsTurnOffRecordedPath" xml:space="preserve">
+    <value>パス記録の停止</value>
+  </data>
+  <data name="gsTurnSensor" xml:space="preserve">
+    <value>角度センサー</value>
+  </data>
+  <data name="gsUnits" xml:space="preserve">
+    <value>ユニット</value>
+  </data>
+  <data name="gsUseSelected" xml:space="preserve">
+    <value>選択済み</value>
+  </data>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>ユーザー{0}</value>
+  </data>
+  <data name="gsUturn" xml:space="preserve">
+    <value>Uターン</value>
+  </data>
+  <data name="gsUturnCompensation" xml:space="preserve">
+    <value>Uターン補正</value>
+  </data>
+  <data name="gsUturnExtension" xml:space="preserve">
+    <value>延長路を半径の2倍または3倍に設定する</value>
+  </data>
+  <data name="gsUturnSmooth" xml:space="preserve">
+    <value>展開路をスムーズにするため、半径の3～4倍をセットする</value>
+  </data>
+  <data name="gsVehiclegroupbox" xml:space="preserve">
+    <value>車両タイプ</value>
+  </data>
+  <data name="gsVersion" xml:space="preserve">
+    <value>バージョン</value>
+  </data>
+  <data name="gsWasZero" xml:space="preserve">
+    <value>角度センサー　ゼロ</value>
+  </data>
+  <data name="gsWebCam" xml:space="preserve">
+    <value>ウェブカム</value>
+  </data>
+  <data name="gsWest" xml:space="preserve">
+    <value>西</value>
+  </data>
+  <data name="gsWheelbase" xml:space="preserve">
+    <value>ホイールベース</value>
+  </data>
+  <data name="gsWidth" xml:space="preserve">
+    <value>幅</value>
+  </data>
+  <data name="gsWizard" xml:space="preserve">
+    <value>ウィザード</value>
+  </data>
+  <data name="gsWizards" xml:space="preserve">
+    <value>ウィザード</value>
+  </data>
+  <data name="gsWorkSwitch" xml:space="preserve">
+    <value>ワーク スイッチ</value>
+  </data>
+  <data name="gsWorkWidth" xml:space="preserve">
+    <value>幅</value>
+  </data>
+  <data name="gsXTEChart" xml:space="preserve">
+    <value>横方向誤差チャート</value>
+  </data>
+  <data name="gsYouTubeTutorials" xml:space="preserve">
+    <value>YouTubeチュートリアル</value>
+  </data>
+  <data name="gsZeroRoll" xml:space="preserve">
+    <value>水平</value>
+  </data>
+  <data name="gsZone" xml:space="preserve">
+    <value>ゾーン</value>
+  </data>
+  <data name="gsZones" xml:space="preserve">
+    <value>ゾーン</value>
+  </data>
+  <data name="gsZoomIn" xml:space="preserve">
+    <value>ズームイン</value>
+  </data>
+  <data name="v_AboutIntro" xml:space="preserve">
+    <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
+  </data>
+  <data name="gsTurnOnContourOrMakeABLine" xml:space="preserve">
+    <value>ABラインの輪郭をオンにする</value>
+  </data>
+  <data name="gsWindowsStillOpen" xml:space="preserve">
+    <value>Windowsスタートアップ登録</value>
+  </data>
+  <data name="gsWorked" xml:space="preserve">
+    <value>作業記録</value>
+  </data>
 </root>
