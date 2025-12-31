@@ -846,7 +846,7 @@ Die Reihenfolge, in der Sie sie drücken, entspricht der Reihenfolge, in der sie
     <value>Proportionaler Faktor</value>
   </data>
   <data name="gsQuickAB" xml:space="preserve">
-    <value>A+  AB-Gerade  AB-Kurve</value>
+    <value>Schnelle AB Linien Erstellung</value>
   </data>
   <data name="gsRaiseTime" xml:space="preserve">
     <value>Zeit erhöhen</value>
