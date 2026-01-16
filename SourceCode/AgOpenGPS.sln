@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32228.430
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11408.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgOpenGPS", "GPS\AgOpenGPS.csproj", "{73933709-370E-43B3-8563-CC0F48FF587B}"
 EndProject
@@ -98,9 +98,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_ResXSortingComparison = Ordinal
-		RESX_SortFileContentOnSave = True
-		RESX_NeutralResourcesLanguage = en-US
 		RESX_ConfirmAddLanguageFile = True
 		SolutionGuid = {31C86FEF-A77A-49A7-9088-8E0D8AD2ACA5}
 	EndGlobalSection

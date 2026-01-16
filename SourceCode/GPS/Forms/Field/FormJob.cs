@@ -25,14 +25,12 @@ namespace AgOpenGPS
             InitializeComponent();
 
             btnJobOpen.Text = gStr.gsOpen;
-            btnJobNew.Text = gStr.gsNewFromDefault;
+            btnJobNew.Text = gStr.gsNew;
             btnJobResume.Text = gStr.gsResume;
             btnInField.Text = gStr.gsDriveIn;
             btnFromKML.Text = gStr.gsFromKml;
             btnFromExisting.Text = gStr.gsFromExisting;
             btnJobClose.Text = gStr.gsClose;
-            btnJobAgShare.Enabled = Properties.Settings.Default.AgShareEnabled;
-            btnAgShareBulkUpload.Enabled = Properties.Settings.Default.AgShareEnabled;
 
             this.Text = gStr.gsStartNewField;
         }
@@ -72,17 +70,18 @@ namespace AgOpenGPS
                     btnJobClose.Enabled = false;
                 }
             }
+            // Hide AgShare buttons and resize form if AgShare is disabled
+            if (!Properties.Settings.Default.AgShareEnabled)
+            {
+                btnJobAgShare.Visible = false;
+                btnAgShareBulkUpload.Visible = false;
 
-            Location = Properties.Settings.Default.setJobMenu_location;
-            Size = Properties.Settings.Default.setJobMenu_size;
+                // Reduce form height by 75 pixels
+                ClientSize = new System.Drawing.Size(ClientSize.Width, ClientSize.Height - 75);
+            }
 
             mf.CloseTopMosts();
 
-            if (!ScreenHelper.IsOnScreen(Bounds))
-            {
-                Top = 0;
-                Left = 0;
-            }
         }
 
         private void btnJobNew_Click(object sender, EventArgs e)
