@@ -626,11 +626,11 @@ A ordem em que você os tocar será a ordem em que aparecerão no menu, de baixo
   <data name="gsInvertWas" xml:space="preserve">
     <value>Inverter Sensor de Ângulo de Roda 'WAS'</value>
   </data>
-  <data name="gsKmH" xml:space="preserve">
-    <value>km/h</value>
-  </data>
   <data name="gsKeyboard" xml:space="preserve">
     <value>Teclado</value>
+  </data>
+  <data name="gsKmH" xml:space="preserve">
+    <value>km/h</value>
   </data>
   <data name="gsLanguage" xml:space="preserve">
     <value>Linguagem</value>
@@ -1231,42 +1231,5 @@ USE POR SUA CONTA E RISCO.</value>
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
-  </data>
-  <data name="gsDiscourseForum" xml:space="preserve">
-    <value>Fórum de Discussão</value>
-  </data>
-  <data name="gsEmptyProfile" xml:space="preserve">
-    <value>Perfil vazio</value>
-  </data>
-  <data name="gsYouTubeTutorials" xml:space="preserve">
-    <value>Tutoriais do YouTube</value>
-  </data>
-  <data name="gsProfile" xml:space="preserve">
-    <value>Perfil</value>
-  </data>
-  <data name="gsProfileMenuHint" xml:space="preserve">
-    <value>As configurações do veículo agora são chamadas de "perfis" e
-podem ser criadas/carregadas no menu principal (canto superior esquerdo).</value>
-  </data>
-  <data name="gsNew" xml:space="preserve">
-    <value>Novo</value>
-  </data>
-  <data name="gsName" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="gsLoad" xml:space="preserve">
-    <value>Carregar</value>
-  </data>
-  <data name="gsLoadProfile" xml:space="preserve">
-    <value>Carregar Perfil</value>
-  </data>
-  <data name="gsCreateNewProfile" xml:space="preserve">
-    <value>Criar novo perfil</value>
-  </data>
-  <data name="gsCopyFrom" xml:space="preserve">
-    <value>Copiar de</value>
-  </data>
-  <data name="gsAgree" xml:space="preserve">
-    <value>Concordar</value>
   </data>
 </root>
