@@ -153,6 +153,12 @@
   <data name="gsAdvancedTramLines" xml:space="preserve">
     <value>Haladó művelőút készítése</value>
   </data>
+  <data name="gsAgShareDownloader" xml:space="preserve">
+    <value>Területek letöltése az AgShareből</value>
+  </data>
+  <data name="gsAgree" xml:space="preserve">
+    <value>Elfogad</value>
+  </data>
   <data name="gsAgressiveness" xml:space="preserve">
     <value>Érzékenység</value>
   </data>
@@ -305,6 +311,9 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   <data name="gsContourOn" xml:space="preserve">
     <value>Kontúr be</value>
   </data>
+  <data name="gsCopyFrom" xml:space="preserve">
+    <value>Másol ebből</value>
+  </data>
   <data name="gsCouldntGenerateValidPath" xml:space="preserve">
     <value>Nem sikerült az útvonalkészítés</value>
   </data>
@@ -325,6 +334,9 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   </data>
   <data name="gsCreateNewFromIsoXML" xml:space="preserve">
     <value>Új terület készítése ISO-XML-ből</value>
+  </data>
+  <data name="gsCreateNewProfile" xml:space="preserve">
+    <value>Új profil létrehozása</value>
   </data>
   <data name="gsCurrent" xml:space="preserve">
     <value>Jelenlegi profil</value>
@@ -389,6 +401,9 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   <data name="gsDisagree" xml:space="preserve">
     <value>Elutasít</value>
   </data>
+  <data name="gsDiscourseForum" xml:space="preserve">
+    <value>Discourse Fórum</value>
+  </data>
   <data name="gsDisplay" xml:space="preserve">
     <value>Megjelenít</value>
   </data>
@@ -397,6 +412,12 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   </data>
   <data name="gsDistanceToFlag" xml:space="preserve">
     <value>Távolság a zászlóig</value>
+  </data>
+  <data name="gsDownloadAll" xml:space="preserve">
+    <value>Összes Letöltése</value>
+  </data>
+  <data name="gsDownloading" xml:space="preserve">
+    <value>Letöltés</value>
   </data>
   <data name="gsDriveIn" xml:space="preserve">
     <value>Közeli föld megnyitása</value>
@@ -427,6 +448,9 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   </data>
   <data name="gsElevationlog" xml:space="preserve">
     <value>Magassági térkép</value>
+  </data>
+  <data name="gsEmptyProfile" xml:space="preserve">
+    <value>Üres Profil</value>
   </data>
   <data name="gsEnable" xml:space="preserve">
     <value>Engedélyezés</value>
@@ -518,6 +542,9 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Ideiglenes</value>
     <comment>* Csak most? Ideiglenes?</comment>
   </data>
+  <data name="gsForceOverwrite" xml:space="preserve">
+    <value>Felülírás</value>
+  </data>
   <data name="gsFormFlag" xml:space="preserve">
     <value>Zászlók</value>
   </data>
@@ -529,6 +556,9 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   </data>
   <data name="gsGap" xml:space="preserve">
     <value>Kihagyás</value>
+  </data>
+  <data name="gsGetSelected" xml:space="preserve">
+    <value>Kiválasztott letöltése</value>
   </data>
   <data name="gsGpsStep" xml:space="preserve">
     <value>Minimum GPS távolság</value>
@@ -615,11 +645,11 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   <data name="gsInvertWas" xml:space="preserve">
     <value>Szögszenzor invertálása</value>
   </data>
-  <data name="gsKmH" xml:space="preserve">
-    <value>Km/h</value>
-  </data>
   <data name="gsKeyboard" xml:space="preserve">
     <value>Billentyűzet</value>
+  </data>
+  <data name="gsKmH" xml:space="preserve">
+    <value>Km/h</value>
   </data>
   <data name="gsLanguage" xml:space="preserve">
     <value>Nyelv</value>
@@ -647,6 +677,12 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   </data>
   <data name="gsLineWidth" xml:space="preserve">
     <value>Vonalszélesség</value>
+  </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>Betöltés</value>
+  </data>
+  <data name="gsLoadProfile" xml:space="preserve">
+    <value>Profil betöltése</value>
   </data>
   <data name="gsLongtitude" xml:space="preserve">
     <value>Hosszúság</value>
@@ -725,6 +761,12 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   </data>
   <data name="gsN_West" xml:space="preserve">
     <value>Északnyugat</value>
+  </data>
+  <data name="gsName" xml:space="preserve">
+    <value>Név</value>
+  </data>
+  <data name="gsNew" xml:space="preserve">
+    <value>Új</value>
   </data>
   <data name="gsNewFromDefault" xml:space="preserve">
     <value>Új alapértelmezésből</value>
@@ -852,6 +894,13 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
   <data name="gsProblemMakingPath" xml:space="preserve">
     <value>Probléma az útvonal készítésében</value>
   </data>
+  <data name="gsProfile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="gsProfileMenuHint" xml:space="preserve">
+    <value>A járműbeállítások mostantól Profilok és
+a bal felső főmenüből kezelhetőek.</value>
+  </data>
   <data name="gsProgramWillExitPleaseRestart" xml:space="preserve">
     <value>A program most kilép, indítsd el újra</value>
   </data>
@@ -934,7 +983,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Tábla mentése</value>
   </data>
   <data name="gsSaveFieldSavedLocal" xml:space="preserve">
-    <value>Tábla mentve a gépen.</value>
+    <value>Tábla helyben elmentve.</value>
   </data>
   <data name="gsSaveFinalizeShutdown" xml:space="preserve">
     <value>Leállítás befejezése folyamatban</value>
@@ -1206,6 +1255,9 @@ HASZNÁLAT SAJÁT FELELŐSSÉGRE.</value>
   <data name="gsXTEChart" xml:space="preserve">
     <value>Vonaltartási hiba (XTE) grafikon</value>
   </data>
+  <data name="gsYouTubeTutorials" xml:space="preserve">
+    <value>YouTube tutorialok</value>
+  </data>
   <data name="gsZeroRoll" xml:space="preserve">
     <value>Dőlésérzékelő nullázása</value>
   </data>
@@ -1220,57 +1272,5 @@ HASZNÁLAT SAJÁT FELELŐSSÉGRE.</value>
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
-  </data>
-  <data name="gsAgShareDownloader" xml:space="preserve">
-    <value>Területek letöltése az AgShareből</value>
-  </data>
-  <data name="gsDownloadAll" xml:space="preserve">
-    <value>Összes Letöltése</value>
-  </data>
-  <data name="gsGetSelected" xml:space="preserve">
-    <value>Kiválasztott letöltése</value>
-  </data>
-  <data name="gsForceOverwrite" xml:space="preserve">
-    <value>Felülírás</value>
-  </data>
-  <data name="gsAgree" xml:space="preserve">
-    <value>Elfogad</value>
-  </data>
-  <data name="gsCopyFrom" xml:space="preserve">
-    <value>Másol ebből</value>
-  </data>
-  <data name="gsCreateNewProfile" xml:space="preserve">
-    <value>Új profil létrehozása</value>
-  </data>
-  <data name="gsDiscourseForum" xml:space="preserve">
-    <value>Discourse Fórum</value>
-  </data>
-  <data name="gsDownloading" xml:space="preserve">
-    <value>Letöltés</value>
-  </data>
-  <data name="gsEmptyProfile" xml:space="preserve">
-    <value>Üres Profil</value>
-  </data>
-  <data name="gsLoad" xml:space="preserve">
-    <value>Betöltés</value>
-  </data>
-  <data name="gsLoadProfile" xml:space="preserve">
-    <value>Profil betöltése</value>
-  </data>
-  <data name="gsName" xml:space="preserve">
-    <value>Név</value>
-  </data>
-  <data name="gsNew" xml:space="preserve">
-    <value>Új</value>
-  </data>
-  <data name="gsProfile" xml:space="preserve">
-    <value>Profil</value>
-  </data>
-  <data name="gsProfileMenuHint" xml:space="preserve">
-    <value>A járműbeállítások mostantól Profilok és
-a bal felső főmenüből kezelhetőek.</value>
-  </data>
-  <data name="gsYouTubeTutorials" xml:space="preserve">
-    <value>YouTube tutorialok</value>
   </data>
 </root>
