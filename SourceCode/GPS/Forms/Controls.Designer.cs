@@ -1,5 +1,14 @@
 //Please, if you use this, share the improvements
 
+using AgLibrary.Logging;
+using AgOpenGPS.Core.AgShare;
+using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.Translations;
+using AgOpenGPS.Forms;
+using AgOpenGPS.Forms.Pickers;
+using AgOpenGPS.Forms.Profiles;
+using AgOpenGPS.IO;
+using AgOpenGPS.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,13 +18,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AgLibrary.Logging;
-using AgOpenGPS.Core.Models;
-using AgOpenGPS.Core.Translations;
-using AgOpenGPS.Forms;
-using AgOpenGPS.Forms.Pickers;
-using AgOpenGPS.Forms.Profiles;
-using AgOpenGPS.Properties;
 
 namespace AgOpenGPS
 {
@@ -626,7 +628,8 @@ namespace AgOpenGPS
                 try
                 {
                     isAgShareUploadStarted = true;
-                    agShareUploadTask = CAgShareUploader.UploadAsync(snapshot, agShareClient, this);
+                    var uploader = new AgShareUploader(agShareClient);
+                    agShareUploadTask = uploader.UploadAsync(snapshot, this);
                 }
                 catch (Exception ex)
                 {
@@ -694,7 +697,7 @@ namespace AgOpenGPS
         {
             if (!isJobStarted) return;
 
-            snapshot = CAgShareUploader.CreateSnapshot(this);
+            snapshot = AgShareUploader.CreateSnapshot(this);
         }
 
 
@@ -707,7 +710,8 @@ namespace AgOpenGPS
 
             //set bool to true so we don't start another upload by double clicking or something.
             isAgShareUploadStarted = true;
-            agShareUploadTask = CAgShareUploader.UploadAsync(snapshot, agShareClient, this);
+            var uploader = new AgShareUploader(agShareClient);
+            agShareUploadTask = uploader.UploadAsync(snapshot, this);
         }
         #endregion
         private void tramLinesMenuField_Click(object sender, EventArgs e)
@@ -1179,6 +1183,7 @@ namespace AgOpenGPS
                 pn.fix.easting, pn.fix.northing,
                 fixHeading, flagColor, nextflag, nextflag.ToString());
             flagPts.Add(flagPt);
+            flagPts = FlagsFiles.DeduplicateFlags(flagPts);
             FileSaveFlags();
 
             Form fc = Application.OpenForms["FormFlags"];
@@ -1393,7 +1398,7 @@ namespace AgOpenGPS
                 // Inform user that app needs to restart
                 FormDialog.Show("Restart Required",
                     gStr.gsProgramWillExitPleaseRestart,
-                    MessageBoxButtons.OK);
+                    DialogSeverity.Info);
 
                 // Close the app
                 Close();
@@ -1410,11 +1415,7 @@ namespace AgOpenGPS
 
         private void AgShareApiMenuItem_Click(object sender, EventArgs e)
         {
-            var server = Properties.Settings.Default.AgShareServer;
-            var apiKey = Properties.Settings.Default.AgShareApiKey;
-            var client = new AgShareClient(server, apiKey);
-
-            var form = new FormAgShareSettings();
+            var form = new FormAgShareSettings(agShareClient);
             form.ShowDialog(this);
         }
 
@@ -1426,13 +1427,7 @@ namespace AgOpenGPS
                 form.ShowDialog(this);
             }
         }
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var form = new Form_About())
-            {
-                form.ShowDialog(this);
-            }
-        }
+
         private void kioskModeToolStrip_Click(object sender, EventArgs e)
         {
             isKioskMode = !isKioskMode;
@@ -1461,20 +1456,20 @@ namespace AgOpenGPS
             if (isJobStarted)
             {
                 // Show message if field is still open
-                FormDialog.Show("Warning", gStr.gsCloseFieldFirst, MessageBoxButtons.OK);
+                FormDialog.Show("Warning", gStr.gsCloseFieldFirst, DialogSeverity.Warning);
             }
             else
             {
                 // Ask user for confirmation before resetting everything
-                DialogResult result2 = FormDialog.Show(gStr.gsResetAll, gStr.gsReallyResetEverything, MessageBoxButtons.YesNoCancel);
+                DialogResult result = FormDialog.ShowQuestion(gStr.gsResetAll, gStr.gsReallyResetEverything);
 
-                if (result2 == DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     // Reset registry settings
                     RegistrySettings.Reset();
 
                     // Notify user and close app
-                    FormDialog.Show("Restart Required", gStr.gsProgramWillExitPleaseRestart, MessageBoxButtons.OK);
+                    FormDialog.Show("Restart Required", gStr.gsProgramWillExitPleaseRestart, DialogSeverity.Info);
                     Close();
                 }
             }
@@ -1482,7 +1477,7 @@ namespace AgOpenGPS
 
         private void helpMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = new Form_Help(this))
+            using (var form = new FormHelp())
             {
                 form.ShowDialog(this);
             }
@@ -1560,12 +1555,14 @@ namespace AgOpenGPS
         private void InitializeLanguages()
         {
             menustripLanguage.DropDownItems.Clear();
+            menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Čeština (Czech)", "cs"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Dansk (Denmark)", "da"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Deutsch (Germany)", "de"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("English (Canada)", "en"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Eesti (Estonia)", "et"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Español (Spanish)", "es"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Français (France)", "fr"));
+            menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Hrvatski (Croatia)", "hr"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Italiano (Italy)", "it"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Latviski (Latvia)", "lv"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Lietuvių (Lithuania)", "lt"));
@@ -1574,13 +1571,16 @@ namespace AgOpenGPS
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Norsk (Norway)", "no"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Polski (Poland)", "pl"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Português (Portuguese)", "pt"));
+            menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Română (Romanian)", "ro"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("русский (Russia)", "ru"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Suomalainen (Finland)", "fi"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Slovenčina (Slovakia)", "sk"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Serbia (Servië)", "sr"));
+            menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Svenska (Sweden)", "sv"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Türkçe (Turkey)", "tr"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Yкраїнська (Ukraine)", "uk"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("中国人 (Chinese)", "zh-CHS"));
+            menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("日本語 (Japanese)", "ja"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("한국인 (Korean)", "ko"));
         }
 
@@ -1860,13 +1860,11 @@ namespace AgOpenGPS
             {
                 if (autoBtnState == btnStates.Off && manualBtnState == btnStates.Off)
                 {
-                    DialogResult result3 = FormDialog.Show(
+                    DialogResult result = FormDialog.ShowQuestion(
                         gStr.gsDeleteAllContoursAndSections,
-                        gStr.gsDeleteForSure,
-                        MessageBoxButtons.YesNo
-                    );
+                        gStr.gsDeleteForSure);
 
-                    if (result3 == DialogResult.OK)
+                    if (result == DialogResult.OK)
                     {
                         //FileCreateElevation();
 

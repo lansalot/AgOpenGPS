@@ -1,5 +1,7 @@
 ﻿using AgLibrary.Logging;
+using AgOpenGPS.Core;
 using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.Streamers;
 using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Forms;
 using AgOpenGPS.Helpers;
@@ -37,7 +39,7 @@ namespace AgOpenGPS
             InitializeComponent();
             //translate all the controls
             this.Text = gStr.gsMapForBackground;
-            labelNewBoundary.Text = gStr.gsNew + " " + gStr.gsBoundary;
+            labelNewBoundary.Text = gStr.gsNewFromDefault + " " + gStr.gsBoundary;
             labelBoundary.Text = gStr.gsBoundary;
             lblPoints.Text = gStr.gsPoints + ":";
             labelBackground.Text = gStr.gsBackground;
@@ -64,9 +66,9 @@ namespace AgOpenGPS
                 mf.AppModel.CurrentLatLon.Latitude,
                 mf.AppModel.CurrentLatLon.Longitude);
 
-            cboxDrawMap.Checked = mf.worldGrid.isGeoMap;
+            cboxDrawMap.Checked = mf.worldGrid.HasBingMap;
 
-            if (mf.worldGrid.isGeoMap) cboxDrawMap.Image = Properties.Resources.MappingOn;
+            if (mf.worldGrid.HasBingMap) cboxDrawMap.Image = Properties.Resources.MappingOn;
             else cboxDrawMap.Image = Properties.Resources.MappingOff;
 
             if (!ScreenHelper.IsOnScreen(Bounds))
@@ -217,17 +219,16 @@ namespace AgOpenGPS
 
             if (mf.bnd.bndList == null || mf.bnd.bndList.Count == 0)
             {
-                mf.TimedMessageBox(2000, gStr.gsBoundary, gStr.gsNoBoundary);
+                FormDialog.Show(gStr.gsBoundary, gStr.gsNoBoundary, DialogSeverity.Error);
                 return;
             }
 
-            DialogResult result3 = FormDialog.Show(
+            DialogResult result = FormDialog.ShowQuestion(
                 gStr.gsDeleteForSure,
-                "Delete Last Field Boundary Made?",
-                MessageBoxButtons.YesNo);
+                "Delete Last Field Boundary Made?");
 
 
-            if (result3 == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 int cnt = mf.bnd.bndList.Count;
                 mf.bnd.bndList[cnt - 1].hdLine?.Clear();
@@ -238,10 +239,7 @@ namespace AgOpenGPS
                 mf.fd.UpdateFieldBoundaryGUIAreas();
                 mf.btnABDraw.Visible = false;
             }
-            else
-            {
-                mf.TimedMessageBox(1500, gStr.gsNothingDeleted, gStr.gsActionHasBeenCancelled);
-            }
+
             cboxEnableLineDraw.Checked = false;
 
             //clean up line
@@ -255,7 +253,7 @@ namespace AgOpenGPS
         {
             if (cboxEnableLineDraw.Checked)
             {
-                mf.TimedMessageBox(3000, "Boundary Create Mode", "Touch Map to Create The Boundary");
+                FormDialog.Show("Boundary Create Mode", "Touch Map to Create The Boundary", DialogSeverity.Info);
                 btnAddFence.Enabled = true;
                 btnDeletePoint.Enabled = true;
                 Log.EventWriter("Bing Touch Boundary started");
@@ -269,100 +267,54 @@ namespace AgOpenGPS
             ResetPolygonAndMarkers();
         }
 
-        private void SaveBackgroundImage()
+        private GeoCoord GeoCoordFormMapPoint(PointLatLng mapPoint)
         {
-            if (polygon.Points.Count > 0)
-            {
-                mf.TimedMessageBox(3000, gStr.gsBoundary, "Finish Making Boundary or Delete");
-                return;
-            }
-
-            PointLatLng geoRef = gMapControl.ViewArea.LocationTopLeft;
-            GeoCoord topLeftGeoCoord = mf.AppModel.LocalPlane.ConvertWgs84ToGeoCoord(new Wgs84(geoRef.Lat, geoRef.Lng));
-            mf.worldGrid.northingMaxGeo = topLeftGeoCoord.Northing;
-            mf.worldGrid.eastingMinGeo = topLeftGeoCoord.Easting;
-
-            geoRef = gMapControl.ViewArea.LocationRightBottom;
-            GeoCoord bottomRightGeoCoord = mf.AppModel.LocalPlane.ConvertWgs84ToGeoCoord(new Wgs84(geoRef.Lat, geoRef.Lng));
-            mf.worldGrid.northingMinGeo = bottomRightGeoCoord.Northing;
-            mf.worldGrid.eastingMaxGeo = bottomRightGeoCoord.Easting;
-
-            mf.worldGrid.isGeoMap =
-                Math.Abs(mf.worldGrid.northingMaxGeo) <= 4000 &&
-                Math.Abs(mf.worldGrid.eastingMinGeo) <= 4000 &&
-                Math.Abs(mf.worldGrid.northingMinGeo) <= 4000 &&
-                Math.Abs(mf.worldGrid.eastingMaxGeo) <= 4000;
-
-            if (!mf.worldGrid.isGeoMap)
-            {
-                mf.TimedMessageBox(2000, "Map Error", "Map Too Large");
-                Log.EventWriter("GeoMap, Map Too Large");
-                ResetMapGrid();
-                return;
-            }
-
-            Bitmap bitmap = new Bitmap(gMapControl.Width, gMapControl.Height);
-            gMapControl.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
-
-            if (!isColorMap)
-            {
-                bitmap = glm.MakeGrayscale3(bitmap);
-            }
-
-            string fileAndDirectory = Path.Combine(RegistrySettings.fieldsDirectory, mf.currentFieldDirectory, "BackPic.png");
-            try
-            {
-                if (File.Exists(fileAndDirectory))
-                    File.Delete(fileAndDirectory);
-                bitmap.Save(fileAndDirectory, ImageFormat.Png);
-                mf.worldGrid.BingBitmap = bitmap;
-            }
-            catch
-            {
-                mf.TimedMessageBox(2000, "File in Use", "Try loading again");
-                Log.EventWriter("GeoMap File in Use, Try Reload");
-                return;
-            }
-            SaveBackgroundGeoFile();
+            return mf.AppModel.LocalPlane.ConvertWgs84ToGeoCoord(new Wgs84(mapPoint.Lat, mapPoint.Lng));
         }
 
-        private void SaveBackgroundGeoFile()
+        // Returns null if bingMap is too big
+        private BingMap CreateBingMap()
         {
-            //get the directory and make sure it exists, create if not
-            string directoryName = Path.Combine(RegistrySettings.fieldsDirectory, mf.currentFieldDirectory);
+            BingMap bingMap = null;
+            PointLatLng topLeft = gMapControl.ViewArea.LocationTopLeft;
+            PointLatLng bottomRight = gMapControl.ViewArea.LocationRightBottom;
+            GeoBoundingBox geoBoundingBox = GeoBoundingBox.CreateEmpty();
 
-            if ((directoryName.Length > 0) && (!Directory.Exists(directoryName)))
-            { Directory.CreateDirectory(directoryName); }
+            geoBoundingBox.Include(GeoCoordFormMapPoint(topLeft));
+            geoBoundingBox.Include(GeoCoordFormMapPoint(bottomRight));
 
-            //write out the file
-            using (StreamWriter writer = new StreamWriter(Path.Combine(directoryName, "BackPic.Txt")))
+            bool tooBig =
+                4000 < Math.Abs(geoBoundingBox.MaxNorthing) ||
+                4000 < Math.Abs(geoBoundingBox.MinEasting) ||
+                4000 < Math.Abs(geoBoundingBox.MinNorthing) ||
+                4000 < Math.Abs(geoBoundingBox.MaxEasting);
+            if (!tooBig)
             {
-                writer.WriteLine("$BackPic");
-                //outer track of outer boundary tram
-                if (mf.worldGrid.isGeoMap)
+                Bitmap bitmap = new Bitmap(gMapControl.Width, gMapControl.Height);
+                gMapControl.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
+
+                if (!isColorMap)
                 {
-                    writer.WriteLine(true);
-                    writer.WriteLine(mf.worldGrid.eastingMaxGeo.ToString(CultureInfo.InvariantCulture));
-                    writer.WriteLine(mf.worldGrid.eastingMinGeo.ToString(CultureInfo.InvariantCulture));
-                    writer.WriteLine(mf.worldGrid.northingMaxGeo.ToString(CultureInfo.InvariantCulture));
-                    writer.WriteLine(mf.worldGrid.northingMinGeo.ToString(CultureInfo.InvariantCulture));
+                    bitmap = glm.MakeGrayscale3(bitmap);
                 }
-                else
-                {
-                    writer.WriteLine(false);
-                    writer.WriteLine(300);
-                    writer.WriteLine(-300);
-                    writer.WriteLine(300);
-                    writer.WriteLine(-300);
-                }
+                bingMap = new BingMap(geoBoundingBox, bitmap);
             }
+            return bingMap;
+        }
+
+        private void SetAndSaveBingMap(BingMap bingMap)
+        {
+            mf.worldGrid.BingMap = bingMap;
+
+            BingMapStreamer streamer = new BingMapStreamer();
+            streamer.TryWrite(bingMap, mf.AppCore.ActiveField.FieldDirectory);
         }
 
         private void cboxDrawMap_Click(object sender, EventArgs e)
         {
             if (polygon.Points.Count > 0)
             {
-                mf.TimedMessageBox(2000, gStr.gsBoundary, "Finish Making Boundary");
+                FormDialog.Show(gStr.gsBoundary, "Finish Making Boundary", DialogSeverity.Info);
                 cboxDrawMap.Checked = !cboxDrawMap.Checked;
                 return;
             }
@@ -370,29 +322,24 @@ namespace AgOpenGPS
             if (cboxDrawMap.Checked)
             {
                 cboxDrawMap.Image = Properties.Resources.MappingOn;
-                SaveBackgroundImage();
+                BingMap bingMap = CreateBingMap();
+                if (bingMap == null)
+                {
+                    FormDialog.Show("BingMap Error", "Map Too Large", DialogSeverity.Error);
+                    Log.EventWriter("BingMap, Map Too Large");
+                }
+                SetAndSaveBingMap(bingMap);
             }
             else
             {
                 cboxDrawMap.Image = Properties.Resources.MappingOff;
                 ResetMapGrid();
-                mf.worldGrid.isGeoMap = false;
-                SaveBackgroundGeoFile();
             }
         }
 
         private void ResetMapGrid()
         {
-            mf.worldGrid.BingBitmap = Properties.Resources.z_bingMap;
-            string fileAndDirectory = Path.Combine(RegistrySettings.fieldsDirectory, mf.currentFieldDirectory, "BackPic.png");
-            try
-            {
-                if (File.Exists(fileAndDirectory))
-                    File.Delete(fileAndDirectory);
-            }
-            catch { }
-
-            mf.worldGrid.isGeoMap = false;
+            SetAndSaveBingMap(null);
             ResetPolygonAndMarkers();
         }
 

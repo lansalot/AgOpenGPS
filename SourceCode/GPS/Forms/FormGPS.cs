@@ -14,6 +14,7 @@ using AgLibrary.Logging;
 using AgOpenGPS.Classes;
 using AgOpenGPS.Controls;
 using AgOpenGPS.Core;
+using AgOpenGPS.Core.AgShare;
 using AgOpenGPS.Core.Models;
 using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Core.ViewModels;
@@ -258,8 +259,13 @@ namespace AgOpenGPS
         /// <summary>
         /// AgShare client for uploading fields
         /// </summary>
-        private AgShareClient agShareClient;
+        public AgShareClient agShareClient;
 
+
+        /// <summary>
+        /// The ISOBUS communication class
+        /// </summary>
+        public CISOBUS isobus;
 
         #endregion // Class Props and instances
 
@@ -317,7 +323,7 @@ namespace AgOpenGPS
                 Properties.Settings.Default.setDisplay_camPitch,
                 Properties.Settings.Default.setDisplay_camZoom);
 
-            worldGrid = new WorldGrid(Resources.z_Floor, Resources.z_bingMap);
+            worldGrid = new WorldGrid(Resources.z_Floor);
 
             //our vehicle made with gl object and pointer of mainform
             vehicle = new CVehicle(this);
@@ -344,14 +350,12 @@ namespace AgOpenGPS
             //new instance of contour mode
             ct = new CContour(this);
 
-            //new instance of contour mode
             curve = new CABCurve(this);
 
             //new track instance
             trk = new CTrack(this);
 
-            //new instance of contour mode
-            hdl = new CHeadLine(this);
+            hdl = new CHeadLine();
 
             ////new instance of auto headland turn
             yt = new CYouTurn(this);
@@ -390,6 +394,8 @@ namespace AgOpenGPS
 
             //brightness object class
             displayBrightness = new CWindowsSettingsBrightnessController(Properties.Settings.Default.setDisplay_isBrightnessOn);
+
+            isobus = new CISOBUS(this);
         }
 
         private void FormGPS_Load(object sender, EventArgs e)
@@ -400,7 +406,7 @@ namespace AgOpenGPS
 
             if (!Properties.Settings.Default.setDisplay_isTermsAccepted)
             {
-                using (var form = new Form_First(this))
+                using (var form = new FormTermsAndConditions())
                 {
                     if (form.ShowDialog(this) != DialogResult.OK)
                     {
@@ -842,6 +848,11 @@ namespace AgOpenGPS
             }
         }
 
+        private void btnIsobusSC_Click(object sender, EventArgs e)
+        {
+            isobus.RequestSectionControlEnabled(!isobus.SectionControlEnabled);
+        }
+
         private void FormGPS_Move(object sender, EventArgs e)
         {
             Form f = Application.OpenForms["FormGPSData"];
@@ -1170,15 +1181,13 @@ namespace AgOpenGPS
 
             PanelsAndOGLSize();
             SetZoom();
-            worldGrid.isGeoMap = false;
+            worldGrid.BingMap = null;
 
             panelSim.Top = Height - 60;
 
             PanelUpdateRightAndBottom();
 
             btnSection1Man.Text = "1";
-
-            worldGrid.BingBitmap = Properties.Resources.z_bingMap;
 
             // Reset AgShare upload state and clear snapshot after field is closed
             // NOTE: Don't reset during shutdown - the shutdown flow needs to check this flag
@@ -1187,7 +1196,6 @@ namespace AgOpenGPS
                 isAgShareUploadStarted = false;
                 snapshot = null;
             }
-
         }
 
         public void FieldMenuButtonEnableDisable(bool isOn)

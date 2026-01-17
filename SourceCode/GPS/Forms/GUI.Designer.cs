@@ -39,8 +39,8 @@ namespace AgOpenGPS
         public Color sectionColorDay;
         public Color fieldColorDay;
         public Color fieldColorNight;
-        public ColorRgb fieldColor => (ColorRgb)(isDay ? fieldColorDay : fieldColorNight);
-        public ColorRgb worldGridColor => (ColorRgb)(isDay ? Colors.WorldGridDayColor : Colors.WorldGridNightColor);
+        public ColorRgba fieldColor => (ColorRgba)(isDay ? fieldColorDay : fieldColorNight);
+        public ColorRgba worldGridColor => isDay ? Colors.WorldGridDayColor : Colors.WorldGridNightColor;
 
         public Color textColorDay;
         public Color textColorNight;
@@ -191,9 +191,20 @@ namespace AgOpenGPS
 
                         case 2:
                             if (trk.idx > -1)
-                                lblCurrentField.Text = "Line: " + trk.gArr[trk.idx].name;
+                            {
+                                double oppositeAbAngle = glm.toDegrees(trk.gArr[trk.idx].heading) + 180;
+                                if (oppositeAbAngle > 360)
+                                {
+                                    oppositeAbAngle = oppositeAbAngle - 360;
+                                }
+
+                                GeoDir headingDir = new GeoDir(trk.gArr[trk.idx].heading);
+                                lblCurrentField.Text = gStr.gsABline + ": " + trk.gArr[trk.idx].name + "  " + headingDir.HeadingString("N3") + ", " + headingDir.Inverted.HeadingString("N3");
+                            }
                             else
-                                lblCurrentField.Text = "Line: " + gStr.gsNoGuidanceLines;
+                            {
+                                lblCurrentField.Text = gStr.gsABline + ": " + gStr.gsNoGuidanceLines;
+                            }
                             break;
 
                         case 3:
@@ -374,8 +385,12 @@ namespace AgOpenGPS
         public void LoadText()
         {
             enterSimCoordsToolStripMenuItem.Text = gStr.gsEnterSimCoords;
-            aboutToolStripMenuItem.Text = gStr.gsAbout;
             menustripLanguage.Text = gStr.gsLanguage;
+            profileToolStripMenuItem.Text = gStr.gsProfile;
+            helpMenuItem.Text = gStr.gsHelp;
+
+            newProfileToolStripMenuItem.Text = gStr.gsNew + "...";
+            loadProfileToolStripMenuItem.Text = gStr.gsLoad + "...";
 
             simulatorOnToolStripMenuItem.Text = gStr.gsSimulatorOn;
             resetALLToolStripMenuItem.Text = gStr.gsResetAll;
@@ -530,6 +545,9 @@ namespace AgOpenGPS
             panelDrag.Location = new System.Drawing.Point(87, 268);
 
             vehicle.VehicleConfig.Opacity = ((double)(Properties.Settings.Default.setDisplay_vehicleOpacity) * 0.01);
+            vehicle.VehicleConfig.Color = (ColorRgba)Settings.Default.setDisplay_colorVehicle.CheckColorFor255();
+
+
             vehicle.VehicleConfig.IsImage = Properties.Settings.Default.setDisplay_isVehicleImage;
 
             string directoryName = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
@@ -551,7 +569,6 @@ namespace AgOpenGPS
             //set the flag mark button to red dot
             btnFlag.Image = Properties.Resources.FlagRed;
 
-            vehicle.VehicleConfig.Color = (ColorRgb)Settings.Default.setDisplay_colorVehicle.CheckColorFor255();
 
             isLightbarOn = Settings.Default.setMenu_isLightbarOn;
             isLightBarNotSteerBar = Settings.Default.setMenu_isLightbarNotSteerBar;
@@ -880,6 +897,7 @@ namespace AgOpenGPS
                     case 7:
                         panelRight.Controls.Add(btnContour);
                         panelRight.Controls.Add(btnContourLock);
+                        panelRight.Controls.Add(btnIsobusSectionControl);
                         break;
 
                     default:
@@ -1417,7 +1435,7 @@ namespace AgOpenGPS
             if (isMetric)
             {
                 TimedMessageBox(2000, gStr.gsTooFast, gStr.gsSlowDownBelow + " "
-                    + vehicle.functionSpeedLimit.ToString("N0") + " " + gStr.gsKMH);
+                    + vehicle.functionSpeedLimit.ToString("N0") + " " + gStr.gsKmH);
             }
             else
             {
@@ -1481,8 +1499,8 @@ namespace AgOpenGPS
         public string Longitude { get { return Convert.ToString(Math.Round(AppModel.CurrentLatLon.Longitude, 7)); } }
         public string SatsTracked { get { return Convert.ToString(pn.satellitesTracked); } }
         public string HDOP { get { return Convert.ToString(pn.hdop); } }
-        public string Heading { get { return Convert.ToString(Math.Round(glm.toDegrees(fixHeading), 1)) + "\u00B0"; } }
-        public string GPSHeading { get { return (Math.Round(glm.toDegrees(gpsHeading), 1)) + "\u00B0"; } }
+        public string Heading => AppModel.FixHeading.HeadingString();
+        public string GPSHeading => new GeoDir(gpsHeading).HeadingString();
         public string FixQuality
         {
             get
