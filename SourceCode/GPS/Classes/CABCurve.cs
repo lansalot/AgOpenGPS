@@ -1020,18 +1020,15 @@ namespace AgOpenGPS
                 GL.Color3(0.95f, 0.42f, 0.750f);
                 GL.LineWidth(4.0f);
                 GL.Begin(PrimitiveType.LineStrip);
-                for (int h = 0; h < desList.Count; h++)
-                {
-                    GL.Vertex2(desList[h].easting, desList[h].northing);
-                }
+                for (int h = 0; h < desList.Count; h++) GL.Vertex3(desList[h].easting, desList[h].northing, 0);
                 GL.End();
 
                 GL.Enable(EnableCap.LineStipple);
                 GL.LineStipple(1, 0x0F00);
                 GL.Begin(PrimitiveType.Lines);
                 GL.Color3(0.99f, 0.99f, 0.0);
-                GL.Vertex2(desList[desList.Count - 1].easting, desList[desList.Count - 1].northing);
-                GL.Vertex2(mf.pivotAxlePos.easting, mf.pivotAxlePos.northing);
+                GL.Vertex3(desList[desList.Count - 1].easting, desList[desList.Count - 1].northing, 0);
+                GL.Vertex3(mf.pivotAxlePos.easting, mf.pivotAxlePos.northing, 0);
                 GL.End();
 
                 GL.Disable(EnableCap.LineStipple);
@@ -1052,10 +1049,11 @@ namespace AgOpenGPS
                 GL.Color3(0.96, 0.2f, 0.2f);
                 GL.Begin(PrimitiveType.Lines);
 
-                for (int h = 0; h < ptCount; h++)
-                {
-                    GL.Vertex2(mf.trk.gArr[mf.trk.idx].curvePts[h].easting, mf.trk.gArr[mf.trk.idx].curvePts[h].northing);
-                }
+                for (int h = 0; h < ptCount; h++) GL.Vertex3(
+                    mf.trk.gArr[mf.trk.idx].curvePts[h].easting,
+                    mf.trk.gArr[mf.trk.idx].curvePts[h].northing,
+                    0);
+
                 GL.End();
 
                 GL.Color3(0.40f, 0.90f, 0.95f);
@@ -1069,10 +1067,7 @@ namespace AgOpenGPS
                     GL.LineWidth(mf.ABLine.lineWidth);
                     GL.Color3(0.930f, 0.92f, 0.260f);
                     GL.Begin(PrimitiveType.Lines);
-                    for (int h = 0; h < smooList.Count; h++)
-                    {
-                        GL.Vertex2(smooList[h].easting, smooList[h].northing);
-                    }
+                    for (int h = 0; h < smooList.Count; h++) GL.Vertex3(smooList[h].easting, smooList[h].northing, 0);
                     GL.End();
                 }
             }
@@ -1094,19 +1089,14 @@ namespace AgOpenGPS
                         {
                             GL.PointSize(15.0f);
                             GL.Begin(PrimitiveType.Points);
-                            GL.Vertex2(
-                                mf.trk.gArr[mf.trk.idx].ptA.easting,
-                                mf.trk.gArr[mf.trk.idx].ptA.northing);
+                            GL.Vertex3(mf.trk.gArr[mf.trk.idx].ptA.easting, mf.trk.gArr[mf.trk.idx].ptA.northing, 0);
                             GL.End();
                         }
 
                         GL.Begin(PrimitiveType.LineLoop);
                     }
 
-                    for (int h = 0; h < curList.Count; h++)
-                    {
-                        GL.Vertex2(curList[h].easting, curList[h].northing);
-                    }
+                    for (int h = 0; h < curList.Count; h++) GL.Vertex3(curList[h].easting, curList[h].northing, 0);
                     GL.End();
 
                     GL.LineWidth(mf.ABLine.lineWidth);
@@ -1121,19 +1111,14 @@ namespace AgOpenGPS
                         {
                             GL.PointSize(15.0f);
                             GL.Begin(PrimitiveType.Points);
-                            GL.Vertex2(
-                                mf.trk.gArr[mf.trk.idx].ptA.easting,
-                                mf.trk.gArr[mf.trk.idx].ptA.northing);
+                            GL.Vertex3(mf.trk.gArr[mf.trk.idx].ptA.easting, mf.trk.gArr[mf.trk.idx].ptA.northing, 0);
                             GL.End();
                         }
 
                         GL.Begin(PrimitiveType.LineLoop);
                     }
 
-                    for (int h = 0; h < curList.Count; h++)
-                    {
-                        GL.Vertex2(curList[h].easting, curList[h].northing);
-                    }
+                    for (int h = 0; h < curList.Count; h++) GL.Vertex3(curList[h].easting, curList[h].northing, 0);
                     GL.End();
 
                     mf.yt.DrawYouTurn();
@@ -1154,9 +1139,7 @@ namespace AgOpenGPS
                 {
                     GL.Begin(PrimitiveType.LineStrip);
                     for (int h = 0; h < guideArr[i].Count; h++)
-                    {
-                        GL.Vertex2(guideArr[i][h].easting, guideArr[i][h].northing);
-                    }
+                        GL.Vertex3(guideArr[i][h].easting, guideArr[i][h].northing, 0);
                     GL.End();
                 }
                 GL.End();
@@ -1173,9 +1156,7 @@ namespace AgOpenGPS
                 {
                     GL.Begin(PrimitiveType.LineStrip);
                     for (int h = 0; h < guideArr[i].Count; h++)
-                    {
-                        GL.Vertex2(guideArr[i][h].easting, guideArr[i][h].northing);
-                    }
+                        GL.Vertex3(guideArr[i][h].easting, guideArr[i][h].northing, 0);
                     GL.End();
                 }
                 GL.End();
