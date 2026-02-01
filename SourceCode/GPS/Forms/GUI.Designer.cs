@@ -292,7 +292,8 @@ namespace AgOpenGPS
                 trk.autoTrack3SecTimer++;
                 vehicle.deadZoneDelayCounter++;
 
-                lblFix.Text = FixQuality + "Age: " + pn.age.ToString("N1");
+                lblFix.Text = FixQuality + "Age: " + pn.age.ToString("N1") + "   " + frameTime.ToString("N1");
+
 
                 switch (pn.fixQuality)
                 {
