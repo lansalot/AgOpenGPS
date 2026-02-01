@@ -142,11 +142,13 @@ namespace AgOpenGPS
         public void CreateBoundaryOuterTrack()
         {
             tramBndOuterArr = CreateBoundaryTrack(0.5 * tramWidth - halfWheelTrack);
+            tramBndOuterArr.ReducePointsByAngle(0.01, 50);
         }
 
         public void CreateBoundaryInnerTrack()
         {
             tramBndInnerArr = CreateBoundaryTrack(0.5 * tramWidth + halfWheelTrack);
+            tramBndInnerArr.ReducePointsByAngle(0.01, 50);
         }
 
         private List<vec2> CreateBoundaryTrack(double distance)
