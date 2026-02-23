@@ -213,7 +213,9 @@ namespace AgOpenGPS
                     if (buildList != null)
                         await buildList;
                     //build the list list of guide lines - use the extended curList as reference
-                    buildList = Task.Run(() => BuildCurveGuidelines(curList, distAway, mf.ABLine.numGuideLines, cts.Token), cts.Token);
+                    // Cap at 3 guidelines max for curves to prevent performance issues
+                    int maxCurveGuides = Math.Min(mf.ABLine.numGuideLines, 3);
+                    buildList = Task.Run(() => BuildCurveGuidelines(curList, distAway, maxCurveGuides, cts.Token), cts.Token);
                     guideArr = await buildList;
                 }
                 else
