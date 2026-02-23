@@ -413,7 +413,7 @@ namespace AgOpenGPS
                             int ptCnt = newCurList.Count - 1;
 
                             // End extension - always add 300 points
-                            for (int i = 1; i < 300; i++)
+                            for (int i = 1; i < 300 && !ct.IsCancellationRequested; i++)
                             {
                                 vec3 pt = new vec3(newCurList[ptCnt]);
                                 pt.easting += (Math.Sin(pt.heading) * i);
@@ -423,7 +423,7 @@ namespace AgOpenGPS
 
                             // Beginning extension - always add 300 points
                             pt33 = new vec3(newCurList[0]);
-                            for (int i = 1; i < 300; i++)
+                            for (int i = 1; i < 300 && !ct.IsCancellationRequested; i++)
                             {
                                 vec3 pt = new vec3(pt33);
                                 pt.easting -= (Math.Sin(pt.heading) * i);
