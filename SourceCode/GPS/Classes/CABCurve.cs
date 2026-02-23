@@ -533,8 +533,6 @@ namespace AgOpenGPS
 
                     if (newGuideList == null || newGuideList.Count == 0)
                         continue;
-
-                    AddGuidelineExtensions(ref newGuideList);
                 }
 
                 //right side
@@ -612,8 +610,6 @@ namespace AgOpenGPS
 
                     if (newGuideList == null || newGuideList.Count == 0)
                         continue;
-
-                    AddGuidelineExtensions(ref newGuideList);
                 }
             }
             catch (Exception e)
@@ -1331,13 +1327,6 @@ namespace AgOpenGPS
                     }
                 }
             }
-        }
-
-        private List<vec3> AddGuidelineExtensions(ref List<vec3> guideLine)
-        {
-            // Guidelines are calculated from the already-extended curList (with 200m extensions)
-            // No additional extension needed here - the extension is inherited from curList
-            return guideLine;
         }
 
         // Resample curve points to uniform spacing to prevent lookahead jumping
