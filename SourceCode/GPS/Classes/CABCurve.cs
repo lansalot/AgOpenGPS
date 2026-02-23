@@ -417,25 +417,19 @@ namespace AgOpenGPS
                         if (!ct.IsCancellationRequested && !(track.mode == TrackMode.bndCurve))
                         {
                             int ptCnt = newCurList.Count - 1;
+                            double extensionLength = 200.0;
 
-                            // End extension - always add 300 points
-                            for (int i = 1; i < 300 && !ct.IsCancellationRequested; i++)
-                            {
-                                vec3 pt = new vec3(newCurList[ptCnt]);
-                                pt.easting += (Math.Sin(pt.heading) * i);
-                                pt.northing += (Math.Cos(pt.heading) * i);
-                                newCurList.Add(pt);
-                            }
+                            // End extension - single point 200m out
+                            vec3 endExt = new vec3(newCurList[ptCnt]);
+                            endExt.easting += Math.Sin(endExt.heading) * extensionLength;
+                            endExt.northing += Math.Cos(endExt.heading) * extensionLength;
+                            newCurList.Add(endExt);
 
-                            // Beginning extension - always add 300 points
-                            pt33 = new vec3(newCurList[0]);
-                            for (int i = 1; i < 300 && !ct.IsCancellationRequested; i++)
-                            {
-                                vec3 pt = new vec3(pt33);
-                                pt.easting -= (Math.Sin(pt.heading) * i);
-                                pt.northing -= (Math.Cos(pt.heading) * i);
-                                newCurList.Insert(0, pt);
-                            }
+                            // Beginning extension - single point 200m back
+                            vec3 startExt = new vec3(newCurList[0]);
+                            startExt.easting -= Math.Sin(startExt.heading) * extensionLength;
+                            startExt.northing -= Math.Cos(startExt.heading) * extensionLength;
+                            newCurList.Insert(0, startExt);
                         }
                     }
                 }
@@ -1341,21 +1335,8 @@ namespace AgOpenGPS
 
         private List<vec3> AddGuidelineExtensions(ref List<vec3> guideLine)
         {
-            double extensionLength = 100.0; // Reduced from 2000 to prevent crossing on curved lines
-
-            vec3 startExtension = new vec3
-            {
-                easting = guideLine[0].easting - (Math.Sin(guideLine[0].heading) * extensionLength),
-                northing = guideLine[0].northing - (Math.Cos(guideLine[0].heading) * extensionLength)
-            };
-            guideLine.Insert(0, startExtension);
-
-            vec3 endExtension = new vec3
-            {
-                easting = guideLine[guideLine.Count - 1].easting + (Math.Sin(guideLine[guideLine.Count - 1].heading) * extensionLength),
-                northing = guideLine[guideLine.Count - 1].northing + (Math.Cos(guideLine[guideLine.Count - 1].heading) * extensionLength)
-            };
-            guideLine.Add(endExtension);
+            // Guidelines are calculated from the already-extended curList (with 200m extensions)
+            // No additional extension needed here - the extension is inherited from curList
             return guideLine;
         }
 
