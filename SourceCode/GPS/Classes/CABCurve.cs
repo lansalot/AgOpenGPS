@@ -48,13 +48,13 @@ namespace AgOpenGPS
         //the list of points of curve to drive on
         public List<vec3> curList = new List<vec3>();
 
-        // Pending curList being calculated - used to avoid flicker during track switching
-        private List<vec3> pendingCurList = null;
-
         //guidelines
         private List<List<vec3>> guideArr = new List<List<vec3>>();
 
         public bool isCurveValid;
+
+        // Flag indicating a recalculation is in progress (don't draw to avoid flicker)
+        private bool isCalculating = false;
 
         public double lastSecond = 0;
 
@@ -201,6 +201,9 @@ namespace AgOpenGPS
 
                 if (build != null) await build;
 
+                // Set calculating flag - don't draw during calculation to avoid flicker
+                isCalculating = true;
+
                 build = Task.Run(() => BuildNewOffsetList(distAway, track, cts.Token), cts.Token);
                 curList = await build;
                 findGlobalNearestCurvePoint = true;
@@ -218,6 +221,9 @@ namespace AgOpenGPS
                     if (buildList != null) await buildList;
                     guideArr?.Clear();
                 }
+
+                // Calculation complete - safe to draw again
+                isCalculating = false;
             }
         }
 
@@ -967,6 +973,9 @@ namespace AgOpenGPS
         public void DrawCurve()
         {
             if (mf.trk.idx == -1) return;
+
+            // Don't draw anything while calculating to avoid flicker during track switching
+            if (isCalculating) return;
 
             int ptCount = mf.trk.gArr[mf.trk.idx].curvePts.Count;
 
