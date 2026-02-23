@@ -124,6 +124,8 @@ namespace AgOpenGPS.Classes.AgShare.Helpers
                     // Parse curve points if present
                     if (isCurve)
                     {
+                        // First pass: convert all points to local coordinates
+                        var localPts = new List<vec3>();
                         for (int i = 0; i < ab.Coords.Count; i++)
                         {
                             var p = ab.Coords[i];
@@ -132,23 +134,25 @@ namespace AgOpenGPS.Classes.AgShare.Helpers
                             if (!wgs.IsValid) continue;
 
                             var local = converter.ToLocal(wgs.Latitude, wgs.Longitude);
-                            var pt = new vec3(local.Easting, local.Northing, 0);
-                            double heading = 0;
+                            localPts.Add(new vec3(local.Easting, local.Northing, 0));
+                        }
 
-                            // Calculate heading to next point
-                            if (i < ab.Coords.Count - 1 && ab.Coords[i + 1] != null)
+                        // Second pass: calculate headings for all points
+                        for (int i = 0; i < localPts.Count; i++)
+                        {
+                            double heading;
+                            if (i < localPts.Count - 1)
                             {
-                                var next = ab.Coords[i + 1];
-                                var nextWgs = new Wgs84(next.Latitude, next.Longitude);
-                                if (nextWgs.IsValid)
-                                {
-                                    var nextLocal = converter.ToLocal(nextWgs.Latitude, nextWgs.Longitude);
-                                    var nextPt = new vec3(nextLocal.Easting, nextLocal.Northing, 0);
-                                    heading = new GeoDir(pt.ToGeoCoord(), nextPt.ToGeoCoord()).AngleInRadians;
-                                }
+                                // All points except last: heading to next point
+                                heading = new GeoDir(localPts[i].ToGeoCoord(), localPts[i + 1].ToGeoCoord()).AngleInRadians;
+                            }
+                            else
+                            {
+                                // Last point: use same heading as second-to-last point
+                                heading = new GeoDir(localPts[i - 1].ToGeoCoord(), localPts[i].ToGeoCoord()).AngleInRadians;
                             }
 
-                            trk.curvePts.Add(new vec3(pt.easting, pt.northing, heading));
+                            trk.curvePts.Add(new vec3(localPts[i].easting, localPts[i].northing, heading));
                         }
 
                         // Update ptA/ptB to first/last curve points
