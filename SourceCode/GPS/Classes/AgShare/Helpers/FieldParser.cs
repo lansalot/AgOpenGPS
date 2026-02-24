@@ -141,7 +141,12 @@ namespace AgOpenGPS.Classes.AgShare.Helpers
                         for (int i = 0; i < localPts.Count; i++)
                         {
                             double heading;
-                            if (i < localPts.Count - 1)
+                            if (localPts.Count == 1)
+                            {
+                                // Single point curve - use heading 0, cannot determine direction
+                                heading = 0;
+                            }
+                            else if (i < localPts.Count - 1)
                             {
                                 // All points except last: heading to next point
                                 heading = new GeoDir(localPts[i].ToGeoCoord(), localPts[i + 1].ToGeoCoord()).AngleInRadians;
