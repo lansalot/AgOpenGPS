@@ -290,7 +290,6 @@ namespace AgOpenGPS
 
             int cont = points.Count;
             vec2[] smList = new vec2[cont];
-            cont--;
             points.CopyTo(smList);
             points.Clear();
 
