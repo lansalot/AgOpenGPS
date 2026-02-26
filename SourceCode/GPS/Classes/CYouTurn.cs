@@ -2166,8 +2166,8 @@ namespace AgOpenGPS
             if (isOutSameCurve) outhead += Math.PI;
             if (outhead > glm.twoPI) outhead -= glm.twoPI;
 
-            //how many points straight out
-            double lenny = 15;
+            //how many points straight out - use youTurnStartOffset setting (value needs to be doubled for actual length)
+            double lenny = youTurnStartOffset * 2.0;
 
             vec3 pt;
             for (int a = 0; a < lenny; a++)
@@ -2211,8 +2211,8 @@ namespace AgOpenGPS
         //TODO: is for some reason making longer for omegaturn....
         private bool AddCurveSequenceLines()
         {
-            //how many points striaght out
-            double lenny = 5;
+            //how many points striaght out - use youTurnStartOffset setting (value needs to be doubled for actual length)
+            double lenny = youTurnStartOffset * 2.0;
             bool sameWay = mf.curve.isHeadingSameWay;
             int a = sameWay ? -1 : 1;
 
@@ -2892,9 +2892,41 @@ namespace AgOpenGPS
             GL.Begin(PrimitiveType.Points);
             for (int i = 0; i < ytList.Count; i++)
             {
-                GL.Vertex2(ytList[i].easting, ytList[i].northing);
+                GL.Vertex3(ytList[i].easting, ytList[i].northing, 0);
             }
             GL.End();
+
+            //GL.PointSize(12.0f);
+            //GL.Begin(PrimitiveType.Points);
+            //GL.Color3(0.95f, 0.73f, 1.0f);
+            //GL.Vertex3(inClosestTurnPt.closePt.easting, inClosestTurnPt.closePt.northing, 0);
+            //GL.Color3(0.395f, 0.925f, 0.30f);
+            //GL.Vertex3(outClosestTurnPt.closePt.easting, outClosestTurnPt.closePt.northing, 0);
+            //GL.End();
+            //GL.PointSize(1.0f);
+
+            //if (nextCurve != null)
+            //{
+            //    GL.Begin(PrimitiveType.Points);
+            //    GL.Color3(0.95f, 0.41f, 0.980f);
+            //    for (int i = 0; i < nextCurve.curList.Count; i++)
+            //    {
+            //        GL.Vertex3(nextCurve.curList[i].easting, nextCurve.curList[i].northing, 0);
+            //    }
+            //    GL.End();
+            //}
+
+            //if (ytList2?.Count > 0)
+            //{
+            //    GL.PointSize(mf.ABLine.lineWidth + 2);
+            //    GL.Color3(0.3f, 0.941f, 0.980f);
+            //    GL.Begin(PrimitiveType.Points);
+            //    for (int i = 0; i < ytList2.Count; i++)
+            //    {
+            //        GL.Vertex3(ytList2[i].easting, ytList2[i].northing, 0);
+            //    }
+            //    GL.End();
+            //}
         }
 
         public class CClose

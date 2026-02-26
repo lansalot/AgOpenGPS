@@ -184,18 +184,12 @@ namespace AgOpenGPS
                                         int step = mipmap;
                                         for (int i = 1; i < count2; i += step)
                                         {
-                                            GL.Vertex2(triList[i].easting, triList[i].northing); i++;
-                                            GL.Vertex2(triList[i].easting, triList[i].northing); i++;
+                                            GL.Vertex3(triList[i].easting, triList[i].northing, 0); i++;
+                                            GL.Vertex3(triList[i].easting, triList[i].northing, 0); i++;
                                             if (count2 - i <= (mipmap + 2)) step = 0;//too small to mipmap it
                                         }
                                     }
-                                    else
-                                    {
-                                        for (int i = 1; i < count2; i++)
-                                        {
-                                            GL.Vertex2(triList[i].easting, triList[i].northing);
-                                        }
-                                    }
+                                    else { for (int i = 1; i < count2; i++) GL.Vertex3(triList[i].easting, triList[i].northing, 0); }
                                     GL.End();
 
                                     if (isSectionlinesOn)
@@ -210,17 +204,11 @@ namespace AgOpenGPS
                                             int step = mipmap;
                                             for (int i = 1; i < count2; i += step + 2)
                                             {
-                                                GL.Vertex2(triList[i].easting, triList[i].northing);
+                                                GL.Vertex3(triList[i].easting, triList[i].northing, 0);
                                                 if (count2 - i <= (mipmap + 2)) step = 0;//too small to mipmap it
                                             }
                                         }
-                                        else
-                                        {
-                                            for (int i = 1; i < count2; i += 2)
-                                            {
-                                                GL.Vertex2(triList[i].easting, triList[i].northing);
-                                            }
-                                        }
+                                        else { for (int i = 1; i < count2; i += 2) GL.Vertex3(triList[i].easting, triList[i].northing, 0); }
                                         GL.End();
 
                                         GL.Begin(PrimitiveType.LineStrip);
@@ -230,17 +218,11 @@ namespace AgOpenGPS
                                             int step = mipmap;
                                             for (int i = 2; i < count2; i += step + 2)
                                             {
-                                                GL.Vertex2(triList[i].easting, triList[i].northing);
+                                                GL.Vertex3(triList[i].easting, triList[i].northing, 0);
                                                 if (count2 - i <= (mipmap + 2)) step = 0;//too small to mipmap it
                                             }
                                         }
-                                        else
-                                        {
-                                            for (int i = 2; i < count2; i += 2)
-                                            {
-                                                GL.Vertex2(triList[i].easting, triList[i].northing);
-                                            }
-                                        }
+                                        else { for (int i = 2; i < count2; i += 2) GL.Vertex3(triList[i].easting, triList[i].northing, 0); }
                                         GL.End();
                                     }
 
@@ -272,11 +254,11 @@ namespace AgOpenGPS
                                             //GL.LineWidth(3.0f);
 
                                             GL.Begin(PrimitiveType.Triangles);
-                                            GL.Vertex2(left.easting, left.northing);
-                                            GL.Vertex2(right.easting, right.northing);
+                                            GL.Vertex3(left.easting, left.northing, 0);
+                                            GL.Vertex3(right.easting, right.northing, 0);
 
                                             GL.Color4(0.85, 0.85, 1, 1.0);
-                                            GL.Vertex2(ptTip.easting, ptTip.northing);
+                                            GL.Vertex3(ptTip.easting, ptTip.northing, 0);
                                             GL.End();
                                         }
                                     }
@@ -315,18 +297,18 @@ namespace AgOpenGPS
                                         vec2 pt = new vec2((cosSectionHeading * section[triStrip[j].currentStartSectionNum].positionLeft) + toolPos.easting,
                                                 (sinSectionHeading * section[triStrip[j].currentStartSectionNum].positionLeft) + toolPos.northing);
 
-                                        GL.Vertex2(pt.easting, pt.northing);
+                                        GL.Vertex3(pt.easting, pt.northing, 0);
 
                                         //Right side of triangle
                                         pt = new vec2((cosSectionHeading * section[triStrip[j].currentEndSectionNum].positionRight) + toolPos.easting,
                                            (sinSectionHeading * section[triStrip[j].currentEndSectionNum].positionRight) + toolPos.northing);
 
-                                        GL.Vertex2(pt.easting, pt.northing);
+                                        GL.Vertex3(pt.easting, pt.northing, 0);
 
                                         int last = triStrip[j].patchList[patchCount].Count;
 
-                                        GL.Vertex2(triStrip[j].patchList[patchCount][last - 2].easting, triStrip[j].patchList[patchCount][last - 2].northing);
-                                        GL.Vertex2(triStrip[j].patchList[patchCount][last - 1].easting, triStrip[j].patchList[patchCount][last - 1].northing);
+                                        GL.Vertex3(triStrip[j].patchList[patchCount][last - 2].easting, triStrip[j].patchList[patchCount][last - 2].northing, 0);
+                                        GL.Vertex3(triStrip[j].patchList[patchCount][last - 1].easting, triStrip[j].patchList[patchCount][last - 1].northing, 0);
                                         GL.End();
                                     }
                                     catch
@@ -429,10 +411,8 @@ namespace AgOpenGPS
                             GL.LineStipple(1, 0x0707);
                             GL.Begin(PrimitiveType.Lines);
                             GL.Color3(0.930f, 0.72f, 0.32f);
-                            GL.Vertex2(pivotAxlePos.easting, pivotAxlePos.northing);
-                            GL.Vertex2(
-                                flagPts[flagNumberPicked - 1].easting,
-                                flagPts[flagNumberPicked - 1].northing);
+                            GL.Vertex3(pivotAxlePos.easting, pivotAxlePos.northing, 0);
+                            GL.Vertex3(flagPts[flagNumberPicked - 1].easting, flagPts[flagNumberPicked - 1].northing, 0);
                             GL.End();
                             GL.Disable(EnableCap.LineStipple);
                         }
@@ -657,12 +637,10 @@ namespace AgOpenGPS
                     }
 
                     GL.Begin(PrimitiveType.LineLoop);
-                    // Todo: the next four lines do an integer divide that results
-                    // in an integer with rounding errors. Probably a small bug.
-                    GL.Vertex2(-oglMain.Width / 2, 0);
-                    GL.Vertex2(oglMain.Width / 2, 0);
-                    GL.Vertex2(oglMain.Width / 2, oglMain.Height);
-                    GL.Vertex2(-oglMain.Width / 2, oglMain.Height);
+                    GL.Vertex3(-oglMain.Width / 2, 0, 0);
+                    GL.Vertex3(oglMain.Width / 2, 0, 0);
+                    GL.Vertex3(oglMain.Width / 2, oglMain.Height, 0);
+                    GL.Vertex3(-oglMain.Width / 2, oglMain.Height, 0);
                     GL.End();
 
                     GL.PopMatrix();
@@ -872,9 +850,7 @@ namespace AgOpenGPS
                         {
                             //draw the triangles in each triangle strip
                             GL.Begin(PrimitiveType.TriangleStrip);
-                            {
-                                for (int i = 1; i < count2; i++) GL.Vertex2(triList[i].easting, triList[i].northing);
-                            }
+                            for (int i = 1; i < count2; i++) GL.Vertex3(triList[i].easting, triList[i].northing, 0);
                             GL.End();
                         }
                     }
@@ -894,9 +870,7 @@ namespace AgOpenGPS
                     {
                         GL.Begin(PrimitiveType.LineStrip);
                         for (int h = 0; h < tram.tramList[i].Count; h++)
-                        {
-                            GL.Vertex2(tram.tramList[i][h].easting, tram.tramList[i][h].northing);
-                        }
+                            GL.Vertex3(tram.tramList[i][h].easting, tram.tramList[i][h].northing, 0);
                         GL.End();
                     }
                 }
@@ -906,13 +880,9 @@ namespace AgOpenGPS
                     //boundary tram list
                     GL.Begin(PrimitiveType.LineStrip);
                     for (int h = 0; h < tram.tramBndOuterArr.Count; h++)
-                    {
-                        GL.Vertex2(tram.tramBndOuterArr[h].easting, tram.tramBndOuterArr[h].northing);
-                    }
+                        GL.Vertex3(tram.tramBndOuterArr[h].easting, tram.tramBndOuterArr[h].northing, 0);
                     for (int h = 0; h < tram.tramBndInnerArr.Count; h++)
-                    {
-                        GL.Vertex2(tram.tramBndInnerArr[h].easting, tram.tramBndInnerArr[h].northing);
-                    }
+                        GL.Vertex3(tram.tramBndInnerArr[h].easting, tram.tramBndInnerArr[h].northing, 0);
                     GL.End();
                 }
             }
@@ -1537,8 +1507,8 @@ namespace AgOpenGPS
                                 int step = mipmap;
                                 for (int i = 1; i < count2; i += step)
                                 {
-                                    GL.Vertex2(triList[i].easting, triList[i].northing); i++;
-                                    GL.Vertex2(triList[i].easting, triList[i].northing); i++;
+                                    GL.Vertex3(triList[i].easting, triList[i].northing, 0); i++;
+                                    GL.Vertex3(triList[i].easting, triList[i].northing, 0); i++;
 
                                     //too small to mipmap it
                                     if (count2 - i <= (mipmap))
@@ -1548,7 +1518,7 @@ namespace AgOpenGPS
 
                             else
                             {
-                                for (int i = 1; i < count2; i++) GL.Vertex2(triList[i].easting, triList[i].northing);
+                                for (int i = 1; i < count2; i++) GL.Vertex3(triList[i].easting, triList[i].northing, 0);
                             }
                             GL.End();
 
@@ -1604,6 +1574,144 @@ namespace AgOpenGPS
                 {
                     fd.actualAreaCovered = fd.overlapPercent = 0;
                 }
+
+                //GL.Flush();
+                ////oglZoom.MakeCurrent();
+                ////oglZoom.SwapBuffers();
+
+                //if (oglZoom.Width != 400)
+                //{
+                //    oglZoom.MakeCurrent();
+
+                //    GL.Disable(EnableCap.Blend);
+
+                //    GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
+                //    GL.LoadIdentity();                  // Reset The View
+
+                //    //back the camera up
+                //    GL.Translate(0, 0, -maxFieldDistance*0.92);
+
+                //    //translate to that spot in the world 
+                //    GL.Translate(-fieldCenterX, -fieldCenterY, 0);
+
+                //    //draw the ABLine
+                //    if ((ABLine.isABLineSet | ABLine.isMakingABLine) && ABLine.isBtnABLineOn)
+                //    {
+                //        //Draw reference AB line
+                //        GL.LineWidth(1);
+                //        GL.Enable(EnableCap.LineStipple);
+                //        GL.LineStipple(1, 0x00F0);
+
+                //        GL.Begin(PrimitiveType.Lines);
+                //        GL.Color3(0.9f, 0.2f, 0.2f);
+                //        GL.Vertex3(ABLine.refLineEndA.easting, ABLine.refLineEndA.northing, 0);
+                //        GL.Vertex3(ABLine.refLineEndB.easting, ABLine.refLineEndB.northing, 0);
+                //        GL.End();
+                //        GL.Disable(EnableCap.LineStipple);
+
+                //        //raw current AB Line
+                //        GL.Begin(PrimitiveType.Lines);
+                //        GL.Color3(0.9f, 0.20f, 0.90f);
+                //        GL.Vertex3(ABLine.currentLinePtA.easting, ABLine.currentLinePtA.northing, 0.0);
+                //        GL.Vertex3(ABLine.currentLinePtB.easting, ABLine.currentLinePtB.northing, 0.0);
+                //        GL.End();
+                //    }
+
+                //    //draw curve if there is one
+                //    if (curve.isCurveSet && curve.isBtnTrackOn)
+                //    {
+                //        int ptC = curve.curList.Count;
+                //        if (ptC > 0)
+                //        {
+                //            GL.LineWidth(2);
+                //            GL.Color3(0.925f, 0.2f, 0.90f);
+                //            GL.Begin(PrimitiveType.LineStrip);
+                //            for (int h = 0; h < ptC; h++) GL.Vertex3(curve.curList[h].easting, curve.curList[h].northing, 0);
+                //            GL.End();
+                //        }
+                //    }
+
+                //    //draw all the fences
+                //    bnd.DrawFenceLines();
+
+                //    GL.PointSize(8.0f);
+                //    GL.Begin(PrimitiveType.Points);
+                //    GL.Color3(0.95f, 0.90f, 0.0f);
+                //    GL.Vertex3(pivotAxlePos.easting, pivotAxlePos.northing, 0.0);
+                //    GL.End();
+
+                //    GL.PointSize(1.0f);
+
+                //    if (isDay) GL.Color3(sectionColorDay.R, sectionColorDay.G, sectionColorDay.B);
+                //    else GL.Color3(sectionColorDay.R, sectionColorDay.G, sectionColorDay.B);
+
+                //    //GL.Color3((byte)0, (byte)200, (byte)0);
+                //    int cnt, step, patchCount;
+                //    int mipmap = 8;
+
+                //    //draw patches j= # of sections
+                //    for (int j = 0; j < triStrip.Count; j++)
+                //    {
+                //        //every time the section turns off and on is a new patch
+                //        patchCount = triStrip[j].patchList.Count;
+
+                //        if (patchCount > 0)
+                //        {
+                //            //for every new chunk of patch
+                //            foreach (var triList in triStrip[j].patchList)
+                //            {
+                //                //draw the triangle in each triangle strip
+                //                GL.Begin(PrimitiveType.TriangleStrip);
+                //                cnt = triList.Count;
+
+                //                //if large enough patch and camera zoomed out, fake mipmap the patches, skip triangles
+                //                if (cnt >= (mipmap))
+                //                {
+                //                    step = mipmap;
+                //                    for (int i = 1; i < cnt; i += step)
+                //                    {
+                //                        GL.Vertex3(triList[i].easting, triList[i].northing, 0); i++;
+                //                        GL.Vertex3(triList[i].easting, triList[i].northing, 0); i++;
+
+                //                        //too small to mipmap it
+                //                        if (cnt - i <= (mipmap + 2))
+                //                            step = 0;
+                //                    }
+                //                }
+
+                //                else
+                //                {
+                //                    for (int i = 1; i < cnt; i++)
+                //                        GL.Vertex3(triList[i].easting, triList[i].northing, 0);
+                //                }
+                //                GL.End();
+
+                //            }
+                //        }
+                //    } //end of section patches
+
+                //    GL.Flush();
+
+                //    //byte[] overPix = new byte[oglZoom.Height * oglZoom.Width + 1];
+
+                //    //GL.ReadPixels(0, 0, oglZoom.Width, oglZoom.Width, OpenTK.Graphics.OpenGL.PixelFormat.Green, PixelType.UnsignedByte, overPix);
+
+                //    //int more = 0;
+
+                //    //for (int i = 0; i < oglZoom.Width * oglZoom.Width; i++)
+                //    //{
+
+                //    //    if (overPix[i] == 200)
+                //    //    {
+                //    //        more++;
+                //    //    }
+                //    //}
+
+                //    //double scale = ((maxFieldDistance * maxFieldDistance) / (oglZoom.Height * oglZoom.Width) * (double)more)/10000;
+
+                //    oglZoom.MakeCurrent();
+                //    oglZoom.SwapBuffers();
+                //}
             }
         }
 
@@ -1870,7 +1978,7 @@ namespace AgOpenGPS
                     }
                     flagColorRgb.Blue = (byte)flag.ID;
                     GLW.SetColor(flagColorRgb);
-                    GL.Vertex2(flag.easting, flag.northing);
+                    GL.Vertex3(flag.easting, flag.northing, 0);
                     GL.End();
 
                     font.DrawText3D(flag.easting, flag.northing, flagColor + flag.notes, camHeading);

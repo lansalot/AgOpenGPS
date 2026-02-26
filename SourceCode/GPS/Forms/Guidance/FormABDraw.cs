@@ -10,7 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AgOpenGPS
 {
@@ -738,17 +740,30 @@ namespace AgOpenGPS
 
                     GL.Begin(PrimitiveType.Lines);
 
-                    GL.Vertex2(
-                        gTemp[i].ptA.easting - (Math.Sin(gTemp[i].heading) * mf.ABLine.abLength),
-                        gTemp[i].ptA.northing - (Math.Cos(gTemp[i].heading) * mf.ABLine.abLength));
-                    GL.Vertex2(
-                        gTemp[i].ptB.easting + (Math.Sin(gTemp[i].heading) * mf.ABLine.abLength),
-                        gTemp[i].ptB.northing + (Math.Cos(gTemp[i].heading) * mf.ABLine.abLength));
+                    GL.Vertex3(gTemp[i].ptA.easting - (Math.Sin(gTemp[i].heading) * mf.ABLine.abLength), gTemp[i].ptA.northing - (Math.Cos(gTemp[i].heading) * mf.ABLine.abLength), 0);
+                    GL.Vertex3(gTemp[i].ptB.easting + (Math.Sin(gTemp[i].heading) * mf.ABLine.abLength), gTemp[i].ptB.northing + (Math.Cos(gTemp[i].heading) * mf.ABLine.abLength), 0);
 
                     GL.End();
 
                     GL.Disable(EnableCap.LineStipple);
+
+                    //if (mf.ABLine.numABLineSelected > 0)
+                    //{
+                    //    GL.Color3(1.0f, 0.0f, 0.0f);
+
+                    //    GL.LineWidth(4);
+                    //    GL.Begin(PrimitiveType.Lines);
+
+                    //    GL.Vertex3(gTemp[mf.ABLine.numABLineSelected - 1].ptA.easting - (Math.Sin(gTemp[mf.ABLine.numABLineSelected - 1].heading) * mf.ABLine.abLength),
+                    //        gTemp[mf.ABLine.numABLineSelected - 1].ptA.northing - (Math.Cos(gTemp[mf.ABLine.numABLineSelected - 1].heading) * mf.ABLine.abLength), 0);
+                    //    GL.Vertex3(gTemp[mf.ABLine.numABLineSelected - 1].ptA.easting + (Math.Sin(gTemp[mf.ABLine.numABLineSelected - 1].heading) * mf.ABLine.abLength),
+                    //        gTemp[mf.ABLine.numABLineSelected - 1].ptA.northing + (Math.Cos(gTemp[mf.ABLine.numABLineSelected - 1].heading) * mf.ABLine.abLength), 0);
+
+                    //    GL.End();
+                    //}
+
                 }
+
                 else if (gTemp[i].mode == TrackMode.Curve || gTemp[i].mode == TrackMode.bndCurve)
                 {
                     GL.Enable(EnableCap.LineStipple);
@@ -769,7 +784,7 @@ namespace AgOpenGPS
                     GL.Begin(PrimitiveType.LineStrip);
                     foreach (vec3 pts in gTemp[i].curvePts)
                     {
-                        GL.Vertex2(pts.easting, pts.northing);
+                        GL.Vertex3(pts.easting, pts.northing, 0);
                     }
                     GL.End();
 
@@ -781,12 +796,15 @@ namespace AgOpenGPS
                     GL.Color3(1.0f, 0.75f, 0.350f);
                     GL.Begin(PrimitiveType.Points);
 
-                    GL.Vertex2(gTemp[i].curvePts[0].easting, gTemp[i].curvePts[0].northing);
+                    GL.Vertex3(gTemp[i].curvePts[0].easting,
+                                gTemp[i].curvePts[0].northing,
+                                0);
+
 
                     GL.Color3(0.5f, 0.5f, 1.0f);
-                    GL.Vertex2(
-                        gTemp[i].curvePts[gTemp[i].curvePts.Count - 1].easting,
-                        gTemp[i].curvePts[gTemp[i].curvePts.Count - 1].northing);
+                    GL.Vertex3(gTemp[i].curvePts[gTemp[i].curvePts.Count - 1].easting,
+                                gTemp[i].curvePts[gTemp[i].curvePts.Count - 1].northing,
+                                0);
                     GL.End();
                 }
             }
@@ -799,35 +817,18 @@ namespace AgOpenGPS
             GL.Begin(PrimitiveType.Points);
 
             GL.Color3(0, 0, 0);
-            if (start != 99999)
-            {
-                GL.Vertex2(
-                    mf.bnd.bndList[bndSelect].fenceLine[start].easting,
-                    mf.bnd.bndList[bndSelect].fenceLine[start].northing);
-            }
-            if (end != 99999)
-            {
-                GL.Vertex2(
-                    mf.bnd.bndList[bndSelect].fenceLine[end].easting,
-                    mf.bnd.bndList[bndSelect].fenceLine[end].northing);
-            }
+            if (start != 99999) GL.Vertex3(mf.bnd.bndList[bndSelect].fenceLine[start].easting, mf.bnd.bndList[bndSelect].fenceLine[start].northing, 0);
+            if (end != 99999) GL.Vertex3(mf.bnd.bndList[bndSelect].fenceLine[end].easting, mf.bnd.bndList[bndSelect].fenceLine[end].northing, 0);
             GL.End();
 
             GL.PointSize(16);
             GL.Begin(PrimitiveType.Points);
 
             GL.Color3(1.0f, 0.75f, 0.350f);
-            if (start != 99999)
-            {
-                GL.Vertex2(
-                    mf.bnd.bndList[bndSelect].fenceLine[start].easting,
-                    mf.bnd.bndList[bndSelect].fenceLine[start].northing);
-            }
+            if (start != 99999) GL.Vertex3(mf.bnd.bndList[bndSelect].fenceLine[start].easting, mf.bnd.bndList[bndSelect].fenceLine[start].northing, 0);
+
             GL.Color3(0.5f, 0.5f, 1.0f);
-            if (end != 99999)
-            {
-                GL.Vertex2(mf.bnd.bndList[bndSelect].fenceLine[end].easting, mf.bnd.bndList[bndSelect].fenceLine[end].northing);
-            }
+            if (end != 99999) GL.Vertex3(mf.bnd.bndList[bndSelect].fenceLine[end].easting, mf.bnd.bndList[bndSelect].fenceLine[end].northing, 0);
             GL.End();
         }
 

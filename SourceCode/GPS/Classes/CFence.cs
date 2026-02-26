@@ -85,6 +85,13 @@ namespace AgOpenGPS
                 }
             }
 
+            ////closest points  TooDoo
+            //GL.Color3(0.70f, 0.95f, 0.95f);
+            //GL.PointSize(6.0f);
+            //GL.Begin(PrimitiveType.Points);
+            //GL.Vertex3(mf.bnd.closestTurnPt.easting, mf.bnd.closestTurnPt.northing, 0);
+            //GL.End();
+
             if (bndBeingMadePts.Count > 0)
             {
                 //the boundary so far
@@ -92,12 +99,9 @@ namespace AgOpenGPS
                 GL.LineWidth(mf.ABLine.lineWidth);
                 GL.Color3(0.825f, 0.22f, 0.90f);
                 GL.Begin(PrimitiveType.LineStrip);
-                for (int h = 0; h < bndBeingMadePts.Count; h++)
-                {
-                    GL.Vertex2(bndBeingMadePts[h].easting, bndBeingMadePts[h].northing);
-                }
+                for (int h = 0; h < bndBeingMadePts.Count; h++) GL.Vertex3(bndBeingMadePts[h].easting, bndBeingMadePts[h].northing, 0);
                 GL.Color3(0.295f, 0.972f, 0.290f);
-                GL.Vertex2(bndBeingMadePts[0].easting, bndBeingMadePts[0].northing);
+                GL.Vertex3(bndBeingMadePts[0].easting, bndBeingMadePts[0].northing, 0);
                 GL.End();
 
                 //line from last point to pivot marker
@@ -110,45 +114,34 @@ namespace AgOpenGPS
                 {
                     if (isDrawRightSide)
                     {
-                        GL.Vertex2(bndBeingMadePts[0].easting, bndBeingMadePts[0].northing);
+                        GL.Vertex3(bndBeingMadePts[0].easting, bndBeingMadePts[0].northing, 0);
 
-                        GL.Vertex2(
-                            pivot.easting + (Math.Sin(pivot.heading - glm.PIBy2) * -createBndOffset),
-                            pivot.northing + (Math.Cos(pivot.heading - glm.PIBy2) * -createBndOffset));
-                        GL.Vertex2(
-                            bndBeingMadePts[bndBeingMadePts.Count - 1].easting,
-                            bndBeingMadePts[bndBeingMadePts.Count - 1].northing);
+                        GL.Vertex3(pivot.easting + (Math.Sin(pivot.heading - glm.PIBy2) * -createBndOffset),
+                                pivot.northing + (Math.Cos(pivot.heading - glm.PIBy2) * -createBndOffset), 0);
+                        GL.Vertex3(bndBeingMadePts[bndBeingMadePts.Count - 1].easting, bndBeingMadePts[bndBeingMadePts.Count - 1].northing, 0);
                     }
                     else
                     {
-                        GL.Vertex2(bndBeingMadePts[0].easting, bndBeingMadePts[0].northing);
-                        GL.Vertex2(
-                            pivot.easting + (Math.Sin(pivot.heading - glm.PIBy2) * createBndOffset),
-                            pivot.northing + (Math.Cos(pivot.heading - glm.PIBy2) * createBndOffset));
-                        GL.Vertex2(
-                            bndBeingMadePts[bndBeingMadePts.Count - 1].easting,
-                            bndBeingMadePts[bndBeingMadePts.Count - 1].northing);
+                        GL.Vertex3(bndBeingMadePts[0].easting, bndBeingMadePts[0].northing, 0);
+
+                        GL.Vertex3(pivot.easting + (Math.Sin(pivot.heading - glm.PIBy2) * createBndOffset),
+                                pivot.northing + (Math.Cos(pivot.heading - glm.PIBy2) * createBndOffset), 0);
+                        GL.Vertex3(bndBeingMadePts[bndBeingMadePts.Count - 1].easting, bndBeingMadePts[bndBeingMadePts.Count - 1].northing, 0);
                     }
                 }
                 else //draw from tool
                 {
                     if (isDrawRightSide)
                     {
-                        GL.Vertex2(bndBeingMadePts[0].easting, bndBeingMadePts[0].northing);
-                        GL.Vertex2(
-                            mf.section[mf.tool.numOfSections - 1].rightPoint.easting,
-                            mf.section[mf.tool.numOfSections - 1].rightPoint.northing);
-                        GL.Vertex2(
-                            bndBeingMadePts[bndBeingMadePts.Count - 1].easting,
-                            bndBeingMadePts[bndBeingMadePts.Count - 1].northing);
+                        GL.Vertex3(bndBeingMadePts[0].easting, bndBeingMadePts[0].northing, 0);
+                        GL.Vertex3(mf.section[mf.tool.numOfSections - 1].rightPoint.easting, mf.section[mf.tool.numOfSections - 1].rightPoint.northing, 0);
+                        GL.Vertex3(bndBeingMadePts[bndBeingMadePts.Count - 1].easting, bndBeingMadePts[bndBeingMadePts.Count - 1].northing, 0);
                     }
                     else
                     {
-                        GL.Vertex2(bndBeingMadePts[0].easting, bndBeingMadePts[0].northing);
-                        GL.Vertex2(mf.section[0].leftPoint.easting, mf.section[0].leftPoint.northing);
-                        GL.Vertex2(
-                            bndBeingMadePts[bndBeingMadePts.Count - 1].easting,
-                            bndBeingMadePts[bndBeingMadePts.Count - 1].northing);
+                        GL.Vertex3(bndBeingMadePts[0].easting, bndBeingMadePts[0].northing, 0);
+                        GL.Vertex3(mf.section[0].leftPoint.easting, mf.section[0].leftPoint.northing, 0);
+                        GL.Vertex3(bndBeingMadePts[bndBeingMadePts.Count - 1].easting, bndBeingMadePts[bndBeingMadePts.Count - 1].northing, 0);
                     }
                 }
                 GL.End();
@@ -158,10 +151,7 @@ namespace AgOpenGPS
                 GL.Color3(0.0f, 0.95f, 0.95f);
                 GL.PointSize(6.0f);
                 GL.Begin(PrimitiveType.Points);
-                for (int h = 0; h < bndBeingMadePts.Count; h++)
-                {
-                    GL.Vertex2(bndBeingMadePts[h].easting, bndBeingMadePts[h].northing);
-                }
+                for (int h = 0; h < bndBeingMadePts.Count; h++) GL.Vertex3(bndBeingMadePts[h].easting, bndBeingMadePts[h].northing, 0);
                 GL.End();
             }
         }

@@ -629,10 +629,7 @@ namespace AgOpenGPS
             GL.LineWidth(1);
             GL.Color3(0.98f, 0.92f, 0.460f);
             GL.Begin(PrimitiveType.LineStrip);
-            for (int h = 0; h < ptCount; h++)
-            {
-                GL.Vertex2(recList[h].easting, recList[h].northing);
-            }
+            for (int h = 0; h < ptCount; h++) GL.Vertex3(recList[h].easting, recList[h].northing, 0);
             GL.End();
 
             if (!isRecordOn)
@@ -645,7 +642,7 @@ namespace AgOpenGPS
                 //GL.Vertex(rEast, rNorth, 0.0);
 
                 GL.Color3(1.0f, 0.5f, 0.95f);
-                GL.Vertex2(recList[currentPositonIndex].easting, recList[currentPositonIndex].northing);
+                GL.Vertex3(recList[currentPositonIndex].easting, recList[currentPositonIndex].northing, 0);
                 GL.End();
                 GL.PointSize(1.0f);
             }
@@ -660,9 +657,7 @@ namespace AgOpenGPS
                 GL.Color3(0.298f, 0.96f, 0.2960f);
                 GL.Begin(PrimitiveType.Points);
                 for (int h = 0; h < shuttleDubinsList.Count; h++)
-                {
-                    GL.Vertex2(shuttleDubinsList[h].easting, shuttleDubinsList[h].northing);
-                }
+                    GL.Vertex3(shuttleDubinsList[h].easting, shuttleDubinsList[h].northing, 0);
                 GL.End();
             }
         }

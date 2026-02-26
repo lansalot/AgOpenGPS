@@ -104,7 +104,8 @@ namespace AgOpenGPS
 
             originalLine = mf.trk.idx;
 
-            selectedItem = -1;
+            // Set the currently active track as selected
+            selectedItem = originalLine;
             Location = Properties.Settings.Default.setWindow_buildTracksLocation;
 
             nudLatitudeA.Controls[0].Enabled = false;
