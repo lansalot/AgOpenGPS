@@ -906,23 +906,27 @@ namespace AgOpenGPS
                         btnAutoSteer.PerformClick();
                     }
 
-                    if (isBtnAutoSteerOn && avgSpeed < vehicle.minSteerSpeed)
+                    // Only check min speed if it's set above 0.1 (0.0 or <0.1 = disabled)
+                    if (vehicle.minSteerSpeed >= 0.1)
                     {
-                        minSteerSpeedTimer++;
-                        if (minSteerSpeedTimer > 80)
+                        if (isBtnAutoSteerOn && avgSpeed < vehicle.minSteerSpeed)
                         {
-                            btnAutoSteer.PerformClick();
-                            if (isMetric)
-                                TimedMessageBox(3000, "AutoSteer Disabled", "Below Minimum Safe Steering Speed: " + vehicle.minSteerSpeed.ToString("N0") + " Kmh");
-                            else
-                                TimedMessageBox(3000, "AutoSteer Disabled", "Below Minimum Safe Steering Speed: " + Speed.KmhToMph(vehicle.minSteerSpeed).ToString("N1") + " MPH");
-                            
-                            Log.EventWriter("Steer Off, Below Min Steering Speed");
+                            minSteerSpeedTimer++;
+                            if (minSteerSpeedTimer > 80)
+                            {
+                                btnAutoSteer.PerformClick();
+                                if (isMetric)
+                                    TimedMessageBox(3000, "AutoSteer Disabled", "Below Minimum Safe Steering Speed: " + vehicle.minSteerSpeed.ToString("N0") + " Kmh");
+                                else
+                                    TimedMessageBox(3000, "AutoSteer Disabled", "Below Minimum Safe Steering Speed: " + Speed.KmhToMph(vehicle.minSteerSpeed).ToString("N1") + " MPH");
+
+                                Log.EventWriter("Steer Off, Below Min Steering Speed");
+                            }
                         }
-                    }
-                    else
-                    {
-                        minSteerSpeedTimer = 0;
+                        else
+                        {
+                            minSteerSpeedTimer = 0;
+                        }
                     }
                 }
 
