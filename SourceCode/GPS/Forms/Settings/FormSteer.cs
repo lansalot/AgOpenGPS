@@ -329,10 +329,17 @@ namespace AgOpenGPS
 
             if (mf.isLightBarNotSteerBar) rbtnLightBar.Checked = true;
             else rbtnSteerBar.Checked = true;
+
+            // Start Smart WAS Calibration data collection
+            mf.smartWAS.Reset();
+            mf.smartWAS.Start();
         }
 
         private void FormSteer_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // Stop Smart WAS Calibration data collection
+            mf.smartWAS.Stop();
+
             mf.vehicle.isInFreeDriveMode = false;
 
             Properties.Settings.Default.setVehicle_goalPointLookAheadHold = mf.vehicle.goalPointLookAheadHold;
@@ -478,6 +485,9 @@ namespace AgOpenGPS
                 else
                     lblPercentFS.Text = mf.mc.sensorData.ToString();
             }
+
+            // Update Smart WAS Calibration status
+            UpdateSmartWASStatus();
         }
 
         #region Tab Sensors
@@ -1265,5 +1275,80 @@ namespace AgOpenGPS
                 tabSteerSettings.SelectTab(0);
             }
         }
+
+        #region Smart WAS Calibration
+
+        /// <summary>
+        /// Smart WAS Zero button click - applies the recommended offset
+        /// </summary>
+        private void btnSmartZeroWAS_Click(object sender, EventArgs e)
+        {
+            if (!mf.smartWAS.HasValidCalibration)
+            {
+                return;
+            }
+
+            double recommendedOffset = mf.smartWAS.RecommendedOffset;
+            int offsetCounts = (int)Math.Round(recommendedOffset * hsbarCountsPerDegree.Value);
+
+            // Safety check - limit maximum offset
+            if (Math.Abs(offsetCounts) > 50)
+            {
+                mf.TimedMessageBox(3000, "Exceeded Range", "Offset too large - cannot apply");
+                Log.EventWriter($"Smart WAS: Offset {offsetCounts} too large, rejected");
+                return;
+            }
+
+            // Apply the offset
+            hsbarWasOffset.Value += offsetCounts;
+
+            // Apply correction to collected data to prevent double-correction
+            mf.smartWAS.ApplyOffsetCorrection(recommendedOffset);
+
+            // Show confirmation
+            mf.TimedMessageBox(2500, "Smart WAS Zero",
+                $"Applied {recommendedOffset:F2}° ({offsetCounts} counts)");
+
+            Log.EventWriter($"Smart WAS: Applied {recommendedOffset:F2}° ({offsetCounts} counts)");
+
+            toSend = true;
+            counter = 6;
+        }
+
+        /// <summary>
+        /// Update the Smart WAS status display
+        /// </summary>
+        private void UpdateSmartWASStatus()
+        {
+            lblSmartCalSamples.Text = $"Samples: {mf.smartWAS.SampleCount}";
+            lblSmartCalConfidence.Text = $"Confidence: {mf.smartWAS.Confidence:F0}%";
+
+            if (mf.smartWAS.IsCollecting)
+            {
+                if (mf.smartWAS.HasValidCalibration)
+                {
+                    lblSmartCalStatus.Text = "Ready to Apply";
+                    lblSmartCalStatus.ForeColor = Color.Green;
+                    btnSmartZeroWAS.Text = $"{mf.smartWAS.RecommendedOffset:+0.0;-0.0}°";
+                    btnSmartZeroWAS.Enabled = true;
+                }
+                else
+                {
+                    lblSmartCalStatus.Text = "Collecting...";
+                    lblSmartCalStatus.ForeColor = Color.Orange;
+                    btnSmartZeroWAS.Text = "";
+                    btnSmartZeroWAS.Enabled = false;
+                }
+            }
+            else
+            {
+                lblSmartCalStatus.Text = "Stopped";
+                lblSmartCalStatus.ForeColor = Color.Gray;
+                btnSmartZeroWAS.Text = "";
+                btnSmartZeroWAS.Enabled = false;
+            }
+        }
+
+        #endregion
     }
 }

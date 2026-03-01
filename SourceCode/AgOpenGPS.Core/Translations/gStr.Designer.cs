@@ -3344,6 +3344,24 @@ namespace AgOpenGPS.Core.Translations {
                 return ResourceManager.GetString("gsWasZero", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Smart WAS.
+        /// </summary>
+        public static string gsSmartWAS {
+            get {
+                return ResourceManager.GetString("gsSmartWAS", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Auto-calibrates WAS zero by analyzing guidance steering angles while driving. Enable autosteer and drive smoothly along the line..
+        /// </summary>
+        public static string gsSmartWASHelp {
+            get {
+                return ResourceManager.GetString("gsSmartWASHelp", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to WebCam.
