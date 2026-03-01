@@ -202,6 +202,20 @@ namespace AgOpenGPS
                     TimedMessageBox(2000, (gStr.gsNoGuidanceLines), (gStr.gsTurnOnContourOrMakeABLine));
                 }
             }
+
+            //handle contour lock
+            if (ct.isContourBtnOn)
+            {
+                if (isBtnAutoSteerOn && !ct.isLocked)
+                {
+                    btnContourLock.PerformClick();
+                }
+                else if (!isBtnAutoSteerOn && ct.isLocked)
+                {
+                    btnContourLock.PerformClick();
+                }
+            }
+
         }
 
         private void btnAutoYouTurn_Click(object sender, EventArgs e)
