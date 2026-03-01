@@ -267,6 +267,11 @@ namespace AgOpenGPS
         /// </summary>
         public CISOBUS isobus;
 
+        /// <summary>
+        /// Smart WAS Calibration for intelligent WAS zero point determination
+        /// </summary>
+        public CSmartWAS smartWAS;
+
         #endregion // Class Props and instances
 
         //The method assigned to the PowerModeChanged event call
@@ -396,6 +401,9 @@ namespace AgOpenGPS
             displayBrightness = new CWindowsSettingsBrightnessController(Properties.Settings.Default.setDisplay_isBrightnessOn);
 
             isobus = new CISOBUS(this);
+
+            //Smart WAS Calibration system
+            smartWAS = new CSmartWAS(this);
         }
 
         private void FormGPS_Load(object sender, EventArgs e)

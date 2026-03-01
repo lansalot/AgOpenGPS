@@ -980,6 +980,9 @@ namespace AgOpenGPS
                 {
                     p_254.pgn[p_254.steerAngleHi] = unchecked((byte)(guidanceLineSteerAngle >> 8));
                     p_254.pgn[p_254.steerAngleLo] = unchecked((byte)(guidanceLineSteerAngle));
+
+                    // Smart WAS sample collection - guidance steer angle in degrees
+                    smartWAS.AddSample(guidanceLineSteerAngle * 0.01);
                 }
             }
 

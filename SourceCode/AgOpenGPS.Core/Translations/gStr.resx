@@ -1218,6 +1218,12 @@ USE AT OWN RISK.</value>
   <data name="gsWasZero" xml:space="preserve">
     <value>Was Zero</value>
   </data>
+  <data name="gsSmartWAS" xml:space="preserve">
+    <value>Smart WAS</value>
+  </data>
+  <data name="gsSmartWASHelp" xml:space="preserve">
+    <value>Auto-calibrates WAS zero by analyzing guidance steering angles while driving. Enable autosteer and drive smoothly along the line.</value>
+  </data>
   <data name="gsWebCam" xml:space="preserve">
     <value>WebCam</value>
   </data>
