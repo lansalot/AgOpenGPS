@@ -3,6 +3,9 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
+    <!-- Disable PDB generation -->
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
