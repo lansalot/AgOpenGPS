@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
+    <!-- Disable PDB generation -->
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
