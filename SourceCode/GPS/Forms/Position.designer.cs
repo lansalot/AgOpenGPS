@@ -1143,15 +1143,15 @@ namespace AgOpenGPS
                 SendPgnToLoop(p_229.pgn);
             }
 
-            //update main window
-            oglMain.MakeCurrent();
-            oglMain.Refresh();
-
             //stop the timer and calc how long it took to do calcs and draw
             frameTimeRough = (double)(swFrame.ElapsedTicks * 1000) / (double)System.Diagnostics.Stopwatch.Frequency;
 
             if (frameTimeRough > 80) frameTimeRough = 80;
             frameTime = frameTime * 0.90 + frameTimeRough * 0.1;
+
+            //update main window
+            oglMain.MakeCurrent();
+            oglMain.Refresh();
         }
 
         private void TheRest()
