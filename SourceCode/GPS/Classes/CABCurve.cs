@@ -83,6 +83,9 @@ namespace AgOpenGPS
 
         public async void BuildCurveCurrentList(vec3 pivot)
         {
+            // Reset calculating flag at start - ensures clean state even if switching from ABLine
+            isCalculating = false;
+
             double minDistA = 1000000, minDistB;
 
             //move the ABLine over based on the overlap amount set in vehicle
@@ -201,31 +204,36 @@ namespace AgOpenGPS
 
                 if (build != null) await build;
 
-                // Set calculating flag - don't draw during calculation to avoid flicker
-                isCalculating = true;
-
-                build = Task.Run(() => BuildNewOffsetList(distAway, track, cts.Token), cts.Token);
-                curList = await build;
-                findGlobalNearestCurvePoint = true;
-
-                if (mf.isSideGuideLines && mf.camera.camSetDistance > mf.tool.width * -400)
+                try
                 {
-                    if (buildList != null)
-                        await buildList;
-                    //build the list list of guide lines - use the extended curList as reference
-                    // Cap at 3 guidelines max for curves to prevent performance issues
-                    int maxCurveGuides = Math.Min(mf.ABLine.numGuideLines, 3);
-                    buildList = Task.Run(() => BuildCurveGuidelines(curList, distAway, maxCurveGuides, cts.Token), cts.Token);
-                    guideArr = await buildList;
-                }
-                else
-                {
-                    if (buildList != null) await buildList;
-                    guideArr?.Clear();
-                }
+                    // Set calculating flag - don't draw during calculation to avoid flicker
+                    isCalculating = true;
 
-                // Calculation complete - safe to draw again
-                isCalculating = false;
+                    build = Task.Run(() => BuildNewOffsetList(distAway, track, cts.Token), cts.Token);
+                    curList = await build;
+                    findGlobalNearestCurvePoint = true;
+
+                    if (mf.isSideGuideLines && mf.camera.camSetDistance > mf.tool.width * -400)
+                    {
+                        if (buildList != null)
+                            await buildList;
+                        //build the list list of guide lines - use the extended curList as reference
+                        // Cap at 3 guidelines max for curves to prevent performance issues
+                        int maxCurveGuides = Math.Min(mf.ABLine.numGuideLines, 3);
+                        buildList = Task.Run(() => BuildCurveGuidelines(curList, distAway, maxCurveGuides, cts.Token), cts.Token);
+                        guideArr = await buildList;
+                    }
+                    else
+                    {
+                        if (buildList != null) await buildList;
+                        guideArr?.Clear();
+                    }
+                }
+                finally
+                {
+                    // Always reset calculating flag, even on exception or cancellation
+                    isCalculating = false;
+                }
             }
         }
 
