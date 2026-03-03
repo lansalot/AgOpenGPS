@@ -16,10 +16,6 @@ namespace AgOpenGPS
         //pointers to mainform controls
         private readonly FormGPS mf;
 
-        // Colors for extra guidelines
-        private readonly ColorRgba extraGuidelinesBlack = new ColorRgba(0.0f, 0.0f, 0.0f, 0.5f);
-        private readonly ColorRgba extraGuidelinesGreen = new ColorRgba(0.19907f, 0.6f, 0.19750f, 0.6f);
-
         //flag for starting stop adding points
         public bool isBtnTrackOn, isMakingCurve, isRecordingCurve;
 
@@ -53,9 +49,6 @@ namespace AgOpenGPS
 
         public bool isCurveValid;
 
-        // Flag indicating a recalculation is in progress (don't draw to avoid flicker)
-        private bool isCalculating = false;
-
         public double lastSecond = 0;
 
         public List<vec3> desList = new List<vec3>();
@@ -73,6 +66,10 @@ namespace AgOpenGPS
         private Task<List<vec3>> build;
         private Task<List<List<vec3>>> buildList;
 
+        // Colors for extra guidelines
+        private readonly ColorRgba extraGuidelinesBlack = new ColorRgba(0.0f, 0.0f, 0.0f, 0.5f);
+        private readonly ColorRgba extraGuidelinesGreen = new ColorRgba(0.19907f, 0.6f, 0.19750f, 0.6f);
+
         public CABCurve(FormGPS _f)
         {
             //constructor
@@ -81,11 +78,41 @@ namespace AgOpenGPS
             curList.Capacity = 1024;
         }
 
+        // Helper to get extended reference curve (200m extension at both ends for calculations only)
+        // Uses same logic as AddFirstLastPoints but returns a new list instead of modifying input
+        private List<vec3> GetExtendedReferenceCurve(CTrk track)
+        {
+            if (track == null || track.curvePts == null || track.curvePts.Count == 0)
+                return new List<vec3>();
+
+            List<vec3> extended = new List<vec3>(track.curvePts);
+            int ptCnt = track.curvePts.Count - 1;
+            vec3 start;
+
+            // Add 200 points to end (going forward using last point's heading)
+            for (int i = 1; i < 200; i++)
+            {
+                vec3 pt = new vec3(track.curvePts[ptCnt]);
+                pt.easting += (Math.Sin(pt.heading) * i);
+                pt.northing += (Math.Cos(pt.heading) * i);
+                extended.Add(pt);
+            }
+
+            // Add 200 points to beginning (going backward using first point's heading)
+            start = new vec3(track.curvePts[0]);
+            for (int i = 1; i < 200; i++)
+            {
+                vec3 pt = new vec3(start);
+                pt.easting -= (Math.Sin(pt.heading) * i);
+                pt.northing -= (Math.Cos(pt.heading) * i);
+                extended.Insert(0, pt);
+            }
+
+            return extended;
+        }
+
         public async void BuildCurveCurrentList(vec3 pivot)
         {
-            // Reset calculating flag at start - ensures clean state even if switching from ABLine
-            isCalculating = false;
-
             double minDistA = 1000000, minDistB;
 
             //move the ABLine over based on the overlap amount set in vehicle
@@ -204,35 +231,22 @@ namespace AgOpenGPS
 
                 if (build != null) await build;
 
-                try
+                build = Task.Run(() => BuildNewOffsetList(distAway, track, cts.Token), cts.Token);
+                curList = await build;
+                findGlobalNearestCurvePoint = true;
+
+                if (mf.isSideGuideLines && mf.camera.camSetDistance > mf.tool.width * -400)
                 {
-                    // Set calculating flag - don't draw during calculation to avoid flicker
-                    isCalculating = true;
-
-                    build = Task.Run(() => BuildNewOffsetList(distAway, track, cts.Token), cts.Token);
-                    curList = await build;
-                    findGlobalNearestCurvePoint = true;
-
-                    if (mf.isSideGuideLines && mf.camera.camSetDistance > mf.tool.width * -400)
-                    {
-                        if (buildList != null)
-                            await buildList;
-                        //build the list list of guide lines - use the extended curList as reference
-                        // Cap at 3 guidelines max for curves to prevent performance issues
-                        int maxCurveGuides = Math.Min(mf.ABLine.numGuideLines, 3);
-                        buildList = Task.Run(() => BuildCurveGuidelines(curList, distAway, maxCurveGuides, cts.Token), cts.Token);
-                        guideArr = await buildList;
-                    }
-                    else
-                    {
-                        if (buildList != null) await buildList;
-                        guideArr?.Clear();
-                    }
+                    if (buildList != null)
+                        await buildList;
+                    //build the list list of guide lines
+                    buildList = Task.Run(() => BuildCurveGuidelines(distAway, mf.ABLine.numGuideLines, track, cts.Token), cts.Token);
+                    guideArr = await buildList;
                 }
-                finally
+                else
                 {
-                    // Always reset calculating flag, even on exception or cancellation
-                    isCalculating = false;
+                    if (buildList != null) await buildList;
+                    guideArr?.Clear();
                 }
             }
         }
@@ -311,21 +325,23 @@ namespace AgOpenGPS
 
                     double distSqAway = (distAway * distAway) - 0.01;
 
-                    int refCount = track.curvePts.Count;
+                    // Use extended reference curve for offset calculation
+                    List<vec3> refCurve = GetExtendedReferenceCurve(track);
+                    int refCount = refCurve.Count;
                     for (int i = 0; i < refCount; i++)
                     {
                         if (ct.IsCancellationRequested)
                             break;
                         point = new vec3(
-                        track.curvePts[i].easting + (Math.Sin(glm.PIBy2 + track.curvePts[i].heading) * distAway),
-                        track.curvePts[i].northing + (Math.Cos(glm.PIBy2 + track.curvePts[i].heading) * distAway),
-                        track.curvePts[i].heading);
+                        refCurve[i].easting + (Math.Sin(glm.PIBy2 + refCurve[i].heading) * distAway),
+                        refCurve[i].northing + (Math.Cos(glm.PIBy2 + refCurve[i].heading) * distAway),
+                        refCurve[i].heading);
                         bool Add = true;
 
                         for (int t = 0; t < refCount; t++)
                         {
-                            double dist = ((point.easting - track.curvePts[t].easting) * (point.easting - track.curvePts[t].easting))
-                                + ((point.northing - track.curvePts[t].northing) * (point.northing - track.curvePts[t].northing));
+                            double dist = ((point.easting - refCurve[t].easting) * (point.easting - refCurve[t].easting))
+                                + ((point.northing - refCurve[t].northing) * (point.northing - refCurve[t].northing));
                             if (dist < distSqAway)
                             {
                                 Add = false;
@@ -422,24 +438,69 @@ namespace AgOpenGPS
                         if (pt33.heading < 0) pt33.heading += glm.twoPI;
                         newCurList.Add(pt33);
 
-                        // Extend curve at both ends - always done for proper guidance
-                        // Extension happens regardless of boundary - ensures curve is long enough for guidance
-                        if (!ct.IsCancellationRequested && !(track.mode == TrackMode.bndCurve))
+                        if (!ct.IsCancellationRequested && mf.bnd.bndList.Count > 0 && !(track.mode == TrackMode.bndCurve))
                         {
                             int ptCnt = newCurList.Count - 1;
-                            double extensionLength = 200.0;
 
-                            // End extension - single point 200m out
-                            vec3 endExt = new vec3(newCurList[ptCnt]);
-                            endExt.easting += Math.Sin(endExt.heading) * extensionLength;
-                            endExt.northing += Math.Cos(endExt.heading) * extensionLength;
-                            newCurList.Add(endExt);
+                            bool isAdding = false;
+                            //end
+                            while (mf.bnd.bndList[0].fenceLineEar.IsPointInPolygon(newCurList[newCurList.Count - 1]))
+                            {
+                                if (ct.IsCancellationRequested)
+                                    break;
+                                isAdding = true;
+                                for (int i = 1; i < 10; i++)
+                                {
+                                    vec3 pt = new vec3(newCurList[ptCnt]);
+                                    pt.easting += (Math.Sin(pt.heading) * i * 2);
+                                    pt.northing += (Math.Cos(pt.heading) * i * 2);
+                                    newCurList.Add(pt);
+                                }
+                                ptCnt = newCurList.Count - 1;
+                            }
 
-                            // Beginning extension - single point 200m back
-                            vec3 startExt = new vec3(newCurList[0]);
-                            startExt.easting -= Math.Sin(startExt.heading) * extensionLength;
-                            startExt.northing -= Math.Cos(startExt.heading) * extensionLength;
-                            newCurList.Insert(0, startExt);
+                            if (isAdding)
+                            {
+                                vec3 pt = new vec3(newCurList[newCurList.Count - 1]);
+                                for (int i = 1; i < 5; i++)
+                                {
+                                    pt.easting += (Math.Sin(pt.heading) * 2);
+                                    pt.northing += (Math.Cos(pt.heading) * 2);
+                                    newCurList.Add(pt);
+                                }
+                            }
+
+                            isAdding = false;
+
+                            //and the beginning
+                            pt33 = new vec3(newCurList[0]);
+
+                            while (mf.bnd.bndList[0].fenceLineEar.IsPointInPolygon(newCurList[0]))
+                            {
+                                if (ct.IsCancellationRequested)
+                                    break;
+                                isAdding = true;
+                                pt33 = new vec3(newCurList[0]);
+
+                                for (int i = 1; i < 10; i++)
+                                {
+                                    vec3 pt = new vec3(pt33);
+                                    pt.easting -= (Math.Sin(pt.heading) * i * 2);
+                                    pt.northing -= (Math.Cos(pt.heading) * i * 2);
+                                    newCurList.Insert(0, pt);
+                                }
+                            }
+
+                            if (isAdding)
+                            {
+                                vec3 pt = new vec3(newCurList[0]);
+                                for (int i = 1; i < 5; i++)
+                                {
+                                    pt.easting -= (Math.Sin(pt.heading) * 2);
+                                    pt.northing -= (Math.Cos(pt.heading) * 2);
+                                    newCurList.Insert(0, pt);
+                                }
+                            }
                         }
                     }
                 }
@@ -459,7 +520,7 @@ namespace AgOpenGPS
             return newCurList;
         }
 
-        private List<List<vec3>> BuildCurveGuidelines(List<vec3> extendedCurve, double distAway, int _passes, CancellationToken ct)
+        private List<List<vec3>> BuildCurveGuidelines(double distAway, int _passes, CTrk track, CancellationToken ct)
         {
             // the listlist of all the guidelines
             List<List<vec3>> newGuideLL = new List<List<vec3>>();
@@ -482,40 +543,43 @@ namespace AgOpenGPS
                     double nextGuideDist = 0;
                     if (isHeadingSameWay)
                     {
-                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * numGuides;
+                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * numGuides + track.nudgeDistance;
                         nextGuideDist += (isSwitch ? mf.tool.offset * 2 : 0);
                         isSwitch = !isSwitch;
                     }
                     else
                     {
-                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * -numGuides;
+                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * -numGuides + track.nudgeDistance;
                         nextGuideDist += (isSwitch ? 0 : -mf.tool.offset * 2);
                         isSwitch = !isSwitch;
                     }
 
-                    // extendedCurve is already at distAway offset, so nextGuideDist is relative to it
+                    nextGuideDist += distAway;
+
                     double step = (mf.tool.width - mf.tool.overlap) * 0.48;
                     if (step > 4) step = 4;
                     if (step < 1) step = 1;
 
                     double distSqAway = (nextGuideDist * nextGuideDist) - 0.01;
 
-                    int refCount = extendedCurve.Count;
+                    // Use extended reference curve for guidelines calculation
+                    List<vec3> refCurve = GetExtendedReferenceCurve(track);
+                    int refCount = refCurve.Count;
                     for (int i = 0; i < refCount; i++)
                     {
                         if (ct.IsCancellationRequested)
                             break;
 
                         vec3 point = new vec3(
-                        extendedCurve[i].easting + (Math.Sin(glm.PIBy2 + extendedCurve[i].heading) * nextGuideDist),
-                        extendedCurve[i].northing + (Math.Cos(glm.PIBy2 + extendedCurve[i].heading) * nextGuideDist),
-                        extendedCurve[i].heading);
+                        refCurve[i].easting + (Math.Sin(glm.PIBy2 + refCurve[i].heading) * nextGuideDist),
+                        refCurve[i].northing + (Math.Cos(glm.PIBy2 + refCurve[i].heading) * nextGuideDist),
+                        refCurve[i].heading);
                         bool add = true;
 
                         for (int t = 0; t < refCount; t++)
                         {
-                            double dist = ((point.easting - extendedCurve[t].easting) * (point.easting - extendedCurve[t].easting))
-                                + ((point.northing - extendedCurve[t].northing) * (point.northing - extendedCurve[t].northing));
+                            double dist = ((point.easting - refCurve[t].easting) * (point.easting - refCurve[t].easting))
+                                + ((point.northing - refCurve[t].northing) * (point.northing - refCurve[t].northing));
                             if (dist < distSqAway)
                             {
                                 add = false;
@@ -531,11 +595,13 @@ namespace AgOpenGPS
                                     + ((point.northing - newGuideList[newGuideList.Count - 1].northing) * (point.northing - newGuideList[newGuideList.Count - 1].northing));
                                 if (dist > step)
                                 {
+                                    // Boundary check temporarily disabled
                                     newGuideList.Add(point);
                                 }
                             }
                             else
                             {
+                                // Boundary check temporarily disabled
                                 newGuideList.Add(point);
                             }
                         }
@@ -543,6 +609,8 @@ namespace AgOpenGPS
 
                     if (newGuideList == null || newGuideList.Count == 0)
                         continue;
+
+                    //AddGuidelineExtensions(ref newGuideList); // Temporarily disabled
                 }
 
                 //right side
@@ -559,40 +627,43 @@ namespace AgOpenGPS
                     double nextGuideDist = 0;
                     if (isHeadingSameWay)
                     {
-                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * numGuides;
+                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * numGuides + track.nudgeDistance;
                         nextGuideDist += (isSwitch ? mf.tool.offset * 2 : 0);
                         isSwitch = !isSwitch;
                     }
                     else
                     {
-                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * -numGuides;
+                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * -numGuides + track.nudgeDistance;
                         nextGuideDist += (isSwitch ? 0 : -mf.tool.offset * 2);
                         isSwitch = !isSwitch;
                     }
 
-                    // extendedCurve is already at distAway offset, so nextGuideDist is relative to it
+                    nextGuideDist += distAway;
+
                     double step = (mf.tool.width - mf.tool.overlap) * 0.48;
                     if (step > 4) step = 4;
                     if (step < 1) step = 1;
 
                     double distSqAway = (nextGuideDist * nextGuideDist) - 0.01;
 
-                    int refCount = extendedCurve.Count;
+                    // Use extended reference curve for guidelines calculation
+                    List<vec3> refCurve = GetExtendedReferenceCurve(track);
+                    int refCount = refCurve.Count;
                     for (int i = 0; i < refCount; i++)
                     {
                         if (ct.IsCancellationRequested)
                             break;
 
                         vec3 point = new vec3(
-                        extendedCurve[i].easting + (Math.Sin(glm.PIBy2 + extendedCurve[i].heading) * nextGuideDist),
-                        extendedCurve[i].northing + (Math.Cos(glm.PIBy2 + extendedCurve[i].heading) * nextGuideDist),
-                        extendedCurve[i].heading);
+                        refCurve[i].easting + (Math.Sin(glm.PIBy2 + refCurve[i].heading) * nextGuideDist),
+                        refCurve[i].northing + (Math.Cos(glm.PIBy2 + refCurve[i].heading) * nextGuideDist),
+                        refCurve[i].heading);
                         bool add = true;
 
                         for (int t = 0; t < refCount; t++)
                         {
-                            double dist = ((point.easting - extendedCurve[t].easting) * (point.easting - extendedCurve[t].easting))
-                                + ((point.northing - extendedCurve[t].northing) * (point.northing - extendedCurve[t].northing));
+                            double dist = ((point.easting - refCurve[t].easting) * (point.easting - refCurve[t].easting))
+                                + ((point.northing - refCurve[t].northing) * (point.northing - refCurve[t].northing));
                             if (dist < distSqAway)
                             {
                                 add = false;
@@ -608,11 +679,13 @@ namespace AgOpenGPS
                                     + ((point.northing - newGuideList[newGuideList.Count - 1].northing) * (point.northing - newGuideList[newGuideList.Count - 1].northing));
                                 if (dist > step)
                                 {
+                                    // Boundary check temporarily disabled
                                     newGuideList.Add(point);
                                 }
                             }
                             else
                             {
+                                // Boundary check temporarily disabled
                                 newGuideList.Add(point);
                             }
                         }
@@ -620,6 +693,8 @@ namespace AgOpenGPS
 
                     if (newGuideList == null || newGuideList.Count == 0)
                         continue;
+
+                    //AddGuidelineExtensions(ref newGuideList); // Temporarily disabled
                 }
             }
             catch (Exception e)
@@ -974,16 +1049,12 @@ namespace AgOpenGPS
         {
             if (mf.trk.idx == -1) return;
 
-            // Don't draw anything while calculating to avoid flicker during track switching
-            if (isCalculating) return;
-
             int ptCount = mf.trk.gArr[mf.trk.idx].curvePts.Count;
 
             if (mf.trk.gArr[mf.trk.idx].mode != TrackMode.waterPivot)
             {
                 if (mf.trk.gArr[mf.trk.idx].curvePts == null || mf.trk.gArr[mf.trk.idx].curvePts.Count == 0) return;
 
-                // Always draw reference curve (red line with A/B points)
                 GL.LineWidth(4);
                 GL.Color3(0.96, 0.2f, 0.2f);
                 GL.Begin(PrimitiveType.Lines);
@@ -1066,9 +1137,13 @@ namespace AgOpenGPS
 
             if (guideArr.Count > 0)
             {
-                // Draw guidelines with same colors and alpha as ABLine guidelines
                 GL.LineWidth(mf.ABLine.lineWidth * 3);
-                GL.Color4(0.0f, 0.0f, 0.0f, 0.5f);
+                GLW.SetColor(extraGuidelinesBlack);
+
+                if (mf.trk.gArr[mf.trk.idx].mode != TrackMode.bndCurve)
+                    GL.Begin(PrimitiveType.LineStrip);
+                else
+                    GL.Begin(PrimitiveType.LineLoop);
 
                 for (int i = 0; i < guideArr.Count; i++)
                 {
@@ -1077,9 +1152,15 @@ namespace AgOpenGPS
                         GL.Vertex3(guideArr[i][h].easting, guideArr[i][h].northing, 0);
                     GL.End();
                 }
+                GL.End();
 
                 GL.LineWidth(mf.ABLine.lineWidth);
-                GL.Color4(0.19907f, 0.6f, 0.19750f, 0.6f);
+                GLW.SetColor(extraGuidelinesGreen);
+
+                if (mf.trk.gArr[mf.trk.idx].mode != TrackMode.bndCurve)
+                    GL.Begin(PrimitiveType.LineStrip);
+                else
+                    GL.Begin(PrimitiveType.LineLoop);
 
                 for (int i = 0; i < guideArr.Count; i++)
                 {
@@ -1088,6 +1169,7 @@ namespace AgOpenGPS
                         GL.Vertex3(guideArr[i][h].easting, guideArr[i][h].northing, 0);
                     GL.End();
                 }
+                GL.End();
             }
 
             GL.PointSize(1.0f);
@@ -1337,6 +1419,24 @@ namespace AgOpenGPS
                     }
                 }
             }
+        }
+
+        private List<vec3> AddGuidelineExtensions(ref List<vec3> guideLine)
+        {
+            vec3 startExtension = new vec3
+            {
+                easting = guideLine[0].easting - (Math.Sin(guideLine[0].heading) * 2000.0),
+                northing = guideLine[0].northing - (Math.Cos(guideLine[0].heading) * 2000.0)
+            };
+            guideLine.Insert(0, startExtension);
+
+            vec3 endExtension = new vec3
+            {
+                easting = guideLine[guideLine.Count - 1].easting + (Math.Sin(guideLine[guideLine.Count - 1].heading) * 2000.0),
+                northing = guideLine[guideLine.Count - 1].northing + (Math.Cos(guideLine[guideLine.Count - 1].heading) * 2000.0)
+            };
+            guideLine.Add(endExtension);
+            return guideLine;
         }
 
         // Resample curve points to uniform spacing to prevent lookahead jumping
