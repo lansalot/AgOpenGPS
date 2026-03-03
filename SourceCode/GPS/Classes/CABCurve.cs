@@ -543,17 +543,18 @@ namespace AgOpenGPS
                     double nextGuideDist = 0;
                     if (isHeadingSameWay)
                     {
-                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * numGuides + track.nudgeDistance;
+                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * numGuides;
                         nextGuideDist += (isSwitch ? mf.tool.offset * 2 : 0);
                         isSwitch = !isSwitch;
                     }
                     else
                     {
-                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * -numGuides + track.nudgeDistance;
+                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * -numGuides;
                         nextGuideDist += (isSwitch ? 0 : -mf.tool.offset * 2);
                         isSwitch = !isSwitch;
                     }
 
+                    // distAway already includes track.nudgeDistance
                     nextGuideDist += distAway;
 
                     double step = (mf.tool.width - mf.tool.overlap) * 0.48;
@@ -627,17 +628,18 @@ namespace AgOpenGPS
                     double nextGuideDist = 0;
                     if (isHeadingSameWay)
                     {
-                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * numGuides + track.nudgeDistance;
+                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * numGuides;
                         nextGuideDist += (isSwitch ? mf.tool.offset * 2 : 0);
                         isSwitch = !isSwitch;
                     }
                     else
                     {
-                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * -numGuides + track.nudgeDistance;
+                        nextGuideDist = (mf.tool.width - mf.tool.overlap) * -numGuides;
                         nextGuideDist += (isSwitch ? 0 : -mf.tool.offset * 2);
                         isSwitch = !isSwitch;
                     }
 
+                    // distAway already includes track.nudgeDistance
                     nextGuideDist += distAway;
 
                     double step = (mf.tool.width - mf.tool.overlap) * 0.48;
