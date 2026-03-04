@@ -47,6 +47,7 @@ namespace AgOpenGPS
             this.resetALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetEverythingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AgShareApiMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrWatchdog = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStripFlag = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -266,6 +267,7 @@ namespace AgOpenGPS
             this.kioskModeToolStrip,
             this.resetALLToolStripMenuItem,
             this.AgShareApiMenuItem,
+            this.checkForUpdatesToolStripMenuItem,
             this.helpMenuItem});
             this.fileToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fileToolStripMenuItem.Image = global::AgOpenGPS.Properties.Resources.fileMenu;
@@ -357,7 +359,14 @@ namespace AgOpenGPS
             this.AgShareApiMenuItem.Size = new System.Drawing.Size(382, 50);
             this.AgShareApiMenuItem.Text = "AgShare API";
             this.AgShareApiMenuItem.Click += new System.EventHandler(this.AgShareApiMenuItem_Click);
-            // 
+            //
+            // checkForUpdatesToolStripMenuItem
+            //
+            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(382, 50);
+            this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates";
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
+            //
             // helpMenuItem
             // 
             this.helpMenuItem.Name = "helpMenuItem";
@@ -3120,6 +3129,7 @@ namespace AgOpenGPS
         private System.Windows.Forms.ToolStripMenuItem eventViewerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tramsMultiMenuField;
         private System.Windows.Forms.ToolStripMenuItem AgShareApiMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newProfileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadProfileToolStripMenuItem;

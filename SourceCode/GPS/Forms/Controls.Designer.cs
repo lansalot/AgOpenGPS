@@ -1419,6 +1419,41 @@ namespace AgOpenGPS
             form.ShowDialog(this);
         }
 
+        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string updaterPath = System.IO.Path.Combine(Application.StartupPath, "AgOpenGPS.Updater.exe");
+
+                if (!System.IO.File.Exists(updaterPath))
+                {
+                    // Show error if updater not found
+                    MessageBox.Show(
+                        "Updater not found. Please ensure AgOpenGPS.Updater.exe is in the application directory.",
+                        "Updater Not Found",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var processInfo = new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = updaterPath,
+                    Arguments = $"--current-version \"{Program.SemVer}\"",
+                    UseShellExecute = true
+                };
+
+                System.Diagnostics.Process.Start(processInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Failed to start updater: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
 
         private void hotKeysToolStripMenuItem_Click(object sender, EventArgs e)
         {
