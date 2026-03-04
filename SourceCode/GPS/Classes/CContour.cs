@@ -104,7 +104,7 @@ namespace AgOpenGPS
             boxB.easting = pivot.easting + sin2HL + sinH;
             boxB.northing = pivot.northing + cos2HL + cosH;
 
-            if (!isLocked)
+            if (!isLocked && !mf.isBtnAutoSteerOn)
             {
                 stripNum = -1;
                 for (int s = 0; s < stripCount; s++)
