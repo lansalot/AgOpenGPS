@@ -30,9 +30,9 @@ namespace AgOpenGPS.Updater.Forms
         {
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.lblGitHubStatus = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.txtReleaseNotes = new System.Windows.Forms.TextBox();
-            this.lblReleaseNotes = new System.Windows.Forms.Label();
+            this.btnViewReleaseNotes = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnCheckForUpdates = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@ namespace AgOpenGPS.Updater.Forms
             // panelHeader
             //
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(151)))), ((int)(((byte)(160)))));
+            this.panelHeader.Controls.Add(this.lblGitHubStatus);
             this.panelHeader.Controls.Add(this.lblTitle);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
@@ -71,11 +72,22 @@ namespace AgOpenGPS.Updater.Forms
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "AgOpenGPS Updater";
             //
+            // lblGitHubStatus
+            //
+            this.lblGitHubStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblGitHubStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblGitHubStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.lblGitHubStatus.Location = new System.Drawing.Point(630, 35);
+            this.lblGitHubStatus.Name = "lblGitHubStatus";
+            this.lblGitHubStatus.Size = new System.Drawing.Size(110, 40);
+            this.lblGitHubStatus.TabIndex = 1;
+            this.lblGitHubStatus.Text = "🔒 Anonymous";
+            this.lblGitHubStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
             // panelMain
             //
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(230)))));
-            this.panelMain.Controls.Add(this.txtReleaseNotes);
-            this.panelMain.Controls.Add(this.lblReleaseNotes);
+            this.panelMain.Controls.Add(this.btnViewReleaseNotes);
             this.panelMain.Controls.Add(this.lblProgressPercent);
             this.panelMain.Controls.Add(this.progressBar1);
             this.panelMain.Controls.Add(this.lblStatus);
@@ -89,7 +101,7 @@ namespace AgOpenGPS.Updater.Forms
             this.panelMain.Location = new System.Drawing.Point(0, 90);
             this.panelMain.Name = "panelMain";
             this.panelMain.Padding = new System.Windows.Forms.Padding(30);
-            this.panelMain.Size = new System.Drawing.Size(750, 530);
+            this.panelMain.Size = new System.Drawing.Size(750, 430);
             this.panelMain.TabIndex = 1;
             //
             // lblCurrentVersion
@@ -143,7 +155,6 @@ namespace AgOpenGPS.Updater.Forms
             //
             // lblSourceInfo
             //
-            this.lblSourceInfo.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             this.lblSourceInfo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.lblSourceInfo.ForeColor = System.Drawing.Color.FromArgb(100, 100, 100);
             this.lblSourceInfo.Location = new System.Drawing.Point(30, 160);
@@ -167,6 +178,22 @@ namespace AgOpenGPS.Updater.Forms
             this.btnCheckForUpdates.UseVisualStyleBackColor = false;
             this.btnCheckForUpdates.Click += new System.EventHandler(this.BtnCheckForUpdates_Click);
             //
+            // btnViewReleaseNotes
+            //
+            this.btnViewReleaseNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewReleaseNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.btnViewReleaseNotes.Enabled = false;
+            this.btnViewReleaseNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewReleaseNotes.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnViewReleaseNotes.ForeColor = System.Drawing.Color.White;
+            this.btnViewReleaseNotes.Location = new System.Drawing.Point(400, 210);
+            this.btnViewReleaseNotes.Name = "btnViewReleaseNotes";
+            this.btnViewReleaseNotes.Size = new System.Drawing.Size(320, 70);
+            this.btnViewReleaseNotes.TabIndex = 6;
+            this.btnViewReleaseNotes.Text = "View Release Notes";
+            this.btnViewReleaseNotes.UseVisualStyleBackColor = false;
+            this.btnViewReleaseNotes.Click += new System.EventHandler(this.BtnViewReleaseNotes_Click);
+            //
             // lblStatus
             //
             this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -177,7 +204,7 @@ namespace AgOpenGPS.Updater.Forms
             this.lblStatus.Location = new System.Drawing.Point(30, 300);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(690, 60);
-            this.lblStatus.TabIndex = 6;
+            this.lblStatus.TabIndex = 7;
             this.lblStatus.Text = "Ready...";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             //
@@ -186,7 +213,7 @@ namespace AgOpenGPS.Updater.Forms
             this.progressBar1.Location = new System.Drawing.Point(30, 370);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(690, 40);
-            this.progressBar1.TabIndex = 7;
+            this.progressBar1.TabIndex = 8;
             this.progressBar1.Visible = false;
             //
             // lblProgressPercent
@@ -198,38 +225,10 @@ namespace AgOpenGPS.Updater.Forms
             this.lblProgressPercent.Location = new System.Drawing.Point(30, 420);
             this.lblProgressPercent.Name = "lblProgressPercent";
             this.lblProgressPercent.Size = new System.Drawing.Size(690, 80);
-            this.lblProgressPercent.TabIndex = 10;
+            this.lblProgressPercent.TabIndex = 9;
             this.lblProgressPercent.Text = "0%";
             this.lblProgressPercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblProgressPercent.Visible = false;
-            //
-            // txtReleaseNotes
-            //
-            this.txtReleaseNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReleaseNotes.BackColor = System.Drawing.Color.White;
-            this.txtReleaseNotes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtReleaseNotes.Location = new System.Drawing.Point(30, 520);
-            this.txtReleaseNotes.Multiline = true;
-            this.txtReleaseNotes.Name = "txtReleaseNotes";
-            this.txtReleaseNotes.ReadOnly = true;
-            this.txtReleaseNotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtReleaseNotes.Size = new System.Drawing.Size(690, 120);
-            this.txtReleaseNotes.TabIndex = 11;
-            this.txtReleaseNotes.Text = "Release notes will appear here after checking for updates.";
-            this.txtReleaseNotes.Visible = false;
-            //
-            // lblReleaseNotes
-            //
-            this.lblReleaseNotes.AutoSize = true;
-            this.lblReleaseNotes.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblReleaseNotes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(20)))));
-            this.lblReleaseNotes.Location = new System.Drawing.Point(30, 490);
-            this.lblReleaseNotes.Name = "lblReleaseNotes";
-            this.lblReleaseNotes.Size = new System.Drawing.Size(133, 25);
-            this.lblReleaseNotes.TabIndex = 12;
-            this.lblReleaseNotes.Text = "Release Notes:";
-            this.lblReleaseNotes.Visible = false;
             //
             // panelButtons
             //
@@ -237,7 +236,7 @@ namespace AgOpenGPS.Updater.Forms
             this.panelButtons.Controls.Add(this.btnClose);
             this.panelButtons.Controls.Add(this.btnInstallUpdate);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtons.Location = new System.Drawing.Point(0, 620);
+            this.panelButtons.Location = new System.Drawing.Point(0, 520);
             this.panelButtons.Name = "panelButtons";
             this.panelButtons.Padding = new System.Windows.Forms.Padding(30);
             this.panelButtons.Size = new System.Drawing.Size(750, 110);
@@ -279,7 +278,7 @@ namespace AgOpenGPS.Updater.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(750, 730);
+            this.ClientSize = new System.Drawing.Size(750, 630);
             this.ControlBox = false;
             this.Controls.Add(this.panelButtons);
             this.Controls.Add(this.panelMain);
@@ -306,6 +305,7 @@ namespace AgOpenGPS.Updater.Forms
 
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblGitHubStatus;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Label lblCurrentVersion;
         private System.Windows.Forms.Label lblLatestVersion;
@@ -319,7 +319,6 @@ namespace AgOpenGPS.Updater.Forms
         private System.Windows.Forms.Button btnInstallUpdate;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panelButtons;
-        private System.Windows.Forms.TextBox txtReleaseNotes;
-        private System.Windows.Forms.Label lblReleaseNotes;
+        private System.Windows.Forms.Button btnViewReleaseNotes;
     }
 }

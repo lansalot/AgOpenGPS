@@ -29,6 +29,7 @@ namespace AgOpenGPS.Updater.Services
         {
             _owner = owner ?? DefaultOwner;
             _repository = repository ?? DefaultRepository;
+            // Token provided via command line only (no hardcoded token for security)
             _authToken = authToken;
 
             _httpClient = new HttpClient
@@ -325,6 +326,14 @@ namespace AgOpenGPS.Updater.Services
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Checks if this service has an authentication token.
+        /// </summary>
+        public bool HasAuthToken()
+        {
+            return !string.IsNullOrEmpty(_authToken);
         }
 
         public void Dispose()

@@ -23,6 +23,7 @@ namespace AgOpenGPS.Updater.Forms
         private string _localUpdatePath;
         private string _localUpdateVersion;
         private bool _isBusy;
+        private bool _versionFromCommandLine;
         private CancellationTokenSource _cancellationTokenSource;
         private bool _isInstalling;
 
@@ -53,6 +54,7 @@ namespace AgOpenGPS.Updater.Forms
                 if (arg.Equals("--current-version", StringComparison.OrdinalIgnoreCase) && i + 1 < args.Length)
                 {
                     _currentVersion = args[++i];
+                    _versionFromCommandLine = true;
                 }
                 else if (arg.Equals("--install-path", StringComparison.OrdinalIgnoreCase) && i + 1 < args.Length)
                 {
@@ -72,8 +74,25 @@ namespace AgOpenGPS.Updater.Forms
 
         private void FormUpdate_Load(object sender, EventArgs e)
         {
+            // Check if updater was started by AgOpenGPS (version passed via command line)
+            if (!_versionFromCommandLine)
+            {
+                // Show error dialog and close
+                FormDialog.ShowError(this, "Updater Error",
+                    "The updater must be started from AgOpenGPS.\n\n" +
+                    "Please start AgOpenGPS first and use:\n" +
+                    "Menu → Tools → Check for Updates\n\n" +
+                    "This is required to detect your current version.");
+
+                this.BeginInvoke(new Action(() => this.Close()));
+                return;
+            }
+
             // Display current version
             lblCurrentVersion.Text = $"Current Version: {_currentVersion}";
+
+            // Update GitHub status indicator
+            UpdateGitHubStatus();
 
             // Auto-detect local update
             bool foundLocal = CheckForLocalUpdate();
@@ -111,6 +130,44 @@ namespace AgOpenGPS.Updater.Forms
             lblSourceInfo.Visible = true;
 
             return found;
+        }
+
+        private void UpdateGitHubStatus()
+        {
+            // Check if we have a GitHub token (from command line or hardcoded)
+            bool hasToken = !string.IsNullOrEmpty(_gitHubToken) ||
+                HasHardcodedGitHubToken();
+
+            if (hasToken)
+            {
+                lblGitHubStatus.Text = "🔐 Official";
+                lblGitHubStatus.ForeColor = System.Drawing.Color.FromArgb(100, 255, 100); // Bright green
+                lblGitHubStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            }
+            else
+            {
+                lblGitHubStatus.Text = "🔓 Anonymous";
+                lblGitHubStatus.ForeColor = System.Drawing.Color.FromArgb(180, 180, 180); // Gray
+                lblGitHubStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            }
+        }
+
+        private bool HasHardcodedGitHubToken()
+        {
+            try
+            {
+                // Check if GithubReleaseService has a hardcoded token
+                using (var service = new GithubReleaseService())
+                {
+                    // The service uses hardcoded token if no token is passed and one exists
+                    // We can check this by seeing if it adds an Authorization header
+                    return service.HasAuthToken();
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void UpdateSourceUI()
@@ -218,6 +275,8 @@ namespace AgOpenGPS.Updater.Forms
 
             btnCheckForUpdates.Enabled = !busy && !_isInstalling;
             btnInstallUpdate.Enabled = !busy && _availableUpdate != null && !_isInstalling;
+            btnViewReleaseNotes.Enabled = !busy && _availableUpdate != null &&
+                !string.IsNullOrEmpty(_availableUpdate.Body) && !_isInstalling;
             chkIncludePrerelease.Enabled = !busy && !_isInstalling;
 
             // Close button changes to Cancel when installing
@@ -239,25 +298,19 @@ namespace AgOpenGPS.Updater.Forms
         {
             btnInstallUpdate.Enabled = hasUpdate && !_isInstalling;
 
+            // Enable View Release Notes button if update has release notes
+            btnViewReleaseNotes.Enabled = hasUpdate && _availableUpdate != null &&
+                !string.IsNullOrEmpty(_availableUpdate.Body) && !_isInstalling;
+
             if (hasUpdate && _availableUpdate != null)
             {
                 lblLatestVersion.Text = $"Latest Version: {_availableUpdate.Version} (New!)";
                 lblLatestVersion.ForeColor = System.Drawing.Color.FromArgb(27, 151, 160);
-
-                // Show release notes
-                if (!string.IsNullOrEmpty(_availableUpdate.Body))
-                {
-                    txtReleaseNotes.Text = _availableUpdate.Body;
-                    txtReleaseNotes.Visible = true;
-                    lblReleaseNotes.Visible = true;
-                }
             }
             else
             {
                 lblLatestVersion.Text = "Latest Version: Up to date";
                 lblLatestVersion.ForeColor = System.Drawing.Color.FromArgb(60, 60, 80);
-                txtReleaseNotes.Visible = false;
-                lblReleaseNotes.Visible = false;
             }
         }
 
@@ -289,6 +342,18 @@ namespace AgOpenGPS.Updater.Forms
         private async void BtnCheckForUpdates_Click(object sender, EventArgs e)
         {
             await CheckForUpdatesAsync();
+        }
+
+        private void BtnViewReleaseNotes_Click(object sender, EventArgs e)
+        {
+            if (_availableUpdate == null)
+                return;
+
+            string notes = !string.IsNullOrEmpty(_availableUpdate.Body)
+                ? _availableUpdate.Body
+                : "No release notes available.";
+
+            FormReleaseNotes.ShowReleaseNotes(this, "AgOpenGPS Update", _availableUpdate.Version, notes);
         }
 
         private async System.Threading.Tasks.Task CheckForUpdatesAsync()
