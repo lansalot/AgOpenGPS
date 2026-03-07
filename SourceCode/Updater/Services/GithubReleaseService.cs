@@ -20,6 +20,9 @@ namespace AgOpenGPS.Updater.Services
         private const string DefaultRepository = "AgOpenGPS";
         private const string GithubApiUrl = "https://api.github.com";
 
+        // GitHub Personal Access Token for updater
+        private const string GitHubToken = "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";
+
         private readonly HttpClient _httpClient;
         private readonly string _owner;
         private readonly string _repository;
@@ -29,8 +32,8 @@ namespace AgOpenGPS.Updater.Services
         {
             _owner = owner ?? DefaultOwner;
             _repository = repository ?? DefaultRepository;
-            // Token provided via command line only (no hardcoded token for security)
-            _authToken = authToken;
+            // Use provided token or fall back to default token
+            _authToken = authToken ?? GitHubToken;
 
             _httpClient = new HttpClient
             {
