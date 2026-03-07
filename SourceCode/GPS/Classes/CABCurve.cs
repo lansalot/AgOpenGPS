@@ -85,6 +85,20 @@ namespace AgOpenGPS
             if (track == null || track.curvePts == null || track.curvePts.Count == 0)
                 return new List<vec3>();
 
+            // For closed loops like boundary curves, don't add extensions
+            // Check if first and last points are at the same location (closing the loop)
+            if (track.mode == TrackMode.bndCurve || track.curvePts.Count < 2)
+            {
+                // For boundary curves, return the curve points as-is without extensions
+                // The boundary is already a closed loop
+                List<vec3> result = new List<vec3>();
+                foreach (vec3 pt in track.curvePts)
+                {
+                    result.Add(new vec3(pt));
+                }
+                return result;
+            }
+
             List<vec3> extended = new List<vec3>(track.curvePts);
             int ptCnt = track.curvePts.Count - 1;
             vec3 start;
@@ -1394,6 +1408,43 @@ namespace AgOpenGPS
                 pt3 = arr[arr.Length - 1];
                 pt3.heading = Math.Atan2(arr[arr.Length - 1].easting - arr[arr.Length - 2].easting,
                     arr[arr.Length - 1].northing - arr[arr.Length - 2].northing);
+                if (pt3.heading < 0) pt3.heading += glm.twoPI;
+                xList.Add(pt3);
+            }
+        }
+
+        /// <summary>
+        /// Calculates headings for a closed loop (like a boundary curve).
+        /// The last point should have the same coordinates as the first point,
+        /// and its heading should wrap around to point towards the second point.
+        /// </summary>
+        public static void CalculateHeadingsClosedLoop(ref List<vec3> xList)
+        {
+            int cnt = xList.Count;
+            if (cnt > 3)
+            {
+                vec3[] arr = new vec3[cnt];
+                xList.CopyTo(arr);
+                xList.Clear();
+
+                // First point - wrap to use last point (before the duplicate closing point)
+                vec3 pt3 = arr[0];
+                pt3.heading = Math.Atan2(arr[1].easting - arr[cnt - 2].easting, arr[1].northing - arr[cnt - 2].northing);
+                if (pt3.heading < 0) pt3.heading += glm.twoPI;
+                xList.Add(pt3);
+
+                // Middle points (all except first and last)
+                for (int i = 1; i < cnt - 1; i++)
+                {
+                    pt3 = arr[i];
+                    pt3.heading = Math.Atan2(arr[i + 1].easting - arr[i - 1].easting, arr[i + 1].northing - arr[i - 1].northing);
+                    if (pt3.heading < 0) pt3.heading += glm.twoPI;
+                    xList.Add(pt3);
+                }
+
+                // Last point (closing point - same as first point) - should point to second point
+                pt3 = arr[cnt - 1];
+                pt3.heading = Math.Atan2(arr[1].easting - arr[cnt - 2].easting, arr[1].northing - arr[cnt - 2].northing);
                 if (pt3.heading < 0) pt3.heading += glm.twoPI;
                 xList.Add(pt3);
             }
