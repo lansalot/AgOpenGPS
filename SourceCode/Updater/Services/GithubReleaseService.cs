@@ -21,7 +21,7 @@ namespace AgOpenGPS.Updater.Services
         private const string GithubApiUrl = "https://api.github.com";
 
         // GitHub Personal Access Token for updater
-        private const string GitHubToken = "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";
+        private const string GitHubToken = "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";
 
         private readonly HttpClient _httpClient;
         private readonly string _owner;
