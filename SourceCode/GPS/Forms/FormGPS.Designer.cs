@@ -3005,7 +3005,7 @@ namespace AgOpenGPS
         public System.Windows.Forms.Button btnAutoSteer;
         private System.Windows.Forms.HScrollBar hsbarSteerAngle;
         private OpenTK.GLControl oglZoom;
-        private OpenTK.GLControl oglMain;
+        internal OpenTK.GLControl oglMain;
         private OpenTK.GLControl oglBack;
         private System.Windows.Forms.ComboBox cboxpRowWidth;
         private System.Windows.Forms.Label lblHz;
