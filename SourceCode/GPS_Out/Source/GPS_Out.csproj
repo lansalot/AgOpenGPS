@@ -9,9 +9,6 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <EmbeddedResourceUseDependentUponConvention>true</EmbeddedResourceUseDependentUponConvention>
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-    <!-- Disable PDB generation -->
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
