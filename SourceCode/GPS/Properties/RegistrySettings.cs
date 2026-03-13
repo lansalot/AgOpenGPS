@@ -101,7 +101,8 @@ namespace AgOpenGPS
                 Properties.VehicleSettings.Default.Load(vehicleFileName);
             }
 
-            // Load Tool settings if toolFileName is set, otherwise use vehicleFileName
+            // Load Tool settings if toolFileName is set, otherwise fallback to vehicleFileName
+            // (Temporary measure for backward compatibility during transition period)
             string toolFile = !string.IsNullOrEmpty(toolFileName) ? toolFileName : vehicleFileName;
             if (!string.IsNullOrEmpty(toolFile))
             {

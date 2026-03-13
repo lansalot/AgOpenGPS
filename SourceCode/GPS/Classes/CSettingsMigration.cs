@@ -63,6 +63,8 @@ namespace AgOpenGPS
 
         public static LoadResult MigrateVehicle(string sourceFileName, string outputName, VehicleSettings vehicleSettings)
         {
+            // Look in old location (baseDirectory\Vehicles) for backward compatibility
+            // New profiles are in VehicleProfiles, but old combined profiles are still in Vehicles
             string oldPath = Path.Combine(RegistrySettings.baseDirectory, "Vehicles", sourceFileName + ".xml");
 
             if (!File.Exists(oldPath))
@@ -121,7 +123,7 @@ namespace AgOpenGPS
             dest.setVehicle_maxAngularVelocity = source.setVehicle_maxAngularVelocity;
             dest.setVehicle_trackWidth = source.setVehicle_trackWidth;
 
-            // AutoSteer (zonder snapDistance, isAutoSteerAutoOn, guidanceLookAheadTime, isConstantContourOn, uTurnSmoothing, uTurnCompensation - die zitten nu in Environment)
+            // AutoSteer (excluding snapDistance, isAutoSteerAutoOn, guidanceLookAheadTime, isConstantContourOn, uTurnSmoothing, uTurnCompensation - these are now in Environment)
             dest.setAS_Kp = source.setAS_Kp;
             dest.setAS_countsPerDegree = source.setAS_countsPerDegree;
             dest.setAS_minSteerPWM = source.setAS_minSteerPWM;
@@ -163,7 +165,7 @@ namespace AgOpenGPS
             dest.setBrand_HBrand = source.setBrand_HBrand;
             dest.setBrand_WDBrand = source.setBrand_WDBrand;
 
-            // Vehicle type (zonder goalPointLookAheadMult, goalPointLookAheadHold, goalPointAcquireFactor, slowSpeedCutoff, minCoverage, hydraulicLiftLookAhead, toolOffDelay, isSteerWorkSwitchEnabled - die zitten nu in Tool)
+            // Vehicle type (excluding goalPointLookAheadMult, goalPointLookAheadHold, goalPointAcquireFactor, slowSpeedCutoff, minCoverage, hydraulicLiftLookAhead, toolOffDelay, isSteerWorkSwitchEnabled - these are now in Tool)
             dest.setVehicle_vehicleType = source.setVehicle_vehicleType;
             dest.setVehicle_panicStopSpeed = source.setVehicle_panicStopSpeed;
         }
@@ -247,7 +249,7 @@ namespace AgOpenGPS
             // Headland
             dest.setHeadland_isSectionControlled = source.setHeadland_isSectionControlled;
 
-            // Arduino Machine (verplaatst van Vehicle naar Tool)
+            // Arduino Machine (moved from Vehicle to Tool)
             dest.setArdMac_setting0 = source.setArdMac_setting0;
             dest.setArdMac_isHydEnabled = source.setArdMac_isHydEnabled;
             dest.setArdMac_hydRaiseTime = source.setArdMac_hydRaiseTime;
@@ -257,17 +259,17 @@ namespace AgOpenGPS
             dest.setArdMac_user3 = source.setArdMac_user3;
             dest.setArdMac_user4 = source.setArdMac_user4;
 
-            // Relay (verplaatst van Vehicle naar Tool)
+            // Relay (moved from Vehicle to Tool)
             dest.setRelay_pinConfig = source.setRelay_pinConfig;
 
-            // Guidance algorithm (verplaatst van Vehicle naar Tool)
+            // Guidance algorithm (moved from Vehicle to Tool)
             dest.purePursuitIntegralGainAB = source.purePursuitIntegralGainAB;
             dest.stanleyDistanceErrorGain = source.stanleyDistanceErrorGain;
             dest.stanleyHeadingErrorGain = source.stanleyHeadingErrorGain;
             dest.stanleyIntegralGainAB = source.stanleyIntegralGainAB;
             dest.setVehicle_isStanleyUsed = source.setVehicle_isStanleyUsed;
 
-            // Tool specific Steer Parameters (verplaatst van Vehicle naar Tool)
+            // Tool specific Steer Parameters (moved from Vehicle to Tool)
             dest.setVehicle_goalPointLookAheadHold = source.setVehicle_goalPointLookAheadHold;
             dest.setVehicle_toolOffDelay = source.setVehicle_toolOffDelay;
             dest.setVehicle_goalPointLookAheadMult = source.setVehicle_goalPointLookAheadMult;
