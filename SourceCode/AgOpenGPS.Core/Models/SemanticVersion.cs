@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace AgOpenGPS.Classes
+namespace AgOpenGPS.Core.Models
 {
     /// <summary>
     /// Semantic Version 2.0 implementation for version comparison.

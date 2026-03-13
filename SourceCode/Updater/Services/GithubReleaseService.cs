@@ -5,8 +5,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using AgOpenGPS.Core.Models;
 using AgOpenGPS.Updater.Models;
-using AgOpenGPS.Updater.Classes;
 using Newtonsoft.Json;
 
 namespace AgOpenGPS.Updater.Services
