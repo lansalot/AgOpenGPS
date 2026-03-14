@@ -534,11 +534,37 @@ namespace AgOpenGPS
 
             hotkeys = Properties.Settings.Default.setKey_hotkeys.ToCharArray();
 
-            if (string.IsNullOrEmpty(RegistrySettings.vehicleFileName) || string.IsNullOrEmpty(RegistrySettings.toolFileName))
-            {
-                Log.EventWriter("No vehicle or tool profile selected, prompting to create or select one");
+            // Check if any profile is missing
+            bool missingVehicle = string.IsNullOrEmpty(RegistrySettings.vehicleFileName);
+            bool missingTool = string.IsNullOrEmpty(RegistrySettings.toolFileName);
+            bool missingEnvironment = string.IsNullOrEmpty(RegistrySettings.environmentFileName);
 
-                YesMessageBox("No vehicle or tool selected\n\nUse 'New' to create a vehicle and tool profile\n\nIf none are created, NO changes will be saved!");
+            if (missingVehicle || missingTool || missingEnvironment)
+            {
+                Log.EventWriter($"Profile check - Vehicle:{!missingVehicle} Tool:{!missingTool} Environment:{!missingEnvironment}");
+
+                // Check what profiles are available
+                string[] oldProfiles = CSettingsMigration.GetConvertibleFiles();
+                bool hasOldProfiles = oldProfiles != null && oldProfiles.Length > 0;
+
+                bool hasNewProfiles = Directory.Exists(RegistrySettings.vehiclesDirectory) &&
+                    Directory.GetFiles(RegistrySettings.vehiclesDirectory, "*.xml").Length > 0;
+
+                // Show message only if no new profiles exist
+                if (!hasNewProfiles)
+                {
+                    if (hasOldProfiles)
+                    {
+                        YesMessageBox($"You have {oldProfiles.Length} old format profile(s) available.\n\n" +
+                            "Use 'Convert' to import them, or use 'New' to create new profiles.");
+                    }
+                    else
+                    {
+                        YesMessageBox("No profiles found.\n\n" +
+                            "Use 'New' to create Vehicle and Tool profiles.\n\n" +
+                            "Environment will use defaults if not selected.");
+                    }
+                }
 
                 using (var form = new AgOpenGPS.Forms.Profiles.FormLoadVehicleTool(this))
                 {
