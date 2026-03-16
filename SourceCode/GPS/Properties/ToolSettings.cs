@@ -131,7 +131,7 @@ namespace AgOpenGPS.Properties
             // Update registry with the loaded tool file name
             if (result == LoadResult.Ok)
             {
-                RegistrySettings.toolFileName = toolFileName;
+                RegistrySettings.toolProfileName = toolFileName;
             }
 
             return result;
@@ -144,9 +144,9 @@ namespace AgOpenGPS.Properties
         public void Save()
         {
             // Read file name from registry, use fallback if empty
-            string fileName = string.IsNullOrEmpty(RegistrySettings.toolFileName)
+            string fileName = string.IsNullOrEmpty(RegistrySettings.toolProfileName)
                 ? "DefaultTool"
-                : RegistrySettings.toolFileName;
+                : RegistrySettings.toolProfileName;
 
             string path = Path.Combine(RegistrySettings.toolsDirectory, fileName + ".xml");
             XmlSettingsHandler.SaveXMLFile(path, this);

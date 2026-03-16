@@ -81,7 +81,7 @@ namespace AgOpenGPS.Properties
             // Update registry with the loaded vehicle file name
             if (result == LoadResult.Ok)
             {
-                RegistrySettings.vehicleFileName = vehicleFileName;
+                RegistrySettings.vehicleProfileName = vehicleFileName;
             }
 
             return result;
@@ -94,9 +94,9 @@ namespace AgOpenGPS.Properties
         public void Save()
         {
             // Read file name from registry, use fallback if empty
-            string fileName = string.IsNullOrEmpty(RegistrySettings.vehicleFileName)
+            string fileName = string.IsNullOrEmpty(RegistrySettings.vehicleProfileName)
                 ? "DefaultVehicle"
-                : RegistrySettings.vehicleFileName;
+                : RegistrySettings.vehicleProfileName;
 
             string path = Path.Combine(RegistrySettings.vehiclesDirectory, fileName + ".xml");
             XmlSettingsHandler.SaveXMLFile(path, this);

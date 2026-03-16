@@ -40,7 +40,7 @@ namespace AgOpenGPS.Forms.Config
             var ts = Properties.ToolSettings.Default;
 
             // Vehicle panel
-            lblSummaryVehicleName.Text = RegistrySettings.vehicleFileName;
+            lblSummaryVehicleName.Text = RegistrySettings.vehicleProfileName;
             lblSumVehicleType.Text = vs.setVehicle_vehicleType == 0 ? "Tractor"
                 : vs.setVehicle_vehicleType == 1 ? "Harvester" : "Articulated";
             lblSumWheelbase.Text = Distance.SmallDistanceString(mf.isMetric, vs.setVehicle_wheelbase);
@@ -49,7 +49,7 @@ namespace AgOpenGPS.Forms.Config
             lblHitch.Text = Distance.SmallDistanceString(mf.isMetric, ts.setVehicle_hitchLength);
 
             // Tool panel
-            lblSummaryToolName.Text = RegistrySettings.toolFileName;
+            lblSummaryToolName.Text = RegistrySettings.toolProfileName;
             lblSumNumSections.Text = mf.tool.numOfSections.ToString();
             lblToolOffset.Text = Distance.SmallDistanceString(mf.isMetric, ts.setVehicle_toolOffset);
             lblOverlap.Text = Distance.SmallDistanceString(mf.isMetric, ts.setVehicle_toolOverlap);

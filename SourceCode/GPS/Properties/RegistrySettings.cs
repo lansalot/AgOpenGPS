@@ -9,9 +9,14 @@ namespace AgOpenGPS
 {
     public static class RegKeys
     {
-        public const string vehicleFileName = "VehicleFileName";
-        public const string toolFileName = "ToolFileName";
+        // New profile system (v7+) - split Vehicle/Tool/Environment profiles
+        public const string vehicleProfileName = "VehicleProfileName";
+        public const string toolProfileName = "ToolProfileName";
         public const string environmentFileName = "EnvironmentFileName";
+
+        // Legacy (v6 and earlier) - single profile file
+        public const string vehicleFileName = "VehicleFileName";
+
         public const string workingDirectory = "WorkingDirectory";
         public const string language = "Language";
     }
@@ -20,9 +25,15 @@ namespace AgOpenGPS
     {
         public const string defaultString = "Default";
         public static string culture = "en";
-        public static string vehicleFileName = "";
-        public static string toolFileName = "";
+
+        // New profile system values
+        public static string vehicleProfileName = "";
+        public static string toolProfileName = "";
         public static string environmentFileName = "Default";
+
+        // Legacy value (only for migration detection)
+        public static string legacyVehicleFileName = "";
+
         public static string workingDirectory = "Default";
         public static string vehiclesDirectory;
         public static string toolsDirectory;
@@ -30,6 +41,9 @@ namespace AgOpenGPS
         public static string baseDirectory;
         public static string fieldsDirectory;
         public static string environmentDirectory;
+
+        // Indicates if migration from legacy single profile is needed
+        public static bool NeedsMigration { get; private set; }
 
         public static void Load()
         {
@@ -45,23 +59,39 @@ namespace AgOpenGPS
                 }
                 workingDirectory = regKey.GetValue(RegKeys.workingDirectory).ToString();
 
-                //Vehicle File Name Registry Key
+                // NEW: Vehicle Profile Name (v7+)
+                if (regKey.GetValue(RegKeys.vehicleProfileName) == null)
+                {
+                    regKey.SetValue(RegKeys.vehicleProfileName, "");
+                    Log.EventWriter("Registry -> Key vehicleProfileName was null");
+                }
+                vehicleProfileName = regKey.GetValue(RegKeys.vehicleProfileName).ToString();
+
+                // NEW: Vehicle Profile Name (v7+)
+                if (regKey.GetValue(RegKeys.vehicleProfileName) == null)
+                {
+                    regKey.SetValue(RegKeys.vehicleProfileName, "");
+                    Log.EventWriter("Registry -> Key vehicleProfileName was null");
+                }
+                vehicleProfileName = regKey.GetValue(RegKeys.vehicleProfileName).ToString();
+
+                // NEW: Tool Profile Name (v7+)
+                if (regKey.GetValue(RegKeys.toolProfileName) == null)
+                {
+                    regKey.SetValue(RegKeys.toolProfileName, "");
+                    Log.EventWriter("Registry -> Key toolProfileName was null");
+                }
+                toolProfileName = regKey.GetValue(RegKeys.toolProfileName).ToString();
+
+                // LEGACY: Vehicle File Name (v6 and earlier) - only for migration detection
                 if (regKey.GetValue(RegKeys.vehicleFileName) == null)
                 {
                     regKey.SetValue(RegKeys.vehicleFileName, "");
                     Log.EventWriter("Registry -> Key vehicleFileName was null");
                 }
-                vehicleFileName = regKey.GetValue(RegKeys.vehicleFileName).ToString();
+                legacyVehicleFileName = regKey.GetValue(RegKeys.vehicleFileName).ToString();
 
-                //Tool File Name Registry Key
-                if (regKey.GetValue(RegKeys.toolFileName) == null)
-                {
-                    regKey.SetValue(RegKeys.toolFileName, "");
-                    Log.EventWriter("Registry -> Key toolFileName was null");
-                }
-                toolFileName = regKey.GetValue(RegKeys.toolFileName).ToString();
-
-                //Environment File Name Registry Key
+                // Environment File Name Registry Key
                 if (regKey.GetValue(RegKeys.environmentFileName) == null)
                 {
                     regKey.SetValue(RegKeys.environmentFileName, "Default");
@@ -86,6 +116,16 @@ namespace AgOpenGPS
                 Reset();
             }
 
+            // Detect if migration is needed (has legacy VehicleFileName but no new profile keys)
+            NeedsMigration = !string.IsNullOrEmpty(legacyVehicleFileName) &&
+                            string.IsNullOrEmpty(vehicleProfileName) &&
+                            string.IsNullOrEmpty(toolProfileName);
+
+            if (NeedsMigration)
+            {
+                Log.EventWriter($"Legacy profile detected: {legacyVehicleFileName}, migration needed");
+            }
+
             //make sure directories exist and are in right place if not default workingDir
             CreateDirectories();
 
@@ -95,18 +135,16 @@ namespace AgOpenGPS
             // Load Environment settings
             Properties.Settings.Default.Load();
 
-            // Load Vehicle settings if vehicleFileName is set
-            if (!string.IsNullOrEmpty(vehicleFileName))
+            // Load Vehicle settings if vehicleProfileName is set
+            if (!string.IsNullOrEmpty(vehicleProfileName))
             {
-                Properties.VehicleSettings.Default.Load(vehicleFileName);
+                Properties.VehicleSettings.Default.Load(vehicleProfileName);
             }
 
-            // Load Tool settings if toolFileName is set, otherwise fallback to vehicleFileName
-            // (Temporary measure for backward compatibility during transition period)
-            string toolFile = !string.IsNullOrEmpty(toolFileName) ? toolFileName : vehicleFileName;
-            if (!string.IsNullOrEmpty(toolFile))
+            // Load Tool settings if toolProfileName is set
+            if (!string.IsNullOrEmpty(toolProfileName))
             {
-                Properties.ToolSettings.Default.Load(toolFile);
+                Properties.ToolSettings.Default.Load(toolProfileName);
             }
         }
 
@@ -114,13 +152,13 @@ namespace AgOpenGPS
         {
             try
             {
-                //adding or editing "Language" subkey to the "SOFTWARE" subkey  
+                //adding or editing "Language" subkey to the "SOFTWARE" subkey
                 RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\AgOpenGPS");
 
-                if (name == RegKeys.vehicleFileName)
-                    vehicleFileName = value;
-                else if (name == RegKeys.toolFileName)
-                    toolFileName = value;
+                if (name == RegKeys.vehicleProfileName)
+                    vehicleProfileName = value;
+                else if (name == RegKeys.toolProfileName)
+                    toolProfileName = value;
                 else if (name == RegKeys.environmentFileName)
                     environmentFileName = value;
                 else if (name == RegKeys.language)

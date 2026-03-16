@@ -109,8 +109,8 @@ namespace AgOpenGPS
 
         private void UpdateHeader()
         {
-            lblVehicleName.Text = "Vehicle: " + RegistrySettings.vehicleFileName;
-            lblToolName.Text = "Tool: " + RegistrySettings.toolFileName;
+            lblVehicleName.Text = "Vehicle: " + RegistrySettings.vehicleProfileName;
+            lblToolName.Text = "Tool: " + RegistrySettings.toolProfileName;
             lblEnvironmentName.Text = "Environment: " + (RegistrySettings.environmentFileName ?? "Default");
         }
 
@@ -354,8 +354,8 @@ namespace AgOpenGPS
 
             AddHeader(dgv, "── Application");
             AddSysRow(dgv, "Version", Program.SemVer);
-            AddSysRow(dgv, "Vehicle File", RegistrySettings.vehiclesDirectory + "\\" + RegistrySettings.vehicleFileName + ".xml");
-            AddSysRow(dgv, "Tool File", RegistrySettings.toolsDirectory + "\\" + RegistrySettings.toolFileName + ".xml");
+            AddSysRow(dgv, "Vehicle File", RegistrySettings.vehiclesDirectory + "\\" + RegistrySettings.vehicleProfileName + ".xml");
+            AddSysRow(dgv, "Tool File", RegistrySettings.toolsDirectory + "\\" + RegistrySettings.toolProfileName + ".xml");
         }
 
         // ── CSV Export ────────────────────────────────────────────────────────

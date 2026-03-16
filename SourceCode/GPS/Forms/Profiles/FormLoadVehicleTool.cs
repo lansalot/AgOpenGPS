@@ -33,14 +33,14 @@ namespace AgOpenGPS.Forms.Profiles
             RefreshToolList();
 
             // Pre-select and preview the currently active vehicle/tool
-            if (!string.IsNullOrEmpty(RegistrySettings.vehicleFileName))
+            if (!string.IsNullOrEmpty(RegistrySettings.vehicleProfileName))
             {
-                _selectedVehicle = RegistrySettings.vehicleFileName;
+                _selectedVehicle = RegistrySettings.vehicleProfileName;
                 LoadVehiclePreview(_selectedVehicle);
             }
-            if (!string.IsNullOrEmpty(RegistrySettings.toolFileName))
+            if (!string.IsNullOrEmpty(RegistrySettings.toolProfileName))
             {
-                _selectedTool = RegistrySettings.toolFileName;
+                _selectedTool = RegistrySettings.toolProfileName;
                 LoadToolPreview(_selectedTool);
             }
 
@@ -51,11 +51,11 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void UpdateCurrentLabels()
         {
-            lblCurrentVehicle.Text = !string.IsNullOrEmpty(RegistrySettings.vehicleFileName)
-                ? "Current Vehicle: " + RegistrySettings.vehicleFileName
+            lblCurrentVehicle.Text = !string.IsNullOrEmpty(RegistrySettings.vehicleProfileName)
+                ? "Current Vehicle: " + RegistrySettings.vehicleProfileName
                 : "Current Vehicle: (none)";
-            lblCurrentTool.Text = !string.IsNullOrEmpty(RegistrySettings.toolFileName)
-                ? "Current Tool: " + RegistrySettings.toolFileName
+            lblCurrentTool.Text = !string.IsNullOrEmpty(RegistrySettings.toolProfileName)
+                ? "Current Tool: " + RegistrySettings.toolProfileName
                 : "Current Tool: (none)";
         }
 
@@ -78,7 +78,7 @@ namespace AgOpenGPS.Forms.Profiles
             foreach (string name in GetFiles(RegistrySettings.vehiclesDirectory, "VehicleSettings"))
             {
                 var item = new ListViewItem(name) { Name = name };
-                if (name == RegistrySettings.vehicleFileName)
+                if (name == RegistrySettings.vehicleProfileName)
                 {
                     item.BackColor = ColorCurrent;
                     item.Font = new Font(listViewVehicles.Font, FontStyle.Bold);
@@ -95,17 +95,17 @@ namespace AgOpenGPS.Forms.Profiles
             // Reset all non-current items back to default
             foreach (ListViewItem li in listViewVehicles.Items)
             {
-                if (li.Text != RegistrySettings.vehicleFileName)
+                if (li.Text != RegistrySettings.vehicleProfileName)
                     li.BackColor = listViewVehicles.BackColor;
             }
 
             if (listViewVehicles.SelectedItems.Count > 0)
             {
                 _selectedVehicle = listViewVehicles.SelectedItems[0].Text;
-                buttonDeleteVehicle.Enabled = _selectedVehicle != RegistrySettings.vehicleFileName;
+                buttonDeleteVehicle.Enabled = _selectedVehicle != RegistrySettings.vehicleProfileName;
 
                 // Color selected item green (unless it's current, keep orange)
-                if (_selectedVehicle != RegistrySettings.vehicleFileName)
+                if (_selectedVehicle != RegistrySettings.vehicleProfileName)
                     listViewVehicles.SelectedItems[0].BackColor = ColorSelected;
 
                 LoadVehiclePreview(_selectedVehicle);
@@ -124,7 +124,7 @@ namespace AgOpenGPS.Forms.Profiles
         private void buttonDeleteVehicle_Click(object sender, EventArgs e)
         {
             if (_formGPS.isJobStarted || string.IsNullOrEmpty(_selectedVehicle)) return;
-            if (_selectedVehicle == RegistrySettings.vehicleFileName)
+            if (_selectedVehicle == RegistrySettings.vehicleProfileName)
             {
                 FormDialog.Show("Vehicle in use", "Cannot delete the active vehicle", DialogSeverity.Error);
                 return;
@@ -155,7 +155,7 @@ namespace AgOpenGPS.Forms.Profiles
             foreach (string name in GetFiles(RegistrySettings.toolsDirectory, "ToolSettings"))
             {
                 var item = new ListViewItem(name) { Name = name };
-                if (name == RegistrySettings.toolFileName)
+                if (name == RegistrySettings.toolProfileName)
                 {
                     item.BackColor = ColorCurrent;
                     item.Font = new Font(listViewTools.Font, FontStyle.Bold);
@@ -171,16 +171,16 @@ namespace AgOpenGPS.Forms.Profiles
         {
             foreach (ListViewItem li in listViewTools.Items)
             {
-                if (li.Text != RegistrySettings.toolFileName)
+                if (li.Text != RegistrySettings.toolProfileName)
                     li.BackColor = listViewTools.BackColor;
             }
 
             if (listViewTools.SelectedItems.Count > 0)
             {
                 _selectedTool = listViewTools.SelectedItems[0].Text;
-                buttonDeleteTool.Enabled = _selectedTool != RegistrySettings.toolFileName;
+                buttonDeleteTool.Enabled = _selectedTool != RegistrySettings.toolProfileName;
 
-                if (_selectedTool != RegistrySettings.toolFileName)
+                if (_selectedTool != RegistrySettings.toolProfileName)
                     listViewTools.SelectedItems[0].BackColor = ColorSelected;
 
                 LoadToolPreview(_selectedTool);
@@ -199,7 +199,7 @@ namespace AgOpenGPS.Forms.Profiles
         private void buttonDeleteTool_Click(object sender, EventArgs e)
         {
             if (_formGPS.isJobStarted || string.IsNullOrEmpty(_selectedTool)) return;
-            if (_selectedTool == RegistrySettings.toolFileName)
+            if (_selectedTool == RegistrySettings.toolProfileName)
             {
                 FormDialog.Show("Tool in use", "Cannot delete the active tool", DialogSeverity.Error);
                 return;
@@ -288,8 +288,8 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void UpdateLoadButton()
         {
-            bool vehicleChanged = _selectedVehicle != null && _selectedVehicle != RegistrySettings.vehicleFileName;
-            bool toolChanged = _selectedTool != null && _selectedTool != RegistrySettings.toolFileName;
+            bool vehicleChanged = _selectedVehicle != null && _selectedVehicle != RegistrySettings.vehicleProfileName;
+            bool toolChanged = _selectedTool != null && _selectedTool != RegistrySettings.toolProfileName;
             buttonLoad.Enabled = vehicleChanged || toolChanged;
         }
 
@@ -301,8 +301,8 @@ namespace AgOpenGPS.Forms.Profiles
                 return;
             }
 
-            bool vehicleChanged = _selectedVehicle != null && _selectedVehicle != RegistrySettings.vehicleFileName;
-            bool toolChanged = _selectedTool != null && _selectedTool != RegistrySettings.toolFileName;
+            bool vehicleChanged = _selectedVehicle != null && _selectedVehicle != RegistrySettings.vehicleProfileName;
+            bool toolChanged = _selectedTool != null && _selectedTool != RegistrySettings.toolProfileName;
 
             if (vehicleChanged)
             {
@@ -315,7 +315,7 @@ namespace AgOpenGPS.Forms.Profiles
                         DialogSeverity.Error);
                     return;
                 }
-                RegistrySettings.Save(RegKeys.vehicleFileName, _selectedVehicle);
+                RegistrySettings.Save(RegKeys.vehicleProfileName, _selectedVehicle);
                 Log.EventWriter($"Vehicle loaded: {_selectedVehicle}");
             }
 
@@ -330,7 +330,7 @@ namespace AgOpenGPS.Forms.Profiles
                         DialogSeverity.Error);
                     return;
                 }
-                RegistrySettings.Save(RegKeys.toolFileName, _selectedTool);
+                RegistrySettings.Save(RegKeys.toolProfileName, _selectedTool);
                 Log.EventWriter($"Tool loaded: {_selectedTool}");
             }
 

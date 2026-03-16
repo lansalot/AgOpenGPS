@@ -59,8 +59,8 @@ namespace AgOpenGPS
         private void UpdateSummary()
         {
             configSummaryControl.UpdateSummary(mf);
-            labelCurrentVehicle.Text = "Vehicle: " + RegistrySettings.vehicleFileName;
-            labelCurrentTool.Text = "Tool: " + RegistrySettings.toolFileName;
+            labelCurrentVehicle.Text = "Vehicle: " + RegistrySettings.vehicleProfileName;
+            labelCurrentTool.Text = "Tool: " + RegistrySettings.toolProfileName;
         }
 
         #region No Sub menu Buttons

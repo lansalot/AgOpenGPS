@@ -499,7 +499,7 @@ namespace AgOpenGPS
             oglZoom.Left = 100;
             oglZoom.Top = 100;
 
-            if (RegistrySettings.vehicleFileName != "" && Properties.Settings.Default.setDisplay_isAutoStartAgIO)
+            if (RegistrySettings.vehicleProfileName != "" && Properties.Settings.Default.setDisplay_isAutoStartAgIO)
             {
                 //Start AgIO process
                 Process[] processName = Process.GetProcessesByName("AgIO");
@@ -535,8 +535,8 @@ namespace AgOpenGPS
             hotkeys = Properties.Settings.Default.setKey_hotkeys.ToCharArray();
 
             // Check if any profile is missing
-            bool missingVehicle = string.IsNullOrEmpty(RegistrySettings.vehicleFileName);
-            bool missingTool = string.IsNullOrEmpty(RegistrySettings.toolFileName);
+            bool missingVehicle = string.IsNullOrEmpty(RegistrySettings.vehicleProfileName);
+            bool missingTool = string.IsNullOrEmpty(RegistrySettings.toolProfileName);
             bool missingEnvironment = string.IsNullOrEmpty(RegistrySettings.environmentFileName);
 
             if (missingVehicle || missingTool || missingEnvironment)
@@ -550,25 +550,68 @@ namespace AgOpenGPS
                 bool hasNewProfiles = Directory.Exists(RegistrySettings.vehiclesDirectory) &&
                     Directory.GetFiles(RegistrySettings.vehiclesDirectory, "*.xml").Length > 0;
 
-                // Show message only if no new profiles exist
-                if (!hasNewProfiles)
+                // Scenario 3: Registry keys exist but files are missing (breaking change)
+                bool registryExists = !string.IsNullOrEmpty(RegistrySettings.vehicleProfileName) ||
+                                      !string.IsNullOrEmpty(RegistrySettings.toolProfileName) ||
+                                      !string.IsNullOrEmpty(RegistrySettings.legacyVehicleFileName);
+
+                if (registryExists && !hasNewProfiles && !hasOldProfiles)
                 {
-                    if (hasOldProfiles)
-                    {
-                        YesMessageBox($"You have {oldProfiles.Length} old format profile(s) available.\n\n" +
-                            "Use 'Convert' to import them, or use 'New' to create new profiles.");
-                    }
-                    else
-                    {
-                        YesMessageBox("No profiles found.\n\n" +
-                            "Use 'New' to create Vehicle and Tool profiles.\n\n" +
-                            "Environment will use defaults if not selected.");
-                    }
+                    // Files missing but registry points to them
+                    YesMessageBox("Profile files not found!\n\n" +
+                        "The profile(s) in the registry cannot be found.\n" +
+                        "Please select or create new profiles.\n\n" +
+                        "Environment will use defaults if not selected.");
                 }
+                // Scenario 1: Old profiles available but not yet converted
+                else if (hasOldProfiles && !hasNewProfiles)
+                {
+                    YesMessageBox($"Old format profiles detected!\n\n" +
+                        $"You have {oldProfiles.Length} old format profile(s) available.\n\n" +
+                        "Use 'Convert' to import them, or use 'New' to create new profiles.\n\n" +
+                        "Environment will use defaults if not selected.");
+                }
+                // Scenario 2: First time user, no profiles at all
+                else if (!hasOldProfiles && !hasNewProfiles)
+                {
+                    YesMessageBox("No profiles found.\n\n" +
+                        "Use 'New' to create Vehicle and Tool profiles.\n\n" +
+                        "Environment will use defaults if not selected.");
+                }
+                // Scenario: New profiles exist - no message needed, go directly to form
 
                 using (var form = new AgOpenGPS.Forms.Profiles.FormLoadVehicleTool(this))
                 {
                     form.ShowDialog(this);
+                }
+
+                // Scenario 2a: User cancelled without creating profiles - create defaults
+                if (string.IsNullOrEmpty(RegistrySettings.vehicleProfileName) &&
+                    string.IsNullOrEmpty(RegistrySettings.toolProfileName))
+                {
+                    Log.EventWriter("No profiles selected, creating defaults");
+
+                    // Create default Vehicle profile
+                    VehicleSettings.Default.Save("DefaultVehicle");
+                    RegistrySettings.Save(RegKeys.vehicleProfileName, "DefaultVehicle");
+
+                    // Create default Tool profile
+                    ToolSettings.Default.Save("DefaultTool");
+                    RegistrySettings.Save(RegKeys.toolProfileName, "DefaultTool");
+
+                    // Environment already uses "Default"
+
+                    // Load the defaults
+                    Properties.VehicleSettings.Default.Load("DefaultVehicle");
+                    Properties.ToolSettings.Default.Load("DefaultTool");
+
+                    vehicle = new CVehicle(this);
+                    tool = new CTool(this);
+                    LoadSettings();
+                    SetVehicleTextures();
+                    SendSettings();
+
+                    TimedMessageBox(2000, "Profiles Created", "Default profiles created");
                 }
             }
             //Init AgShareClient

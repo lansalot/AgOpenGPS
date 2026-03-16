@@ -182,9 +182,9 @@ namespace AgOpenGPS.Properties
         {
             // Check if old vehicle file exists
             // Note: old combined profiles are in baseDirectory\Vehicles, not VehicleProfiles
-            if (!string.IsNullOrEmpty(RegistrySettings.vehicleFileName))
+            if (!string.IsNullOrEmpty(RegistrySettings.vehicleProfileName))
             {
-                string oldPath = Path.Combine(RegistrySettings.baseDirectory, "Vehicles", RegistrySettings.vehicleFileName + ".xml");
+                string oldPath = Path.Combine(RegistrySettings.baseDirectory, "Vehicles", RegistrySettings.vehicleProfileName + ".xml");
                 if (File.Exists(oldPath))
                 {
                     SettingsLegacy oldSettings = new SettingsLegacy();

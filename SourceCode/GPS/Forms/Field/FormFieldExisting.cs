@@ -522,7 +522,7 @@ namespace AgOpenGPS
 
         private void btnAddVehicleName_Click(object sender, EventArgs e)
         {
-            tboxFieldName.Text += " " + RegistrySettings.vehicleFileName;
+            tboxFieldName.Text += " " + RegistrySettings.vehicleProfileName;
         }
 
         private void btnSort_Click(object sender, EventArgs e)

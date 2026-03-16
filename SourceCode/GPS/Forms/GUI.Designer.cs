@@ -224,7 +224,7 @@ namespace AgOpenGPS
                     switch (currentFieldTextCounter)
                     {
                         case 0:
-                            lblCurrentField.Text = (tool.width * m2FtOrM).ToString("N2") + unitsFtM + " - " + RegistrySettings.vehicleFileName + "  |  " + RegistrySettings.toolFileName;
+                            lblCurrentField.Text = (tool.width * m2FtOrM).ToString("N2") + unitsFtM + " - " + RegistrySettings.vehicleProfileName + "  |  " + RegistrySettings.toolProfileName;
                             break;
                         case 1:
                             lblCurrentField.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss ");
@@ -292,7 +292,7 @@ namespace AgOpenGPS
                 trk.autoTrack3SecTimer++;
                 vehicle.deadZoneDelayCounter++;
 
-                lblFix.Text = FixQuality + "Age: " + pn.age.ToString("N1") + "   " + frameTime.ToString("N1");
+                lblFix.Text = FixQuality + "Age: " + pn.age.ToString("N1");
 
 
                 switch (pn.fixQuality)
