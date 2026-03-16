@@ -534,10 +534,13 @@ namespace AgOpenGPS
 
             hotkeys = Properties.Settings.Default.setKey_hotkeys.ToCharArray();
 
-            // Check if any profile is missing
-            bool missingVehicle = string.IsNullOrEmpty(RegistrySettings.vehicleProfileName);
-            bool missingTool = string.IsNullOrEmpty(RegistrySettings.toolProfileName);
-            bool missingEnvironment = string.IsNullOrEmpty(RegistrySettings.environmentFileName);
+            // Check if any profile is missing (registry empty OR file doesn't exist)
+            bool missingVehicle = string.IsNullOrEmpty(RegistrySettings.vehicleProfileName) ||
+                                   !File.Exists(Path.Combine(RegistrySettings.vehiclesDirectory, RegistrySettings.vehicleProfileName + ".xml"));
+            bool missingTool = string.IsNullOrEmpty(RegistrySettings.toolProfileName) ||
+                                 !File.Exists(Path.Combine(RegistrySettings.toolsDirectory, RegistrySettings.toolProfileName + ".xml"));
+            bool missingEnvironment = string.IsNullOrEmpty(RegistrySettings.environmentFileName) ||
+                                       !File.Exists(Path.Combine(RegistrySettings.environmentDirectory, RegistrySettings.environmentFileName + ".xml"));
 
             if (missingVehicle || missingTool || missingEnvironment)
             {

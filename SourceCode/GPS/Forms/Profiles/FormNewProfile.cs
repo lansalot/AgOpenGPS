@@ -135,9 +135,14 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void CreateNewEmptyProfile(string profileName)
         {
+            string profilePath = Path.Combine(RegistrySettings.environmentDirectory, profileName + ".xml");
+
             RegistrySettings.Save(RegKeys.environmentFileName, profileName);
 
             Settings.Default.Reset();
+
+            // Save the XML file immediately so it exists on disk
+            XmlSettingsHandler.SaveXMLFile(profilePath, Settings.Default);
 
             Log.EventWriter($"New environment profile created: {profileName}.xml");
 
