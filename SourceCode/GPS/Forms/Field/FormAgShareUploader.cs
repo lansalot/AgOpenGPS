@@ -196,8 +196,8 @@ namespace AgOpenGPS.Forms
                     catch (Exception ex)
                     {
                         failCount++;
-                        lblStatus.Text = $"Failed: {fieldInfo.Name} ✗ - {ex.Message}";
-                        Log.EventWriter($"Failed to upload field {fieldInfo.Name}: {ex.Message}");
+                        lblStatus.Text = $"Failed: {fieldInfo.Name} ✗";
+                        Log.EventWriter($"AgShare Upload Failed - Field: {fieldInfo.Name}, Error: {ex.Message}");
                     }
 
                     progressBar.Value++;
@@ -205,12 +205,16 @@ namespace AgOpenGPS.Forms
                     await Task.Delay(500); // Small delay to show status
                 }
 
-                // Show summary
+                // Build summary message
+                string summary = $"Upload Complete\n\nSuccessful: {successCount}\nFailed: {failCount}";
+
+                if (failCount > 0)
+                {
+                    summary += "\n\nCheck Log for more information";
+                }
+
                 lblStatus.Text = $"Upload complete: {successCount} succeeded, {failCount} failed";
-                FormDialog.Show(
-                    "Upload Complete",
-                    $"Upload Complete\n\nSuccessful: {successCount}\nFailed: {failCount}",
-                    DialogSeverity.Info);
+                FormDialog.Show("Upload Complete", summary, DialogSeverity.Info);
             }
             finally
             {
