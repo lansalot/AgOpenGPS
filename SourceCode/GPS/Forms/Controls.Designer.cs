@@ -1568,17 +1568,9 @@ namespace AgOpenGPS
         }
 
         //Profiles
-        private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadProfileEnvironmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = new FormNewProfile(this))
-            {
-                form.ShowDialog(this);
-            }
-        }
-
-        private void loadProfileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var form = new FormLoadProfile(this))
+            using (var form = new FormLoadEnvironment(this))
             {
                 form.ShowDialog(this);
             }

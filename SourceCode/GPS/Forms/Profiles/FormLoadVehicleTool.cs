@@ -103,6 +103,7 @@ namespace AgOpenGPS.Forms.Profiles
             {
                 _selectedVehicle = listViewVehicles.SelectedItems[0].Text;
                 buttonDeleteVehicle.Enabled = _selectedVehicle != RegistrySettings.vehicleProfileName;
+                buttonRenameVehicle.Enabled = true;
 
                 // Color selected item green (unless it's current, keep orange)
                 if (_selectedVehicle != RegistrySettings.vehicleProfileName)
@@ -114,6 +115,7 @@ namespace AgOpenGPS.Forms.Profiles
             {
                 _selectedVehicle = null;
                 buttonDeleteVehicle.Enabled = false;
+                buttonRenameVehicle.Enabled = false;
                 ClearVehiclePreview();
             }
 
@@ -142,6 +144,38 @@ namespace AgOpenGPS.Forms.Profiles
                 UpdateSelectedLabels();
                 UpdateLoadButton();
             }
+        }
+
+        private void buttonRenameVehicle_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_selectedVehicle)) return;
+
+            string oldName = _selectedVehicle;
+            string newName = PromptForName("Rename Vehicle", "Enter new vehicle name:", oldName);
+            if (string.IsNullOrEmpty(newName) || newName == oldName) return;
+
+            string oldPath = Path.Combine(RegistrySettings.vehiclesDirectory, oldName + ".xml");
+            string newPath = Path.Combine(RegistrySettings.vehiclesDirectory, newName + ".xml");
+
+            if (File.Exists(newPath))
+            {
+                FormDialog.Show("Exists", $"Vehicle '{newName}' already exists", DialogSeverity.Error);
+                return;
+            }
+
+            File.Move(oldPath, newPath);
+            Log.EventWriter($"Vehicle renamed: {oldName} -> {newName}");
+
+            // If we renamed the active profile, update registry
+            if (oldName == RegistrySettings.vehicleProfileName)
+            {
+                RegistrySettings.Save(RegKeys.vehicleProfileName, newName);
+            }
+
+            RefreshVehicleList();
+            _selectedVehicle = null;
+            UpdateSelectedLabels();
+            UpdateLoadButton();
         }
 
         #endregion
@@ -179,6 +213,7 @@ namespace AgOpenGPS.Forms.Profiles
             {
                 _selectedTool = listViewTools.SelectedItems[0].Text;
                 buttonDeleteTool.Enabled = _selectedTool != RegistrySettings.toolProfileName;
+                buttonRenameTool.Enabled = true;
 
                 if (_selectedTool != RegistrySettings.toolProfileName)
                     listViewTools.SelectedItems[0].BackColor = ColorSelected;
@@ -189,6 +224,7 @@ namespace AgOpenGPS.Forms.Profiles
             {
                 _selectedTool = null;
                 buttonDeleteTool.Enabled = false;
+                buttonRenameTool.Enabled = false;
                 ClearToolPreview();
             }
 
@@ -217,6 +253,38 @@ namespace AgOpenGPS.Forms.Profiles
                 UpdateSelectedLabels();
                 UpdateLoadButton();
             }
+        }
+
+        private void buttonRenameTool_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_selectedTool)) return;
+
+            string oldName = _selectedTool;
+            string newName = PromptForName("Rename Tool", "Enter new tool name:", oldName);
+            if (string.IsNullOrEmpty(newName) || newName == oldName) return;
+
+            string oldPath = Path.Combine(RegistrySettings.toolsDirectory, oldName + ".xml");
+            string newPath = Path.Combine(RegistrySettings.toolsDirectory, newName + ".xml");
+
+            if (File.Exists(newPath))
+            {
+                FormDialog.Show("Exists", $"Tool '{newName}' already exists", DialogSeverity.Error);
+                return;
+            }
+
+            File.Move(oldPath, newPath);
+            Log.EventWriter($"Tool renamed: {oldName} -> {newName}");
+
+            // If we renamed the active profile, update registry
+            if (oldName == RegistrySettings.toolProfileName)
+            {
+                RegistrySettings.Save(RegKeys.toolProfileName, newName);
+            }
+
+            RefreshToolList();
+            _selectedTool = null;
+            UpdateSelectedLabels();
+            UpdateLoadButton();
         }
 
         #endregion
@@ -396,51 +464,92 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void buttonResetVehicle_Click(object sender, EventArgs e)
         {
-            if (_formGPS.isJobStarted) return;
-            var result = FormDialog.ShowQuestion("Reset Vehicle",
-                "Reset all vehicle settings to defaults?", DialogSeverity.Warning);
+            var result = FormDialog.ShowQuestion("Create Default Vehicle",
+                "Create a 'Default' vehicle profile with factory settings?\n\nThis will create and load the new profile.",
+                DialogSeverity.Info);
             if (result != DialogResult.OK) return;
 
-            var fresh = new VehicleSettings();
-            // Copy all default values
-            foreach (var field in typeof(VehicleSettings).GetFields())
+            string defaultName = "Default";
+            string path = Path.Combine(RegistrySettings.vehiclesDirectory, defaultName + ".xml");
+
+            if (File.Exists(path))
             {
-                if (!field.IsStatic)
-                    field.SetValue(VehicleSettings.Default, field.GetValue(fresh));
+                var overwrite = FormDialog.ShowQuestion("Overwrite?",
+                    $"Profile '{defaultName}' already exists. Overwrite?", DialogSeverity.Warning);
+                if (overwrite != DialogResult.OK) return;
             }
-            VehicleSettings.Default.Save();
+
+            var fresh = new VehicleSettings();
+            XmlSettingsHandler.SaveXMLFile(path, fresh);
+            Log.EventWriter($"Default vehicle profile created: {defaultName}");
+
+            // Load the Default profile
+            var loadResult = VehicleSettings.Default.Load(defaultName);
+            if (loadResult != LoadResult.Ok)
+            {
+                Log.EventWriter($"Error loading vehicle {defaultName}.xml ({loadResult})");
+                FormDialog.Show("Error",
+                    $"Error loading vehicle {defaultName}.xml\n\nResult: {loadResult}",
+                    DialogSeverity.Error);
+                RefreshVehicleList();
+                return;
+            }
+
+            RegistrySettings.Save(RegKeys.vehicleProfileName, defaultName);
+            Log.EventWriter($"Vehicle loaded: {defaultName}");
 
             _formGPS.vehicle = new CVehicle(_formGPS);
             _formGPS.LoadSettings();
             _formGPS.SetVehicleTextures();
             _formGPS.SendSettings();
 
-            Log.EventWriter("Vehicle settings reset to defaults");
-            _formGPS.TimedMessageBox(2000, "Reset", "Vehicle settings reset to defaults");
+            RefreshVehicleList();
+            _formGPS.TimedMessageBox(2500, "Loaded", "Default vehicle loaded");
         }
 
         private void buttonResetTool_Click(object sender, EventArgs e)
         {
-            if (_formGPS.isJobStarted) return;
-            var result = FormDialog.ShowQuestion("Reset Tool",
-                "Reset all tool settings to defaults?", DialogSeverity.Warning);
+            var result = FormDialog.ShowQuestion("Create Default Tool",
+                "Create a 'Default' tool profile with factory settings?\n\nThis will create and load the new profile.",
+                DialogSeverity.Info);
             if (result != DialogResult.OK) return;
 
-            var fresh = new ToolSettings();
-            foreach (var field in typeof(ToolSettings).GetFields())
+            string defaultName = "Default";
+            string path = Path.Combine(RegistrySettings.toolsDirectory, defaultName + ".xml");
+
+            if (File.Exists(path))
             {
-                if (!field.IsStatic)
-                    field.SetValue(ToolSettings.Default, field.GetValue(fresh));
+                var overwrite = FormDialog.ShowQuestion("Overwrite?",
+                    $"Profile '{defaultName}' already exists. Overwrite?", DialogSeverity.Warning);
+                if (overwrite != DialogResult.OK) return;
             }
-            ToolSettings.Default.Save();
+
+            var fresh = new ToolSettings();
+            XmlSettingsHandler.SaveXMLFile(path, fresh);
+            Log.EventWriter($"Default tool profile created: {defaultName}");
+
+            // Load the Default profile
+            var loadResult = ToolSettings.Default.Load(defaultName);
+            if (loadResult != LoadResult.Ok)
+            {
+                Log.EventWriter($"Error loading tool {defaultName}.xml ({loadResult})");
+                FormDialog.Show("Error",
+                    $"Error loading tool {defaultName}.xml\n\nResult: {loadResult}",
+                    DialogSeverity.Error);
+                RefreshToolList();
+                return;
+            }
+
+            RegistrySettings.Save(RegKeys.toolProfileName, defaultName);
+            Log.EventWriter($"Tool loaded: {defaultName}");
 
             _formGPS.tool = new CTool(_formGPS);
             _formGPS.LoadSettings();
             _formGPS.SendSettings();
             _formGPS.SendRelaySettingsToMachineModule();
 
-            Log.EventWriter("Tool settings reset to defaults");
-            _formGPS.TimedMessageBox(2000, "Reset", "Tool settings reset to defaults");
+            RefreshToolList();
+            _formGPS.TimedMessageBox(2500, "Loaded", "Default tool loaded");
         }
 
         private void buttonConvertOld_Click(object sender, EventArgs e)
@@ -460,6 +569,11 @@ namespace AgOpenGPS.Forms.Profiles
         private string PromptForName(string title, string prompt)
         {
             return AgOpenGPS.Forms.FormInputDialog.ShowInput(title, prompt, _formGPS);
+        }
+
+        private string PromptForName(string title, string prompt, string defaultValue)
+        {
+            return AgOpenGPS.Forms.FormInputDialog.ShowInput(title, prompt, _formGPS, defaultValue);
         }
 
         private IEnumerable<string> GetFiles(string directory, string expectedType)

@@ -51,7 +51,7 @@ namespace AgOpenGPS.Forms.Profiles
 
             labelStatus.Text = listViewFiles.Items.Count == 0
                 ? "No old format files found."
-                : $"{listViewFiles.Items.Count} old file(s) found.";
+                : $"{listViewFiles.Items.Count} old file(s) found to convert.";
 
             ClearDetails();
         }
@@ -79,13 +79,12 @@ namespace AgOpenGPS.Forms.Profiles
                 vehicleEnabled = true;
                 environmentEnabled = false;
                 panelDetails.Enabled = true;
-                buttonConvert.Enabled = true;
+                UpdateToggleButtons();
             }
             else
             {
                 ClearDetails();
             }
-            UpdateToggleButtons();
         }
 
         private void btnToggleVehicle_Click(object sender, EventArgs e)
@@ -95,7 +94,7 @@ namespace AgOpenGPS.Forms.Profiles
             UpdateConvertButton();
         }
 
-        private void btnToggleEnvironment_Click(object sender, EventArgs e)
+        private void btnToggleEnv_Click(object sender, EventArgs e)
         {
             environmentEnabled = !environmentEnabled;
             UpdateToggleButtons();
@@ -107,13 +106,13 @@ namespace AgOpenGPS.Forms.Profiles
             // Vehicle button
             if (vehicleEnabled)
             {
-                btnToggleVehicle.Text = "Also Split Vehicle Settings";
+                btnToggleVehicle.Text = "Vehicle ✓ ON";
                 btnToggleVehicle.BackColor = Color.LightGreen;
                 textBoxVehicleName.Enabled = true;
             }
             else
             {
-                btnToggleVehicle.Text = "Don't split Vehicle Settings";
+                btnToggleVehicle.Text = "Vehicle ✗ OFF";
                 btnToggleVehicle.BackColor = Color.LightGray;
                 textBoxVehicleName.Enabled = false;
             }
@@ -121,23 +120,26 @@ namespace AgOpenGPS.Forms.Profiles
             // Environment button
             if (environmentEnabled)
             {
-                btnToggleEnvironment.Text = "Also Split Environment";
-                btnToggleEnvironment.BackColor = Color.LightGreen;
+                btnToggleEnv.Text = "Environment ✓ ON";
+                btnToggleEnv.BackColor = Color.LightGreen;
                 textBoxEnvName.Enabled = true;
             }
             else
             {
-                btnToggleEnvironment.Text = "Don't split Environment";
-                btnToggleEnvironment.BackColor = Color.LightGray;
+                btnToggleEnv.Text = "Environment ✗ OFF";
+                btnToggleEnv.BackColor = Color.LightGray;
                 textBoxEnvName.Enabled = false;
             }
+
+            // Tool is always enabled
+            textBoxToolName.Enabled = true;
         }
 
         private void UpdateConvertButton()
         {
             buttonConvert.Enabled = listViewFiles.SelectedItems.Count > 0
                 && (!vehicleEnabled || !string.IsNullOrWhiteSpace(textBoxVehicleName.Text))
-                && !string.IsNullOrWhiteSpace(textBoxToolName.Text)
+                && !string.IsNullOrWhiteSpace(textBoxToolName.Text) // Tool is always required
                 && (!environmentEnabled || !string.IsNullOrWhiteSpace(textBoxEnvName.Text));
         }
 
@@ -158,17 +160,17 @@ namespace AgOpenGPS.Forms.Profiles
             string sourceFile = listViewFiles.SelectedItems[0].Text;
             bool exportVehicle = vehicleEnabled;
             string vehicleName = exportVehicle ? textBoxVehicleName.Text.Trim() : null;
-            string toolName = textBoxToolName.Text.Trim();
+            string toolName = textBoxToolName.Text.Trim(); // Tool is always exported
             bool exportEnv = environmentEnabled;
             string envName = textBoxEnvName.Text.Trim();
 
-            if (exportVehicle && string.IsNullOrEmpty(vehicleName)) return;
+            // Validate
             if (string.IsNullOrEmpty(toolName)) return;
+            if (exportVehicle && string.IsNullOrEmpty(vehicleName)) return;
             if (exportEnv && string.IsNullOrEmpty(envName)) return;
 
             // Check for existing files
             var overwrites = new List<string>();
-            string toolPath = Path.Combine(RegistrySettings.toolsDirectory, toolName + ".xml");
 
             if (exportVehicle)
             {
@@ -176,8 +178,11 @@ namespace AgOpenGPS.Forms.Profiles
                 if (File.Exists(vehiclePath) && CSettingsMigration.IsSettingsType(vehiclePath, "VehicleSettings"))
                     overwrites.Add($"Vehicle: {vehicleName}");
             }
+
+            string toolPath = Path.Combine(RegistrySettings.toolsDirectory, toolName + ".xml");
             if (File.Exists(toolPath) && CSettingsMigration.IsSettingsType(toolPath, "ToolSettings"))
                 overwrites.Add($"Tool: {toolName}");
+
             if (exportEnv)
             {
                 string envPath = Path.Combine(RegistrySettings.environmentDirectory, envName + ".xml");
@@ -185,16 +190,19 @@ namespace AgOpenGPS.Forms.Profiles
                     overwrites.Add($"Environment: {envName}");
             }
 
-            string confirmMsg = $"Convert '{sourceFile}' to: " +
-                (exportVehicle ? $"Vehicle: {vehicleName}, " : "") +
-                $"Tool: {toolName}" +
-                (exportEnv ? $", Environment: {envName}" : "") +
-                "\n\nOriginal file will be marked as converted.";
+            string confirmMsg = $"Convert '{sourceFile}':\n\n";
+            if (exportVehicle)
+                confirmMsg += $"  Vehicle: {vehicleName}\n";
+            confirmMsg += $"  Tool: {toolName}\n"; // Tool is always shown
+            if (exportEnv)
+                confirmMsg += $"  Environment: {envName}\n";
+
+            confirmMsg += "\nThe original file will be marked as converted.";
 
             if (overwrites.Count > 0)
-                confirmMsg += $"\n\nWARNING: Overwriting:\n{string.Join("\n", overwrites)}";
+                confirmMsg += $"\n\nWARNING: This will overwrite:\n{string.Join("\n", overwrites)}";
 
-            var confirm = FormDialog.ShowQuestion("Convert Profile", confirmMsg);
+            var confirm = FormDialog.ShowQuestion("Confirm Conversion", confirmMsg);
             if (confirm != DialogResult.OK) return;
 
             var errors = new List<string>();

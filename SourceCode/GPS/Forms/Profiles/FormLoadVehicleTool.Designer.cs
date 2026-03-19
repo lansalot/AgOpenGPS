@@ -42,6 +42,10 @@ namespace AgOpenGPS.Forms.Profiles
             this.buttonNewTool = new System.Windows.Forms.Button();
             this.buttonDeleteVehicle = new System.Windows.Forms.Button();
             this.buttonDeleteTool = new System.Windows.Forms.Button();
+            this.buttonRenameVehicle = new System.Windows.Forms.Button();
+            this.buttonRenameTool = new System.Windows.Forms.Button();
+            this.buttonResetVehicle = new System.Windows.Forms.Button();
+            this.buttonResetTool = new System.Windows.Forms.Button();
             this.buttonConvertOld = new System.Windows.Forms.Button();
             this.lblVehHitch = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -332,7 +336,65 @@ namespace AgOpenGPS.Forms.Profiles
             this.buttonDeleteTool.TabIndex = 13;
             this.buttonDeleteTool.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonDeleteTool.Click += new System.EventHandler(this.buttonDeleteTool_Click);
-            // 
+            //
+            // buttonRenameVehicle
+            //
+            this.buttonRenameVehicle.Enabled = false;
+            this.buttonRenameVehicle.FlatAppearance.BorderSize = 0;
+            this.buttonRenameVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRenameVehicle.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.buttonRenameVehicle.Image = global::AgOpenGPS.Properties.Resources.FileEditName;
+            this.buttonRenameVehicle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonRenameVehicle.Location = new System.Drawing.Point(424, 195);
+            this.buttonRenameVehicle.Name = "buttonRenameVehicle";
+            this.buttonRenameVehicle.Size = new System.Drawing.Size(65, 70);
+            this.buttonRenameVehicle.TabIndex = 27;
+            this.buttonRenameVehicle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonRenameVehicle.Click += new System.EventHandler(this.buttonRenameVehicle_Click);
+            //
+            // buttonRenameTool
+            //
+            this.buttonRenameTool.Enabled = false;
+            this.buttonRenameTool.FlatAppearance.BorderSize = 0;
+            this.buttonRenameTool.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRenameTool.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.buttonRenameTool.Image = global::AgOpenGPS.Properties.Resources.FileEditName;
+            this.buttonRenameTool.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonRenameTool.Location = new System.Drawing.Point(918, 195);
+            this.buttonRenameTool.Name = "buttonRenameTool";
+            this.buttonRenameTool.Size = new System.Drawing.Size(65, 70);
+            this.buttonRenameTool.TabIndex = 28;
+            this.buttonRenameTool.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonRenameTool.Click += new System.EventHandler(this.buttonRenameTool_Click);
+            //
+            // buttonResetVehicle
+            //
+            this.buttonResetVehicle.FlatAppearance.BorderSize = 0;
+            this.buttonResetVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonResetVehicle.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.buttonResetVehicle.Image = global::AgOpenGPS.Properties.Resources.Reset_Default;
+            this.buttonResetVehicle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonResetVehicle.Location = new System.Drawing.Point(424, 275);
+            this.buttonResetVehicle.Name = "buttonResetVehicle";
+            this.buttonResetVehicle.Size = new System.Drawing.Size(65, 70);
+            this.buttonResetVehicle.TabIndex = 29;
+            this.buttonResetVehicle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonResetVehicle.Click += new System.EventHandler(this.buttonResetVehicle_Click);
+            //
+            // buttonResetTool
+            //
+            this.buttonResetTool.FlatAppearance.BorderSize = 0;
+            this.buttonResetTool.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonResetTool.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.buttonResetTool.Image = global::AgOpenGPS.Properties.Resources.Reset_Default;
+            this.buttonResetTool.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonResetTool.Location = new System.Drawing.Point(918, 275);
+            this.buttonResetTool.Name = "buttonResetTool";
+            this.buttonResetTool.Size = new System.Drawing.Size(65, 70);
+            this.buttonResetTool.TabIndex = 30;
+            this.buttonResetTool.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonResetTool.Click += new System.EventHandler(this.buttonResetTool_Click);
+            //
             // buttonConvertOld
             // 
             this.buttonConvertOld.BackColor = System.Drawing.Color.LightSalmon;
@@ -368,6 +430,8 @@ namespace AgOpenGPS.Forms.Profiles
             this.Controls.Add(this.listViewVehicles);
             this.Controls.Add(this.buttonDeleteVehicle);
             this.Controls.Add(this.buttonNewVehicle);
+            this.Controls.Add(this.buttonRenameVehicle);
+            this.Controls.Add(this.buttonResetVehicle);
             this.Controls.Add(this.lblSelectedVehicle);
             this.Controls.Add(this.lblVehType);
             this.Controls.Add(this.lblVehWheelbase);
@@ -378,6 +442,8 @@ namespace AgOpenGPS.Forms.Profiles
             this.Controls.Add(this.listViewTools);
             this.Controls.Add(this.buttonDeleteTool);
             this.Controls.Add(this.buttonNewTool);
+            this.Controls.Add(this.buttonRenameTool);
+            this.Controls.Add(this.buttonResetTool);
             this.Controls.Add(this.lblSelectedTool);
             this.Controls.Add(this.lblToolWidth);
             this.Controls.Add(this.lblToolOverlap);
@@ -426,6 +492,10 @@ namespace AgOpenGPS.Forms.Profiles
         private System.Windows.Forms.Button buttonNewTool;
         private System.Windows.Forms.Button buttonDeleteVehicle;
         private System.Windows.Forms.Button buttonDeleteTool;
+        private System.Windows.Forms.Button buttonRenameVehicle;
+        private System.Windows.Forms.Button buttonRenameTool;
+        private System.Windows.Forms.Button buttonResetVehicle;
+        private System.Windows.Forms.Button buttonResetTool;
         private System.Windows.Forms.Button buttonConvertOld;
         private System.Windows.Forms.Label lblVehHitch;
     }

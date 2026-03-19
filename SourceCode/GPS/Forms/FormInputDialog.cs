@@ -55,5 +55,20 @@ namespace AgOpenGPS.Forms
                 return null;
             }
         }
+
+        public static string ShowInput(string title, string prompt, FormGPS formGPS, string defaultValue)
+        {
+            using (var form = new FormInputDialog(title, prompt, formGPS))
+            {
+                form.textBoxInput.Text = defaultValue ?? "";
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    string name = form.textBoxInput.Text.Trim();
+                    if (!string.IsNullOrEmpty(name))
+                        return name;
+                }
+                return null;
+            }
+        }
     }
 }
