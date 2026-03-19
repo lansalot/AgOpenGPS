@@ -22,7 +22,7 @@ namespace AgOpenGPS.Properties
         public double setVehicle_maxAngularVelocity = 0.64;
         public double setVehicle_trackWidth = 1.9;
 
-        // AutoSteer settings (zonder snapDistance, isAutoSteerAutoOn, guidanceLookAheadTime, isConstantContourOn, uTurnSmoothing, uTurnCompensation - die zitten nu in Environment)
+        // AutoSteer settings
         public byte setAS_Kp = 50;
         public byte setAS_countsPerDegree = 110;
         public byte setAS_minSteerPWM = 25;
@@ -45,7 +45,7 @@ namespace AgOpenGPS.Properties
         public bool setIMU_isDualAsIMU = false;
         public double setIMU_fusionWeight2 = 0.06;
 
-        // GPS settings (zonder SimLatitude/SimLongitude, isRTK, isRTK_KillAutoSteer, ageAlarm, jumpFixAlarmDistance - die zitten nu in Environment)
+        // GPS settings
         public string setGPS_headingFromWhichSource = "Fix";
         public double setGPS_forwardComp = 0.15;
         public double setGPS_reverseComp = 0.3;
@@ -64,7 +64,7 @@ namespace AgOpenGPS.Properties
         public HarvesterBrand setBrand_HBrand = HarvesterBrand.AgOpenGPS;
         public ArticulatedBrand setBrand_WDBrand = ArticulatedBrand.AgOpenGPS;
 
-        // Vehicle type (zonder goalPointLookAheadMult, goalPointLookAheadHold, goalPointAcquireFactor, slowSpeedCutoff, minCoverage, hydraulicLiftLookAhead, toolOffDelay, isSteerWorkSwitchEnabled - die zitten nu in Tool)
+        // Vehicle type
         public int setVehicle_vehicleType = 0;
         public double setVehicle_panicStopSpeed = 0;
 

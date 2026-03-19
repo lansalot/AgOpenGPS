@@ -114,14 +114,14 @@ namespace AgOpenGPS.Properties
         public int bndToolSpacing = 1;
         public int bndToolSmooth = 1;
 
-        // ===== AUTOSTEER SETTINGS (verplaatst van Vehicle naar Environment) =====
+        // ===== AUTOSTEER SETTINGS =====
         public double setAS_snapDistance = 20.0;
         public double setAS_snapDistanceRef = 5;
         public bool setAS_isAutoSteerAutoOn = false;
         public double setAS_guidanceLookAheadTime = 1.5;
         public bool setAS_isConstantContourOn = false;
 
-        // ===== GPS SETTINGS (verplaatst van Vehicle naar Environment) =====
+        // ===== GPS SETTINGS =====
         public double setGPS_SimLatitude = 53.4360564;
         public double setGPS_SimLongitude = -111.160047;
         public bool setGPS_isRTK = false;
@@ -129,7 +129,7 @@ namespace AgOpenGPS.Properties
         public int setGPS_ageAlarm = 20;
         public int setGPS_jumpFixAlarmDistance = 0;
 
-        // ===== UTURN SETTINGS (verplaatst van Vehicle naar Environment) =====
+        // ===== UTURN SETTINGS =====
         public int set_youTurnExtensionLength = 20;
         public double set_youTurnDistanceFromBoundary = 2;
         public int set_youSkipWidth = 1;
@@ -139,7 +139,7 @@ namespace AgOpenGPS.Properties
         public double setAS_uTurnCompensation = 1;
         public int setAS_numGuideLines = 10;
 
-        // Tram settings
+        // ===== TRAM SETTINGS =====
         public double setTram_tramWidth = 24.0;
         public int setTram_passes = 1;
         public double setTram_alpha = 0.8;

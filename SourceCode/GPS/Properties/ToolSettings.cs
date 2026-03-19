@@ -88,7 +88,7 @@ namespace AgOpenGPS.Properties
         // Headland
         public bool setHeadland_isSectionControlled = true;
 
-        // Arduino Machine (verplaatst van Vehicle naar Tool)
+        // Arduino Machine
         public byte setArdMac_setting0 = 0;
         public byte setArdMac_isHydEnabled = 0;
         public byte setArdMac_hydRaiseTime = 3;
@@ -98,17 +98,17 @@ namespace AgOpenGPS.Properties
         public byte setArdMac_user3 = 3;
         public byte setArdMac_user4 = 4;
 
-        // Relay (verplaatst van Vehicle naar Tool)
+        // Relay
         public string setRelay_pinConfig = "1,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
 
-        // Guidance algorithm (verplaatst van Vehicle naar Tool: per werktuig eigen instelling)
+        // Guidance algorithm
         public double purePursuitIntegralGainAB = 0;
         public double stanleyDistanceErrorGain = 1;
         public double stanleyHeadingErrorGain = 1;
         public double stanleyIntegralGainAB = 0;
         public bool setVehicle_isStanleyUsed = false;
 
-        // Tool specific Steer Parameters (verplaatst van Vehicle naar Tool)
+        // Tool specific Steer Parameters
         public double setVehicle_goalPointLookAheadHold = 3;
         public double setVehicle_toolOffDelay = 0;
         public double setVehicle_goalPointLookAheadMult = 1.5;
