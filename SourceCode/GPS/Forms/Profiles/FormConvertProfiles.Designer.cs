@@ -27,6 +27,7 @@ namespace AgOpenGPS.Forms.Profiles
             this.panelDetails = new System.Windows.Forms.Panel();
             this.labelStep2 = new System.Windows.Forms.Label();
             this.panelTool = new System.Windows.Forms.Panel();
+            this.btnToggleTool = new System.Windows.Forms.Button();
             this.textBoxToolName = new System.Windows.Forms.TextBox();
             this.labelToolName = new System.Windows.Forms.Label();
             this.panelVehicle = new System.Windows.Forms.Panel();
@@ -141,24 +142,40 @@ namespace AgOpenGPS.Forms.Profiles
             this.labelStep2.Name = "labelStep2";
             this.labelStep2.Size = new System.Drawing.Size(500, 25);
             this.labelStep2.TabIndex = 8;
-            this.labelStep2.Text = "Step 2: Enter Tool and if needed Vehicle name:";
+            this.labelStep2.Text = "Step 2: Select to convert (Vehicle and/or Tool):";
             // 
             // panelTool
             // 
             this.panelTool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTool.Controls.Add(this.btnToggleTool);
             this.panelTool.Controls.Add(this.textBoxToolName);
             this.panelTool.Controls.Add(this.labelToolName);
-            this.panelTool.Location = new System.Drawing.Point(10, 33);
+            this.panelTool.Location = new System.Drawing.Point(10, 172);
             this.panelTool.Name = "panelTool";
-            this.panelTool.Size = new System.Drawing.Size(500, 80);
+            this.panelTool.Size = new System.Drawing.Size(500, 100);
             this.panelTool.TabIndex = 6;
+            // 
+            // btnToggleTool
+            // 
+            this.btnToggleTool.BackColor = System.Drawing.Color.LightGreen;
+            this.btnToggleTool.FlatAppearance.BorderSize = 0;
+            this.btnToggleTool.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnToggleTool.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.btnToggleTool.ForeColor = System.Drawing.Color.Black;
+            this.btnToggleTool.Location = new System.Drawing.Point(10, 10);
+            this.btnToggleTool.Name = "btnToggleTool";
+            this.btnToggleTool.Size = new System.Drawing.Size(125, 80);
+            this.btnToggleTool.TabIndex = 0;
+            this.btnToggleTool.Text = "Convert Tool";
+            this.btnToggleTool.UseVisualStyleBackColor = false;
+            this.btnToggleTool.Click += new System.EventHandler(this.btnToggleTool_Click);
             // 
             // textBoxToolName
             // 
             this.textBoxToolName.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxToolName.Location = new System.Drawing.Point(15, 38);
+            this.textBoxToolName.Location = new System.Drawing.Point(145, 48);
             this.textBoxToolName.Name = "textBoxToolName";
-            this.textBoxToolName.Size = new System.Drawing.Size(475, 36);
+            this.textBoxToolName.Size = new System.Drawing.Size(345, 36);
             this.textBoxToolName.TabIndex = 2;
             this.textBoxToolName.Click += new System.EventHandler(this.TextBox_Click);
             this.textBoxToolName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
@@ -166,11 +183,11 @@ namespace AgOpenGPS.Forms.Profiles
             // labelToolName
             // 
             this.labelToolName.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.labelToolName.Location = new System.Drawing.Point(15, 10);
+            this.labelToolName.Location = new System.Drawing.Point(145, 10);
             this.labelToolName.Name = "labelToolName";
-            this.labelToolName.Size = new System.Drawing.Size(475, 25);
+            this.labelToolName.Size = new System.Drawing.Size(345, 30);
             this.labelToolName.TabIndex = 1;
-            this.labelToolName.Text = "Tool profile name";
+            this.labelToolName.Text = "Tool profile name:";
             // 
             // panelVehicle
             // 
@@ -178,7 +195,7 @@ namespace AgOpenGPS.Forms.Profiles
             this.panelVehicle.Controls.Add(this.textBoxVehicleName);
             this.panelVehicle.Controls.Add(this.labelVehicleName);
             this.panelVehicle.Controls.Add(this.btnToggleVehicle);
-            this.panelVehicle.Location = new System.Drawing.Point(10, 139);
+            this.panelVehicle.Location = new System.Drawing.Point(10, 48);
             this.panelVehicle.Name = "panelVehicle";
             this.panelVehicle.Size = new System.Drawing.Size(500, 100);
             this.panelVehicle.TabIndex = 5;
@@ -213,7 +230,7 @@ namespace AgOpenGPS.Forms.Profiles
             this.btnToggleVehicle.Name = "btnToggleVehicle";
             this.btnToggleVehicle.Size = new System.Drawing.Size(125, 80);
             this.btnToggleVehicle.TabIndex = 0;
-            this.btnToggleVehicle.Text = "Vehicle ✓ ON";
+            this.btnToggleVehicle.Text = "Convert Vehicle";
             this.btnToggleVehicle.UseVisualStyleBackColor = false;
             this.btnToggleVehicle.Click += new System.EventHandler(this.btnToggleVehicle_Click);
             // 
@@ -277,6 +294,7 @@ namespace AgOpenGPS.Forms.Profiles
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Panel panelDetails;
         private System.Windows.Forms.Button btnToggleVehicle;
+        private System.Windows.Forms.Button btnToggleTool;
         private System.Windows.Forms.TextBox textBoxVehicleName;
         private System.Windows.Forms.TextBox textBoxToolName;
         private System.Windows.Forms.Label labelStep1;
@@ -286,8 +304,5 @@ namespace AgOpenGPS.Forms.Profiles
         private System.Windows.Forms.Label labelExplanation;
         private System.Windows.Forms.Panel panelVehicle;
         private System.Windows.Forms.Panel panelTool;
-
-        // Toggle states
-        private bool vehicleEnabled = true;
     }
 }

@@ -17,6 +17,10 @@ namespace AgOpenGPS.Forms.Profiles
     {
         private readonly FormGPS _formGPS;
 
+        // Toggle states
+        private bool vehicleEnabled = true;
+        private bool toolEnabled = true;
+
         public FormConvertProfiles(FormGPS formGPS)
         {
             _formGPS = formGPS;
@@ -104,6 +108,7 @@ namespace AgOpenGPS.Forms.Profiles
             textBoxVehicleName.Text = "";
             textBoxToolName.Text = "";
             vehicleEnabled = true;
+            toolEnabled = true;
             panelDetails.Enabled = false;
             buttonConvert.Enabled = false;
             UpdateToggleButtons();
@@ -117,6 +122,7 @@ namespace AgOpenGPS.Forms.Profiles
                 textBoxVehicleName.Text = selected;
                 textBoxToolName.Text = selected;
                 vehicleEnabled = true;
+                toolEnabled = true;
                 panelDetails.Enabled = true;
                 UpdateToggleButtons();
             }
@@ -129,6 +135,13 @@ namespace AgOpenGPS.Forms.Profiles
         private void btnToggleVehicle_Click(object sender, EventArgs e)
         {
             vehicleEnabled = !vehicleEnabled;
+            UpdateToggleButtons();
+            UpdateConvertButton();
+        }
+
+        private void btnToggleTool_Click(object sender, EventArgs e)
+        {
+            toolEnabled = !toolEnabled;
             UpdateToggleButtons();
             UpdateConvertButton();
         }
@@ -149,15 +162,30 @@ namespace AgOpenGPS.Forms.Profiles
                 textBoxVehicleName.Enabled = false;
             }
 
-            // Tool is always enabled
-            textBoxToolName.Enabled = true;
+            // Tool button
+            if (toolEnabled)
+            {
+                btnToggleTool.Text = "Import Tool";
+                btnToggleTool.BackColor = Color.LightGreen;
+                textBoxToolName.Enabled = true;
+            }
+            else
+            {
+                btnToggleTool.Text = "No Import";
+                btnToggleTool.BackColor = Color.LightGray;
+                textBoxToolName.Enabled = false;
+            }
         }
 
         private void UpdateConvertButton()
         {
-            buttonConvert.Enabled = listViewFiles.SelectedItems.Count > 0
-                && (!vehicleEnabled || !string.IsNullOrWhiteSpace(textBoxVehicleName.Text))
-                && !string.IsNullOrWhiteSpace(textBoxToolName.Text); // Tool is always required
+            // At least one of Vehicle or Tool must be selected
+            bool hasSelection = listViewFiles.SelectedItems.Count > 0;
+            bool vehicleValid = !vehicleEnabled || !string.IsNullOrWhiteSpace(textBoxVehicleName.Text);
+            bool toolValid = !toolEnabled || !string.IsNullOrWhiteSpace(textBoxToolName.Text);
+            bool atLeastOne = vehicleEnabled || toolEnabled;
+
+            buttonConvert.Enabled = hasSelection && vehicleValid && toolValid && atLeastOne;
         }
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
@@ -177,46 +205,44 @@ namespace AgOpenGPS.Forms.Profiles
             string sourceFile = listViewFiles.SelectedItems[0].Text;
             bool exportVehicle = vehicleEnabled;
             string vehicleName = exportVehicle ? textBoxVehicleName.Text.Trim() : null;
-            string toolName = textBoxToolName.Text.Trim(); // Tool is always exported
+            bool exportTool = toolEnabled;
+            string toolName = exportTool ? textBoxToolName.Text.Trim() : null;
 
             // Validate
-            if (string.IsNullOrEmpty(toolName)) return;
             if (exportVehicle && string.IsNullOrEmpty(vehicleName)) return;
+            if (exportTool && string.IsNullOrEmpty(toolName)) return;
 
-            // Check for existing files
-            var overwrites = new List<string>();
-
+            // Check for existing files - block duplicate names
             if (exportVehicle)
             {
                 string vehiclePath = Path.Combine(RegistrySettings.vehiclesDirectory, vehicleName + ".xml");
-                if (File.Exists(vehiclePath) && CSettingsMigration.IsSettingsType(vehiclePath, "VehicleSettings"))
-                    overwrites.Add($"Vehicle: {vehicleName}");
+                if (File.Exists(vehiclePath))
+                {
+                    FormDialog.Show("Exists", $"Vehicle '{vehicleName}' already exists", DialogSeverity.Error);
+                    return;
+                }
             }
 
-            string toolPath = Path.Combine(RegistrySettings.toolsDirectory, toolName + ".xml");
-            if (File.Exists(toolPath) && CSettingsMigration.IsSettingsType(toolPath, "ToolSettings"))
-                overwrites.Add($"Tool: {toolName}");
+            if (exportTool)
+            {
+                string toolPath = Path.Combine(RegistrySettings.toolsDirectory, toolName + ".xml");
+                if (File.Exists(toolPath))
+                {
+                    FormDialog.Show("Exists", $"Tool '{toolName}' already exists", DialogSeverity.Error);
+                    return;
+                }
+            }
 
             string confirmMsg = $"Convert '{sourceFile}':\n\n";
             if (exportVehicle)
                 confirmMsg += $"  Vehicle: {vehicleName}\n";
-            confirmMsg += $"  Tool: {toolName}\n"; // Tool is always shown
-
-            confirmMsg += "\nThe original file will be marked as converted.";
-
-            if (overwrites.Count > 0)
-                confirmMsg += $"\n\nWARNING: This will overwrite:\n{string.Join("\n", overwrites)}";
+            if (exportTool)
+                confirmMsg += $"  Tool: {toolName}\n";
 
             var confirm = FormDialog.ShowQuestion("Confirm Conversion", confirmMsg);
             if (confirm != DialogResult.OK) return;
 
             var errors = new List<string>();
-
-            // Convert Tool FIRST
-            var tSettings = new ToolSettings();
-            var tResult = CSettingsMigration.MigrateTool(sourceFile, toolName, tSettings);
-            if (tResult != LoadResult.Ok)
-                errors.Add($"Tool: {tResult}");
 
             // Convert Vehicle (optional)
             if (exportVehicle)
@@ -227,6 +253,15 @@ namespace AgOpenGPS.Forms.Profiles
                     errors.Add($"Vehicle: {vResult}");
             }
 
+            // Convert Tool (optional)
+            if (exportTool)
+            {
+                var tSettings = new ToolSettings();
+                var tResult = CSettingsMigration.MigrateTool(sourceFile, toolName, tSettings);
+                if (tResult != LoadResult.Ok)
+                    errors.Add($"Tool: {tResult}");
+            }
+
             if (errors.Count == 0)
             {
                 // Mark old file as converted
@@ -234,7 +269,7 @@ namespace AgOpenGPS.Forms.Profiles
 
                 Log.EventWriter($"Converted '{sourceFile}' -> " +
                     (exportVehicle ? $"Vehicle:'{vehicleName}', " : "") +
-                    $"Tool:'{toolName}'");
+                    (exportTool ? $"Tool:'{toolName}'" : ""));
 
                 FormDialog.Show("Conversion Complete",
                     $"'{sourceFile}' converted successfully!", DialogSeverity.Info);
