@@ -389,8 +389,6 @@ namespace AgOpenGPS
             menustripLanguage.Text = gStr.gsLanguage;
             helpMenuItem.Text = gStr.gsHelp;
 
-            loadProfileEnvironmentToolStripMenuItem.Text = "Environment...";
-
             simulatorOnToolStripMenuItem.Text = gStr.gsSimulatorOn;
             resetALLToolStripMenuItem.Text = gStr.gsResetAll;
 

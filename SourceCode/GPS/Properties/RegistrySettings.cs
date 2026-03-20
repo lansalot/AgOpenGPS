@@ -272,7 +272,7 @@ namespace AgOpenGPS
             //get the environment directory, if not exist, create
             try
             {
-                environmentDirectory = Path.Combine(baseDirectory, "Envoirment");
+                environmentDirectory = Path.Combine(baseDirectory, "Environment");
                 if (!string.IsNullOrEmpty(environmentDirectory) && !Directory.Exists(environmentDirectory))
                 {
                     Directory.CreateDirectory(environmentDirectory);

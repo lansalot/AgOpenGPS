@@ -41,28 +41,69 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void RefreshFileList()
         {
+            RefreshFileList(clearDetails: true);
+        }
+
+        private void RefreshFileList(bool clearDetails)
+        {
+            // Remember current selection
+            string selectedName = null;
+            if (listViewFiles.SelectedItems.Count > 0)
+            {
+                selectedName = listViewFiles.SelectedItems[0].Text;
+            }
+
             listViewFiles.Items.Clear();
 
             string[] files = CSettingsMigration.GetConvertibleFiles();
+            int convertedCount = 0;
+
             foreach (string name in files.OrderBy(n => n))
             {
-                listViewFiles.Items.Add(new ListViewItem(name) { Name = name });
+                var item = new ListViewItem(name) { Name = name };
+                // Color converted files green
+                if (CSettingsMigration.IsConverted(name))
+                {
+                    item.BackColor = Color.LightGreen;
+                    convertedCount++;
+                }
+                listViewFiles.Items.Add(item);
             }
 
-            labelStatus.Text = listViewFiles.Items.Count == 0
-                ? "No old format files found."
-                : $"{listViewFiles.Items.Count} old file(s) found to convert.";
+            if (listViewFiles.Items.Count == 0)
+            {
+                labelStatus.Text = "No old format files found.";
+            }
+            else
+            {
+                int unconverted = listViewFiles.Items.Count - convertedCount;
+                labelStatus.Text = $"{listViewFiles.Items.Count} old file(s): {convertedCount} converted, {unconverted} to convert.";
+            }
 
-            ClearDetails();
+            if (clearDetails)
+            {
+                ClearDetails();
+            }
+            else if (selectedName != null)
+            {
+                // Restore selection if item still exists
+                foreach (ListViewItem item in listViewFiles.Items)
+                {
+                    if (item.Name == selectedName)
+                    {
+                        item.Selected = true;
+                        item.Focused = true;
+                        break;
+                    }
+                }
+            }
         }
 
         private void ClearDetails()
         {
             textBoxVehicleName.Text = "";
             textBoxToolName.Text = "";
-            textBoxEnvName.Text = "";
             vehicleEnabled = true;
-            environmentEnabled = false;
             panelDetails.Enabled = false;
             buttonConvert.Enabled = false;
             UpdateToggleButtons();
@@ -75,9 +116,7 @@ namespace AgOpenGPS.Forms.Profiles
                 string selected = listViewFiles.SelectedItems[0].Text;
                 textBoxVehicleName.Text = selected;
                 textBoxToolName.Text = selected;
-                textBoxEnvName.Text = selected;
                 vehicleEnabled = true;
-                environmentEnabled = false;
                 panelDetails.Enabled = true;
                 UpdateToggleButtons();
             }
@@ -94,41 +133,20 @@ namespace AgOpenGPS.Forms.Profiles
             UpdateConvertButton();
         }
 
-        private void btnToggleEnv_Click(object sender, EventArgs e)
-        {
-            environmentEnabled = !environmentEnabled;
-            UpdateToggleButtons();
-            UpdateConvertButton();
-        }
-
         private void UpdateToggleButtons()
         {
             // Vehicle button
             if (vehicleEnabled)
             {
-                btnToggleVehicle.Text = "Vehicle ✓ ON";
+                btnToggleVehicle.Text = "Import Vehicle";
                 btnToggleVehicle.BackColor = Color.LightGreen;
                 textBoxVehicleName.Enabled = true;
             }
             else
             {
-                btnToggleVehicle.Text = "Vehicle ✗ OFF";
+                btnToggleVehicle.Text = "No Import";
                 btnToggleVehicle.BackColor = Color.LightGray;
                 textBoxVehicleName.Enabled = false;
-            }
-
-            // Environment button
-            if (environmentEnabled)
-            {
-                btnToggleEnv.Text = "Environment ✓ ON";
-                btnToggleEnv.BackColor = Color.LightGreen;
-                textBoxEnvName.Enabled = true;
-            }
-            else
-            {
-                btnToggleEnv.Text = "Environment ✗ OFF";
-                btnToggleEnv.BackColor = Color.LightGray;
-                textBoxEnvName.Enabled = false;
             }
 
             // Tool is always enabled
@@ -139,8 +157,7 @@ namespace AgOpenGPS.Forms.Profiles
         {
             buttonConvert.Enabled = listViewFiles.SelectedItems.Count > 0
                 && (!vehicleEnabled || !string.IsNullOrWhiteSpace(textBoxVehicleName.Text))
-                && !string.IsNullOrWhiteSpace(textBoxToolName.Text) // Tool is always required
-                && (!environmentEnabled || !string.IsNullOrWhiteSpace(textBoxEnvName.Text));
+                && !string.IsNullOrWhiteSpace(textBoxToolName.Text); // Tool is always required
         }
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
@@ -161,13 +178,10 @@ namespace AgOpenGPS.Forms.Profiles
             bool exportVehicle = vehicleEnabled;
             string vehicleName = exportVehicle ? textBoxVehicleName.Text.Trim() : null;
             string toolName = textBoxToolName.Text.Trim(); // Tool is always exported
-            bool exportEnv = environmentEnabled;
-            string envName = textBoxEnvName.Text.Trim();
 
             // Validate
             if (string.IsNullOrEmpty(toolName)) return;
             if (exportVehicle && string.IsNullOrEmpty(vehicleName)) return;
-            if (exportEnv && string.IsNullOrEmpty(envName)) return;
 
             // Check for existing files
             var overwrites = new List<string>();
@@ -183,19 +197,10 @@ namespace AgOpenGPS.Forms.Profiles
             if (File.Exists(toolPath) && CSettingsMigration.IsSettingsType(toolPath, "ToolSettings"))
                 overwrites.Add($"Tool: {toolName}");
 
-            if (exportEnv)
-            {
-                string envPath = Path.Combine(RegistrySettings.environmentDirectory, envName + ".xml");
-                if (File.Exists(envPath))
-                    overwrites.Add($"Environment: {envName}");
-            }
-
             string confirmMsg = $"Convert '{sourceFile}':\n\n";
             if (exportVehicle)
                 confirmMsg += $"  Vehicle: {vehicleName}\n";
             confirmMsg += $"  Tool: {toolName}\n"; // Tool is always shown
-            if (exportEnv)
-                confirmMsg += $"  Environment: {envName}\n";
 
             confirmMsg += "\nThe original file will be marked as converted.";
 
@@ -207,8 +212,7 @@ namespace AgOpenGPS.Forms.Profiles
 
             var errors = new List<string>();
 
-            // Convert Tool FIRST: als vehicleName == sourceFile overschrijft MigrateVehicle de source,
-            // waarna MigrateTool verkeerde (VehicleSettings) data inleest.
+            // Convert Tool FIRST
             var tSettings = new ToolSettings();
             var tResult = CSettingsMigration.MigrateTool(sourceFile, toolName, tSettings);
             if (tResult != LoadResult.Ok)
@@ -223,14 +227,6 @@ namespace AgOpenGPS.Forms.Profiles
                     errors.Add($"Vehicle: {vResult}");
             }
 
-            // Convert Environment (optional)
-            if (exportEnv)
-            {
-                var eResult = CSettingsMigration.MigrateEnvironment(sourceFile, envName);
-                if (eResult != LoadResult.Ok)
-                    errors.Add($"Environment: {eResult}");
-            }
-
             if (errors.Count == 0)
             {
                 // Mark old file as converted
@@ -238,11 +234,13 @@ namespace AgOpenGPS.Forms.Profiles
 
                 Log.EventWriter($"Converted '{sourceFile}' -> " +
                     (exportVehicle ? $"Vehicle:'{vehicleName}', " : "") +
-                    $"Tool:'{toolName}'" +
-                    (exportEnv ? $", Env:'{envName}'" : ""));
+                    $"Tool:'{toolName}'");
 
                 FormDialog.Show("Conversion Complete",
                     $"'{sourceFile}' converted successfully!", DialogSeverity.Info);
+
+                // Refresh list to show converted file in green, keep form open for next conversion
+                RefreshFileList(clearDetails: false);
             }
             else
             {
@@ -250,8 +248,6 @@ namespace AgOpenGPS.Forms.Profiles
                 FormDialog.Show("Conversion Errors",
                     $"Errors occurred:\n\n" + string.Join("\n", errors), DialogSeverity.Warning);
             }
-
-            RefreshFileList();
         }
     }
 }

@@ -156,25 +156,23 @@ namespace AgOpenGPS.Properties
 
         public LoadResult Load()
         {
-            // Use environmentFileName from registry (default = "Default")
-            string envFileName = string.IsNullOrEmpty(RegistrySettings.environmentFileName) ? "Default" : RegistrySettings.environmentFileName;
-            string path = Path.Combine(RegistrySettings.environmentDirectory, envFileName + ".xml");
+            string path = Path.Combine(RegistrySettings.environmentDirectory, "DefaultEnvironment.xml");
 
             if (!File.Exists(path))
             {
-                // Try migrating from old file
-                return MigrateFromOld();
+                // Create DefaultEnvironment.xml with defaults
+                Log.EventWriter("Creating DefaultEnvironment.xml with default values");
+                XmlSettingsHandler.SaveXMLFile(path, this);
+                return LoadResult.Ok;
             }
 
-            var result = XmlSettingsHandler.LoadXMLFile(path, this);
-            return result;
+            return XmlSettingsHandler.LoadXMLFile(path, this);
         }
 
         public void Save()
         {
-            // Use environmentFileName from registry (default = "Default")
-            string envFileName = string.IsNullOrEmpty(RegistrySettings.environmentFileName) ? "Default" : RegistrySettings.environmentFileName;
-            string path = Path.Combine(RegistrySettings.environmentDirectory, envFileName + ".xml");
+            // Always save to DefaultEnvironment.xml
+            string path = Path.Combine(RegistrySettings.environmentDirectory, "DefaultEnvironment.xml");
             XmlSettingsHandler.SaveXMLFile(path, this);
         }
 

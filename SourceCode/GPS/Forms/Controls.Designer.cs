@@ -1568,14 +1568,6 @@ namespace AgOpenGPS
         }
 
         //Profiles
-        private void loadProfileEnvironmentToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var form = new FormLoadEnvironment(this))
-            {
-                form.ShowDialog(this);
-            }
-        }
-
         private void loadVehicleToolToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var form = new FormLoadVehicleTool(this))

@@ -339,11 +339,23 @@ namespace AgOpenGPS
             var files = new System.Collections.Generic.List<string>();
             foreach (string file in Directory.GetFiles(oldVehiclesDir, "*.xml"))
             {
-                // Skip already converted files
-                if (IsOldFormat(file) && !File.ReadAllText(file).Contains("<!-- CONVERTED:"))
+                // Include all old format files (converted and not)
+                if (IsOldFormat(file))
                     files.Add(Path.GetFileNameWithoutExtension(file));
             }
             return files.ToArray();
+        }
+
+        /// <summary>
+        /// Checks if an old format file has been marked as converted.
+        /// </summary>
+        public static bool IsConverted(string fileName)
+        {
+            string oldPath = Path.Combine(RegistrySettings.baseDirectory, "Vehicles", fileName + ".xml");
+            if (!File.Exists(oldPath)) return false;
+
+            string content = File.ReadAllText(oldPath);
+            return content.Contains("<!-- CONVERTED:");
         }
 
         /// <summary>

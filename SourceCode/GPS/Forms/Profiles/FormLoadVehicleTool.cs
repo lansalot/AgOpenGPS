@@ -35,13 +35,21 @@ namespace AgOpenGPS.Forms.Profiles
             // Pre-select and preview the currently active vehicle/tool
             if (!string.IsNullOrEmpty(RegistrySettings.vehicleProfileName))
             {
-                _selectedVehicle = RegistrySettings.vehicleProfileName;
-                LoadVehiclePreview(_selectedVehicle);
+                var vehicleItem = listViewVehicles.Items[RegistrySettings.vehicleProfileName];
+                if (vehicleItem != null)
+                {
+                    vehicleItem.Selected = true;
+                    vehicleItem.Focused = true;
+                }
             }
             if (!string.IsNullOrEmpty(RegistrySettings.toolProfileName))
             {
-                _selectedTool = RegistrySettings.toolProfileName;
-                LoadToolPreview(_selectedTool);
+                var toolItem = listViewTools.Items[RegistrySettings.toolProfileName];
+                if (toolItem != null)
+                {
+                    toolItem.Selected = true;
+                    toolItem.Focused = true;
+                }
             }
 
             UpdateCurrentLabels();

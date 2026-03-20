@@ -17,6 +17,7 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConvertProfiles));
             this.listViewFiles = new System.Windows.Forms.ListView();
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.labelTitle = new System.Windows.Forms.Label();
@@ -25,10 +26,6 @@ namespace AgOpenGPS.Forms.Profiles
             this.buttonClose = new System.Windows.Forms.Button();
             this.panelDetails = new System.Windows.Forms.Panel();
             this.labelStep2 = new System.Windows.Forms.Label();
-            this.panelEnv = new System.Windows.Forms.Panel();
-            this.textBoxEnvName = new System.Windows.Forms.TextBox();
-            this.labelEnvName = new System.Windows.Forms.Label();
-            this.btnToggleEnv = new System.Windows.Forms.Button();
             this.panelTool = new System.Windows.Forms.Panel();
             this.textBoxToolName = new System.Windows.Forms.TextBox();
             this.labelToolName = new System.Windows.Forms.Label();
@@ -39,7 +36,6 @@ namespace AgOpenGPS.Forms.Profiles
             this.labelStep1 = new System.Windows.Forms.Label();
             this.labelExplanation = new System.Windows.Forms.Label();
             this.panelDetails.SuspendLayout();
-            this.panelEnv.SuspendLayout();
             this.panelTool.SuspendLayout();
             this.panelVehicle.SuspendLayout();
             this.SuspendLayout();
@@ -99,7 +95,7 @@ namespace AgOpenGPS.Forms.Profiles
             this.buttonConvert.FlatAppearance.BorderSize = 0;
             this.buttonConvert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConvert.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.buttonConvert.Image = global::AgOpenGPS.Properties.Resources.Play;
+            this.buttonConvert.Image = ((System.Drawing.Image)(resources.GetObject("buttonConvert.Image")));
             this.buttonConvert.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonConvert.Location = new System.Drawing.Point(741, 548);
             this.buttonConvert.Name = "buttonConvert";
@@ -116,7 +112,7 @@ namespace AgOpenGPS.Forms.Profiles
             this.buttonClose.FlatAppearance.BorderSize = 0;
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.buttonClose.Image = global::AgOpenGPS.Properties.Resources.Cancel64;
+            this.buttonClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonClose.Image")));
             this.buttonClose.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonClose.Location = new System.Drawing.Point(905, 539);
             this.buttonClose.Name = "buttonClose";
@@ -130,13 +126,12 @@ namespace AgOpenGPS.Forms.Profiles
             this.panelDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDetails.Controls.Add(this.labelStep2);
-            this.panelDetails.Controls.Add(this.panelEnv);
             this.panelDetails.Controls.Add(this.panelTool);
             this.panelDetails.Controls.Add(this.panelVehicle);
             this.panelDetails.Enabled = false;
             this.panelDetails.Location = new System.Drawing.Point(468, 130);
             this.panelDetails.Name = "panelDetails";
-            this.panelDetails.Size = new System.Drawing.Size(520, 380);
+            this.panelDetails.Size = new System.Drawing.Size(520, 300);
             this.panelDetails.TabIndex = 2;
             // 
             // labelStep2
@@ -146,53 +141,7 @@ namespace AgOpenGPS.Forms.Profiles
             this.labelStep2.Name = "labelStep2";
             this.labelStep2.Size = new System.Drawing.Size(500, 25);
             this.labelStep2.TabIndex = 8;
-            this.labelStep2.Text = "Step 2: Vehicle and Environment are optional:";
-            // 
-            // panelEnv
-            // 
-            this.panelEnv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelEnv.Controls.Add(this.textBoxEnvName);
-            this.panelEnv.Controls.Add(this.labelEnvName);
-            this.panelEnv.Controls.Add(this.btnToggleEnv);
-            this.panelEnv.Location = new System.Drawing.Point(10, 302);
-            this.panelEnv.Name = "panelEnv";
-            this.panelEnv.Size = new System.Drawing.Size(500, 75);
-            this.panelEnv.TabIndex = 7;
-            // 
-            // textBoxEnvName
-            // 
-            this.textBoxEnvName.Enabled = false;
-            this.textBoxEnvName.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEnvName.Location = new System.Drawing.Point(145, 38);
-            this.textBoxEnvName.Name = "textBoxEnvName";
-            this.textBoxEnvName.Size = new System.Drawing.Size(345, 36);
-            this.textBoxEnvName.TabIndex = 2;
-            this.textBoxEnvName.Click += new System.EventHandler(this.TextBox_Click);
-            this.textBoxEnvName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
-            // 
-            // labelEnvName
-            // 
-            this.labelEnvName.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.labelEnvName.Location = new System.Drawing.Point(145, 8);
-            this.labelEnvName.Name = "labelEnvName";
-            this.labelEnvName.Size = new System.Drawing.Size(345, 25);
-            this.labelEnvName.TabIndex = 1;
-            this.labelEnvName.Text = "Environment profile name:";
-            // 
-            // btnToggleEnv
-            // 
-            this.btnToggleEnv.BackColor = System.Drawing.Color.LightGray;
-            this.btnToggleEnv.FlatAppearance.BorderSize = 0;
-            this.btnToggleEnv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToggleEnv.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnToggleEnv.ForeColor = System.Drawing.Color.Black;
-            this.btnToggleEnv.Location = new System.Drawing.Point(10, 10);
-            this.btnToggleEnv.Name = "btnToggleEnv";
-            this.btnToggleEnv.Size = new System.Drawing.Size(125, 55);
-            this.btnToggleEnv.TabIndex = 0;
-            this.btnToggleEnv.Text = "Environment: OFF";
-            this.btnToggleEnv.UseVisualStyleBackColor = false;
-            this.btnToggleEnv.Click += new System.EventHandler(this.btnToggleEnv_Click);
+            this.labelStep2.Text = "Step 2: Enter Tool and if needed Vehicle name:";
             // 
             // panelTool
             // 
@@ -221,7 +170,7 @@ namespace AgOpenGPS.Forms.Profiles
             this.labelToolName.Name = "labelToolName";
             this.labelToolName.Size = new System.Drawing.Size(475, 25);
             this.labelToolName.TabIndex = 1;
-            this.labelToolName.Text = "Tool profile name (always exported):";
+            this.labelToolName.Text = "Tool profile name";
             // 
             // panelVehicle
             // 
@@ -310,8 +259,6 @@ namespace AgOpenGPS.Forms.Profiles
             this.Text = "Convert Old Profiles";
             this.Load += new System.EventHandler(this.FormConvertProfiles_Load);
             this.panelDetails.ResumeLayout(false);
-            this.panelEnv.ResumeLayout(false);
-            this.panelEnv.PerformLayout();
             this.panelTool.ResumeLayout(false);
             this.panelTool.PerformLayout();
             this.panelVehicle.ResumeLayout(false);
@@ -330,22 +277,17 @@ namespace AgOpenGPS.Forms.Profiles
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Panel panelDetails;
         private System.Windows.Forms.Button btnToggleVehicle;
-        private System.Windows.Forms.Button btnToggleEnv;
         private System.Windows.Forms.TextBox textBoxVehicleName;
         private System.Windows.Forms.TextBox textBoxToolName;
-        private System.Windows.Forms.TextBox textBoxEnvName;
         private System.Windows.Forms.Label labelStep1;
         private System.Windows.Forms.Label labelStep2;
         private System.Windows.Forms.Label labelVehicleName;
         private System.Windows.Forms.Label labelToolName;
-        private System.Windows.Forms.Label labelEnvName;
         private System.Windows.Forms.Label labelExplanation;
         private System.Windows.Forms.Panel panelVehicle;
         private System.Windows.Forms.Panel panelTool;
-        private System.Windows.Forms.Panel panelEnv;
 
         // Toggle states
         private bool vehicleEnabled = true;
-        private bool environmentEnabled = false;
     }
 }

@@ -35,7 +35,6 @@ namespace AgOpenGPS
             this.googleEarthOpenGLContextMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadProfileEnvironmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadVehicleToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menustripLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
@@ -257,7 +256,6 @@ namespace AgOpenGPS
             // 
             this.fileToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadProfileEnvironmentToolStripMenuItem,
             this.loadVehicleToolToolStripMenuItem,
             this.menustripLanguage,
             this.toolStripSeparator11,
@@ -277,13 +275,6 @@ namespace AgOpenGPS
             this.fileToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(55, 44);
             //
-            // loadProfileEnvironmentToolStripMenuItem
-            // 
-            this.loadProfileEnvironmentToolStripMenuItem.Name = "loadProfileEnvironmentToolStripMenuItem";
-            this.loadProfileEnvironmentToolStripMenuItem.Size = new System.Drawing.Size(355, 50);
-            this.loadProfileEnvironmentToolStripMenuItem.Text = "Environment...";
-            this.loadProfileEnvironmentToolStripMenuItem.Click += new System.EventHandler(this.loadProfileEnvironmentToolStripMenuItem_Click);
-            // 
             // loadVehicleToolToolStripMenuItem
             // 
             this.loadVehicleToolToolStripMenuItem.Image = global::AgOpenGPS.Properties.Resources.FileOpen;
@@ -3122,7 +3113,6 @@ namespace AgOpenGPS
         private System.Windows.Forms.ToolStripMenuItem tramsMultiMenuField;
         private System.Windows.Forms.ToolStripMenuItem AgShareApiMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadProfileEnvironmentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadVehicleToolToolStripMenuItem;
 
         public System.Windows.Forms.Button btnIsobusSectionControl;

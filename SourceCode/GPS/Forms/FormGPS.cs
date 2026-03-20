@@ -539,12 +539,11 @@ namespace AgOpenGPS
                                    !File.Exists(Path.Combine(RegistrySettings.vehiclesDirectory, RegistrySettings.vehicleProfileName + ".xml"));
             bool missingTool = string.IsNullOrEmpty(RegistrySettings.toolProfileName) ||
                                  !File.Exists(Path.Combine(RegistrySettings.toolsDirectory, RegistrySettings.toolProfileName + ".xml"));
-            bool missingEnvironment = string.IsNullOrEmpty(RegistrySettings.environmentFileName) ||
-                                       !File.Exists(Path.Combine(RegistrySettings.environmentDirectory, RegistrySettings.environmentFileName + ".xml"));
+            // Environment is no longer a separate profile - created automatically
 
-            if (missingVehicle || missingTool || missingEnvironment)
+            if (missingVehicle || missingTool)
             {
-                Log.EventWriter($"Profile check - Vehicle:{!missingVehicle} Tool:{!missingTool} Environment:{!missingEnvironment}");
+                Log.EventWriter($"Profile check - Vehicle:{!missingVehicle} Tool:{!missingTool}");
 
                 // Check what profiles are available
                 string[] oldProfiles = CSettingsMigration.GetConvertibleFiles();
