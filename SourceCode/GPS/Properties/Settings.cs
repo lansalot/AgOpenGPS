@@ -156,23 +156,34 @@ namespace AgOpenGPS.Properties
 
         public LoadResult Load()
         {
-            string path = Path.Combine(RegistrySettings.environmentDirectory, "DefaultEnvironment.xml");
+            string envPath = Path.Combine(RegistrySettings.environmentDirectory, "environment.xml");
+            string defaultPath = Path.Combine(RegistrySettings.environmentDirectory, "DefaultEnvironment.xml");
 
-            if (!File.Exists(path))
+            // Try environment.xml first (created by migration)
+            if (File.Exists(envPath))
             {
-                // Create DefaultEnvironment.xml with defaults
-                Log.EventWriter("Creating DefaultEnvironment.xml with default values");
-                XmlSettingsHandler.SaveXMLFile(path, this);
-                return LoadResult.Ok;
+                return XmlSettingsHandler.LoadXMLFile(envPath, this);
             }
 
-            return XmlSettingsHandler.LoadXMLFile(path, this);
+            // Fallback to DefaultEnvironment.xml
+            if (File.Exists(defaultPath))
+            {
+                return XmlSettingsHandler.LoadXMLFile(defaultPath, this);
+            }
+
+            // Neither exists - create DefaultEnvironment.xml with defaults
+            Log.EventWriter("Creating DefaultEnvironment.xml with default values");
+            XmlSettingsHandler.SaveXMLFile(defaultPath, this);
+            return LoadResult.Ok;
         }
 
         public void Save()
         {
-            // Always save to DefaultEnvironment.xml
-            string path = Path.Combine(RegistrySettings.environmentDirectory, "DefaultEnvironment.xml");
+            // Save to environment.xml if it exists, otherwise DefaultEnvironment.xml
+            string envPath = Path.Combine(RegistrySettings.environmentDirectory, "environment.xml");
+            string defaultPath = Path.Combine(RegistrySettings.environmentDirectory, "DefaultEnvironment.xml");
+
+            string path = File.Exists(envPath) ? envPath : defaultPath;
             XmlSettingsHandler.SaveXMLFile(path, this);
         }
 

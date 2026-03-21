@@ -262,17 +262,51 @@ namespace AgOpenGPS.Forms.Profiles
                     errors.Add($"Tool: {tResult}");
             }
 
+            // One-time environment migration (if environment.xml doesn't exist yet)
+            bool migratedEnvironment = false;
+            string envPath = Path.Combine(RegistrySettings.environmentDirectory, "environment.xml");
+            if (!File.Exists(envPath))
+            {
+                var eResult = CSettingsMigration.MigrateEnvironment(sourceFile, "environment");
+                if (eResult == LoadResult.Ok)
+                {
+                    migratedEnvironment = true;
+                    Log.EventWriter($"Environment migrated from '{sourceFile}'");
+                }
+                else
+                {
+                    errors.Add($"Environment: {eResult}");
+                }
+            }
+
             if (errors.Count == 0)
             {
                 // Mark old file as converted
                 CSettingsMigration.MarkAsConverted(sourceFile);
 
-                Log.EventWriter($"Converted '{sourceFile}' -> " +
+                string logMsg = $"Converted '{sourceFile}' -> " +
                     (exportVehicle ? $"Vehicle:'{vehicleName}', " : "") +
-                    (exportTool ? $"Tool:'{toolName}'" : ""));
+                    (exportTool ? $"Tool:'{toolName}'" : "");
+                if (migratedEnvironment)
+                    logMsg += ", Environment: 'environment.xml' (one-time)";
+                Log.EventWriter(logMsg);
 
-                FormDialog.Show("Conversion Complete",
-                    $"'{sourceFile}' converted successfully!", DialogSeverity.Info);
+                // If Environment was migrated, load it immediately
+                if (migratedEnvironment)
+                {
+                    var loadResult = Properties.Settings.Default.Load();
+                    if (loadResult == LoadResult.Ok)
+                    {
+                        _formGPS.LoadSettings();
+                        Log.EventWriter("Environment settings loaded after migration");
+                    }
+                }
+
+                string successMsg = $"'{sourceFile}' converted successfully!";
+                if (migratedEnvironment)
+                    successMsg += "\n\nEnvironment settings have been imported and loaded.";
+
+                FormDialog.Show("Conversion Complete", successMsg, DialogSeverity.Info);
 
                 // Refresh list to show converted file in green, keep form open for next conversion
                 RefreshFileList(clearDetails: false);
