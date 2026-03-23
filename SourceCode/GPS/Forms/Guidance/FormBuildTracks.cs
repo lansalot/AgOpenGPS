@@ -35,6 +35,14 @@ namespace AgOpenGPS
         //used throughout to acces the master Track list
         private int idx;
 
+        // Touch drag scrolling
+        private bool isDragging = false;
+        private int dragStartY = 0;
+        private int dragStartScrollValue = 0;
+        private const int DragThreshold = 5; // pixels to distinguish click from drag
+        private bool didDrag = false;
+        private DateTime lastDragEndTime = DateTime.MinValue;
+
         public FormBuildTracks(Form _mf)
         {
             mf = _mf as FormGPS;
@@ -125,6 +133,12 @@ namespace AgOpenGPS
             nudLongitudePlus.Value = (decimal)mf.AppModel.CurrentLatLon.Longitude;
             nudHeading.Value = 0;
             nudHeadingLatLonPlus.Value = 0;
+
+            // Touch drag scrolling for flp
+            flp.MouseDown += Flp_MouseDown;
+            flp.MouseMove += Flp_MouseMove;
+            flp.MouseUp += Flp_MouseUp;
+            flp.MouseLeave += Flp_MouseLeave;
 
             UpdateTable();
 
@@ -268,6 +282,9 @@ namespace AgOpenGPS
                     TextAlign = ContentAlignment.MiddleCenter,
                 };
                 a.Click += A_Click;
+                a.MouseDown += StartDrag;
+                a.MouseMove += DoDrag;
+                a.MouseUp += Flp_MouseUp;
 
                 if (mf.trk.gArr[i].isVisible)
                     a.BackColor = System.Drawing.Color.Green;
@@ -291,18 +308,27 @@ namespace AgOpenGPS
                     b.Image = Properties.Resources.TrackCurve;
 
                 b.FlatAppearance.BorderSize = 0;
+                b.MouseDown += StartDrag;
+                b.MouseMove += DoDrag;
+                b.MouseUp += Flp_MouseUp;
 
-                TextBox t = new TextBox
+                // Use Button instead of TextBox - no cursor, no editing possible
+                Button t = new Button
                 {
                     Margin = new Padding(3),
-                    Size = new Size(330, 35),
+                    Size = new Size(330, 40),
                     Text = mf.trk.gArr[i].name,
                     Name = i.ToString(),
                     Font = backupfont,
-                    ReadOnly = true
+                    FlatStyle = FlatStyle.Flat,
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    Cursor = Cursors.Default
                 };
                 t.Click += LineSelected_Click;
-                t.Cursor = System.Windows.Forms.Cursors.Default;
+                t.FlatAppearance.BorderSize = 0;
+                t.MouseDown += StartDrag;
+                t.MouseMove += DoDrag;
+                t.MouseUp += Flp_MouseUp;
 
                 if (mf.trk.gArr[i].isVisible)
                     t.ForeColor = System.Drawing.Color.Black;
@@ -349,7 +375,13 @@ namespace AgOpenGPS
 
         private void LineSelected_Click(object sender, EventArgs e)
         {
-            if (sender is TextBox t)
+            // Ignore click if we just finished dragging (within 200ms)
+            if ((DateTime.Now - lastDragEndTime).TotalMilliseconds < 200)
+            {
+                return;
+            }
+
+            if (sender is Button t)
             {
                 int line = Convert.ToInt32(t.Name);
                 int numLines = mf.trk.gArr.Count;
@@ -427,6 +459,68 @@ namespace AgOpenGPS
             flp.PerformLayout();
 
             UpdateTable();
+        }
+
+        // Touch drag scrolling
+        private void StartDrag(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                didDrag = false;
+                dragStartY = e.Y;
+                dragStartScrollValue = flp.VerticalScroll.Value;
+            }
+        }
+
+        private void DoDrag(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                int deltaY = dragStartY - e.Y;
+
+                // Only start actual dragging if moved beyond threshold
+                if (Math.Abs(deltaY) > DragThreshold)
+                {
+                    didDrag = true;
+                    int newScrollValue = dragStartScrollValue + deltaY;
+
+                    // Clamp to valid scroll range
+                    if (newScrollValue < flp.VerticalScroll.Minimum)
+                        newScrollValue = flp.VerticalScroll.Minimum;
+                    if (newScrollValue > flp.VerticalScroll.Maximum)
+                        newScrollValue = flp.VerticalScroll.Maximum;
+
+                    flp.VerticalScroll.Value = newScrollValue;
+                    flp.PerformLayout();
+                }
+            }
+        }
+
+        private void Flp_MouseDown(object sender, MouseEventArgs e)
+        {
+            StartDrag(sender, e);
+        }
+
+        private void Flp_MouseMove(object sender, MouseEventArgs e)
+        {
+            DoDrag(sender, e);
+        }
+
+        private void Flp_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (didDrag)
+            {
+                lastDragEndTime = DateTime.Now;
+            }
+            isDragging = false;
+            didDrag = false;
+        }
+
+        private void Flp_MouseLeave(object sender, EventArgs e)
+        {
+            isDragging = false;
+            didDrag = false;
         }
 
         private void btnSwapAB_Click(object sender, EventArgs e)
