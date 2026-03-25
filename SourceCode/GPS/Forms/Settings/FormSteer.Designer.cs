@@ -3033,6 +3033,7 @@
             this.btnSmartZeroWAS.Text = "0.0°";
             this.btnSmartZeroWAS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSmartZeroWAS.UseVisualStyleBackColor = false;
+            this.btnSmartZeroWAS.Click += new System.EventHandler(this.btnSmartZeroWAS_Click);
             // 
             // lblSmartCalConfidence
             // 
