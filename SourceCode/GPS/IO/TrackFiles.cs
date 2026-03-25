@@ -94,8 +94,12 @@ namespace AgOpenGPS.IO
                         curvePts.Add(new vec3(easting, northing, pointheading));
                     }
 
-                    // --- Twol Track ---
-                    if (isTwolTrackFile) reader.ReadLine();
+                    // --- Twol Track --- Don't read inner outer flag or halfToolWidth
+                    if (isTwolTrackFile)
+                    {
+                        reader.ReadLine();
+                        reader.ReadLine();
+                    }
 
                     // Build CTrk
                     var tr = new CTrk
