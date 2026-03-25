@@ -704,15 +704,18 @@ namespace AgOpenGPS
                 //main window first
                 if (Settings.Default.setWindow_Maximized)
                 {
+                    // First set location and size in Normal state (required by Windows)
                     WindowState = FormWindowState.Normal;
                     Location = Settings.Default.setWindow_Location;
                     Size = Settings.Default.setWindow_Size;
+                    // Then set to Maximized
+                    WindowState = FormWindowState.Maximized;
                 }
                 else if (Settings.Default.setWindow_Minimized)
                 {
-                    //WindowState = FormWindowState.Minimized;
                     Location = Settings.Default.setWindow_Location;
                     Size = Settings.Default.setWindow_Size;
+                    WindowState = FormWindowState.Minimized;
                 }
                 else
                 {
@@ -1129,7 +1132,7 @@ namespace AgOpenGPS
             {
                 Settings.Default.setWindow_Location = RestoreBounds.Location;
                 Settings.Default.setWindow_Size = RestoreBounds.Size;
-                Settings.Default.setWindow_Maximized = false;
+                Settings.Default.setWindow_Maximized = true;
                 Settings.Default.setWindow_Minimized = false;
             }
             else if (WindowState == FormWindowState.Normal)
