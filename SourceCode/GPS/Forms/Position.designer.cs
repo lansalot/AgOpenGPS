@@ -170,7 +170,7 @@ namespace AgOpenGPS
             pn.speed = pn.vtgSpeed;
             pn.AverageTheSpeed();
 
-            if (Properties.Settings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
+            if (Properties.VehicleSettings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
             {
                 if (Math.Abs(pn.speed) > ahrs.autoSwitchDualFixSpeed)
                 {
@@ -193,7 +193,7 @@ namespace AgOpenGPS
                     {
                         #region Start
 
-                        if (Properties.Settings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
+                        if (Properties.VehicleSettings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
                         {
                             lblSpeed.ForeColor = System.Drawing.Color.Red;
                         }
@@ -685,7 +685,7 @@ namespace AgOpenGPS
 
                 case "Dual":
                     {
-                        if (Properties.Settings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
+                        if (Properties.VehicleSettings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
                         {
                             lblSpeed.ForeColor = System.Drawing.Color.Green;
                             isChangingDirection = false;
@@ -1143,15 +1143,15 @@ namespace AgOpenGPS
                 SendPgnToLoop(p_229.pgn);
             }
 
+            //update main window
+            oglMain.MakeCurrent();
+            oglMain.Refresh();
+
             //stop the timer and calc how long it took to do calcs and draw
             frameTimeRough = (double)(swFrame.ElapsedTicks * 1000) / (double)System.Diagnostics.Stopwatch.Frequency;
 
             if (frameTimeRough > 80) frameTimeRough = 80;
             frameTime = frameTime * 0.90 + frameTimeRough * 0.1;
-
-            //update main window
-            oglMain.MakeCurrent();
-            oglMain.Refresh();
         }
 
         private void TheRest()

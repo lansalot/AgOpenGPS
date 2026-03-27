@@ -891,11 +891,11 @@ The order you push them will be the order they appear on the menu from bottom up
     <value>Problem Making Path</value>
   </data>
   <data name="gsProfile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Environment</value>
   </data>
   <data name="gsProfileMenuHint" xml:space="preserve">
-    <value>The vehicle settings are now called "profiles" and
-can be created/loaded in the main menu (top left).</value>
+    <value>Vehicle, Tool and Environment settings are now stored as separate profiles.
+Load from Config panel &amp; Top Left Menu.</value>
   </data>
   <data name="gsProgramWillExitPleaseRestart" xml:space="preserve">
     <value>Program Will Exit Please Restart</value>
@@ -987,8 +987,26 @@ can be created/loaded in the main menu (top left).</value>
   <data name="gsSaveSettings" xml:space="preserve">
     <value>Saving settings</value>
   </data>
+  <data name="gsSaveEnvironmentSettings" xml:space="preserve">
+    <value>Environment settings</value>
+  </data>
+  <data name="gsSaveEnvironmentSettingsSaved" xml:space="preserve">
+    <value>Environment settings saved.</value>
+  </data>
   <data name="gsSaveSettingsSaved" xml:space="preserve">
     <value>Settings saved.</value>
+  </data>
+  <data name="gsSaveVehicleSettings" xml:space="preserve">
+    <value>Vehicle settings</value>
+  </data>
+  <data name="gsSaveVehicleSettingsSaved" xml:space="preserve">
+    <value>Vehicle settings saved.</value>
+  </data>
+  <data name="gsSaveToolSettings" xml:space="preserve">
+    <value>Tool settings</value>
+  </data>
+  <data name="gsSaveToolSettingsSaved" xml:space="preserve">
+    <value>Tool settings saved.</value>
   </data>
   <data name="gsSaveUploadCompleted" xml:space="preserve">
     <value>Upload complete.</value>

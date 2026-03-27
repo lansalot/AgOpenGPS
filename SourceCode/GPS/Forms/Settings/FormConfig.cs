@@ -272,6 +272,8 @@ namespace AgOpenGPS
             mf.LoadSettings();
 
             //save current vehicle
+            Properties.VehicleSettings.Default.Save();
+            Properties.ToolSettings.Default.Save();
             Properties.Settings.Default.Save();
         }
 
@@ -381,7 +383,7 @@ namespace AgOpenGPS
             chkDisplayPolygons.Checked = mf.isDrawPolygons;
             chkDisplayKeyboard.Checked = mf.isKeyboardOn;
             chkDisplayLogElevation.Checked = mf.isLogElevation;
-            chkDirectionMarkers.Checked = Properties.Settings.Default.setTool_isDirectionMarkers;
+            chkDirectionMarkers.Checked = Properties.ToolSettings.Default.setTool_isDirectionMarkers;
             chkSectionLines.Checked = Properties.Settings.Default.setDisplay_isSectionLinesOn;
             chkLineSmooth.Checked = Properties.Settings.Default.setDisplay_isLineSmooth;
             chkboxHeadlandDist.Checked = Properties.Settings.Default.isHeadlandDistanceOn;

@@ -1568,21 +1568,16 @@ namespace AgOpenGPS
         }
 
         //Profiles
-        private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadVehicleToolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = new FormNewProfile(this))
+            using (var form = new FormLoadVehicleTool(this))
             {
                 form.ShowDialog(this);
             }
         }
 
-        private void loadProfileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var form = new FormLoadProfile(this))
-            {
-                form.ShowDialog(this);
-            }
-        }
+
+
 
         #endregion
 
@@ -1821,8 +1816,8 @@ namespace AgOpenGPS
             if (cboxIsSectionControlled.Checked) cboxIsSectionControlled.Image = Properties.Resources.HeadlandSectionOn;
             else cboxIsSectionControlled.Image = Properties.Resources.HeadlandSectionOff;
             bnd.isSectionControlledByHeadland = cboxIsSectionControlled.Checked;
-            Properties.Settings.Default.setHeadland_isSectionControlled = cboxIsSectionControlled.Checked;
-            Properties.Settings.Default.Save();
+            Properties.ToolSettings.Default.setHeadland_isSectionControlled = cboxIsSectionControlled.Checked;
+            Properties.ToolSettings.Default.Save();
         }
         private void btnHydLift_Click(object sender, EventArgs e)
         {

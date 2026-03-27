@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Accord.Math.Geometry;
+using AgOpenGPS.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using AgOpenGPS.Core.Models;
 
 namespace AgOpenGPS.IO
 {
@@ -26,6 +27,8 @@ namespace AgOpenGPS.IO
                 var header = reader.ReadLine();
                 if (header == null || !header.TrimStart().StartsWith("$", StringComparison.Ordinal))
                     throw new InvalidDataException("TrackLines.txt missing $ header.");
+
+                bool isTwolTrackFile = (header.Trim() == "$TwolTracks");
 
                 while (!reader.EndOfStream)
                 {
@@ -89,6 +92,13 @@ namespace AgOpenGPS.IO
                         var northing = double.Parse(parts[1], CultureInfo.InvariantCulture);
                         var pointheading = double.Parse(parts[2], CultureInfo.InvariantCulture);
                         curvePts.Add(new vec3(easting, northing, pointheading));
+                    }
+
+                    // --- Twol Track --- Don't read inner outer flag or halfToolWidth
+                    if (isTwolTrackFile)
+                    {
+                        reader.ReadLine();
+                        reader.ReadLine();
                     }
 
                     // Build CTrk

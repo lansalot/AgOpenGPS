@@ -499,7 +499,7 @@ namespace AgOpenGPS
             oglZoom.Left = 100;
             oglZoom.Top = 100;
 
-            if (RegistrySettings.vehicleFileName != "" && Properties.Settings.Default.setDisplay_isAutoStartAgIO)
+            if (RegistrySettings.vehicleProfileName != "" && Properties.Settings.Default.setDisplay_isAutoStartAgIO)
             {
                 //Start AgIO process
                 Process[] processName = Process.GetProcessesByName("AgIO");
@@ -534,15 +534,86 @@ namespace AgOpenGPS
 
             hotkeys = Properties.Settings.Default.setKey_hotkeys.ToCharArray();
 
-            if (RegistrySettings.vehicleFileName == "")
+            // Check if any profile is missing (registry empty OR file doesn't exist)
+            bool missingVehicle = string.IsNullOrEmpty(RegistrySettings.vehicleProfileName) ||
+                                   !File.Exists(Path.Combine(RegistrySettings.vehiclesDirectory, RegistrySettings.vehicleProfileName + ".xml"));
+            bool missingTool = string.IsNullOrEmpty(RegistrySettings.toolProfileName) ||
+                                 !File.Exists(Path.Combine(RegistrySettings.toolsDirectory, RegistrySettings.toolProfileName + ".xml"));
+            // Environment is no longer a separate profile - created automatically
+
+            if (missingVehicle || missingTool)
             {
-                Log.EventWriter("No profile selected, prompt to create a new one");
+                Log.EventWriter($"Profile check - Vehicle:{!missingVehicle} Tool:{!missingTool}");
 
-                YesMessageBox("No profile selected\n\nCreate a new profile to save your configuration\n\nIf no profile is created, NO changes will be saved!");
+                // Check what profiles are available
+                string[] oldProfiles = CSettingsMigration.GetConvertibleFiles();
+                bool hasOldProfiles = oldProfiles != null && oldProfiles.Length > 0;
 
-                using (FormNewProfile form = new FormNewProfile(this))
+                bool hasNewProfiles = Directory.Exists(RegistrySettings.vehiclesDirectory) &&
+                    Directory.GetFiles(RegistrySettings.vehiclesDirectory, "*.xml").Length > 0;
+
+                // Scenario 3: Registry keys exist but files are missing (breaking change)
+                bool registryExists = !string.IsNullOrEmpty(RegistrySettings.vehicleProfileName) ||
+                                      !string.IsNullOrEmpty(RegistrySettings.toolProfileName) ||
+                                      !string.IsNullOrEmpty(RegistrySettings.legacyVehicleFileName);
+
+                if (registryExists && !hasNewProfiles && !hasOldProfiles)
+                {
+                    // Files missing but registry points to them
+                    YesMessageBox("Profile files not found!\n\n" +
+                        "The profile(s) in the registry cannot be found.\n" +
+                        "Please select or create new profiles.\n\n" +
+                        "Environment will use defaults if not selected.");
+                }
+                // Scenario 1: Old profiles available but not yet converted
+                else if (hasOldProfiles && !hasNewProfiles)
+                {
+                    YesMessageBox($"Old format profiles detected!\n\n" +
+                        $"You have {oldProfiles.Length} old format profile(s) available.\n\n" +
+                        "Use 'Convert' to import them, or use 'New' to create new profiles.\n\n" +
+                        "Environment will use defaults if not selected.");
+                }
+                // Scenario 2: First time user, no profiles at all
+                else if (!hasOldProfiles && !hasNewProfiles)
+                {
+                    YesMessageBox("No profiles found.\n\n" +
+                        "Use 'New' to create Vehicle and Tool profiles.\n\n" +
+                        "Environment will use defaults if not selected.");
+                }
+                // Scenario: New profiles exist - no message needed, go directly to form
+
+                using (var form = new AgOpenGPS.Forms.Profiles.FormLoadVehicleTool(this))
                 {
                     form.ShowDialog(this);
+                }
+
+                // Scenario 2a: User cancelled without creating profiles - create defaults
+                if (string.IsNullOrEmpty(RegistrySettings.vehicleProfileName) &&
+                    string.IsNullOrEmpty(RegistrySettings.toolProfileName))
+                {
+                    Log.EventWriter("No profiles selected, creating defaults");
+
+                    // Create default Vehicle profile
+                    VehicleSettings.Default.Save("DefaultVehicle");
+                    RegistrySettings.Save(RegKeys.vehicleProfileName, "DefaultVehicle");
+
+                    // Create default Tool profile
+                    ToolSettings.Default.Save("DefaultTool");
+                    RegistrySettings.Save(RegKeys.toolProfileName, "DefaultTool");
+
+                    // Environment already uses "Default"
+
+                    // Load the defaults
+                    Properties.VehicleSettings.Default.Load("DefaultVehicle");
+                    Properties.ToolSettings.Default.Load("DefaultTool");
+
+                    vehicle = new CVehicle(this);
+                    tool = new CTool(this);
+                    LoadSettings();
+                    SetVehicleTextures();
+                    SendSettings();
+
+                    TimedMessageBox(2000, "Profiles Created", "Default profiles created");
                 }
             }
             //Init AgShareClient
@@ -633,7 +704,9 @@ namespace AgOpenGPS
                     // Setup progress steps
                     savingForm.AddStep("Field", gStr.gsSaveField);
                     if (isAgShareEnabled) savingForm.AddStep("AgShare", gStr.gsSaveUploadToAgshare);
-                    savingForm.AddStep("Settings", gStr.gsSaveSettings);
+                    savingForm.AddStep("Vehicle", gStr.gsSaveVehicleSettings);
+                    savingForm.AddStep("Tool", gStr.gsSaveToolSettings);
+                    savingForm.AddStep("Environment", gStr.gsSaveEnvironmentSettings);
                     savingForm.AddStep("Finalize", gStr.gsSaveFinalizeShutdown);
 
                     savingForm.Show();
@@ -692,16 +765,45 @@ namespace AgOpenGPS
                     // STEP 3: Settings + System Log
                     try
                     {
-                        Settings.Default.Save();
-                        Log.FileSaveSystemEvents();
-                        await Task.Delay(300);
-                        savingForm.UpdateStep("Settings", gStr.gsSaveSettingsSaved, SavingStepState.Done);
+                        // Save Vehicle Settings
+                        Properties.VehicleSettings.Default.Save();
+                        await Task.Delay(100);
+                        savingForm.UpdateStep("Vehicle", gStr.gsSaveVehicleSettingsSaved, SavingStepState.Done);
                     }
                     catch (Exception ex)
                     {
-                        Log.EventWriter($"Settings save error: {ex}");
-                        savingForm.UpdateStep("Settings", "Settings save failed", SavingStepState.Failed);
+                        Log.EventWriter($"Vehicle settings save error: {ex}");
+                        savingForm.UpdateStep("Vehicle", "Vehicle settings save failed", SavingStepState.Failed);
                     }
+
+                    try
+                    {
+                        // Save Tool Settings
+                        Properties.ToolSettings.Default.Save();
+                        await Task.Delay(100);
+                        savingForm.UpdateStep("Tool", gStr.gsSaveToolSettingsSaved, SavingStepState.Done);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.EventWriter($"Tool settings save error: {ex}");
+                        savingForm.UpdateStep("Tool", "Tool settings save failed", SavingStepState.Failed);
+                    }
+
+                    try
+                    {
+                        // Save Environment Settings
+                        Settings.Default.Save();
+                        await Task.Delay(100);
+                        savingForm.UpdateStep("Environment", gStr.gsSaveEnvironmentSettingsSaved, SavingStepState.Done);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.EventWriter($"Environment settings save error: {ex}");
+                        savingForm.UpdateStep("Environment", "Environment settings save failed", SavingStepState.Failed);
+                    }
+
+                    // System Log
+                    Log.FileSaveSystemEvents();
 
                     // STEP 4: Finalizing
                     await Task.Delay(500);
@@ -712,24 +814,55 @@ namespace AgOpenGPS
                 else
                 {
                     // Job not started - just save settings with visual feedback
-                    savingForm.AddStep("Settings", gStr.gsSaveSettings);
+                    savingForm.AddStep("Vehicle", gStr.gsSaveVehicleSettings);
+                    savingForm.AddStep("Tool", gStr.gsSaveToolSettings);
+                    savingForm.AddStep("Environment", gStr.gsSaveEnvironmentSettings);
                     savingForm.AddStep("Finalize", gStr.gsSaveFinalizeShutdown);
 
                     savingForm.Show();
                     await Task.Delay(300); // Let UI settle
 
+                    // Save Vehicle Settings
                     try
                     {
-                        Settings.Default.Save();
-                        Log.FileSaveSystemEvents();
-                        await Task.Delay(300);
-                        savingForm.UpdateStep("Settings", gStr.gsSaveSettingsSaved, SavingStepState.Done);
+                        Properties.VehicleSettings.Default.Save();
+                        await Task.Delay(100);
+                        savingForm.UpdateStep("Vehicle", gStr.gsSaveVehicleSettingsSaved, SavingStepState.Done);
                     }
                     catch (Exception ex)
                     {
-                        Log.EventWriter($"Settings save error: {ex}");
-                        savingForm.UpdateStep("Settings", "Settings save failed", SavingStepState.Failed);
+                        Log.EventWriter($"Vehicle settings save error: {ex}");
+                        savingForm.UpdateStep("Vehicle", "Vehicle settings save failed", SavingStepState.Failed);
                     }
+
+                    // Save Tool Settings
+                    try
+                    {
+                        Properties.ToolSettings.Default.Save();
+                        await Task.Delay(100);
+                        savingForm.UpdateStep("Tool", gStr.gsSaveToolSettingsSaved, SavingStepState.Done);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.EventWriter($"Tool settings save error: {ex}");
+                        savingForm.UpdateStep("Tool", "Tool settings save failed", SavingStepState.Failed);
+                    }
+
+                    // Save Environment Settings
+                    try
+                    {
+                        Settings.Default.Save();
+                        await Task.Delay(100);
+                        savingForm.UpdateStep("Environment", gStr.gsSaveEnvironmentSettingsSaved, SavingStepState.Done);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.EventWriter($"Environment settings save error: {ex}");
+                        savingForm.UpdateStep("Environment", "Environment settings save failed", SavingStepState.Failed);
+                    }
+
+                    // System Log
+                    Log.FileSaveSystemEvents();
 
                     // Finalizing
                     await Task.Delay(500);
@@ -863,6 +996,11 @@ namespace AgOpenGPS
         private void btnIsobusSC_Click(object sender, EventArgs e)
         {
             isobus.RequestSectionControlEnabled(!isobus.SectionControlEnabled);
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void FormGPS_Move(object sender, EventArgs e)
@@ -1248,24 +1386,24 @@ namespace AgOpenGPS
         public void SendSettings()
         {
             //Form Steer Settings
-            p_252.pgn[p_252.countsPerDegree] = unchecked((byte)Properties.Settings.Default.setAS_countsPerDegree);
-            p_252.pgn[p_252.ackerman] = unchecked((byte)Properties.Settings.Default.setAS_ackerman);
+            p_252.pgn[p_252.countsPerDegree] = unchecked((byte)Properties.VehicleSettings.Default.setAS_countsPerDegree);
+            p_252.pgn[p_252.ackerman] = unchecked((byte)Properties.VehicleSettings.Default.setAS_ackerman);
 
-            p_252.pgn[p_252.wasOffsetHi] = unchecked((byte)(Properties.Settings.Default.setAS_wasOffset >> 8));
-            p_252.pgn[p_252.wasOffsetLo] = unchecked((byte)(Properties.Settings.Default.setAS_wasOffset));
+            p_252.pgn[p_252.wasOffsetHi] = unchecked((byte)(Properties.VehicleSettings.Default.setAS_wasOffset >> 8));
+            p_252.pgn[p_252.wasOffsetLo] = unchecked((byte)(Properties.VehicleSettings.Default.setAS_wasOffset));
 
-            p_252.pgn[p_252.highPWM] = unchecked((byte)Properties.Settings.Default.setAS_highSteerPWM);
-            p_252.pgn[p_252.lowPWM] = unchecked((byte)Properties.Settings.Default.setAS_lowSteerPWM);
-            p_252.pgn[p_252.gainProportional] = unchecked((byte)Properties.Settings.Default.setAS_Kp);
-            p_252.pgn[p_252.minPWM] = unchecked((byte)Properties.Settings.Default.setAS_minSteerPWM);
+            p_252.pgn[p_252.highPWM] = unchecked((byte)Properties.VehicleSettings.Default.setAS_highSteerPWM);
+            p_252.pgn[p_252.lowPWM] = unchecked((byte)Properties.VehicleSettings.Default.setAS_lowSteerPWM);
+            p_252.pgn[p_252.gainProportional] = unchecked((byte)Properties.VehicleSettings.Default.setAS_Kp);
+            p_252.pgn[p_252.minPWM] = unchecked((byte)Properties.VehicleSettings.Default.setAS_minSteerPWM);
 
             SendPgnToLoop(p_252.pgn);
 
             //steer config
-            p_251.pgn[p_251.set0] = Properties.Settings.Default.setArdSteer_setting0;
-            p_251.pgn[p_251.set1] = Properties.Settings.Default.setArdSteer_setting1;
-            p_251.pgn[p_251.maxPulse] = Properties.Settings.Default.setArdSteer_maxPulseCounts;
-            p_251.pgn[p_251.minSpeed] = unchecked((byte)(Properties.Settings.Default.setAS_minSteerSpeed * 10));
+            p_251.pgn[p_251.set0] = Properties.VehicleSettings.Default.setArdSteer_setting0;
+            p_251.pgn[p_251.set1] = Properties.VehicleSettings.Default.setArdSteer_setting1;
+            p_251.pgn[p_251.maxPulse] = Properties.VehicleSettings.Default.setArdSteer_maxPulseCounts;
+            p_251.pgn[p_251.minSpeed] = unchecked((byte)(Properties.VehicleSettings.Default.setAS_minSteerSpeed * 10));
 
             if (Properties.Settings.Default.setAS_isConstantContourOn)
                 p_251.pgn[p_251.angVel] = 1;
@@ -1274,21 +1412,21 @@ namespace AgOpenGPS
             SendPgnToLoop(p_251.pgn);
 
             //machine settings    
-            p_238.pgn[p_238.set0] = Properties.Settings.Default.setArdMac_setting0;
-            p_238.pgn[p_238.raiseTime] = Properties.Settings.Default.setArdMac_hydRaiseTime;
-            p_238.pgn[p_238.lowerTime] = Properties.Settings.Default.setArdMac_hydLowerTime;
+            p_238.pgn[p_238.set0] = Properties.ToolSettings.Default.setArdMac_setting0;
+            p_238.pgn[p_238.raiseTime] = Properties.ToolSettings.Default.setArdMac_hydRaiseTime;
+            p_238.pgn[p_238.lowerTime] = Properties.ToolSettings.Default.setArdMac_hydLowerTime;
 
-            p_238.pgn[p_238.user1] = Properties.Settings.Default.setArdMac_user1;
-            p_238.pgn[p_238.user2] = Properties.Settings.Default.setArdMac_user2;
-            p_238.pgn[p_238.user3] = Properties.Settings.Default.setArdMac_user3;
-            p_238.pgn[p_238.user4] = Properties.Settings.Default.setArdMac_user4;
+            p_238.pgn[p_238.user1] = Properties.ToolSettings.Default.setArdMac_user1;
+            p_238.pgn[p_238.user2] = Properties.ToolSettings.Default.setArdMac_user2;
+            p_238.pgn[p_238.user3] = Properties.ToolSettings.Default.setArdMac_user3;
+            p_238.pgn[p_238.user4] = Properties.ToolSettings.Default.setArdMac_user4;
 
             SendPgnToLoop(p_238.pgn);
         }
 
         public void SendRelaySettingsToMachineModule()
         {
-            string[] words = Properties.Settings.Default.setRelay_pinConfig.Split(',');
+            string[] words = Properties.ToolSettings.Default.setRelay_pinConfig.Split(',');
 
             //load the pgn
             p_236.pgn[p_236.pin0] = (byte)int.Parse(words[0]);
