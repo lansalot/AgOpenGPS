@@ -20,7 +20,7 @@ namespace AgOpenGPS.Updater.Services
         private const string DefaultRepository = "AgOpenGPS";
         private const string GithubApiUrl = "https://api.github.com";
 
-        // GitHub Personal Access Token for updater
+        // GitHub Personal Access Token for updater (read-only, increases rate limit to 5000/hr)
         private const string GitHubToken = "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";
 
         private readonly HttpClient _httpClient;
@@ -32,7 +32,7 @@ namespace AgOpenGPS.Updater.Services
         {
             _owner = owner ?? DefaultOwner;
             _repository = repository ?? DefaultRepository;
-            // Use provided token or fall back to default token
+            // Use provided token or fall back to default read-only token
             _authToken = authToken ?? GitHubToken;
 
             _httpClient = new HttpClient
@@ -302,33 +302,26 @@ namespace AgOpenGPS.Updater.Services
         /// <returns>The release info if an update is available, null otherwise.</returns>
         public async Task<ReleaseInfo> CheckForUpdate(string currentVersion, bool includePrerelease = false)
         {
-            try
-            {
-                var latestRelease = await GetLatestRelease(includePrerelease);
-                if (latestRelease == null)
-                    return null;
-
-                // Parse current version
-                if (!SemanticVersion.TryParse(currentVersion, out var currentSemVer))
-                    return null;
-
-                // Parse latest version
-                if (!SemanticVersion.TryParse(latestRelease.Version, out var latestSemVer))
-                    return null;
-
-                // If including prereleases but current is also prerelease,
-                // we should still update if the latest is newer
-                if (latestSemVer > currentSemVer)
-                {
-                    return latestRelease;
-                }
-
+            var latestRelease = await GetLatestRelease(includePrerelease);
+            if (latestRelease == null)
                 return null;
-            }
-            catch
-            {
+
+            // Parse current version
+            if (!SemanticVersion.TryParse(currentVersion, out var currentSemVer))
                 return null;
+
+            // Parse latest version
+            if (!SemanticVersion.TryParse(latestRelease.Version, out var latestSemVer))
+                return null;
+
+            // If including prereleases but current is also prerelease,
+            // we should still update if the latest is newer
+            if (latestSemVer > currentSemVer)
+            {
+                return latestRelease;
             }
+
+            return null;
         }
 
         /// <summary>
