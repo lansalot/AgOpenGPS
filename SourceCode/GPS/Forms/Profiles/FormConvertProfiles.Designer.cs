@@ -82,11 +82,13 @@ namespace AgOpenGPS.Forms.Profiles
             // labelStatus
             // 
             this.labelStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelStatus.AutoSize = true;
             this.labelStatus.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic);
             this.labelStatus.Location = new System.Drawing.Point(20, 520);
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(400, 30);
+            this.labelStatus.Size = new System.Drawing.Size(85, 19);
             this.labelStatus.TabIndex = 3;
+            this.labelStatus.Text = "labelStatus";
             this.labelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // buttonConvert
@@ -96,11 +98,11 @@ namespace AgOpenGPS.Forms.Profiles
             this.buttonConvert.FlatAppearance.BorderSize = 0;
             this.buttonConvert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConvert.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
-            this.buttonConvert.Image = ((System.Drawing.Image)(resources.GetObject("buttonConvert.Image")));
+            this.buttonConvert.Image = global::AgOpenGPS.Properties.Resources.boundaryPlay;
             this.buttonConvert.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonConvert.Location = new System.Drawing.Point(741, 548);
+            this.buttonConvert.Location = new System.Drawing.Point(741, 539);
             this.buttonConvert.Name = "buttonConvert";
-            this.buttonConvert.Size = new System.Drawing.Size(120, 90);
+            this.buttonConvert.Size = new System.Drawing.Size(120, 99);
             this.buttonConvert.TabIndex = 4;
             this.buttonConvert.Text = "Convert";
             this.buttonConvert.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -114,10 +116,10 @@ namespace AgOpenGPS.Forms.Profiles
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Tahoma", 14F);
             this.buttonClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonClose.Image")));
-            this.buttonClose.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonClose.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonClose.Location = new System.Drawing.Point(905, 539);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(73, 99);
+            this.buttonClose.Size = new System.Drawing.Size(91, 99);
             this.buttonClose.TabIndex = 5;
             this.buttonClose.Text = "Close";
             this.buttonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -281,6 +283,7 @@ namespace AgOpenGPS.Forms.Profiles
             this.panelVehicle.ResumeLayout(false);
             this.panelVehicle.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

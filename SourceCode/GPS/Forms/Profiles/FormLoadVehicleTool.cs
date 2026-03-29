@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using AgLibrary.Logging;
 using AgLibrary.Settings;
 using AgOpenGPS.Controls;
+using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Properties;
 
 namespace AgOpenGPS.Forms.Profiles
@@ -29,6 +30,12 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void FormLoadVehicleTool_Load(object sender, EventArgs e)
         {
+            // Set localized form title and labels
+            this.Text = gStr.gsVehicleTool;
+            buttonLoad.Text = gStr.gsLoad;
+            buttonCancel.Text = gStr.gsCancel;
+            buttonConvertOld.Text = gStr.gsConvertOldProfiles;
+
             RefreshVehicleList();
             RefreshToolList();
 
@@ -60,21 +67,21 @@ namespace AgOpenGPS.Forms.Profiles
         private void UpdateCurrentLabels()
         {
             lblCurrentVehicle.Text = !string.IsNullOrEmpty(RegistrySettings.vehicleProfileName)
-                ? "Current Vehicle: " + RegistrySettings.vehicleProfileName
-                : "Current Vehicle: (none)";
+                ? gStr.gsCurrentVehicle + ": " + RegistrySettings.vehicleProfileName
+                : gStr.gsCurrentVehicle + ": " + gStr.gsNone;
             lblCurrentTool.Text = !string.IsNullOrEmpty(RegistrySettings.toolProfileName)
-                ? "Current Tool: " + RegistrySettings.toolProfileName
-                : "Current Tool: (none)";
+                ? gStr.gsCurrentTool + ": " + RegistrySettings.toolProfileName
+                : gStr.gsCurrentTool + ": " + gStr.gsNone;
         }
 
         private void UpdateSelectedLabels()
         {
             lblSelectedVehicle.Text = _selectedVehicle != null
-                ? "Selected: " + _selectedVehicle
-                : "Selected: -";
+                ? gStr.gsSelected + ": " + _selectedVehicle
+                : gStr.gsSelected + ": -";
             lblSelectedTool.Text = _selectedTool != null
-                ? "Selected: " + _selectedTool
-                : "Selected: -";
+                ? gStr.gsSelected + ": " + _selectedTool
+                : gStr.gsSelected + ": -";
         }
 
         #region Vehicle List
@@ -136,12 +143,12 @@ namespace AgOpenGPS.Forms.Profiles
             if (_formGPS.isJobStarted || string.IsNullOrEmpty(_selectedVehicle)) return;
             if (_selectedVehicle == RegistrySettings.vehicleProfileName)
             {
-                FormDialog.Show("Vehicle in use", "Cannot delete the active vehicle", DialogSeverity.Error);
+                FormDialog.Show(gStr.gsVehicleInUse, gStr.gsCannotDeleteActiveVehicle, DialogSeverity.Error);
                 return;
             }
 
-            var result = FormDialog.ShowQuestion("Delete Vehicle",
-                $"Delete vehicle '{_selectedVehicle}'?");
+            var result = FormDialog.ShowQuestion(gStr.gsDelete,
+                gStr.gsDeleteVehicleConfirm + " '" + _selectedVehicle + "'?");
 
             if (result == DialogResult.OK)
             {
@@ -159,7 +166,7 @@ namespace AgOpenGPS.Forms.Profiles
             if (string.IsNullOrEmpty(_selectedVehicle)) return;
 
             string oldName = _selectedVehicle;
-            string newName = PromptForName("Rename Vehicle", "Enter new vehicle name:", oldName);
+            string newName = PromptForName(gStr.gsRenameVehicle, gStr.gsEnterNewVehicleName, oldName);
             if (string.IsNullOrEmpty(newName) || newName == oldName) return;
 
             string oldPath = Path.Combine(RegistrySettings.vehiclesDirectory, oldName + ".xml");
@@ -167,7 +174,7 @@ namespace AgOpenGPS.Forms.Profiles
 
             if (File.Exists(newPath))
             {
-                FormDialog.Show("Exists", $"Vehicle '{newName}' already exists", DialogSeverity.Error);
+                FormDialog.Show(gStr.gsExists, gStr.gsVehicleExists + " '" + newName + "'", DialogSeverity.Error);
                 return;
             }
 
@@ -245,12 +252,12 @@ namespace AgOpenGPS.Forms.Profiles
             if (_formGPS.isJobStarted || string.IsNullOrEmpty(_selectedTool)) return;
             if (_selectedTool == RegistrySettings.toolProfileName)
             {
-                FormDialog.Show("Tool in use", "Cannot delete the active tool", DialogSeverity.Error);
+                FormDialog.Show(gStr.gsToolInUse, gStr.gsCannotDeleteActiveTool, DialogSeverity.Error);
                 return;
             }
 
-            var result = FormDialog.ShowQuestion("Delete Tool",
-                $"Delete tool '{_selectedTool}'?");
+            var result = FormDialog.ShowQuestion(gStr.gsDelete,
+                gStr.gsDeleteToolConfirm + " '" + _selectedTool + "'?");
 
             if (result == DialogResult.OK)
             {
@@ -268,7 +275,7 @@ namespace AgOpenGPS.Forms.Profiles
             if (string.IsNullOrEmpty(_selectedTool)) return;
 
             string oldName = _selectedTool;
-            string newName = PromptForName("Rename Tool", "Enter new tool name:", oldName);
+            string newName = PromptForName(gStr.gsRenameTool, gStr.gsEnterNewToolName, oldName);
             if (string.IsNullOrEmpty(newName) || newName == oldName) return;
 
             string oldPath = Path.Combine(RegistrySettings.toolsDirectory, oldName + ".xml");
@@ -276,7 +283,7 @@ namespace AgOpenGPS.Forms.Profiles
 
             if (File.Exists(newPath))
             {
-                FormDialog.Show("Exists", $"Tool '{newName}' already exists", DialogSeverity.Error);
+                FormDialog.Show(gStr.gsExists, gStr.gsToolExists + " '" + newName + "'", DialogSeverity.Error);
                 return;
             }
 
@@ -306,24 +313,24 @@ namespace AgOpenGPS.Forms.Profiles
             if (File.Exists(path))
                 XmlSettingsHandler.LoadXMLFile(path, preview);
 
-            string type = preview.setVehicle_vehicleType == 0 ? "Tractor"
-                : preview.setVehicle_vehicleType == 1 ? "Harvester" : "Articulated";
+            string type = preview.setVehicle_vehicleType == 0 ? gStr.gsTractor
+                : preview.setVehicle_vehicleType == 1 ? gStr.gsHarvester : gStr.gsArticulated;
 
-            lblVehType.Text = "Type: " + type;
-            lblVehWheelbase.Text = "Wheelbase: " + preview.setVehicle_wheelbase.ToString("N2") + " m";
-            lblVehAntPivot.Text = "Ant. Pivot: " + preview.setVehicle_antennaPivot.ToString("N2") + " m";
-            lblVehAntOffset.Text = "Ant. Offset: " + preview.setVehicle_antennaOffset.ToString("N2") + " m";
-            lblVehTrackWidth.Text = "Track Width: " + preview.setVehicle_trackWidth.ToString("N2") + " m";
+            lblVehType.Text = gStr.gsType + ": " + type;
+            lblVehWheelbase.Text = gStr.gsWheelbase + ": " + preview.setVehicle_wheelbase.ToString("N2") + " m";
+            lblVehAntPivot.Text = gStr.gsAntennaPivot + ": " + preview.setVehicle_antennaPivot.ToString("N2") + " m";
+            lblVehAntOffset.Text = gStr.gsAntennaOffset + ": " + preview.setVehicle_antennaOffset.ToString("N2") + " m";
+            lblVehTrackWidth.Text = gStr.gsTrackWidth + ": " + preview.setVehicle_trackWidth.ToString("N2") + " m";
         }
 
         private void ClearVehiclePreview()
         {
-            lblVehType.Text = "Type:";
-            lblVehWheelbase.Text = "Wheelbase:";
-            lblVehAntPivot.Text = "Ant. Pivot:";
-            lblVehAntOffset.Text = "Ant. Offset:";
-            lblVehTrackWidth.Text = "Track Width:";
-            lblVehHitch.Text = "Hitch:";
+            lblVehType.Text = gStr.gsType + ":";
+            lblVehWheelbase.Text = gStr.gsWheelbase + ":";
+            lblVehAntPivot.Text = gStr.gsAntennaPivot + ":";
+            lblVehAntOffset.Text = gStr.gsAntennaOffset + ":";
+            lblVehTrackWidth.Text = gStr.gsTrackWidth + ":";
+            lblVehHitch.Text = gStr.gsHitch + ":";
         }
 
         private void LoadToolPreview(string name)
@@ -333,29 +340,29 @@ namespace AgOpenGPS.Forms.Profiles
             if (File.Exists(path))
                 XmlSettingsHandler.LoadXMLFile(path, preview);
 
-            string attach = preview.setTool_isToolFront ? "Front"
-                : preview.setTool_isToolTBT ? "TBT"
-                : preview.setTool_isToolRearFixed ? "Rear Fixed"
-                : preview.setTool_isToolTrailing ? "Trailing" : "?";
+            string attach = preview.setTool_isToolFront ? gStr.gsFront
+                : preview.setTool_isToolTBT ? gStr.gsTBT
+                : preview.setTool_isToolRearFixed ? gStr.gsRearFixed
+                : preview.setTool_isToolTrailing ? gStr.gsTrailing : "?";
 
-            lblToolWidth.Text = "Width: " + preview.setVehicle_toolWidth.ToString("N2") + " m";
-            lblToolOverlap.Text = "Overlap: " + preview.setVehicle_toolOverlap.ToString("N2") + " m";
-            lblToolOffset.Text = "Offset: " + preview.setVehicle_toolOffset.ToString("N2") + " m";
-            lblToolSections.Text = "Sections: " + preview.setVehicle_numSections.ToString();
-            lblToolAttach.Text = "Attach: " + attach;
-            lblToolHitch.Text = "Trail Hitch: " + preview.setVehicle_toolTrailingHitchLength.ToString("N2") + " m";
-            lblVehHitch.Text = "Hitch: " + preview.setVehicle_hitchLength.ToString("N2") + " m";
+            lblToolWidth.Text = gStr.gsWidth + ": " + preview.setVehicle_toolWidth.ToString("N2") + " m";
+            lblToolOverlap.Text = gStr.gsOverlap + ": " + preview.setVehicle_toolOverlap.ToString("N2") + " m";
+            lblToolOffset.Text = gStr.gsOffset + ": " + preview.setVehicle_toolOffset.ToString("N2") + " m";
+            lblToolSections.Text = gStr.gsSections + ": " + preview.setVehicle_numSections.ToString();
+            lblToolAttach.Text = gStr.gsAttach + ": " + attach;
+            lblToolHitch.Text = gStr.gsTrailingHitch + ": " + preview.setVehicle_toolTrailingHitchLength.ToString("N2") + " m";
+            lblVehHitch.Text = gStr.gsHitch + ": " + preview.setVehicle_hitchLength.ToString("N2") + " m";
 
         }
 
         private void ClearToolPreview()
         {
-            lblToolWidth.Text = "Width:";
-            lblToolOverlap.Text = "Overlap:";
-            lblToolOffset.Text = "Offset:";
-            lblToolSections.Text = "Sections:";
-            lblToolAttach.Text = "Attach:";
-            lblToolHitch.Text = "Trail Hitch:";
+            lblToolWidth.Text = gStr.gsWidth + ":";
+            lblToolOverlap.Text = gStr.gsOverlap + ":";
+            lblToolOffset.Text = gStr.gsOffset + ":";
+            lblToolSections.Text = gStr.gsSections + ":";
+            lblToolAttach.Text = gStr.gsAttach + ":";
+            lblToolHitch.Text = gStr.gsTrailingHitch + ":";
         }
 
         #endregion
@@ -373,7 +380,7 @@ namespace AgOpenGPS.Forms.Profiles
         {
             if (_formGPS.isJobStarted)
             {
-                _formGPS.TimedMessageBox(2000, "Field is open", "Close field first");
+                _formGPS.TimedMessageBox(2000, gStr.gsFieldIsOpen, gStr.gsCloseFieldFirst);
                 return;
             }
 
@@ -386,8 +393,8 @@ namespace AgOpenGPS.Forms.Profiles
                 if (result != LoadResult.Ok)
                 {
                     Log.EventWriter($"Error loading vehicle {_selectedVehicle}.xml ({result})");
-                    FormDialog.Show("Error",
-                        $"Error loading vehicle {_selectedVehicle}.xml\n\nResult: {result}",
+                    FormDialog.Show(gStr.gsError,
+                        gStr.gsErrorLoadingVehicle + " '" + _selectedVehicle + ".xml' " + Environment.NewLine + gStr.gsFileResult + ": " + result + Environment.NewLine,
                         DialogSeverity.Error);
                     return;
                 }
@@ -401,8 +408,8 @@ namespace AgOpenGPS.Forms.Profiles
                 if (result != LoadResult.Ok)
                 {
                     Log.EventWriter($"Error loading tool {_selectedTool}.xml ({result})");
-                    FormDialog.Show("Error",
-                        $"Error loading tool {_selectedTool}.xml\n\nResult: {result}",
+                    FormDialog.Show(gStr.gsError,
+                        gStr.gsErrorLoadingTool + " '" + _selectedTool + ".xml' " + Environment.NewLine + gStr.gsFileResult + ": " + result + Environment.NewLine,
                         DialogSeverity.Error);
                     return;
                 }
@@ -425,7 +432,7 @@ namespace AgOpenGPS.Forms.Profiles
                 if (vehicleChanged && toolChanged) msg += "  |  ";
                 if (toolChanged) msg += $"Tool: {_selectedTool}";
 
-                _formGPS.TimedMessageBox(2500, "Loaded", msg);
+                _formGPS.TimedMessageBox(2500, gStr.gsLoad, msg);
                 Close();
             }
         }
@@ -436,13 +443,13 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void buttonNewVehicle_Click(object sender, EventArgs e)
         {
-            string name = PromptForName("New Vehicle", "Enter vehicle name:");
+            string name = PromptForName(gStr.gsNewVehicle, gStr.gsEnterVehicleName);
             if (string.IsNullOrEmpty(name)) return;
 
             string path = Path.Combine(RegistrySettings.vehiclesDirectory, name + ".xml");
             if (File.Exists(path) && CSettingsMigration.IsSettingsType(path, "VehicleSettings"))
             {
-                FormDialog.Show("Exists", $"Vehicle '{name}' already exists", DialogSeverity.Error);
+                FormDialog.Show(gStr.gsExists, gStr.gsVehicleExists + " '" + name + "'", DialogSeverity.Error);
                 return;
             }
 
@@ -454,13 +461,13 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void buttonNewTool_Click(object sender, EventArgs e)
         {
-            string name = PromptForName("New Tool", "Enter tool name:");
+            string name = PromptForName(gStr.gsNewTool, gStr.gsEnterToolName);
             if (string.IsNullOrEmpty(name)) return;
 
             string path = Path.Combine(RegistrySettings.toolsDirectory, name + ".xml");
             if (File.Exists(path) && CSettingsMigration.IsSettingsType(path, "ToolSettings"))
             {
-                FormDialog.Show("Exists", $"Tool '{name}' already exists", DialogSeverity.Error);
+                FormDialog.Show(gStr.gsExists, gStr.gsToolExists + " '" + name + "'", DialogSeverity.Error);
                 return;
             }
 
@@ -472,8 +479,8 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void buttonResetVehicle_Click(object sender, EventArgs e)
         {
-            var result = FormDialog.ShowQuestion("Create Default Vehicle",
-                "Create a 'Default' vehicle profile with factory settings?\n\nThis will create and load the new profile.",
+            var result = FormDialog.ShowQuestion(gStr.gsCreateDefaultVehicle,
+                gStr.gsCreateDefaultVehicleConfirm + Environment.NewLine + Environment.NewLine + "This will create and load the new profile.",
                 DialogSeverity.Info);
             if (result != DialogResult.OK) return;
 
@@ -482,8 +489,8 @@ namespace AgOpenGPS.Forms.Profiles
 
             if (File.Exists(path))
             {
-                var overwrite = FormDialog.ShowQuestion("Overwrite?",
-                    $"Profile '{defaultName}' already exists. Overwrite?", DialogSeverity.Warning);
+                var overwrite = FormDialog.ShowQuestion(gStr.gsOverwrite,
+                    gStr.gsProfileExistsOverwrite + " '" + defaultName + "'?", DialogSeverity.Warning);
                 if (overwrite != DialogResult.OK) return;
             }
 
@@ -496,8 +503,8 @@ namespace AgOpenGPS.Forms.Profiles
             if (loadResult != LoadResult.Ok)
             {
                 Log.EventWriter($"Error loading vehicle {defaultName}.xml ({loadResult})");
-                FormDialog.Show("Error",
-                    $"Error loading vehicle {defaultName}.xml\n\nResult: {loadResult}",
+                FormDialog.Show(gStr.gsError,
+                    gStr.gsErrorLoadingVehicle + " '" + defaultName + ".xml' " + Environment.NewLine + gStr.gsFileResult + ": " + loadResult,
                     DialogSeverity.Error);
                 RefreshVehicleList();
                 return;
@@ -512,13 +519,13 @@ namespace AgOpenGPS.Forms.Profiles
             _formGPS.SendSettings();
 
             RefreshVehicleList();
-            _formGPS.TimedMessageBox(2500, "Loaded", "Default vehicle loaded");
+            _formGPS.TimedMessageBox(2500, gStr.gsLoad, gStr.gsDefaultVehicleLoaded);
         }
 
         private void buttonResetTool_Click(object sender, EventArgs e)
         {
-            var result = FormDialog.ShowQuestion("Create Default Tool",
-                "Create a 'Default' tool profile with factory settings?\n\nThis will create and load the new profile.",
+            var result = FormDialog.ShowQuestion(gStr.gsCreateDefaultTool,
+                gStr.gsCreateDefaultToolConfirm + Environment.NewLine + Environment.NewLine + "This will create and load the new profile.",
                 DialogSeverity.Info);
             if (result != DialogResult.OK) return;
 
@@ -527,8 +534,8 @@ namespace AgOpenGPS.Forms.Profiles
 
             if (File.Exists(path))
             {
-                var overwrite = FormDialog.ShowQuestion("Overwrite?",
-                    $"Profile '{defaultName}' already exists. Overwrite?", DialogSeverity.Warning);
+                var overwrite = FormDialog.ShowQuestion(gStr.gsOverwrite,
+                    gStr.gsProfileExistsOverwrite + " '" + defaultName + "'?", DialogSeverity.Warning);
                 if (overwrite != DialogResult.OK) return;
             }
 
@@ -541,8 +548,8 @@ namespace AgOpenGPS.Forms.Profiles
             if (loadResult != LoadResult.Ok)
             {
                 Log.EventWriter($"Error loading tool {defaultName}.xml ({loadResult})");
-                FormDialog.Show("Error",
-                    $"Error loading tool {defaultName}.xml\n\nResult: {loadResult}",
+                FormDialog.Show(gStr.gsError,
+                    gStr.gsErrorLoadingTool + " '" + defaultName + ".xml' " + Environment.NewLine + gStr.gsFileResult + ": " + loadResult,
                     DialogSeverity.Error);
                 RefreshToolList();
                 return;
@@ -557,7 +564,7 @@ namespace AgOpenGPS.Forms.Profiles
             _formGPS.SendRelaySettingsToMachineModule();
 
             RefreshToolList();
-            _formGPS.TimedMessageBox(2500, "Loaded", "Default tool loaded");
+            _formGPS.TimedMessageBox(2500, gStr.gsLoad, gStr.gsDefaultToolLoaded);
         }
 
         private void buttonConvertOld_Click(object sender, EventArgs e)

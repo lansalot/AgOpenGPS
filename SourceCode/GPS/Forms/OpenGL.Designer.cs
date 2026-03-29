@@ -49,12 +49,14 @@ namespace AgOpenGPS
         private void oglMain_Load(object sender, EventArgs e)
         {
             oglMain.MakeCurrent();
-            SetVehicleTextures();
             GL.ClearColor(0.14f, 0.14f, 0.37f, 1.0f);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             GL.CullFace(CullFaceMode.Back);
             SetZoom();
             tmrWatchdog.Enabled = true;
+
+            // Defer texture loading to after OpenGL is initialized
+            BeginInvoke(new Action(() => SetVehicleTextures()));
         }
 
         private void oglMain_Resize(object sender, EventArgs e)

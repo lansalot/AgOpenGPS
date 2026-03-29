@@ -224,7 +224,10 @@ namespace AgOpenGPS
                     switch (currentFieldTextCounter)
                     {
                         case 0:
-                            lblCurrentField.Text = (tool.width * m2FtOrM).ToString("N2") + unitsFtM + " - " + RegistrySettings.vehicleProfileName + "  |  " + RegistrySettings.toolProfileName;
+                            lblCurrentField.Text = (tool.width * m2FtOrM).ToString("N2") + unitsFtM + " - " +
+                                gStr.gsVehicle + ": " + RegistrySettings.vehicleProfileName +
+                                "  |  " +
+                                gStr.gsTool + ": " + RegistrySettings.toolProfileName;
                             break;
                         case 1:
                             lblCurrentField.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss ");
@@ -422,6 +425,7 @@ namespace AgOpenGPS
             steerChartToolStripMenuItem.Text = gStr.gsSteerChart;
             headingChartToolStripMenuItem.Text = gStr.gsHeadingChart;
             xTEChartToolStripMenuItem.Text = gStr.gsXTEChart;
+            loadVehicleToolToolStripMenuItem.Text = gStr.gsLoadVehicleTool;
         }
 
         public void LoadSettings()

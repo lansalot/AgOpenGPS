@@ -228,7 +228,7 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
     <value>Camera-reactie</value>
   </data>
   <data name="gsCancel" xml:space="preserve">
-    <value>Afbreken</value>
+    <value>Terug</value>
   </data>
   <data name="gsCenter" xml:space="preserve">
     <value>Midden</value>
@@ -686,6 +686,9 @@ De volgorde waarin u ze indrukt, is de volgorde waarin ze van onder naar boven i
   <data name="gsNight" xml:space="preserve">
     <value>Nacht</value>
   </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>Laden</value>
+  </data>
   <data name="gsNoABLineActive" xml:space="preserve">
     <value>Geen AB lijn actief</value>
   </data>
@@ -1130,5 +1133,104 @@ GEBRUIK OP EIGEN RISICO.</value>
   <data name="gsProfileMenuHint" xml:space="preserve">
     <value>Voertuig-, Werktuig- en Omgevingsinstellingen worden nu opgeslagen als aparte profielen.
 Laad via het Config-paneel &amp; menu linksboven.</value>
+  </data>
+  <data name="gsVehicleAlreadyExists" xml:space="preserve">
+    <value>Voertuig '{0}' bestaat al</value>
+  </data>
+  <data name="gsToolAlreadyExists" xml:space="preserve">
+    <value>Werktuig '{0}' bestaat al</value>
+  </data>
+  <data name="gsConvertFrom" xml:space="preserve">
+    <value>Converteer '{0}':</value>
+  </data>
+  <data name="gsConvertVehicleLine" xml:space="preserve">
+    <value>Voertuig: {0}</value>
+  </data>
+  <data name="gsConvertToolLine" xml:space="preserve">
+    <value>Werktuig: {0}</value>
+  </data>
+  <data name="gsType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="gsHitch" xml:space="preserve">
+    <value>Hef</value>
+  </data>
+  <data name="gsSelected" xml:space="preserve">
+    <value>Geselecteerd</value>
+  </data>
+  <data name="gsVehicle" xml:space="preserve">
+    <value>Voertuig</value>
+  </data>
+  <data name="gsTool" xml:space="preserve">
+    <value>Werktuig</value>
+  </data>
+  <data name="gsConvertOldProfiles" xml:space="preserve">
+    <value>Converteer oude profielen</value>
+  </data>
+  <data name="gsConvertOldProfilesTitle" xml:space="preserve">
+    <value>Converteer oude profielbestanden naar nieuw formaat</value>
+  </data>
+  <data name="gsConvertProfilesExplanation" xml:space="preserve">
+    <value>Oude profielen bevatten alle instellingen in één bestand. Nieuw formaat scheidt Voertuig, Werktuig en Omgeving. Selecteer wat je wilt extraheren.</value>
+  </data>
+  <data name="gsConvertStep1" xml:space="preserve">
+    <value>Stap 1: Selecteer een oud profielbestand:</value>
+  </data>
+  <data name="gsConvertStep2" xml:space="preserve">
+    <value>Stap 2: Selecteer om te converteren (Voertuig en/of Werktuig):</value>
+  </data>
+  <data name="gsConvertTitle" xml:space="preserve">
+    <value>Converteren</value>
+  </data>
+  <data name="gsConvertConfirm" xml:space="preserve">
+    <value>Bevestig conversie</value>
+  </data>
+  <data name="gsConvertConfirmMsg" xml:space="preserve">
+    <value>Converteer '{0}':
+
+  {1}
+  {2}</value>
+  </data>
+  <data name="gsConversionComplete" xml:space="preserve">
+    <value>Conversie voltooid</value>
+  </data>
+  <data name="gsConvertedSuccess" xml:space="preserve">
+    <value>succesvol geconverteerd</value>
+  </data>
+  <data name="gsConversionErrors" xml:space="preserve">
+    <value>Conversiefouten</value>
+  </data>
+  <data name="gsConversionErrorMsg" xml:space="preserve">
+    <value>Er zijn fouten opgetreden</value>
+  </data>
+  <data name="gsLoadVehicleTool" xml:space="preserve">
+    <value>Voertuig/Werktuig Laden</value>
+  </data>
+  <data name="gsVehicleProfileName" xml:space="preserve">
+    <value>Voertuig profielnaam</value>
+  </data>
+  <data name="gsToolProfileName" xml:space="preserve">
+    <value>Werktuig profielnaam</value>
+  </data>
+  <data name="gsCurrentVehicle" xml:space="preserve">
+    <value>Huidige voertuig</value>
+  </data>
+  <data name="gsCurrentTool" xml:space="preserve">
+    <value>Huidige werktuig</value>
+  </data>
+  <data name="gsOldFiles" xml:space="preserve">
+    <value>oude bestanden</value>
+  </data>
+  <data name="gsOldFilesStatus" xml:space="preserve">
+    <value>oude bestand(en): geconverteerd, te converteren</value>
+  </data>
+  <data name="gsConverted" xml:space="preserve">
+    <value>geconverteerd</value>
+  </data>
+  <data name="gsToConvert" xml:space="preserve">
+    <value>te converteren</value>
+  </data>
+  <data name="gsUserNo" xml:space="preserve">
+    <value>Gebruiker</value>
   </data>
 </root>

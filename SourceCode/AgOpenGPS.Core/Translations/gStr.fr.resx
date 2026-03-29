@@ -731,6 +731,9 @@ L'ordre dans lequel vous cliquez, sera l'ordre dans lequel ils apparaîtrons dan
   <data name="gsNight" xml:space="preserve">
     <value>Nuit</value>
   </data>
+  <data name="gsLoad" xml:space="preserve">
+    <value>Charger</value>
+  </data>
   <data name="gsNoABLineActive" xml:space="preserve">
     <value>Aucune ligne AB activée</value>
   </data>
@@ -1134,7 +1137,7 @@ UTILISER À VOS PROPRES RISQUES.</value>
     <value>Utiliser</value>
   </data>
   <data name="gsUserNo" xml:space="preserve">
-    <value>Utilisateur {0}</value>
+    <value>Utilisateur</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>U-Turn</value>
@@ -1204,5 +1207,101 @@ UTILISER À VOS PROPRES RISQUES.</value>
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
+  </data>
+  <data name="gsVehicleAlreadyExists" xml:space="preserve">
+    <value>Le véhicule '{0}' existe déjà</value>
+  </data>
+  <data name="gsToolAlreadyExists" xml:space="preserve">
+    <value>L'outil '{0}' existe déjà</value>
+  </data>
+  <data name="gsConvertFrom" xml:space="preserve">
+    <value>Convertir '{0}':</value>
+  </data>
+  <data name="gsConvertVehicleLine" xml:space="preserve">
+    <value>Véhicule: {0}</value>
+  </data>
+  <data name="gsConvertToolLine" xml:space="preserve">
+    <value>Outil: {0}</value>
+  </data>
+  <data name="gsType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="gsHitch" xml:space="preserve">
+    <value>Attelage</value>
+  </data>
+  <data name="gsSelected" xml:space="preserve">
+    <value>Sélectionné</value>
+  </data>
+  <data name="gsVehicle" xml:space="preserve">
+    <value>Véhicule</value>
+  </data>
+  <data name="gsTool" xml:space="preserve">
+    <value>Outil</value>
+  </data>
+  <data name="gsConvertOldProfiles" xml:space="preserve">
+    <value>Convertir les anciens profils</value>
+  </data>
+  <data name="gsConvertOldProfilesTitle" xml:space="preserve">
+    <value>Convertir les anciens fichiers de profil au nouveau format</value>
+  </data>
+  <data name="gsConvertProfilesExplanation" xml:space="preserve">
+    <value>Les anciens profils contenaient tous les paramètres dans un seul fichier. Le nouveau format sépare Véhicule, Outil et Environnement. Sélectionnez ce que vous souhaitez extraire.</value>
+  </data>
+  <data name="gsConvertStep1" xml:space="preserve">
+    <value>Étape 1 : Sélectionnez un ancien fichier de profil :</value>
+  </data>
+  <data name="gsConvertStep2" xml:space="preserve">
+    <value>Étape 2 : Sélectionnez à convertir (Véhicule et/ou Outil) :</value>
+  </data>
+  <data name="gsConvertTitle" xml:space="preserve">
+    <value>Convertir</value>
+  </data>
+  <data name="gsConvertConfirm" xml:space="preserve">
+    <value>Confirmer la conversion</value>
+  </data>
+  <data name="gsConvertConfirmMsg" xml:space="preserve">
+    <value>Convertir '{0}' :
+
+  {1}
+  {2}</value>
+  </data>
+  <data name="gsConversionComplete" xml:space="preserve">
+    <value>Conversion terminée</value>
+  </data>
+  <data name="gsConvertedSuccess" xml:space="preserve">
+    <value>converti avec succès</value>
+  </data>
+  <data name="gsConversionErrors" xml:space="preserve">
+    <value>Erreurs de conversion</value>
+  </data>
+  <data name="gsConversionErrorMsg" xml:space="preserve">
+    <value>Des erreurs se sont produites</value>
+  </data>
+  <data name="gsLoadVehicleTool" xml:space="preserve">
+    <value>Charger Véhicule/Outil</value>
+  </data>
+  <data name="gsVehicleProfileName" xml:space="preserve">
+    <value>Nom du profil du véhicule</value>
+  </data>
+  <data name="gsToolProfileName" xml:space="preserve">
+    <value>Nom du profil de l'outil</value>
+  </data>
+  <data name="gsCurrentVehicle" xml:space="preserve">
+    <value>Véhicule actuel</value>
+  </data>
+  <data name="gsCurrentTool" xml:space="preserve">
+    <value>Outil actuel</value>
+  </data>
+  <data name="gsOldFiles" xml:space="preserve">
+    <value>anciens fichiers</value>
+  </data>
+  <data name="gsOldFilesStatus" xml:space="preserve">
+    <value>ancien(s) fichier(s) : converti, à convertir</value>
+  </data>
+  <data name="gsConverted" xml:space="preserve">
+    <value>converti</value>
+  </data>
+  <data name="gsToConvert" xml:space="preserve">
+    <value>à convertir</value>
   </data>
 </root>

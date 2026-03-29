@@ -223,6 +223,15 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ant. Pivot:.
+        /// </summary>
+        public static string gsAntennaPivot {
+            get {
+                return ResourceManager.GetString("gsAntennaPivot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A+.
         /// </summary>
         public static string gsAPlus {
@@ -257,6 +266,24 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsArrangeText {
             get {
                 return ResourceManager.GetString("gsArrangeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Articulated.
+        /// </summary>
+        public static string gsArticulated {
+            get {
+                return ResourceManager.GetString("gsArticulated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attach:.
+        /// </summary>
+        public static string gsAttach {
+            get {
+                return ResourceManager.GetString("gsAttach", resourceCulture);
             }
         }
         
@@ -468,6 +495,24 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot delete the active tool.
+        /// </summary>
+        public static string gsCannotDeleteActiveTool {
+            get {
+                return ResourceManager.GetString("gsCannotDeleteActiveTool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot delete the active vehicle.
+        /// </summary>
+        public static string gsCannotDeleteActiveVehicle {
+            get {
+                return ResourceManager.GetString("gsCannotDeleteActiveVehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Center.
         /// </summary>
         public static string gsCenter {
@@ -639,6 +684,128 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Conversion Complete.
+        /// </summary>
+        public static string gsConversionComplete {
+            get {
+                return ResourceManager.GetString("gsConversionComplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Errors occurred:
+        ///
+        ///{0}.
+        /// </summary>
+        public static string gsConversionErrorMsg {
+            get {
+                return ResourceManager.GetString("gsConversionErrorMsg", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Load Vehicle/Tool.
+        /// </summary>
+        public static string gsLoadVehicleTool {
+            get {
+                return ResourceManager.GetString("gsLoadVehicleTool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversion Errors.
+        /// </summary>
+        public static string gsConversionErrors {
+            get {
+                return ResourceManager.GetString("gsConversionErrors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Conversion.
+        /// </summary>
+        public static string gsConvertConfirm {
+            get {
+                return ResourceManager.GetString("gsConvertConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert &apos;{0}&apos;:
+        ///
+        ///  {1}
+        ///  {2}.
+        /// </summary>
+        public static string gsConvertConfirmMsg {
+            get {
+                return ResourceManager.GetString("gsConvertConfirmMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; converted successfully!.
+        /// </summary>
+        public static string gsConvertedSuccess {
+            get {
+                return ResourceManager.GetString("gsConvertedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert Old profiles.
+        /// </summary>
+        public static string gsConvertOldProfiles {
+            get {
+                return ResourceManager.GetString("gsConvertOldProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert Old Profile Files to New Format.
+        /// </summary>
+        public static string gsConvertOldProfilesTitle {
+            get {
+                return ResourceManager.GetString("gsConvertOldProfilesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old profiles contained all settings in one file. New format separates Vehicle, Tool, and Environment. Select what you want to extract..
+        /// </summary>
+        public static string gsConvertProfilesExplanation {
+            get {
+                return ResourceManager.GetString("gsConvertProfilesExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 1: Select an old profile file:.
+        /// </summary>
+        public static string gsConvertStep1 {
+            get {
+                return ResourceManager.GetString("gsConvertStep1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 2: Select to convert (Vehicle and/or Tool):.
+        /// </summary>
+        public static string gsConvertStep2 {
+            get {
+                return ResourceManager.GetString("gsConvertStep2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert.
+        /// </summary>
+        public static string gsConvertTitle {
+            get {
+                return ResourceManager.GetString("gsConvertTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy from.
         /// </summary>
         public static string gsCopyFrom {
@@ -693,6 +860,46 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Default Tool.
+        /// </summary>
+        public static string gsCreateDefaultTool {
+            get {
+                return ResourceManager.GetString("gsCreateDefaultTool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a &apos;Default&apos; tool profile with factory settings?
+        ///
+        ///This will create and load the new profile..
+        /// </summary>
+        public static string gsCreateDefaultToolConfirm {
+            get {
+                return ResourceManager.GetString("gsCreateDefaultToolConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Default Vehicle.
+        /// </summary>
+        public static string gsCreateDefaultVehicle {
+            get {
+                return ResourceManager.GetString("gsCreateDefaultVehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a &apos;Default&apos; vehicle profile with factory settings?
+        ///
+        ///This will create and load the new profile..
+        /// </summary>
+        public static string gsCreateDefaultVehicleConfirm {
+            get {
+                return ResourceManager.GetString("gsCreateDefaultVehicleConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create New Field.
         /// </summary>
         public static string gsCreateNewField {
@@ -729,11 +936,29 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current Tool:.
+        /// </summary>
+        public static string gsCurrentTool {
+            get {
+                return ResourceManager.GetString("gsCurrentTool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Turn Sensor.
         /// </summary>
         public static string gsCurrentTurnSensor {
             get {
                 return ResourceManager.GetString("gsCurrentTurnSensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Vehicle:.
+        /// </summary>
+        public static string gsCurrentVehicle {
+            get {
+                return ResourceManager.GetString("gsCurrentVehicle", resourceCulture);
             }
         }
         
@@ -788,6 +1013,24 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsDefault {
             get {
                 return ResourceManager.GetString("gsDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default tool loaded.
+        /// </summary>
+        public static string gsDefaultToolLoaded {
+            get {
+                return ResourceManager.GetString("gsDefaultToolLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default vehicle loaded.
+        /// </summary>
+        public static string gsDefaultVehicleLoaded {
+            get {
+                return ResourceManager.GetString("gsDefaultVehicleLoaded", resourceCulture);
             }
         }
         
@@ -851,6 +1094,24 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsDeleteForSure {
             get {
                 return ResourceManager.GetString("gsDeleteForSure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete tool &apos;{0}&apos;?.
+        /// </summary>
+        public static string gsDeleteToolConfirm {
+            get {
+                return ResourceManager.GetString("gsDeleteToolConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete vehicle &apos;{0}&apos;?.
+        /// </summary>
+        public static string gsDeleteVehicleConfirm {
+            get {
+                return ResourceManager.GetString("gsDeleteVehicleConfirm", resourceCulture);
             }
         }
         
@@ -1107,6 +1368,24 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter new tool name:.
+        /// </summary>
+        public static string gsEnterNewToolName {
+            get {
+                return ResourceManager.GetString("gsEnterNewToolName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter new vehicle name:.
+        /// </summary>
+        public static string gsEnterNewVehicleName {
+            get {
+                return ResourceManager.GetString("gsEnterNewVehicleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter Record Name.
         /// </summary>
         public static string gsEnterRecordName {
@@ -1125,6 +1404,33 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter tool name:.
+        /// </summary>
+        public static string gsEnterToolName {
+            get {
+                return ResourceManager.GetString("gsEnterToolName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter vehicle name:.
+        /// </summary>
+        public static string gsEnterVehicleName {
+            get {
+                return ResourceManager.GetString("gsEnterVehicleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Environment settings have been imported and loaded..
+        /// </summary>
+        public static string gsEnvironmentMigratedLoaded {
+            get {
+                return ResourceManager.GetString("gsEnvironmentMigratedLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string gsError {
@@ -1134,11 +1440,40 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error loading tool {0}.xml
+        ///Result: {1}.
+        /// </summary>
+        public static string gsErrorLoadingTool {
+            get {
+                return ResourceManager.GetString("gsErrorLoadingTool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error loading vehicle {0}.xml
+        ///Result: {1}.
+        /// </summary>
+        public static string gsErrorLoadingVehicle {
+            get {
+                return ResourceManager.GetString("gsErrorLoadingVehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error reading KML.
         /// </summary>
         public static string gsErrorreadingKML {
             get {
                 return ResourceManager.GetString("gsErrorreadingKML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exists.
+        /// </summary>
+        public static string gsExists {
+            get {
+                return ResourceManager.GetString("gsExists", resourceCulture);
             }
         }
         
@@ -1260,6 +1595,15 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File Name.
+        /// </summary>
+        public static string gsFileName {
+            get {
+                return ResourceManager.GetString("gsFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fix to Fix Distance.
         /// </summary>
         public static string gsFix2Fix {
@@ -1359,6 +1703,15 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Front.
+        /// </summary>
+        public static string gsFront {
+            get {
+                return ResourceManager.GetString("gsFront", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gap.
         /// </summary>
         public static string gsGap {
@@ -1409,6 +1762,15 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsHardwareMessages {
             get {
                 return ResourceManager.GetString("gsHardwareMessages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Harvester.
+        /// </summary>
+        public static string gsHarvester {
+            get {
+                return ResourceManager.GetString("gsHarvester", resourceCulture);
             }
         }
         
@@ -1526,6 +1888,24 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsImage {
             get {
                 return ResourceManager.GetString("gsImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Tool.
+        /// </summary>
+        public static string gsImportTool {
+            get {
+                return ResourceManager.GetString("gsImportTool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Vehicle.
+        /// </summary>
+        public static string gsImportVehicle {
+            get {
+                return ResourceManager.GetString("gsImportVehicle", resourceCulture);
             }
         }
         
@@ -2007,6 +2387,24 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Tool.
+        /// </summary>
+        public static string gsNewTool {
+            get {
+                return ResourceManager.GetString("gsNewTool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Vehicle.
+        /// </summary>
+        public static string gsNewVehicle {
+            get {
+                return ResourceManager.GetString("gsNewVehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next Guidance Line.
         /// </summary>
         public static string gsNextGuidanceLine {
@@ -2061,11 +2459,29 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Import.
+        /// </summary>
+        public static string gsNoImport {
+            get {
+                return ResourceManager.GetString("gsNoImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to None.
         /// </summary>
         public static string gsNone {
             get {
                 return ResourceManager.GetString("gsNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No old format files found..
+        /// </summary>
+        public static string gsNoOldFormatFiles {
+            get {
+                return ResourceManager.GetString("gsNoOldFormatFiles", resourceCulture);
             }
         }
         
@@ -2140,6 +2556,42 @@ namespace AgOpenGPS.Core.Translations {
                 return ResourceManager.GetString("gsOffsetFix", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to old files.
+        /// </summary>
+        public static string gsOldFiles {
+            get {
+                return ResourceManager.GetString("gsOldFiles", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0} old file(s): {1} converted, {2} to convert..
+        /// </summary>
+        public static string gsOldFilesStatus {
+            get {
+                return ResourceManager.GetString("gsOldFilesStatus", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to converted.
+        /// </summary>
+        public static string gsConverted {
+            get {
+                return ResourceManager.GetString("gsConverted", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to to convert.
+        /// </summary>
+        public static string gsToConvert {
+            get {
+                return ResourceManager.GetString("gsToConvert", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to On.
@@ -2210,6 +2662,15 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsOvershootReduction {
             get {
                 return ResourceManager.GetString("gsOvershootReduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite?.
+        /// </summary>
+        public static string gsOverwrite {
+            get {
+                return ResourceManager.GetString("gsOverwrite", resourceCulture);
             }
         }
         
@@ -2385,6 +2846,15 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Profile &apos;{0}&apos; already exists. Overwrite?.
+        /// </summary>
+        public static string gsProfileExistsOverwrite {
+            get {
+                return ResourceManager.GetString("gsProfileExistsOverwrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vehicle, Tool and Environment settings are now stored as separate profiles.
         ///Load from Config panel &amp; Top Left Menu..
         /// </summary>
@@ -2449,6 +2919,15 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rear Fixed.
+        /// </summary>
+        public static string gsRearFixed {
+            get {
+                return ResourceManager.GetString("gsRearFixed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Record.
         /// </summary>
         public static string gsRecord {
@@ -2499,6 +2978,33 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsRemoveOffset {
             get {
                 return ResourceManager.GetString("gsRemoveOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename.
+        /// </summary>
+        public static string gsRename {
+            get {
+                return ResourceManager.GetString("gsRename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename Tool.
+        /// </summary>
+        public static string gsRenameTool {
+            get {
+                return ResourceManager.GetString("gsRenameTool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename Vehicle.
+        /// </summary>
+        public static string gsRenameVehicle {
+            get {
+                return ResourceManager.GetString("gsRenameVehicle", resourceCulture);
             }
         }
         
@@ -2629,6 +3135,24 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Environment settings.
+        /// </summary>
+        public static string gsSaveEnvironmentSettings {
+            get {
+                return ResourceManager.GetString("gsSaveEnvironmentSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Environment settings saved..
+        /// </summary>
+        public static string gsSaveEnvironmentSettingsSaved {
+            get {
+                return ResourceManager.GetString("gsSaveEnvironmentSettingsSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saving field.
         /// </summary>
         public static string gsSaveField {
@@ -2672,43 +3196,7 @@ namespace AgOpenGPS.Core.Translations {
                 return ResourceManager.GetString("gsSaveSettingsSaved", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Environment settings.
-        /// </summary>
-        public static string gsSaveEnvironmentSettings {
-            get {
-                return ResourceManager.GetString("gsSaveEnvironmentSettings", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Environment settings saved..
-        /// </summary>
-        public static string gsSaveEnvironmentSettingsSaved {
-            get {
-                return ResourceManager.GetString("gsSaveEnvironmentSettingsSaved", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Vehicle settings.
-        /// </summary>
-        public static string gsSaveVehicleSettings {
-            get {
-                return ResourceManager.GetString("gsSaveVehicleSettings", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Vehicle settings saved..
-        /// </summary>
-        public static string gsSaveVehicleSettingsSaved {
-            get {
-                return ResourceManager.GetString("gsSaveVehicleSettingsSaved", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Tool settings.
         /// </summary>
@@ -2717,7 +3205,7 @@ namespace AgOpenGPS.Core.Translations {
                 return ResourceManager.GetString("gsSaveToolSettings", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Tool settings saved..
         /// </summary>
@@ -2726,7 +3214,7 @@ namespace AgOpenGPS.Core.Translations {
                 return ResourceManager.GetString("gsSaveToolSettingsSaved", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Upload complete..
         /// </summary>
@@ -2751,6 +3239,24 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsSaveUploadToAgshare {
             get {
                 return ResourceManager.GetString("gsSaveUploadToAgshare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vehicle settings.
+        /// </summary>
+        public static string gsSaveVehicleSettings {
+            get {
+                return ResourceManager.GetString("gsSaveVehicleSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vehicle settings saved..
+        /// </summary>
+        public static string gsSaveVehicleSettingsSaved {
+            get {
+                return ResourceManager.GetString("gsSaveVehicleSettingsSaved", resourceCulture);
             }
         }
         
@@ -2796,6 +3302,15 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsSelectButtons {
             get {
                 return ResourceManager.GetString("gsSelectButtons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected:.
+        /// </summary>
+        public static string gsSelected {
+            get {
+                return ResourceManager.GetString("gsSelected", resourceCulture);
             }
         }
         
@@ -3160,6 +3675,15 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TBT.
+        /// </summary>
+        public static string gsTBT {
+            get {
+                return ResourceManager.GetString("gsTBT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AgOpenGPS is strictly educational software to learn about guidance systems, GPS sentences, and theoretical application of machine control.
         ///
         ///It is in no way to be used on real equipment in any circumstance. A simulator is provided to allow the student to safely experience machine guidance.
@@ -3202,6 +3726,24 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tool &apos;{0}&apos; already exists.
+        /// </summary>
+        public static string gsToolExists {
+            get {
+                return ResourceManager.GetString("gsToolExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tool in use.
+        /// </summary>
+        public static string gsToolInUse {
+            get {
+                return ResourceManager.GetString("gsToolInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tool Left.
         /// </summary>
         public static string gsToolLeft {
@@ -3216,6 +3758,15 @@ namespace AgOpenGPS.Core.Translations {
         public static string gsToolOffset {
             get {
                 return ResourceManager.GetString("gsToolOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tool profile name:.
+        /// </summary>
+        public static string gsToolProfileName {
+            get {
+                return ResourceManager.GetString("gsToolProfileName", resourceCulture);
             }
         }
         
@@ -3264,6 +3815,78 @@ namespace AgOpenGPS.Core.Translations {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Track Width:.
+        /// </summary>
+        public static string gsTrackWidth {
+            get {
+                return ResourceManager.GetString("gsTrackWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tractor.
+        /// </summary>
+        public static string gsTractor {
+            get {
+                return ResourceManager.GetString("gsTractor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trailing.
+        /// </summary>
+        public static string gsTrailing {
+            get {
+                return ResourceManager.GetString("gsTrailing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trail Hitch:.
+        /// </summary>
+        public static string gsTrailingHitch {
+            get {
+                return ResourceManager.GetString("gsTrailingHitch", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string gsType {
+            get {
+                return ResourceManager.GetString("gsType", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Hitch.
+        /// </summary>
+        public static string gsHitch {
+            get {
+                return ResourceManager.GetString("gsHitch", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Vehicle.
+        /// </summary>
+        public static string gsVehicle {
+            get {
+                return ResourceManager.GetString("gsVehicle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tool.
+        /// </summary>
+        public static string gsTool {
+            get {
+                return ResourceManager.GetString("gsTool", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Tram Lines.
         /// </summary>
@@ -3391,11 +4014,47 @@ namespace AgOpenGPS.Core.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vehicle &apos;{0}&apos; already exists.
+        /// </summary>
+        public static string gsVehicleExists {
+            get {
+                return ResourceManager.GetString("gsVehicleExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vehicle Type.
         /// </summary>
         public static string gsVehiclegroupbox {
             get {
                 return ResourceManager.GetString("gsVehiclegroupbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vehicle in use.
+        /// </summary>
+        public static string gsVehicleInUse {
+            get {
+                return ResourceManager.GetString("gsVehicleInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vehicle profile name:.
+        /// </summary>
+        public static string gsVehicleProfileName {
+            get {
+                return ResourceManager.GetString("gsVehicleProfileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vehicle / Tool.
+        /// </summary>
+        public static string gsVehicleTool {
+            get {
+                return ResourceManager.GetString("gsVehicleTool", resourceCulture);
             }
         }
         
@@ -3567,6 +4226,60 @@ namespace AgOpenGPS.Core.Translations {
         public static string v_AboutIntro {
             get {
                 return ResourceManager.GetString("v_AboutIntro", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Vehicle '{0}' already exists.
+        /// </summary>
+        public static string gsVehicleAlreadyExists {
+            get {
+                return ResourceManager.GetString("gsVehicleAlreadyExists", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tool '{0}' already exists.
+        /// </summary>
+        public static string gsToolAlreadyExists {
+            get {
+                return ResourceManager.GetString("gsToolAlreadyExists", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Convert '{0}':.
+        /// </summary>
+        public static string gsConvertFrom {
+            get {
+                return ResourceManager.GetString("gsConvertFrom", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Vehicle: {0}.
+        /// </summary>
+        public static string gsConvertVehicleLine {
+            get {
+                return ResourceManager.GetString("gsConvertVehicleLine", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tool: {0}.
+        /// </summary>
+        public static string gsConvertToolLine {
+            get {
+                return ResourceManager.GetString("gsConvertToolLine", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Result.
+        /// </summary>
+        public static string gsFileResult {
+            get {
+                return ResourceManager.GetString("gsFileResult", resourceCulture);
             }
         }
     }

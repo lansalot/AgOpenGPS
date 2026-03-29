@@ -9,6 +9,7 @@ using AgLibrary.Logging;
 using AgLibrary.Settings;
 using AgOpenGPS;
 using AgOpenGPS.Controls;
+using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Properties;
 
 namespace AgOpenGPS.Forms.Profiles
@@ -29,6 +30,16 @@ namespace AgOpenGPS.Forms.Profiles
 
         private void FormConvertProfiles_Load(object sender, EventArgs e)
         {
+            // Set localized form title and labels
+            this.Text = gStr.gsConvertOldProfiles;
+            labelTitle.Text = gStr.gsConvertOldProfilesTitle;
+            labelExplanation.Text = gStr.gsConvertProfilesExplanation;
+            labelStep1.Text = gStr.gsConvertStep1 + ": " + "Select an old profile file";
+            labelStep2.Text = gStr.gsConvertStep2 + ": " + "Select to convert (Vehicle and/or Tool)";
+            labelVehicleName.Text = gStr.gsVehicleProfileName + ":";
+            labelToolName.Text = gStr.gsToolProfileName + ":";
+            buttonClose.Text = gStr.gsClose;
+
             RefreshFileList();
             ClearDetails();
             UpdateToggleButtons();
@@ -76,12 +87,13 @@ namespace AgOpenGPS.Forms.Profiles
 
             if (listViewFiles.Items.Count == 0)
             {
-                labelStatus.Text = "No old format files found.";
+                labelStatus.Text = gStr.gsNoOldFormatFiles;
             }
             else
             {
                 int unconverted = listViewFiles.Items.Count - convertedCount;
-                labelStatus.Text = $"{listViewFiles.Items.Count} old file(s): {convertedCount} converted, {unconverted} to convert.";
+                labelStatus.Text = listViewFiles.Items.Count + " " + gStr.gsOldFiles + ": " +
+                    convertedCount + " " + gStr.gsConverted + ", " + unconverted + " " + gStr.gsToConvert;
             }
 
             if (clearDetails)
@@ -151,13 +163,13 @@ namespace AgOpenGPS.Forms.Profiles
             // Vehicle button
             if (vehicleEnabled)
             {
-                btnToggleVehicle.Text = "Import Vehicle";
+                btnToggleVehicle.Text = gStr.gsImportVehicle;
                 btnToggleVehicle.BackColor = Color.LightGreen;
                 textBoxVehicleName.Enabled = true;
             }
             else
             {
-                btnToggleVehicle.Text = "No Import";
+                btnToggleVehicle.Text = gStr.gsNoImport;
                 btnToggleVehicle.BackColor = Color.LightGray;
                 textBoxVehicleName.Enabled = false;
             }
@@ -165,13 +177,13 @@ namespace AgOpenGPS.Forms.Profiles
             // Tool button
             if (toolEnabled)
             {
-                btnToggleTool.Text = "Import Tool";
+                btnToggleTool.Text = gStr.gsImportTool;
                 btnToggleTool.BackColor = Color.LightGreen;
                 textBoxToolName.Enabled = true;
             }
             else
             {
-                btnToggleTool.Text = "No Import";
+                btnToggleTool.Text = gStr.gsNoImport;
                 btnToggleTool.BackColor = Color.LightGray;
                 textBoxToolName.Enabled = false;
             }
@@ -218,7 +230,7 @@ namespace AgOpenGPS.Forms.Profiles
                 string vehiclePath = Path.Combine(RegistrySettings.vehiclesDirectory, vehicleName + ".xml");
                 if (File.Exists(vehiclePath))
                 {
-                    FormDialog.Show("Exists", $"Vehicle '{vehicleName}' already exists", DialogSeverity.Error);
+                    FormDialog.Show(gStr.gsExists, gStr.gsVehicleAlreadyExists + " '" + vehicleName + "'", DialogSeverity.Error);
                     return;
                 }
             }
@@ -228,18 +240,18 @@ namespace AgOpenGPS.Forms.Profiles
                 string toolPath = Path.Combine(RegistrySettings.toolsDirectory, toolName + ".xml");
                 if (File.Exists(toolPath))
                 {
-                    FormDialog.Show("Exists", $"Tool '{toolName}' already exists", DialogSeverity.Error);
+                    FormDialog.Show(gStr.gsExists, gStr.gsToolAlreadyExists + " '" + toolName + "'", DialogSeverity.Error);
                     return;
                 }
             }
 
-            string confirmMsg = $"Convert '{sourceFile}':\n\n";
+            string confirmMsg = gStr.gsConvertFrom + " '" + sourceFile + "':\n\n";
             if (exportVehicle)
-                confirmMsg += $"  Vehicle: {vehicleName}\n";
+                confirmMsg += "  " + gStr.gsConvertVehicleLine + ": " + vehicleName + "\n";
             if (exportTool)
-                confirmMsg += $"  Tool: {toolName}\n";
+                confirmMsg += "  " + gStr.gsConvertToolLine + ": " + toolName + "\n";
 
-            var confirm = FormDialog.ShowQuestion("Confirm Conversion", confirmMsg);
+            var confirm = FormDialog.ShowQuestion(gStr.gsConvertConfirm, confirmMsg);
             if (confirm != DialogResult.OK) return;
 
             var errors = new List<string>();
@@ -302,11 +314,11 @@ namespace AgOpenGPS.Forms.Profiles
                     }
                 }
 
-                string successMsg = $"'{sourceFile}' converted successfully!";
+                string successMsg = "'" + sourceFile + "' " + gStr.gsConvertedSuccess;
                 if (migratedEnvironment)
-                    successMsg += "\n\nEnvironment settings have been imported and loaded.";
+                    successMsg += "\n\n" + gStr.gsEnvironmentMigratedLoaded;
 
-                FormDialog.Show("Conversion Complete", successMsg, DialogSeverity.Info);
+                FormDialog.Show(gStr.gsConversionComplete, successMsg, DialogSeverity.Info);
 
                 // Refresh list to show converted file in green, keep form open for next conversion
                 RefreshFileList(clearDetails: false);
@@ -314,8 +326,8 @@ namespace AgOpenGPS.Forms.Profiles
             else
             {
                 Log.EventWriter($"Errors converting '{sourceFile}': {string.Join(", ", errors)}");
-                FormDialog.Show("Conversion Errors",
-                    $"Errors occurred:\n\n" + string.Join("\n", errors), DialogSeverity.Warning);
+                FormDialog.Show(gStr.gsConversionErrors,
+                    gStr.gsConversionErrorMsg + ": " + Environment.NewLine + string.Join("\n", errors), DialogSeverity.Warning);
             }
         }
     }
