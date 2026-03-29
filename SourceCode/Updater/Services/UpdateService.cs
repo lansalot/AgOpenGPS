@@ -556,11 +556,12 @@ namespace AgOpenGPS.Updater.Services
                 "Newtonsoft.Json.dll"
             };
 
-            // Delete current files (skip locked files)
+            // Delete current files (skip locked files and backup directories)
             foreach (var file in Directory.GetFiles(installPath, "*", SearchOption.TopDirectoryOnly))
             {
                 string fileName = Path.GetFileName(file);
-                if (!fileName.Equals(".backup", StringComparison.OrdinalIgnoreCase))
+                // Skip files in backup directories
+                if (!fileName.StartsWith(".backup", StringComparison.OrdinalIgnoreCase))
                 {
                     bool isLockedFile = false;
                     foreach (var locked in lockedFiles)
@@ -583,11 +584,12 @@ namespace AgOpenGPS.Updater.Services
                 }
             }
 
-            // Also try to delete subdirectories (except .backup)
+            // Also try to delete subdirectories (except backup directories)
             foreach (var dir in Directory.GetDirectories(installPath, "*", SearchOption.TopDirectoryOnly))
             {
                 string dirName = new DirectoryInfo(dir).Name;
-                if (!dirName.Equals(".backup", StringComparison.OrdinalIgnoreCase))
+                // Skip all backup directories (they start with .backup)
+                if (!dirName.StartsWith(".backup", StringComparison.OrdinalIgnoreCase))
                 {
                     try
                     {
@@ -624,13 +626,14 @@ namespace AgOpenGPS.Updater.Services
                 }
             }
 
-            // Restore directories from backup
+            // Restore directories from backup (skip internal .backup folders)
             foreach (var dir in Directory.GetDirectories(backupPath))
             {
                 string dirName = new DirectoryInfo(dir).Name;
                 string destDir = Path.Combine(installPath, dirName);
 
-                if (!dirName.Equals(".backup", StringComparison.OrdinalIgnoreCase))
+                // Skip restoring .backup directories (they shouldn't exist in backup anyway, but be safe)
+                if (!dirName.StartsWith(".backup", StringComparison.OrdinalIgnoreCase))
                 {
                     try
                     {
