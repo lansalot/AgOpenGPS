@@ -91,27 +91,53 @@ namespace AgOpenGPS.Updater.Services
         }
 
         /// <summary>
+        /// Mutex name to signal AgOpenGPS that updater is active (prevent shutdown during update).
+        /// </summary>
+        private const string UpdaterMutexName = "Global\\AgOpenGPS_Updater_Active";
+
+        /// <summary>
         /// Closes AgOpenGPS and AgIO applications gracefully.
+        /// Creates a mutex to prevent AgOpenGPS from shutting down the computer during update.
         /// </summary>
         public async Task<(bool Success, string Message)> CloseApplicationsAsync()
         {
+            System.Threading.Mutex updaterMutex = null;
             try
             {
+                // Create mutex to signal AgOpenGPS that updater is active
+                // This prevents AgOpenGPS from shutting down the computer during update
+                updaterMutex = new System.Threading.Mutex(true, UpdaterMutexName, out bool createdNew);
+                if (!createdNew)
+                {
+                    // Another updater instance is already running
+                    return (false, "Another updater instance is already running.");
+                }
+
                 bool agOpenClosed = await CloseProcessAsync(AgOpenGPSProcessName);
                 bool agIOClosed = await CloseProcessAsync(AgIOProcessName);
 
                 if (!agOpenClosed && !agIOClosed)
                 {
+                    updaterMutex.ReleaseMutex();
+                    updaterMutex.Dispose();
                     return (true, "No applications were running.");
                 }
+
+                // Keep mutex alive during update - will be released when UpdateService is disposed
+                // Store it for later disposal
+                _updaterMutex = updaterMutex;
+                updaterMutex = null; // Don't dispose here, will be disposed in cleanup
 
                 return (true, "Applications closed successfully.");
             }
             catch (Exception ex)
             {
+                updaterMutex?.Dispose();
                 return (false, $"Failed to close applications: {ex.Message}");
             }
         }
+
+        private System.Threading.Mutex _updaterMutex;
 
         /// <summary>
         /// Attempts to gracefully close a process by name.
@@ -650,11 +676,16 @@ namespace AgOpenGPS.Updater.Services
 
         /// <summary>
         /// Restarts the AgOpenGPS application.
+        /// Releases the updater mutex before starting to allow AgOpenGPS to shutdown normally.
         /// </summary>
         public (bool Success, string Message) RestartApplication(string installPath, string arguments = null)
         {
             try
             {
+                // Release updater mutex before restarting AgOpenGPS
+                // This allows AgOpenGPS to shutdown normally if needed
+                ReleaseUpdaterMutex();
+
                 string exePath = Path.Combine(installPath, "AgOpenGPS.exe");
 
                 if (!File.Exists(exePath))
@@ -727,6 +758,24 @@ namespace AgOpenGPS.Updater.Services
                 }
             }
             catch { }
+        }
+
+        /// <summary>
+        /// Releases the updater mutex, allowing AgOpenGPS to shutdown normally.
+        /// Call this after update is complete and before restarting AgOpenGPS.
+        /// </summary>
+        public void ReleaseUpdaterMutex()
+        {
+            if (_updaterMutex != null)
+            {
+                try
+                {
+                    _updaterMutex.ReleaseMutex();
+                    _updaterMutex.Dispose();
+                    _updaterMutex = null;
+                }
+                catch { }
+            }
         }
     }
 }
