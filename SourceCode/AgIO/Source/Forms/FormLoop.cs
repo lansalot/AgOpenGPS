@@ -605,7 +605,7 @@ namespace AgIO
                     if (currentHello) btnMachine.BackColor = Color.LimeGreen;
                     else btnMachine.BackColor = Color.Red;
                     lastHelloMachine = currentHello;
-                    ShowAgIO();
+                    if (Settings.Default.setDisplay_ShowOnWarning) ShowAgIO();
                 }
             }
 
@@ -618,7 +618,7 @@ namespace AgIO
                     if (currentHello) btnSteer.BackColor = Color.LimeGreen;
                     else btnSteer.BackColor = Color.Red;
                     lastHelloAutoSteer = currentHello;
-                    ShowAgIO();
+                    if (Settings.Default.setDisplay_ShowOnWarning) ShowAgIO();
                 }
             }
 
@@ -631,7 +631,7 @@ namespace AgIO
                     if (currentHello) btnIMU.BackColor = Color.LimeGreen;
                     else btnIMU.BackColor = Color.Red;
                     lastHelloIMU = currentHello;
-                    ShowAgIO();
+                    if (Settings.Default.setDisplay_ShowOnWarning) ShowAgIO();
                 }
             }
 
@@ -642,7 +642,7 @@ namespace AgIO
                 if (currentHello) btnGPS.BackColor = Color.LimeGreen;
                 else btnGPS.BackColor = Color.Red;
                 lastHelloGPS = currentHello;
-                ShowAgIO();
+                if (Settings.Default.setDisplay_ShowOnWarning) ShowAgIO();
             }
         }
 
