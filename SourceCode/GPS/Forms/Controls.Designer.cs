@@ -27,6 +27,12 @@ namespace AgOpenGPS
         public bool isABCyled = false;
         private void btnContour_Click(object sender, EventArgs e)
         {
+            // If a track is active, disable it first
+            if (trk.idx != -1)
+            {
+                trk.idx = -1;
+            }
+
             trk.isAutoTrack = false;
             btnAutoTrack.Image = Resources.AutoTrackOff;
 
@@ -39,6 +45,10 @@ namespace AgOpenGPS
                 guidanceLookAheadTime = 0.5;
                 btnContourLock.Image = Resources.ColorUnlocked;
                 ct.isLocked = false;
+
+                // Disable and hide Track button when Contour is active
+                btnTrack.Enabled = false;
+                btnTrack.Visible = false;
             }
 
             else
@@ -55,6 +65,9 @@ namespace AgOpenGPS
                     TimedMessageBox(2000, gStr.gsGuidanceStopped, gStr.gsContourOn);
                 }
 
+                // Enable and show Track button when Contour is inactive
+                btnTrack.Enabled = true;
+                btnTrack.Visible = true;
             }
 
             PanelUpdateRightAndBottom();
@@ -1421,6 +1434,13 @@ namespace AgOpenGPS
 
         private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Prevent updater when field is open
+            if (isJobStarted)
+            {
+                FormDialog.Show("Updater", "Close Field first to run Updater", AgOpenGPS.Forms.DialogSeverity.Info);
+                return;
+            }
+
             try
             {
                 string updaterPath = System.IO.Path.Combine(Application.StartupPath, "AgOpenGPS.Updater.exe");

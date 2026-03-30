@@ -904,22 +904,44 @@ namespace AgOpenGPS
             // Perform Windows shutdown if user selected it
             if (choice == 2)
             {
+                // Check if updater is active - prevent shutdown during update
+                bool updaterIsActive = false;
                 try
                 {
-                    Process[] agio = Process.GetProcessesByName("AgIO");
-                    if (agio.Length > 0) agio[0].CloseMainWindow();
+                    using (var updaterMutex = System.Threading.Mutex.OpenExisting("Global\\AgOpenGPS_Updater_Active"))
+                    {
+                        updaterIsActive = true;
+                        Log.EventWriter("Updater is active - skipping Windows shutdown");
+                    }
                 }
-                catch { }
-
-                try
+                catch (System.Threading.WaitHandleCannotBeOpenedException)
                 {
-                    var psi = new ProcessStartInfo("shutdown", "/s /t 0");
-                    psi.CreateNoWindow = true; // Prevents a command prompt window from appearing
-                    psi.UseShellExecute = false; // Required for CreateNoWindow to work in some contexts
-
-                    Process.Start(psi);
+                    // Mutex doesn't exist, updater is not active - safe to shutdown
                 }
-                catch { }
+                catch (Exception)
+                {
+                    // Other errors - assume updater is not active
+                }
+
+                if (!updaterIsActive)
+                {
+                    try
+                    {
+                        Process[] agio = Process.GetProcessesByName("AgIO");
+                        if (agio.Length > 0) agio[0].CloseMainWindow();
+                    }
+                    catch { }
+
+                    try
+                    {
+                        var psi = new ProcessStartInfo("shutdown", "/s /t 0");
+                        psi.CreateNoWindow = true; // Prevents a command prompt window from appearing
+                        psi.UseShellExecute = false; // Required for CreateNoWindow to work in some contexts
+
+                        Process.Start(psi);
+                    }
+                    catch { }
+                }
             }
 
             // Close loopback socket if active
