@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using AgLibrary.Logging;
 using AgOpenGPS.Properties;
 
 namespace AgOpenGPS.Forms
@@ -73,6 +74,12 @@ namespace AgOpenGPS.Forms
 
         public static void Show(string title, string message, DialogSeverity? severity = null)
         {
+            // Log to event viewer before showing dialog
+            if (severity == DialogSeverity.Error || severity == DialogSeverity.Warning)
+            {
+                Log.EventWriter($"Dialog: {title} | {message}");
+            }
+
             using (var form = new FormDialog(title, message, showCancel: false, severity))
             {
                 form.ShowDialog();

@@ -262,7 +262,10 @@ namespace AgOpenGPS.Forms.Profiles
                 var vSettings = new VehicleSettings();
                 var vResult = CSettingsMigration.MigrateVehicle(sourceFile, vehicleName, vSettings);
                 if (vResult != LoadResult.Ok)
+                {
                     errors.Add($"Vehicle: {vResult}");
+                    Log.ErrorWriter(sourceFile, "Vehicle", vResult.ToString());
+                }
             }
 
             // Convert Tool (optional)
@@ -271,7 +274,10 @@ namespace AgOpenGPS.Forms.Profiles
                 var tSettings = new ToolSettings();
                 var tResult = CSettingsMigration.MigrateTool(sourceFile, toolName, tSettings);
                 if (tResult != LoadResult.Ok)
+                {
                     errors.Add($"Tool: {tResult}");
+                    Log.ErrorWriter(sourceFile, "Tool", tResult.ToString());
+                }
             }
 
             // One-time environment migration (if environment.xml doesn't exist yet)
@@ -288,6 +294,7 @@ namespace AgOpenGPS.Forms.Profiles
                 else
                 {
                     errors.Add($"Environment: {eResult}");
+                    Log.ErrorWriter(sourceFile, "Environment", eResult.ToString());
                 }
             }
 

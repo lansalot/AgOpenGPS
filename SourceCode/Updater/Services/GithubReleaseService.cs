@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using AgOpenGPS.Core.Models;
 using AgOpenGPS.Updater.Models;
 using Newtonsoft.Json;
 
@@ -21,7 +20,7 @@ namespace AgOpenGPS.Updater.Services
         private const string GithubApiUrl = "https://api.github.com";
 
         // GitHub Personal Access Token for updater (read-only, increases rate limit to 5000/hr)
-        private const string GitHubToken = "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";
+        private const string GitHubToken = "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";
 
         private readonly HttpClient _httpClient;
         private readonly string _owner;
@@ -192,11 +191,13 @@ namespace AgOpenGPS.Updater.Services
                 {
                     downloadClient.Timeout = TimeSpan.FromMinutes(10);
 
-                    // Add authentication if available
-                    if (!string.IsNullOrEmpty(_authToken))
-                    {
-                        downloadClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", _authToken);
-                    }
+                    // Add User-Agent (required by GitHub)
+                    downloadClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("AgOpenGPS-Updater", "1.0"));
+
+                    // NOTE: Don't add Authorization header for asset downloads!
+                    // BrowserDownloadUrl points to a CDN (AWS/GitHub), not the GitHub API
+                    // CDNs reject the Authorization header with 401 Unauthorized
+                    // The asset URLs are public and don't need authentication
 
                     // Get the file size first
                     var headResponse = await downloadClient.SendAsync(new HttpRequestMessage(HttpMethod.Head, downloadUrl));
@@ -256,10 +257,10 @@ namespace AgOpenGPS.Updater.Services
                 {
                     downloadClient.Timeout = TimeSpan.FromMinutes(10);
 
-                    if (!string.IsNullOrEmpty(_authToken))
-                    {
-                        downloadClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", _authToken);
-                    }
+                    // Add User-Agent (required by GitHub)
+                    downloadClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("AgOpenGPS-Updater", "1.0"));
+
+                    // NOTE: Don't add Authorization header for asset downloads (see DownloadAsset)
 
                     var response = await downloadClient.GetAsync(downloadUrl, HttpCompletionOption.ResponseHeadersRead);
                     response.EnsureSuccessStatusCode();

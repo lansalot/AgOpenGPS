@@ -79,8 +79,31 @@ namespace AgOpenGPS
             // Copy vehicle settings from old to new
             CopyVehicleSettings(oldSettings, vehicleSettings);
 
-            // Save as new format
-            vehicleSettings.Save(outputName);
+            // Save as new format with error handling
+            try
+            {
+                // Ensure directory exists (may have been deleted while program is running)
+                if (!Directory.Exists(RegistrySettings.vehiclesDirectory))
+                {
+                    Directory.CreateDirectory(RegistrySettings.vehiclesDirectory);
+                    Log.EventWriter("VehicleProfiles directory recreated");
+                }
+
+                vehicleSettings.Save(outputName);
+
+                // Verify file was actually created
+                string newPath = Path.Combine(RegistrySettings.vehiclesDirectory, outputName + ".xml");
+                if (!File.Exists(newPath))
+                {
+                    Log.ErrorWriter(sourceFileName, "Vehicle", "SaveFailed: File not created after save");
+                    return LoadResult.Failed;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.ErrorWriter(sourceFileName, "Vehicle", "SaveFailed: " + ex.Message, ex);
+                return LoadResult.Failed;
+            }
 
             return LoadResult.Ok;
         }
@@ -106,8 +129,31 @@ namespace AgOpenGPS
             // Copy tool settings from old to new
             CopyToolSettings(oldSettings, toolSettings);
 
-            // Save as new format
-            toolSettings.Save(outputName);
+            // Save as new format with error handling
+            try
+            {
+                // Ensure directory exists (may have been deleted while program is running)
+                if (!Directory.Exists(RegistrySettings.toolsDirectory))
+                {
+                    Directory.CreateDirectory(RegistrySettings.toolsDirectory);
+                    Log.EventWriter("ToolProfiles directory recreated");
+                }
+
+                toolSettings.Save(outputName);
+
+                // Verify file was actually created
+                string newPath = Path.Combine(RegistrySettings.toolsDirectory, outputName + ".xml");
+                if (!File.Exists(newPath))
+                {
+                    Log.ErrorWriter(sourceFileName, "Tool", "SaveFailed: File not created after save");
+                    return LoadResult.Failed;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.ErrorWriter(sourceFileName, "Tool", "SaveFailed: " + ex.Message, ex);
+                return LoadResult.Failed;
+            }
 
             return LoadResult.Ok;
         }
@@ -319,9 +365,31 @@ namespace AgOpenGPS
             var envSettings = new Settings();
             Settings.MigrateFromOldToTarget(oldSettings, envSettings);
 
-            // Save as environment file
-            string envPath = Path.Combine(RegistrySettings.environmentDirectory, outputName + ".xml");
-            XmlSettingsHandler.SaveXMLFile(envPath, envSettings);
+            // Save as environment file with error handling
+            try
+            {
+                // Ensure directory exists (may have been deleted while program is running)
+                if (!Directory.Exists(RegistrySettings.environmentDirectory))
+                {
+                    Directory.CreateDirectory(RegistrySettings.environmentDirectory);
+                    Log.EventWriter("Environment directory recreated");
+                }
+
+                string envPath = Path.Combine(RegistrySettings.environmentDirectory, outputName + ".xml");
+                XmlSettingsHandler.SaveXMLFile(envPath, envSettings);
+
+                // Verify file was actually created
+                if (!File.Exists(envPath))
+                {
+                    Log.ErrorWriter(sourceFileName, "Environment", "SaveFailed: File not created after save");
+                    return LoadResult.Failed;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.ErrorWriter(sourceFileName, "Environment", "SaveFailed: " + ex.Message, ex);
+                return LoadResult.Failed;
+            }
 
             return LoadResult.Ok;
         }

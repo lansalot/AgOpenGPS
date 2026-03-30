@@ -18,6 +18,22 @@ namespace AgLibrary.Logging
             sbEvents.Append("\r");
         }
 
+        /// <summary>
+        /// Logs an error with details for conversion failures
+        /// </summary>
+        public static void ErrorWriter(string source, string component, string result, Exception ex = null)
+        {
+            sbEvents.Append(DateTime.Now.ToString("T", CultureInfo.InvariantCulture));
+            sbEvents.Append("-> ");
+            sbEvents.Append($"Error in {source} - {component}: {result}");
+            if (ex != null)
+            {
+                sbEvents.Append(" | Exception: ");
+                sbEvents.Append(ex.Message);
+            }
+            sbEvents.Append("\r");
+        }
+
         public static void FileSaveSystemEvents()
         {
             if (logsDirectory != "")

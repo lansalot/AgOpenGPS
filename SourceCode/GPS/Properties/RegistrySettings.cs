@@ -220,6 +220,13 @@ namespace AgOpenGPS
                 {
                     baseDirectory = Path.Combine(workingDirectory, "AgOpenGPS");
                 }
+
+                // Ensure baseDirectory exists
+                if (!string.IsNullOrEmpty(baseDirectory) && !Directory.Exists(baseDirectory))
+                {
+                    Directory.CreateDirectory(baseDirectory);
+                    Log.EventWriter("Base directory created: " + baseDirectory);
+                }
             }
             catch (Exception ex)
             {
