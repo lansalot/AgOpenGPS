@@ -196,10 +196,10 @@ namespace AgOpenGPS
             labelLowTime.Text = gStr.gsLowerTime;
             labelPlantPop.Text = gStr.gsPlantPop;
             labelHydLiftSec.Text = gStr.gsHydraulicLiftLookAhead;
-            labelUser1.Text = string.Format(gStr.gsUserNo, 1);
-            labelUser2.Text = string.Format(gStr.gsUserNo, 2);
-            labelUser3.Text = string.Format(gStr.gsUserNo, 3);
-            labelUser4.Text = string.Format(gStr.gsUserNo, 4);
+            labelUser1.Text = gStr.gsUserNo + " " + 1;
+            labelUser2.Text = gStr.gsUserNo + " " + 2;
+            labelUser3.Text = gStr.gsUserNo + " " + 3;
+            labelUser4.Text = gStr.gsUserNo + " " + 4;
             labelHydLiftInvert.Text = gStr.gsInvertHydraulicRelays;
             labelSendSaveHydraulicLift.Text = gStr.gsSendAndSave;
             //tramsconfig
@@ -272,6 +272,8 @@ namespace AgOpenGPS
             mf.LoadSettings();
 
             //save current vehicle
+            Properties.VehicleSettings.Default.Save();
+            Properties.ToolSettings.Default.Save();
             Properties.Settings.Default.Save();
         }
 
@@ -381,7 +383,7 @@ namespace AgOpenGPS
             chkDisplayPolygons.Checked = mf.isDrawPolygons;
             chkDisplayKeyboard.Checked = mf.isKeyboardOn;
             chkDisplayLogElevation.Checked = mf.isLogElevation;
-            chkDirectionMarkers.Checked = Properties.Settings.Default.setTool_isDirectionMarkers;
+            chkDirectionMarkers.Checked = Properties.ToolSettings.Default.setTool_isDirectionMarkers;
             chkSectionLines.Checked = Properties.Settings.Default.setDisplay_isSectionLinesOn;
             chkLineSmooth.Checked = Properties.Settings.Default.setDisplay_isLineSmooth;
             chkboxHeadlandDist.Checked = Properties.Settings.Default.isHeadlandDistanceOn;

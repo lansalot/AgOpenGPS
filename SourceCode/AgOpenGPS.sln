@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgDiag", "AgDiag\AgDiag.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgOpenGPS.Tests", "AgOpenGPS.Tests\AgOpenGPS.Tests.csproj", "{9715B97C-C1F8-C513-91D4-2D00A94334D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgOpenGPS.Updater", "Updater\AgOpenGPS.Updater.csproj", "{8E4F9A2C-3B1D-4E5F-A8B7-2D3C4E6F8A9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{9715B97C-C1F8-C513-91D4-2D00A94334D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9715B97C-C1F8-C513-91D4-2D00A94334D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9715B97C-C1F8-C513-91D4-2D00A94334D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E4F9A2C-3B1D-4E5F-A8B7-2D3C4E6F8A9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E4F9A2C-3B1D-4E5F-A8B7-2D3C4E6F8A9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E4F9A2C-3B1D-4E5F-A8B7-2D3C4E6F8A9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E4F9A2C-3B1D-4E5F-A8B7-2D3C4E6F8A9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

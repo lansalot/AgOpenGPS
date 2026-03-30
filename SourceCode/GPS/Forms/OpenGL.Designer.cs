@@ -49,12 +49,14 @@ namespace AgOpenGPS
         private void oglMain_Load(object sender, EventArgs e)
         {
             oglMain.MakeCurrent();
-            SetVehicleTextures();
             GL.ClearColor(0.14f, 0.14f, 0.37f, 1.0f);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             GL.CullFace(CullFaceMode.Back);
             SetZoom();
             tmrWatchdog.Enabled = true;
+
+            // Defer texture loading to after OpenGL is initialized
+            BeginInvoke(new Action(() => SetVehicleTextures()));
         }
 
         private void oglMain_Resize(object sender, EventArgs e)
@@ -1733,12 +1735,12 @@ namespace AgOpenGPS
                 : (controlBitOn ? Colors.TramDotAutomaticControlBitOnColor : Colors.TramDotAutomaticControlBitOffColor);
         }
 
-        private void SetVehicleTextures()
+        public void SetVehicleTextures()
         {
-            VehicleTextures.Tractor.SetBitmap(TractorBitmaps.GetBitmap(Settings.Default.setBrand_TBrand));
-            VehicleTextures.Harvester.SetBitmap(HarvesterBitmaps.GetBitmap(Settings.Default.setBrand_HBrand));
-            VehicleTextures.ArticulatedFront.SetBitmap(ArticulatedBitmaps.GetFrontBitmap(Settings.Default.setBrand_WDBrand));
-            VehicleTextures.ArticulatedRear.SetBitmap(ArticulatedBitmaps.GetRearBitmap(Settings.Default.setBrand_WDBrand));
+            VehicleTextures.Tractor.SetBitmap(TractorBitmaps.GetBitmap(Properties.VehicleSettings.Default.setBrand_TBrand));
+            VehicleTextures.Harvester.SetBitmap(HarvesterBitmaps.GetBitmap(Properties.VehicleSettings.Default.setBrand_HBrand));
+            VehicleTextures.ArticulatedFront.SetBitmap(ArticulatedBitmaps.GetFrontBitmap(Properties.VehicleSettings.Default.setBrand_WDBrand));
+            VehicleTextures.ArticulatedRear.SetBitmap(ArticulatedBitmaps.GetRearBitmap(Properties.VehicleSettings.Default.setBrand_WDBrand));
         }
 
         private void DrawManUTurnBtn()

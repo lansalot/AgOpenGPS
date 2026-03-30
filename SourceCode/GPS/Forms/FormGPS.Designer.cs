@@ -35,9 +35,7 @@ namespace AgOpenGPS
             this.googleEarthOpenGLContextMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadVehicleToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menustripLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.simulatorOnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +45,7 @@ namespace AgOpenGPS
             this.resetALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetEverythingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AgShareApiMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrWatchdog = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStripFlag = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -99,8 +98,6 @@ namespace AgOpenGPS
             this.webcamToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.offsetFixToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.panelSim = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSpeedDn = new AgLibrary.Controls.RepeatButton();
-            this.btnSimSpeedUp = new AgLibrary.Controls.RepeatButton();
             this.btnSimSetSpeedToZero = new System.Windows.Forms.Button();
             this.btnSimReverseDirection = new System.Windows.Forms.Button();
             this.btnSection16Man = new System.Windows.Forms.Button();
@@ -196,6 +193,8 @@ namespace AgOpenGPS
             this.btnMinimizeMainForm = new System.Windows.Forms.Button();
             this.btnFieldStats = new System.Windows.Forms.Button();
             this.lblHardwareMessage = new System.Windows.Forms.Label();
+            this.btnSpeedDn = new AgLibrary.Controls.RepeatButton();
+            this.btnSimSpeedUp = new AgLibrary.Controls.RepeatButton();
             this.contextMenuStripOpenGL.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStripFlag.SuspendLayout();
@@ -257,7 +256,7 @@ namespace AgOpenGPS
             // 
             this.fileToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profileToolStripMenuItem,
+            this.loadVehicleToolToolStripMenuItem,
             this.menustripLanguage,
             this.toolStripSeparator11,
             this.simulatorOnToolStripMenuItem,
@@ -266,6 +265,7 @@ namespace AgOpenGPS
             this.kioskModeToolStrip,
             this.resetALLToolStripMenuItem,
             this.AgShareApiMenuItem,
+            this.checkForUpdatesToolStripMenuItem,
             this.helpMenuItem});
             this.fileToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fileToolStripMenuItem.Image = global::AgOpenGPS.Properties.Resources.fileMenu;
@@ -274,65 +274,50 @@ namespace AgOpenGPS
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(55, 44);
+            //
+            // loadVehicleToolToolStripMenuItem
             // 
-            // profileToolStripMenuItem
-            // 
-            this.profileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newProfileToolStripMenuItem,
-            this.loadProfileToolStripMenuItem});
-            this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(382, 50);
-            this.profileToolStripMenuItem.Text = "Profile";
-            // 
-            // newProfileToolStripMenuItem
-            // 
-            this.newProfileToolStripMenuItem.Name = "newProfileToolStripMenuItem";
-            this.newProfileToolStripMenuItem.Size = new System.Drawing.Size(210, 50);
-            this.newProfileToolStripMenuItem.Text = "New...";
-            this.newProfileToolStripMenuItem.Click += new System.EventHandler(this.newProfileToolStripMenuItem_Click);
-            // 
-            // loadProfileToolStripMenuItem
-            // 
-            this.loadProfileToolStripMenuItem.Name = "loadProfileToolStripMenuItem";
-            this.loadProfileToolStripMenuItem.Size = new System.Drawing.Size(210, 50);
-            this.loadProfileToolStripMenuItem.Text = "Load...";
-            this.loadProfileToolStripMenuItem.Click += new System.EventHandler(this.loadProfileToolStripMenuItem_Click);
+            this.loadVehicleToolToolStripMenuItem.Image = global::AgOpenGPS.Properties.Resources.FileOpen;
+            this.loadVehicleToolToolStripMenuItem.Name = "loadVehicleToolToolStripMenuItem";
+            this.loadVehicleToolToolStripMenuItem.Size = new System.Drawing.Size(355, 50);
+            this.loadVehicleToolToolStripMenuItem.Text = "Vehicle / Tool...";
+            this.loadVehicleToolToolStripMenuItem.Click += new System.EventHandler(this.loadVehicleToolToolStripMenuItem_Click);
             // 
             // menustripLanguage
             // 
             this.menustripLanguage.Name = "menustripLanguage";
-            this.menustripLanguage.Size = new System.Drawing.Size(382, 50);
+            this.menustripLanguage.Size = new System.Drawing.Size(397, 50);
             this.menustripLanguage.Text = "Language";
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(379, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(394, 6);
             // 
             // simulatorOnToolStripMenuItem
             // 
             this.simulatorOnToolStripMenuItem.CheckOnClick = true;
             this.simulatorOnToolStripMenuItem.Name = "simulatorOnToolStripMenuItem";
-            this.simulatorOnToolStripMenuItem.Size = new System.Drawing.Size(382, 50);
+            this.simulatorOnToolStripMenuItem.Size = new System.Drawing.Size(397, 50);
             this.simulatorOnToolStripMenuItem.Text = "Simulator On";
             this.simulatorOnToolStripMenuItem.Click += new System.EventHandler(this.simulatorOnToolStripMenuItem_Click);
             // 
             // enterSimCoordsToolStripMenuItem
             // 
             this.enterSimCoordsToolStripMenuItem.Name = "enterSimCoordsToolStripMenuItem";
-            this.enterSimCoordsToolStripMenuItem.Size = new System.Drawing.Size(382, 50);
+            this.enterSimCoordsToolStripMenuItem.Size = new System.Drawing.Size(397, 50);
             this.enterSimCoordsToolStripMenuItem.Text = "Enter Sim Coords";
             this.enterSimCoordsToolStripMenuItem.Click += new System.EventHandler(this.enterSimCoordsToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(379, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(394, 6);
             // 
             // kioskModeToolStrip
             // 
             this.kioskModeToolStrip.Name = "kioskModeToolStrip";
-            this.kioskModeToolStrip.Size = new System.Drawing.Size(382, 50);
+            this.kioskModeToolStrip.Size = new System.Drawing.Size(397, 50);
             this.kioskModeToolStrip.Text = "Kiosk Mode";
             this.kioskModeToolStrip.Click += new System.EventHandler(this.kioskModeToolStrip_Click);
             // 
@@ -341,7 +326,7 @@ namespace AgOpenGPS
             this.resetALLToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetEverythingToolStripMenuItem});
             this.resetALLToolStripMenuItem.Name = "resetALLToolStripMenuItem";
-            this.resetALLToolStripMenuItem.Size = new System.Drawing.Size(382, 50);
+            this.resetALLToolStripMenuItem.Size = new System.Drawing.Size(397, 50);
             this.resetALLToolStripMenuItem.Text = "Reset All";
             // 
             // resetEverythingToolStripMenuItem
@@ -354,14 +339,21 @@ namespace AgOpenGPS
             // AgShareApiMenuItem
             // 
             this.AgShareApiMenuItem.Name = "AgShareApiMenuItem";
-            this.AgShareApiMenuItem.Size = new System.Drawing.Size(382, 50);
+            this.AgShareApiMenuItem.Size = new System.Drawing.Size(397, 50);
             this.AgShareApiMenuItem.Text = "AgShare API";
             this.AgShareApiMenuItem.Click += new System.EventHandler(this.AgShareApiMenuItem_Click);
+            // 
+            // checkForUpdatesToolStripMenuItem
+            // 
+            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(397, 50);
+            this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates";
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // helpMenuItem
             // 
             this.helpMenuItem.Name = "helpMenuItem";
-            this.helpMenuItem.Size = new System.Drawing.Size(382, 50);
+            this.helpMenuItem.Size = new System.Drawing.Size(397, 50);
             this.helpMenuItem.Text = "Help";
             this.helpMenuItem.Click += new System.EventHandler(this.helpMenuItem_Click);
             // 
@@ -461,7 +453,7 @@ namespace AgOpenGPS
             this.cboxpRowWidth.SelectedIndexChanged += new System.EventHandler(this.cboxpRowWidth_SelectedIndexChanged);
             // 
             // oglZoom
-            // 
+            //
             this.oglZoom.BackColor = System.Drawing.Color.Black;
             this.oglZoom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.oglZoom.Location = new System.Drawing.Point(122, 63);
@@ -897,7 +889,7 @@ namespace AgOpenGPS
             this.oglMain.Resize += new System.EventHandler(this.oglMain_Resize);
             // 
             // oglBack
-            // 
+            //
             this.oglBack.BackColor = System.Drawing.Color.Black;
             this.oglBack.ForeColor = System.Drawing.Color.Transparent;
             this.oglBack.Location = new System.Drawing.Point(122, 70);
@@ -1092,7 +1084,7 @@ namespace AgOpenGPS
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.panelSim.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.panelSim.Controls.Add(this.btnSpeedDn, 5, 0);
             this.panelSim.Controls.Add(this.btnSimSpeedUp, 7, 0);
             this.panelSim.Controls.Add(this.btnResetSim, 0, 0);
@@ -1107,36 +1099,6 @@ namespace AgOpenGPS
             this.panelSim.Size = new System.Drawing.Size(615, 42);
             this.panelSim.TabIndex = 325;
             // 
-            // btnSpeedDn
-            // 
-            this.btnSpeedDn.BackColor = System.Drawing.Color.Transparent;
-            this.btnSpeedDn.BackgroundImage = global::AgOpenGPS.Properties.Resources.DnArrow64;
-            this.btnSpeedDn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSpeedDn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSpeedDn.FlatAppearance.BorderSize = 0;
-            this.btnSpeedDn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSpeedDn.Location = new System.Drawing.Point(333, 4);
-            this.btnSpeedDn.Name = "btnSpeedDn";
-            this.btnSpeedDn.Size = new System.Drawing.Size(73, 34);
-            this.btnSpeedDn.TabIndex = 533;
-            this.btnSpeedDn.UseVisualStyleBackColor = false;
-            this.btnSpeedDn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSpeedDn_MouseDown);
-            // 
-            // btnSimSpeedUp
-            // 
-            this.btnSimSpeedUp.BackColor = System.Drawing.Color.Transparent;
-            this.btnSimSpeedUp.BackgroundImage = global::AgOpenGPS.Properties.Resources.UpArrow64;
-            this.btnSimSpeedUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSimSpeedUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSimSpeedUp.FlatAppearance.BorderSize = 0;
-            this.btnSimSpeedUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSimSpeedUp.Location = new System.Drawing.Point(470, 4);
-            this.btnSimSpeedUp.Name = "btnSimSpeedUp";
-            this.btnSimSpeedUp.Size = new System.Drawing.Size(73, 34);
-            this.btnSimSpeedUp.TabIndex = 532;
-            this.btnSimSpeedUp.UseVisualStyleBackColor = false;
-            this.btnSimSpeedUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSimSpeedUp_MouseDown);
-            // 
             // btnSimSetSpeedToZero
             // 
             this.btnSimSetSpeedToZero.BackColor = System.Drawing.Color.Transparent;
@@ -1146,7 +1108,7 @@ namespace AgOpenGPS
             this.btnSimSetSpeedToZero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSimSetSpeedToZero.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.btnSimSetSpeedToZero.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSimSetSpeedToZero.Location = new System.Drawing.Point(413, 4);
+            this.btnSimSetSpeedToZero.Location = new System.Drawing.Point(410, 4);
             this.btnSimSetSpeedToZero.Name = "btnSimSetSpeedToZero";
             this.btnSimSetSpeedToZero.Size = new System.Drawing.Size(50, 34);
             this.btnSimSetSpeedToZero.TabIndex = 453;
@@ -1163,7 +1125,7 @@ namespace AgOpenGPS
             this.btnSimReverseDirection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSimReverseDirection.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.btnSimReverseDirection.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSimReverseDirection.Location = new System.Drawing.Point(563, 4);
+            this.btnSimReverseDirection.Location = new System.Drawing.Point(560, 4);
             this.btnSimReverseDirection.Name = "btnSimReverseDirection";
             this.btnSimReverseDirection.Size = new System.Drawing.Size(35, 34);
             this.btnSimReverseDirection.TabIndex = 537;
@@ -2877,6 +2839,36 @@ namespace AgOpenGPS
             this.lblHardwareMessage.Visible = false;
             this.lblHardwareMessage.Click += new System.EventHandler(this.lblHardwareMessage_Click);
             // 
+            // btnSpeedDn
+            // 
+            this.btnSpeedDn.BackColor = System.Drawing.Color.Transparent;
+            this.btnSpeedDn.BackgroundImage = global::AgOpenGPS.Properties.Resources.DnArrow64;
+            this.btnSpeedDn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSpeedDn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSpeedDn.FlatAppearance.BorderSize = 0;
+            this.btnSpeedDn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSpeedDn.Location = new System.Drawing.Point(333, 4);
+            this.btnSpeedDn.Name = "btnSpeedDn";
+            this.btnSpeedDn.Size = new System.Drawing.Size(70, 34);
+            this.btnSpeedDn.TabIndex = 533;
+            this.btnSpeedDn.UseVisualStyleBackColor = false;
+            this.btnSpeedDn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSpeedDn_MouseDown);
+            // 
+            // btnSimSpeedUp
+            // 
+            this.btnSimSpeedUp.BackColor = System.Drawing.Color.Transparent;
+            this.btnSimSpeedUp.BackgroundImage = global::AgOpenGPS.Properties.Resources.UpArrow64;
+            this.btnSimSpeedUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSimSpeedUp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSimSpeedUp.FlatAppearance.BorderSize = 0;
+            this.btnSimSpeedUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSimSpeedUp.Location = new System.Drawing.Point(467, 4);
+            this.btnSimSpeedUp.Name = "btnSimSpeedUp";
+            this.btnSimSpeedUp.Size = new System.Drawing.Size(70, 34);
+            this.btnSimSpeedUp.TabIndex = 532;
+            this.btnSimSpeedUp.UseVisualStyleBackColor = false;
+            this.btnSimSpeedUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSimSpeedUp_MouseDown);
+            // 
             // FormGPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2996,7 +2988,7 @@ namespace AgOpenGPS
         public System.Windows.Forms.Button btnAutoSteer;
         private System.Windows.Forms.HScrollBar hsbarSteerAngle;
         private OpenTK.GLControl oglZoom;
-        private OpenTK.GLControl oglMain;
+        internal OpenTK.GLControl oglMain;
         private OpenTK.GLControl oglBack;
         private System.Windows.Forms.ComboBox cboxpRowWidth;
         private System.Windows.Forms.Label lblHz;
@@ -3120,9 +3112,9 @@ namespace AgOpenGPS
         private System.Windows.Forms.ToolStripMenuItem eventViewerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tramsMultiMenuField;
         private System.Windows.Forms.ToolStripMenuItem AgShareApiMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newProfileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadProfileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadVehicleToolToolStripMenuItem;
+
         public System.Windows.Forms.Button btnIsobusSectionControl;
     }
 }

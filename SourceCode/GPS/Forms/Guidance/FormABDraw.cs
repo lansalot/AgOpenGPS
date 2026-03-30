@@ -378,50 +378,36 @@ namespace AgOpenGPS
         {            //countExit the points from the boundary
             for (int q = 0; q < mf.bnd.bndList.Count; q++)
             {
-                vec3 pt3;
-                mf.curve.desList?.Clear();
-                for (int i = 0; i < mf.bnd.bndList[q].fenceLine.Count; i++)
+                // Boundary already has proper headings and spacing from FixFenceLine()
+                // Just copy the points directly to create the boundary curve
+                List<vec3> bndPoints = new List<vec3>();
+                foreach (vec3 pt in mf.bnd.bndList[q].fenceLine)
                 {
-                    //calculate the point inside the boundary
-                    pt3 = new vec3(mf.bnd.bndList[q].fenceLine[i]);
-
-                    mf.curve.desList.Add(new vec3(pt3));
+                    bndPoints.Add(new vec3(pt));
                 }
 
+                if (bndPoints.Count < 4)
+                    continue;
 
                 gTemp.Add(new CTrk());
-                //array number is 1 less since it starts at zero
                 indx = gTemp.Count - 1;
 
-                gTemp[indx].ptA = new vec2(mf.curve.desList[0].easting, mf.curve.desList[0].northing);
-                gTemp[indx].ptB = new vec2(mf.curve.desList[mf.curve.desList.Count - 1].easting, mf.curve.desList[mf.curve.desList.Count - 1].northing);
+                // Set A and B points to first and second-to-last points
+                // (last point is duplicate of first for closing the loop)
+                gTemp[indx].ptA = new vec2(bndPoints[0].easting, bndPoints[0].northing);
+                gTemp[indx].ptB = new vec2(bndPoints[bndPoints.Count - 2].easting, bndPoints[bndPoints.Count - 2].northing);
 
-                pt3 = new vec3(mf.curve.desList[0]);
-                mf.curve.desList.Add(pt3);
+                //create a name
+                gTemp[indx].name = "Boundary Curve";
+                if (q > 0) gTemp[indx].name = "Inner Boundary Curve " + q.ToString();
 
-                int cnt = mf.curve.desList.Count;
-                if (cnt > 3)
+                gTemp[indx].heading = 0;
+                gTemp[indx].mode = TrackMode.bndCurve;
+
+                // Copy all boundary points including the closing point
+                foreach (vec3 pt in bndPoints)
                 {
-                    pt3 = new vec3(mf.curve.desList[0]);
-                    mf.curve.desList.Add(pt3);
-
-                    //make sure point distance isn't too big 
-                    CABCurve.MakePointMinimumSpacing(ref mf.curve.desList, 1.6);
-                    CABCurve.CalculateHeadings(ref mf.curve.desList);
-
-                    //create a name
-                    gTemp[indx].name = "Boundary Curve";
-
-                    if (q > 0) gTemp[indx].name = "Inner Boundary Curve " + q.ToString();
-
-                    gTemp[indx].heading = 0;
-                    gTemp[indx].mode = TrackMode.bndCurve;
-
-                    //write out the Curve Points
-                    foreach (vec3 item in mf.curve.desList)
-                    {
-                        gTemp[indx].curvePts.Add(item);
-                    }
+                    gTemp[indx].curvePts.Add(pt);
                 }
             }
 
@@ -431,8 +417,6 @@ namespace AgOpenGPS
             start = 99999; end = 99999;
 
             FixLabelsCurve();
-
-            mf.curve.desList?.Clear();
 
             btnExit.Focus();
         }

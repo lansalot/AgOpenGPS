@@ -170,7 +170,7 @@ namespace AgOpenGPS
             pn.speed = pn.vtgSpeed;
             pn.AverageTheSpeed();
 
-            if (Properties.Settings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
+            if (Properties.VehicleSettings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
             {
                 if (Math.Abs(pn.speed) > ahrs.autoSwitchDualFixSpeed)
                 {
@@ -193,7 +193,7 @@ namespace AgOpenGPS
                     {
                         #region Start
 
-                        if (Properties.Settings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
+                        if (Properties.VehicleSettings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
                         {
                             lblSpeed.ForeColor = System.Drawing.Color.Red;
                         }
@@ -685,7 +685,7 @@ namespace AgOpenGPS
 
                 case "Dual":
                     {
-                        if (Properties.Settings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
+                        if (Properties.VehicleSettings.Default.setGPS_headingFromWhichSource == "Dual" && ahrs.autoSwitchDualFixOn)
                         {
                             lblSpeed.ForeColor = System.Drawing.Color.Green;
                             isChangingDirection = false;
@@ -906,23 +906,27 @@ namespace AgOpenGPS
                         btnAutoSteer.PerformClick();
                     }
 
-                    if (isBtnAutoSteerOn && avgSpeed < vehicle.minSteerSpeed)
+                    // Only check min speed if it's set above 0.1 (0.0 or <0.1 = disabled)
+                    if (vehicle.minSteerSpeed >= 0.1)
                     {
-                        minSteerSpeedTimer++;
-                        if (minSteerSpeedTimer > 80)
+                        if (isBtnAutoSteerOn && avgSpeed < vehicle.minSteerSpeed)
                         {
-                            btnAutoSteer.PerformClick();
-                            if (isMetric)
-                                TimedMessageBox(3000, "AutoSteer Disabled", "Below Minimum Safe Steering Speed: " + vehicle.minSteerSpeed.ToString("N0") + " Kmh");
-                            else
-                                TimedMessageBox(3000, "AutoSteer Disabled", "Below Minimum Safe Steering Speed: " + Speed.KmhToMph(vehicle.minSteerSpeed).ToString("N1") + " MPH");
-                            
-                            Log.EventWriter("Steer Off, Below Min Steering Speed");
+                            minSteerSpeedTimer++;
+                            if (minSteerSpeedTimer > 80)
+                            {
+                                btnAutoSteer.PerformClick();
+                                if (isMetric)
+                                    TimedMessageBox(3000, "AutoSteer Disabled", "Below Minimum Safe Steering Speed: " + vehicle.minSteerSpeed.ToString("N0") + " Kmh");
+                                else
+                                    TimedMessageBox(3000, "AutoSteer Disabled", "Below Minimum Safe Steering Speed: " + Speed.KmhToMph(vehicle.minSteerSpeed).ToString("N1") + " MPH");
+
+                                Log.EventWriter("Steer Off, Below Min Steering Speed");
+                            }
                         }
-                    }
-                    else
-                    {
-                        minSteerSpeedTimer = 0;
+                        else
+                        {
+                            minSteerSpeedTimer = 0;
+                        }
                     }
                 }
 
@@ -976,6 +980,9 @@ namespace AgOpenGPS
                 {
                     p_254.pgn[p_254.steerAngleHi] = unchecked((byte)(guidanceLineSteerAngle >> 8));
                     p_254.pgn[p_254.steerAngleLo] = unchecked((byte)(guidanceLineSteerAngle));
+
+                    // Smart WAS sample collection - guidance steer angle in degrees
+                    smartWAS.AddSample(guidanceLineSteerAngle * 0.01);
                 }
             }
 

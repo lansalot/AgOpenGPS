@@ -359,6 +359,9 @@ namespace AgOpenGPS
 
         public void DrawABLines()
         {
+            // Don't draw if AB line is not valid yet (prevents drawing with uninitialized values after track switch)
+            if (!isABValid) return;
+
             // Draw AB Points
             CTrk track = mf.trk.gArr[mf.trk.idx];
             GLW.SetPointSize(8.0f);

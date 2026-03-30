@@ -521,18 +521,9 @@ namespace AgIO
 
             if (!string.IsNullOrEmpty(words[1]))
             {
-                float.TryParse(words[8] == "Roll" ? words[7] : words[5], NumberStyles.Float, CultureInfo.InvariantCulture, out rollK);
+                float.TryParse(words[8] == "Roll" ? words[7] : words[5], NumberStyles.Float, CultureInfo.InvariantCulture, out rollData);
 
-                //Kalman filter
-                Pc = P + varProcess;
-                G = Pc / (Pc + varRoll);
-                P = (1 - G) * Pc;
-                Xp = XeRoll;
-                Zp = Xp;
-                XeRoll = (G * (rollK - Zp)) + Xp;
-                rollData = XeRoll;
-
-                roll = (float)(XeRoll);
+                roll = rollData;
             }
         }
 

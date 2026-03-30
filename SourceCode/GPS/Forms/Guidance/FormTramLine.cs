@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -124,6 +124,7 @@ namespace AgOpenGPS
 
             Properties.Settings.Default.setWindow_tramLineSize = Size;
             Properties.Settings.Default.setTram_alpha = mf.tram.alpha;
+            Properties.ToolSettings.Default.Save();
             Properties.Settings.Default.Save();
         }
 

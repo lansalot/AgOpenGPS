@@ -2837,6 +2837,16 @@ namespace AgOpenGPS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ST_SmartWAS {
+            get {
+                object obj = ResourceManager.GetObject("ST_SmartWAS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SteerDriveOff {
             get {
                 object obj = ResourceManager.GetObject("SteerDriveOff", resourceCulture);

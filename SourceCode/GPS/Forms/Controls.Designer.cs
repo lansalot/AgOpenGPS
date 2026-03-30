@@ -1419,6 +1419,41 @@ namespace AgOpenGPS
             form.ShowDialog(this);
         }
 
+        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string updaterPath = System.IO.Path.Combine(Application.StartupPath, "AgOpenGPS.Updater.exe");
+
+                if (!System.IO.File.Exists(updaterPath))
+                {
+                    // Show error if updater not found
+                    MessageBox.Show(
+                        "Updater not found. Please ensure AgOpenGPS.Updater.exe is in the application directory.",
+                        "Updater Not Found",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var processInfo = new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = updaterPath,
+                    Arguments = $"--current-version \"{Program.SemVer}\"",
+                    UseShellExecute = true
+                };
+
+                System.Diagnostics.Process.Start(processInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Failed to start updater: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
 
         private void hotKeysToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1533,21 +1568,16 @@ namespace AgOpenGPS
         }
 
         //Profiles
-        private void newProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadVehicleToolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = new FormNewProfile(this))
+            using (var form = new FormLoadVehicleTool(this))
             {
                 form.ShowDialog(this);
             }
         }
 
-        private void loadProfileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var form = new FormLoadProfile(this))
-            {
-                form.ShowDialog(this);
-            }
-        }
+
+
 
         #endregion
 
@@ -1786,8 +1816,8 @@ namespace AgOpenGPS
             if (cboxIsSectionControlled.Checked) cboxIsSectionControlled.Image = Properties.Resources.HeadlandSectionOn;
             else cboxIsSectionControlled.Image = Properties.Resources.HeadlandSectionOff;
             bnd.isSectionControlledByHeadland = cboxIsSectionControlled.Checked;
-            Properties.Settings.Default.setHeadland_isSectionControlled = cboxIsSectionControlled.Checked;
-            Properties.Settings.Default.Save();
+            Properties.ToolSettings.Default.setHeadland_isSectionControlled = cboxIsSectionControlled.Checked;
+            Properties.ToolSettings.Default.Save();
         }
         private void btnHydLift_Click(object sender, EventArgs e)
         {

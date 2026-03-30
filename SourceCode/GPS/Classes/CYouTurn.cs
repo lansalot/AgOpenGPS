@@ -99,7 +99,7 @@ namespace AgOpenGPS
 
             uTurnStyle = Properties.Settings.Default.set_uTurnStyle;
 
-            uTurnSmoothing = Properties.Settings.Default.setAS_uTurnSmoothing;
+            uTurnSmoothing = (int)Properties.Settings.Default.setAS_uTurnSmoothing;
         }
 
         //find next not worked lane after the defined lanes to skip
@@ -2927,6 +2927,22 @@ namespace AgOpenGPS
             //    }
             //    GL.End();
             //}
+        }
+
+        /// <summary>
+        /// Rebuilds the uturn after a nudge operation to reflect the new track position.
+        /// </summary>
+        public void RebuildAfterNudge()
+        {
+            // Only rebuild if a uturn is currently active
+            if (!isYouTurnBtnOn)
+                return;
+
+            // Clear existing uturn path
+            ytList?.Clear();
+
+            // Rebuild
+            ResetCreatedYouTurn();
         }
 
         public class CClose
