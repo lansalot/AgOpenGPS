@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -1232,5 +1232,209 @@ Laad via het Config-paneel &amp; menu linksboven.</value>
   </data>
   <data name="gsUserNo" xml:space="preserve">
     <value>Gebruiker</value>
+  </data>
+  <data name="gsAgree" xml:space="preserve">
+    <value>Akkoord</value>
+  </data>
+  <data name="gsButton" xml:space="preserve">
+    <value>Knop</value>
+  </data>
+  <data name="gsButtonDescription" xml:space="preserve">
+    <value>Aan/Uit</value>
+  </data>
+  <data name="gsCopyFrom" xml:space="preserve">
+    <value>Kopieer van</value>
+  </data>
+  <data name="gsCreateNewProfile" xml:space="preserve">
+    <value>Maak niew Profiel</value>
+  </data>
+  <data name="gsDeadzone" xml:space="preserve">
+    <value>Dode-band</value>
+  </data>
+  <data name="gsEmptyProfile" xml:space="preserve">
+    <value>Leeg profiel</value>
+  </data>
+  <data name="gsGetSelected" xml:space="preserve">
+    <value>Gebruik Selectie</value>
+  </data>
+  <data name="gsLightbar" xml:space="preserve">
+    <value>Lichtbalk</value>
+  </data>
+  <data name="gsLoadProfile" xml:space="preserve">
+    <value>Laadt profiel</value>
+  </data>
+  <data name="gsName" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="gsNew" xml:space="preserve">
+    <value>Nieuw</value>
+  </data>
+  <data name="gsProfile" xml:space="preserve">
+    <value>Omgeving</value>
+  </data>
+  <data name="gsSaveEnvironmentSettings" xml:space="preserve">
+    <value>Omgevings instelling</value>
+  </data>
+  <data name="gsSaveEnvironmentSettingsSaved" xml:space="preserve">
+    <value>Omgevingsinstellingen opgeslagen.</value>
+  </data>
+  <data name="gsSaveVehicleSettings" xml:space="preserve">
+    <value>Voertuig instelling</value>
+  </data>
+  <data name="gsSaveVehicleSettingsSaved" xml:space="preserve">
+    <value>Voertuig instelling opgeslagen.</value>
+  </data>
+  <data name="gsSaveToolSettings" xml:space="preserve">
+    <value>Werktuig instelling</value>
+  </data>
+  <data name="gsSaveToolSettingsSaved" xml:space="preserve">
+    <value>Werktuig instelling opgeslagen.</value>
+  </data>
+  <data name="gsSteerBar" xml:space="preserve">
+    <value>Stuur-balk</value>
+  </data>
+  <data name="gsSwitch" xml:space="preserve">
+    <value>Schakelaar</value>
+  </data>
+  <data name="gsSwitchDescription" xml:space="preserve">
+    <value>Druk-aan,Los Uit</value>
+  </data>
+  <data name="gsSmartWASHelp" xml:space="preserve">
+    <value>Automatisch calibreren van Stuurhoeksensor. Activeer autosteer en rij langzaam.</value>
+  </data>
+  <data name="gsAntennaPivot" xml:space="preserve">
+    <value>Antenne-draaipunt</value>
+  </data>
+  <data name="gsTrackWidth" xml:space="preserve">
+    <value>Spoorbreedte</value>
+  </data>
+  <data name="gsAttach" xml:space="preserve">
+    <value>Koppel</value>
+  </data>
+  <data name="gsTrailingHitch" xml:space="preserve">
+    <value>Getrokken-punt</value>
+  </data>
+  <data name="gsHarvester" xml:space="preserve">
+    <value>Oogstmachine</value>
+  </data>
+  <data name="gsArticulated" xml:space="preserve">
+    <value>Scharnierend</value>
+  </data>
+  <data name="gsFront" xml:space="preserve">
+    <value>Voor</value>
+  </data>
+  <data name="gsRearFixed" xml:space="preserve">
+    <value>In hef</value>
+  </data>
+  <data name="gsTrailing" xml:space="preserve">
+    <value>Getrokken</value>
+  </data>
+  <data name="gsVehicleInUse" xml:space="preserve">
+    <value>Voertuig in gebruik</value>
+  </data>
+  <data name="gsCannotDeleteActiveVehicle" xml:space="preserve">
+    <value>Kan actief voertuig niet verwijderen</value>
+  </data>
+  <data name="gsDeleteVehicleConfirm" xml:space="preserve">
+    <value>Verwijder voertuig</value>
+  </data>
+  <data name="gsRenameVehicle" xml:space="preserve">
+    <value>Hernoem voertuig</value>
+  </data>
+  <data name="gsEnterNewVehicleName" xml:space="preserve">
+    <value>Vul nieuw voertuignaam in</value>
+  </data>
+  <data name="gsVehicleExists" xml:space="preserve">
+    <value>Voertuig bestaat al</value>
+  </data>
+  <data name="gsToolInUse" xml:space="preserve">
+    <value>Werktuig in gebruik</value>
+  </data>
+  <data name="gsCannotDeleteActiveTool" xml:space="preserve">
+    <value>Kan actief werktuig niet verwijderen</value>
+  </data>
+  <data name="gsDeleteToolConfirm" xml:space="preserve">
+    <value>Verwijder werktuig</value>
+  </data>
+  <data name="gsRenameTool" xml:space="preserve">
+    <value>Hernoem werktuig</value>
+  </data>
+  <data name="gsEnterNewToolName" xml:space="preserve">
+    <value>Voer niew werktuig naam in</value>
+  </data>
+  <data name="gsToolExists" xml:space="preserve">
+    <value>Werktuig bestaat al</value>
+  </data>
+  <data name="gsErrorLoadingVehicle" xml:space="preserve">
+    <value>Fout bij laden Voertuig</value>
+  </data>
+  <data name="gsErrorLoadingTool" xml:space="preserve">
+    <value>Fout bij laden Werktuig</value>
+  </data>
+  <data name="gsFileResult" xml:space="preserve">
+    <value>Resultaat</value>
+  </data>
+  <data name="gsNewVehicle" xml:space="preserve">
+    <value>Nieuw voertuig</value>
+  </data>
+  <data name="gsEnterVehicleName" xml:space="preserve">
+    <value>Vul nieuw voertuig naam in</value>
+  </data>
+  <data name="gsNewTool" xml:space="preserve">
+    <value>Nieuw werktuig</value>
+  </data>
+  <data name="gsEnterToolName" xml:space="preserve">
+    <value>Voer werktuig naam in</value>
+  </data>
+  <data name="gsCreateDefaultVehicle" xml:space="preserve">
+    <value>Maak standaard voertuig</value>
+  </data>
+  <data name="gsCreateDefaultVehicleConfirm" xml:space="preserve">
+    <value>maak standaard profiel met fabrieksinstelling?</value>
+  </data>
+  <data name="gsOverwrite" xml:space="preserve">
+    <value>Overschrijf</value>
+  </data>
+  <data name="gsProfileExistsOverwrite" xml:space="preserve">
+    <value>Profiel bestaat al, oveschrijven</value>
+  </data>
+  <data name="gsCreateDefaultTool" xml:space="preserve">
+    <value>Maak standaard werktuig</value>
+  </data>
+  <data name="gsCreateDefaultToolConfirm" xml:space="preserve">
+    <value>maak standaard werktuig met fabrieksinst?</value>
+  </data>
+  <data name="gsDefaultVehicleLoaded" xml:space="preserve">
+    <value>Standaard voertuig geladen</value>
+  </data>
+  <data name="gsDefaultToolLoaded" xml:space="preserve">
+    <value>Standaard Werktuig Geladen</value>
+  </data>
+  <data name="gsVehicleTool" xml:space="preserve">
+    <value>Voertuig/Werktuig</value>
+  </data>
+  <data name="gsImportVehicle" xml:space="preserve">
+    <value>Importeer Voertuig</value>
+  </data>
+  <data name="gsImportTool" xml:space="preserve">
+    <value>Importeer Werktuig</value>
+  </data>
+  <data name="gsNoImport" xml:space="preserve">
+    <value>Geen Import</value>
+  </data>
+  <data name="gsNoOldFormatFiles" xml:space="preserve">
+    <value>Geen oude bestanden.</value>
+  </data>
+  <data name="gsEnvironmentMigratedLoaded" xml:space="preserve">
+    <value>Omgevingsinstellingen geimporteerd en geladen.</value>
+  </data>
+  <data name="gsExists" xml:space="preserve">
+    <value>Bestaat</value>
+  </data>
+  <data name="gsFileName" xml:space="preserve">
+    <value>Bestandsnaam</value>
+  </data>
+  <data name="gsRename" xml:space="preserve">
+    <value>Hernoem</value>
   </data>
 </root>
