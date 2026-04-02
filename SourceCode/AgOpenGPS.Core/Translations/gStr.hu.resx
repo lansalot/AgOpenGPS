@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -1199,7 +1199,7 @@ HASZNÁLAT SAJÁT FELELŐSSÉGRE.</value>
     <value>Kiválasztott használata</value>
   </data>
   <data name="gsUserNo" xml:space="preserve">
-    <value>Felhasználó {0}</value>
+    <value>Felhasználó</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>Automata forduló</value>
@@ -1272,5 +1272,260 @@ HASZNÁLAT SAJÁT FELELŐSSÉGRE.</value>
   </data>
   <data name="v_AboutIntro" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=iN2cZ8avHag</value>
+  </data>
+  <data name="gsSaveEnvironmentSettings" xml:space="preserve">
+    <value>Környezeti beállítások</value>
+  </data>
+  <data name="gsSaveEnvironmentSettingsSaved" xml:space="preserve">
+    <value>Beállítások mentve</value>
+  </data>
+  <data name="gsSaveVehicleSettings" xml:space="preserve">
+    <value>Jármű beállítások</value>
+  </data>
+  <data name="gsSaveVehicleSettingsSaved" xml:space="preserve">
+    <value>Jármű beállítások mentve.</value>
+  </data>
+  <data name="gsSaveToolSettings" xml:space="preserve">
+    <value>Munkaeszköz beállítások</value>
+  </data>
+  <data name="gsSaveToolSettingsSaved" xml:space="preserve">
+    <value>Munkaeszköz beállítások mentve.</value>
+  </data>
+  <data name="gsSmartWAS" xml:space="preserve">
+    <value>Okos szögszenzor</value>
+  </data>
+  <data name="gsSmartWASHelp" xml:space="preserve">
+    <value>Automatikusan meghatározza a szögszenzor nulla értékét az AB egyenesen haladva gyűjtött adatok segítségével.</value>
+  </data>
+  <data name="gsCurrentVehicle" xml:space="preserve">
+    <value>Jelenlegi jármű</value>
+  </data>
+  <data name="gsCurrentTool" xml:space="preserve">
+    <value>Jelenlegi munkaeszköz</value>
+  </data>
+  <data name="gsSelected" xml:space="preserve">
+    <value>Kiválasztott</value>
+  </data>
+  <data name="gsAntennaPivot" xml:space="preserve">
+    <value>Antenna forgáspont</value>
+  </data>
+  <data name="gsTrackWidth" xml:space="preserve">
+    <value>Nyomtáv</value>
+  </data>
+  <data name="gsAttach" xml:space="preserve">
+    <value>Csatol</value>
+  </data>
+  <data name="gsTrailingHitch" xml:space="preserve">
+    <value>Vonóhorog</value>
+  </data>
+  <data name="gsType" xml:space="preserve">
+    <value>Típus</value>
+  </data>
+  <data name="gsHitch" xml:space="preserve">
+    <value>Függesztőkar</value>
+  </data>
+  <data name="gsVehicle" xml:space="preserve">
+    <value>Jármű</value>
+  </data>
+  <data name="gsTool" xml:space="preserve">
+    <value>Eszköz</value>
+  </data>
+  <data name="gsTractor" xml:space="preserve">
+    <value>Traktor</value>
+  </data>
+  <data name="gsHarvester" xml:space="preserve">
+    <value>Kombájn</value>
+  </data>
+  <data name="gsArticulated" xml:space="preserve">
+    <value>Derékcsuklós</value>
+  </data>
+  <data name="gsFront" xml:space="preserve">
+    <value>Front</value>
+  </data>
+  <data name="gsRearFixed" xml:space="preserve">
+    <value>Függesztett</value>
+  </data>
+  <data name="gsTrailing" xml:space="preserve">
+    <value>Vontatott</value>
+  </data>
+  <data name="gsVehicleInUse" xml:space="preserve">
+    <value>Jármű v használatban</value>
+  </data>
+  <data name="gsCannotDeleteActiveVehicle" xml:space="preserve">
+    <value>Aktív jármű nem törölhető</value>
+  </data>
+  <data name="gsDeleteVehicleConfirm" xml:space="preserve">
+    <value>Jármű törlése</value>
+  </data>
+  <data name="gsRenameVehicle" xml:space="preserve">
+    <value>Jármű átnevezése</value>
+  </data>
+  <data name="gsEnterNewVehicleName" xml:space="preserve">
+    <value>Új név megadása</value>
+  </data>
+  <data name="gsVehicleExists" xml:space="preserve">
+    <value>Jármű már létezik</value>
+  </data>
+  <data name="gsToolInUse" xml:space="preserve">
+    <value>Használt eszköz</value>
+  </data>
+  <data name="gsCannotDeleteActiveTool" xml:space="preserve">
+    <value>Aktív eszköz nem törölhető</value>
+  </data>
+  <data name="gsDeleteToolConfirm" xml:space="preserve">
+    <value>Eszköz törlése</value>
+  </data>
+  <data name="gsRenameTool" xml:space="preserve">
+    <value>Eszköz átnevezése</value>
+  </data>
+  <data name="gsEnterNewToolName" xml:space="preserve">
+    <value>Új eszköz megadása</value>
+  </data>
+  <data name="gsToolExists" xml:space="preserve">
+    <value>Eszköz már létezik</value>
+  </data>
+  <data name="gsErrorLoadingVehicle" xml:space="preserve">
+    <value>Jármű betöltése sikertelen</value>
+  </data>
+  <data name="gsErrorLoadingTool" xml:space="preserve">
+    <value>Eszköz betöltése sikertelen</value>
+  </data>
+  <data name="gsFileResult" xml:space="preserve">
+    <value>Eredmény</value>
+  </data>
+  <data name="gsNewVehicle" xml:space="preserve">
+    <value>Új jármű</value>
+  </data>
+  <data name="gsEnterVehicleName" xml:space="preserve">
+    <value>Adja meg a jármű nevét</value>
+  </data>
+  <data name="gsNewTool" xml:space="preserve">
+    <value>Új eszköz</value>
+  </data>
+  <data name="gsEnterToolName" xml:space="preserve">
+    <value>Eszköz neve</value>
+  </data>
+  <data name="gsCreateDefaultVehicle" xml:space="preserve">
+    <value>Új ÜRES profil készítése</value>
+  </data>
+  <data name="gsCreateDefaultVehicleConfirm" xml:space="preserve">
+    <value>Új profil készítése, a jelenlegi beállítások nélkül?</value>
+  </data>
+  <data name="gsOverwrite" xml:space="preserve">
+    <value>Felülírás</value>
+  </data>
+  <data name="gsProfileExistsOverwrite" xml:space="preserve">
+    <value>Létező profil. Felülírás</value>
+  </data>
+  <data name="gsCreateDefaultTool" xml:space="preserve">
+    <value>Új alapértelmezett eszköz létrehozása</value>
+  </data>
+  <data name="gsCreateDefaultToolConfirm" xml:space="preserve">
+    <value>Létrehoz egy új eszközt a jelenlegi beállítások nélkül?</value>
+  </data>
+  <data name="gsDefaultVehicleLoaded" xml:space="preserve">
+    <value>Alapértelmezett jármű betöltve</value>
+  </data>
+  <data name="gsDefaultToolLoaded" xml:space="preserve">
+    <value>Alapértelmezett eszköz betöltve</value>
+  </data>
+  <data name="gsConvertOldProfiles" xml:space="preserve">
+    <value>Régi profilok konvertere</value>
+  </data>
+  <data name="gsVehicleTool" xml:space="preserve">
+    <value>Jármű / eszköz</value>
+  </data>
+  <data name="gsConvertOldProfilesTitle" xml:space="preserve">
+    <value>Régi profil átalakítása az új formátumra</value>
+  </data>
+  <data name="gsConvertProfilesExplanation" xml:space="preserve">
+    <value>A régi profilok minden beállítást egy fájlban tartalmaztak. Az új formátum külön választja a járművet, eszközöket és a környezeti beállításokat. Válaszd ki a használandókat .</value>
+  </data>
+  <data name="gsConvertStep1" xml:space="preserve">
+    <value>Első lépés</value>
+  </data>
+  <data name="gsConvertStep2" xml:space="preserve">
+    <value>Második lépés</value>
+  </data>
+  <data name="gsVehicleProfileName" xml:space="preserve">
+    <value>Jármű profil név</value>
+  </data>
+  <data name="gsToolProfileName" xml:space="preserve">
+    <value>Munkaeszköz profil neve</value>
+  </data>
+  <data name="gsImportVehicle" xml:space="preserve">
+    <value>Jármű importálása</value>
+  </data>
+  <data name="gsImportTool" xml:space="preserve">
+    <value>Munkaeszköz importálása</value>
+  </data>
+  <data name="gsNoImport" xml:space="preserve">
+    <value>Ne importáld</value>
+  </data>
+  <data name="gsNoOldFormatFiles" xml:space="preserve">
+    <value>Nem található régi profil</value>
+  </data>
+  <data name="gsOldFiles" xml:space="preserve">
+    <value>régi fájlok</value>
+  </data>
+  <data name="gsOldFilesStatus" xml:space="preserve">
+    <value>régi fájl(ok); átalakítva, átalakítani</value>
+  </data>
+  <data name="gsConverted" xml:space="preserve">
+    <value>átalakítva</value>
+  </data>
+  <data name="gsToConvert" xml:space="preserve">
+    <value>átalakítani</value>
+  </data>
+  <data name="gsConvertTitle" xml:space="preserve">
+    <value>Átalakít</value>
+  </data>
+  <data name="gsConvertConfirm" xml:space="preserve">
+    <value>Átalakítás megerősítése</value>
+  </data>
+  <data name="gsConvertConfirmMsg" xml:space="preserve">
+    <value>Átalakítva '{0}': {1} {2}</value>
+  </data>
+  <data name="gsConvertFrom" xml:space="preserve">
+    <value>Átalakít</value>
+  </data>
+  <data name="gsConvertVehicleLine" xml:space="preserve">
+    <value>Jármű</value>
+  </data>
+  <data name="gsConvertToolLine" xml:space="preserve">
+    <value>Eszköz</value>
+  </data>
+  <data name="gsConversionComplete" xml:space="preserve">
+    <value>Átalakítás kész</value>
+  </data>
+  <data name="gsConvertedSuccess" xml:space="preserve">
+    <value>Sikeresen átalakítva</value>
+  </data>
+  <data name="gsEnvironmentMigratedLoaded" xml:space="preserve">
+    <value>Környezeti beállítások sikeresen betöltve.</value>
+  </data>
+  <data name="gsConversionErrors" xml:space="preserve">
+    <value>Átalakítási hibák</value>
+  </data>
+  <data name="gsConversionErrorMsg" xml:space="preserve">
+    <value>Hibák történtek</value>
+  </data>
+  <data name="gsLoadVehicleTool" xml:space="preserve">
+    <value>Jármű/eszköz betöltése</value>
+  </data>
+  <data name="gsExists" xml:space="preserve">
+    <value>Létezik</value>
+  </data>
+  <data name="gsFileName" xml:space="preserve">
+    <value>Fájl név</value>
+  </data>
+  <data name="gsRename" xml:space="preserve">
+    <value>Átnevezés</value>
+  </data>
+  <data name="gsVehicleAlreadyExists" xml:space="preserve">
+    <value>Jármű már létezik</value>
+  </data>
+  <data name="gsToolAlreadyExists" xml:space="preserve">
+    <value>Munkaeszköz már létezik</value>
   </data>
 </root>
