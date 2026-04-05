@@ -2149,6 +2149,16 @@ namespace AgOpenGPS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IsobusSectionControlIdle {
+            get {
+                object obj = ResourceManager.GetObject("IsobusSectionControlIdle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IsobusSectionControlOff {
             get {
                 object obj = ResourceManager.GetObject("IsobusSectionControlOff", resourceCulture);
@@ -2162,16 +2172,6 @@ namespace AgOpenGPS.Properties {
         internal static System.Drawing.Bitmap IsobusSectionControlOn {
             get {
                 object obj = ResourceManager.GetObject("IsobusSectionControlOn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap IsobusSectionControlIdle {
-            get {
-                object obj = ResourceManager.GetObject("IsobusSectionControlIdle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
