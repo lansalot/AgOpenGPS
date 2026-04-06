@@ -172,7 +172,8 @@ namespace AgOpenGPS.Forms.Profiles
             string oldPath = Path.Combine(RegistrySettings.vehiclesDirectory, oldName + ".xml");
             string newPath = Path.Combine(RegistrySettings.vehiclesDirectory, newName + ".xml");
 
-            if (File.Exists(newPath))
+            // Allow case-only renames (e.g. "tractor" -> "Tractor") — File.Exists returns true for same file on Windows
+            if (File.Exists(newPath) && !string.Equals(oldName, newName, StringComparison.OrdinalIgnoreCase))
             {
                 FormDialog.Show(gStr.gsExists, gStr.gsVehicleExists + " '" + newName + "'", DialogSeverity.Error);
                 return;
@@ -281,7 +282,8 @@ namespace AgOpenGPS.Forms.Profiles
             string oldPath = Path.Combine(RegistrySettings.toolsDirectory, oldName + ".xml");
             string newPath = Path.Combine(RegistrySettings.toolsDirectory, newName + ".xml");
 
-            if (File.Exists(newPath))
+            // Allow case-only renames (e.g. "tool" -> "Tool") — File.Exists returns true for same file on Windows
+            if (File.Exists(newPath) && !string.Equals(oldName, newName, StringComparison.OrdinalIgnoreCase))
             {
                 FormDialog.Show(gStr.gsExists, gStr.gsToolExists + " '" + newName + "'", DialogSeverity.Error);
                 return;
