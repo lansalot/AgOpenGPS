@@ -57,6 +57,29 @@ namespace AgOpenGPS
             mf.SendPgnToLoop(data);
         }
 
+        /// <summary>
+        /// Send the active field folder name to TC (PGN 0xF3).
+        /// Call with empty string when field is closed.
+        /// </summary>
+        public void SendFieldName(string fieldName)
+        {
+            byte[] nameBytes = string.IsNullOrEmpty(fieldName)
+                ? Array.Empty<byte>()
+                : Encoding.UTF8.GetBytes(fieldName);
+
+            // Cap at 248 bytes to stay within PGN length byte range
+            if (nameBytes.Length > 248) nameBytes = nameBytes.Take(248).ToArray();
+
+            byte[] message = new byte[6 + nameBytes.Length];
+            message[0] = 0x80; // standard AgIO header
+            message[1] = 0x81;
+            message[2] = 0x7F; // SRC address
+            message[3] = 0xF3; // PGN: field name
+            message[4] = (byte)nameBytes.Length; // 0 = field closed
+            Array.Copy(nameBytes, 0, message, 5, nameBytes.Length);
+            mf.SendPgnToLoop(message);
+        }
+
         private void SendProcessData(ushort identifier, int data)
         {
             byte[] dataBytes = BitConverter.GetBytes(data);
@@ -194,6 +217,11 @@ namespace AgOpenGPS
                 // Make sure we can read at least the first bitmask and the number of sections
                 return false;
             }
+
+            // Detect reconnect: TC was dead (no heartbeat for >1s) and is now alive again
+            bool wasAlive = timestamp != default && DateTimeOffset.Now - timestamp < TimeSpan.FromSeconds(1);
+            if (!wasAlive)
+                SendFieldName(mf.isJobStarted ? mf.currentFieldDirectory : string.Empty);
 
             // Extract fields from byte 0 (backward compatible):
             // Bit 0: Section control enabled (existing)
