@@ -1362,4 +1362,169 @@ Im Konfig-Panel &amp; Menü oben links laden.</value>
   <data name="gsToConvert" xml:space="preserve">
     <value>zu konvertieren</value>
   </data>
+  <data name="gsSaveEnvironmentSettings" xml:space="preserve">
+    <value>Programmeinstellungen</value>
+  </data>
+  <data name="gsSaveEnvironmentSettingsSaved" xml:space="preserve">
+    <value>Programmeinstellungen gespeichert</value>
+  </data>
+  <data name="gsSaveVehicleSettings" xml:space="preserve">
+    <value>Fahrzeugeinstellungen</value>
+  </data>
+  <data name="gsSaveVehicleSettingsSaved" xml:space="preserve">
+    <value>Fahrzeugeinstellungen gespeichert.</value>
+  </data>
+  <data name="gsSaveToolSettings" xml:space="preserve">
+    <value>Anbaugerät Einstellungen</value>
+  </data>
+  <data name="gsSaveToolSettingsSaved" xml:space="preserve">
+    <value>Anbaugerät Einstellungen gespeichert.</value>
+  </data>
+  <data name="gsSmartWAS" xml:space="preserve">
+    <value>LWS auto</value>
+  </data>
+  <data name="gsSmartWASHelp" xml:space="preserve">
+    <value>Kalibriert den LWS mittig beim Fahren über die Lenkbewegungen. Autosteer einschalten und der Linie entlangfahren.</value>
+  </data>
+  <data name="gsAntennaPivot" xml:space="preserve">
+    <value>Antenne vor/zurück</value>
+  </data>
+  <data name="gsTrackWidth" xml:space="preserve">
+    <value>Spurweite</value>
+  </data>
+  <data name="gsAttach" xml:space="preserve">
+    <value>angebaut</value>
+  </data>
+  <data name="gsTrailingHitch" xml:space="preserve">
+    <value>Anbaupunkt gezogenes Gerät</value>
+  </data>
+  <data name="gsTractor" xml:space="preserve">
+    <value>Traktor</value>
+  </data>
+  <data name="gsHarvester" xml:space="preserve">
+    <value>Mähdrescher</value>
+  </data>
+  <data name="gsArticulated" xml:space="preserve">
+    <value>Knicklenker</value>
+  </data>
+  <data name="gsFront" xml:space="preserve">
+    <value>Frontanbau</value>
+  </data>
+  <data name="gsRearFixed" xml:space="preserve">
+    <value>Heckanbau</value>
+  </data>
+  <data name="gsTrailing" xml:space="preserve">
+    <value>gezogen</value>
+  </data>
+  <data name="gsVehicleInUse" xml:space="preserve">
+    <value>verwendetes Fahrzeug</value>
+  </data>
+  <data name="gsCannotDeleteActiveVehicle" xml:space="preserve">
+    <value>Aktives Fahrzeug kann nicht gelöscht werden</value>
+  </data>
+  <data name="gsDeleteVehicleConfirm" xml:space="preserve">
+    <value>Fahrzeug löschen</value>
+  </data>
+  <data name="gsRenameVehicle" xml:space="preserve">
+    <value>Fahrzeug umbennen</value>
+  </data>
+  <data name="gsEnterNewVehicleName" xml:space="preserve">
+    <value>Neuen Fahrzeugnamen eingeben</value>
+  </data>
+  <data name="gsVehicleExists" xml:space="preserve">
+    <value>Fahrzeug existiert bereits</value>
+  </data>
+  <data name="gsToolInUse" xml:space="preserve">
+    <value>verwendetes Anbaugerät</value>
+  </data>
+  <data name="gsCannotDeleteActiveTool" xml:space="preserve">
+    <value>Aktuelles Anbaugerät kann nicht gelöscht werden</value>
+  </data>
+  <data name="gsDeleteToolConfirm" xml:space="preserve">
+    <value>Anbaugerät löschen</value>
+  </data>
+  <data name="gsRenameTool" xml:space="preserve">
+    <value>Anbaugerät umbenennen</value>
+  </data>
+  <data name="gsEnterNewToolName" xml:space="preserve">
+    <value>Neuen Name für das Anbaugerät eingeben</value>
+  </data>
+  <data name="gsToolExists" xml:space="preserve">
+    <value>Anbaugerät existiert bereits</value>
+  </data>
+  <data name="gsErrorLoadingVehicle" xml:space="preserve">
+    <value>Fehler beim Laden des Fahrzeugs</value>
+  </data>
+  <data name="gsErrorLoadingTool" xml:space="preserve">
+    <value>Fehler beim Laden des Anbaugeräts</value>
+  </data>
+  <data name="gsFileResult" xml:space="preserve">
+    <value>Ergebnis</value>
+  </data>
+  <data name="gsNewVehicle" xml:space="preserve">
+    <value>Neues Fahrzeug</value>
+  </data>
+  <data name="gsEnterVehicleName" xml:space="preserve">
+    <value>Fahrzeugnamen eingeben</value>
+  </data>
+  <data name="gsNewTool" xml:space="preserve">
+    <value>neues Anbaugerät</value>
+  </data>
+  <data name="gsEnterToolName" xml:space="preserve">
+    <value>Name des Anbaugeräts eingeben</value>
+  </data>
+  <data name="gsCreateDefaultVehicle" xml:space="preserve">
+    <value>Standard Fahrzeug erstellen</value>
+  </data>
+  <data name="gsCreateDefaultVehicleConfirm" xml:space="preserve">
+    <value>Standard Fahrzeug mit allgemeinen Werten erstellen?</value>
+  </data>
+  <data name="gsOverwrite" xml:space="preserve">
+    <value>Überschreiben</value>
+  </data>
+  <data name="gsProfileExistsOverwrite" xml:space="preserve">
+    <value>Profil existiert bereits. Überschreiben</value>
+  </data>
+  <data name="gsCreateDefaultTool" xml:space="preserve">
+    <value>Standard Anbaugerät erstellen</value>
+  </data>
+  <data name="gsCreateDefaultToolConfirm" xml:space="preserve">
+    <value>Standard Anbaugerät mit allgemeinen Werten erstellen?</value>
+  </data>
+  <data name="gsDefaultVehicleLoaded" xml:space="preserve">
+    <value>Standard Fahrzeug geladen</value>
+  </data>
+  <data name="gsDefaultToolLoaded" xml:space="preserve">
+    <value>Standard Anbaugerät geladen</value>
+  </data>
+  <data name="gsImportVehicle" xml:space="preserve">
+    <value>Fahrzeug importieren</value>
+  </data>
+  <data name="gsImportTool" xml:space="preserve">
+    <value>Anbaugerät importieren</value>
+  </data>
+  <data name="gsNoImport" xml:space="preserve">
+    <value>kein Import</value>
+  </data>
+  <data name="gsNoOldFormatFiles" xml:space="preserve">
+    <value>Keine Dateien im alten Format gefunden.</value>
+  </data>
+  <data name="gsExists" xml:space="preserve">
+    <value>existiert bereits</value>
+  </data>
+  <data name="gsFileName" xml:space="preserve">
+    <value>Dateiname</value>
+  </data>
+  <data name="gsRename" xml:space="preserve">
+    <value>Umbenennen</value>
+  </data>
+  <data name="gsEnvironmentMigratedLoaded" xml:space="preserve">
+    <value>Programmeinstellungen wurden importiert und geladen.</value>
+  </data>
+  <data name="gsVehicleTool" xml:space="preserve">
+    <value>Fahrzeug / Anbaugerät</value>
+  </data>
+  <data name="gsTBT" xml:space="preserve">
+    <value>mehrgliedriger Zug</value>
+  </data>
 </root>

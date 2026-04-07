@@ -1146,7 +1146,7 @@ KÄYTTÖ OMALLA VASTUULLA.</value>
     <value>Käytä valittuja</value>
   </data>
   <data name="gsUserNo" xml:space="preserve">
-    <value>Käyttäjä {0}</value>
+    <value>Käyttäjä</value>
   </data>
   <data name="gsUturn" xml:space="preserve">
     <value>U-käännös</value>
@@ -1260,7 +1260,7 @@ KÄYTTÖ OMALLA VASTUULLA.</value>
     <value>Uusi</value>
   </data>
   <data name="gsProfile" xml:space="preserve">
-    <value>Profiili</value>
+    <value>Ympäristö</value>
   </data>
   <data name="gsProfileMenuHint" xml:space="preserve">
     <value>Vehicle, Tool and Environment settings are now stored as separate profiles.
@@ -1268,5 +1268,38 @@ Load from Config panel &amp; Top Left Menu.</value>
   </data>
   <data name="gsYouTubeTutorials" xml:space="preserve">
     <value>Youtube tutoriaalit</value>
+  </data>
+  <data name="gsSaveEnvironmentSettings" xml:space="preserve">
+    <value>Ympäristöasetukset</value>
+  </data>
+  <data name="gsSaveEnvironmentSettingsSaved" xml:space="preserve">
+    <value>Ympäristöasetukset tallennettu</value>
+  </data>
+  <data name="gsSaveVehicleSettings" xml:space="preserve">
+    <value>Ajoneuvoasetukset</value>
+  </data>
+  <data name="gsSaveVehicleSettingsSaved" xml:space="preserve">
+    <value>Ajoneuvoasetukset tallennettu</value>
+  </data>
+  <data name="gsSaveToolSettings" xml:space="preserve">
+    <value>Työkoneen asetukset</value>
+  </data>
+  <data name="gsSaveToolSettingsSaved" xml:space="preserve">
+    <value>Työkoneen asetukset tallennettu.</value>
+  </data>
+  <data name="gsSmartWAS" xml:space="preserve">
+    <value>Älykäs WAS</value>
+  </data>
+  <data name="gsSmartWASHelp" xml:space="preserve">
+    <value>Autokalibroi WAS-nollakohdan analysoimalla ohjauskulmia ajon aikana. Kytke automaattiohjaus päälle ja aja tasaisesti linjaa pitkin.</value>
+  </data>
+  <data name="gsSelected" xml:space="preserve">
+    <value>Valittu</value>
+  </data>
+  <data name="gsCurrentVehicle" xml:space="preserve">
+    <value>Nykyinen Kone</value>
+  </data>
+  <data name="gsCurrentTool" xml:space="preserve">
+    <value>Nykyinen Työkalu</value>
   </data>
 </root>

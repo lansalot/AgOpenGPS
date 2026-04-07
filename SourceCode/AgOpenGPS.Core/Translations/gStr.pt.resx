@@ -1428,4 +1428,97 @@ Carregar a partir do painel de configurações e do menu superior esquerdo.</val
   <data name="gsConvertOldProfilesTitle" xml:space="preserve">
     <value>Converter arquivos de perfil antigos para o novo formato</value>
   </data>
+  <data name="gsConvertProfilesExplanation" xml:space="preserve">
+    <value>Perfis antigos tinham tudo em um arquivo. O novo formato separa Veículo, Ferramenta e Ambiente. Escolha o que extrair.</value>
+  </data>
+  <data name="gsConvertStep1" xml:space="preserve">
+    <value>Passo 1</value>
+  </data>
+  <data name="gsConvertStep2" xml:space="preserve">
+    <value>Passo 2</value>
+  </data>
+  <data name="gsVehicleProfileName" xml:space="preserve">
+    <value>Nome de perfil do veículo</value>
+  </data>
+  <data name="gsToolProfileName" xml:space="preserve">
+    <value>Nome do perfil da ferramenta</value>
+  </data>
+  <data name="gsImportVehicle" xml:space="preserve">
+    <value>Importar veículo</value>
+  </data>
+  <data name="gsImportTool" xml:space="preserve">
+    <value>Importar ferramenta</value>
+  </data>
+  <data name="gsNoImport" xml:space="preserve">
+    <value>Não importado</value>
+  </data>
+  <data name="gsNoOldFormatFiles" xml:space="preserve">
+    <value>Nenhum arquivo de formato antigo encontrado.</value>
+  </data>
+  <data name="gsOldFiles" xml:space="preserve">
+    <value>arquivos antigos</value>
+  </data>
+  <data name="gsOldFilesStatus" xml:space="preserve">
+    <value>arquivo(s) antigo(s): convertidos, a converter</value>
+  </data>
+  <data name="gsConverted" xml:space="preserve">
+    <value>convertido</value>
+  </data>
+  <data name="gsToConvert" xml:space="preserve">
+    <value>a converter</value>
+  </data>
+  <data name="gsConvertTitle" xml:space="preserve">
+    <value>Converter</value>
+  </data>
+  <data name="gsConvertConfirm" xml:space="preserve">
+    <value>Confirmar a conversão</value>
+  </data>
+  <data name="gsConvertConfirmMsg" xml:space="preserve">
+    <value>Converter '{0}': {1} {2}</value>
+  </data>
+  <data name="gsConvertFrom" xml:space="preserve">
+    <value>Converter</value>
+  </data>
+  <data name="gsConvertVehicleLine" xml:space="preserve">
+    <value>Veículo</value>
+  </data>
+  <data name="gsConvertToolLine" xml:space="preserve">
+    <value>Ferramenta</value>
+  </data>
+  <data name="gsConversionComplete" xml:space="preserve">
+    <value>Conversão finalizada</value>
+  </data>
+  <data name="gsConvertedSuccess" xml:space="preserve">
+    <value>Conversão bem sucedida</value>
+  </data>
+  <data name="gsEnvironmentMigratedLoaded" xml:space="preserve">
+    <value>As definições do ambiente foram importadas e carregadas.</value>
+  </data>
+  <data name="gsConversionErrors" xml:space="preserve">
+    <value>Erros de conversão</value>
+  </data>
+  <data name="gsConversionErrorMsg" xml:space="preserve">
+    <value>Ocorreram erros</value>
+  </data>
+  <data name="gsLoadVehicleTool" xml:space="preserve">
+    <value>Carregar veículo/ferramenta</value>
+  </data>
+  <data name="gsExists" xml:space="preserve">
+    <value>Existe</value>
+  </data>
+  <data name="gsFileName" xml:space="preserve">
+    <value>Nome do arquivo</value>
+  </data>
+  <data name="gsRename" xml:space="preserve">
+    <value>Renomear</value>
+  </data>
+  <data name="gsVehicleAlreadyExists" xml:space="preserve">
+    <value>O veículo já existe</value>
+  </data>
+  <data name="gsToolAlreadyExists" xml:space="preserve">
+    <value>A ferramenta já existe</value>
+  </data>
+  <data name="gsAgree" xml:space="preserve">
+    <value>Aceitar</value>
+  </data>
 </root>
