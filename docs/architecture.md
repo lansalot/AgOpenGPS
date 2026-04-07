@@ -89,6 +89,10 @@ All UDP messages use the AgOpenGPS PGN format:
 | 0xEE | 238 | AOG→Module | Machine config (hydraulic times) |
 | 0xEC | 236 | AOG→Module | Relay pin configuration |
 | 0xEB | 235 | AOG→Module | Section dimensions |
+| 0xF0 | 240 | TC→AOG | ISOBUS heartbeat (section states, num clients) |
+| 0xF1 | 241 | AOG→TC | Section control enable request |
+| 0xF2 | 242 | AOG→TC | Process data (guidance deviation, speed, distance) |
+| 0xF3 | 243 | AOG→TC | Active field folder name (UTF-8, empty = closed) |
 
 See [PGN Protocol](pgn-protocol.md) for complete specification.
 

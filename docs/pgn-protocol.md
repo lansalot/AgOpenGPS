@@ -152,16 +152,48 @@ EndPoint epAgIO = new IPEndPoint(IPAddress.Parse("127.255.255.255"), 17777);
 - Bit 0: Nudge line (0 = left, 1 = right)
 - Bit 1: Cycle line (0 = forward, 1 = backward)
 
-#### PGN 0xF0 (240) - ISOBUS Heartbeat
+#### PGN 0xF0 (240) - ISOBUS Heartbeat (TC→AOG)
+
+**Length:** variable (min 2 data bytes)
+
+| Bytes | Field | Type | Description |
+|-------|-------|------|-------------|
+| 5 | Status | byte | Bit 0 = section control enabled, Bits 1-3 = number of clients (0-7) |
+| 6 | Num Sections | byte | Number of sections (0 = no implement) |
+| 7+ | Section States | byte[] | Bitmask per section, 1 bit per section |
+
+### Sending PGNs (to AgIO/Steer Module/TC)
+
+#### PGN 0xF1 (241) - Section Control Enable Request (AOG→TC)
+
+**Length:** 7 bytes
+
+| Bytes | Field | Type | Description |
+|-------|-------|------|-------------|
+| 5 | Enabled | byte | 0x01 = enable, 0x00 = disable |
+
+#### PGN 0xF2 (242) - Process Data (AOG→TC)
+
+**Length:** 12 bytes
+
+| Bytes | Field | Type | Description |
+|-------|-------|------|-------------|
+| 5-6 | Identifier | ushort | Process data identifier (513 = guidance deviation, 397 = speed, 597 = total distance) |
+| 7-10 | Value | int32 | Process data value |
+
+#### PGN 0xF3 (243) - Field Name (AOG→TC)
 
 **Length:** variable
 
 | Bytes | Field | Type | Description |
 |-------|-------|------|-------------|
-| 4 | Length | byte | Number of bytes |
-| 5+ | Heartbeat Data | byte[] | ISOBUS heartbeat payload |
+| 4 | Length | byte | Number of name bytes (0 = field closed, max 248) |
+| 5+ | Name | UTF-8 | Active field folder name |
 
-### Sending PGNs (to AgIO/Steer Module)
+Sent when:
+- Field is opened or changed
+- Field is closed (length = 0)
+- TC reconnects after >1s absence (current state, open or closed)
 
 #### PGN 0xD0 (208) - Latitude/Longitude
 
