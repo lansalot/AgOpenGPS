@@ -142,6 +142,9 @@ namespace AgOpenGPS
 
                 }
 
+                // Rebuild uturn after nudge to reflect new track position
+                mf.yt.RebuildAfterNudge();
+
                 //if (gArr[idx].nudgeDistance > 0.5 * mf.tool.width) gArr[idx].nudgeDistance -= mf.tool.width;
                 //else if (gArr[idx].nudgeDistance < -0.5 * mf.tool.width) gArr[idx].nudgeDistance += mf.tool.width;
             }
@@ -161,6 +164,9 @@ namespace AgOpenGPS
                 }
 
                 gArr[idx].nudgeDistance = 0;
+
+                // Rebuild uturn after reset to reflect new track position
+                mf.yt.RebuildAfterNudge();
             }
         }
 
@@ -287,7 +293,7 @@ namespace AgOpenGPS
                 curList.Add(arr[cnt - 2]);
                 curList.Add(arr[cnt - 1]);
 
-                mf.curve.CalculateHeadings(ref curList);
+                CABCurve.CalculateHeadings(ref curList);
 
                 gArr[idx].curvePts.Clear();
 

@@ -99,7 +99,7 @@ namespace AgOpenGPS
 
             uTurnStyle = Properties.Settings.Default.set_uTurnStyle;
 
-            uTurnSmoothing = Properties.Settings.Default.setAS_uTurnSmoothing;
+            uTurnSmoothing = (int)Properties.Settings.Default.setAS_uTurnSmoothing;
         }
 
         //find next not worked lane after the defined lanes to skip
@@ -2166,8 +2166,8 @@ namespace AgOpenGPS
             if (isOutSameCurve) outhead += Math.PI;
             if (outhead > glm.twoPI) outhead -= glm.twoPI;
 
-            //how many points straight out
-            double lenny = 15;
+            //how many points straight out - use youTurnStartOffset setting (value needs to be doubled for actual length)
+            double lenny = youTurnStartOffset * 2.0;
 
             vec3 pt;
             for (int a = 0; a < lenny; a++)
@@ -2211,8 +2211,8 @@ namespace AgOpenGPS
         //TODO: is for some reason making longer for omegaturn....
         private bool AddCurveSequenceLines()
         {
-            //how many points striaght out
-            double lenny = 5;
+            //how many points striaght out - use youTurnStartOffset setting (value needs to be doubled for actual length)
+            double lenny = youTurnStartOffset * 2.0;
             bool sameWay = mf.curve.isHeadingSameWay;
             int a = sameWay ? -1 : 1;
 
@@ -2927,6 +2927,22 @@ namespace AgOpenGPS
             //    }
             //    GL.End();
             //}
+        }
+
+        /// <summary>
+        /// Rebuilds the uturn after a nudge operation to reflect the new track position.
+        /// </summary>
+        public void RebuildAfterNudge()
+        {
+            // Only rebuild if a uturn is currently active
+            if (!isYouTurnBtnOn)
+                return;
+
+            // Clear existing uturn path
+            ytList?.Clear();
+
+            // Rebuild
+            ResetCreatedYouTurn();
         }
 
         public class CClose

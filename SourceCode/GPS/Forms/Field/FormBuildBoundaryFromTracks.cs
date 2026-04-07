@@ -32,6 +32,14 @@ namespace AgOpenGPS.Forms.Field
         private Form _parentForm;
         private bool _redrawPending;
 
+        // Touch drag scrolling
+        private bool _isDragging = false;
+        private int _dragStartY = 0;
+        private int _dragStartScrollValue = 0;
+        private const int DragThreshold = 5;
+        private bool _didDrag = false;
+        private DateTime _lastDragEndTime = DateTime.MinValue;
+
 
 
         #endregion
@@ -49,6 +57,12 @@ namespace AgOpenGPS.Forms.Field
 
             InitializeOpenGL();
             LoadTracks();
+
+            // Touch drag scrolling for flpTrackList
+            flpTrackList.MouseDown += FlpTrackList_MouseDown;
+            flpTrackList.MouseMove += FlpTrackList_MouseMove;
+            flpTrackList.MouseUp += FlpTrackList_MouseUp;
+            flpTrackList.MouseLeave += FlpTrackList_MouseLeave;
         }
 
         private void InitializeOpenGL()
@@ -72,14 +86,14 @@ namespace AgOpenGPS.Forms.Field
 
                 if (tempTrackList.Count == 0)
                 {
-                    _mf.TimedMessageBox(3000, "Track Info", "No tracks found.");
+                    FormDialog.Show("Track Info", "No tracks found.", DialogSeverity.Info);
                     return;
                 }
                 _trackList.AddRange(tempTrackList);
             }
             catch (Exception ex)
             {
-                _mf.TimedMessageBox(3000, "Track Load Error", ex.Message);
+                FormDialog.Show("Track Load Error", ex.Message, DialogSeverity.Error);
             }
             finally
             {
@@ -143,11 +157,26 @@ namespace AgOpenGPS.Forms.Field
             };
 
             chk.CheckedChanged += (s, e) => OnTrackSelectionChanged(s as CheckBox);
+            chk.MouseDown += StartDrag;
+            chk.MouseMove += DoDrag;
+            chk.MouseUp += FlpTrackList_MouseUp;
             return chk;
         }
 
         private void OnTrackSelectionChanged(CheckBox checkbox)
         {
+            // Ignore if we just finished dragging (within 200ms)
+            if ((DateTime.Now - _lastDragEndTime).TotalMilliseconds < 200)
+            {
+                // Revert the checkbox state to what it was before
+                var trk = checkbox?.Tag as CTrk;
+                if (trk != null)
+                {
+                    checkbox.Checked = _selectedTracks.Contains(trk);
+                }
+                return;
+            }
+
             if (checkbox?.Tag is CTrk track)
             {
                 if (checkbox.Checked)
@@ -240,7 +269,7 @@ namespace AgOpenGPS.Forms.Field
             catch (Exception ex)
             {
                 Log.EventWriter($"Track adjustment failed: {ex}");
-                _mf.TimedMessageBox(2000, "Error", "Track adjustment failed: " + ex.Message);
+                FormDialog.Show("Error", "Track adjustment failed: " + ex.Message, DialogSeverity.Error);
             }
         }
 
@@ -657,7 +686,7 @@ namespace AgOpenGPS.Forms.Field
 
                 if (result.Count < 3 || finalized == null)
                 {
-                    _mf.TimedMessageBox(2000, "Error", "No valid boundary could be generated");
+                    FormDialog.Show("Error", "No valid boundary could be generated", DialogSeverity.Error);
                     btnSave.Enabled = false;
                     return;
                 }
@@ -666,14 +695,14 @@ namespace AgOpenGPS.Forms.Field
                 UpdateMainApplicationBoundary(finalized);
                 RequestRedraw();
 
-                _mf.TimedMessageBox(2000, "Succes!", $"Boundary built with {result.Count} points");
+                FormDialog.Show("Succes!", $"Boundary built with {result.Count} points", DialogSeverity.Info);
                 btnSave.Enabled = true;
 
             }
             catch (Exception ex)
             {
                 Log.EventWriter($"Boundary build failed: {ex}");
-                _mf.TimedMessageBox(2000, "Error", "Build failed" + ex.ToString());
+                FormDialog.Show("Error", "Build failed" + ex.ToString(), DialogSeverity.Error);
             }
         }
 
@@ -696,9 +725,7 @@ namespace AgOpenGPS.Forms.Field
         {
             _builder.ExtendAllTracks(50.0);
             InitializeBuilderAndRebuild();
-            _mf.TimedMessageBox(3000, "Finding Intersections...", $"All green? Press Build or manually correct!");
-
-
+            FormDialog.Show("Finding Intersections...", $"All green? Press Build or manually correct!", DialogSeverity.Info);
         }
 
         private void SaveBoundary()
@@ -707,12 +734,11 @@ namespace AgOpenGPS.Forms.Field
             {
                 ValidateSaveConditions();
                 _builder.SaveToBoundaryFile(_mf.currentFieldDirectory);
-                _mf.TimedMessageBox(2000, "Succes!", "Boundary saved successfully.");
             }
             catch (Exception ex)
             {
                 Log.EventWriter($"Save failed: {ex}");
-                _mf.TimedMessageBox(2000, "Error", ex.Message);
+                FormDialog.Show("Error", ex.Message, DialogSeverity.Error);
             }
         }
 
@@ -720,13 +746,13 @@ namespace AgOpenGPS.Forms.Field
         {
             if (string.IsNullOrEmpty(_mf.currentFieldDirectory))
             {
-                _mf.TimedMessageBox(3000, "Save Error", "Please select a field before saving.");
+                FormDialog.Show("Save Error", "Please select a field before saving.", DialogSeverity.Error);
                 return false;
             }
 
             if (_builder?.FinalizedBoundary == null || _builder.FinalizedBoundary.fenceLine.Count < 3)
             {
-                _mf.TimedMessageBox(3000, "Save Error", "No valid boundary to save");
+                FormDialog.Show("Save Error", "No valid boundary to save", DialogSeverity.Error);
                 return false;
             }
 
@@ -737,6 +763,68 @@ namespace AgOpenGPS.Forms.Field
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        // Touch drag scrolling
+        private void StartDrag(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                _isDragging = true;
+                _didDrag = false;
+                _dragStartY = e.Y;
+                _dragStartScrollValue = flpTrackList.VerticalScroll.Value;
+            }
+        }
+
+        private void DoDrag(object sender, MouseEventArgs e)
+        {
+            if (_isDragging)
+            {
+                int deltaY = _dragStartY - e.Y;
+
+                // Only start actual dragging if moved beyond threshold
+                if (Math.Abs(deltaY) > DragThreshold)
+                {
+                    _didDrag = true;
+                    int newScrollValue = _dragStartScrollValue + deltaY;
+
+                    // Clamp to valid scroll range
+                    if (newScrollValue < flpTrackList.VerticalScroll.Minimum)
+                        newScrollValue = flpTrackList.VerticalScroll.Minimum;
+                    if (newScrollValue > flpTrackList.VerticalScroll.Maximum)
+                        newScrollValue = flpTrackList.VerticalScroll.Maximum;
+
+                    flpTrackList.VerticalScroll.Value = newScrollValue;
+                    flpTrackList.PerformLayout();
+                }
+            }
+        }
+
+        private void FlpTrackList_MouseDown(object sender, MouseEventArgs e)
+        {
+            StartDrag(sender, e);
+        }
+
+        private void FlpTrackList_MouseMove(object sender, MouseEventArgs e)
+        {
+            DoDrag(sender, e);
+        }
+
+        private void FlpTrackList_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (_didDrag)
+            {
+                _lastDragEndTime = DateTime.Now;
+            }
+            _isDragging = false;
+            _didDrag = false;
+        }
+
+        private void FlpTrackList_MouseLeave(object sender, EventArgs e)
+        {
+            _isDragging = false;
+            _didDrag = false;
         }
 
         #endregion

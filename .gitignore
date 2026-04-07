@@ -485,3 +485,7 @@ $RECYCLE.BIN/
 *.swp
 
 .claude/settings.local.json
+
+SourceCode/ResXManager.config.xml
+
+.MyClaudeDocs/

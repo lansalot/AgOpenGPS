@@ -118,6 +118,11 @@ namespace AgOpenGPS
                 mf.tram.displayMode = 0;
             }
 
+            for (int i = 0; i < mf.tram.tramList.Count; i++)
+            {
+                mf.tram.tramList[i].ReducePointsByAngle(0.01, 100);
+            }
+
             mf.FileSaveTram();
             mf.PanelUpdateRightAndBottom();
             mf.FixTramModeButton();

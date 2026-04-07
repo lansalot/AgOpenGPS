@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AgLibrary.Logging;
+using AgOpenGPS.Core.AgShare;
 using AgOpenGPS.Core.Models;
 using AgOpenGPS.IO;
 
@@ -13,22 +14,23 @@ namespace AgOpenGPS.Forms
 {
     public partial class FormAgShareUploader : Form
     {
-        private readonly AgShareClient agShareClient;
+        private readonly AgShareUploader uploader;
+        private readonly AgShareClient client;
         private List<FieldInfo> availableFields;
         private bool isUploading = false;
 
-        public FormAgShareUploader()
+        public FormAgShareUploader(AgShareClient agShareClient)
         {
             InitializeComponent();
-            // Create AgShareClient using settings directly
-            agShareClient = new AgShareClient(
-                Properties.Settings.Default.AgShareServer,
-                Properties.Settings.Default.AgShareApiKey);
+            client = agShareClient;
+            uploader = new AgShareUploader(agShareClient);
         }
 
         private void FormAgShareBulkUploader_Load(object sender, EventArgs e)
         {
             LoadAvailableFields();
+            // Check cloud status async after loading
+            _ = CheckCloudStatusAsync();
         }
 
         private void LoadAvailableFields()
@@ -52,14 +54,16 @@ namespace AgOpenGPS.Forms
                 {
                     string fieldName = Path.GetFileName(fieldDir);
 
-                    // Check if field has necessary files (Boundary.txt contains boundary data)
-                    string boundaryFile = Path.Combine(fieldDir, "Boundary.txt");
-                    if (File.Exists(boundaryFile))
+                    // Check if field has necessary files (Field.txt contains origin)
+                    string fieldFile = Path.Combine(fieldDir, "Field.txt");
+                    if (File.Exists(fieldFile))
                     {
                         var fieldInfo = new FieldInfo
                         {
                             Name = fieldName,
-                            DirectoryPath = fieldDir
+                            DirectoryPath = fieldDir,
+                            IsOnCloud = false,  // Will be determined by cloud check
+                            CloudFieldId = null
                         };
 
                         availableFields.Add(fieldInfo);
@@ -83,7 +87,7 @@ namespace AgOpenGPS.Forms
         {
             var checkbox = new CheckBox
             {
-                Text = fieldInfo.Name,
+                Text = fieldInfo.Name,  // Cloud check will add ☁ later if needed
                 Checked = false,
                 AutoSize = false,
                 Width = flpFieldList.Width - 25,
@@ -117,6 +121,95 @@ namespace AgOpenGPS.Forms
             }
         }
 
+        private async Task CheckCloudStatusAsync()
+        {
+            try
+            {
+                var result = await client.GetOwnFieldsAsync();
+                if (!result.IsSuccessful || result.Data == null)
+                {
+                    return; // Silently fail if cloud check fails
+                }
+
+                var cloudFields = result.Data;
+
+                // Update UI on UI thread
+                this.Invoke((Action)(() =>
+                {
+                    foreach (CheckBox checkbox in flpFieldList.Controls)
+                    {
+                        if (checkbox.Tag is FieldInfo fieldInfo)
+                        {
+                            fieldInfo.IsOnCloud = false;
+                            fieldInfo.CloudFieldId = null;
+
+                            // First check if local agshare.txt exists and has a valid ID
+                            string idPath = Path.Combine(fieldInfo.DirectoryPath, "agshare.txt");
+                            if (File.Exists(idPath))
+                            {
+                                try
+                                {
+                                    string raw = File.ReadAllText(idPath).Trim();
+                                    Guid localId = Guid.Parse(raw);
+
+                                    // Check if this ID exists in current user's cloud fields
+                                    var cloudField = cloudFields.FirstOrDefault(f => f.Id == localId);
+                                    if (cloudField != null)
+                                    {
+                                        // ID belongs to current user - mark as on cloud
+                                        fieldInfo.IsOnCloud = true;
+                                        fieldInfo.CloudFieldId = localId;
+                                    }
+                                    else
+                                    {
+                                        // ID in agshare.txt but NOT in current user's cloud fields
+                                        // Could be different user OR same user with different/outdated ID
+                                        // Will check by name next
+                                        Log.EventWriter($"AgShare: Field '{fieldInfo.Name}' has agshare.txt ID not found in cloud fields. Checking by name...");
+                                    }
+                                }
+                                catch
+                                {
+                                    // Invalid agshare.txt, ignore - will check by name below
+                                }
+                            }
+
+                            // Only check by name if we haven't found the field via ID yet
+                            // (even if agshare.txt exists, the ID might be wrong/outdated)
+                            if (!fieldInfo.IsOnCloud)
+                            {
+                                var cloudField = cloudFields.FirstOrDefault(f => f.Name == fieldInfo.Name);
+                                if (cloudField != null)
+                                {
+                                    // Found field with same name on cloud - mark as on cloud
+                                    // This handles the case where local agshare.txt has a different ID
+                                    fieldInfo.IsOnCloud = true;
+                                    fieldInfo.CloudFieldId = cloudField.Id;
+                                }
+                            }
+
+                            // Update checkbox text based on cloud status
+                            if (fieldInfo.IsOnCloud)
+                            {
+                                checkbox.Text = $"☁ {fieldInfo.Name}";
+                                checkbox.ForeColor = Color.FromArgb(0, 119, 190);
+                            }
+                            else
+                            {
+                                checkbox.Text = fieldInfo.Name;
+                                checkbox.ForeColor = Color.Black;
+                            }
+                        }
+                    }
+                }));
+            }
+            catch (Exception ex)
+            {
+                // Silently fail - cloud check is optional
+                Log.EventWriter($"AgShare cloud status check failed: {ex.Message}");
+            }
+        }
+
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
             foreach (CheckBox checkbox in flpFieldList.Controls)
@@ -137,7 +230,7 @@ namespace AgOpenGPS.Forms
         {
             if (isUploading)
             {
-                FormDialog.Show("Please Wait", "Upload already in progress", MessageBoxButtons.OK);
+                FormDialog.Show("Please Wait", "Upload already in progress", DialogSeverity.Info);
                 return;
             }
 
@@ -153,15 +246,14 @@ namespace AgOpenGPS.Forms
 
             if (selectedFields.Count == 0)
             {
-                FormDialog.Show("No Selection", "Please select at least one field to upload", MessageBoxButtons.OK);
+                FormDialog.Show("No Selection", "Please select at least one field to upload", DialogSeverity.Info);
                 return;
             }
 
             // Confirm upload
-            DialogResult result = FormDialog.Show(
+            DialogResult result = FormDialog.ShowQuestion(
                 "Confirm Upload",
-                $"Upload {selectedFields.Count} field(s) to AgShare?",
-                MessageBoxButtons.YesNo);
+                $"Upload {selectedFields.Count} field(s) to AgShare?");
 
             if (result != DialogResult.OK)
                 return;
@@ -199,8 +291,19 @@ namespace AgOpenGPS.Forms
                     catch (Exception ex)
                     {
                         failCount++;
-                        lblStatus.Text = $"Failed: {fieldInfo.Name} ✗ - {ex.Message}";
-                        Log.EventWriter($"Failed to upload field {fieldInfo.Name}: {ex.Message}");
+                        lblStatus.Text = $"Failed: {fieldInfo.Name} ✗";
+
+                        // Log detailed error information
+                        string errorDetails = $"AgShare Upload Failed - Field: {fieldInfo.Name}\n" +
+                                            $"Error: {ex.Message}\n";
+
+                        if (ex.InnerException != null)
+                        {
+                            errorDetails += $"Inner Error: {ex.InnerException.Message}\n";
+                        }
+
+                        errorDetails += $"StackTrace: {ex.StackTrace}";
+                        Log.EventWriter(errorDetails);
                     }
 
                     progressBar.Value++;
@@ -208,12 +311,16 @@ namespace AgOpenGPS.Forms
                     await Task.Delay(500); // Small delay to show status
                 }
 
-                // Show summary
+                // Build summary message
+                string summary = $"Upload Complete\n\nSuccessful: {successCount}\nFailed: {failCount}";
+
+                if (failCount > 0)
+                {
+                    summary += "\n\nCheck Log Viewer to view problems";
+                }
+
                 lblStatus.Text = $"Upload complete: {successCount} succeeded, {failCount} failed";
-                FormDialog.Show(
-                    "Upload Complete",
-                    $"Upload Complete\n\nSuccessful: {successCount}\nFailed: {failCount}",
-                    MessageBoxButtons.OK);
+                FormDialog.Show("Upload Complete", summary, failCount > 0 ? DialogSeverity.Warning : DialogSeverity.Info);
             }
             finally
             {
@@ -235,8 +342,142 @@ namespace AgOpenGPS.Forms
                 throw new Exception("Failed to load field data");
             }
 
+            string idPath = Path.Combine(fieldInfo.DirectoryPath, "agshare.txt");
+
+            // Scenario: Cloud ID was found via name check, but local agshare.txt has different ID
+            if (fieldInfo.CloudFieldId.HasValue && File.Exists(idPath))
+            {
+                try
+                {
+                    string raw = File.ReadAllText(idPath).Trim();
+                    Guid localId = Guid.Parse(raw);
+
+                    // If cloud ID (from name match) is different from local ID, ask user
+                    if (localId != fieldInfo.CloudFieldId.Value)
+                    {
+                        DuplicateNameChoice choice = AskDifferentCloudIdChoice(snapshot.FieldName);
+
+                        if (choice == DuplicateNameChoice.Cancel)
+                        {
+                            throw new Exception("Upload cancelled by user");
+                        }
+                        else if (choice == DuplicateNameChoice.Overwrite)
+                        {
+                            // Overwrite: Use cloud ID (overwrite cloud field with this ID)
+                            snapshot.FieldId = fieldInfo.CloudFieldId.Value;
+                            File.WriteAllText(idPath, fieldInfo.CloudFieldId.Value.ToString());
+                        }
+                        // else: CreateNew - generate new ID (already done in LoadFieldSnapshot)
+                    }
+                    else
+                    {
+                        // IDs match - use cloud ID
+                        snapshot.FieldId = fieldInfo.CloudFieldId.Value;
+                    }
+                }
+                catch
+                {
+                    // Invalid agshare.txt, use cloud ID
+                    snapshot.FieldId = fieldInfo.CloudFieldId.Value;
+                    File.WriteAllText(idPath, fieldInfo.CloudFieldId.Value.ToString());
+                }
+            }
+            // Scenario: Cloud ID found via name check, no local agshare.txt
+            else if (fieldInfo.CloudFieldId.HasValue)
+            {
+                snapshot.FieldId = fieldInfo.CloudFieldId.Value;
+                File.WriteAllText(idPath, fieldInfo.CloudFieldId.Value.ToString());
+            }
+            // Scenario: No cloud ID found during initial check, no local agshare.txt
+            else if (!File.Exists(idPath))
+            {
+                // Check if field with same name exists on cloud (might have been added since initial check)
+                var existingFieldId = await FindFieldByNameOnCloud(snapshot.FieldName);
+                if (existingFieldId.HasValue)
+                {
+                    // Ask user what to do
+                    DuplicateNameChoice choice = AskDuplicateNameChoice(snapshot.FieldName);
+
+                    if (choice == DuplicateNameChoice.Cancel)
+                    {
+                        throw new Exception("Upload cancelled by user");
+                    }
+                    else if (choice == DuplicateNameChoice.Overwrite)
+                    {
+                        // Use existing cloud ID and save it locally
+                        snapshot.FieldId = existingFieldId.Value;
+                        File.WriteAllText(idPath, existingFieldId.Value.ToString());
+                    }
+                    // else: CreateNew - keep the new GUID that was already created
+                }
+            }
+
             // Use existing upload logic
-            await CAgShareUploader.UploadAsync(snapshot, agShareClient, null);
+            await uploader.UploadAsync(snapshot, null);
+        }
+
+        private async Task<Guid?> FindFieldByNameOnCloud(string fieldName)
+        {
+            try
+            {
+                var result = await client.GetOwnFieldsAsync();
+                if (result.IsSuccessful && result.Data != null)
+                {
+                    var existing = result.Data.FirstOrDefault(f => f.Name == fieldName);
+                    if (existing != null)
+                    {
+                        return existing.Id;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.EventWriter($"Error checking for duplicate field name '{fieldName}': {ex.Message}");
+            }
+            return null;
+        }
+
+        private DuplicateNameChoice AskDuplicateNameChoice(string fieldName)
+        {
+            // This must be called on UI thread
+            string message = $"Field '{fieldName}' already exists on AgShare cloud.\n\n" +
+                            "What do you want to do?\n\n" +
+                            "Yes = Overwrite existing cloud field\n" +
+                            "No = Create as new field with different ID\n" +
+                            "Cancel = Skip this field";
+
+            DialogResult result = FormDialog.ShowQuestion(
+                "Duplicate Field Name",
+                message);
+
+            if (result == DialogResult.OK)
+                return DuplicateNameChoice.Overwrite;
+            else if (result == DialogResult.No)
+                return DuplicateNameChoice.CreateNew;
+            else
+                return DuplicateNameChoice.Cancel;
+        }
+
+        private DuplicateNameChoice AskDifferentCloudIdChoice(string fieldName)
+        {
+            // This must be called on UI thread
+            string message = $"Field '{fieldName}' exists on cloud with a different ID.\n\n" +
+                            "Your local field has an ID in agshare.txt, but the cloud has a different ID for a field with the same name.\n\n" +
+                            "What do you want to do?\n\n" +
+                            "Yes = Overwrite the cloud field (use cloud ID)\n" +
+                            "No = Create as new field with a new ID\n" +
+                            "Cancel = Skip this field";
+
+            DialogResult result = FormDialog.ShowQuestion(
+                "Different Cloud ID",
+                message);
+
+            if (result == DialogResult.OK)
+                return DuplicateNameChoice.Overwrite;
+            else if (result == DialogResult.No)
+                return DuplicateNameChoice.CreateNew;
+            else
+                return DuplicateNameChoice.Cancel;
         }
 
         private async Task<FieldSnapshot> LoadFieldSnapshot(FieldInfo fieldInfo)
@@ -260,8 +501,7 @@ namespace AgOpenGPS.Forms
                         }
                     }
 
-                    if (boundaries.Count == 0)
-                        return null;
+                    // Allow upload without boundary - boundary is optional
 
                     // Load tracks from TrackLines.txt
                     List<CTrk> tracks = TrackFiles.Load(fieldInfo.DirectoryPath);
@@ -307,7 +547,7 @@ namespace AgOpenGPS.Forms
         {
             if (isUploading)
             {
-                FormDialog.Show("Upload in Progress", "Please wait for upload to complete", MessageBoxButtons.OK);
+                FormDialog.Show("Upload in Progress", "Please wait for upload to complete", DialogSeverity.Warning);
                 return;
             }
 
@@ -318,6 +558,15 @@ namespace AgOpenGPS.Forms
         {
             public string Name { get; set; }
             public string DirectoryPath { get; set; }
+            public bool IsOnCloud { get; set; }
+            public Guid? CloudFieldId { get; set; }
+        }
+
+        private enum DuplicateNameChoice
+        {
+            Overwrite,
+            CreateNew,
+            Cancel
         }
     }
 }

@@ -16,7 +16,7 @@ namespace AgOpenGPS.Core.Streamers
 
         public FieldStreamer(IFieldStreamerPresenter fieldStreamerPresenter)
         {
-            _bingMapStreamer = new BingMapStreamer(fieldStreamerPresenter);
+            _bingMapStreamer = new BingMapStreamer();
             _boundaryStreamer = new BoundaryStreamer(fieldStreamerPresenter);
             _contourStreamer = new ContourStreamer(fieldStreamerPresenter);
             _flagsStreamer = new FlagListStreamer(fieldStreamerPresenter);

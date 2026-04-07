@@ -4,6 +4,7 @@ using AgOpenGPS.Core.Models;
 using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Forms;
 using AgOpenGPS.Helpers;
+using AgOpenGPS.IO;
 using System;
 using System.Globalization;
 using System.IO;
@@ -82,6 +83,7 @@ namespace AgOpenGPS
                 geoCoord.Easting, geoCoord.Northing,
                 0, flagColor, nextflag, (nextflag).ToString());
             mf.flagPts.Add(flagPt);
+            mf.flagPts = FlagsFiles.DeduplicateFlags(mf.flagPts);
             mf.FileSaveFlags();
 
             Form fc = Application.OpenForms["FormFlags"];
@@ -135,19 +137,20 @@ namespace AgOpenGPS
                                 geoCoord.Easting, geoCoord.Northing,
                                 0, flagColor, nextflag, flagName);
                             mf.flagPts.Add(flagPt);
+                            mf.flagPts = FlagsFiles.DeduplicateFlags(mf.flagPts);
                             mf.FileSaveFlags();
                         }
                         else
                         {
-                            FormDialog.Show("Error check format", $"Invalid line: {line}", MessageBoxButtons.OK);
+                            FormDialog.Show("Error check format", $"Invalid line: {line}", DialogSeverity.Error);
                             return;
                         }
                     }
-                    FormDialog.Show("Success", "Flags successfully added!", MessageBoxButtons.OK);
+                    FormDialog.Show("Success", "Flags successfully added!", DialogSeverity.Info);
                 }
                 catch (Exception ex)
                 {
-                    FormDialog.Show("Error", $"Error reading file: {ex.Message}", MessageBoxButtons.OK);
+                    FormDialog.Show("Error", $"Error reading file: {ex.Message}", DialogSeverity.Error);
                     Log.EventWriter("Loading Flags by lat lon" + ex.ToString());
                     return;
                 }
@@ -182,11 +185,11 @@ namespace AgOpenGPS
                                 flag.color.ToString(CultureInfo.InvariantCulture) + "," +
                                 flag.notes);
                         }
-                        FormDialog.Show("Success", "Flags successfully saved!", MessageBoxButtons.OK);
+                        FormDialog.Show("Success", "Flags successfully saved!", DialogSeverity.Info);
                     }
                     catch (Exception ex)
                     {
-                        FormDialog.Show("Error", ex.Message + "\nCannot write to file.", MessageBoxButtons.OK);
+                        FormDialog.Show("Error", ex.Message + "\nCannot write to file.", DialogSeverity.Error);
                         Log.EventWriter("Saving Flags by lat lon" + ex.ToString());
                         return;
                     }

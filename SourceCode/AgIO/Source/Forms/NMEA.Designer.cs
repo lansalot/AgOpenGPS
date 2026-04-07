@@ -207,7 +207,7 @@ namespace AgIO
                     if (isGPSSentencesOn) avrSentence = nextNMEASentence;
                 }
 
-                else if (words[0] == "$GNTRA")
+                else if (words[0] == "$GNTRA" || words[0] == "$GPTRA")
                 {
                     ParseTRA();
                 }
@@ -521,18 +521,9 @@ namespace AgIO
 
             if (!string.IsNullOrEmpty(words[1]))
             {
-                float.TryParse(words[8] == "Roll" ? words[7] : words[5], NumberStyles.Float, CultureInfo.InvariantCulture, out rollK);
+                float.TryParse(words[8] == "Roll" ? words[7] : words[5], NumberStyles.Float, CultureInfo.InvariantCulture, out rollData);
 
-                //Kalman filter
-                Pc = P + varProcess;
-                G = Pc / (Pc + varRoll);
-                P = (1 - G) * Pc;
-                Xp = XeRoll;
-                Zp = Xp;
-                XeRoll = (G * (rollK - Zp)) + Xp;
-                rollData = XeRoll;
-
-                roll = (float)(XeRoll);
+                roll = rollData;
             }
         }
 
@@ -948,8 +939,9 @@ namespace AgIO
                 float.TryParse(words[2], NumberStyles.Float, CultureInfo.InvariantCulture, out headingTrueDual);
                 headingTrueDualData = headingTrueDual;
 
+
                 //  Console.WriteLine(HeadingForced);
-                float.TryParse(words[3], NumberStyles.Float, CultureInfo.InvariantCulture, out rollK);
+                float.TryParse(words[4], NumberStyles.Float, CultureInfo.InvariantCulture, out rollK);
                 // Console.WriteLine(nRoll);
 
                 int.TryParse(words[5], NumberStyles.Float, CultureInfo.InvariantCulture, out int trasolution);

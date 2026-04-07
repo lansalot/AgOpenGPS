@@ -9,7 +9,9 @@ using System.Windows.Forms;
 using System.Xml;
 using AgLibrary.Logging;
 using AgOpenGPS.Core.Models;
+using AgOpenGPS.Core.Streamers;
 using AgOpenGPS.Core.Translations;
+using AgOpenGPS.Forms;
 using AgOpenGPS.IO;
 using AgOpenGPS.Protocols.ISOBUS;
 
@@ -163,26 +165,10 @@ namespace AgOpenGPS
                 recPath.recList.AddRange(recPathList);
             }
 
-            // --- BackPic ---
-            var backPic = BackPicFiles.Load(dir);
-            worldGrid.isGeoMap = backPic.IsGeoMap;
-            if (worldGrid.isGeoMap)
-            {
-                worldGrid.eastingMaxGeo = backPic.EastingMax;
-                worldGrid.eastingMinGeo = backPic.EastingMin;
-                worldGrid.northingMaxGeo = backPic.NorthingMax;
-                worldGrid.northingMinGeo = backPic.NorthingMin;
-
-                var bitmap = BackPicFiles.LoadImage(dir);
-                if (bitmap != null)
-                {
-                    worldGrid.BingBitmap = bitmap;
-                }
-                else
-                {
-                    worldGrid.isGeoMap = false;
-                }
-            }
+            // ---BingMap ---
+            DirectoryInfo fieldDirectoryInfo = new DirectoryInfo(dir);
+            BingMapStreamer bingMapStreamer = new BingMapStreamer();
+            worldGrid.BingMap = bingMapStreamer.TryRead(fieldDirectoryInfo);
 
             // optional
             TryLoad("Elevation.txt", LoadCriticality.Optional, () => ElevationFiles.Load(dir), out var elevation);
@@ -242,7 +228,7 @@ namespace AgOpenGPS
         {
             if (!isJobStarted)
             {
-                TimedMessageBox(3000, gStr.gsFieldNotOpen, gStr.gsCreateNewField);
+                FormDialog.Show(gStr.gsFieldNotOpen, gStr.gsCreateNewField, DialogSeverity.Error);
                 return;
             }
 
@@ -381,7 +367,7 @@ namespace AgOpenGPS
                 ? Properties.Resources.HeadlandOn
                 : Properties.Resources.HeadlandOff;
 
-            int sett = Properties.Settings.Default.setArdMac_setting0;
+            int sett = Properties.ToolSettings.Default.setArdMac_setting0;
             btnHydLift.Visible = (((sett & 2) == 2) && hasHeadland);
             if (hasHeadland) btnHydLift.Image = Properties.Resources.HydraulicLiftOff;
 
@@ -910,7 +896,7 @@ namespace AgOpenGPS
             }
             catch (Exception e)
             {
-                TimedMessageBox(2000, "ISOXML Exception ", e.ToString());
+                FormDialog.Show("ISOXML Exception ", e.ToString(), DialogSeverity.Error);
                 Log.EventWriter("Export field as ISOXML Exception" + e);
             }
         }
@@ -961,11 +947,11 @@ namespace AgOpenGPS
                 Log.EventWriter($"[Load:{fileLabel}] failed");
                 if (criticality == LoadCriticality.Required)
                 {
-                    TimedMessageBox(2500, gStr.gsFieldFileIsCorrupt, $"{fileLabel} is required and could not be loaded.");
+                    FormDialog.Show(gStr.gsFieldFileIsCorrupt, $"{fileLabel} is required and could not be loaded.", DialogSeverity.Error);
                 }
                 else
                 {
-                    TimedMessageBox(2000, "Optional file problem", $"{fileLabel} is missing or corrupt but Field is Loaded");
+                    FormDialog.Show("Optional file problem", $"{fileLabel} is missing or corrupt but Field is Loaded", DialogSeverity.Warning);
                 }
                 result = default(T);
                 return false;
@@ -985,11 +971,11 @@ namespace AgOpenGPS
                 Log.EventWriter($"[Load:{fileLabel}] failed: {ex}");
                 if (criticality == LoadCriticality.Required)
                 {
-                    TimedMessageBox(2500, gStr.gsFieldFileIsCorrupt, $"{fileLabel} is required and could not be processed.");
+                    FormDialog.Show(gStr.gsFieldFileIsCorrupt, $"{fileLabel} is required and could not be processed.", DialogSeverity.Error);
                 }
                 else
                 {
-                    TimedMessageBox(2000, "Optional file problem", $"{fileLabel} is missing or corrupt; it will be recreated on save.");
+                    FormDialog.Show("Optional file problem", $"{fileLabel} is missing or corrupt; it will be recreated on save.", DialogSeverity.Warning);
                 }
                 return false;
             }
