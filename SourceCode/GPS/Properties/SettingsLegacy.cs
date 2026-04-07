@@ -82,9 +82,10 @@ namespace AgOpenGPS.Properties
 
         public string setRelay_pinConfig = "1,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
 
-        public TractorBrand setBrand_TBrand = TractorBrand.AGOpenGPS;
-        public HarvesterBrand setBrand_HBrand = HarvesterBrand.AgOpenGPS;
-        public ArticulatedBrand setBrand_WDBrand = ArticulatedBrand.AgOpenGPS;
+        // Brand names stored as strings to handle legacy names (JDeere -> JohnDeere)
+        public string setBrand_TBrand = "AGOpenGPS";
+        public string setBrand_HBrand = "AgOpenGPS";
+        public string setBrand_WDBrand = "AgOpenGPS";
 
         public double purePursuitIntegralGainAB = 0;
         public double stanleyDistanceErrorGain = 1;

@@ -170,6 +170,11 @@
             this.chkSteerInvertRelays = new System.Windows.Forms.CheckBox();
             this.cboxDanfoss = new System.Windows.Forms.CheckBox();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.grpSmartWAS = new System.Windows.Forms.GroupBox();
+            this.lblSmartCalStatus = new System.Windows.Forms.Label();
+            this.btnSmartZeroWAS = new System.Windows.Forms.Button();
+            this.lblSmartCalConfidence = new System.Windows.Forms.Label();
+            this.lblSmartCalSamples = new System.Windows.Forms.Label();
             this.labelSteerInReverse = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
@@ -222,11 +227,6 @@
             this.pboxSendSteer = new System.Windows.Forms.PictureBox();
             this.btnSendSteerConfigPGN = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.grpSmartWAS = new System.Windows.Forms.GroupBox();
-            this.lblSmartCalStatus = new System.Windows.Forms.Label();
-            this.btnSmartZeroWAS = new System.Windows.Forms.Button();
-            this.lblSmartCalConfidence = new System.Windows.Forms.Label();
-            this.lblSmartCalSamples = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPP.SuspendLayout();
             this.tabStan.SuspendLayout();
@@ -242,6 +242,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxCounts)).BeginInit();
             this.tabConfig.SuspendLayout();
             this.tabSettings.SuspendLayout();
+            this.grpSmartWAS.SuspendLayout();
             this.tabAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -260,7 +261,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudSnapDistance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGuidanceLookAhead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxSendSteer)).BeginInit();
-            this.grpSmartWAS.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -885,7 +885,7 @@
             // 
             this.lblMaxSteerAngle.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaxSteerAngle.ForeColor = System.Drawing.Color.Black;
-            this.lblMaxSteerAngle.Location = new System.Drawing.Point(11, 299);
+            this.lblMaxSteerAngle.Location = new System.Drawing.Point(19, 297);
             this.lblMaxSteerAngle.Name = "lblMaxSteerAngle";
             this.lblMaxSteerAngle.Size = new System.Drawing.Size(52, 35);
             this.lblMaxSteerAngle.TabIndex = 303;
@@ -941,7 +941,7 @@
             // hsbarAckerman
             // 
             this.hsbarAckerman.LargeChange = 1;
-            this.hsbarAckerman.Location = new System.Drawing.Point(72, 228);
+            this.hsbarAckerman.Location = new System.Drawing.Point(72, 230);
             this.hsbarAckerman.Maximum = 200;
             this.hsbarAckerman.Minimum = 1;
             this.hsbarAckerman.Name = "hsbarAckerman";
@@ -953,7 +953,7 @@
             // hsbarMaxSteerAngle
             // 
             this.hsbarMaxSteerAngle.LargeChange = 1;
-            this.hsbarMaxSteerAngle.Location = new System.Drawing.Point(72, 302);
+            this.hsbarMaxSteerAngle.Location = new System.Drawing.Point(72, 299);
             this.hsbarMaxSteerAngle.Maximum = 80;
             this.hsbarMaxSteerAngle.Minimum = 10;
             this.hsbarMaxSteerAngle.Name = "hsbarMaxSteerAngle";
@@ -966,7 +966,7 @@
             // 
             this.lblAckerman.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAckerman.ForeColor = System.Drawing.Color.Black;
-            this.lblAckerman.Location = new System.Drawing.Point(8, 249);
+            this.lblAckerman.Location = new System.Drawing.Point(16, 228);
             this.lblAckerman.Name = "lblAckerman";
             this.lblAckerman.Size = new System.Drawing.Size(55, 35);
             this.lblAckerman.TabIndex = 333;
@@ -1023,7 +1023,7 @@
             // hsbarCountsPerDegree
             // 
             this.hsbarCountsPerDegree.LargeChange = 1;
-            this.hsbarCountsPerDegree.Location = new System.Drawing.Point(72, 160);
+            this.hsbarCountsPerDegree.Location = new System.Drawing.Point(72, 157);
             this.hsbarCountsPerDegree.Maximum = 255;
             this.hsbarCountsPerDegree.Minimum = 1;
             this.hsbarCountsPerDegree.Name = "hsbarCountsPerDegree";
@@ -1048,7 +1048,7 @@
             // 
             this.lblCountsPerDegree.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountsPerDegree.ForeColor = System.Drawing.Color.Black;
-            this.lblCountsPerDegree.Location = new System.Drawing.Point(9, 155);
+            this.lblCountsPerDegree.Location = new System.Drawing.Point(16, 155);
             this.lblCountsPerDegree.Name = "lblCountsPerDegree";
             this.lblCountsPerDegree.Size = new System.Drawing.Size(55, 35);
             this.lblCountsPerDegree.TabIndex = 308;
@@ -1058,11 +1058,11 @@
             // hsbarWasOffset
             // 
             this.hsbarWasOffset.LargeChange = 20;
-            this.hsbarWasOffset.Location = new System.Drawing.Point(78, 88);
+            this.hsbarWasOffset.Location = new System.Drawing.Point(72, 85);
             this.hsbarWasOffset.Maximum = 4000;
             this.hsbarWasOffset.Minimum = -4000;
             this.hsbarWasOffset.Name = "hsbarWasOffset";
-            this.hsbarWasOffset.Size = new System.Drawing.Size(188, 30);
+            this.hsbarWasOffset.Size = new System.Drawing.Size(194, 30);
             this.hsbarWasOffset.SmallChange = 2;
             this.hsbarWasOffset.TabIndex = 294;
             this.hsbarWasOffset.ValueChanged += new System.EventHandler(this.hsbarSteerAngleSensorZero_ValueChanged);
@@ -1071,7 +1071,7 @@
             // 
             this.lblSteerAngleSensorZero.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSteerAngleSensorZero.ForeColor = System.Drawing.Color.Black;
-            this.lblSteerAngleSensorZero.Location = new System.Drawing.Point(9, 83);
+            this.lblSteerAngleSensorZero.Location = new System.Drawing.Point(1, 83);
             this.lblSteerAngleSensorZero.Name = "lblSteerAngleSensorZero";
             this.lblSteerAngleSensorZero.Size = new System.Drawing.Size(70, 35);
             this.lblSteerAngleSensorZero.TabIndex = 298;
@@ -2194,6 +2194,73 @@
             this.tabSettings.Enter += new System.EventHandler(this.tabSettings_Enter);
             this.tabSettings.Leave += new System.EventHandler(this.tabSettings_Leave);
             // 
+            // grpSmartWAS
+            // 
+            this.grpSmartWAS.BackColor = System.Drawing.Color.Transparent;
+            this.grpSmartWAS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.grpSmartWAS.Controls.Add(this.lblSmartCalStatus);
+            this.grpSmartWAS.Controls.Add(this.btnSmartZeroWAS);
+            this.grpSmartWAS.Controls.Add(this.lblSmartCalConfidence);
+            this.grpSmartWAS.Controls.Add(this.lblSmartCalSamples);
+            this.grpSmartWAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grpSmartWAS.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpSmartWAS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.grpSmartWAS.Location = new System.Drawing.Point(23, 251);
+            this.grpSmartWAS.Name = "grpSmartWAS";
+            this.grpSmartWAS.Size = new System.Drawing.Size(220, 200);
+            this.grpSmartWAS.TabIndex = 535;
+            this.grpSmartWAS.TabStop = false;
+            this.grpSmartWAS.Text = "Smart WAS";
+            // 
+            // lblSmartCalStatus
+            // 
+            this.lblSmartCalStatus.AutoSize = true;
+            this.lblSmartCalStatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSmartCalStatus.Location = new System.Drawing.Point(10, 150);
+            this.lblSmartCalStatus.Name = "lblSmartCalStatus";
+            this.lblSmartCalStatus.Size = new System.Drawing.Size(43, 13);
+            this.lblSmartCalStatus.TabIndex = 343;
+            this.lblSmartCalStatus.Text = "Ready";
+            // 
+            // btnSmartZeroWAS
+            // 
+            this.btnSmartZeroWAS.BackColor = System.Drawing.Color.White;
+            this.btnSmartZeroWAS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSmartZeroWAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSmartZeroWAS.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSmartZeroWAS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSmartZeroWAS.Image = global::AgOpenGPS.Properties.Resources.ST_SmartWAS;
+            this.btnSmartZeroWAS.Location = new System.Drawing.Point(46, 38);
+            this.btnSmartZeroWAS.Name = "btnSmartZeroWAS";
+            this.btnSmartZeroWAS.Size = new System.Drawing.Size(128, 60);
+            this.btnSmartZeroWAS.TabIndex = 340;
+            this.btnSmartZeroWAS.Text = "0.0°";
+            this.btnSmartZeroWAS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSmartZeroWAS.UseVisualStyleBackColor = false;
+            this.btnSmartZeroWAS.Click += new System.EventHandler(this.btnSmartZeroWAS_Click);
+            // 
+            // lblSmartCalConfidence
+            // 
+            this.lblSmartCalConfidence.AutoSize = true;
+            this.lblSmartCalConfidence.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSmartCalConfidence.ForeColor = System.Drawing.Color.Gray;
+            this.lblSmartCalConfidence.Location = new System.Drawing.Point(110, 170);
+            this.lblSmartCalConfidence.Name = "lblSmartCalConfidence";
+            this.lblSmartCalConfidence.Size = new System.Drawing.Size(85, 13);
+            this.lblSmartCalConfidence.TabIndex = 342;
+            this.lblSmartCalConfidence.Text = "Confidence: 0%";
+            // 
+            // lblSmartCalSamples
+            // 
+            this.lblSmartCalSamples.AutoSize = true;
+            this.lblSmartCalSamples.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSmartCalSamples.ForeColor = System.Drawing.Color.Gray;
+            this.lblSmartCalSamples.Location = new System.Drawing.Point(10, 170);
+            this.lblSmartCalSamples.Name = "lblSmartCalSamples";
+            this.lblSmartCalSamples.Size = new System.Drawing.Size(59, 13);
+            this.lblSmartCalSamples.TabIndex = 341;
+            this.lblSmartCalSamples.Text = "Samples: 0";
+            // 
             // labelSteerInReverse
             // 
             this.labelSteerInReverse.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2990,73 +3057,6 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // grpSmartWAS
-            // 
-            this.grpSmartWAS.BackColor = System.Drawing.Color.Transparent;
-            this.grpSmartWAS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.grpSmartWAS.Controls.Add(this.lblSmartCalStatus);
-            this.grpSmartWAS.Controls.Add(this.btnSmartZeroWAS);
-            this.grpSmartWAS.Controls.Add(this.lblSmartCalConfidence);
-            this.grpSmartWAS.Controls.Add(this.lblSmartCalSamples);
-            this.grpSmartWAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.grpSmartWAS.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpSmartWAS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.grpSmartWAS.Location = new System.Drawing.Point(23, 251);
-            this.grpSmartWAS.Name = "grpSmartWAS";
-            this.grpSmartWAS.Size = new System.Drawing.Size(220, 200);
-            this.grpSmartWAS.TabIndex = 535;
-            this.grpSmartWAS.TabStop = false;
-            this.grpSmartWAS.Text = "Smart WAS";
-            // 
-            // lblSmartCalStatus
-            // 
-            this.lblSmartCalStatus.AutoSize = true;
-            this.lblSmartCalStatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSmartCalStatus.Location = new System.Drawing.Point(10, 150);
-            this.lblSmartCalStatus.Name = "lblSmartCalStatus";
-            this.lblSmartCalStatus.Size = new System.Drawing.Size(43, 13);
-            this.lblSmartCalStatus.TabIndex = 343;
-            this.lblSmartCalStatus.Text = "Ready";
-            // 
-            // btnSmartZeroWAS
-            // 
-            this.btnSmartZeroWAS.BackColor = System.Drawing.Color.White;
-            this.btnSmartZeroWAS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSmartZeroWAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSmartZeroWAS.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSmartZeroWAS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnSmartZeroWAS.Image = global::AgOpenGPS.Properties.Resources.ST_SmartWAS;
-            this.btnSmartZeroWAS.Location = new System.Drawing.Point(46, 38);
-            this.btnSmartZeroWAS.Name = "btnSmartZeroWAS";
-            this.btnSmartZeroWAS.Size = new System.Drawing.Size(128, 60);
-            this.btnSmartZeroWAS.TabIndex = 340;
-            this.btnSmartZeroWAS.Text = "0.0°";
-            this.btnSmartZeroWAS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSmartZeroWAS.UseVisualStyleBackColor = false;
-            this.btnSmartZeroWAS.Click += new System.EventHandler(this.btnSmartZeroWAS_Click);
-            // 
-            // lblSmartCalConfidence
-            // 
-            this.lblSmartCalConfidence.AutoSize = true;
-            this.lblSmartCalConfidence.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSmartCalConfidence.ForeColor = System.Drawing.Color.Gray;
-            this.lblSmartCalConfidence.Location = new System.Drawing.Point(110, 170);
-            this.lblSmartCalConfidence.Name = "lblSmartCalConfidence";
-            this.lblSmartCalConfidence.Size = new System.Drawing.Size(85, 13);
-            this.lblSmartCalConfidence.TabIndex = 342;
-            this.lblSmartCalConfidence.Text = "Confidence: 0%";
-            // 
-            // lblSmartCalSamples
-            // 
-            this.lblSmartCalSamples.AutoSize = true;
-            this.lblSmartCalSamples.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSmartCalSamples.ForeColor = System.Drawing.Color.Gray;
-            this.lblSmartCalSamples.Location = new System.Drawing.Point(10, 170);
-            this.lblSmartCalSamples.Name = "lblSmartCalSamples";
-            this.lblSmartCalSamples.Size = new System.Drawing.Size(59, 13);
-            this.lblSmartCalSamples.TabIndex = 341;
-            this.lblSmartCalSamples.Text = "Samples: 0";
-            // 
             // FormSteer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -3109,6 +3109,8 @@
             this.tabConfig.PerformLayout();
             this.tabSettings.ResumeLayout(false);
             this.tabSettings.PerformLayout();
+            this.grpSmartWAS.ResumeLayout(false);
+            this.grpSmartWAS.PerformLayout();
             this.tabAlarm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
@@ -3128,8 +3130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudSnapDistance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGuidanceLookAhead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxSendSteer)).EndInit();
-            this.grpSmartWAS.ResumeLayout(false);
-            this.grpSmartWAS.PerformLayout();
             this.ResumeLayout(false);
 
         }

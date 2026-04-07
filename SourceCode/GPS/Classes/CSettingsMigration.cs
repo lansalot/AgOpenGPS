@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml;
 using AgLibrary.Logging;
 using AgLibrary.Settings;
+using AgOpenGPS.Core.Models;
 using AgOpenGPS.Properties;
 
 namespace AgOpenGPS
@@ -206,14 +207,59 @@ namespace AgOpenGPS
             dest.setArdSteer_maxPulseCounts = source.setArdSteer_maxPulseCounts;
             dest.setArdMac_isDanfoss = source.setArdMac_isDanfoss;
 
-            // Brands
-            dest.setBrand_TBrand = source.setBrand_TBrand;
-            dest.setBrand_HBrand = source.setBrand_HBrand;
-            dest.setBrand_WDBrand = source.setBrand_WDBrand;
+            // Brands - parse with fallback for old names (JDeere -> JohnDeere)
+            dest.setBrand_TBrand = ParseTractorBrand(source.setBrand_TBrand);
+            dest.setBrand_HBrand = ParseHarvesterBrand(source.setBrand_HBrand);
+            dest.setBrand_WDBrand = ParseArticulatedBrand(source.setBrand_WDBrand);
 
             // Vehicle type (excluding goalPointLookAheadMult, goalPointLookAheadHold, goalPointAcquireFactor, slowSpeedCutoff, minCoverage, hydraulicLiftLookAhead, toolOffDelay, isSteerWorkSwitchEnabled - these are now in Tool)
             dest.setVehicle_vehicleType = source.setVehicle_vehicleType;
             dest.setVehicle_panicStopSpeed = source.setVehicle_panicStopSpeed;
+        }
+
+        /// <summary>
+        /// Parses TractorBrand string with fallback to default.
+        /// </summary>
+        private static TractorBrand ParseTractorBrand(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return TractorBrand.AGOpenGPS;
+
+            if (Enum.TryParse(value, true, out TractorBrand result))
+                return result;
+
+            Log.EventWriter($"Unknown TractorBrand '{value}', resetting to AGOpenGPS");
+            return TractorBrand.AGOpenGPS;
+        }
+
+        /// <summary>
+        /// Parses HarvesterBrand string with fallback to default.
+        /// </summary>
+        private static HarvesterBrand ParseHarvesterBrand(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return HarvesterBrand.AgOpenGPS;
+
+            if (Enum.TryParse(value, true, out HarvesterBrand result))
+                return result;
+
+            Log.EventWriter($"Unknown HarvesterBrand '{value}', resetting to AgOpenGPS");
+            return HarvesterBrand.AgOpenGPS;
+        }
+
+        /// <summary>
+        /// Parses ArticulatedBrand string with fallback to default.
+        /// </summary>
+        private static ArticulatedBrand ParseArticulatedBrand(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return ArticulatedBrand.AgOpenGPS;
+
+            if (Enum.TryParse(value, true, out ArticulatedBrand result))
+                return result;
+
+            Log.EventWriter($"Unknown ArticulatedBrand '{value}', resetting to AgOpenGPS");
+            return ArticulatedBrand.AgOpenGPS;
         }
 
         private static void CopyToolSettings(SettingsLegacy source, ToolSettings dest)
