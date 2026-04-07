@@ -895,7 +895,7 @@ A választott sorrend alapján fognak megjelenni alulról felfelé.</value>
     <value>Probléma az útvonal készítésében</value>
   </data>
   <data name="gsProfile" xml:space="preserve">
-    <value>Profil</value>
+    <value>Környezet</value>
   </data>
   <data name="gsProfileMenuHint" xml:space="preserve">
     <value>Vehicle, Tool and Environment settings are now stored as separate profiles.
@@ -1527,5 +1527,8 @@ HASZNÁLAT SAJÁT FELELŐSSÉGRE.</value>
   </data>
   <data name="gsToolAlreadyExists" xml:space="preserve">
     <value>Munkaeszköz már létezik</value>
+  </data>
+  <data name="gsTBT" xml:space="preserve">
+    <value>Duplakapcsolt</value>
   </data>
 </root>
