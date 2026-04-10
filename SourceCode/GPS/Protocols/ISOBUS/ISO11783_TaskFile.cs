@@ -163,11 +163,11 @@ namespace AgOpenGPS.Protocols.ISOBUS
 
                             var guidancePattern = new ISOGuidancePattern
                             {
+                                GuidancePatternId = guidanceGroup.GuidanceGroupId.Replace("GGP", "GPN"),
                                 GuidancePatternPropagationDirection = ISOGuidancePatternPropagationDirection.Bothdirections,
                                 GuidancePatternExtension = ISOGuidancePatternExtension.Frombothfirstandlastpoint,
                                 GuidancePatternGNSSMethod = ISOGuidancePatternGNSSMethod.Desktopgenerateddata
                             };
-                            isoxml.IdTable.AddObjectAndAssignIdIfNone(guidancePattern);
 
                             ISOLineString lineString = CreateLineString(track, localPlane, version);
 
