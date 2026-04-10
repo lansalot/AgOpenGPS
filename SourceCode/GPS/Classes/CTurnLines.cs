@@ -8,6 +8,7 @@ namespace AgOpenGPS
         {
             //to calc heading based on next and previous points to give an average heading.
             int cnt = turnLine.Count;
+            if (cnt < 2) return;
             vec3[] arr = new vec3[cnt];
             cnt--;
             turnLine.CopyTo(arr);
