@@ -18,7 +18,6 @@ namespace AgOpenGPS.Updater.Forms
         private string _currentVersion;
         private _updateSource currentSource;
         private string _installPath;
-        private readonly string _gitHubToken;
         private ReleaseInfo _availableUpdate;
         private string _localUpdatePath;
         private string _localUpdateVersion;
@@ -29,14 +28,13 @@ namespace AgOpenGPS.Updater.Forms
 
         private enum _updateSource { Web, Local }
 
-        public FormUpdate(string currentVersion = null, string installPath = null, string gitHubToken = null)
+        public FormUpdate(string currentVersion = null, string installPath = null)
         {
             InitializeComponent();
 
             _updateService = new UpdateService();
             _currentVersion = currentVersion ?? UpdateService.GetCurrentVersion();
             _installPath = installPath ?? UpdateService.GetCurrentApplicationPath();
-            _gitHubToken = gitHubToken;
             currentSource = _updateSource.Web;
 
             // Handle command line arguments
@@ -92,7 +90,7 @@ namespace AgOpenGPS.Updater.Forms
             lblCurrentVersion.Text = $"Current Version: {_currentVersion}";
 
             // Update GitHub status indicator
-            UpdateGitHubStatus();
+            //UpdateGitHubStatus();
 
             // Auto-detect local update
             bool foundLocal = CheckForLocalUpdate();
@@ -134,40 +132,9 @@ namespace AgOpenGPS.Updater.Forms
 
         private void UpdateGitHubStatus()
         {
-            // Check if we have a GitHub token (from command line or hardcoded)
-            bool hasToken = !string.IsNullOrEmpty(_gitHubToken) ||
-                HasHardcodedGitHubToken();
-
-            if (hasToken)
-            {
-                lblGitHubStatus.Text = "🔐 Official";
-                lblGitHubStatus.ForeColor = System.Drawing.Color.FromArgb(100, 255, 100); // Bright green
-                lblGitHubStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            }
-            else
-            {
-                lblGitHubStatus.Text = "🔓 Anonymous";
-                lblGitHubStatus.ForeColor = System.Drawing.Color.FromArgb(180, 180, 180); // Gray
-                lblGitHubStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            }
-        }
-
-        private bool HasHardcodedGitHubToken()
-        {
-            try
-            {
-                // Check if GithubReleaseService has a hardcoded token
-                using (var service = new GithubReleaseService())
-                {
-                    // The service uses hardcoded token if no token is passed and one exists
-                    // We can check this by seeing if it adds an Authorization header
-                    return service.HasAuthToken();
-                }
-            }
-            catch
-            {
-                return false;
-            }
+            lblGitHubStatus.Text = "🔐 Official";
+            lblGitHubStatus.ForeColor = System.Drawing.Color.FromArgb(100, 255, 100); // Bright green
+            lblGitHubStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
         }
 
         private void UpdateSourceUI()
@@ -370,7 +337,7 @@ namespace AgOpenGPS.Updater.Forms
                     SetStatus("Checking GitHub releases...");
                     bool includePrerelease = chkIncludePrerelease.Checked;
                     var (hasUpdate, releaseInfo, message) = await _updateService.CheckForUpdate(
-                        _currentVersion, includePrerelease, _gitHubToken);
+                        _currentVersion, includePrerelease);
 
                     _availableUpdate = releaseInfo;
 
@@ -510,7 +477,7 @@ namespace AgOpenGPS.Updater.Forms
                     });
 
                     var (downloaded, dlPath, downloadMsg) = await _updateService.DownloadUpdate(
-                        _availableUpdate, tempDir, progress, _gitHubToken);
+                        _availableUpdate, tempDir, progress);
 
                     token.ThrowIfCancellationRequested();
 

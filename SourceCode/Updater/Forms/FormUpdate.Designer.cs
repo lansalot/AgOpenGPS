@@ -76,12 +76,12 @@ namespace AgOpenGPS.Updater.Forms
             //
             this.lblGitHubStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGitHubStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblGitHubStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.lblGitHubStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(255)))), ((int)(((byte)(10)))));
             this.lblGitHubStatus.Location = new System.Drawing.Point(630, 35);
             this.lblGitHubStatus.Name = "lblGitHubStatus";
             this.lblGitHubStatus.Size = new System.Drawing.Size(110, 40);
             this.lblGitHubStatus.TabIndex = 1;
-            this.lblGitHubStatus.Text = "🔒 Anonymous";
+            this.lblGitHubStatus.Text = "🔐 Official";
             this.lblGitHubStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             //
             // panelMain
