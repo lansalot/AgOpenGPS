@@ -22,11 +22,11 @@ namespace AgOpenGPS.Updater.Services
         /// Checks for updates and returns the release info if an update is available.
         /// </summary>
         public async Task<(bool HasUpdate, ReleaseInfo ReleaseInfo, string Message)> CheckForUpdate(
-            string currentVersion, bool includePrerelease = false, string gitHubToken = null)
+            string currentVersion, bool includePrerelease = false)
         {
             try
             {
-                using (var githubService = new GithubReleaseService(authToken: gitHubToken))
+                using (var githubService = new GithubReleaseService())
                 {
                     var updateInfo = await githubService.CheckForUpdate(currentVersion, includePrerelease);
 
@@ -52,7 +52,7 @@ namespace AgOpenGPS.Updater.Services
         /// Downloads an update release to the specified path.
         /// </summary>
         public async Task<(bool Success, string DownloadPath, string Message)> DownloadUpdate(
-            ReleaseInfo release, string targetDirectory, IProgress<double> progress = null, string gitHubToken = null)
+            ReleaseInfo release, string targetDirectory, IProgress<double> progress = null)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace AgOpenGPS.Updater.Services
 
                 string downloadPath = Path.Combine(targetDirectory, Path.GetFileName(asset.Name));
 
-                using (var githubService = new GithubReleaseService(authToken: gitHubToken))
+                using (var githubService = new GithubReleaseService())
                 {
                     await githubService.DownloadAsset(asset.BrowserDownloadUrl, downloadPath, progress);
                 }
