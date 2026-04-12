@@ -89,9 +89,6 @@ namespace AgOpenGPS.Updater.Forms
             // Display current version
             lblCurrentVersion.Text = $"Current Version: {_currentVersion}";
 
-            // Update GitHub status indicator
-            //UpdateGitHubStatus();
-
             // Auto-detect local update
             bool foundLocal = CheckForLocalUpdate();
 
@@ -128,13 +125,6 @@ namespace AgOpenGPS.Updater.Forms
             lblSourceInfo.Visible = true;
 
             return found;
-        }
-
-        private void UpdateGitHubStatus()
-        {
-            lblGitHubStatus.Text = "🔐 Official";
-            lblGitHubStatus.ForeColor = System.Drawing.Color.FromArgb(100, 255, 100); // Bright green
-            lblGitHubStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
         }
 
         private void UpdateSourceUI()
