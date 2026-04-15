@@ -15,13 +15,16 @@ namespace AgOpenGPS.Updater
         [STAThread]
         private static void Main()
         {
+            if (!System.Diagnostics.Debugger.IsAttached)
+            {
+                System.Diagnostics.Debugger.Launch();
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Parse command line arguments
             string currentVersion = null;
             string installPath = null;
-            string gitHubToken = null;
             bool showFirmwareUpdate = false;
 
             var args = Environment.GetCommandLineArgs();
@@ -37,10 +40,6 @@ namespace AgOpenGPS.Updater
                 {
                     installPath = args[++i];
                 }
-                else if (arg.Equals("--github-token", StringComparison.OrdinalIgnoreCase) && i + 1 < args.Length)
-                {
-                    gitHubToken = args[++i];
-                }
                 else if (arg.Equals("--firmware", StringComparison.OrdinalIgnoreCase))
                 {
                     showFirmwareUpdate = true;
@@ -54,7 +53,7 @@ namespace AgOpenGPS.Updater
             }
             else
             {
-                Application.Run(new FormUpdate(currentVersion, installPath, gitHubToken));
+                Application.Run(new FormUpdate(currentVersion, installPath));
             }
         }
     }

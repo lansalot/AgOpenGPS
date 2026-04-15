@@ -19,20 +19,15 @@ namespace AgOpenGPS.Updater.Services
         private const string DefaultRepository = "AgOpenGPS";
         private const string GithubApiUrl = "https://api.github.com";
 
-        // GitHub Personal Access Token for updater (read-only, increases rate limit to 5000/hr)
-        private const string GitHubToken = "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";
-
         private readonly HttpClient _httpClient;
         private readonly string _owner;
         private readonly string _repository;
-        private readonly string _authToken;
 
-        public GithubReleaseService(string owner = null, string repository = null, string authToken = null)
+        public GithubReleaseService(string owner = null, string repository = null)
         {
             _owner = owner ?? DefaultOwner;
             _repository = repository ?? DefaultRepository;
             // Use provided token or fall back to default read-only token
-            _authToken = authToken ?? GitHubToken;
 
             _httpClient = new HttpClient
             {
@@ -44,10 +39,6 @@ namespace AgOpenGPS.Updater.Services
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
             _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("AgOpenGPS-Updater", "1.0"));
 
-            if (!string.IsNullOrEmpty(_authToken))
-            {
-                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", _authToken);
-            }
         }
 
         /// <summary>
@@ -328,11 +319,6 @@ namespace AgOpenGPS.Updater.Services
         /// <summary>
         /// Checks if this service has an authentication token.
         /// </summary>
-        public bool HasAuthToken()
-        {
-            return !string.IsNullOrEmpty(_authToken);
-        }
-
         public void Dispose()
         {
             _httpClient?.Dispose();
