@@ -85,6 +85,10 @@ namespace AgOpenGPS.Properties
         public int setAS_deadZoneHeading = 10;
         public int setAS_deadZoneDelay = 5;
 
+        // Nudge snap distances
+        public double setAS_snapDistance = 20.0;
+        public double setAS_snapDistanceRef = 5.0;
+
         // Headland
         public bool setHeadland_isSectionControlled = true;
 

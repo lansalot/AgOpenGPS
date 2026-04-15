@@ -115,8 +115,6 @@ namespace AgOpenGPS.Properties
         public int bndToolSmooth = 1;
 
         // ===== AUTOSTEER SETTINGS =====
-        public double setAS_snapDistance = 20.0;
-        public double setAS_snapDistanceRef = 5;
         public bool setAS_isAutoSteerAutoOn = false;
         public double setAS_guidanceLookAheadTime = 1.5;
         public bool setAS_isConstantContourOn = false;
@@ -150,6 +148,7 @@ namespace AgOpenGPS.Properties
         public bool PublicField = false;
         public bool AgShareEnabled = false;
         public bool AgShareUploadActive = false;
+        public bool AgShareAutoLoad = false;
 
         // ===== UDP SETTINGS =====
         public int SetGPS_udpWatchMsec = 50;
@@ -312,8 +311,6 @@ namespace AgOpenGPS.Properties
             dest.bndToolSmooth = source.bndToolSmooth;
 
             // AutoSteer settings (verplaatst van Vehicle)
-            dest.setAS_snapDistance = source.setAS_snapDistance;
-            dest.setAS_snapDistanceRef = source.setAS_snapDistanceRef;
             dest.setAS_isAutoSteerAutoOn = source.setAS_isAutoSteerAutoOn;
             dest.setAS_guidanceLookAheadTime = source.setAS_guidanceLookAheadTime;
             dest.setAS_isConstantContourOn = source.setAS_isConstantContourOn;
@@ -347,6 +344,7 @@ namespace AgOpenGPS.Properties
             dest.PublicField = source.PublicField;
             dest.AgShareEnabled = source.AgShareEnabled;
             dest.AgShareUploadActive = source.AgShareUploadActive;
+            dest.AgShareAutoLoad = source.AgShareAutoLoad;
 
             // UDP settings
             dest.SetGPS_udpWatchMsec = source.SetGPS_udpWatchMsec;

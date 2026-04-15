@@ -494,7 +494,7 @@ namespace AgOpenGPS
                 }
 
                 //now open the newly cloned field
-                mf.FileOpenField(Path.Combine(directoryName, myFileName));
+                await mf.FileOpenField(Path.Combine(directoryName, myFileName));
             }
 
             DialogResult = DialogResult.OK;

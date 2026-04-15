@@ -33,6 +33,8 @@ namespace AgOpenGPS
             btnJobClose.Text = gStr.gsClose;
 
             this.Text = gStr.gsStartNewField;
+
+            lblAgShareCloudLoad.Text = "☁ " + gStr.gsAgShareAutoLoadActive;
         }
 
         private void FormJob_Load(object sender, EventArgs e)
@@ -80,6 +82,9 @@ namespace AgOpenGPS
                 ClientSize = new System.Drawing.Size(ClientSize.Width, ClientSize.Height - 75);
             }
 
+            lblAgShareCloudLoad.Visible = Properties.Settings.Default.AgShareEnabled
+                                       && Properties.Settings.Default.AgShareAutoLoad;
+
             mf.CloseTopMosts();
 
         }
@@ -95,10 +100,10 @@ namespace AgOpenGPS
             Close();
         }
 
-        private void btnJobResume_Click(object sender, EventArgs e)
+        private async void btnJobResume_Click(object sender, EventArgs e)
         {
             //open the Resume.txt and continue from last exit
-            mf.FileOpenField("Resume");
+            await mf.FileOpenField("Resume");
 
             Log.EventWriter("Job Form, Field Resume");
 
@@ -120,7 +125,7 @@ namespace AgOpenGPS
             {
                 if (form.ShowDialog(this) == DialogResult.Yes)
                 {
-                    mf.FileOpenField(mf.filePickerFileAndDirectory);
+                    await mf.FileOpenField(mf.filePickerFileAndDirectory);
                     Close();
                 }
             }
@@ -200,7 +205,7 @@ namespace AgOpenGPS
                         //returns full field.txt file dir name
                         if (form.ShowDialog(this) == DialogResult.Yes)
                         {
-                            mf.FileOpenField(mf.filePickerFileAndDirectory);
+                            await mf.FileOpenField(mf.filePickerFileAndDirectory);
                             Close();
                         }
                         else
@@ -212,7 +217,7 @@ namespace AgOpenGPS
                 else // 1 field found
                 {
                     mf.filePickerFileAndDirectory = Path.Combine(RegistrySettings.fieldsDirectory, infieldList, "Field.txt");
-                    mf.FileOpenField(mf.filePickerFileAndDirectory);
+                    await mf.FileOpenField(mf.filePickerFileAndDirectory);
                     Close();
                 }
             }
@@ -305,5 +310,6 @@ namespace AgOpenGPS
             DialogResult = DialogResult.Ignore;
             Close();
         }
+
     }
 }

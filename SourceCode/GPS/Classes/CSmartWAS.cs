@@ -126,6 +126,10 @@ namespace AgOpenGPS
             if (Math.Abs(mf.guidanceLineDistanceOff) > MAX_DIST_OFF_MM) return;
             if (Math.Abs(steerAngleDegrees) > MAX_ANGLE_DEG) return;
 
+            // Normalize for WAS inversion: inverted WAS flips the required correction direction
+            bool wasInverted = (Properties.VehicleSettings.Default.setArdSteer_setting0 & 1) != 0;
+            if (wasInverted) steerAngleDegrees = -steerAngleDegrees;
+
             lock (dataLock)
             {
                 steerAngleHistory.Add(steerAngleDegrees);

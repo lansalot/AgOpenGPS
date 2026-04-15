@@ -389,6 +389,10 @@ namespace AgOpenGPS.Forms.Profiles
             bool vehicleChanged = _selectedVehicle != null && _selectedVehicle != RegistrySettings.vehicleProfileName;
             bool toolChanged = _selectedTool != null && _selectedTool != RegistrySettings.toolProfileName;
 
+            // Save current profiles before switching so unsaved changes are not lost
+            if (vehicleChanged) VehicleSettings.Default.Save();
+            if (toolChanged) ToolSettings.Default.Save();
+
             if (vehicleChanged)
             {
                 var result = VehicleSettings.Default.Load(_selectedVehicle);

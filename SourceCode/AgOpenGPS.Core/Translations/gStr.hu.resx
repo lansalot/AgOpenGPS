@@ -156,6 +156,76 @@
   <data name="gsAgShareDownloader" xml:space="preserve">
     <value>Területek letöltése az AgShareből</value>
   </data>
+  <data name="gsAgShareActivate" xml:space="preserve">
+    <value>Aktiválás</value>
+  </data>
+  <data name="gsAgShareActivated" xml:space="preserve">
+    <value>Aktiválva</value>
+  </data>
+  <data name="gsAgShareApiKey" xml:space="preserve">
+    <value>API-kulcs</value>
+  </data>
+  <data name="gsAgShareAutoLoad" xml:space="preserve">
+    <value>Felhő betöltés</value>
+  </data>
+  <data name="gsAgShareAutoUpload" xml:space="preserve">
+    <value>Auto-feltöltés</value>
+  </data>
+  <data name="gsAgShareButtonsHint" xml:space="preserve">
+    <value>Auto-feltöltés: mező változások feltöltése bezáráskor
+Felhő betöltés: mindig a legújabb verzió letöltése AgShareből megnyitáskor</value>
+  </data>
+  <data name="gsAgShareConnecting" xml:space="preserve">
+    <value>Csatlakozás...</value>
+  </data>
+  <data name="gsAgShareConnectionOk" xml:space="preserve">
+    <value>Csatlakozás sikeres</value>
+  </data>
+  <data name="gsAgShareDeactivated" xml:space="preserve">
+    <value>Deaktivált</value>
+  </data>
+  <data name="gsAgShareEnterDetails" xml:space="preserve">
+    <value>Adja meg a szervert és az API-kulcsot, majd tesztelje a kapcsolatot</value>
+  </data>
+  <data name="gsAgShareInvalidApiKey" xml:space="preserve">
+    <value>Érvénytelen API-kulcs</value>
+  </data>
+  <data name="gsAgShareLocalOnly" xml:space="preserve">
+    <value>Csak helyi</value>
+  </data>
+  <data name="gsAgSharePaste" xml:space="preserve">
+    <value>Beillesztés vágólapról</value>
+  </data>
+  <data name="gsAgShareRegisterHere" xml:space="preserve">
+    <value>Regisztráljon itt az AgShare használatához</value>
+  </data>
+  <data name="gsAgShareSaved" xml:space="preserve">
+    <value>Beállítások mentve</value>
+  </data>
+  <data name="gsAgShareServer" xml:space="preserve">
+    <value>Szerver</value>
+  </data>
+  <data name="gsAgShareSettings" xml:space="preserve">
+    <value>AgShare beállítások</value>
+  </data>
+  <data name="gsAgShareTestConnection" xml:space="preserve">
+    <value>Kapcsolat tesztelése</value>
+  </data>
+  <data name="gsAgShareUploadOff" xml:space="preserve">
+    <value>Feltöltés ki</value>
+  </data>
+  <data name="gsAgShareUploadOn" xml:space="preserve">
+    <value>Feltöltés be</value>
+  </data>
+  <data name="gsAgShareAutoLoadActive" xml:space="preserve">
+    <value>A mezők automatikusan töltődnek be a felhőből</value>
+  </data>
+  <data name="gsAgShareFieldLoaded" xml:space="preserve">
+    <value>Mező betöltve az AgShareből</value>
+  </data>
+  <data name="gsAgShareLoadFailed" xml:space="preserve">
+    <value>A mező nem tölthető be a felhőből, helyi verzió kerül felhasználásra.</value>
+  </data>
   <data name="gsAgree" xml:space="preserve">
     <value>Elfogad</value>
   </data>

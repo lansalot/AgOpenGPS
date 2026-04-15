@@ -153,6 +153,79 @@
   <data name="gsAdvancedTramLines" xml:space="preserve">
     <value>Votvoř pokročilé kolejové řádky</value>
   </data>
+  <data name="gsAgShareDownloader" xml:space="preserve">
+    <value>Stáhnout pole z AgShare</value>
+  </data>
+  <data name="gsAgShareActivate" xml:space="preserve">
+    <value>Aktivovat</value>
+  </data>
+  <data name="gsAgShareActivated" xml:space="preserve">
+    <value>Aktivováno</value>
+  </data>
+  <data name="gsAgShareApiKey" xml:space="preserve">
+    <value>API klíč</value>
+  </data>
+  <data name="gsAgShareAutoLoad" xml:space="preserve">
+    <value>Načítání z cloudu</value>
+  </data>
+  <data name="gsAgShareAutoUpload" xml:space="preserve">
+    <value>Automatické nahrávání</value>
+  </data>
+  <data name="gsAgShareButtonsHint" xml:space="preserve">
+    <value>Automatické nahrávání: nahrát změny pole při zavření
+Načítání z cloudu: vždy stáhnout nejnovější verzi z AgShare při otevření</value>
+  </data>
+  <data name="gsAgShareConnecting" xml:space="preserve">
+    <value>Připojování...</value>
+  </data>
+  <data name="gsAgShareConnectionOk" xml:space="preserve">
+    <value>Připojení úspěšné</value>
+  </data>
+  <data name="gsAgShareDeactivated" xml:space="preserve">
+    <value>Deaktivováno</value>
+  </data>
+  <data name="gsAgShareEnterDetails" xml:space="preserve">
+    <value>Zadejte server a API klíč, poté otestujte připojení</value>
+  </data>
+  <data name="gsAgShareInvalidApiKey" xml:space="preserve">
+    <value>Neplatný API klíč</value>
+  </data>
+  <data name="gsAgShareLocalOnly" xml:space="preserve">
+    <value>Pouze lokální</value>
+  </data>
+  <data name="gsAgSharePaste" xml:space="preserve">
+    <value>Vložit ze schránky</value>
+  </data>
+  <data name="gsAgShareRegisterHere" xml:space="preserve">
+    <value>Zaregistrujte se zde pro použití AgShare</value>
+  </data>
+  <data name="gsAgShareSaved" xml:space="preserve">
+    <value>Nastavení uloženo</value>
+  </data>
+  <data name="gsAgShareServer" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="gsAgShareSettings" xml:space="preserve">
+    <value>Nastavení AgShare</value>
+  </data>
+  <data name="gsAgShareTestConnection" xml:space="preserve">
+    <value>Otestovat připojení</value>
+  </data>
+  <data name="gsAgShareUploadOff" xml:space="preserve">
+    <value>Nahrávání vypnuto</value>
+  </data>
+  <data name="gsAgShareUploadOn" xml:space="preserve">
+    <value>Nahrávání zapnuto</value>
+  </data>
+  <data name="gsAgShareAutoLoadActive" xml:space="preserve">
+    <value>Pole jsou automaticky načítána z cloudu</value>
+  </data>
+  <data name="gsAgShareFieldLoaded" xml:space="preserve">
+    <value>Pole načteno z AgShare</value>
+  </data>
+  <data name="gsAgShareLoadFailed" xml:space="preserve">
+    <value>Pole nelze načíst z cloudu, používá se lokální verze.</value>
+  </data>
   <data name="gsAgressiveness" xml:space="preserve">
     <value>Agresivita</value>
   </data>

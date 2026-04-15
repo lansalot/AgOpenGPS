@@ -210,6 +210,8 @@ namespace AgOpenGPS
             AddRow(mid, "Headland Sect. Ctrl", tsDefault.setHeadland_isSectionControlled, ts.setHeadland_isSectionControlled);
 
             AddHeader(mid, "── Guidance (per Tool)");
+            AddRow(mid, "Snap Distance", tsDefault.setAS_snapDistance, ts.setAS_snapDistance);
+            AddRow(mid, "Snap Distance Ref", tsDefault.setAS_snapDistanceRef, ts.setAS_snapDistanceRef);
             AddRow(mid, "DeadZone Dist", tsDefault.setAS_deadZoneDistance, ts.setAS_deadZoneDistance);
             AddRow(mid, "DeadZone Hdg", tsDefault.setAS_deadZoneHeading, ts.setAS_deadZoneHeading);
             AddRow(mid, "DeadZone Delay", tsDefault.setAS_deadZoneDelay, ts.setAS_deadZoneDelay);
@@ -267,8 +269,6 @@ namespace AgOpenGPS
 
             mid.Rows.Clear();
             AddHeader(mid, "── AutoSteer");
-            AddRow(mid, "Snap Distance", esDefault.setAS_snapDistance, es.setAS_snapDistance);
-            AddRow(mid, "Snap Distance Ref", esDefault.setAS_snapDistanceRef, es.setAS_snapDistanceRef);
             AddRow(mid, "Guidance Lookahead", esDefault.setAS_guidanceLookAheadTime, es.setAS_guidanceLookAheadTime);
             AddRow(mid, "AutoSteer Auto On", esDefault.setAS_isAutoSteerAutoOn, es.setAS_isAutoSteerAutoOn);
             AddRow(mid, "Constant Contour", esDefault.setAS_isConstantContourOn, es.setAS_isConstantContourOn);
