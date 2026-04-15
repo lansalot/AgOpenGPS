@@ -286,6 +286,7 @@ namespace AgOpenGPS.Properties
         public bool PublicField = false;
         public bool AgShareEnabled = false;
         public bool AgShareUploadActive = false;
+        public bool AgShareAutoLoad = false;
 
         // UDP settings
         public int SetGPS_udpWatchMsec = 50;

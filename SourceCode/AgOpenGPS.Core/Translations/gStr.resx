@@ -156,6 +156,76 @@
   <data name="gsAgShareDownloader" xml:space="preserve">
     <value>Download Fields From AgShare</value>
   </data>
+  <data name="gsAgShareActivate" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="gsAgShareActivated" xml:space="preserve">
+    <value>Activated</value>
+  </data>
+  <data name="gsAgShareApiKey" xml:space="preserve">
+    <value>API Key</value>
+  </data>
+  <data name="gsAgShareAutoLoad" xml:space="preserve">
+    <value>Cloud Load</value>
+  </data>
+  <data name="gsAgShareAutoUpload" xml:space="preserve">
+    <value>Auto-Upload</value>
+  </data>
+  <data name="gsAgShareButtonsHint" xml:space="preserve">
+    <value>Auto-Upload: upload field changes on close
+Cloud Load: always download latest from AgShare on open</value>
+  </data>
+  <data name="gsAgShareConnecting" xml:space="preserve">
+    <value>Connecting...</value>
+  </data>
+  <data name="gsAgShareConnectionOk" xml:space="preserve">
+    <value>Connection successful</value>
+  </data>
+  <data name="gsAgShareDeactivated" xml:space="preserve">
+    <value>Deactivated</value>
+  </data>
+  <data name="gsAgShareEnterDetails" xml:space="preserve">
+    <value>Enter server and API key, then test the connection</value>
+  </data>
+  <data name="gsAgShareInvalidApiKey" xml:space="preserve">
+    <value>Invalid API key</value>
+  </data>
+  <data name="gsAgShareLocalOnly" xml:space="preserve">
+    <value>Local Only</value>
+  </data>
+  <data name="gsAgSharePaste" xml:space="preserve">
+    <value>Paste from Clipboard</value>
+  </data>
+  <data name="gsAgShareRegisterHere" xml:space="preserve">
+    <value>Register here to use AgShare</value>
+  </data>
+  <data name="gsAgShareSaved" xml:space="preserve">
+    <value>Settings saved</value>
+  </data>
+  <data name="gsAgShareServer" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="gsAgShareSettings" xml:space="preserve">
+    <value>AgShare Settings</value>
+  </data>
+  <data name="gsAgShareTestConnection" xml:space="preserve">
+    <value>Test Connection</value>
+  </data>
+  <data name="gsAgShareUploadOff" xml:space="preserve">
+    <value>Upload Off</value>
+  </data>
+  <data name="gsAgShareUploadOn" xml:space="preserve">
+    <value>Upload On</value>
+  </data>
+  <data name="gsAgShareAutoLoadActive" xml:space="preserve">
+    <value>Fields are auto loaded from cloud</value>
+  </data>
+  <data name="gsAgShareFieldLoaded" xml:space="preserve">
+    <value>Field loaded from AgShare</value>
+  </data>
+  <data name="gsAgShareLoadFailed" xml:space="preserve">
+    <value>Could not load field from cloud, using local version.</value>
+  </data>
   <data name="gsAgree" xml:space="preserve">
     <value>Agree</value>
   </data>

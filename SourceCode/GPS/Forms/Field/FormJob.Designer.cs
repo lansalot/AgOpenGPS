@@ -45,6 +45,7 @@
             this.btnJobNew = new System.Windows.Forms.Button();
             this.lblResumeField = new System.Windows.Forms.Label();
             this.btnDeleteAB = new System.Windows.Forms.Button();
+            this.lblAgShareCloudLoad = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -378,8 +379,21 @@
             this.lblResumeField.Text = "Previous Field";
             this.lblResumeField.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // lblAgShareCloudLoad
+            //
+            this.lblAgShareCloudLoad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAgShareCloudLoad.BackColor = System.Drawing.Color.Transparent;
+            this.lblAgShareCloudLoad.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgShareCloudLoad.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblAgShareCloudLoad.Location = new System.Drawing.Point(9, 480);
+            this.lblAgShareCloudLoad.Name = "lblAgShareCloudLoad";
+            this.lblAgShareCloudLoad.Size = new System.Drawing.Size(468, 20);
+            this.lblAgShareCloudLoad.TabIndex = 116;
+            this.lblAgShareCloudLoad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblAgShareCloudLoad.Visible = false;
+            //
             // btnDeleteAB
-            // 
+            //
             this.btnDeleteAB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeleteAB.BackColor = System.Drawing.Color.Transparent;
             this.btnDeleteAB.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -404,6 +418,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnDeleteAB);
+            this.Controls.Add(this.lblAgShareCloudLoad);
             this.Controls.Add(this.lblResumeField);
             this.Font = new System.Drawing.Font("Tahoma", 14.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -442,5 +457,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnJobAgShare;
         private System.Windows.Forms.Button btnAgShareBulkUpload;
+        private System.Windows.Forms.Label lblAgShareCloudLoad;
     }
 }

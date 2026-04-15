@@ -150,6 +150,7 @@ namespace AgOpenGPS.Properties
         public bool PublicField = false;
         public bool AgShareEnabled = false;
         public bool AgShareUploadActive = false;
+        public bool AgShareAutoLoad = false;
 
         // ===== UDP SETTINGS =====
         public int SetGPS_udpWatchMsec = 50;
@@ -347,6 +348,7 @@ namespace AgOpenGPS.Properties
             dest.PublicField = source.PublicField;
             dest.AgShareEnabled = source.AgShareEnabled;
             dest.AgShareUploadActive = source.AgShareUploadActive;
+            dest.AgShareAutoLoad = source.AgShareAutoLoad;
 
             // UDP settings
             dest.SetGPS_udpWatchMsec = source.SetGPS_udpWatchMsec;

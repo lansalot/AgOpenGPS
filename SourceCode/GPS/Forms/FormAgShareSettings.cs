@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using AgOpenGPS.Controls;
 using AgOpenGPS.Core.AgShare;
+using AgOpenGPS.Core.Translations;
 using AgOpenGPS.Properties;
 
 namespace AgOpenGPS
@@ -25,11 +26,23 @@ namespace AgOpenGPS
         // Load current settings and start clipboard monitoring
         private void FormAgShareSettings_Load(object sender, EventArgs e)
         {
+            // Translations
+            this.Text                    = gStr.gsAgShareSettings;
+            labelApiKey.Text             = gStr.gsAgShareApiKey + ":";
+            label1.Text                  = gStr.gsAgShareServer + ":";
+            buttonTestConnection.Text    = gStr.gsAgShareTestConnection;
+            btnPaste.Text                = gStr.gsAgSharePaste;
+            label2.Text                  = gStr.gsAgShareRegisterHere;
+            buttonCancel.Text            = gStr.gsCancel;
+            labelStatus.Text             = gStr.gsAgShareEnterDetails;
+            labelButtonsHint.Text        = gStr.gsAgShareButtonsHint;
+
             textBoxServer.Text = Settings.Default.AgShareServer;
             textBoxApiKey.Text = Settings.Default.AgShareApiKey;
 
             UpdateAgShareToggleButton();
             UpdateAgShareUploadButton();
+            UpdateAgShareAutoLoadButton();
 
             btnPaste.Enabled = Clipboard.ContainsText();
             clipboardCheckTimer = new Timer();
@@ -42,7 +55,7 @@ namespace AgOpenGPS
             textBoxServer.TextChanged += textBoxAnySetting_TextChanged;
 
             // Disable TextboxServer for now until it's released
-            textBoxServer.Enabled = false;
+            textBoxServer.Enabled = true;
         }
 
         // Dispose timer when form closes
@@ -68,7 +81,7 @@ namespace AgOpenGPS
         // Test connection with current input values
         private async void buttonTestConnection_Click(object sender, EventArgs e)
         {
-            labelStatus.Text = "Connecting...";
+            labelStatus.Text = gStr.gsAgShareConnecting;
             labelStatus.ForeColor = Color.Gray;
 
             var baseUrl = textBoxServer.Text;
@@ -78,7 +91,7 @@ namespace AgOpenGPS
 
             if (result.IsSuccessful)
             {
-                labelStatus.Text = "✔ Connection successful";
+                labelStatus.Text = "✔ " + gStr.gsAgShareConnectionOk;
                 labelStatus.ForeColor = Color.Green;
                 buttonSave.Enabled = true;
             }
@@ -95,7 +108,7 @@ namespace AgOpenGPS
             switch (error)
             {
                 case InvalidApiKeyError _:
-                    return "Invalid API key";
+                    return gStr.gsAgShareInvalidApiKey;
                 case StatusCodeError statusCodeError:
                     return $"Status {statusCodeError.StatusCode}: {statusCodeError.Body}";
                 case HttpRequestError httpRequestError:
@@ -114,7 +127,7 @@ namespace AgOpenGPS
             Settings.Default.AgShareApiKey = textBoxApiKey.Text;
             Settings.Default.Save();
 
-            labelStatus.Text = "✔ Settings saved";
+            labelStatus.Text = "✔ " + gStr.gsAgShareSaved;
             labelStatus.ForeColor = Color.Blue;
         }
 
@@ -130,12 +143,12 @@ namespace AgOpenGPS
             if (Settings.Default.AgShareEnabled)
             {
                 btnToggleUpload.Image = Properties.Resources.UploadOn;
-                btnToggleUpload.Text = "Activated";
+                btnToggleUpload.Text = gStr.gsAgShareActivated;
             }
             else
             {
                 btnToggleUpload.Image = Properties.Resources.UploadOff;
-                btnToggleUpload.Text = "Deactivated";
+                btnToggleUpload.Text = gStr.gsAgShareDeactivated;
                 buttonSave.Enabled = true;
             }
         }
@@ -188,6 +201,27 @@ namespace AgOpenGPS
             textBoxServer.Enabled = true;
         }
 
+        private void btnAutoLoad_Click(object sender, EventArgs e)
+        {
+            Settings.Default.AgShareAutoLoad = !Settings.Default.AgShareAutoLoad;
+            UpdateAgShareAutoLoadButton();
+            Settings.Default.Save();
+        }
+
+        private void UpdateAgShareAutoLoadButton()
+        {
+            if (Settings.Default.AgShareAutoLoad)
+            {
+                btnAutoLoad.Image = Properties.Resources.DownloadAndUse;
+                btnAutoLoad.Text = gStr.gsAgShareAutoLoad;
+            }
+            else
+            {
+                btnAutoLoad.Image = Properties.Resources.DownloadAll;
+                btnAutoLoad.Text = gStr.gsAgShareLocalOnly;
+            }
+        }
+
         private void btnAutoUpload_Click(object sender, EventArgs e)
         {
             Settings.Default.AgShareUploadActive = !Settings.Default.AgShareUploadActive;
@@ -197,12 +231,12 @@ namespace AgOpenGPS
         {
             if (Settings.Default.AgShareUploadActive)
             {
-                btnAutoUpload.Text = "Upload On";
+                btnAutoUpload.Text = gStr.gsAgShareUploadOn;
                 btnAutoUpload.Image = Resources.AutoUploadOn;
             }
             else
             {
-                btnAutoUpload.Text = "Upload Off";
+                btnAutoUpload.Text = gStr.gsAgShareUploadOff;
                 btnAutoUpload.Image = Resources.AutoUploadOff;
                 buttonSave.Enabled = true;
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Threading.Tasks;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -37,7 +38,7 @@ namespace AgOpenGPS
         }
 
         // Open a field with required precheck and per-file loaders.
-        public void FileOpenField(string openType)
+        public async Task FileOpenField(string openType)
         {
             if (isJobStarted)
             {
@@ -71,6 +72,9 @@ namespace AgOpenGPS
             }
 
             if (fileAndDirectory == "Cancel") return;
+
+            // If AgShare is active and this field has a cloud ID, fetch the latest version first
+            await TryLoadFromAgShareAsync(fileAndDirectory);
 
             // Set current field directory
             currentFieldDirectory = new DirectoryInfo(Path.GetDirectoryName(fileAndDirectory)).Name;
@@ -956,6 +960,30 @@ namespace AgOpenGPS
                 result = default(T);
                 return false;
             }
+        }
+
+        // Downloads the latest cloud version of a field if AgShare is enabled and agshare.txt exists.
+        // Overwrites local files so FileOpenField loads the cloud version. Falls back silently on failure.
+        private async Task TryLoadFromAgShareAsync(string fieldFilePath)
+        {
+            if (!Properties.Settings.Default.AgShareEnabled) return;
+            if (!Properties.Settings.Default.AgShareAutoLoad) return;
+
+            string fieldDir = Path.GetDirectoryName(fieldFilePath);
+            string agshareFile = Path.Combine(fieldDir, "agshare.txt");
+
+            if (!File.Exists(agshareFile)) return;
+
+            string idText = File.ReadAllText(agshareFile).Trim();
+            if (!Guid.TryParse(idText, out Guid fieldId)) return;
+
+            var downloader = new AgShareDownloader(agShareClient);
+            bool success = await downloader.DownloadAndSaveAsync(fieldId);
+
+            if (success)
+                TimedMessageBox(3000, gStr.gsAgShareFieldLoaded, Path.GetFileName(fieldDir));
+            else
+                FormDialog.Show("AgShare", gStr.gsAgShareLoadFailed, DialogSeverity.Warning);
         }
 
         // Runs an action (no return); logs + user message on failure.
