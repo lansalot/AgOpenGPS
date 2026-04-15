@@ -141,7 +141,7 @@ namespace AgOpenGPS.Forms.Field
                 await gps.FileSaveEverythingBeforeClosingField();
             }
 
-            gps.FileOpenField(fieldFile);
+            await gps.FileOpenField(fieldFile);
             Close();
         }
 

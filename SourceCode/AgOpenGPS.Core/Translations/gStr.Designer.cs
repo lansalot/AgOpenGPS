@@ -185,7 +185,99 @@ namespace AgOpenGPS.Core.Translations {
                 return ResourceManager.GetString("gsAgShareDownloader", resourceCulture);
             }
         }
-        
+
+        public static string gsAgShareActivate {
+            get { return ResourceManager.GetString("gsAgShareActivate", resourceCulture); }
+        }
+
+        public static string gsAgShareActivated {
+            get { return ResourceManager.GetString("gsAgShareActivated", resourceCulture); }
+        }
+
+        public static string gsAgShareApiKey {
+            get { return ResourceManager.GetString("gsAgShareApiKey", resourceCulture); }
+        }
+
+        public static string gsAgShareAutoLoad {
+            get { return ResourceManager.GetString("gsAgShareAutoLoad", resourceCulture); }
+        }
+
+        public static string gsAgShareAutoUpload {
+            get { return ResourceManager.GetString("gsAgShareAutoUpload", resourceCulture); }
+        }
+
+        public static string gsAgShareButtonsHint {
+            get { return ResourceManager.GetString("gsAgShareButtonsHint", resourceCulture); }
+        }
+
+        public static string gsAgShareConnecting {
+            get { return ResourceManager.GetString("gsAgShareConnecting", resourceCulture); }
+        }
+
+        public static string gsAgShareConnectionOk {
+            get { return ResourceManager.GetString("gsAgShareConnectionOk", resourceCulture); }
+        }
+
+        public static string gsAgShareDeactivated {
+            get { return ResourceManager.GetString("gsAgShareDeactivated", resourceCulture); }
+        }
+
+        public static string gsAgShareEnterDetails {
+            get { return ResourceManager.GetString("gsAgShareEnterDetails", resourceCulture); }
+        }
+
+        public static string gsAgShareInvalidApiKey {
+            get { return ResourceManager.GetString("gsAgShareInvalidApiKey", resourceCulture); }
+        }
+
+        public static string gsAgShareLocalOnly {
+            get { return ResourceManager.GetString("gsAgShareLocalOnly", resourceCulture); }
+        }
+
+        public static string gsAgSharePaste {
+            get { return ResourceManager.GetString("gsAgSharePaste", resourceCulture); }
+        }
+
+        public static string gsAgShareRegisterHere {
+            get { return ResourceManager.GetString("gsAgShareRegisterHere", resourceCulture); }
+        }
+
+        public static string gsAgShareSaved {
+            get { return ResourceManager.GetString("gsAgShareSaved", resourceCulture); }
+        }
+
+        public static string gsAgShareServer {
+            get { return ResourceManager.GetString("gsAgShareServer", resourceCulture); }
+        }
+
+        public static string gsAgShareSettings {
+            get { return ResourceManager.GetString("gsAgShareSettings", resourceCulture); }
+        }
+
+        public static string gsAgShareTestConnection {
+            get { return ResourceManager.GetString("gsAgShareTestConnection", resourceCulture); }
+        }
+
+        public static string gsAgShareUploadOff {
+            get { return ResourceManager.GetString("gsAgShareUploadOff", resourceCulture); }
+        }
+
+        public static string gsAgShareUploadOn {
+            get { return ResourceManager.GetString("gsAgShareUploadOn", resourceCulture); }
+        }
+
+        public static string gsAgShareAutoLoadActive {
+            get { return ResourceManager.GetString("gsAgShareAutoLoadActive", resourceCulture); }
+        }
+
+        public static string gsAgShareFieldLoaded {
+            get { return ResourceManager.GetString("gsAgShareFieldLoaded", resourceCulture); }
+        }
+
+        public static string gsAgShareLoadFailed {
+            get { return ResourceManager.GetString("gsAgShareLoadFailed", resourceCulture); }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to View All Settings.
         /// </summary>

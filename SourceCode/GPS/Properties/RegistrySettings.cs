@@ -129,8 +129,7 @@ namespace AgOpenGPS
             //make sure directories exist and are in right place if not default workingDir
             CreateDirectories();
 
-            //keep below 500 kb
-            Log.CheckLogSize(Path.Combine(logsDirectory, "AgOpenGPS_Events_Log.txt"), 1000000);
+            Log.CheckLogSize(Path.Combine(logsDirectory, "AgOpenGPS_Events_Log.txt"));
 
             // Load Environment settings
             Properties.Settings.Default.Load();

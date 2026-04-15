@@ -287,7 +287,7 @@ namespace AgOpenGPS
                             if (data.Length < 6) break;
                             if (((data[5] & 1) == 1)) //mask bit #0 set and command bit #0 nudge line to the 0 = left 1 = right
                             {
-                                double dist = Properties.Settings.Default.setAS_snapDistance * 0.01;
+                                double dist = Properties.ToolSettings.Default.setAS_snapDistance * 0.01;
                                 if ((data[6] & 1) != 1) { trk.NudgeTrack(-dist); }
                                 if ((data[6] & 1) == 1) { trk.NudgeTrack(dist); }
                             }
@@ -592,14 +592,14 @@ namespace AgOpenGPS
             if ((char)keyData == hotkeys[7]) // nudge track left
             {
                 if (trk.idx > -1)
-                    trk.NudgeTrack((double)Properties.Settings.Default.setAS_snapDistance * -0.01);
+                    trk.NudgeTrack((double)Properties.ToolSettings.Default.setAS_snapDistance * -0.01);
                 return true;
             }
 
             if ((char)keyData == hotkeys[8]) // nudge track right
             {
                 if (trk.idx > -1)
-                    trk.NudgeTrack((double)Properties.Settings.Default.setAS_snapDistance * 0.01);
+                    trk.NudgeTrack((double)Properties.ToolSettings.Default.setAS_snapDistance * 0.01);
                 return true;
             }
 

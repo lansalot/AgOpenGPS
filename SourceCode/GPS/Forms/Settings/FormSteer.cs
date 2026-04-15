@@ -740,12 +740,12 @@ namespace AgOpenGPS
             if (mf.isMetric)
             {
                 nudSnapDistance.DecimalPlaces = 0;
-                nudSnapDistance.Value = (int)((double)Properties.Settings.Default.setAS_snapDistance * mf.cm2CmOrIn);
+                nudSnapDistance.Value = (int)((double)Properties.ToolSettings.Default.setAS_snapDistance * mf.cm2CmOrIn);
             }
             else
             {
                 nudSnapDistance.DecimalPlaces = 1;
-                nudSnapDistance.Value = (decimal)Math.Round(((double)Properties.Settings.Default.setAS_snapDistance * mf.cm2CmOrIn), 1, MidpointRounding.AwayFromZero);
+                nudSnapDistance.Value = (decimal)Math.Round(((double)Properties.ToolSettings.Default.setAS_snapDistance * mf.cm2CmOrIn), 1, MidpointRounding.AwayFromZero);
             }
 
             nudGuidanceLookAhead.Value = (decimal)Properties.Settings.Default.setAS_guidanceLookAheadTime;
@@ -785,8 +785,8 @@ namespace AgOpenGPS
         {
             if (((NudlessNumericUpDown)sender).ShowKeypad(this))
             {
-                Properties.Settings.Default.setAS_snapDistance = ((double)nudSnapDistance.Value * mf.inOrCm2Cm);
-                mf.ABLine.snapDistance = Properties.Settings.Default.setAS_snapDistance;
+                Properties.ToolSettings.Default.setAS_snapDistance = ((double)nudSnapDistance.Value * mf.inOrCm2Cm);
+                mf.ABLine.snapDistance = Properties.ToolSettings.Default.setAS_snapDistance;
             }
         }
 
@@ -1251,7 +1251,7 @@ namespace AgOpenGPS
                 Properties.VehicleSettings.Default.setAS_functionSpeedLimit = 12;
                 Properties.Settings.Default.setDisplay_lightbarCmPerPixel = 5;
                 Properties.Settings.Default.setDisplay_lineWidth = 2;
-                Properties.Settings.Default.setAS_snapDistance = 20;
+                Properties.ToolSettings.Default.setAS_snapDistance = 20;
                 Properties.Settings.Default.setAS_guidanceLookAheadTime = 1.5;
                 Properties.Settings.Default.setAS_uTurnCompensation = 1;
 

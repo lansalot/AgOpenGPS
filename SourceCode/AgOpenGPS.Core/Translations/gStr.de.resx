@@ -1211,6 +1211,76 @@ VERWENDUNG AUF EIGENES RISIKO.</value>
   <data name="gsAgShareDownloader" xml:space="preserve">
     <value>Felder von AgShare herunterladen</value>
   </data>
+  <data name="gsAgShareActivate" xml:space="preserve">
+    <value>Aktivieren</value>
+  </data>
+  <data name="gsAgShareActivated" xml:space="preserve">
+    <value>Aktiviert</value>
+  </data>
+  <data name="gsAgShareApiKey" xml:space="preserve">
+    <value>API-Schlüssel</value>
+  </data>
+  <data name="gsAgShareAutoLoad" xml:space="preserve">
+    <value>Cloud-Laden</value>
+  </data>
+  <data name="gsAgShareAutoUpload" xml:space="preserve">
+    <value>Auto-Upload</value>
+  </data>
+  <data name="gsAgShareButtonsHint" xml:space="preserve">
+    <value>Auto-Upload: Feldänderungen beim Schließen hochladen
+Cloud-Laden: Immer neueste Version beim Öffnen von AgShare herunterladen</value>
+  </data>
+  <data name="gsAgShareConnecting" xml:space="preserve">
+    <value>Verbinde...</value>
+  </data>
+  <data name="gsAgShareConnectionOk" xml:space="preserve">
+    <value>Verbindung erfolgreich</value>
+  </data>
+  <data name="gsAgShareDeactivated" xml:space="preserve">
+    <value>Deaktiviert</value>
+  </data>
+  <data name="gsAgShareEnterDetails" xml:space="preserve">
+    <value>Server und API-Schlüssel eingeben, dann Verbindung testen</value>
+  </data>
+  <data name="gsAgShareInvalidApiKey" xml:space="preserve">
+    <value>Ungültiger API-Schlüssel</value>
+  </data>
+  <data name="gsAgShareLocalOnly" xml:space="preserve">
+    <value>Nur Lokal</value>
+  </data>
+  <data name="gsAgSharePaste" xml:space="preserve">
+    <value>Aus Zwischenablage einfügen</value>
+  </data>
+  <data name="gsAgShareRegisterHere" xml:space="preserve">
+    <value>Hier registrieren zur Nutzung von AgShare</value>
+  </data>
+  <data name="gsAgShareSaved" xml:space="preserve">
+    <value>Einstellungen gespeichert</value>
+  </data>
+  <data name="gsAgShareServer" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="gsAgShareSettings" xml:space="preserve">
+    <value>AgShare-Einstellungen</value>
+  </data>
+  <data name="gsAgShareTestConnection" xml:space="preserve">
+    <value>Verbindung testen</value>
+  </data>
+  <data name="gsAgShareUploadOff" xml:space="preserve">
+    <value>Upload Aus</value>
+  </data>
+  <data name="gsAgShareUploadOn" xml:space="preserve">
+    <value>Upload Ein</value>
+  </data>
+  <data name="gsAgShareAutoLoadActive" xml:space="preserve">
+    <value>Felder werden automatisch aus der Cloud geladen</value>
+  </data>
+  <data name="gsAgShareFieldLoaded" xml:space="preserve">
+    <value>Feld von AgShare geladen</value>
+  </data>
+  <data name="gsAgShareLoadFailed" xml:space="preserve">
+    <value>Feld konnte nicht aus der Cloud geladen werden, lokale Version wird verwendet.</value>
+  </data>
   <data name="gsDownloadAll" xml:space="preserve">
     <value>Alle herunterladen</value>
   </data>
