@@ -49,9 +49,9 @@
             // textBoxApiKey
             // 
             this.textBoxApiKey.BackColor = System.Drawing.Color.White;
-            this.textBoxApiKey.Location = new System.Drawing.Point(122, 57);
+            this.textBoxApiKey.Location = new System.Drawing.Point(158, 57);
             this.textBoxApiKey.Name = "textBoxApiKey";
-            this.textBoxApiKey.Size = new System.Drawing.Size(462, 30);
+            this.textBoxApiKey.Size = new System.Drawing.Size(426, 30);
             this.textBoxApiKey.TabIndex = 0;
             // 
             // buttonTestConnection
@@ -78,24 +78,26 @@
             // 
             // labelApiKey
             // 
+            this.labelApiKey.AutoSize = true;
             this.labelApiKey.BackColor = System.Drawing.Color.Transparent;
             this.labelApiKey.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelApiKey.ForeColor = System.Drawing.Color.Black;
-            this.labelApiKey.Location = new System.Drawing.Point(16, 60);
+            this.labelApiKey.Location = new System.Drawing.Point(12, 59);
             this.labelApiKey.Name = "labelApiKey";
-            this.labelApiKey.Size = new System.Drawing.Size(100, 24);
+            this.labelApiKey.Size = new System.Drawing.Size(92, 23);
             this.labelApiKey.TabIndex = 5;
             this.labelApiKey.Text = "API Key:";
             this.labelApiKey.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
+            this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(16, 22);
+            this.label1.Location = new System.Drawing.Point(12, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 24);
+            this.label1.Size = new System.Drawing.Size(78, 23);
             this.label1.TabIndex = 6;
             this.label1.Text = "Server:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -105,9 +107,9 @@
             this.textBoxServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxServer.BackColor = System.Drawing.Color.White;
-            this.textBoxServer.Location = new System.Drawing.Point(122, 19);
+            this.textBoxServer.Location = new System.Drawing.Point(158, 19);
             this.textBoxServer.Name = "textBoxServer";
-            this.textBoxServer.Size = new System.Drawing.Size(462, 30);
+            this.textBoxServer.Size = new System.Drawing.Size(426, 30);
             this.textBoxServer.TabIndex = 7;
             this.textBoxServer.Click += new System.EventHandler(this.textBoxServer_Click);
             // 
