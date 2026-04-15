@@ -156,6 +156,76 @@
   <data name="gsAgShareDownloader" xml:space="preserve">
     <value>Télécharger les Parcelles depuis AgShare</value>
   </data>
+  <data name="gsAgShareActivate" xml:space="preserve">
+    <value>Activer</value>
+  </data>
+  <data name="gsAgShareActivated" xml:space="preserve">
+    <value>Activé</value>
+  </data>
+  <data name="gsAgShareApiKey" xml:space="preserve">
+    <value>Clé API</value>
+  </data>
+  <data name="gsAgShareAutoLoad" xml:space="preserve">
+    <value>Chargement cloud</value>
+  </data>
+  <data name="gsAgShareAutoUpload" xml:space="preserve">
+    <value>Téléversement auto</value>
+  </data>
+  <data name="gsAgShareButtonsHint" xml:space="preserve">
+    <value>Téléversement auto : envoyer les modifications à la fermeture
+Chargement cloud : toujours télécharger la dernière version depuis AgShare à l'ouverture</value>
+  </data>
+  <data name="gsAgShareConnecting" xml:space="preserve">
+    <value>Connexion en cours...</value>
+  </data>
+  <data name="gsAgShareConnectionOk" xml:space="preserve">
+    <value>Connexion réussie</value>
+  </data>
+  <data name="gsAgShareDeactivated" xml:space="preserve">
+    <value>Désactivé</value>
+  </data>
+  <data name="gsAgShareEnterDetails" xml:space="preserve">
+    <value>Entrez le serveur et la clé API, puis testez la connexion</value>
+  </data>
+  <data name="gsAgShareInvalidApiKey" xml:space="preserve">
+    <value>Clé API invalide</value>
+  </data>
+  <data name="gsAgShareLocalOnly" xml:space="preserve">
+    <value>Local uniquement</value>
+  </data>
+  <data name="gsAgSharePaste" xml:space="preserve">
+    <value>Coller depuis le presse-papiers</value>
+  </data>
+  <data name="gsAgShareRegisterHere" xml:space="preserve">
+    <value>Inscrivez-vous ici pour utiliser AgShare</value>
+  </data>
+  <data name="gsAgShareSaved" xml:space="preserve">
+    <value>Paramètres enregistrés</value>
+  </data>
+  <data name="gsAgShareServer" xml:space="preserve">
+    <value>Serveur</value>
+  </data>
+  <data name="gsAgShareSettings" xml:space="preserve">
+    <value>Paramètres AgShare</value>
+  </data>
+  <data name="gsAgShareTestConnection" xml:space="preserve">
+    <value>Tester la connexion</value>
+  </data>
+  <data name="gsAgShareUploadOff" xml:space="preserve">
+    <value>Téléversement désactivé</value>
+  </data>
+  <data name="gsAgShareUploadOn" xml:space="preserve">
+    <value>Téléversement activé</value>
+  </data>
+  <data name="gsAgShareAutoLoadActive" xml:space="preserve">
+    <value>Les parcelles sont chargées automatiquement depuis le cloud</value>
+  </data>
+  <data name="gsAgShareFieldLoaded" xml:space="preserve">
+    <value>Parcelle chargée depuis AgShare</value>
+  </data>
+  <data name="gsAgShareLoadFailed" xml:space="preserve">
+    <value>Impossible de charger la parcelle depuis le cloud, utilisation de la version locale.</value>
+  </data>
   <data name="gsAgressiveness" xml:space="preserve">
     <value>Agressivité</value>
   </data>

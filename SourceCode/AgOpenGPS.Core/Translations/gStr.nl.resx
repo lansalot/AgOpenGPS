@@ -150,6 +150,76 @@
   <data name="gsAgShareDownloader" xml:space="preserve">
     <value>Download velden vanaf AgShare</value>
   </data>
+  <data name="gsAgShareActivate" xml:space="preserve">
+    <value>Activeren</value>
+  </data>
+  <data name="gsAgShareActivated" xml:space="preserve">
+    <value>Geactiveerd</value>
+  </data>
+  <data name="gsAgShareApiKey" xml:space="preserve">
+    <value>API-sleutel</value>
+  </data>
+  <data name="gsAgShareAutoLoad" xml:space="preserve">
+    <value>Cloud Laden</value>
+  </data>
+  <data name="gsAgShareAutoUpload" xml:space="preserve">
+    <value>Auto-Upload</value>
+  </data>
+  <data name="gsAgShareButtonsHint" xml:space="preserve">
+    <value>Auto-Upload: veldwijzigingen uploaden bij sluiten
+Cloud Laden: altijd nieuwste versie downloaden van AgShare bij openen</value>
+  </data>
+  <data name="gsAgShareConnecting" xml:space="preserve">
+    <value>Verbinden...</value>
+  </data>
+  <data name="gsAgShareConnectionOk" xml:space="preserve">
+    <value>Verbinding geslaagd</value>
+  </data>
+  <data name="gsAgShareDeactivated" xml:space="preserve">
+    <value>Gedeactiveerd</value>
+  </data>
+  <data name="gsAgShareEnterDetails" xml:space="preserve">
+    <value>Voer server en API-sleutel in, test daarna de verbinding</value>
+  </data>
+  <data name="gsAgShareInvalidApiKey" xml:space="preserve">
+    <value>Ongeldige API-sleutel</value>
+  </data>
+  <data name="gsAgShareLocalOnly" xml:space="preserve">
+    <value>Alleen Lokaal</value>
+  </data>
+  <data name="gsAgSharePaste" xml:space="preserve">
+    <value>Plakken vanuit klembord</value>
+  </data>
+  <data name="gsAgShareRegisterHere" xml:space="preserve">
+    <value>Registreer hier om AgShare te gebruiken</value>
+  </data>
+  <data name="gsAgShareSaved" xml:space="preserve">
+    <value>Instellingen opgeslagen</value>
+  </data>
+  <data name="gsAgShareServer" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="gsAgShareSettings" xml:space="preserve">
+    <value>AgShare-instellingen</value>
+  </data>
+  <data name="gsAgShareTestConnection" xml:space="preserve">
+    <value>Verbinding testen</value>
+  </data>
+  <data name="gsAgShareUploadOff" xml:space="preserve">
+    <value>Upload Uit</value>
+  </data>
+  <data name="gsAgShareUploadOn" xml:space="preserve">
+    <value>Upload Aan</value>
+  </data>
+  <data name="gsAgShareAutoLoadActive" xml:space="preserve">
+    <value>Velden worden automatisch geladen vanuit de cloud</value>
+  </data>
+  <data name="gsAgShareFieldLoaded" xml:space="preserve">
+    <value>Veld geladen vanuit AgShare</value>
+  </data>
+  <data name="gsAgShareLoadFailed" xml:space="preserve">
+    <value>Veld kon niet worden geladen vanuit de cloud, lokale versie wordt gebruikt.</value>
+  </data>
   <data name="gsAgressiveness" xml:space="preserve">
     <value>Agressiviteit</value>
   </data>
