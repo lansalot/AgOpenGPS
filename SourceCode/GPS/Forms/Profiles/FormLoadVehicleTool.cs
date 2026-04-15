@@ -391,7 +391,7 @@ namespace AgOpenGPS.Forms.Profiles
 
             // Save current profiles before switching so unsaved changes are not lost
             if (vehicleChanged) VehicleSettings.Default.Save();
-            if (toolChanged)    ToolSettings.Default.Save();
+            if (toolChanged) ToolSettings.Default.Save();
 
             if (vehicleChanged)
             {
