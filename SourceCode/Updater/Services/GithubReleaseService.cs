@@ -22,7 +22,6 @@ namespace AgOpenGPS.Updater.Services
         private readonly HttpClient _httpClient;
         private readonly string _owner;
         private readonly string _repository;
-        private readonly string _authToken;
 
         public GithubReleaseService(string owner = null, string repository = null)
         {
@@ -320,11 +319,6 @@ namespace AgOpenGPS.Updater.Services
         /// <summary>
         /// Checks if this service has an authentication token.
         /// </summary>
-        public bool HasAuthToken()
-        {
-            return !string.IsNullOrEmpty(_authToken);
-        }
-
         public void Dispose()
         {
             _httpClient?.Dispose();
