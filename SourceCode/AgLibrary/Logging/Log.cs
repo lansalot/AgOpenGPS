@@ -38,9 +38,19 @@ namespace AgLibrary.Logging
         {
             if (logsDirectory != "")
             {
-                using (StreamWriter writer = new StreamWriter(logsDirectory, true))
+                try
                 {
-                    writer.Write(sbEvents);
+                    using (StreamWriter writer = new StreamWriter(logsDirectory, true))
+                    {
+                        writer.Write(sbEvents);
+                    }
+                }
+                catch
+                {
+                    // suppressing an edge-case error for eg if someone has onedrive client locking the file
+                }
+                finally
+                {
                     sbEvents.Clear();
                 }
             }
