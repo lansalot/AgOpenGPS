@@ -140,7 +140,9 @@ namespace AgOpenGPS
         // Update toggle button for upload-on/off
         private void UpdateAgShareToggleButton()
         {
-            if (Settings.Default.AgShareEnabled)
+            bool enabled = Settings.Default.AgShareEnabled;
+
+            if (enabled)
             {
                 btnToggleUpload.Image = Properties.Resources.UploadOn;
                 btnToggleUpload.Text = gStr.gsAgShareActivated;
@@ -151,6 +153,9 @@ namespace AgOpenGPS
                 btnToggleUpload.Text = gStr.gsAgShareDeactivated;
                 buttonSave.Enabled = true;
             }
+
+            btnAutoUpload.Enabled = enabled;
+            btnAutoLoad.Enabled = enabled;
         }
 
         // Toggle upload enabled state
@@ -206,6 +211,7 @@ namespace AgOpenGPS
             Settings.Default.AgShareAutoLoad = !Settings.Default.AgShareAutoLoad;
             UpdateAgShareAutoLoadButton();
             Settings.Default.Save();
+            buttonSave.Enabled = true;
         }
 
         private void UpdateAgShareAutoLoadButton()
@@ -226,7 +232,9 @@ namespace AgOpenGPS
         {
             Settings.Default.AgShareUploadActive = !Settings.Default.AgShareUploadActive;
             UpdateAgShareUploadButton();
+            buttonSave.Enabled = true;
         }
+
         private void UpdateAgShareUploadButton()
         {
             if (Settings.Default.AgShareUploadActive)
@@ -238,7 +246,6 @@ namespace AgOpenGPS
             {
                 btnAutoUpload.Text = gStr.gsAgShareUploadOff;
                 btnAutoUpload.Image = Resources.AutoUploadOff;
-                buttonSave.Enabled = true;
             }
         }
     }
