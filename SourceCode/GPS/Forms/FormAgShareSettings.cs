@@ -27,15 +27,15 @@ namespace AgOpenGPS
         private void FormAgShareSettings_Load(object sender, EventArgs e)
         {
             // Translations
-            this.Text                    = gStr.gsAgShareSettings;
-            labelApiKey.Text             = gStr.gsAgShareApiKey + ":";
-            label1.Text                  = gStr.gsAgShareServer + ":";
-            buttonTestConnection.Text    = gStr.gsAgShareTestConnection;
-            btnPaste.Text                = gStr.gsAgSharePaste;
-            label2.Text                  = gStr.gsAgShareRegisterHere;
-            buttonCancel.Text            = gStr.gsCancel;
-            labelStatus.Text             = gStr.gsAgShareEnterDetails;
-            labelButtonsHint.Text        = gStr.gsAgShareButtonsHint;
+            this.Text = gStr.gsAgShareSettings;
+            labelApiKey.Text = gStr.gsAgShareApiKey + ":";
+            label1.Text = gStr.gsAgShareServer + ":";
+            buttonTestConnection.Text = gStr.gsAgShareTestConnection;
+            btnPaste.Text = gStr.gsAgSharePaste;
+            label2.Text = gStr.gsAgShareRegisterHere;
+            buttonCancel.Text = gStr.gsCancel;
+            labelStatus.Text = gStr.gsAgShareEnterDetails;
+            labelButtonsHint.Text = gStr.gsAgShareButtonsHint;
 
             textBoxServer.Text = Settings.Default.AgShareServer;
             textBoxApiKey.Text = Settings.Default.AgShareApiKey;
