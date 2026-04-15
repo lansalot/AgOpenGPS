@@ -19,26 +19,7 @@ namespace AgOpenGPS
 
         private void FormEventViewer_Load(object sender, EventArgs e)
         {
-            try
-            {
-                using (StreamReader sr = File.OpenText(filename))
-                {
-                    //rtbLogViewer.Text = String.Empty;
-                    while (!sr.EndOfStream)
-                    {
-                        rtbLogViewer.AppendText(sr.ReadLine() + "\r");
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                rtbLogViewer.AppendText("Catch ->  error loading logfile" + ex.ToString());
-            }
-
-            rtbLogViewer.AppendText(" **** Current Session Below ***** \r\n\r\n");
-
-            rtbLogViewer.AppendText(Log.sbEvents.ToString());
+            LoadLog();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -48,29 +29,26 @@ namespace AgOpenGPS
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            rtbLogViewer.Clear();
-            rtbLogViewer.HideSelection = false;
+            LoadLog();
+        }
+
+        private void LoadLog()
+        {
+            string fileContent = "";
             try
             {
-                using (StreamReader sr = File.OpenText(filename))
-                {
-                    //rtbLogViewer.Text = String.Empty;
-                    while (!sr.EndOfStream)
-                    {
-                        rtbLogViewer.AppendText(sr.ReadLine() + "\r");
-                    }
-
-                }
+                fileContent = File.ReadAllText(filename);
             }
             catch (Exception ex)
             {
-                rtbLogViewer.AppendText("Catch ->  error loading logfile" + ex.ToString());
+                fileContent = "Catch -> error loading logfile" + ex.ToString();
             }
 
-            rtbLogViewer.AppendText(" **** Current Session Below ***** \r\n\r\n");
-
-            rtbLogViewer.AppendText(Log.sbEvents.ToString());
-
+            rtbLogViewer.SuspendLayout();
+            rtbLogViewer.Text = fileContent
+                + "\r\n **** Current Session Below *****\r\n\r\n"
+                + Log.sbEvents.ToString();
+            rtbLogViewer.ResumeLayout();
         }
     }
 }
