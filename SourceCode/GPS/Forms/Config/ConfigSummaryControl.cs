@@ -54,7 +54,7 @@ namespace AgOpenGPS.Forms.Config
             lblToolOffset.Text = Distance.SmallDistanceString(mf.isMetric, ts.setVehicle_toolOffset);
             lblOverlap.Text = Distance.SmallDistanceString(mf.isMetric, ts.setVehicle_toolOverlap);
             lblLookahead.Text = ts.setVehicle_toolLookAheadOn.ToString() + " sec";
-            lblNudgeDistance.Text = Distance.VerySmallDistanceString(mf.isMetric, 0.01 * Properties.Settings.Default.setAS_snapDistance);
+            lblNudgeDistance.Text = Distance.VerySmallDistanceString(mf.isMetric, 0.01 * Properties.ToolSettings.Default.setAS_snapDistance);
             lblTramWidth.Text = Distance.MediumDistanceString(mf.isMetric, Properties.Settings.Default.setTram_tramWidth);
 
             // Buiten panels

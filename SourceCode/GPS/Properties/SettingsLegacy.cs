@@ -27,8 +27,6 @@ namespace AgOpenGPS.Properties
         public byte setAS_highSteerPWM = 180;
         public byte setAS_lowSteerPWM = 30;
         public int setAS_wasOffset = 3;
-        public double setAS_snapDistance = 20.0;
-        public double setAS_snapDistanceRef = 5;
         public bool setAS_isAutoSteerAutoOn = false;
         public double setAS_guidanceLookAheadTime = 1.5;
         public bool setAS_isConstantContourOn = false;

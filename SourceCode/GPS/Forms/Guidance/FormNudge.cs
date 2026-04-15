@@ -28,15 +28,15 @@ namespace AgOpenGPS
             if (mf.isMetric)
             {
                 nudSnapDistance.DecimalPlaces = 0;
-                nudSnapDistance.Value = (int)((double)Properties.Settings.Default.setAS_snapDistance);
+                nudSnapDistance.Value = (int)((double)Properties.ToolSettings.Default.setAS_snapDistance);
             }
             else
             {
                 nudSnapDistance.DecimalPlaces = 1;
-                nudSnapDistance.Value = (decimal)Math.Round(((double)Properties.Settings.Default.setAS_snapDistance * mf.cm2CmOrIn), 1);
+                nudSnapDistance.Value = (decimal)Math.Round(((double)Properties.ToolSettings.Default.setAS_snapDistance * mf.cm2CmOrIn), 1);
             }
 
-            snapAdj = Properties.Settings.Default.setAS_snapDistance * 0.01;
+            snapAdj = Properties.ToolSettings.Default.setAS_snapDistance * 0.01;
 
             Location = Properties.Settings.Default.setWindow_formNudgeLocation;
             UpdateMoveLabel();
@@ -84,8 +84,8 @@ namespace AgOpenGPS
         {
             ((NudlessNumericUpDown)sender).ShowKeypad(this);
             snapAdj = (double)nudSnapDistance.Value * mf.inchOrCm2m;
-            Properties.Settings.Default.setAS_snapDistance = snapAdj * 100;
-            Properties.Settings.Default.Save();
+            Properties.ToolSettings.Default.setAS_snapDistance = snapAdj * 100;
+            Properties.ToolSettings.Default.Save();
             mf.Activate();
         }
 

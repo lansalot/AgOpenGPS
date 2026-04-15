@@ -30,15 +30,15 @@ namespace AgOpenGPS
             if (mf.isMetric)
             {
                 nudSnapDistance.DecimalPlaces = 0;
-                nudSnapDistance.Value = (int)((double)Properties.Settings.Default.setAS_snapDistanceRef);
+                nudSnapDistance.Value = (int)((double)Properties.ToolSettings.Default.setAS_snapDistanceRef);
             }
             else
             {
                 nudSnapDistance.DecimalPlaces = 1;
-                nudSnapDistance.Value = (decimal)Math.Round(((double)Properties.Settings.Default.setAS_snapDistanceRef * mf.cm2CmOrIn), 1);
+                nudSnapDistance.Value = (decimal)Math.Round(((double)Properties.ToolSettings.Default.setAS_snapDistanceRef * mf.cm2CmOrIn), 1);
             }
 
-            snapAdj = Properties.Settings.Default.setAS_snapDistanceRef * 0.01;
+            snapAdj = Properties.ToolSettings.Default.setAS_snapDistanceRef * 0.01;
 
             foreach (var item in mf.trk.gArr)
             {
@@ -66,8 +66,8 @@ namespace AgOpenGPS
         {
             ((NudlessNumericUpDown)sender).ShowKeypad(this);
             snapAdj = (double)nudSnapDistance.Value * mf.inchOrCm2m;
-            Properties.Settings.Default.setAS_snapDistanceRef = snapAdj * 100;
-            Properties.Settings.Default.Save();
+            Properties.ToolSettings.Default.setAS_snapDistanceRef = snapAdj * 100;
+            Properties.ToolSettings.Default.Save();
             mf.Activate();
         }
 

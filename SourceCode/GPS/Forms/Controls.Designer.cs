@@ -1226,12 +1226,12 @@ namespace AgOpenGPS
 
         private void btnAdjRight_Click(object sender, EventArgs e)
         {
-            trk.NudgeTrack(Properties.Settings.Default.setAS_snapDistance * 0.01);
+            trk.NudgeTrack(Properties.ToolSettings.Default.setAS_snapDistance * 0.01);
         }
 
         private void btnAdjLeft_Click(object sender, EventArgs e)
         {
-            trk.NudgeTrack(-Properties.Settings.Default.setAS_snapDistance * 0.01);
+            trk.NudgeTrack(-Properties.ToolSettings.Default.setAS_snapDistance * 0.01);
         }
 
         #endregion
