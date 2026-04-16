@@ -15,10 +15,6 @@ namespace AgOpenGPS.Updater
         [STAThread]
         private static void Main()
         {
-            if (!System.Diagnostics.Debugger.IsAttached)
-            {
-                System.Diagnostics.Debugger.Launch();
-            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
