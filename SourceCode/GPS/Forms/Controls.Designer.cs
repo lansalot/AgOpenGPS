@@ -1609,6 +1609,7 @@ namespace AgOpenGPS
         private void InitializeLanguages()
         {
             menustripLanguage.DropDownItems.Clear();
+            menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Български (Bulgaria)", "bg"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Čeština (Czech)", "cs"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Dansk (Denmark)", "da"));
             menustripLanguage.DropDownItems.Add(CreateLanguageMenuItem("Deutsch (Germany)", "de"));
