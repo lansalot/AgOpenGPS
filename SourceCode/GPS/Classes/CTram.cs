@@ -174,7 +174,7 @@ namespace AgOpenGPS
                 double heading = mf.bnd.bndList[0].fenceLine[i].heading;
 
                 vec3 pt = new vec3(
-                    mf.bnd.bndList[0].fenceLine[i].easting  - (Math.Sin(glm.PIBy2 + heading) * distance),
+                    mf.bnd.bndList[0].fenceLine[i].easting - (Math.Sin(glm.PIBy2 + heading) * distance),
                     mf.bnd.bndList[0].fenceLine[i].northing - (Math.Cos(glm.PIBy2 + heading) * distance),
                     heading);
 
@@ -198,7 +198,7 @@ namespace AgOpenGPS
 
                 if (rawList.Count > 0)
                 {
-                    double spacingSq = (pt.easting  - rawList[rawList.Count - 1].easting)  * (pt.easting  - rawList[rawList.Count - 1].easting)
+                    double spacingSq = (pt.easting - rawList[rawList.Count - 1].easting) * (pt.easting - rawList[rawList.Count - 1].easting)
                                      + (pt.northing - rawList[rawList.Count - 1].northing) * (pt.northing - rawList[rawList.Count - 1].northing);
                     if (spacingSq > 1.0)
                         rawList.Add(pt);
